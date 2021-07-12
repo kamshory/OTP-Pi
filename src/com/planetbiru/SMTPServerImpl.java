@@ -6,7 +6,7 @@ import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigSMTP;
 import com.planetbiru.mail.PlanetMessageHandlerFactory;
 
-public class ServerSMTPLocal {
+public class SMTPServerImpl {
 
 
 	private PlanetMessageHandlerFactory handlerFactory = new PlanetMessageHandlerFactory();
@@ -19,9 +19,7 @@ public class ServerSMTPLocal {
 	
 	public void init()
 	{
-		String smtpSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.smtp");
-
-		
+		String smtpSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.smtp");		
 		Config.setSmtpSettingPath(smtpSettingPath);
 		ConfigSMTP.load(Config.getSmtpSettingPath());		
 		if(ConfigSMTP.isActive())

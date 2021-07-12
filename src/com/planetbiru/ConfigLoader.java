@@ -81,14 +81,6 @@ public class ConfigLoader {
 		String userAPISettingPath = ConfigLoader.getConfig("otpbroker.path.setting.api.user");
 		String emailSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.email");
 		
-		int httpPort = ConfigLoader.getConfigInt("otpbroker.api.http.port");
-		int httpsPort = ConfigLoader.getConfigInt("otpbroker.api.https.port");
-		boolean httpEnable = ConfigLoader.getConfigBoolean("otpbroker.api.http.enable");
-		boolean httpsEnable = ConfigLoader.getConfigBoolean("otpbroker.api.https.enable");
-		String messagePath = ConfigLoader.getConfig("otpbroker.api.path.message");
-		String blockinPath = ConfigLoader.getConfig("otpbroker.api.path.block");
-		String unblockinPath = ConfigLoader.getConfig("otpbroker.api.path.unblock");
-		
 		String blockingSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.blocking");
 		String keystoreDataSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.keystore.data");
 		String keystoreSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.keystore");
@@ -131,9 +123,7 @@ public class ConfigLoader {
 		boolean cronDeviceEnable = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.device");
 		boolean cronAMQPEnable = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.amqp");
 		String timeResolution = ConfigLoader.getConfig("otpbroker.cron.time.resolution:minute");
-		String serverStatusSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.server.status");
-		
-		
+		String serverStatusSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.server.status");	
 		
 		boolean feederWsEnable = ConfigLoader.getConfigBoolean("otpbroker.ws.enable");
 		boolean feederWsSSL = ConfigLoader.getConfigBoolean("otpbroker.ws.ssl");
@@ -146,8 +136,6 @@ public class ConfigLoader {
 		long feederWsTimeout = ConfigLoader.getConfigLong("otpbroker.ws.timeout");
 		long feederWsRefresh = ConfigLoader.getConfigLong("otpbroker.ws.refresh.delay");
 		long feederWsReconnectDelay = ConfigLoader.getConfigLong("otpbroker.ws.reconnect.delay");
-
-
 		
 		
 		Config.setApiSettingPath(apiSettingPath);

@@ -55,9 +55,12 @@ public class Application {
 		WebSocketServerImpl wsss = new WebSocketServerImpl(address);
 		wsss.start();
 		
-		//Config.setDebugModem(true);
-		
 		GSMUtil.init();
+		
+		
+		SMTPServerImpl smtp = new SMTPServerImpl();
+		smtp.init();
+		smtp.start();
 		
 	}
 	public static void prepareSessionDir()
