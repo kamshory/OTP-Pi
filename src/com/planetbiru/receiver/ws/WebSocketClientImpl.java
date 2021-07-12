@@ -22,10 +22,10 @@ public class WebSocketClientImpl extends Thread{
 	private long reconnectDelay = 10000;
 	private boolean stopend = false;
 	private WebSocketClient wsClient;
-	private WebSocketTool webSocketTool;
+	private ClientReceiverWebSocket webSocketTool;
 	private boolean reconnect = false;
 	
-	public WebSocketClientImpl(long reconnectDelay, WebSocketTool webSocketTool, boolean reconnect)
+	public WebSocketClientImpl(long reconnectDelay, ClientReceiverWebSocket webSocketTool, boolean reconnect)
 	{
 		this.reconnectDelay = reconnectDelay;
 		this.webSocketTool = webSocketTool;

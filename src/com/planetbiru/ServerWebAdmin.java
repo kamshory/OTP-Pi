@@ -14,8 +14,8 @@ import com.planetbiru.web.HandlerWebManagerUserAdd;
 import com.planetbiru.web.HandlerWebManagerUserInit;
 import com.sun.net.httpserver.HttpServer;
 
-public class ServerWeb {
-	public void init() 
+public class ServerWebAdmin {
+	public void start() 
 	{
 		try 
 		{
@@ -33,6 +33,14 @@ public class ServerWeb {
 		{
 			e.printStackTrace();
 		}
+	}
+
+	public void stop() {
+		if(ServiceHTTP.getHttpServer() != null)
+		{
+			ServiceHTTP.getHttpServer().stop(0);
+		}
+		
 	}
 	
 

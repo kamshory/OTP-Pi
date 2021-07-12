@@ -31,11 +31,6 @@ public class ServerScheduler {
 
 	public void init()
 	{
-
-		
-
-		
-		
 	}
 	
 	
@@ -114,7 +109,7 @@ public class ServerScheduler {
 		JSONObject serverInfo = new JSONObject();
 		serverInfo.put(JsonKey.DATA, data);
 		serverInfo.put(JsonKey.COMMAND, "server-info");
-		WebSocketServerImpl.broadcastMessage(serverInfo.toString());
+		ServerWebSocketServerAdmin.broadcastMessage(serverInfo.toString());
 	}
 
 	private void amqpCheck()

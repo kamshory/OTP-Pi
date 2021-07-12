@@ -8,7 +8,7 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.planetbiru.WebSocketServerImpl;
+import com.planetbiru.ServerWebSocketServerAdmin;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigModem;
 import com.planetbiru.config.ConfigSMS;
@@ -47,7 +47,7 @@ public class GSMUtil {
 		 */
 	}
 	
-	public static void init()
+	public static void start()
 	{
 		ConfigModem.load(Config.getModemSettingPath());
 
@@ -186,7 +186,7 @@ public class GSMUtil {
                
         monitor.put(JsonKey.COMMAND, GSMUtil.SMS_TRAFFIC);
         monitor.put(JsonKey.DATA, data);      
-        WebSocketServerImpl.broadcastMessage(monitor.toString(), GSMUtil.MONITOR_PATH);
+        ServerWebSocketServerAdmin.broadcastMessage(monitor.toString(), GSMUtil.MONITOR_PATH);
 	}
 	
 	public static void sendTraffic(String receiver, StackTraceElement ste, DataModem modemData)
@@ -205,7 +205,7 @@ public class GSMUtil {
         data.put(GSMUtil.RECEIVER, Utility.maskMSISDN(receiver));
         monitor.put(JsonKey.COMMAND, GSMUtil.SMS_TRAFFIC);
         monitor.put(JsonKey.DATA, data);      
-        WebSocketServerImpl.broadcastMessage(monitor.toString(), GSMUtil.MONITOR_PATH);
+        ServerWebSocketServerAdmin.broadcastMessage(monitor.toString(), GSMUtil.MONITOR_PATH);
 	}
 	
 	public static String getSenderType(String callerClass) 

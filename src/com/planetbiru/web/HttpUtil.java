@@ -6,7 +6,7 @@ import java.util.UUID;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.planetbiru.WebSocketServerImpl;
+import com.planetbiru.ServerWebSocketServerAdmin;
 import com.planetbiru.config.PropertyLoader;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.util.Utility;
@@ -54,7 +54,7 @@ public class HttpUtil {
 		itemData.put(JsonKey.MESSAGE, message);
 		data.put(itemData);
 		messageJSON.put(JsonKey.DATA, data);		
-		WebSocketServerImpl.broadcastMessage(messageJSON.toString(4));			
+		ServerWebSocketServerAdmin.broadcastMessage(messageJSON.toString(4));			
 	}
 
 	public static String getMIMEType(String fileName) 

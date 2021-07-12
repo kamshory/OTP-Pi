@@ -1,5 +1,6 @@
 package com.planetbiru;
 
+import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,15 +22,12 @@ import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.user.NoUserRegisteredException;
 import com.planetbiru.user.WebUserAccount;
 
-public class WebSocketServerImpl extends WebSocketServer{
+public class ServerWebSocketServerAdmin extends WebSocketServer{
 
 	public static List<WebSocketConnection> clients = new ArrayList<>();
-	public WebSocketServerImpl(InetSocketAddress address) {
+	public ServerWebSocketServerAdmin(InetSocketAddress address) {
 		super(address);
 	}
-
-
-	
 
 	@Override
 	public void onClose(WebSocket conn, int code, String message, boolean arg3) {
@@ -52,10 +50,11 @@ public class WebSocketServerImpl extends WebSocketServer{
 		CookieServer cookie = new CookieServer(rawCookie);
 		String username = cookie.getSessionData().optString(JsonKey.USERNAME, "");
 		String password = cookie.getSessionData().optString(JsonKey.PASSWORD, "");
-		try {
+		try 
+		{
 			if(WebUserAccount.checkUserAuth(username, password))
 			{
-				WebSocketServerImpl.clients.add(new WebSocketConnection(conn, request));
+				ServerWebSocketServerAdmin.clients.add(new WebSocketConnection(conn, request));
 				this.sendServerStatus(conn);
 			}
 			else
@@ -74,11 +73,11 @@ public class WebSocketServerImpl extends WebSocketServer{
 	}
 	
 	private void remove(WebSocket conn) {
-		for(WebSocketConnection client : WebSocketServerImpl.clients)
+		for(WebSocketConnection client : ServerWebSocketServerAdmin.clients)
 		{
 			if(client.getConn().equals(conn))
 			{
-				WebSocketServerImpl.clients.remove(client);
+				ServerWebSocketServerAdmin.clients.remove(client);
 				break;
 			}
 		}		
@@ -86,14 +85,14 @@ public class WebSocketServerImpl extends WebSocketServer{
 	
 	public static void broadcastMessage(String message)
 	{
-		for(WebSocketConnection client : WebSocketServerImpl.clients)
+		for(WebSocketConnection client : ServerWebSocketServerAdmin.clients)
 		{
 			client.send(message);
 		}
 	}
 	public static void broadcastMessage(String message, String path)
 	{
-		for(WebSocketConnection client : WebSocketServerImpl.clients)
+		for(WebSocketConnection client : ServerWebSocketServerAdmin.clients)
 		{
 			if(client.getPath().contains(path))
 			{
@@ -103,7 +102,7 @@ public class WebSocketServerImpl extends WebSocketServer{
 	}
 	public static void broadcastMessage(String message, WebSocket sender)
 	{
-		for(WebSocketConnection client : WebSocketServerImpl.clients)
+		for(WebSocketConnection client : ServerWebSocketServerAdmin.clients)
 		{
 			if(!client.getConn().equals(sender))
 			{

@@ -82,19 +82,9 @@ public class DialUtil {
 	
 	public static boolean disconnect(String modemID)
 	{
-		boolean ret = false;
-		try 
-		{
-			DialUtil.internetAccess.remove(modemID);
-			CommandLineExecutor.execSSH(wvdialCommandDisconnect, 500);
-			ret = true;
-		} 
-		catch (IOException e) 
-		{
-			e.printStackTrace();
-			ret = false;
-		}
-		return ret;
+		DialUtil.internetAccess.remove(modemID);
+		CommandLineExecutor.exec(wvdialCommandDisconnect);
+		return true;
 	}
 
 	public static boolean isConnected(String modemID) {

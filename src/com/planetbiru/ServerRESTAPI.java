@@ -25,9 +25,9 @@ import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.HttpsConfigurator;
 import com.sun.net.httpserver.HttpsServer;
 
-public class ServerAPI {
+public class ServerRESTAPI {
 	
-	public void init()
+	public void start()
 	{
 		this.initHttp();
 		this.initHttps();
@@ -108,7 +108,7 @@ public class ServerAPI {
 		}		
 	}
 	
-	public void destroy()
+	public void stop()
 	{
 		if(ServiceHTTP.getHttpServer() != null)
 		{

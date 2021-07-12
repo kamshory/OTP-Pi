@@ -19,7 +19,7 @@ public class DeviceAPI {
 		
 	}
 	
-	public static String exec(String command)
+	public static String execXXX(String command)
 	{
 		Config.setSshEnable(false);
 		String result = "";
@@ -80,8 +80,8 @@ public class DeviceAPI {
 			     * URL : https://www.thegeekstuff.com/2013/08/hwclock-examples/
 			     */
 				String currentTime = Utility.date("MM/dd/yyyy HH:mm:ss", date);
-			    String command = "hwclock --set --date \""+currentTime+"\"";
-			    DeviceAPI.exec(command);	
+			    String command = "/bin/hwclock --set --date \""+currentTime+"\"";
+			    CommandLineExecutor.exec(command);	
 		    }
 		} 
 		catch (IOException e) 
@@ -94,33 +94,33 @@ public class DeviceAPI {
 	
 	public static void reboot()
 	{
-		DeviceAPI.exec(Config.getRebootCommand());
+		CommandLineExecutor.exec(Config.getRebootCommand());
 	}
 
 	public static void restart()
 	{
-		DeviceAPI.exec(Config.getRestartCommand());
+		CommandLineExecutor.exec(Config.getRestartCommand());
 	}
 
 	public static void setTimeZone(String timeZone) {
-		String command1 = "sudo timedatectl set-timezone " + timeZone;
-		String command2 = "sudo rm -rf /etc/localtime";
-		String command3 = "sudo ln -s /usr/share/zoneinfo/"+timeZone+" /etc/localtime";
+		String command1 = "/bin/timedatectl set-timezone " + timeZone;
+		String command2 = "rm -rf /etc/localtime";
+		String command3 = "ln -s /usr/share/zoneinfo/"+timeZone+" /etc/localtime";
 		
-		DeviceAPI.exec(command1);
-		DeviceAPI.exec(command2);
-		DeviceAPI.exec(command3);		
+		CommandLineExecutor.exec(command1);
+		CommandLineExecutor.exec(command2);
+		CommandLineExecutor.exec(command3);		
 	}
 	
 	public static void setHardwareClock(Date date)
 	{
-		String command = "hwclock --set --date \""+Utility.date("MM/dd/yyyy HH:mm:ss", date)+"\"";
-		DeviceAPI.exec(command);
+		String command = "/bin/hwclock --set --date \""+Utility.date("MM/dd/yyyy HH:mm:ss", date)+"\"";
+		CommandLineExecutor.exec(command);
 	}
 
 	public static void cleanup() 
 	{
-		DeviceAPI.exec(Config.getCleanupCommand());		
+		CommandLineExecutor.exec(Config.getCleanupCommand());		
 	}
 	
 }

@@ -8,7 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.planetbiru.DeviceAPI;
-import com.planetbiru.WebSocketServerImpl;
+import com.planetbiru.ServerWebSocketServerAdmin;
 import com.planetbiru.api.RESTAPI;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigEmail;
@@ -164,7 +164,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 						/**
 						 * 
 						 */
-						WebSocketServerImpl.broadcastMessage(e.getMessage());
+						ServerWebSocketServerAdmin.broadcastMessage(e.getMessage());
 					}
 				}
 			} 
@@ -286,10 +286,10 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				catch (MessagingException | NoEmailAccountException e) 
 				{
 					result = e.getMessage();
-					WebSocketServerImpl.broadcastMessage(result);
+					ServerWebSocketServerAdmin.broadcastMessage(result);
 					response.put(JsonKey.SUCCESS, false);
 				}
-				WebSocketServerImpl.broadcastMessage(result);
+				ServerWebSocketServerAdmin.broadcastMessage(result);
 				response.put(JsonKey.MESSAGE, result);
 			}
 			else

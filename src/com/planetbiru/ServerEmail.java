@@ -16,14 +16,14 @@ public class ServerEmail {
 	
 	private SMTPServer server = null;
 	
-	public void init()
+	public void start()
 	{
 		if(ConfigSMTP.isActive())
 		{
 			this.port = ConfigSMTP.getServerPort();
 			this.serverAddress = ConfigSMTP.getServerAddress();
 			this.softwareName = ConfigSMTP.getSoftwareName();
-			this.start();
+			this.startService();
 		}
 	}
 	
@@ -37,7 +37,7 @@ public class ServerEmail {
 		this.server.stop();	
 	}
 	
-	public void start()
+	private void startService()
     {
         this.server = new SMTPServer(this.handlerFactory);
         this.server.setHostName(this.serverAddress);

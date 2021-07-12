@@ -1,5 +1,6 @@
 package com.planetbiru;
 
+import java.io.IOException;
 import java.net.InetSocketAddress;
 
 import com.planetbiru.config.Config;
@@ -7,19 +8,42 @@ import com.planetbiru.config.ConfigNetDHCP;
 import com.planetbiru.config.ConfigNetEthernet;
 import com.planetbiru.config.ConfigNetWLAN;
 import com.planetbiru.gsm.GSMUtil;
-import com.planetbiru.receiver.ws.WebSocketTool;
+import com.planetbiru.receiver.ws.ClientReceiverWebSocket;
 import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.Utility;
 
 public class Application {
 	
+	private static ServerWebSocketServerAdmin webSocketAdmin;
+	private static ServerWebAdmin webAdmin;
+	private static ClientReceiverWebSocket webSocketClient;	
+	private static ClientReceiverAMQP amqpReceiver;
+	private static ServerRESTAPI rest;
+	private static ServerEmail smtp;
 	
+	public static void preDestroy()
+	{
+		Application.webAdmin.stop();
+		Application.rest.stop();
+		Application.smtp.stop();
+		try 
+		{
+			Application.webSocketAdmin.stop();
+		} 
+		catch (IOException | InterruptedException e) 
+		{
+			Thread.currentThread().interrupt();
+
+		}
+	}
 
 	public static void main(String[] args) {
 		
 		ConfigLoader.load("config.ini");	
 		
-		GSMUtil.init();
+		Application.resetConfig();
+		
+		GSMUtil.start();
 
 		Application.prepareSessionDir();
 
@@ -27,39 +51,39 @@ public class Application {
 		 * WebSocket Server for Admin
 		 */
 		InetSocketAddress address = new InetSocketAddress(Config.getServerPort()+1);
-		WebSocketServerImpl wsss = new WebSocketServerImpl(address);
-		wsss.start();		
+		Application.webSocketAdmin = new ServerWebSocketServerAdmin(address);
+		Application.webSocketAdmin.start();		
 
 		/**
 		 * Web Server for Admin
 		 */
-		ServerWeb web = new ServerWeb();
-		web.init();
+		Application.webAdmin = new ServerWebAdmin();
+		Application.webAdmin.start();
 		
 		/**
 		 * WebSocket Client for feeder
 		 */
-		WebSocketTool wstool = new WebSocketTool();
-		wstool.start();
+		Application.webSocketClient = new ClientReceiverWebSocket();
+		Application.webSocketClient.start();
 		
 		/**
 		 * RabbitMQ Client for feeder
 		 */
-		ClientReceiverAMQP amqpReceiver = new ClientReceiverAMQP();
-		amqpReceiver.init();
+		Application.amqpReceiver = new ClientReceiverAMQP();
+		Application.amqpReceiver.start();
 		
 		/**
 		 * REST API
 		 */
-		ServerAPI rest = new ServerAPI();
-		rest.init();
+		Application.rest = new ServerRESTAPI();
+		Application.rest.start();
 		
 		
 		/**
 		 * SMTP Server for send email
 		 */
-		ServerEmail smtp = new ServerEmail();
-		smtp.init();
+		Application.smtp = new ServerEmail();
+		Application.smtp.start();
 		
 	}
 	public static void prepareSessionDir()
@@ -68,11 +92,6 @@ public class Application {
 		FileConfigUtil.prepareDir(fileName);
 	}
 	
-	
-	public void init()
-	{
-		resetConfig();
-	}	
 	
 	private static void resetConfig() 
 	{

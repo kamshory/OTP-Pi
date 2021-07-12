@@ -7,7 +7,7 @@ import com.planetbiru.receiver.amqp.RabbitMQReceiver;
 
 public class ClientReceiverAMQP {
 
-	void init()
+	void start()
     {
 		Config.setFeederAMQPSettingPath(Config.getFeederAMQPSettingPath());
 		ConfigFeederAMQP.load(Config.getFeederAMQPSettingPath());

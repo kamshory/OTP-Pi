@@ -1,13 +1,13 @@
 package com.planetbiru.receiver.ws;
 
-public class WebSocketTool extends Thread{
+public class ClientReceiverWebSocket extends Thread{
 
 	private boolean running;
 	private long reconnectDelay = 5000;
-	public WebSocketTool(long reconnectDelay) {
+	public ClientReceiverWebSocket(long reconnectDelay) {
 		this.reconnectDelay = reconnectDelay;
 	}
-	public WebSocketTool() {
+	public ClientReceiverWebSocket() {
 		
 	}
 	private WebSocketClientImpl ws;
