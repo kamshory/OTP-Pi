@@ -35,6 +35,10 @@ OTP-Pi menjawab semua tantangan di atas. Dengan perangkat yang sangat murah, pen
 
 OTP-Pi adalah server untuk mengirimkan SMS melalui protokol HTTP, WebSocket dan Message Broker. Pengguna dapat memasang OTP-Pi pada server dengan IP address statis yang diapat diakses oleh klien yang akan mengirimkan SMS. Selain itu, pengguna juga dapat memasang OTP-Pi pada server dengan IP address dinamis. Server ini kemudian mengakses sebuah server websocket atau server RabbitMQ. OTP-Pi bertindak sebagai consumer yang akan mengirimkan semua SMS yang diterimanya.
 
+# System Requirement
+
+OTP-Pi membutuhkan Raspberry Pi 3 Model B atau yang lebih tinggi. RAM minimum adalah 1 GB dan SD Card minimum 16 GB. SD Card 32 GB lebih direkomendasikan.
+
 # Feature
 
 
