@@ -37,7 +37,7 @@ OTP-Pi adalah server untuk mengirimkan SMS melalui protokol HTTP, WebSocket dan 
 
 # System Requirement
 
-OTP-Pi membutuhkan Raspberry Pi 3 Model B atau yang lebih tinggi. RAM minimum adalah 1 GB dan SD Card minimum 16 GB. SD Card 32 GB lebih direkomendasikan.
+OTP-Pi membutuhkan Raspberry Pi 3 Model B atau yang lebih tinggi. RAM minimum adalah 1 GB dan SD Card minimum 16 GB. SD Card 32 GB lebih direkomendasikan. Power supplay 5 Volt 3 Ampre untuk mencegah Raspberry Pi beroperasi dengan under voltage.
 
 # Feature
 
