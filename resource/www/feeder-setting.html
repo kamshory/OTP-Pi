@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="require-login" content="true" data-file="/login-form.html">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1; user-scalable=no">
+    <meta name="description" content="OTP Broker">
+    <meta name="author" content="Planetbiru">
+    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="favicon.ico">  
+    <title>OTP Broker</title>
+    <link href="lib.assets/css/bootstrap.css" rel="stylesheet">
+    <link href="lib.assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="lib.assets/css/navbar.css" rel="stylesheet">
+    <link href="lib.assets/css/style.css" rel="stylesheet">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <script src="lib.assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="lib.assets/js/ie10-viewport-bug-workaround.js"></script>    
+    <script src="lib.assets/js/jquery.min.js"></script>
+    <script src="lib.assets/js/bootstrap.js"></script>
+    <script src="lib.assets/js/ws.js"></script>
+    <script>
+      function handleIncommingMessage(message)
+      {
+        console.log("handleIncommingMessage", message);     
+      }      
+    </script>
+  </head>
+
+  <body>
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+			<span class="usb-device-symbol"></span>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="./">OTP Broker</a>
+          </div>
+          
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class=""><a href="./">Home</a></li>
+              <li class=""><a href="ussd.html">USSD</a></li>
+              <li class=""><a href="sms.html">SMS</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li class=""><a href="general-setting.html">General Setting</a></li>
+                  <li class=""><a href="admin.html">Administrator Setting</a></li>
+                  <li class=""><a href="api-setting.html">API Setting</a></li>
+                  <li class=""><a href="api-user.html">API User</a></li>
+                  <li class="active"><a href="feeder-setting.html">Feeder Setting</a></li>
+                  <li class=""><a href="sms-setting.html">SMS Setting</a></li>
+                  <li class=""><a href="block-list.html">Block List</a></li>
+                  <li class=""><a href="modem.html">Modem</a></li>
+                  <li class=""><a href="email-account.html">Email Account</a></li>
+                  <li class=""><a href="network-setting.html">Network Setting</a></li>
+                  <li class=""><a href="firewall.html">Firewall</a></li>
+                  <li class=""><a href="keystore.html">Keystore</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li class="dropdown-header">DDNS Setting</li>
+                  <li class=""><a href="ddns-record.html">DDNS Record</a></li>
+                  <li class=""><a href="cloudflare.html">Cloudflare Account</a></li>
+                  <li class=""><a href="noip.html">No IP Account</a></li>
+                  <li class=""><a href="dynu.html">Dynu Account</a></li>
+                  <li class=""><a href="afraid.html">Afraid Account</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class=""><a href="account.html">Account</a></li>
+              <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </div>
+ 
+        </div>
+        <!--/.container-fluid -->
+      </nav>
+      <div class="phone-page">      
+        <h3>Feeder Setting</h3>
+        <h4>WSMessageBroker</h4>
+        <form action="feeder-setting.html" method="post">
+          <table class="config-table config-table-feeder">
+            <tbody>
+            <tr>
+                <td>Enable</td>
+                <td><label><input type="checkbox" name="feeder_ws_enable" value="1"> Enable</label>
+                </td>
+              </tr>
+              <tr>
+                <td>SSL</td>
+                <td><select name="feeder_ws_ssl">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>	
+                </td>
+              </tr>
+              <tr>
+                <td>Host</td>
+                <td><input type="text" name="feeder_ws_address" id="feeder_address" value="">	
+                </td>
+              </tr>
+              <tr>
+                <td>Port</td>
+                <td><input type="number" max="65535" name="feeder_ws_port" id="feeder_port" value="">	
+                </td>
+              </tr>
+              <tr>
+                <td>Path</td>
+                <td><input type="text" name="feeder_ws_path" id="feeder_path" value="">	
+                </td>
+              </tr>
+              <tr>
+                <td>Username</td>
+                <td><input type="text" name="feeder_ws_username" id="feeder_username" value="">	
+                </td>
+              </tr>
+              <tr>
+                <td>Password</td>
+                <td><input type="text" name="feeder_ws_password" id="feeder_password" value="">	
+                </td>
+              </tr>
+              <tr>
+                <td>Channel</td>
+                <td><input type="text" name="feeder_ws_channel" id="feeder_channel" value="">	
+                </td>
+              </tr>
+              <tr>
+                <td>Timeout</td>
+                <td><input type="number" min="0" name="feeder_ws_timeout" id="feeder_timeout" value="">	
+                </td>
+              </tr>
+              <tr>
+                <td>Reconnect Delay</td>
+                <td><input type="number" min="0" name="feeder_ws_reconnect_delay" id="feeder_ws_reconnect_delay" value="">	
+                </td>
+              </tr>
+              <tr>
+                <td>Refresh Connection</td>
+                <td><select name="feeder_ws_refresh">
+                    <option value="0">Never</option>
+                    <option value="600">10 Minutes</option>
+                    <option value="1800">30 Minutes</option>
+                    <option value="3600">1 Hour</option>
+                    <option value="7200">2 Hours</option>
+                    <option value="21600">6 Hours</option>
+                    <option value="43200">12 Hours</option>
+                    <option value="86400">24 Hours</option>
+                  </select>	
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                <input type="submit" class="btn btn-success" name="save_feeder_ws_setting" id="save_feeder_ws_setting" value="Save">	
+                <input type="reset" class="btn btn-default"  value="Reset">	
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        
+        </form>
+
+        <h4>RabbitMQ</h4>
+        <form action="feeder-setting.html" method="post">
+          <table class="config-table config-table-feeder">
+            <tbody>
+            
+              <tr>
+                <td>Enable</td>
+                <td><label><input type="checkbox" name="feeder_amqp_enable" value="1"> Enable</label>
+                </td>
+              </tr>
+              <tr>
+                <td>SSL</td>
+                <td><select name="feeder_amqp_ssl">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>	
+                </td>
+              </tr>
+              <tr>
+                <td>Host</td>
+                <td><input type="text" name="feeder_amqp_address" id="feeder_address" value="">	
+                </td>
+              </tr>
+              <tr>
+                <td>Port</td>
+                <td><input type="number" max="65535" name="feeder_amqp_port" id="feeder_port" value="">	
+                </td>
+              </tr>
+              <tr>
+                <td>Path</td>
+                <td><input type="text" name="feeder_amqp_path" id="feeder_path" value="">	
+                </td>
+              </tr>
+              <tr>
+                <td>Username</td>
+                <td><input type="text" name="feeder_amqp_username" id="feeder_username" value="">	
+                </td>
+              </tr>
+              <tr>
+                <td>Password</td>
+                <td><input type="text" name="feeder_amqp_password" id="feeder_password" value="">	
+                </td>
+              </tr>
+              <tr>
+                <td>Queue</td>
+                <td><input type="text" name="feeder_amqp_channel" id="feeder_channel" value="">	
+                </td>
+              </tr>
+              <tr>
+                <td>Timeout</td>
+                <td><input type="number" min="0" name="feeder_amqp_timeout" id="feeder_timeout" value="">	
+                </td>
+              </tr>
+              <tr>
+                <td>Refresh Connection</td>
+                <td><select name="feeder_ampq_refresh">
+                    <option value="0">Never</option>
+                    <option value="600">10 Minutes</option>
+                    <option value="1800">30 Minutes</option>
+                    <option value="3600">1 Hour</option>
+                    <option value="7200">2 Hours</option>
+                    <option value="21600">6 Hours</option>
+                    <option value="43200">12 Hours</option>
+                    <option value="86400">24 Hours</option>
+                  </select>	
+                </td>
+              </tr>
+
+              <tr>
+                <td></td>
+                <td>
+                <input type="submit" class="btn btn-success" name="save_feeder_amqp_setting" id="save_feeder_amqp_setting" value="Save">	
+                <input type="reset" class="btn btn-default"  value="Reset">	
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        
+        </form>
+
+        <script type="text/javascript">
+            $(document).ready(function(e){
+                $.ajax({
+                    type:"GET",
+                    url:"data/feeder-ws-setting/get",
+                    dataType:"json",
+                    success:function(data){
+                      $('input[name="feeder_ws_enable"]').prop("checked", data.feederWsEnable);
+                      $('select[name="feeder_ws_ssl"]').val(data.feederWsSSL?"1":"0");
+                      $('input[name="feeder_ws_address"]').val(data.feederWsAddress);
+                      $('input[name="feeder_ws_port"]').val(data.feederWsPort);
+                      $('input[name="feeder_ws_path"]').val(data.feederWsPath);
+                      $('input[name="feeder_ws_username"]').val(data.feederWsUsername);
+                      $('input[name="feeder_ws_password"]').val(data.feederWsPassword);
+                      $('input[name="feeder_ws_channel"]').val(data.feederWsChannel);
+                      $('input[name="feeder_ws_timeout"]').val(data.feederWsTimeout);
+                      $('input[name="feeder_ws_reconnect_delay"]').val(data.feederWsReconnectDelay);
+                      $('select[name="feeder_ws_refresh"]').val(data.feederWsRefresh+"");
+
+                    }
+                });
+
+                $.ajax({
+                    type:"GET",
+                    url:"data/feeder-amqp-setting/get",
+                    dataType:"json",
+                    success:function(data){
+                      $('input[name="feeder_amqp_enable"]').prop("checked", data.feederAmqpEnable);
+                      $('select[name="feeder_amqp_ssl"]').val(data.feederAmqpSSL?"1":"0");
+                      $('input[name="feeder_amqp_address"]').val(data.feederAmqpAddress);
+                      $('input[name="feeder_amqp_port"]').val(data.feederAmqpPort);
+                      $('input[name="feeder_amqp_path"]').val(data.feederAmqpPath);
+                      $('input[name="feeder_amqp_username"]').val(data.feederAmqpUsername);
+                      $('input[name="feeder_amqp_password"]').val(data.feederAmqpPassword);
+                      $('input[name="feeder_amqp_channel"]').val(data.feederAmqpChannel);
+                      $('input[name="feeder_amqp_timeout"]').val(data.feederAmqpTimeout);
+                      $('select[name="feeder_amqp_refresh"]').val(data.feederAmqpRefresh+"");
+                    }
+                });
+            });
+        </script>
+
+    
+    </div>
+    <!-- /container -->
+  </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <title>OTP Broker</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="lib.assets/css/iconfont.css">
+    <link rel="stylesheet" href="lib.assets/css/home.css">
+    <script src="lib.assets/js/jquery.min.js"></script>
+    <script src="lib.assets/js/public.js"></script>
+</head>
+<body class="body">
+<section class="bg">
+  <div class="content">
+    <div class="header-icon">
+      <a href="./">
+        <i class="iconfont icon_logo"></i>
+      </a>
+    </div>
+    <div class="from-content">
+      <h1>Login to OTP Broker</h1>
+      <div class="from">
+        <div class="from-list">
+          <input id="phone" type="text" placeholder="Username or Phone Number" data-text="Please enter a valid username." autocomplete="off">
+        </div>
+        <div class="from-list">
+          <input id="password" type="password" placeholder="Password" data-text="The password must be between 6-20 characters long." autocomplete="off">
+        </div>
+        <p class="tip tip-signup" id="agree" data-text="Please read and accept the User Agreement.">
+          <span class="icon iconfont"></span>
+          <span>By signing up, I agree to <a href="tos.html" target="_blank">Terms of Service.</a></span>
+        </p>
+        <p class="error-message" style="opacity: 1;">Please enter a valid username.</p>
+        <div class="submit-btn">
+          <button id="register">Login</button>
+        </div>
+        <p class="tip signup-tip">
+          <span><a href="forget-password.html">Forget password</a></span>       
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="lib.assets/js/login.js"></script>
+</body>
+</html>

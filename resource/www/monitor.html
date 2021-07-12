@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="require-login" content="true" data-file="/login-form.html">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1; user-scalable=no">
+    <meta name="description" content="OTP Broker">
+    <meta name="author" content="Planetbiru">
+    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="favicon.ico">
+    <title>OTP Broker</title>
+    <link href="lib.assets/css/bootstrap.css" rel="stylesheet">
+    <link href="lib.assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="lib.assets/css/navbar.css" rel="stylesheet">
+    <link href="lib.assets/css/style.css" rel="stylesheet">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <script src="lib.assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="lib.assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="lib.assets/js/jquery.min.js"></script>
+    <script src="lib.assets/js/bootstrap.js"></script>
+    <script src="lib.assets/js/ws.js"></script>
+    
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Static navbar -->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <span class="usb-device-symbol"></span>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="./">OTP Broker</a>
+                </div>
+
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class=""><a href="./">Home</a></li>
+                        <li class=""><a href="ussd.html">USSD</a></li>
+                        <li class=""><a href="sms.html">SMS</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li class=""><a href="general-setting.html">General Setting</a></li>
+                                <li class=""><a href="admin.html">Administrator Setting</a></li>
+                                <li class=""><a href="api-setting.html">API Setting</a></li>
+                                <li class=""><a href="api-user.html">API User</a></li>
+                                <li class=""><a href="feeder-setting.html">Feeder Setting</a></li>
+                                <li class=""><a href="sms-setting.html">SMS Setting</a></li>
+                                <li class=""><a href="block-list.html">Block List</a></li>
+                                <li class=""><a href="modem.html">Modem</a></li>
+                                <li class=""><a href="email-account.html">Email Account</a></li>
+                                <li class=""><a href="network-setting.html">Network Setting</a></li>
+				                <li class=""><a href="firewall.html">Firewall</a></li>
+                                <li class=""><a href="keystore.html">Keystore</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li class="dropdown-header">DDNS Setting</li>
+                                <li class=""><a href="ddns-record.html">DDNS Record</a></li>
+                                <li class=""><a href="cloudflare.html">Cloudflare Account</a></li>
+                                <li class=""><a href="noip.html">No IP Account</a></li>
+                                <li class=""><a href="dynu.html">Dynu Account</a></li>
+                                <li class=""><a href="afraid.html">Afraid Account</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class=""><a href="account.html">Account</a></li>
+                        <li><a href="logout.html">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--/.container-fluid -->
+        </nav>
+        <style>
+            #monitor svg{
+                margin: auto;
+                width: 282px;
+                display: block;
+            }
+            #ledbody0, #ledbody1, #ledbody2, #ledbody3, #ledbody4 
+            {
+                animation: change 0.1s infinite alternate;
+            }
+            @keyframes change {
+                0%{
+                    fill: #eeeeee;
+                    opacity: 1;
+                }
+                    
+                50%{
+                    fill: #ff0000;
+                    opacity: 1;
+                }
+                100%{
+                    fill: #eeeeee;
+                    opacity: 1;
+                }
+            }
+            #phoneled{
+                animation:blink 0.1s infinite alternate;
+            }
+            #chipled{
+                animation:blink 0.1s infinite alternate;
+            }
+            @keyframes blink {
+                0%{
+                    fill: #ffffff;
+                    opacity: 1;
+                }
+                    
+                50%{
+                    fill: #ff0000;
+                    opacity: 1;
+                }
+                100%{
+                    fill: #ffffff;
+                    opacity: 1;
+                }
+            }
+        </style>
+        <div class="phone-page">
+            <div id="monitor">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="282px" height="480px" viewBox="-0.5 -0.5 282 480" content="">
+                    <defs/>
+                    <g>
+                        <g>
+                        <path d="M 8 151 L 41 25.75 L 74 151" fill="none" stroke="#6881b3" stroke-width="3" stroke-linejoin="round" stroke-miterlimit="10" pointer-events="all"/>
+                        <path d="M 72.5 142.65 L 17 117.6 L 60.5 100.9 L 26.75 84.2 L 51.5 68.26 L 34.25 53.83" fill="none" stroke="#6881b3" stroke-width="3" stroke-linejoin="round" stroke-miterlimit="10" pointer-events="all"/>
+                        <rect x="1" y="1" width="0" height="0" fill="none" stroke="#6881b3" stroke-width="3" pointer-events="all"/>
+                        <ellipse cx="41" cy="28.78" rx="5.999250093738282" ry="6.0728744939271255" fill="#cccccc" stroke="#6881b3" stroke-width="3" pointer-events="all"/>
+                        <path d="M 51.2 18.46 L 53.3 15.88 C 60.16 22.96 60.16 34.3 53.3 41.38 L 51.2 38.96 C 56.44 33.15 56.44 24.26 51.2 18.46 Z M 58.7 10.87 L 60.8 8.74 C 71.46 19.92 71.46 37.65 60.8 48.82 L 58.7 46.7 C 68.22 36.7 68.22 20.87 58.7 10.87 Z M 66.2 3.28 L 68.3 1 C 76.36 7.92 81 18.08 81 28.78 C 81 39.48 76.36 49.64 68.3 56.57 L 66.2 54.29 C 73.86 48.1 78.32 38.71 78.32 28.78 C 78.32 18.86 73.86 9.47 66.2 3.28 Z M 30.8 18.46 L 28.7 15.88 C 21.84 22.96 21.84 34.3 28.7 41.38 L 30.8 38.96 C 25.56 33.15 25.56 24.26 30.8 18.46 Z M 23.3 10.87 L 21.2 8.74 C 10.54 19.92 10.54 37.65 21.2 48.82 L 23.3 46.7 C 13.78 36.7 13.78 20.87 23.3 10.87 Z M 15.8 3.28 L 13.7 1 C 5.64 7.92 1 18.08 1 28.78 C 1 39.48 5.64 49.64 13.7 56.57 L 15.8 54.29 C 8.14 48.1 3.68 38.71 3.68 28.78 C 3.68 18.86 8.14 9.47 15.8 3.28 Z" fill="#cccccc" stroke="#6881b3" stroke-width="3" stroke-miterlimit="10" pointer-events="all"/>
+                        </g>
+
+                        <g>
+                        <path d="M 196 64.8 C 196 62.7 197.65 61 199.7 61 L 212.34 61 C 214.37 61.02 216 62.72 216 64.8 L 216 97.2 C 216 99.28 214.37 100.98 212.34 101 L 199.7 101 C 197.65 101 196 99.3 196 97.2 Z" fill="#cccccc" stroke="#6881b3" stroke-miterlimit="10" pointer-events="all"/>
+                        <path d="M 196.78 64.6 L 196.78 97.4 L 215.22 97.45 L 215.22 64.6 Z" fill="#ffffff" stroke="none" pointer-events="all"/>
+                        <rect x="203.59" y="98.52" width="4.79" height="1.44" rx="0.72" ry="0.72" fill="#ffffff" stroke="none" pointer-events="all"/>
+                        <rect id="phoneled" x="203.59" y="98.52" width="4.79" height="1.44" rx="0.72" ry="0.72" fill="#ffffff" stroke="none" pointer-events="all" display="none" />
+                        <animate xlink:href="#phoneled" attributeType="auto" attributeName="fill"/>
+                        <animate attributeType="CSS" attributeName="fill" from="#ff0000" to="#ffffff" dur="0.1s" repeatCount="indefinite" />
+                        </g>
+
+                        <g>
+                        <path d="M 221 102.92 C 230.08 102.92 230.08 102.92 230.08 102.92 C 221 151 221 151 221 151 C 233.73 151 233.73 151 233.73 151 C 240.99 115.87 240.99 115.87 240.99 115.87 C 240.99 115.87 245.54 143.6 247.37 151 C 249.17 151 256.45 151 260.07 151 C 259.17 147.28 252.82 106.63 251.89 102.92 C 253.72 102.92 259.17 102.92 261 102.92 C 261 101.09 259.17 90 259.17 87.22 C 259.17 84.45 257.35 73.36 256.45 70.59 C 255.55 67.81 250.99 65.04 249.17 64.1 C 246.44 63.18 241.91 63.18 239.19 63.18 C 236.46 63.18 233.73 64.1 231.01 65.04 C 229.18 65.04 226.45 68.73 225.55 70.59 C 225.55 72.42 224.63 78.91 223.73 82.59 C 222.83 85.37 222.83 97.37 221.9 99.23 C 221 101.09 221 102.92 221 102.92 Z" fill="#036897" stroke="none" pointer-events="none"/>
+                        <path d="M 246.44 63.18 C 245.54 63.18 243.71 63.18 241.91 63.18 C 240.99 63.18 238.26 63.18 237.36 63.18 C 236.46 63.18 233.73 64.1 233.73 64.1 C 233.73 64.1 232.81 64.1 232.81 64.1 C 239.19 86.28 239.19 86.28 239.19 86.28 C 248.27 64.1 248.27 64.1 248.27 64.1 C 248.27 63.18 247.37 64.1 247.37 63.18" fill="#ffffff" stroke="none" pointer-events="none"/>
+                        <path d="M 240.99 63.18 C 246.44 63.18 251.89 57.64 251.89 52.09 C 251.89 45.63 246.44 41 240.99 41 C 234.63 41 230.08 45.63 230.08 52.09 C 230.08 57.64 234.63 63.18 240.99 63.18 Z" fill="#ffffff" stroke="#126d99" stroke-width="1.83" stroke-miterlimit="10" pointer-events="none"/>
+                        </g>
+
+                        <rect x="1" y="273" width="260" height="160" fill="#229933" stroke="#000000" pointer-events="none"/>
+                        
+                        <line x1="10" y1="282" x2="250" y2="282" stroke="#053310" />
+                        <line x1="10" y1="330" x2="10" y2="280" stroke="#053310" />
+                        <line x1="40" y1="330" x2="10" y2="330" stroke="#053310" />
+                        
+                        <line x1="88" y1="330" x2="140" y2="330" stroke="#053310" />
+                        <line x1="88" y1="335" x2="140" y2="335" stroke="#053310" />
+                        <line x1="88" y1="340" x2="140" y2="340" stroke="#053310" />
+                        <line x1="88" y1="345" x2="140" y2="345" stroke="#053310" />
+                        <line x1="88" y1="350" x2="220" y2="350" stroke="#053310" />
+                        <line x1="88" y1="355" x2="215" y2="355" stroke="#053310" />
+                        <line x1="220" y1="390" x2="220" y2="350" stroke="#053310" />
+                        <line x1="215" y1="390" x2="215" y2="355" stroke="#053310" />
+                        
+                        <g id="battery">
+                        <circle cx="220" cy="390" r="32" stroke="#777777" stroke-width="1" fill="#d3d3d3" />
+                        <text x="220" y="390" dominant-baseline="middle" text-anchor="middle" text-anchor="middle" font-family="Tahoma" font-size="10px">Lithium Ion</text>
+                        </g>
+
+
+                        <line x1="78" y1="390" x2="78" y2="368" stroke="#053310" />
+ 
+                        <g id="modem">
+                        </g>                    
+
+                        <g id="rest">
+                            <line x1="48" y1="450" x2="48" y2="368" stroke="#053310" />
+                            <rect x="1" y="448" width="80" height="30" fill="#ffffff" stroke="#000000" pointer-events="all"/>    
+                            <text x="41" y="463" width="80" dominant-baseline="middle" text-anchor="middle" text-anchor="middle" font-family="Tahoma" font-size="10px">REST</text>
+                        </g>
+
+                        <g id="ws">
+                            <line x1="58" y1="444" x2="58" y2="368" stroke="#053310" />
+                            <line x1="58" y1="444" x2="131" y2="444" stroke="#053310" />
+                            <line x1="131" y1="448" x2="131" y2="444" stroke="#053310" />
+                            <rect x="91" y="448" width="80" height="30" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+                            <text x="131" y="463" width="80" dominant-baseline="middle" text-anchor="middle" text-anchor="middle" font-family="Tahoma" font-size="10px">WebSocket</text>
+                        </g>
+
+                        <g id="amqp">
+                            <line x1="68" y1="440" x2="68" y2="368" stroke="#053310" />
+                            <line x1="68" y1="440" x2="221" y2="440" stroke="#053310" />
+                            <line x1="221" y1="448" x2="221" y2="440" stroke="#053310" />
+                            <rect x="181" y="448" width="80" height="30" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+                           <text x="221" y="463" width="80" dominant-baseline="middle" text-anchor="middle" text-anchor="middle" font-family="Tahoma" font-size="10px">RabbitMQ</text>
+                        </g>
+
+                        <g>
+                            <line x1="136" y1="402" x2="136" y2="368" stroke="#053310" />
+                            <line x1="152" y1="402" x2="152" y2="368" stroke="#053310" />
+                            <line x1="136" y1="402" x2="140" y2="402" stroke="#053310" />
+                            <line x1="152" y1="402" x2="148" y2="402" stroke="#053310" />
+                            <rect stroke="none" pointer-events="all" y="400" x="140" width="8" height="4" fill="#999999"></rect>
+                            <rect id="chipled" stroke="none" pointer-events="all" display="none" y="400" x="140" width="8" height="4" fill="#ffdd00"></rect>
+                            <animate xlink:href="#chipled" attributeType="auto" attributeName="fill"/>
+                            <animate attributeType="CSS" attributeName="fill" from="#ff0000" to="#ffffff" dur="0.1s" repeatCount="indefinite" />
+                        </g>
+                    
+                        <circle cx="11" cy="282" r="5" stroke="#ff8c00" stroke-width="2" fill="#ffffff" />
+                        <circle cx="251" cy="282" r="5" stroke="#ff8c00" stroke-width="2" fill="#ffffff" />
+                        <circle cx="11" cy="424" r="5" stroke="#ff8c00" stroke-width="2" fill="#ffffff" />
+                        <circle cx="251" cy="424" r="5" stroke="#ff8c00" stroke-width="2" fill="#ffffff" />
+
+                        <rect x="38" y="320" width="50" height="50" fill="#111111" stroke="#000000" pointer-events="none"/>
+                        <rect x="110" y="320" width="70" height="70" fill="#111111" stroke="#000000" pointer-events="none"/>
+                        <rect x="38" y="390" height="45" width="50" fill="#F8F8F8" stroke="#888888" pointer-events="none"></rect>
+
+                    </g>
+
+                    <switch>
+                        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+                        <a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank">
+                            <text text-anchor="middle" font-size="10px" x="50%" y="100%">Viewer does not support full SVG 1.1</text>
+                        </a>
+                    </switch>
+                </svg>
+            </div>
+        </div>      
+        
+
+        <script src="lib.assets/js/monitor.js"></script>
+        <!-- /container -->
+    </div>
+</body>
+
+</html>

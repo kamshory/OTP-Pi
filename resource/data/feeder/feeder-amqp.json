@@ -1,0 +1,1 @@
+{"feederAmqpPort":5672,"feederAmqpChannel":"sms","feederAmqpRefresh":0,"feederAmqpAddress":"localhost","feederAmqpUsername":"guest","feederAmqpEnable":true,"feederAmqpTimeout":5000,"feederAmqpSSL":false,"feederAmqpPassword":"guest","feederAmqpPath":""}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <title>OTP Broker</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="lib.assets/css/iconfont.css">
+    <link rel="stylesheet" href="lib.assets/css/home.css">
+
+</head>
+<body class="body">
+<section class="bg">
+  <div class="content">
+    <div class="header-icon">
+      <a href="./">
+        <i class="iconfont icon_logo"></i>
+      </a>
+    </div>
+    <div class="from-content">
+      <h1>Create First Administrator</h1>
+      <form action="user/init" method="post" enctype="application/x-www-form-urlencoded">
+      <div class="from">
+        <div class="from-list">
+          <input id="name" name="name" type="text" placeholder="Name" autocomplete="off" required>
+        </div>
+        <div class="from-list">
+            <input id="username" name="username" type="text" placeholder="Username" autocomplete="off" required>
+        </div>
+        <div class="from-list">
+            <input id="email" name="email" type="email" placeholder="Email" autocomplete="off" required>
+        </div>
+        <div class="from-list">
+        <input id="phone" name="phone" type="text" placeholder="Phone Number" autocomplete="off" required>
+        </div>
+        <div class="from-list">
+          <input id="password" name="password" type="password" placeholder="Password (mins 6 chars)" minlength="6" autocomplete="off">
+        </div>
+        <div class="submit-btn">
+          <input type="submit" name="register" value="Register" id="register">
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
+</section>
+</div>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="require-login" content="true" data-file="/login-form.html">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1; user-scalable=no">
+    <meta name="description" content="OTP Broker">
+    <meta name="author" content="Planetbiru">
+    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="favicon.ico">  
+    <title>OTP Broker</title>
+    <link href="lib.assets/css/bootstrap.css" rel="stylesheet">
+    <link href="lib.assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="lib.assets/css/navbar.css" rel="stylesheet">
+    <link href="lib.assets/css/style.css" rel="stylesheet">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <script src="lib.assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="lib.assets/js/ie10-viewport-bug-workaround.js"></script>    
+    <script src="lib.assets/js/jquery.min.js"></script>
+    <script src="lib.assets/js/bootstrap.js"></script>
+    <script src="lib.assets/js/ws.js"></script>
+    <script>
+      function handleIncommingMessage(message)
+      {
+        console.log("handleIncommingMessage", message);     
+      }      
+    </script>
+  </head>
+
+  <body>
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+			<span class="usb-device-symbol"></span>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="./">OTP Broker</a>
+          </div>
+          
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class=""><a href="./">Home</a></li>
+              <li class=""><a href="ussd.html">USSD</a></li>
+              <li class=""><a href="sms.html">SMS</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li class=""><a href="general-setting.html">General Setting</a></li>
+                  <li class="active"><a href="admin.html">Administrator Setting</a></li>
+                  <li class=""><a href="api-setting.html">API Setting</a></li>
+                  <li class=""><a href="api-user.html">API User</a></li>
+                  <li class=""><a href="feeder-setting.html">Feeder Setting</a></li>
+                  <li class=""><a href="sms-setting.html">SMS Setting</a></li>
+                  <li class=""><a href="block-list.html">Block List</a></li>
+                  <li class=""><a href="modem.html">Modem</a></li>
+                  <li class=""><a href="email-account.html">Email Account</a></li>
+                  <li class=""><a href="network-setting.html">Network Setting</a></li>
+                  <li class=""><a href="firewall.html">Firewall</a></li>
+                  <li class=""><a href="keystore.html">Keystore</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li class="dropdown-header">DDNS Setting</li>
+                  <li class=""><a href="ddns-record.html">DDNS Record</a></li>
+                  <li class=""><a href="cloudflare.html">Cloudflare Account</a></li>
+                  <li class=""><a href="noip.html">No IP Account</a></li>
+                  <li class=""><a href="dynu.html">Dynu Account</a></li>
+                  <li class=""><a href="afraid.html">Afraid Account</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class=""><a href="account.html">Account</a></li>
+              <li><a href="logout.html">Logout</a></li>
+            </ul>
+          </div>
+ 
+        </div>
+        <!--/.container-fluid -->
+      </nav>
+      <style>
+        @media screen and (max-width: 600px) {
+          .row-table tr td:nth-child(4){
+            display: none;
+          }
+        }
+      </style>
+      <div class="phone-page"><h3>Administrator Setting</h3>
+            <form action="" method="post">
+            <table class="row-table" border="1" data-file="admin.html">
+                <thead>
+                    <tr>
+                        <td width="16"><input type="checkbox" class="check-all"></td>
+                        <td>Username</td>
+                        <td>Name</td>
+                        <td>Phone</td>
+                        <td width="60" align="center">Access</td>
+                        <td width="60" align="center">Active</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    
+                </tbody>
+            </table>
+            <div class="button-area">
+                <input type="button" class="btn btn-primary" value="Add" onclick="window.location='admin-add.html'">
+                <input type="submit" class="btn btn-success" name="activate" value="Activate">
+                <input type="submit" class="btn btn-warning" name="deactivate" value="Deactivate">
+                <input type="submit" class="btn btn-warning" name="block" value="Block">
+                <input type="submit" class="btn btn-primary" name="unblock" value="Unblock">
+                <input type="submit" class="btn btn-danger" name="delete" value="Delete" onclick="return confirm('Are you sure you want to delete this record?')">
+            </div>
+            </form>
+            <script type="text/javascript">
+                $(document).ready(function(e1){
+                    $.ajax({
+                        type:"GET",
+                        url:"data/user/list",
+                        dataType:"json",
+                        success:function(data){
+                            for (const key in data){
+                                if(data.hasOwnProperty(key)){
+                                    var item = data[key];
+                                    var blocked = item.blocked?'icon-cross':'icon-check';
+                                    var active = !item.active?'icon-cross':'icon-check';
+                                    $('.row-table tbody').append(
+                                        '<tr data-pk-id="'+item.username+'">\r\n'+
+                                        '	<td><input type="checkbox" class="check-all" name="id[]" value="'+item.username+'"></td>\r\n'+
+                                        '	<td><a href="admin-update.html?username='+encodeURIComponent(item.username)+'">'+item.username+'</a></td>\r\n'+
+                                        '	<td><div class="inline-editor" title="Double click to edit data" data-field="name">'+item.name+'</div></td>\r\n'+
+                                        '	<td><div class="inline-editor" title="Double click to edit data" data-field="phone">'+item.phone+'</div></td>\r\n'+
+                                        '	<td align="center"><span class="icon '+blocked+'"></span></td>\r\n'+
+                                        '	<td align="center"><span class="icon '+active+'"></span></td>\r\n'+
+                                        '</tr>\r\n'
+                                    );
+                                }
+                            }
+                        }
+                    });
+                    initInlineEditor();
+                });
+
+
+                function initInlineEditor()
+                {
+                    $(document).on('dblclick', '.inline-editor', function(e){
+                        var val = $(this).text().trim();
+                        var cell = $(this).closest('td');
+                        var clientWidth = cell.innerWidth() + 2;
+                        var clientHeight = cell.innerHeight() + 3;
+                        cell.css('width', clientWidth+'px');
+                        if($(this).find('textarea').length > 0)
+                        {
+                            val = $(this).find('textarea').val();
+                        }
+                        
+                        var textarea = $('<textarea class="inline-editor-text" spellcheck="false"></textarea>');
+                        textarea.val(val);
+                        textarea.css({'height':clientHeight+'px'});
+                        var td = $(this);
+                        setTimeout(function(){
+                        td.addClass('no-pad');
+                        td.empty().append(textarea);
+                        textarea.focus().val(val);
+                        }, 10);
+                        
+                    });
+                    $(document).on('blur', '.inline-editor-text', function(e){
+                        var td = $(this).closest('td');
+                        var table = $(this).closest('table').attr('data-file');
+                        var pk_id = $(this).closest('tr').attr('data-pk-id');
+                        var field = $(this).closest('div').attr('data-field');
+                        var val = $(this).val();
+                        $(this).closest('div').removeClass('no-pad');
+                        updateDatabase($(this).closest('tr'), table, pk_id, field, val);
+                        $(this).parent().empty().text(val);
+                        td.css('width', 'auto');
+                    });
+                }
+
+                function updateDatabase(obj, file, PKID, field, val)
+                {
+                    var request_data = {file:file, "update-data":'yes',pk_id:PKID,field:field,value:val};
+                    $.ajax({
+                        'url':file,
+                        'type':'POST',
+                        'dataType':'json',
+                        'data':request_data,
+                        'success':function(data){
+                            obj.attr('data-pk-id', data.new_pk_id);
+                        }
+                    });
+                }
+            </script>
+                </div>
+    <!-- /container -->
+  </div>
+</body>
+</html>
