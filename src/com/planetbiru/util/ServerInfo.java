@@ -3,6 +3,8 @@ package com.planetbiru.util;
 import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -80,40 +82,19 @@ public class ServerInfo {
 
 	private static String cacheServerInfo = "";
 	private static long cacheServerInfoExpire = 0;
-	private static long cacheLifetime = 60000;
+	private static long cacheLifetime = 5000;
 	public static String getInfo() {
-		long currentTime = System.currentTimeMillis();
-		if(currentTime > getCacheServerInfoExpire())
-		{
-			AsyncServerInfo serverInfo = new AsyncServerInfo();
-			serverInfo.start();
-		}
-		if(!cacheServerInfo.isEmpty())
-		{
-			return cacheServerInfo;
-		}
-		else
-		{
-			return "{}";
-		}
+		JSONObject info = new JSONObject();
+		info.put("cpu", ServerInfo.cpuTemperatureInfo());
+		info.put("storage", ServerInfo.storageInfo());
+		info.put("memory", ServerInfo.memoryInfo());
+		return info.toString();
 	}
 	
 	public static JSONObject memoryInfo()
 	{
-		String result =   "              total        used        free      shared  buff/cache   available\r\n"
-						+ "Mem:        1877280      674068      211560       98540      991652      926216\r\n"
-						+ "Swap:       4194300      166400     4027900";
-		
 		String command = "free";
-		int sleep = 10;
-		try 
-		{
-			result = CommandLineExecutor.execSSH(command, sleep);
-		} 
-		catch (IOException e) 
-		{
-			
-		}
+		String result = CommandLineExecutor.exec(command).toString();
 		
 		
 		result = fixingRawData(result);
@@ -220,29 +201,8 @@ public class ServerInfo {
 	
 	public static JSONObject storageInfo()
 	{
-		String result =   "Filesystem     1K-blocks     Used Available Use% Mounted on\r\n"
-						+ "devtmpfs          914364        0    914364   0% /dev\r\n"
-						+ "tmpfs             938640        0    938640   0% /dev/shm\r\n"
-						+ "tmpfs             938640   107104    831536  12% /run\r\n"
-						+ "tmpfs             938640        0    938640   0% /sys/fs/cgroup\r\n"
-						+ "/dev/vda1       41931756 24046252  17885504  58% /\r\n"
-						+ "tmpfs             187728        0    187728   0% /run/user/0";
-		
 		String command = "df -h";
-		int sleep = 10;
-		
-		try 
-		{
-			result = CommandLineExecutor.execSSH(command, sleep);
-		} 
-		catch (IOException e) 
-		{
-			
-		}
-		
-		
-
-
+		String result = CommandLineExecutor.exec(command).toString();
 		result = fixingRawData(result);	
 		String[] lines = result.split("\r\n");	
 		JSONObject info = new JSONObject();	
@@ -279,24 +239,8 @@ public class ServerInfo {
 	
 	public static JSONObject cpuTemperatureInfo()
 	{
-		String result =   "Adapter: ISA adapter\r\n"
-						+ "Core 0:       +48.0°C  (high = +98.0°C, crit = +98.0°C)\r\n"
-						+ "Core 1:       +48.0°C  (high = +98.0°C, crit = +98.0°C)\r\n"
-						+ "Core 2:       +48.0°C  (high = +98.0°C, crit = +98.0°C)\r\n"
-						+ "Core 3:       +47.0°C  (high = +98.0°C, crit = +98.0°C)";
-		
-		
-		String command = "sensors";
-		int sleep = 10;
-		try 
-		{
-			result = CommandLineExecutor.execSSH(command, sleep);
-		} 
-		catch (IOException e) 
-		{
-			
-		}
-		
+		String command = "/bin/sensors";
+		String result = CommandLineExecutor.exec(command).toString();
 		result = result.replace("°", "&deg;");
 		result = fixingRawData(result);
 		
@@ -313,23 +257,8 @@ public class ServerInfo {
 	
 	public static JSONObject cpuTemperatureInfo2()
 	{
-		String result =   "Adapter: ISA adapter\r\n"
-						+ "Core 0:       +48.0°C  (high = +98.0°C, crit = +98.0°C)\r\n"
-						+ "Core 1:       +48.0°C  (high = +98.0°C, crit = +98.0°C)\r\n"
-						+ "Core 2:       +48.0°C  (high = +98.0°C, crit = +98.0°C)\r\n"
-						+ "Core 3:       +47.0°C  (high = +98.0°C, crit = +98.0°C)";
-		
-		
 		String command = "sensors";
-		int sleep = 10;
-		try 
-		{
-			result = CommandLineExecutor.execSSH(command, sleep);
-		} 
-		catch (IOException e) 
-		{
-			
-		}
+		String result = CommandLineExecutor.exec(command).toString();
 
 		
 		result = result.replace("°", "&deg;");
@@ -348,23 +277,8 @@ public class ServerInfo {
 	
 	public static JSONObject cpuUsage()
 	{
-		String result =   "Linux 3.10.0-1160.11.1.el7.x86_64 (server.planetbiru.com)       06/16/2021      _x86_64_        (2 CPU)\r\n"
-						+ "\r\n"
-						+ "07:08:48 PM  CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest  %gnice   %idle\r\n"
-						+ "07:08:48 PM  all   44.34    0.00    1.09    0.03    0.00    0.08    0.07    0.00    0.00   54.39";
-						// 02:50:41 AM  all    8.93    0.04    1.76    1.34    0.00    0.11    0.00    0.00    0.00   87.82
-
-		
-		String command = "mpstat | grep all";
-		int sleep = 10;
-		try 
-		{
-			result = CommandLineExecutor.execSSH(command, sleep);
-		} 
-		catch (IOException e) 
-		{
-			
-		}
+		String command = "/bin/mpstat";
+		String result = CommandLineExecutor.exec(command).toString();
 		
 
 		result = fixingRawData(result);
@@ -372,19 +286,26 @@ public class ServerInfo {
 		
 		JSONObject info = new JSONObject();
 		String[] lines = result.split("\r\n");
+		String[] keys = new String[1];
 		String[] values = new String[1];
+		Map<String, String> pairs = new HashMap<>();
 		for(int i = 0; i<lines.length;i++)
 		{
 			lines[i] = lines[i].replaceAll("\\s+", " ").trim();
 			if(lines[i].contains("CPU "))
 			{
+				keys = lines[i].split(" ");
 			}
 			if(lines[i].contains("all "))
 			{
 				values = lines[i].split(" ");
 			}
 		}
-		String iddle = values[12];
+		for(int i = 0; i<values.length && i <keys.length; i++)
+		{
+			pairs.put(keys[i].replace("%", ""), values[i]);
+		}
+		String iddle = pairs.getOrDefault("idle", "0");
 		double idle = Utility.atof(iddle);
 		double used = 100 - idle;
 		info.put("idle", idle);

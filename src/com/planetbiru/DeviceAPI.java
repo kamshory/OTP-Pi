@@ -21,6 +21,7 @@ public class DeviceAPI {
 	
 	public static String exec(String command)
 	{
+		Config.setSshEnable(false);
 		String result = "";
 		if(Config.isSshEnable())
 		{
