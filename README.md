@@ -1,4 +1,4 @@
-# OTP Broker
+# OTP-Pi
 
 ![OTP-Pi](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/otp-pi.png)
 
@@ -31,24 +31,24 @@ Aplikasi yang mewajibkan penggunaan public IP address tentu saja tidak memberika
 
 Aplikasi yang berjalan pada desktop dan laptop tentu saja memerlukan biaya investasi dan biaya operasional yang tinggi. Laptop atau desktop yang digunakan harus beroperasi selama 24 jam sehari dan 7 hari dalam seminggu. Listrik yang digunakan tentu saja tidak sedikit.
 
-OTP Broker menjawab semua tantangan di atas. Dengan perangkat yang sangat murah, pengguna dapat memiliki sebuah SMS gateway yang memberikan banyak fitur serta dapat dioperasikan dengan biaya yang sangat murah.
+OTP-Pi menjawab semua tantangan di atas. Dengan perangkat yang sangat murah, pengguna dapat memiliki sebuah SMS gateway yang memberikan banyak fitur serta dapat dioperasikan dengan biaya yang sangat murah.
 
-OTP Broker adalah server untuk mengirimkan SMS melalui protokol HTTP, WebSocket dan Message Broker. Pengguna dapat memasang OTP Broker pada server dengan IP address statis yang diapat diakses oleh klien yang akan mengirimkan SMS. Selain itu, pengguna juga dapat memasang OTP Broker pada server dengan IP address dinamis. Server ini kemudian mengakses sebuah server websocket atau server RabbitMQ. OTP Broker bertindak sebagai consumer yang akan mengirimkan semua SMS yang diterimanya.
+OTP-Pi adalah server untuk mengirimkan SMS melalui protokol HTTP, WebSocket dan Message Broker. Pengguna dapat memasang OTP-Pi pada server dengan IP address statis yang diapat diakses oleh klien yang akan mengirimkan SMS. Selain itu, pengguna juga dapat memasang OTP-Pi pada server dengan IP address dinamis. Server ini kemudian mengakses sebuah server websocket atau server RabbitMQ. OTP-Pi bertindak sebagai consumer yang akan mengirimkan semua SMS yang diterimanya.
 
 # Feature
 
 
 ## Multiple Device
 
-Modem adalah daftar modem yang terpasang pada OTP Broker. Modem diberi nama berdasarkan merek dan model perangkat serta koneksi yang digunakan. Modem dapat diaktifkan dan dinonaktirkan kapan saja. Modem yang tidak aktif tidak akan digunakan untuk mengirimkan SMS meskipun secara fisik terpasang pada OTP Broker dan menerima aliran daya.
+Modem adalah daftar modem yang terpasang pada OTP-Pi. Modem diberi nama berdasarkan merek dan model perangkat serta koneksi yang digunakan. Modem dapat diaktifkan dan dinonaktirkan kapan saja. Modem yang tidak aktif tidak akan digunakan untuk mengirimkan SMS meskipun secara fisik terpasang pada OTP-Pi dan menerima aliran daya.
 
-OTP Broker dapat menggunakan beberapa modem sekaligus. Pengiriman SMS akan menggunakan algoritma Round-Robin di mana semua modem yang aktif akan digunakan secara bergilir.
+OTP-Pi dapat menggunakan beberapa modem sekaligus. Pengiriman SMS akan menggunakan algoritma Round-Robin di mana semua modem yang aktif akan digunakan secara bergilir.
 
 ## Prefix-Based Routing
 
 Dalam kenyataannya, efisiensi biaya menjadi hal yang sangat penting bagi pengguna. Biaya pengiriman SMS harus dapat ditekan semaksimal mungkin. Operator telekomunikasi biasannya menerapkan biaya yang lebih rendah saat mengirim SMS ke nomor pelanggan dari operator telekomunikasi yang sama. Sebaliknya, biaya pengiriman SMS akan lebih tinggi saat mengirim SMS ke nomor pelanggan dari operator lain.
 
-OTP Broker memungkinkan pengguna mengatur pengiriman SMS. Sebagai contoh: pengguna menggunakan 4 modem dengan 4 SIM card yang berbeda dari operator telekomunikasi yang berbeda. 
+OTP-Pi memungkinkan pengguna mengatur pengiriman SMS. Sebagai contoh: pengguna menggunakan 4 modem dengan 4 SIM card yang berbeda dari operator telekomunikasi yang berbeda. 
 
 1. Modem 1 dengan SIM Card dari Operator Telekomunikasi 1
 2. Modem 2 dengan SIM Card dari Operator Telekomunikasi 2
@@ -62,7 +62,7 @@ Operator Telekomunikasi 4 menerapkan biaya Rp 90 untuk nomor dengan prefix `6284
 
 Dari kasus di atas, biaya paling rendah untuk operator lain adalah Rp 200. Pengguna dapat mengatur modem 4 sebagai modem default. Semua SMS selain dari prefix `62871`, `62872`, `62835`, `62856`, `62837` dan `62845` akan menggunakan modem ini dan dikirim melalui Operator Telekomunikasi 4. Semua SMS untuk nomor dengan prefix `62871` dan `62872` menggunakan modem 1 dan dikirim melalui Operator Telekomunikasi 1. Semua SMS untuk nomor dengan prefix `62835`, `62856`, dan `62837` menggunakan modem 2 dan dikirim melalui Operator Telekomunikasi 2. Semua SMS untuk nomor dengan prefix `62845` menggunakan modem 3 dan dikirim melalui Operator Telekomunikasi 3. Dengan demikian, biaya pengiriman SMS akan dapat ditekan. 
 
-Pengguna dapat menggunakan 2 atau lebih SIM Card dari satu operator yang sama. Modem akan digunakan secara bergantian dengan algoritma Round-Robin saat OTP Broker mengirimkan SMS ke nomor dengan prefix yang sama.
+Pengguna dapat menggunakan 2 atau lebih SIM Card dari satu operator yang sama. Modem akan digunakan secara bergantian dengan algoritma Round-Robin saat OTP-Pi mengirimkan SMS ke nomor dengan prefix yang sama.
 
 Biaya pengiriman SMS akan lebih murah lagi ketika pengguna memanfaatkan promo dari operator telekomunikasi yang bersangkutan. Beberapa operator akan menerapkan biaya pengiriman SMS yang sangat rendah setelah pengguna mengirimkan beberapa SMS dengan ketentuan tertentu.
 
@@ -70,7 +70,7 @@ Pengaturan prefix menggunakan MSISDN. Dengan demikian, pada contoh di atas, saat
 
 ## USSD Support
 
-OTP Broker memungkinkan pengguna melakukan perintah USSD pada masing-masing modem. Perintah USSD tentu saja tergantung dari masing-masing operator seluler yang digunakan pada masing-masing SIM card yang terpasang pada masing-masing modem.
+OTP-Pi memungkinkan pengguna melakukan perintah USSD pada masing-masing modem. Perintah USSD tentu saja tergantung dari masing-masing operator seluler yang digunakan pada masing-masing SIM card yang terpasang pada masing-masing modem.
 
 ## Manual SMS
 
@@ -78,25 +78,25 @@ Manual SMS digunakan untuk menguji apakah masing-masing modem dapat mengirimkan 
 
 ## Internet Mobile
 
-OTP Broker dapat terhubung ke internet menggunakan modem mobile. Dengan demikian, pengguna tidak perlu menghubungkan OTP Broker dengan internet kabel atau optik. Ini memberikan alternatif bagi pengguna dalam memilih koneksi internet.
+OTP-Pi dapat terhubung ke internet menggunakan modem mobile. Dengan demikian, pengguna tidak perlu menghubungkan OTP-Pi dengan internet kabel atau optik. Ini memberikan alternatif bagi pengguna dalam memilih koneksi internet.
 
 ## Administrator Setting
 
-Administrator Setting adalah menu untuk melakukan konfigurasi administrator. Perangkat OTP Broker baru belum memiliki administrator. Pengguna harus membuat administrator terlebih dahulu sebelum menggunakannya. Silakan masuk ke akses poin OTP Broker sesuai dengan SSID dan password yang tertera pada brosur dan pindai QR Code pada brosur menggunakan smartphone.
+Administrator Setting adalah menu untuk melakukan konfigurasi administrator. Perangkat OTP-Pi baru belum memiliki administrator. Pengguna harus membuat administrator terlebih dahulu sebelum menggunakannya. Silakan masuk ke akses poin OTP-Pi sesuai dengan SSID dan password yang tertera pada brosur dan pindai QR Code pada brosur menggunakan smartphone.
 
 Alamat bawaan dari web manajemen adalah http://192.168.0.11:8888 
 
 **Username**
-Username adalah pengenal administrator saat login ke OTP Broker
+Username adalah pengenal administrator saat login ke OTP-Pi
 
 **Password**
-Username adalah pengaman administrator saat login ke OTP Broker
+Username adalah pengaman administrator saat login ke OTP-Pi
 
 **Phone Number**
-Phone number dapat digunakan jika administrator lupa password. Password akan dikirim melalui SMS. Tentu saja ini baru bisa dilakukan ketika OTP Broker telah terkonfigurasi dengan benar.
+Phone number dapat digunakan jika administrator lupa password. Password akan dikirim melalui SMS. Tentu saja ini baru bisa dilakukan ketika OTP-Pi telah terkonfigurasi dengan benar.
 
 **Email**
-Email dapat digunakan jika administrator lupa password. Password akan dikirim melalui email. Tentu saja ini baru bisa dilakukan ketika OTP Broker telah terkonfigurasi dengan benar.
+Email dapat digunakan jika administrator lupa password. Password akan dikirim melalui email. Tentu saja ini baru bisa dilakukan ketika OTP-Pi telah terkonfigurasi dengan benar.
 
 ## API Setting
 
@@ -106,18 +106,18 @@ API Setting adalah konfigurasi REST API untuk mengirimkan SMS.
 3. **HTTPS Port** adalah port server untuk HTTPS
 4. **Enable HTTPS** adalah pengaturan untuk mengaktifkan atau menonaktifkan port HTTPS
 5. **Message Path** adalah path untuk mengirimkan SMS dan email
-6. **Blocking Path** adalah path untuk memblokir nomor telepon agar OTP Broker tidak mengirimkan SMS ke nomor tersebut
-7. **Unblocking Path** adalah path untuk membuka blokir nomor telepon agar OTP Broker dapat kembali mengirimkan SMS ke nomor tersebut
+6. **Blocking Path** adalah path untuk memblokir nomor telepon agar OTP-Pi tidak mengirimkan SMS ke nomor tersebut
+7. **Unblocking Path** adalah path untuk membuka blokir nomor telepon agar OTP-Pi dapat kembali mengirimkan SMS ke nomor tersebut
 
 ## API User
 
 API User adalah akun pengirim SMS melalui REST API.
 
 **Username**
-Username adalah pengenal pengirim saat mengirimkan SMS ke OTP Broker
+Username adalah pengenal pengirim saat mengirimkan SMS ke OTP-Pi
 
 **Password**
-Username adalah pengaman pengirim saat mengirimkan SMS ke OTP Broker
+Username adalah pengaman pengirim saat mengirimkan SMS ke OTP-Pi
 
 **Phone Number**
 Phone number adalah informasi kontak berupa nomor telepon dari pengguna API
@@ -127,13 +127,13 @@ Email adalah informasi kontak berupa alamat email dari pengguna API
 
 ## Feeder Setting
 
-OTP Broker memberikan pilihan apabila perangkat ini dipasang pada jaringan internet mobile atau pada jaringan di mana perangkat pengirim tidak mungkin dapat menjangkau alamat dari OTP Broker.
+OTP-Pi memberikan pilihan apabila perangkat ini dipasang pada jaringan internet mobile atau pada jaringan di mana perangkat pengirim tidak mungkin dapat menjangkau alamat dari OTP-Pi.
 
-OTP Broker menyediakan 2 cara agar OTP Broker dapat menerima pesan yang akan dikirimkan melalui SMS yaitu dengan RabbitMQ dan WSMessageBroker.
+OTP-Pi menyediakan 2 cara agar OTP-Pi dapat menerima pesan yang akan dikirimkan melalui SMS yaitu dengan RabbitMQ dan WSMessageBroker.
 
 ## SMS Setting
 
-SMS Setting adalah konfigurasi pengiriman SMS oleh OTP Broker.
+SMS Setting adalah konfigurasi pengiriman SMS oleh OTP-Pi.
 
 ## Modem Setting
 
@@ -184,11 +184,11 @@ Bloking list adalah daftar nomor telepon yang diblokir. Nomor yang diblokir tida
 
 ## Multiple Email Account
 
-OTP Broker mendukung multiple email account. Email account adalah konfigurasi yang berisi alamat SMTP Server, port SMTP server, username, password, dan konfigurasi lainnya.
+OTP-Pi mendukung multiple email account. Email account adalah konfigurasi yang berisi alamat SMTP Server, port SMTP server, username, password, dan konfigurasi lainnya.
 
 SMTP Server digunakan untuk mengirimkan OTP ke alamat email dan dapat digunakan untuk melakukan reset password.
 
-Penggunaan banyak akun email lebih direkomendasikan karena jumlah email yang dikirim oleh setiap akun email akan berkurang. Sebagai contoh: sebuah SMTP server membatasi 500 email perhari. Dengan menggunakan 20 akun email, OTP Broker dapat mengirim hingga 10.000 email perhari.
+Penggunaan banyak akun email lebih direkomendasikan karena jumlah email yang dikirim oleh setiap akun email akan berkurang. Sebagai contoh: sebuah SMTP server membatasi 500 email perhari. Dengan menggunakan 20 akun email, OTP-Pi dapat mengirim hingga 10.000 email perhari.
 
 Untuk menggunakan SMTP Gmail, gunakan konfigurasi berikut:
 
@@ -226,7 +226,7 @@ OPT Broker dilengkapi dengan local SMTP server untuk mengirim email. Dengan adan
 
 DDNS Record adalah data untuk melakukan pengaturan DNS secara dinamis. DDNS atau Dymanic Domain Name System adalah sebuah mekanisme pengaturan DNS yang dilakukan secara berulang-ulang disebabkan karena alamat IP publik dari server yang selalu berubah-ubah.
 
-OTP Broker menyediakan pengaturan DDNS menggunakan vendor DDNS. Beberapa vendor DDNS yang didukung adalah sebagai berikut:
+OTP-Pi menyediakan pengaturan DDNS menggunakan vendor DDNS. Beberapa vendor DDNS yang didukung adalah sebagai berikut:
 
 1. Cloudflare - https://www.cloudflare.com/
 2. NoIP - https://www.noip.com/
@@ -235,27 +235,27 @@ OTP Broker menyediakan pengaturan DDNS menggunakan vendor DDNS. Beberapa vendor 
 
 ## Network Setting 
 
-Network Setting adalah konfigurasi untuk mengatur jaringan dari OTP Broker. OTP Broker dilengkapi dengan akses poin sehingga dapat diakses langsung menggunakan laptop atau handphone tanpa harus memasangnya ke jaringan kabel. Hal ini akan memudahkan pengguna karena konfigurasi jaringan LAN pengguna berbeda-beda. Pengguna cukup mengatur alamat IP pada jaringan ethernet sesuai dengan konfigurasi jaringan LAN yang digunakan.
+Network Setting adalah konfigurasi untuk mengatur jaringan dari OTP-Pi. OTP-Pi dilengkapi dengan akses poin sehingga dapat diakses langsung menggunakan laptop atau handphone tanpa harus memasangnya ke jaringan kabel. Hal ini akan memudahkan pengguna karena konfigurasi jaringan LAN pengguna berbeda-beda. Pengguna cukup mengatur alamat IP pada jaringan ethernet sesuai dengan konfigurasi jaringan LAN yang digunakan.
 
 ### DHCP
 
-Konfigurasi DHCP akan mengatur DHCP pada akses poin OTP Broker.
+Konfigurasi DHCP akan mengatur DHCP pada akses poin OTP-Pi.
 
 ### Wireless LAN
 
-Konfigurasi Wireless LAN akan mengatur alamat IP pada jaringan wireless OTP Broker. Alamat IP bawaan dari OTP Broker adalah 192.168.0.11
+Konfigurasi Wireless LAN akan mengatur alamat IP pada jaringan wireless OTP-Pi. Alamat IP bawaan dari OTP-Pi adalah 192.168.0.11
 
 ### Ethernet
 
-Konfigurasi Ethernet akan mengatur alamat IP ethernet pada OTP Broker.
+Konfigurasi Ethernet akan mengatur alamat IP ethernet pada OTP-Pi.
 
 ## Firewall
 
-OTP Broker dapat membuka dan mentutup port dari sistem operasi yang digunakan oleh SMS Broker. Penutupan port ini akan membuat firewall di lapis sistem operasi. Dalam hal ini, apabila port ditutup, maka equest tidak akan sampai masuk ke aplikasi.
+OTP-Pi dapat membuka dan mentutup port dari sistem operasi yang digunakan oleh SMS Broker. Penutupan port ini akan membuat firewall di lapis sistem operasi. Dalam hal ini, apabila port ditutup, maka equest tidak akan sampai masuk ke aplikasi.
 
 ## Monitor
 
-Monitor dapat digunakan untuk melihat aktivitas modem yang terpasang di OTP Broker. Pada saat OTP Broker mengirimkan SMS, OTP Broker akan menunjukkan dari mana request SMS masuk dan modem mana yang digunakan.  Selain itu, status dari modem akan ditunjukkan sehingga akan terlihat modem mana saja yang terhubung dengan benar.
+Monitor dapat digunakan untuk melihat aktivitas modem yang terpasang di OTP-Pi. Pada saat OTP-Pi mengirimkan SMS, OTP-Pi akan menunjukkan dari mana request SMS masuk dan modem mana yang digunakan.  Selain itu, status dari modem akan ditunjukkan sehingga akan terlihat modem mana saja yang terhubung dengan benar.
 
 ## Cloudflare
 
@@ -315,19 +315,19 @@ Untuk menggunakan WebSocket, silakan gunakan library WSMessageBrocker dengan lin
 
 Untuk menggunakan Message Broker, silakan gunakan RabbitMQ dengan link https://www.rabbitmq.com/
 
-![OTP Broker Topology](https://raw.githubusercontent.com/kamshory/OTP-Broker/main/src/main/resources/static/www/lib.assets/images/topology.png)
+![OTP-Pi Topology](https://raw.githubusercontent.com/kamshory/OTP-Broker/main/src/main/resources/static/www/lib.assets/images/topology.png)
 
 
 
-### Sekenario 1 - OTP Broker Dapat Diakses App Server
+### Sekenario 1 - OTP-Pi Dapat Diakses App Server
 
-Pada skenario ini, App Server dapat langsung mengirimkan OTP ke OTP Broker melalui HTTP.
+Pada skenario ini, App Server dapat langsung mengirimkan OTP ke OTP-Pi melalui HTTP.
 
-![OTP Broker Topology Skenario 1](https://raw.githubusercontent.com/kamshory/OTP-Broker/main/src/main/resources/static/www/lib.assets/images/topology-1.png)
+![OTP-Pi Topology Skenario 1](https://raw.githubusercontent.com/kamshory/OTP-Broker/main/src/main/resources/static/www/lib.assets/images/topology-1.png)
 
-Pengguna dapat menggunakan sebuah domain murah dan menggunakan Dynamic Domain Name System gratis. Dengan penggunaan port forwarding pada router, OTP Broker dapat diakses dari manapun dengan menggunakan domain atau subdomain. Dalam skenario ini, pengguna membutuhkan:
+Pengguna dapat menggunakan sebuah domain murah dan menggunakan Dynamic Domain Name System gratis. Dengan penggunaan port forwarding pada router, OTP-Pi dapat diakses dari manapun dengan menggunakan domain atau subdomain. Dalam skenario ini, pengguna membutuhkan:
 
-1. OTP Broker
+1. OTP-Pi
 2. Koneksi internet fix dengan IP public (statis atau dinamis)
 3. Router yang dapat melakukan port forwarding
 4. Domain yang name servernya dapat diatur
@@ -358,8 +358,8 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 | Parameter | Tipe | Deskripsi |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP Broker |
-| data | Objek | Data untuk OTP Broker | 
+| command | String | Perintah ke OTP-Pi |
+| data | Objek | Data untuk OTP-Pi | 
 | `data`.id | String | ID SMS |
 | `data`.msisdn | String | Nomor MSISDN penerima |
 | `data`.message| String | Pesan SMS |
@@ -386,8 +386,8 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 | Parameter | Tipe | Deskripsi |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP Broker |
-| data | Objek | Data untuk OTP Broker | 
+| command | String | Perintah ke OTP-Pi |
+| data | Objek | Data untuk OTP-Pi | 
 | `data`.msisdn | String | Nomor MSISDN yang akan diblokir |
 
 **Unblock Number Request**
@@ -411,8 +411,8 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 | Parameter | Tipe | Deskripsi |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP Broker |
-| data | Objek | Data untuk OTP Broker | 
+| command | String | Perintah ke OTP-Pi |
+| data | Objek | Data untuk OTP-Pi | 
 | `data`.msisdn | String | Nomor MSISDN yang akan dibuka blokir |
 
 **Send SMS Request**
@@ -438,25 +438,25 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 | Parameter | Tipe | Deskripsi |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP Broker |
-| data | Objek | Data untuk OTP Broker | 
+| command | String | Perintah ke OTP-Pi |
+| data | Objek | Data untuk OTP-Pi | 
 | `data`.recipient | String | Alamat email penerima |
 | `data`.subject | String | Subjek email |
 | `data`.message| String | Pesan email|
 
-### Sekenario 2 - OTP Broker Tidak Dapat Diakses App Server
+### Sekenario 2 - OTP-Pi Tidak Dapat Diakses App Server
 
-Pada skenario ini, App Server dapat mengirimkan OTP ke RabbitMQ Server atau WSMessageBroker. WSMessageBroker menggunakan protokol WebSoket dan Basic Authentication. Baik App Server maupun OTP Broker bertindak sebagai client dari WSMessageBroker.
+Pada skenario ini, App Server dapat mengirimkan OTP ke RabbitMQ Server atau WSMessageBroker. WSMessageBroker menggunakan protokol WebSoket dan Basic Authentication. Baik App Server maupun OTP-Pi bertindak sebagai client dari WSMessageBroker.
 
-App Server bertindak sebagai publisher dan OTP Broker menjadi consumer dari RabbitMQ Server dan WSMessageBroker. Keduanya harus menggunakan channel yang sama agar semua OTP yang dikirimkan oleh App Server dapat diterima oleh OTP Broker.
+App Server bertindak sebagai publisher dan OTP-Pi menjadi consumer dari RabbitMQ Server dan WSMessageBroker. Keduanya harus menggunakan channel yang sama agar semua OTP yang dikirimkan oleh App Server dapat diterima oleh OTP-Pi.
 
-![OTP Broker Topology Skenario 2](https://raw.githubusercontent.com/kamshory/OTP-Broker/main/src/main/resources/static/www/lib.assets/images/topology-2.png)
+![OTP-Pi Topology Skenario 2](https://raw.githubusercontent.com/kamshory/OTP-Broker/main/src/main/resources/static/www/lib.assets/images/topology-2.png)
 
-Dari kedua skenario di atas, OTP Broker akan mengirmkan SMS menggunakan modem GSM yang terpasang secara fisik pada perangkat OTP Broker. Pengguna dapat menggunakan salah satu dari RabbitMQ Server atau WSMessageBroker dan dapat pula menggunakan keduanya dalam waktu bersamaan. Akan tetapi, apabila App Server mengirimkan sebuah OTP yang sama ke RabbitMQ Server dan WSMessageBroker, maka OTP Broker akan mengirimkan SMS tersebut dua kali ke nomor penerima.
+Dari kedua skenario di atas, OTP-Pi akan mengirmkan SMS menggunakan modem GSM yang terpasang secara fisik pada perangkat OTP-Pi. Pengguna dapat menggunakan salah satu dari RabbitMQ Server atau WSMessageBroker dan dapat pula menggunakan keduanya dalam waktu bersamaan. Akan tetapi, apabila App Server mengirimkan sebuah OTP yang sama ke RabbitMQ Server dan WSMessageBroker, maka OTP-Pi akan mengirimkan SMS tersebut dua kali ke nomor penerima.
 
 Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerlukan:
 
-1. OTP Broker
+1. OTP-Pi
 2. Koneksi internet (tidak memerlukan IP public dan port forwarding)
 3. Server RabbitMQ atau WSMessageBroker
 
@@ -477,8 +477,8 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 
 | Parameter | Tipe | Deskripsi |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP Broker |
-| data | Objek | Data untuk OTP Broker | 
+| command | String | Perintah ke OTP-Pi |
+| data | Objek | Data untuk OTP-Pi | 
 | `data`.id | String | ID SMS |
 | `data`.msisdn | String | Nomor MSISDN penerima |
 | `data`.message| String | Pesan SMS |
@@ -497,8 +497,8 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 
 | Parameter | Tipe | Deskripsi |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP Broker |
-| data | Objek | Data untuk OTP Broker | 
+| command | String | Perintah ke OTP-Pi |
+| data | Objek | Data untuk OTP-Pi | 
 | `data`.msisdn | String | Nomor MSISDN yang akan diblokir |
 
 **Unblock Number Request**
@@ -514,8 +514,8 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 
 | Parameter | Tipe | Deskripsi |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP Broker |
-| data | Objek | Data untuk OTP Broker | 
+| command | String | Perintah ke OTP-Pi |
+| data | Objek | Data untuk OTP-Pi | 
 | `data`.msisdn | String | Nomor MSISDN yang akan dibuka blokir |
 
 **2. WSMessageBroker**
@@ -542,8 +542,8 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | command | String | Perintah kepada WSMessageBroker. Selalu isi dengan `send-message` untuk menirimkan pesan ke channel |
 | channel | String | Nama channel yang dituju |
 | data | Array Object | Berisi array objek yang dikirim ke channel |
-| `data[index]`.command | String | Perintah ke OTP Broker |
-| `data[index]`.data | Objek | Data untuk OTP Broker | 
+| `data[index]`.command | String | Perintah ke OTP-Pi |
+| `data[index]`.data | Objek | Data untuk OTP-Pi | 
 | `data[index].data`.id | String | ID SMS |
 | `data[index].data`.msisdn | String | Nomor MSISDN penerima |
 | `data[index].data`.message| String | Pesan SMS |
@@ -569,8 +569,8 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | command | String | Perintah kepada WSMessageBroker. Selalu isi dengan `send-message` untuk menirimkan pesan ke channel |
 | channel | String | Nama channel yang dituju |
 | data | Array Object | Berisi array objek yang dikirim ke channel |
-| `data[index]`.command | String | Perintah ke OTP Broker |
-| `data[index]`.data | Objek | Data untuk OTP Broker | 
+| `data[index]`.command | String | Perintah ke OTP-Pi |
+| `data[index]`.data | Objek | Data untuk OTP-Pi | 
 | `data[index].data`.msisdn | String | Nomor MSISDN yang akan diblokir |
 
 **Unblock Number Request**
@@ -593,8 +593,8 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | command | String | Perintah kepada WSMessageBroker. Selalu isi dengan `send-message` untuk menirimkan pesan ke channel |
 | channel | String | Nama channel yang dituju |
 | data | Array Object | Berisi array objek yang dikirim ke channel |
-| `data[index]`.command | String | Perintah ke OTP Broker |
-| `data[index]`.data | Objek | Data untuk OTP Broker | 
+| `data[index]`.command | String | Perintah ke OTP-Pi |
+| `data[index]`.data | Objek | Data untuk OTP-Pi | 
 | `data[index].data`.msisdn | String | Nomor MSISDN yang akan dibuka blokir |
 
 Server WSMessageBroker berbasis menggunakan protokol WebSocket dan PHP. Silakan download WSMessageBroker di https://github.com/kamshory/WSMessageBrocker 
