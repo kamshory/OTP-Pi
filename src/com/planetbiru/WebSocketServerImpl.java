@@ -55,8 +55,7 @@ public class WebSocketServerImpl extends WebSocketServer{
 		try {
 			if(WebUserAccount.checkUserAuth(username, password))
 			{
-				System.out.println("OK");
-				clients.add(new WebSocketConnection(conn, request));
+				WebSocketServerImpl.clients.add(new WebSocketConnection(conn, request));
 				this.sendServerStatus(conn);
 			}
 			else
@@ -75,11 +74,11 @@ public class WebSocketServerImpl extends WebSocketServer{
 	}
 	
 	private void remove(WebSocket conn) {
-		for(WebSocketConnection client : clients)
+		for(WebSocketConnection client : WebSocketServerImpl.clients)
 		{
 			if(client.getConn().equals(conn))
 			{
-				clients.remove(client);
+				WebSocketServerImpl.clients.remove(client);
 				break;
 			}
 		}		
@@ -87,14 +86,14 @@ public class WebSocketServerImpl extends WebSocketServer{
 	
 	public static void broadcastMessage(String message)
 	{
-		for(WebSocketConnection client : clients)
+		for(WebSocketConnection client : WebSocketServerImpl.clients)
 		{
 			client.send(message);
 		}
 	}
 	public static void broadcastMessage(String message, String path)
 	{
-		for(WebSocketConnection client : clients)
+		for(WebSocketConnection client : WebSocketServerImpl.clients)
 		{
 			if(client.getPath().contains(path))
 			{
@@ -104,7 +103,7 @@ public class WebSocketServerImpl extends WebSocketServer{
 	}
 	public static void broadcastMessage(String message, WebSocket sender)
 	{
-		for(WebSocketConnection client : clients)
+		for(WebSocketConnection client : WebSocketServerImpl.clients)
 		{
 			if(!client.getConn().equals(sender))
 			{

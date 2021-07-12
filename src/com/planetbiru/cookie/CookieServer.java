@@ -308,8 +308,6 @@ public class CookieServer {
 	}
 	
 	private JSONObject readSessionData() {
-		//File dir = new File(this.getSessionDir());
-		//this.clearFile(dir);
 		JSONObject jsonData = new JSONObject();
 		String fileName = FileConfigUtil.fixFileName(this.getSessionFile());		
 		try 
@@ -332,10 +330,6 @@ public class CookieServer {
 	
 	private String getSessionFile() {
 		return Utility.getBaseDir()+"/"+Config.getSessionFilePath()+"/"+this.sessionID;
-	}
-	
-	private String getSessionDir() {
-		return Utility.getBaseDir()+"/"+Config.getSessionFilePath();
 	}
 	
 	public void setSessionValue(String sessionKey, Object sessionValue) {

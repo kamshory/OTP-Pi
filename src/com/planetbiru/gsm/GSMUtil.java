@@ -9,6 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.planetbiru.WebSocketServerImpl;
+import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigModem;
 import com.planetbiru.config.ConfigSMS;
 import com.planetbiru.config.DataModem;
@@ -48,6 +49,8 @@ public class GSMUtil {
 	
 	public static void init()
 	{
+		ConfigModem.load(Config.getModemSettingPath());
+
 		GSMUtil.gsmInstance = new ArrayList<>();
 		Map<String, DataModem> modemData = ConfigModem.getModemData();		
 		for (Map.Entry<String, DataModem> entry : modemData.entrySet())
@@ -83,7 +86,6 @@ public class GSMUtil {
 				instance.connect(modem.getPort());
 			}
 		}
-		System.out.println("MODEM ID = "+modemID);
 		GSMUtil.updateConnectedDevice();
 	}
 	

@@ -91,7 +91,6 @@ public class WebSocketClientImpl extends Thread{
 		this.webSocketTool.restartThread();
 	}
 	public void evtOnMessage(String message) {
-		System.out.println("Receive "+message);
 		try
 		{
 			JSONObject jsonObj = new JSONObject(message);
@@ -121,16 +120,11 @@ public class WebSocketClientImpl extends Thread{
 	}
 	public void evtOnOpen(ServerHandshake serverHandshake)
 	{
-		if(serverHandshake.getHttpStatus() != 101)
+		if(serverHandshake.getHttpStatus() != 101 && this.reconnect)
 		{
-			if(this.reconnect)
-			{
-				this.reconnect = false;
-				this.restartThread();
-			}
+			this.reconnect = false;
+			this.restartThread();
 		}
-		System.out.println("STATUS "+serverHandshake.getHttpStatus());
-		System.out.println("onOpen()");
 		/**
 		 * Do nothing
 		 */

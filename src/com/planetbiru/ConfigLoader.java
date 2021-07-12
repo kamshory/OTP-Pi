@@ -5,15 +5,29 @@ import java.io.InputStream;
 import java.util.Map.Entry;
 import java.util.Properties;
 
+import com.planetbiru.api.RESTAPI;
 import com.planetbiru.config.Config;
+import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigAPIUser;
+import com.planetbiru.config.ConfigBlocking;
 import com.planetbiru.config.ConfigDDNS;
+import com.planetbiru.config.ConfigEmail;
 import com.planetbiru.config.ConfigFeederWS;
 import com.planetbiru.config.ConfigGeneral;
+import com.planetbiru.config.ConfigModem;
+import com.planetbiru.config.ConfigSMS;
+import com.planetbiru.config.ConfigSMTP;
 import com.planetbiru.config.ConfigVendorAfraid;
 import com.planetbiru.config.ConfigVendorCloudflare;
 import com.planetbiru.config.ConfigVendorDynu;
 import com.planetbiru.config.ConfigVendorNoIP;
+import com.planetbiru.config.PropertyLoader;
+import com.planetbiru.gsm.DialUtil;
+import com.planetbiru.gsm.GSMUtil;
+import com.planetbiru.gsm.SMSLogger;
+import com.planetbiru.receiver.amqp.RabbitMQReceiver;
+import com.planetbiru.receiver.ws.WebSocketClientImpl;
+import com.planetbiru.user.WebUserAccount;
 import com.planetbiru.util.ServerStatus;
 import com.planetbiru.util.Utility;
 
@@ -136,7 +150,10 @@ public class ConfigLoader {
 		long feederWsTimeout = ConfigLoader.getConfigLong("otpbroker.ws.timeout");
 		long feederWsRefresh = ConfigLoader.getConfigLong("otpbroker.ws.refresh.delay");
 		long feederWsReconnectDelay = ConfigLoader.getConfigLong("otpbroker.ws.reconnect.delay");
-		
+	
+		Config.setSmtpSettingPath(smtpSettingPath);
+		ConfigSMTP.load(Config.getSmtpSettingPath());		
+
 		
 		Config.setApiSettingPath(apiSettingPath);
 		Config.setWvdialSettingPath(wvdialSettingPath);
@@ -242,6 +259,39 @@ public class ConfigLoader {
 		ConfigFeederWS.setFeederWsRefresh(feederWsRefresh);		
 
 		ConfigFeederWS.load(Config.getFeederWSSettingPath());
+		
+		ConfigSMS.load(Config.getSmsSettingPath());
+		
+		ConfigBlocking.setCountryCode(ConfigSMS.getCountryCode());
+		ConfigBlocking.load(Config.getBlockingSettingPath());
+
+		ConfigModem.load(Config.getModemSettingPath());
+		if(ConfigSMS.isLogSMS())
+		{
+			SMSLogger.setPath(Config.getSmsLogPath());
+		}
+		GSMUtil.init();	
+		DialUtil.init(Config.getWvdialSettingPath(), Config.getWvdialCommandConnect(), Config.getWvdialCommandDisconnect());
+		
+		GSMUtil.getCallerType().put(Utility.getClassName(RabbitMQReceiver.class.toString()), "amqp");
+		GSMUtil.getCallerType().put(Utility.getClassName(WebSocketClientImpl.class.toString()), "ws");
+		GSMUtil.getCallerType().put(Utility.getClassName(RESTAPI.class.toString()), "rest");
+		
+		ConfigAPI.load(Config.getApiSettingPath());	
+		
+		/**
+		 * Override email setting if exists
+		 */
+		ConfigEmail.load(Config.getEmailSettingPath());
+		
+		
+		ConfigDDNS.load(Config.getDdnsSettingPath());
+		ConfigVendorCloudflare.load(Config.getCloudflareSettingPath());
+		ConfigVendorNoIP.load(Config.getNoIPSettingPath());
+		ConfigGeneral.load(Config.getGeneralSettingPath());
+		ConfigAPI.load(Config.getApiSettingPath());
+		WebUserAccount.load(Config.getUserSettingPath());			
+		PropertyLoader.load(Config.getMimeSettingPath());	
     	
 	}
 

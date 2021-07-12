@@ -44,7 +44,7 @@ $(document).ready(function (e1) {
     $(document).on('click', '.service-modem-sms .connect', function(e2){
         var modemID = $(this).closest('.service-item').attr('data-id');
         $.ajax({
-            url:'api/device/',
+            url:'api/device',
             type:'POST',
             dataType: 'json',
             data:{action:'connect', id:modemID},
@@ -59,7 +59,7 @@ $(document).ready(function (e1) {
     $(document).on('click', '.service-modem-internet .connect', function(e2){
         var modemID = $(this).closest('.service-item').attr('data-id');
         $.ajax({
-            url:'api/internet-dial/',
+            url:'api/internet-dial',
             type:'POST',
             dataType: 'json',
             data:{action:'connect', id:modemID},

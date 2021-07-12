@@ -286,26 +286,30 @@ public class ServerInfo {
 		
 		JSONObject info = new JSONObject();
 		String[] lines = result.split("\r\n");
-		String[] keys = new String[1];
-		String[] values = new String[1];
-		Map<String, String> pairs = new HashMap<>();
-		for(int i = 0; i<lines.length;i++)
+		String iddle = "0";
+		if(lines.length > 1)
 		{
-			lines[i] = lines[i].replaceAll("\\s+", " ").trim();
-			if(lines[i].contains("CPU "))
+			String[] keys = new String[1];
+			String[] values = new String[1];
+			Map<String, String> pairs = new HashMap<>();
+			for(int i = 0; i<lines.length;i++)
 			{
-				keys = lines[i].split(" ");
+				lines[i] = lines[i].replaceAll("\\s+", " ").trim();
+				if(lines[i].contains("CPU "))
+				{
+					keys = lines[i].split(" ");
+				}
+				if(lines[i].contains("all "))
+				{
+					values = lines[i].split(" ");
+				}
 			}
-			if(lines[i].contains("all "))
+			for(int i = 0; i<values.length && i <keys.length; i++)
 			{
-				values = lines[i].split(" ");
+				pairs.put(keys[i].replace("%", ""), values[i]);
 			}
+			iddle = pairs.getOrDefault("idle", "0");
 		}
-		for(int i = 0; i<values.length && i <keys.length; i++)
-		{
-			pairs.put(keys[i].replace("%", ""), values[i]);
-		}
-		String iddle = pairs.getOrDefault("idle", "0");
 		double idle = Utility.atof(iddle);
 		double used = 100 - idle;
 		info.put("idle", idle);

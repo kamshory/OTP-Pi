@@ -16,22 +16,11 @@ import javax.net.ssl.TrustManagerFactory;
 import com.planetbiru.api.HandlerAPIBlocking;
 import com.planetbiru.api.HandlerAPIMessage;
 import com.planetbiru.api.HandlerAPIUnblocking;
-import com.planetbiru.api.RESTAPI;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
-import com.planetbiru.config.ConfigBlocking;
-import com.planetbiru.config.ConfigEmail;
 import com.planetbiru.config.ConfigKeystore;
-import com.planetbiru.config.ConfigModem;
-import com.planetbiru.config.ConfigSMS;
 import com.planetbiru.config.DataKeystore;
-import com.planetbiru.gsm.DialUtil;
-import com.planetbiru.gsm.GSMUtil;
-import com.planetbiru.gsm.SMSLogger;
-import com.planetbiru.receiver.amqp.RabbitMQReceiver;
-import com.planetbiru.receiver.ws.WebSocketClientImpl;
 import com.planetbiru.util.ServiceHTTP;
-import com.planetbiru.util.Utility;
 import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.HttpsConfigurator;
 import com.sun.net.httpserver.HttpsServer;
@@ -40,39 +29,9 @@ public class ServerAPI {
 	
 	public void init()
 	{
-
-		
-		
-	
 		this.initHttp();
 		this.initHttps();
-		
-		ConfigSMS.load(Config.getSmsSettingPath());
-		
-		ConfigBlocking.setCountryCode(ConfigSMS.getCountryCode());
-		ConfigBlocking.load(Config.getBlockingSettingPath());
-
-		ConfigModem.load(Config.getModemSettingPath());
-		if(ConfigSMS.isLogSMS())
-		{
-			SMSLogger.setPath(Config.getSmsLogPath());
-		}
-		GSMUtil.init();	
-		DialUtil.init(Config.getWvdialSettingPath(), Config.getWvdialCommandConnect(), Config.getWvdialCommandDisconnect());
-		
-		GSMUtil.getCallerType().put(Utility.getClassName(RabbitMQReceiver.class.toString()), "amqp");
-		GSMUtil.getCallerType().put(Utility.getClassName(WebSocketClientImpl.class.toString()), "ws");
-		GSMUtil.getCallerType().put(Utility.getClassName(RESTAPI.class.toString()), "rest");
-		
-		ConfigAPI.load(Config.getApiSettingPath());	
-		
-		/**
-		 * Override email setting if exists
-		 */
-		ConfigEmail.load(Config.getEmailSettingPath());
 	}
-	
-	
 	
 	private void initHttps() {
 		if(ConfigAPI.isHttpsEnable())
@@ -159,8 +118,6 @@ public class ServerAPI {
 		{
 			ServiceHTTP.getHttpsServer().stop(0);
 		}
-	}
-	
-	
+	}	
 	
 }

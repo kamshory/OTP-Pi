@@ -61,11 +61,11 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			{
 				this.reboot(httpExchange);
 			}
-			if(path.startsWith("/api/restart"))
+			else if(path.startsWith("/api/restart"))
 			{
 				this.restart(httpExchange);
 			}
-			if(path.startsWith("/api/cleanup"))
+			else if(path.startsWith("/api/cleanup"))
 			{
 				this.cleanup(httpExchange);
 			}

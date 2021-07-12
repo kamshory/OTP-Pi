@@ -3,9 +3,12 @@ package com.planetbiru.receiver.ws;
 public class WebSocketTool extends Thread{
 
 	private boolean running;
-	private long reconnectDelay = 10000;
+	private long reconnectDelay = 5000;
 	public WebSocketTool(long reconnectDelay) {
 		this.reconnectDelay = reconnectDelay;
+	}
+	public WebSocketTool() {
+		
 	}
 	private WebSocketClientImpl ws;
 	
@@ -22,12 +25,11 @@ public class WebSocketTool extends Thread{
 	private void startThread(boolean reconnect) {
 		this.ws = null;
 		this.ws = new WebSocketClientImpl(this.reconnectDelay, this, reconnect);
-		this.ws.start();
-		
+		this.ws.start();	
 	}
 	public void restartThread() {
-		this.startThread(true);
-		
+		this.ws = null;
+		this.startThread(true);	
 	}
 	public void delay(long sleep)
 	{

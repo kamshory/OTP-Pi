@@ -1,33 +1,15 @@
 package com.planetbiru;
 
-import java.io.IOException;
 import java.net.InetSocketAddress;
 
 import com.planetbiru.config.Config;
-import com.planetbiru.config.ConfigAPI;
-import com.planetbiru.config.ConfigDDNS;
-import com.planetbiru.config.ConfigGeneral;
 import com.planetbiru.config.ConfigNetDHCP;
 import com.planetbiru.config.ConfigNetEthernet;
 import com.planetbiru.config.ConfigNetWLAN;
-import com.planetbiru.config.ConfigVendorCloudflare;
-import com.planetbiru.config.ConfigVendorNoIP;
-import com.planetbiru.config.PropertyLoader;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.receiver.ws.WebSocketTool;
-import com.planetbiru.user.WebUserAccount;
 import com.planetbiru.util.FileConfigUtil;
-import com.planetbiru.util.ServerInfo;
-import com.planetbiru.util.ServiceHTTP;
 import com.planetbiru.util.Utility;
-import com.planetbiru.web.HandlerWebManager;
-import com.planetbiru.web.HandlerWebManagerAPI;
-import com.planetbiru.web.HandlerWebManagerData;
-import com.planetbiru.web.HandlerWebManagerLogin;
-import com.planetbiru.web.HandlerWebManagerLogout;
-import com.planetbiru.web.HandlerWebManagerUserAdd;
-import com.planetbiru.web.HandlerWebManagerUserInit;
-import com.sun.net.httpserver.HttpServer;
 
 public class Application {
 	
@@ -36,31 +18,48 @@ public class Application {
 	public static void main(String[] args) {
 		
 		ConfigLoader.load("config.ini");	
-		prepareSessionDir();
 		
-		initHttp();
+		GSMUtil.init();
 
+		Application.prepareSessionDir();
+
+		/**
+		 * WebSocket Server for Admin
+		 */
+		InetSocketAddress address = new InetSocketAddress(Config.getServerPort()+1);
+		WebSocketServerImpl wsss = new WebSocketServerImpl(address);
+		wsss.start();		
+
+		/**
+		 * Web Server for Admin
+		 */
+		ServerWeb web = new ServerWeb();
+		web.init();
 		
-		// Get Server Info and save it to cache
-		ServerInfo.getInfo();
-		
-		WebSocketTool wstool = new WebSocketTool(5000);
+		/**
+		 * WebSocket Client for feeder
+		 */
+		WebSocketTool wstool = new WebSocketTool();
 		wstool.start();
 		
+		/**
+		 * RabbitMQ Client for feeder
+		 */
 		ClientReceiverAMQP amqpReceiver = new ClientReceiverAMQP();
 		amqpReceiver.init();
 		
+		/**
+		 * REST API
+		 */
+		ServerAPI rest = new ServerAPI();
+		rest.init();
 		
-		InetSocketAddress address = new InetSocketAddress(8889);
-		WebSocketServerImpl wsss = new WebSocketServerImpl(address);
-		wsss.start();
 		
-		GSMUtil.init();
-		
-		
-		SMTPServerImpl smtp = new SMTPServerImpl();
+		/**
+		 * SMTP Server for send email
+		 */
+		ServerEmail smtp = new ServerEmail();
 		smtp.init();
-		smtp.start();
 		
 	}
 	public static void prepareSessionDir()
@@ -69,39 +68,7 @@ public class Application {
 		FileConfigUtil.prepareDir(fileName);
 	}
 	
-	public static void initWebManager()
-	{
-		ConfigDDNS.load(Config.getDdnsSettingPath());
-		ConfigVendorCloudflare.load(Config.getCloudflareSettingPath());
-		ConfigVendorNoIP.load(Config.getNoIPSettingPath());
-		ConfigGeneral.load(Config.getGeneralSettingPath());
-		ConfigAPI.load(Config.getApiSettingPath());
-		WebUserAccount.load(Config.getUserSettingPath());			
-		PropertyLoader.load(Config.getMimeSettingPath());	
-		Config.setValidDevice(true);
-	}
 	
-	private static void initHttp() 
-	{
-		initWebManager();
-		try 
-		{
-			ServiceHTTP.setHttpServer(HttpServer.create(new InetSocketAddress(Config.getServerPort()), 0));
-	        ServiceHTTP.getHttpServer().createContext("/", new HandlerWebManager());
-	        ServiceHTTP.getHttpServer().createContext("/login.html", new HandlerWebManagerLogin());
-	        ServiceHTTP.getHttpServer().createContext("/logout.html", new HandlerWebManagerLogout());
-	        ServiceHTTP.getHttpServer().createContext("/user/add", new HandlerWebManagerUserAdd());
-	        ServiceHTTP.getHttpServer().createContext("/user/init", new HandlerWebManagerUserInit());
-	        ServiceHTTP.getHttpServer().createContext("/api/", new HandlerWebManagerAPI());
-	        ServiceHTTP.getHttpServer().createContext("/data/", new HandlerWebManagerData());
-	        ServiceHTTP.getHttpServer().start();
-		} 
-		catch (IOException e) 
-		{
-			e.printStackTrace();
-		}
-	}
-
 	public void init()
 	{
 		resetConfig();

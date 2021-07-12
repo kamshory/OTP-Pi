@@ -2,11 +2,10 @@ package com.planetbiru;
 
 import org.subethamail.smtp.server.SMTPServer;
 
-import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigSMTP;
 import com.planetbiru.mail.PlanetMessageHandlerFactory;
 
-public class SMTPServerImpl {
+public class ServerEmail {
 
 
 	private PlanetMessageHandlerFactory handlerFactory = new PlanetMessageHandlerFactory();
@@ -19,9 +18,6 @@ public class SMTPServerImpl {
 	
 	public void init()
 	{
-		String smtpSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.smtp");		
-		Config.setSmtpSettingPath(smtpSettingPath);
-		ConfigSMTP.load(Config.getSmtpSettingPath());		
 		if(ConfigSMTP.isActive())
 		{
 			this.port = ConfigSMTP.getServerPort();
