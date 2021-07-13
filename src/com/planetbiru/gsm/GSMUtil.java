@@ -50,7 +50,6 @@ public class GSMUtil {
 	public static void start()
 	{
 		ConfigModem.load(Config.getModemSettingPath());
-
 		GSMUtil.gsmInstance = new ArrayList<>();
 		Map<String, DataModem> modemData = ConfigModem.getModemData();		
 		for (Map.Entry<String, DataModem> entry : modemData.entrySet())
@@ -78,28 +77,44 @@ public class GSMUtil {
 	public static void connect(String modemID) throws GSMException, InvalidPortException
 	{
 		DataModem modem = ConfigModem.getModemData(modemID);
+		boolean found = false;
+		GSMInstance instance = new GSMInstance(modem);
 		for(int i = 0; i<GSMUtil.gsmInstance.size(); i++)
 		{
-			GSMInstance instance =  GSMUtil.gsmInstance.get(i);
+			instance =  GSMUtil.gsmInstance.get(i);
 			if(instance.getId().equals(modemID))
 			{
-				instance.connect(modem.getPort());
+				found = true;
+				break;
 			}
 		}
+		if(!found)
+		{
+			System.out.println("Add to list");
+			GSMUtil.gsmInstance.add(instance);
+		}
+		else
+		{
+			System.out.println("Allready exists");
+		}
+		instance.connect(modem.getPort());
+		
 		GSMUtil.updateConnectedDevice();
 	}
 	
 	public static void disconnect(String modemID) throws GSMException 
 	{
-		for(int i = 0; i<GSMUtil.gsmInstance.size(); i++)
-		{
-			GSMInstance instance =  GSMUtil.gsmInstance.get(i);
-			if(instance.getId().equals(modemID))
-			{
-				instance.disconnect();
-			}
+		System.out.println("public static void disconnect(String modemID) throws GSMException ");
+		try {
+			GSMUtil.get(modemID).disconnect();
+			GSMUtil.updateConnectedDevice();		
+			System.out.println("Disconnected");
+		} catch (GSMException e) {
+			System.out.println("Disconnected");
+			GSMUtil.updateConnectedDevice();		
+			e.printStackTrace();
+			throw new GSMException(e);
 		}
-		GSMUtil.updateConnectedDevice();		
 	}
 	
 	public static List<SMS> readSMS(String modemID) throws GSMException

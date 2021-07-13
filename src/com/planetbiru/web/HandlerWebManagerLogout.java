@@ -15,20 +15,18 @@ public class HandlerWebManagerLogout implements HttpHandler {
 	@Override
 	public void handle(HttpExchange httpExchange) throws IOException {
 		Headers requestHeaders = httpExchange.getRequestHeaders();
-		Headers responseHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
 		
 		CookieServer cookie = new CookieServer(requestHeaders, Config.getSessionName(), Config.getSessionLifetime());
 		
-		byte[] responseBody = "".getBytes();
 		cookie.destroySession();
 		cookie.putToHeaders(responseHeaders);
-		WebUserAccount.load(Config.getUserSettingPath());
+		System.out.println("LOGOUT.HTML");
 		int statusCode = HttpStatus.MOVED_PERMANENTLY;
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
 		responseHeaders.add(ConstantString.LOCATION, "/");
 		
-		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
-		httpExchange.getResponseBody().write(responseBody);
+		httpExchange.sendResponseHeaders(statusCode, 0);	 
 		httpExchange.close();
 
 	}

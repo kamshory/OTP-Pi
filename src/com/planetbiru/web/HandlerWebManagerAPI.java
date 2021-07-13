@@ -75,7 +75,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 	//@PostMapping(path="/api/reboot")
 	public void reboot(HttpExchange httpExchange) throws IOException
 	{
-		Headers responseHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
 		JSONObject jo = new JSONObject();
 		jo.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
 		byte[] responseBody = jo.toString().getBytes();
@@ -92,7 +92,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 	//@PostMapping(path="/api/restart")
 	public void restart(HttpExchange httpExchange) throws IOException
 	{
-		Headers responseHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
 		JSONObject jo = new JSONObject();
 		jo.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
 		byte[] responseBody = jo.toString().getBytes();
@@ -109,7 +109,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 	//@PostMapping(path="/api/cleanup")
 	public void cleanup(HttpExchange httpExchange) throws IOException
 	{
-		Headers responseHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
 		JSONObject jo = new JSONObject();
 		jo.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
 		byte[] responseBody = jo.toString().getBytes();
@@ -127,6 +127,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 	//@PostMapping(path="/api/device/**")
 	public void modemConnect(HttpExchange httpExchange) throws IOException
 	{
+		System.out.println("public void modemConnect(HttpExchange httpExchange) throws IOException");
 		byte[] req = HttpUtil.getRequestBody(httpExchange);
 		String requestBody = "";
 		if(req != null)
@@ -135,7 +136,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		}
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
 		Headers requestHeaders = httpExchange.getRequestHeaders();
-		Headers responseHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
 		int statusCode;
 		JSONObject responseJSON = new JSONObject();
 		statusCode = HttpStatus.OK;
@@ -143,6 +144,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
+				System.out.println("if(WebUserAccount.checkUserAuth(requestHeaders))");
 				String action = queryPairs.getOrDefault("action", "");
 				String modemID = queryPairs.getOrDefault("id", "");
 				if(!modemID.isEmpty())
@@ -151,10 +153,12 @@ public class HandlerWebManagerAPI implements HttpHandler {
 					{
 						if(action.equals("connect"))
 						{
+							System.out.println("if(action.equals(\"connect\")) ModemID = "+modemID);
 							GSMUtil.connect(modemID);						
 						}
 						else
 						{
+							System.out.println("GSMUtil.disconnect(modemID); ModemID = "+modemID);
 							GSMUtil.disconnect(modemID);
 						} 
 						ServerInfo.sendModemStatus();
@@ -200,7 +204,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		}
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
 		Headers requestHeaders = httpExchange.getRequestHeaders();
-		Headers responseHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
 		int statusCode;
 		JSONObject responseJSON = new JSONObject();
 		statusCode = HttpStatus.OK;
@@ -254,7 +258,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		}
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
 		Headers requestHeaders = httpExchange.getRequestHeaders();
-		Headers responseHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
 		int statusCode;
 		JSONObject responseJSON = new JSONObject();
 		statusCode = HttpStatus.OK;
@@ -325,7 +329,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		}
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
 		Headers requestHeaders = httpExchange.getRequestHeaders();
-		Headers responseHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
 		int statusCode;
 		JSONObject responseJSON = new JSONObject();
 		statusCode = HttpStatus.OK;
@@ -384,7 +388,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		}
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
 		Headers requestHeaders = httpExchange.getRequestHeaders();
-		Headers responseHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
 		int statusCode;
 		JSONObject responseJSON = new JSONObject();
 		statusCode = HttpStatus.OK;

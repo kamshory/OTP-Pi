@@ -38,6 +38,8 @@ public class GSM {
     	this.setReady(false);
     	boolean isOpen = false;
     	
+    	System.out.println("public boolean connect(String portName) throws InvalidPortException");
+    	System.out.println("PORT = "+portName);
     	try
     	{
 	   		setSerialPort(SerialPort.getCommPort(portName));
@@ -110,15 +112,28 @@ public class GSM {
 	        	}
 	        	else
 	        	{
-	        		this.connected = true;
-		        	this.ready = true;
-		            isOpen = true;
+	        		this.connected = false;
+		        	this.ready = false;
+		            isOpen = false;
 	        	}
 	        }
     	}
     	catch(SerialPortInvalidPortException e)
     	{
-    		throw new InvalidPortException(e.getMessage());
+    		if(Config.isDebugModem())
+        	{
+	        	this.connected = true;
+	        	this.ready = true;
+	            isOpen = true;
+        	}
+        	else
+        	{
+        		this.connected = false;
+	        	this.ready = false;
+	            isOpen = false;
+	       		throw new InvalidPortException(e.getMessage());
+	       	}
+    		e.printStackTrace();
     	}
     	return isOpen;
     }
@@ -404,15 +419,14 @@ public class GSM {
      */
     public boolean closePort() 
     {
+    	this.connected = false;
         if(getSerialPort() != null)
         {
         	boolean cls = getSerialPort().closePort();
-        	this.connected = false;
         	return cls;
         }
         else
         {
-           	this.connected = false;
             return true;
         }
     }
@@ -422,6 +436,7 @@ public class GSM {
 	}
 
 	public void setSerialPort(SerialPort serialPort) {
+		System.out.println("Set Serial Port");
 		this.serialPort = serialPort;
 	}
 

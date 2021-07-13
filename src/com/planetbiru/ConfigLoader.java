@@ -270,8 +270,7 @@ public class ConfigLoader {
 		{
 			SMSLogger.setPath(Config.getSmsLogPath());
 		}
-		GSMUtil.start();	
-		DialUtil.init(Config.getWvdialSettingPath(), Config.getWvdialCommandConnect(), Config.getWvdialCommandDisconnect());
+
 		
 		GSMUtil.getCallerType().put(Utility.getClassName(RabbitMQReceiver.class.toString()), "amqp");
 		GSMUtil.getCallerType().put(Utility.getClassName(WebSocketClientImpl.class.toString()), "ws");

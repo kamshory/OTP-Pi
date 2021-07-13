@@ -7,6 +7,7 @@ import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigNetDHCP;
 import com.planetbiru.config.ConfigNetEthernet;
 import com.planetbiru.config.ConfigNetWLAN;
+import com.planetbiru.gsm.DialUtil;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.receiver.ws.ClientReceiverWebSocket;
 import com.planetbiru.util.FileConfigUtil;
@@ -44,13 +45,16 @@ public class Application {
 		Application.resetConfig();
 		
 		GSMUtil.start();
+		DialUtil.init(Config.getWvdialSettingPath(), Config.getWvdialCommandConnect(), Config.getWvdialCommandDisconnect());
+
 
 		Application.prepareSessionDir();
 
+		int wsport = Config.getServerPort()+1;
 		/**
 		 * WebSocket Server for Admin
 		 */
-		InetSocketAddress address = new InetSocketAddress(Config.getServerPort()+1);
+		InetSocketAddress address = new InetSocketAddress(wsport);
 		Application.webSocketAdmin = new ServerWebSocketServerAdmin(address);
 		Application.webSocketAdmin.start();		
 

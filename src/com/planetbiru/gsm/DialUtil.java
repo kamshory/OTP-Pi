@@ -67,15 +67,8 @@ public class DialUtil {
 		{
 		}
 		boolean ret = false;
-		try 
-		{
-			CommandLineExecutor.execSSH(wvdialCommandConnect, 500);
-			ret = true;
-		} 
-		catch (IOException e) 
-		{
-			ret = true;
-		}
+		CommandLineExecutor.exec(wvdialCommandConnect);
+		ret = true;
 		DialUtil.internetAccess.put(modemID, ret);
 		return ret;
 	}

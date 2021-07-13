@@ -99,6 +99,7 @@ public class DeviceAPI {
 
 	public static void restart()
 	{
+		Application.preDestroy();
 		CommandLineExecutor.exec(Config.getRestartCommand());
 	}
 
