@@ -57,7 +57,7 @@ public class ConfigVendorCloudflare {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		
 	}	
@@ -86,7 +86,7 @@ public class ConfigVendorCloudflare {
 		}
 		catch (IOException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 	

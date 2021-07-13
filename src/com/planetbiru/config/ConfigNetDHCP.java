@@ -67,7 +67,7 @@ public class ConfigNetDHCP {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		
 	}	
@@ -96,7 +96,7 @@ public class ConfigNetDHCP {
 		}
 		catch (IOException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 	
@@ -150,7 +150,7 @@ public class ConfigNetDHCP {
 		}
 		catch (IOException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	
 	}

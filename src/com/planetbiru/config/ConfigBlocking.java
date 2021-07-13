@@ -86,7 +86,7 @@ public class ConfigBlocking {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}	
 	}
 	public static void save()
@@ -113,7 +113,7 @@ public class ConfigBlocking {
 		}
 		catch (IOException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 	

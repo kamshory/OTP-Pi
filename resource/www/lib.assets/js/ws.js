@@ -53,7 +53,17 @@ function initWebSocket()
         console.log("WebSocket is not supported by your browser!");
     }
 }
-
+function waitingForServerUp() {
+    $('.waiting-server-up').css({
+        'display': 'block'
+    });
+}
+function serverUp()
+{
+    $('.waiting-server-up').css({
+        'display': 'none'
+    });
+}
 function connectWebSocket()
 {
     wsConnected = false;
@@ -64,8 +74,10 @@ function connectWebSocket()
     };
     
     ws.onmessage = function (evt) { 
-        console.log(evt.data);
+        serverUp();
+
         var receivedRaw = evt.data;
+        console.log(receivedRaw)
         var receivedJSON = JSON.parse(receivedRaw);
         if(receivedJSON.command == "broadcast-message")
         {
@@ -74,7 +86,11 @@ function connectWebSocket()
             showNotif(receivedJSON.data[i].message);
           }
         }
-        if(receivedJSON.command == "server-info")
+        else if(receivedJSON.command == "server-shutdown")
+        {
+            waitingForServerUp();
+        }
+        else if(receivedJSON.command == "server-info")
         {
             updateServerInfo(receivedJSON);
             updateUSBColor(receivedJSON);
@@ -94,7 +110,7 @@ function connectWebSocket()
             {
                 clearTimeout(connectWebSocket);
             }
-        }, 2000);
+        }, 1500);
     };
     ws.onError = function()
     {
@@ -106,7 +122,7 @@ function connectWebSocket()
             {
                 clearTimeout(connectWebSocket);
             }
-        }, 2000);
+        }, 1500);
     }
 }
 
@@ -285,7 +301,6 @@ function setFeeder(feeder)
     var key = 'otp-feeder';
     var value = (typeof feeder == 'object')?(JSON.stringify(feeder)):'{}';
     window.localStorage.setItem(key, value);
-
 }
 
 function getFeeder()

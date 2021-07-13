@@ -6,8 +6,6 @@ import com.planetbiru.config.ConfigSMTP;
 import com.planetbiru.mail.PlanetMessageHandlerFactory;
 
 public class ServerEmail {
-
-
 	private PlanetMessageHandlerFactory handlerFactory = new PlanetMessageHandlerFactory();
 	
 	private String serverAddress = "localhost";
@@ -34,7 +32,21 @@ public class ServerEmail {
 	
 	public void stop() 
 	{
-		this.server.stop();	
+		try 
+		{
+			if(this.server != null)
+			{
+				this.server.stop();
+			}
+		}
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally 
+		{
+			  this.server = null;
+		}
 	}
 	
 	private void startService()

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigModem;
 import com.planetbiru.config.DataModem;
 import com.planetbiru.util.CommandLineExecutor;
@@ -23,10 +24,10 @@ public class DialUtil {
 		
 	}
 
-	public static void init(String path, String wvdialCommandConnect, String wvdialCommandDisconnect) {
-		DialUtil.configPath = path;
-		DialUtil.wvdialCommandConnect = wvdialCommandConnect;
-		DialUtil.wvdialCommandDisconnect = wvdialCommandDisconnect;
+	public static void start() {
+		DialUtil.configPath = Config.getWvdialSettingPath();
+		DialUtil.wvdialCommandConnect = Config.getWvdialCommandConnect();
+		DialUtil.wvdialCommandDisconnect = Config.getWvdialCommandDisconnect();
 		for (Map.Entry<String, DataModem> entry : ConfigModem.getModemData().entrySet())
 		{
 			String modemID = entry.getKey();

@@ -64,7 +64,7 @@ public class ConfigAPI {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		
 	}	
@@ -92,7 +92,7 @@ public class ConfigAPI {
 		}
 		catch (IOException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 	

@@ -69,7 +69,7 @@ public class ConfigNetWLAN {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		
 	}	
@@ -98,7 +98,7 @@ public class ConfigNetWLAN {
 		}
 		catch (IOException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 	
@@ -182,7 +182,7 @@ public class ConfigNetWLAN {
 		}
 		catch (IOException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	
 	}

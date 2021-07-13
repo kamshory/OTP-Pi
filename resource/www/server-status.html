@@ -7,21 +7,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1; user-scalable=no">
-    <meta name="description" content="OTP-Pi">
-    <meta name="author" content="Planetbiru">
-    <link rel="icon" href="favicon.ico">
     <link rel="icon" href="favicon.ico">
     <title>OTP-Pi</title>
     <link href="lib.assets/css/bootstrap.css" rel="stylesheet">
-    <link href="lib.assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-    <link href="lib.assets/css/navbar.css" rel="stylesheet">
-    <link href="lib.assets/css/style.css" rel="stylesheet">
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <script src="lib.assets/js/ie-emulation-modes-warning.js"></script>
-    <script src="lib.assets/js/ie10-viewport-bug-workaround.js"></script>
+    <link href="lib.assets/css/style.min.css" rel="stylesheet">
     <script src="lib.assets/js/jquery.min.js"></script>
     <script src="lib.assets/js/bootstrap.js"></script>
-    <script src="lib.assets/js/ws.js"></script>
+    <script src="lib.assets/js/ws.min.js"></script>
     <script>
         function handleIncommingMessage(message) {
             console.log("handleIncommingMessage", message);
@@ -49,37 +41,37 @@
 
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class=""><a href="./">Home</a></li>
-                        <li class=""><a href="ussd.html">USSD</a></li>
-                        <li class=""><a href="sms.html">SMS</a></li>
+                        <li><a href="./">Home</a></li>
+                        <li><a href="ussd.html">USSD</a></li>
+                        <li><a href="sms.html">SMS</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                 aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li class=""><a href="general-setting.html">General Setting</a></li>
-                                <li class=""><a href="admin.html">Administrator Setting</a></li>
-                                <li class=""><a href="api-setting.html">API Setting</a></li>
-                                <li class=""><a href="api-user.html">API User</a></li>
-                                <li class=""><a href="feeder-setting.html">Feeder Setting</a></li>
-                                <li class=""><a href="sms-setting.html">SMS Setting</a></li>
-                                <li class=""><a href="block-list.html">Block List</a></li>
-                                <li class=""><a href="modem.html">Modem</a></li>
-                                <li class=""><a href="email-account.html">Email Account</a></li>
-                                <li class=""><a href="network-setting.html">Network Setting</a></li>
-				                <li class=""><a href="firewall.html">Firewall</a></li>
-                                <li class=""><a href="keystore.html">Keystore</a></li>
+                                <li><a href="general-setting.html">General Setting</a></li>
+                                <li><a href="admin.html">Administrator Setting</a></li>
+                                <li><a href="api-setting.html">API Setting</a></li>
+                                <li><a href="api-user.html">API User</a></li>
+                                <li><a href="feeder-setting.html">Feeder Setting</a></li>
+                                <li><a href="sms-setting.html">SMS Setting</a></li>
+                                <li><a href="block-list.html">Block List</a></li>
+                                <li><a href="modem.html">Modem</a></li>
+                                <li><a href="email-account.html">Email Account</a></li>
+                                <li><a href="network-setting.html">Network Setting</a></li>
+                                <li><a href="firewall.html">Firewall</a></li>
+                                <li><a href="keystore.html">Keystore</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li class="dropdown-header">DDNS Setting</li>
-                                <li class=""><a href="ddns-record.html">DDNS Record</a></li>
-                                <li class=""><a href="cloudflare.html">Cloudflare Account</a></li>
-                                <li class=""><a href="noip.html">No IP Account</a></li>
-                                <li class=""><a href="dynu.html">Dynu Account</a></li>
-                                <li class=""><a href="afraid.html">Afraid Account</a></li>
+                                <li><a href="ddns-record.html">DDNS Record</a></li>
+                                <li><a href="cloudflare.html">Cloudflare Account</a></li>
+                                <li><a href="noip.html">No IP Account</a></li>
+                                <li><a href="dynu.html">Dynu Account</a></li>
+                                <li><a href="afraid.html">Afraid Account</a></li>
                             </ul>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class=""><a href="account.html">Account</a></li>
+                        <li><a href="account.html">Account</a></li>
                         <li><a href="logout.html">Logout</a></li>
                     </ul>
                 </div>
@@ -106,6 +98,9 @@
         </div>
         <!-- /container -->
     </div>
+<div class="waiting-server-up">
+    <div class="loading-icon"><span class="animation-pressure"><span></span></span></div>
+</div>
 </body>
 
 </html>

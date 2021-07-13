@@ -73,7 +73,7 @@ public class ConfigDDNS {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}	
 	}	
 	
@@ -113,7 +113,7 @@ public class ConfigDDNS {
 		}
 		catch (IOException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 	

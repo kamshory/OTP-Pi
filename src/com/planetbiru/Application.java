@@ -2,15 +2,22 @@ package com.planetbiru;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.util.Arrays;
+import java.util.List;
+
+import org.json.JSONObject;
 
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigNetDHCP;
 import com.planetbiru.config.ConfigNetEthernet;
 import com.planetbiru.config.ConfigNetWLAN;
+import com.planetbiru.constant.JsonKey;
 import com.planetbiru.gsm.DialUtil;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.receiver.ws.ClientReceiverWebSocket;
+import com.planetbiru.util.CommandLineExecutor;
 import com.planetbiru.util.FileConfigUtil;
+import com.planetbiru.util.ProcessKiller;
 import com.planetbiru.util.Utility;
 
 public class Application {
@@ -22,11 +29,30 @@ public class Application {
 	private static ServerRESTAPI rest;
 	private static ServerEmail smtp;
 	
+	public static void restartService()
+	{
+		JSONObject info = new JSONObject();
+		info.put(JsonKey.COMMAND, "server-shutdown");
+		ServerWebSocketServerAdmin.broadcastMessage(info.toString());	
+		preDestroy();
+		/**
+		 * Wait 50 mili seconds before restart the application
+		 */
+		try 
+		{
+			Thread.sleep(50);
+		} 
+		catch (InterruptedException e) 
+		{
+			Thread.currentThread().interrupt();
+		}
+		CommandLineExecutor.exec(Config.getRestartCommand());
+	}
 	public static void preDestroy()
 	{
-		Application.webAdmin.stop();
-		Application.rest.stop();
 		Application.smtp.stop();
+		Application.rest.stop();
+		Application.webAdmin.stop();
 		try 
 		{
 			Application.webSocketAdmin.stop();
@@ -34,19 +60,28 @@ public class Application {
 		catch (IOException | InterruptedException e) 
 		{
 			Thread.currentThread().interrupt();
-
 		}
 	}
 
 	public static void main(String[] args) {
 		
 		ConfigLoader.load("config.ini");	
+		String imageName = ConfigLoader.getConfig("otpbroker.image.name");
+		Config.setImageName(imageName);
+		
+		if(args != null)
+		{
+			List<String> list = Arrays.asList(args);
+			if(list.contains("--restart"))
+			{
+				ProcessKiller killer = new ProcessKiller(Config.getImageName(), true);
+				killer.stop();
+			}
+		}	
+		
+		ConfigLoader.init();
 		
 		Application.resetConfig();
-		
-		GSMUtil.start();
-		DialUtil.init(Config.getWvdialSettingPath(), Config.getWvdialCommandConnect(), Config.getWvdialCommandDisconnect());
-
 
 		Application.prepareSessionDir();
 
@@ -82,7 +117,10 @@ public class Application {
 		Application.rest = new ServerRESTAPI();
 		Application.rest.start();
 		
-		
+
+		GSMUtil.start();
+		DialUtil.start();
+
 		/**
 		 * SMTP Server for send email
 		 */

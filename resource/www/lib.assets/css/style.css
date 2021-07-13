@@ -1,10 +1,30 @@
-body{
+/*!
+ * IE10 viewport hack for Surface/desktop Windows 8 bug
+ * Copyright 2014-2019 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+ @-ms-viewport {
+  width: device-width;
+}
+@-o-viewport {
+  width: device-width;
+}
+@viewport {
+  width: device-width;
+}
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
   margin:0;
   padding:0;
   font-family:Sans-serif;
   font-size:14px;
   color:#333333;
   position: relative;
+}
+
+.navbar {
+  margin-bottom: 20px;
 }
 .all{
 	position:relative;

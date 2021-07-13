@@ -62,7 +62,7 @@ public class ConfigSMS {
 		} 
 		catch (IOException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 	
@@ -85,7 +85,7 @@ public class ConfigSMS {
 		} 
 		catch (IOException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 	

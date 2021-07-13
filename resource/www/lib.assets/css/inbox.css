@@ -1,0 +1,30 @@
+.message-item{
+    box-sizing: border-box;
+    padding-bottom: 10px;
+}
+.message-item .message-item-wrapper{
+    border: 1px solid #f0e18e;
+    padding: 12px 16px;
+    background: #fffadb;
+    position: relative;
+    border-radius: 7px;
+}
+.message-sender{
+    font-weight:bold;
+    float:left;
+
+}
+.message-date-time{
+    text-align:right;
+}
+.message-message{
+    padding-top:4px;
+}
+.message-item-selected .message-item-wrapper{
+    background: #fdf0a6;
+    border: 1px solid #e5d683;
+    box-shadow:inset 0px 0px 2px #e5d683;
+}
+.button-area{
+    padding-bottom:10px;
+}

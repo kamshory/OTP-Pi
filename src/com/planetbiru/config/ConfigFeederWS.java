@@ -63,7 +63,7 @@ public class ConfigFeederWS {
 		} 
 		catch (IOException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 	public static void save()

@@ -75,7 +75,7 @@ public class ConfigEmail {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		MailUtil.updateIndex();	
 	}	
@@ -113,7 +113,7 @@ public class ConfigEmail {
 		}
 		catch (IOException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		MailUtil.updateIndex();
 	}

@@ -48,7 +48,7 @@ public class ConfigFirewall {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}	
 	}	
 	public static void add(int port, String protocol) {
@@ -193,7 +193,7 @@ public class ConfigFirewall {
 		}
 		catch (IOException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 	

@@ -66,7 +66,6 @@ public class ConfigLoader {
 				e.printStackTrace();
 			}
 		} 
-		init();
 	}
 	
 	public static void init()
@@ -150,7 +149,9 @@ public class ConfigLoader {
 		long feederWsTimeout = ConfigLoader.getConfigLong("otpbroker.ws.timeout");
 		long feederWsRefresh = ConfigLoader.getConfigLong("otpbroker.ws.refresh.delay");
 		long feederWsReconnectDelay = ConfigLoader.getConfigLong("otpbroker.ws.reconnect.delay");
+		String imageName = ConfigLoader.getConfig("otpbroker.image.name");
 	
+		Config.setImageName(imageName);
 		Config.setSmtpSettingPath(smtpSettingPath);
 		ConfigSMTP.load(Config.getSmtpSettingPath());		
 

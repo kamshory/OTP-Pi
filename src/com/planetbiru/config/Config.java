@@ -81,7 +81,8 @@ public class Config {
 	private static String wvdialSettingPath = "";
 	private static String wvdialCommandConnect = "";
 	private static String wvdialCommandDisconnect = "";
-	private static String serverStatusSettingPath = ""; 
+	private static String serverStatusSettingPath = "";
+	private static String imageName = "otp.jar";
 	
 	private Config()
 	{
@@ -694,6 +695,14 @@ public class Config {
 
 	public static void setServerStatusSettingPath(String serverStatusSettingPath) {
 		Config.serverStatusSettingPath = serverStatusSettingPath;
+	}
+
+	public static String getImageName() {
+		return imageName;
+	}
+
+	public static void setImageName(String imageName) {
+		Config.imageName = imageName;
 	}
 	
 }

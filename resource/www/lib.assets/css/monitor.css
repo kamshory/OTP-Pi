@@ -1,0 +1,45 @@
+#monitor svg{
+    margin: auto;
+    width: 282px;
+    display: block;
+}
+#ledbody0, #ledbody1, #ledbody2, #ledbody3, #ledbody4 
+{
+    animation: change 0.1s infinite alternate;
+}
+@keyframes change {
+    0%{
+        fill: #eeeeee;
+        opacity: 1;
+    }
+        
+    50%{
+        fill: #ff0000;
+        opacity: 1;
+    }
+    100%{
+        fill: #eeeeee;
+        opacity: 1;
+    }
+}
+#phoneled{
+    animation:blink 0.1s infinite alternate;
+}
+#chipled{
+    animation:blink 0.1s infinite alternate;
+}
+@keyframes blink {
+    0%{
+        fill: #ffffff;
+        opacity: 1;
+    }
+        
+    50%{
+        fill: #ff0000;
+        opacity: 1;
+    }
+    100%{
+        fill: #ffffff;
+        opacity: 1;
+    }
+}

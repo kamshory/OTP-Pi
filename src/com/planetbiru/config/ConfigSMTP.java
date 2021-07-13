@@ -51,7 +51,7 @@ public class ConfigSMTP {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}		
 	}	
 
@@ -78,7 +78,7 @@ public class ConfigSMTP {
 		}
 		catch (IOException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 	
