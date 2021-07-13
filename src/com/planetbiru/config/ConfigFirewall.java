@@ -172,6 +172,7 @@ public class ConfigFirewall {
 	{
 		List<Integer> servicePorts = new ArrayList<>();
 		servicePorts.add(Config.getPortManager());
+		servicePorts.add(Config.getPortManager()+1);
 		servicePorts.add(ConfigAPI.getHttpPort());
 		servicePorts.add(ConfigAPI.getHttpsPort());
 		return servicePorts;

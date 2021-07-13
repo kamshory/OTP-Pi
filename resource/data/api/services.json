@@ -1,1 +1,1 @@
-{"httpsEnable":true,"blockingPath":"/api/block","httpPort":8889,"unblockingPath":"/api/unblock","httpsPort":10443,"httpEnable":true,"messagePath":"/api/message"}
+{"httpsEnable":false,"blockingPath":"/api/block","httpPort":8899,"unblockingPath":"/api/unblock","httpsPort":10443,"httpEnable":true,"messagePath":"/api/message"}

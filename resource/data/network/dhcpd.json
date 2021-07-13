@@ -1,0 +1,1 @@
+{"domainNameServersAddress":"192.168.0.11","maxLeaseTime":"360","ranges":[{"end":"192.168.0.100","begin":"192.168.0.11"}],"ipRouter":"192.168.0.1","netmask":"255.255.255.0","domainName":"otp.local","domainNameServers":["otp.local"],"subnetMask":"255.255.255.0","defaultLeaseTime":"240"}

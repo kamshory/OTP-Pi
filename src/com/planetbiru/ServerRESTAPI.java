@@ -103,6 +103,7 @@ public class ServerRESTAPI {
 			} 
 			catch (IOException e) 
 			{
+				System.out.println("Can not start HTTP Service at port "+ConfigAPI.getHttpPort());
 				e.printStackTrace();
 			}
 		}		

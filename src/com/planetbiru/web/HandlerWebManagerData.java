@@ -108,6 +108,10 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			this.handleDHCPSetting(httpExchange);
 		}
+		else if(path.startsWith("/data/network-wlan-setting/get"))
+		{
+			this.handleWLANSetting(httpExchange);
+		}
 		else if(path.startsWith("/data/network-ethernet-setting/get"))
 		{
 			this.handleEthernetSetting(httpExchange);

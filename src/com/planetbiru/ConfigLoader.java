@@ -41,6 +41,7 @@ public class ConfigLoader {
 	
 	public static void load(String configPath)
 	{
+		System.out.println("Load config "+configPath);
 		InputStream inputStream; 
 		inputStream = ConfigLoader.class.getClassLoader().getResourceAsStream(configPath);
 		if(inputStream != null) 

@@ -1,1 +1,1 @@
-{"maxPerTimeRange":0,"simCardPIN":"","sendIncommingSMS":true,"countryCode":"62","imei":"","smsCenter":"","connectionType":"","incommingInterval":0,"timeRange":0}
+{"maxPerTimeRange":0,"simCardPIN":"","logSMS":true,"recipientPrefixLength":5,"countryCode":"62","imei":"","monitorSMS":true,"smsCenter":"","connectionType":"","incommingInterval":0,"timeRange":0}

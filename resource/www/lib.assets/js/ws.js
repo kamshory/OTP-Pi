@@ -594,10 +594,10 @@ for(var i in modemData)
     {
     var id = i;
     var name = modemData[i].name;
-    var connectionType = modemData[i].connectionType;
+    var port = modemData[i].port;
     var opt = $('<option />');
     opt.attr('value', id);
-    opt.append(name+' ('+connectionType+')');
+    opt.append(name+' ('+port+')');
     $(selector).append(opt);
     }
 }

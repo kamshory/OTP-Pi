@@ -218,14 +218,37 @@ public class ServerInfo {
 					String used = arr2[2];
 					String avail = arr2[3];
 					String percent = arr2[4];
-					info.put(ServerInfo.TOTAL, Utility.atof(total));
-					info.put(ServerInfo.USED, Utility.atof(used));
-					info.put("available", Utility.atof(avail));
+					
+					double factorTotal = getFactor(total);
+					double factorUsed = getFactor(used);
+					double factorAvail = getFactor(avail);
+					
+					info.put(ServerInfo.TOTAL, Utility.atof(total) * factorTotal);
+					info.put(ServerInfo.USED, Utility.atof(used) * factorUsed);
+					info.put("available", Utility.atof(avail) * factorAvail);
 					info.put(ServerInfo.PERCENT_USED, Utility.atof(percent));
 				}
 			}
 		}	
 		return info;
+	}
+	
+	public static double getFactor(String value)
+	{
+		double factor = 1;
+		if(value.contains("G"))
+		{
+			factor = 1000000;
+		}
+		else if(value.contains("M"))
+		{
+			factor = 1000;
+		}
+		else if(value.toUpperCase().contains("K"))
+		{
+			factor = 1;
+		}
+		return factor;
 	}
 	
 	public static String fixingRawData(String result)

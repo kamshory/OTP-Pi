@@ -57,7 +57,7 @@ public class ConfigNetDHCP {
 					ConfigNetDHCP.ipRouter = json.optString("ipRouter", "");
 					ConfigNetDHCP.netmask = json.optString("netmask", "");
 					ConfigNetDHCP.subnetMask = json.optString("subnetMask", "");
-					ConfigNetDHCP.domainNameServersAddress = json.optString("domainNameSystemAddress", "");
+					ConfigNetDHCP.domainNameServersAddress = json.optString("domainNameServersAddress", "");
 					ConfigNetDHCP.defaultLeaseTime = json.optString("defaultLeaseTime", "");
 					ConfigNetDHCP.maxLeaseTime = json.optString("maxLeaseTime", "");
 					ConfigNetDHCP.ranges = json.optJSONArray("ranges");
@@ -132,7 +132,7 @@ public class ConfigNetDHCP {
 		config.put("ipRouter", ConfigNetDHCP.ipRouter);
 		config.put("netmask", ConfigNetDHCP.netmask);
 		config.put("subnetMask", ConfigNetDHCP.subnetMask);
-		config.put("domainNameSystemAddress", ConfigNetDHCP.domainNameServersAddress);
+		config.put("domainNameServersAddress", ConfigNetDHCP.domainNameServersAddress);
 		config.put("defaultLeaseTime", ConfigNetDHCP.defaultLeaseTime);
 		config.put("maxLeaseTime", ConfigNetDHCP.maxLeaseTime);
 		config.put("ranges", ConfigNetDHCP.ranges);

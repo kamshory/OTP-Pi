@@ -126,13 +126,16 @@ function updateCPUTemperatureStatus(data) {
 }
 
 function updateRAMStatus(data) {
-  var percentRAM = 100 * (data.memory.ram.used / data.memory.ram.total);
-  var totalRAM = data.memory.ram.total / (1024 * 1024);
-  var usedRAM = data.memory.ram.used / (1024 * 1024);
-  $('.ram').find('.info-value').text(percentRAM.toFixed(2) + "% (" + usedRAM.toFixed(2) + "GB / " + totalRAM.toFixed(2) + "GB" + ")");
-  $('.ram').find('.info-progress-inner').css({
-      'width': percentRAM.toFixed(2) + '%'
-  });
+    if(typeof data.memory.ram != 'undefined')
+    {
+        var percentRAM = 100 * (data.memory.ram.used / data.memory.ram.total);
+        var totalRAM = data.memory.ram.total / (1024 * 1024);
+        var usedRAM = data.memory.ram.used / (1024 * 1024);
+        $('.ram').find('.info-value').text(percentRAM.toFixed(2) + "% (" + usedRAM.toFixed(2) + "GB / " + totalRAM.toFixed(2) + "GB" + ")");
+        $('.ram').find('.info-progress-inner').css({
+            'width': percentRAM.toFixed(2) + '%'
+        });
+    }
 }
 
 function updateSWAPStatus(data) {

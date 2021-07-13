@@ -38,7 +38,6 @@ public class GSM {
     	this.setReady(false);
     	boolean isOpen = false;
     	
-    	System.out.println("public boolean connect(String portName) throws InvalidPortException");
     	System.out.println("PORT = "+portName);
     	try
     	{
