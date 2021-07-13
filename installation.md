@@ -4,6 +4,7 @@ Attach RTC DS3231 module to Raspberry Pi
 
 ```bash
 yum install -y nano
+yum install -y lm_sensors
 yum install -y sysstat
 yum install -y zip
 yum install -y unzip
@@ -98,6 +99,46 @@ yum install -y wvdial
 
 yum install -y java-1.8.0-openjdk
 
+
+firewall-cmd --permanent --add-port=8888/tcp 
+firewall-cmd --permanent --add-port=8889/tcp 
+firewall-cmd --permanent --add-port=80/tcp 
+firewall-cmd --permanent --add-port=443/tcp 
+firewall-cmd --reload
+
+
+echo -e '#!/bin/sh' > /var/otp-pi/start.sh
+echo -e '' >> /var/otp-pi/start.sh
+echo -e 'cd /var/otp-pi' >> /var/otp-pi/start.sh
+echo -e '/bin/java -jar /var/otp-pi/otp-pi.jar --restart' >> /var/otp-pi/start.sh
+echo -e '#!/bin/sh' > /var/otp-pi/restart.sh
+echo -e '' >> /var/otp-pi/restart.sh
+echo -e 'cd /var/otp-pi' >> /var/otp-pi/restart.sh
+echo -e '/bin/java -jar /var/otp-pi/otp-pi.jar --restart' >> /var/otp-pi/restart.sh
+echo -e '#!/bin/sh' > /var/otp-pi/stop.sh
+echo -e '' >> /var/otp-pi/stop.sh
+echo -e 'cd /var/otp-pi' >> /var/otp-pi/stop.sh
+echo -e '/bin/java -jar /var/otp-pi/otp-pi.jar --stop' >> /var/otp-pi/stop.sh
+echo -e '[Unit]' > /usr/lib/systemd/system/otp-pi.service
+echo -e 'Description=otp-pi' >> /usr/lib/systemd/system/otp-pi.service
+echo -e '' >> /usr/lib/systemd/system/otp-pi.service
+echo -e '[Service]' >> /usr/lib/systemd/system/otp-pi.service
+echo -e 'SuccessExitStatus=143' >> /usr/lib/systemd/system/otp-pi.service
+echo -e 'User=root' >> /usr/lib/systemd/system/otp-pi.service
+echo -e 'Type=simple' >> /usr/lib/systemd/system/otp-pi.service
+echo -e 'ExecStart=/var/otp-pi/start.sh' >> /usr/lib/systemd/system/otp-pi.service
+echo -e 'ExecReload=/var/otp-pi/restart.sh' >> /usr/lib/systemd/system/otp-pi.service
+echo -e 'ExecStop=/var/otp-pi/stop.sh' >> /usr/lib/systemd/system/otp-pi.service
+echo -e '' >> /usr/lib/systemd/system/otp-pi.service
+echo -e '[Install]' >> /usr/lib/systemd/system/otp-pi.service
+echo -e 'WantedBy=multi-user.target' >> /usr/lib/systemd/system/otp-pi.service
+systemctl enable otp-pi.service
+systemctl start otp-pi.service
+
+
+
 ```
+
+
 
 

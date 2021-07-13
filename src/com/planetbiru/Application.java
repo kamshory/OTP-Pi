@@ -34,7 +34,7 @@ public class Application {
 		JSONObject info = new JSONObject();
 		info.put(JsonKey.COMMAND, "server-shutdown");
 		ServerWebSocketServerAdmin.broadcastMessage(info.toString());	
-		preDestroy();
+		Application.stopAllServices();
 		/**
 		 * Wait 50 mili seconds before restart the application
 		 */
@@ -48,7 +48,7 @@ public class Application {
 		}
 		CommandLineExecutor.exec(Config.getRestartCommand());
 	}
-	public static void preDestroy()
+	public static void stopAllServices()
 	{
 		Application.smtp.stop();
 		Application.rest.stop();
@@ -76,6 +76,12 @@ public class Application {
 			{
 				ProcessKiller killer = new ProcessKiller(Config.getImageName(), true);
 				killer.stop();
+			}
+			if(list.contains("--stop"))
+			{
+				ProcessKiller killer = new ProcessKiller(Config.getImageName(), true);
+				killer.stop();
+				System.exit(0);
 			}
 		}	
 		

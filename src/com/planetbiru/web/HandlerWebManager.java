@@ -153,7 +153,7 @@ public class HandlerWebManager implements HttpHandler {
 					/**
 					 * Do nothing
 					 */
-					e.printStackTrace();
+					responseBody = e.getMessage().getBytes();
 				}
 			}
 		}
