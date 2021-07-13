@@ -1,5 +1,7 @@
 # Installation
 
+Attach RTC DS3231 module to Raspberry Pi
+
 ```bash
 yum install -y nano
 yum install -y sysstat
