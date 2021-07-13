@@ -55,7 +55,8 @@ public class RabbitMQReceiver{
     		}
 		}	
 		
-	    try {
+	    try 
+	    {
 			this.connection = factory.newConnection();
 			this.channel = connection.createChannel();
 		    this.channel.queueDeclare(ConfigFeederAMQP.getFeederAmqpChannel(), false, false, false, null);		    
@@ -76,11 +77,12 @@ public class RabbitMQReceiver{
 		        }
 				
 		    };
-		    channel.basicConsume("sms", true, consumer);
+		    ConfigFeederAMQP.setConnected(true);
+		    this.channel.basicConsume(ConfigFeederAMQP.getFeederAmqpChannel(), true, consumer);
 		} 
 		catch (IOException e) 
 		{
-			this.evtIOError(e);
+			this.evtIError(e);
 		} 
 		catch (TimeoutException e) 
 		{
@@ -105,6 +107,7 @@ public class RabbitMQReceiver{
 	}
 
 	private void evtTimeout(TimeoutException e) {
+		ConfigFeederAMQP.setConnected(false);
 		if(!this.reconnect)
 		{
 			this.reconnect = true;
@@ -113,7 +116,8 @@ public class RabbitMQReceiver{
 		this.reconnect = false;
 	}
 
-	private void evtIOError(IOException e) {
+	private void evtIError(IOException e) {
+		ConfigFeederAMQP.setConnected(false);
 		if(!this.reconnect)
 		{
 			this.reconnect = true;
@@ -123,6 +127,7 @@ public class RabbitMQReceiver{
 	}
 
 	private void evtOnClose(String message, ShutdownSignalException e) {
+		ConfigFeederAMQP.setConnected(false);
 		if(!this.reconnect)
 		{
 			this.reconnect = true;

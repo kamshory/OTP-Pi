@@ -28,6 +28,7 @@ public class Application {
 	private static ClientReceiverAMQP amqpReceiver;
 	private static ServerRESTAPI rest;
 	private static ServerEmail smtp;
+	private static Scheduller scheduller;
 	
 	public static void restartService()
 	{
@@ -132,6 +133,9 @@ public class Application {
 		 */
 		Application.smtp = new ServerEmail();
 		Application.smtp.start();
+		
+		Application.scheduller = new Scheduller();
+		Application.scheduller.start();
 		
 	}
 	public static void prepareSessionDir()
