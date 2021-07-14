@@ -86,48 +86,56 @@
         <form action="api-setting.html" method="post">
           <table class="config-table config-table-connection">
             <tbody>
-                <tr>
-                <td>HTTP Port</td>
-                <td><input type="number" name="http_port" id="http_port" value="80">	
-                </td>
-                <tr>
-                <td></td>
-                <td><label><input type="checkbox" name="http_enable" id="http_enable" value="1"> Enable HTTP</label>	
-                </td>
-                </tr>
-                </tr>
-                <tr>
-                <td>HTTPS Port</td>
-                <td><input type="number" name="https_port" id="https_port" value="443">	
-                </td>
-                </tr>
-                <tr>
-                <td></td>
-                <td><label><input type="checkbox" name="https_enable" id="https_enable" value="1">	Enable HTTPS</label>
-                </td>
-                </tr>
-                <tr>
-                <td>Message Path</td>
-                <td><input type="text" name="message_path" id="message_path" value="/api/sms">	
-                </td>
-                <tr>
-                <td>Blocking Path</td>
-                <td><input type="text" name="blocking_path" id="blocking_path" value="/api/block">	
-                </td>
-                </tr>
-                <tr>
-                <td>Unblocking Path</td>
-                <td><input type="text" name="unblocking_path" id="unblocking_path" value="/api/unblock">	
-                </td>
-                <tr>
-                <td></td>
-                <td>
-                <input type="submit" class="btn btn-success" name="save_api_setting" id="save_api_setting" value="Save">	
-                <input type="reset" class="btn btn-default" value="Reset">	
-                </td>
+              <tr>
+              <td>HTTP Port</td>
+              <td><input type="number" name="http_port" id="http_port" value="80">	
+              </td>
+              <tr>
+              <td></td>
+              <td><label><input type="checkbox" name="http_enable" id="http_enable" value="1"> Enable HTTP</label>	
+              </td>
               </tr>
-            </tbody>
-          </table>
+              </tr>
+              <tr>
+              <td>HTTPS Port</td>
+              <td><input type="number" name="https_port" id="https_port" value="443">	
+              </td>
+              </tr>
+              <tr>
+              <td></td>
+              <td><label><input type="checkbox" name="https_enable" id="https_enable" value="1">	Enable HTTPS</label>
+              </td>
+              </tr>
+              <tr>
+              <td>Message Path</td>
+              <td><input type="text" name="message_path" id="message_path" value="/api/message">	
+              </td>
+              <tr>
+              <td>SMS Path</td>
+              <td><input type="text" name="sms_path" id="sms_path" value="/api/sms">	
+              </td>
+              <tr>
+              <td>Email Path</td>
+              <td><input type="text" name="email_path" id="email_path" value="/api/email">	
+              </td>
+              <tr>
+              <td>Blocking Path</td>
+              <td><input type="text" name="blocking_path" id="blocking_path" value="/api/block">	
+              </td>
+              </tr>
+              <tr>
+              <td>Unblocking Path</td>
+              <td><input type="text" name="unblocking_path" id="unblocking_path" value="/api/unblock">	
+              </td>
+              <tr>
+              <td></td>
+              <td>
+              <input type="submit" class="btn btn-success" name="save_api_setting" id="save_api_setting" value="Save">	
+              <input type="reset" class="btn btn-default" value="Reset">	
+              </td>
+            </tr>
+          </tbody>
+        </table>
        
         </form>
         <script type="text/javascript">
@@ -138,20 +146,18 @@
                     dataType:"json",
                     success:function(data){
                         $('input[name="http_port"]').val(data.httpPort);
-                        $('input[name="https_port"]').val(data.httpsPort);
-                        
+                        $('input[name="https_port"]').val(data.httpsPort);                      
                         $('input[name="message_path"]').val(data.messagePath);
+                        $('input[name="sms_path"]').val(data.smsPath);
+                        $('input[name="email_path"]').val(data.emailPath);
                         $('input[name="blocking_path"]').val(data.blockingPath);
-                        $('input[name="unblocking_path"]').val(data.unblockingPath);
-                        
+                        $('input[name="unblocking_path"]').val(data.unblockingPath);                       
                         $('input[name="http_enable"]').prop("checked", data.httpEnable);                    
                         $('input[name="https_enable"]').prop("checked", data.httpsEnable);                    
                     }
                 });
             });
-        </script>
-
-    
+        </script>   
     </div>
     <!-- /container -->
   </div>

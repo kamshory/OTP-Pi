@@ -36,7 +36,7 @@ public class Application {
 		String currentJavaJarFilePath = currentJavaJarFile.getAbsolutePath();
 		String currentRootDirectoryPath = currentJavaJarFilePath.replace(currentJavaJarFile.getName(), "");
 
-		ConfigLoader.load(currentRootDirectoryPath+"/config.ini");	
+		ConfigLoader.load("config.ini");	
 		String imageName = ConfigLoader.getConfig("otpbroker.image.name");
 		Config.setImageName(imageName);
 		

@@ -832,20 +832,21 @@ public class HandlerWebManager implements HttpHandler {
 
 			boolean lHttpEnable = queryPairs.getOrDefault("http_enable", "").trim().equals("1");
 			boolean lHttpsEnable = queryPairs.getOrDefault("https_enable", "").trim().equals("1");
-	
 			
 			String lMessagePath = queryPairs.getOrDefault("message_path", "").trim();
+			String lSMSPath = queryPairs.getOrDefault("sms_path", "").trim();
+			String lEmailPath = queryPairs.getOrDefault("email_path", "").trim();
 			String lBlockingPath = queryPairs.getOrDefault("blocking_path", "").trim();
 			String lUnblockingPath = queryPairs.getOrDefault("unblocking_path", "").trim();
 			
 			JSONObject config = new JSONObject();			
 			config.put("httpPort", lHttpPort);
 			config.put("httpsPort", lHttpsPort);
-
 			config.put("httpEnable", lHttpEnable);
 			config.put("httpsEnable", lHttpsEnable);
-
 			config.put("messagePath", lMessagePath);
+			config.put("smsPath", lSMSPath);
+			config.put("emailPath", lEmailPath);
 			config.put("blockingPath", lBlockingPath);
 			config.put("unblockingPath", lUnblockingPath);
 			

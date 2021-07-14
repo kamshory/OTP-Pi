@@ -90,12 +90,7 @@ public class GSMUtil {
 		}
 		if(!found)
 		{
-			System.out.println("Add to list");
 			GSMUtil.gsmInstance.add(instance);
-		}
-		else
-		{
-			System.out.println("Allready exists");
 		}
 		instance.connect(modem.getPort());
 		
@@ -104,15 +99,17 @@ public class GSMUtil {
 	
 	public static void disconnect(String modemID) throws GSMException 
 	{
-		System.out.println("public static void disconnect(String modemID) throws GSMException ");
-		try {
+		try 
+		{
 			GSMUtil.get(modemID).disconnect();
 			GSMUtil.updateConnectedDevice();		
 			System.out.println("Disconnected");
-		} catch (GSMException e) {
+		} 
+		catch (GSMException e) 
+		{
+			e.printStackTrace();
 			System.out.println("Disconnected");
 			GSMUtil.updateConnectedDevice();		
-			e.printStackTrace();
 			throw new GSMException(e);
 		}
 	}

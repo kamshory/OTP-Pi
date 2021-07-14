@@ -22,6 +22,8 @@ public class ConfigAPI {
 	private static boolean httpEnable = true;	
 	private static boolean httpsEnable = false;	
 	private static String messagePath = "/";
+	private static String smsPath = "/";
+	private static String emailPath = "/";
 	private static String blockingPath = "/";
 	private static String unblockingPath = "/";
 	
@@ -49,6 +51,8 @@ public class ConfigAPI {
 					boolean lHttpEnable = json.optBoolean("httpEnable", false);	
 					boolean lHttpsEnable = json.optBoolean("httpsEnable", false);	
 					String lMessagePath = json.optString("messagePath", "");
+					String lSMSPath = json.optString("smsPath", "");
+					String lEmailPath = json.optString("emailPath", "");
 					String lBlockingPath = json.optString("blockingPath", "");
 					String lUnblockingPath = json.optString("unblockingPath", "");
 					
@@ -57,6 +61,8 @@ public class ConfigAPI {
 					ConfigAPI.httpEnable = lHttpEnable;
 					ConfigAPI.httpsEnable = lHttpsEnable;					
 					ConfigAPI.messagePath = lMessagePath;
+					ConfigAPI.smsPath = lSMSPath;
+					ConfigAPI.emailPath = lEmailPath;
 					ConfigAPI.blockingPath = lBlockingPath;
 					ConfigAPI.unblockingPath = lUnblockingPath;
 				}
@@ -122,9 +128,15 @@ public class ConfigAPI {
 		config.put("httpEnable", ConfigAPI.httpEnable);
 		config.put("httpsEnable", ConfigAPI.httpsEnable);
 		config.put("messagePath", ConfigAPI.messagePath);
+		config.put("smsPath", ConfigAPI.smsPath);
+		config.put("emailPath", ConfigAPI.emailPath);
 		config.put("blockingPath", ConfigAPI.blockingPath);
 		config.put("unblockingPath", ConfigAPI.unblockingPath);
 		return config;
+	}
+
+	public static JSONObject toJSONObject() {
+		return getJSONObject();
 	}
 
 	public static int getHttpPort() {
@@ -167,24 +179,39 @@ public class ConfigAPI {
 		ConfigAPI.messagePath = messagePath;
 	}
 
+	public static String getSmsPath() {
+		return smsPath;
+	}
+
+	public static void setSmsPath(String smsPath) {
+		ConfigAPI.smsPath = smsPath;
+	}
+
+	public static String getEmailPath() {
+		return emailPath;
+	}
+
+	public static void setEmailPath(String emailPath) {
+		ConfigAPI.emailPath = emailPath;
+	}
+
 	public static String getBlockingPath() {
 		return blockingPath;
 	}
 
-	public static void setBlockingPath(String blockinPath) {
-		ConfigAPI.blockingPath = blockinPath;
+	public static void setBlockingPath(String blockingPath) {
+		ConfigAPI.blockingPath = blockingPath;
 	}
 
 	public static String getUnblockingPath() {
 		return unblockingPath;
 	}
 
-	public static void setUnblockingPath(String unblockinPath) {
-		ConfigAPI.unblockingPath = unblockinPath;
+	public static void setUnblockingPath(String unblockingPath) {
+		ConfigAPI.unblockingPath = unblockingPath;
 	}
 
-	public static JSONObject toJSONObject() {
-		return getJSONObject();
-	}
+	
+	
 	
 }

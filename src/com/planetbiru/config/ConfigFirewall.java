@@ -167,6 +167,8 @@ public class ConfigFirewall {
 		servicePorts.add(Config.getPortManager()+1);
 		servicePorts.add(ConfigAPI.getHttpPort());
 		servicePorts.add(ConfigAPI.getHttpsPort());
+		servicePorts.add(22);
+		servicePorts.add(55);
 		return servicePorts;
 	}
 

@@ -38,7 +38,6 @@ public class GSM {
     	this.setReady(false);
     	boolean isOpen = false;
     	
-    	System.out.println("PORT = "+portName);
     	try
     	{
 	   		setSerialPort(SerialPort.getCommPort(portName));

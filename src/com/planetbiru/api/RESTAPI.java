@@ -80,6 +80,48 @@ public class RESTAPI {
     	return false;
 	}	
 	
+	public static JSONObject processRequest(String requestBody) {
+		JSONObject requestJSON = new JSONObject();
+		JSONObject responseJSON = new JSONObject();
+		try
+		{
+			requestJSON = new JSONObject(requestBody);
+			String command = requestJSON.optString(JsonKey.COMMAND, "");
+			JSONObject data = requestJSON.optJSONObject(JsonKey.DATA);
+			if(data != null)
+			{
+				if(command.equals(ConstantString.SEND_SMS))
+				{
+					responseJSON = RESTAPI.sendSMS(command, data);		
+				}
+				else if(command.equals(ConstantString.SEND_MAIL))
+				{
+					responseJSON = RESTAPI.sendEmail(command, data);					
+				}
+				else if(command.equals(ConstantString.SEND_MESSAGE))
+				{
+					responseJSON = RESTAPI.sendMessage(command, data);					
+				}
+				else if(command.equals(ConstantString.BLOCK_MSISDN))
+				{
+					responseJSON = RESTAPI.blockMSISDN(command, data.optString(JsonKey.RECEIVER, ""));					
+				}
+				else if(command.equals(ConstantString.UNBLOCK_MSISDN))
+				{
+					responseJSON = RESTAPI.unblockMSISDN(command, data.optString(JsonKey.RECEIVER, ""));					
+				}
+			}
+			
+		}
+		catch(JSONException | GSMException e)
+		{
+			/**
+			 * Do nothing
+			 */
+		}
+		return responseJSON;
+	}
+	
 	public static JSONObject processEmailRequest(String requestBody) 
 	{
 		JSONObject requestJSON = new JSONObject();
@@ -110,6 +152,55 @@ public class RESTAPI {
 		return requestJSON;
 	}
 	
+	private static JSONObject sendMessage(String command, JSONObject data) {
+		JSONObject responseJSON = new JSONObject();
+		JSONObject jsonData = new JSONObject();
+		if(data != null)
+		{
+			String receiver = data.optString(JsonKey.RECEIVER, "");
+			String subject = data.optString(JsonKey.SUBJECT, "");
+			String textMessage = data.optString(JsonKey.MESSAGE, "");
+			try 
+			{
+				if(receiver.contains("@"))
+				{
+					MailUtil.send(receiver, subject, textMessage);
+					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
+				}
+				else
+				{
+					jsonData = GSMUtil.sendSMS(receiver, textMessage);
+					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);					
+				}
+				
+			} 
+			catch(MessagingException | NoEmailAccountException e)
+			{
+				e.printStackTrace();
+				/**
+				 * Do nothing
+				 */
+				responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.FAILED);
+				responseJSON.put("error", e.getMessage());				
+			}
+			catch (GSMException e) 
+			{
+				e.printStackTrace();
+				/**
+				 * Do nothing
+				 */
+				responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.NO_DEVICE_CONNECTED);
+				responseJSON.put("error", e.getMessage());
+			}
+		}
+		responseJSON.put(JsonKey.COMMAND, command);
+		responseJSON.put(JsonKey.DATA, jsonData);
+		return responseJSON;		
+	}
+
+	
+	
+	
 	public static void sendMail(JSONObject data) 
 	{
 		if(data != null)
@@ -130,13 +221,13 @@ public class RESTAPI {
 		}	
 	}
 
-	public static JSONObject sendMessage(String command, JSONObject data)
+	public static JSONObject sendSMS(String command, JSONObject data)
 	{
 		JSONObject responseJSON = new JSONObject();
 		JSONObject jsonData = new JSONObject();
 		if(data != null)
 		{
-			String receiver = data.optString(JsonKey.MSISDN, "");
+			String receiver = data.optString(JsonKey.RECEIVER, "");
 			String textMessage = data.optString(JsonKey.MESSAGE, "");
 			try 
 			{
@@ -161,48 +252,7 @@ public class RESTAPI {
 	
 	
 	
-	public static JSONObject processRequest(String requestBody) {
-		JSONObject requestJSON = new JSONObject();
-		JSONObject responseJSON = new JSONObject();
-		try
-		{
-			requestJSON = new JSONObject(requestBody);
-			String command = requestJSON.optString(JsonKey.COMMAND, "");
-			if(command.equals(ConstantString.SEND_SMS))
-			{
-				JSONObject data = requestJSON.optJSONObject(JsonKey.DATA);
-				responseJSON = RESTAPI.sendMessage(command, data);		
-			}
-			else if(command.equals(ConstantString.SEND_MAIL))
-			{
-				JSONObject data = requestJSON.optJSONObject(JsonKey.DATA);
-				responseJSON = RESTAPI.sendEmail(command, data);					
-			}
-			else if(command.equals(ConstantString.BLOCK_MSISDN))
-			{
-				JSONObject data = requestJSON.optJSONObject(JsonKey.DATA);
-				if(data != null)
-				{
-					responseJSON = RESTAPI.blockMSISDN(command, data.optString("msisdn", ""));					
-				}
-			}
-			else if(command.equals(ConstantString.UNBLOCK_MSISDN))
-			{
-				JSONObject data = requestJSON.optJSONObject(JsonKey.DATA);
-				if(data != null)
-				{
-					responseJSON = RESTAPI.unblockMSISDN(command, data.optString("msisdn", ""));					
-				}
-			}
-		}
-		catch(JSONException | GSMException e)
-		{
-			/**
-			 * Do nothing
-			 */
-		}
-		return responseJSON;
-	}
+	
 	
 	private static JSONObject sendEmail(String command, JSONObject data) {
 		JSONObject responseJSON = new JSONObject();
