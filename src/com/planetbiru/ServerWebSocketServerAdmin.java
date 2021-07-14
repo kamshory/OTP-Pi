@@ -2,6 +2,7 @@ package com.planetbiru;
 
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.java_websocket.WebSocket;
@@ -23,7 +24,7 @@ import com.planetbiru.user.WebUserAccount;
 
 public class ServerWebSocketServerAdmin extends WebSocketServer{
 
-	private static List<WebSocketConnection> clients = new ArrayList<>();
+	private static Collection<WebSocketConnection> clients = new ArrayList<>();
 	public ServerWebSocketServerAdmin(InetSocketAddress address) {
 		super(address);
 	}
