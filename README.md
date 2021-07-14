@@ -315,7 +315,7 @@ Untuk melakukan reset device, lakukan langkah-langkah sebagai berikut:
 
 Baik WebSocket maupun Message Broker menggunakan sebuah channel yang dapat diseting dari kedua sisi (pengirim dan penerima).
 
-Untuk menggunakan WebSocket, silakan gunakan library WSMessageBrocker dengan link https://github.com/kamshory/WSMessageBrocker atau anda dapat membuatnya sendiri. 
+Untuk menggunakan WebSocket, silakan gunakan library WSMessageBrocker dengan link https://github.com/kamshory/Messenger atau anda dapat membuatnya sendiri. 
 
 Untuk menggunakan Message Broker, silakan gunakan RabbitMQ dengan link https://www.rabbitmq.com/
 
@@ -601,7 +601,7 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | `data[index]`.data | Objek | Data untuk OTP-Pi | 
 | `data[index].data`.msisdn | String | Nomor MSISDN yang akan dibuka blokir |
 
-Server WSMessageBroker berbasis menggunakan protokol WebSocket dan PHP. Silakan download WSMessageBroker di https://github.com/kamshory/WSMessageBrocker 
+Server WSMessageBroker berbasis menggunakan protokol WebSocket dan PHP. Silakan download WSMessageBroker di https://github.com/kamshory/Messenger 
 
 Client untuk mengirimkan SMS ke WSMessageBroker dapat didownload di https://github.com/kamshory/WSClient
 
