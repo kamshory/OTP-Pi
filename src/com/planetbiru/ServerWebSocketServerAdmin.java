@@ -3,8 +3,6 @@ package com.planetbiru;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
-
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
@@ -41,6 +39,9 @@ public class ServerWebSocketServerAdmin extends WebSocketServer{
 
 	@Override
 	public void onMessage(WebSocket conn, String message) {
+		/**
+		 * Do nothing
+		 */
 	}
 
 	@Override
@@ -70,6 +71,9 @@ public class ServerWebSocketServerAdmin extends WebSocketServer{
 	
 	@Override
 	public void onStart() {
+		/**
+		 * Do nothing
+		 */
 	}
 	
 	private void remove(WebSocket conn) {
@@ -90,6 +94,7 @@ public class ServerWebSocketServerAdmin extends WebSocketServer{
 			client.send(message);
 		}
 	}
+	
 	public static void broadcastMessage(String message, String path)
 	{
 		for(WebSocketConnection client : ServerWebSocketServerAdmin.clients)
