@@ -23,7 +23,7 @@ import com.planetbiru.user.WebUserAccount;
 
 public class ServerWebSocketServerAdmin extends WebSocketServer{
 
-	public static List<WebSocketConnection> clients = new ArrayList<>();
+	private static List<WebSocketConnection> clients = new ArrayList<>();
 	public ServerWebSocketServerAdmin(InetSocketAddress address) {
 		super(address);
 	}
