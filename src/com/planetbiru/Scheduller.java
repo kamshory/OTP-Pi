@@ -22,8 +22,6 @@ public class Scheduller extends Thread{
 
 	private long nextValidNTP = 0;
 
-	private String cronExpressionNTP = "0 * * * * ?";
-
 	private long nextValidDDNSUpdate = 0;
 
 	private String cronExpressionDDNSUpdate = "0 * * * * ?";

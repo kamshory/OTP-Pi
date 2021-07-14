@@ -1,12 +1,12 @@
 package com.planetbiru;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.Arrays;
 import java.util.List;
 
 import org.json.JSONObject;
-
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigNetDHCP;
 import com.planetbiru.config.ConfigNetEthernet;
@@ -30,43 +30,13 @@ public class Application {
 	private static ServerEmail smtp;
 	private static Scheduller scheduller;
 	
-	public static void restartService()
-	{
-		JSONObject info = new JSONObject();
-		info.put(JsonKey.COMMAND, "server-shutdown");
-		ServerWebSocketServerAdmin.broadcastMessage(info.toString());	
-		Application.stopAllServices();
-		/**
-		 * Wait 50 mili seconds before restart the application
-		 */
-		try 
-		{
-			Thread.sleep(50);
-		} 
-		catch (InterruptedException e) 
-		{
-			Thread.currentThread().interrupt();
-		}
-		CommandLineExecutor.exec(Config.getRestartCommand());
-	}
-	public static void stopAllServices()
-	{
-		Application.smtp.stop();
-		Application.rest.stop();
-		Application.webAdmin.stop();
-		try 
-		{
-			Application.webSocketAdmin.stop();
-		} 
-		catch (IOException | InterruptedException e) 
-		{
-			Thread.currentThread().interrupt();
-		}
-	}
-
 	public static void main(String[] args) {
-		
-		ConfigLoader.load("config.ini");	
+
+		File currentJavaJarFile = new File(Application.class.getProtectionDomain().getCodeSource().getLocation().getPath());   
+		String currentJavaJarFilePath = currentJavaJarFile.getAbsolutePath();
+		String currentRootDirectoryPath = currentJavaJarFilePath.replace(currentJavaJarFile.getName(), "");
+
+		ConfigLoader.load(currentRootDirectoryPath+"/config.ini");	
 		String imageName = ConfigLoader.getConfig("otpbroker.image.name");
 		Config.setImageName(imageName);
 		
@@ -138,6 +108,43 @@ public class Application {
 		Application.scheduller.start();
 		
 	}
+	
+	public static void restartService()
+	{
+		JSONObject info = new JSONObject();
+		info.put(JsonKey.COMMAND, "server-shutdown");
+		ServerWebSocketServerAdmin.broadcastMessage(info.toString());	
+		Application.stopAllServices();
+		/**
+		 * Wait 50 mili seconds before restart the application
+		 */
+		try 
+		{
+			Thread.sleep(50);
+		} 
+		catch (InterruptedException e) 
+		{
+			Thread.currentThread().interrupt();
+		}
+		CommandLineExecutor.exec(Config.getRestartCommand());
+	}
+	
+	public static void stopAllServices()
+	{
+		Application.smtp.stop();
+		Application.rest.stop();
+		Application.webAdmin.stop();
+		try 
+		{
+			Application.webSocketAdmin.stop();
+		} 
+		catch (IOException | InterruptedException e) 
+		{
+			Thread.currentThread().interrupt();
+		}
+	}
+	
+	
 	public static void prepareSessionDir()
 	{
 		String fileName = FileConfigUtil.fixFileName(Utility.getBaseDir()+"/"+Config.getSessionFilePath()+"/ses");

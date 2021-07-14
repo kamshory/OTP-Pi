@@ -1,5 +1,6 @@
 package com.planetbiru;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map.Entry;
@@ -22,12 +23,12 @@ import com.planetbiru.config.ConfigVendorCloudflare;
 import com.planetbiru.config.ConfigVendorDynu;
 import com.planetbiru.config.ConfigVendorNoIP;
 import com.planetbiru.config.PropertyLoader;
-import com.planetbiru.gsm.DialUtil;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.gsm.SMSLogger;
 import com.planetbiru.receiver.amqp.RabbitMQReceiver;
 import com.planetbiru.receiver.ws.WebSocketClientImpl;
 import com.planetbiru.user.WebUserAccount;
+import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.ServerStatus;
 import com.planetbiru.util.Utility;
 
@@ -39,9 +40,8 @@ public class ConfigLoader {
 		
 	}
 	
-	public static void load(String configPath)
+	public static void loadRelative(String configPath)
 	{
-		System.out.println("Load config "+configPath);
 		InputStream inputStream; 
 		inputStream = ConfigLoader.class.getClassLoader().getResourceAsStream(configPath);
 		if(inputStream != null) 
@@ -67,6 +67,31 @@ public class ConfigLoader {
 				e.printStackTrace();
 			}
 		} 
+	}
+	public static void load(String configPath)
+	{
+		configPath = FileConfigUtil.fixFileName(configPath);
+		try(
+				FileInputStream inputStream = new FileInputStream(configPath)
+		) 
+		{
+			ConfigLoader.properties.load(inputStream);			
+			for (Entry<Object, Object> entry : ConfigLoader.properties.entrySet()) {
+			    String key = (String) entry.getKey();
+			    String keyEnv = key.toUpperCase().replace(".", "_");
+			    String value = (String) entry.getValue();		    
+			    String valueEnv = System.getenv(keyEnv);
+			    if(valueEnv != null)
+			    {
+			    	value = valueEnv;
+			    }
+			    ConfigLoader.properties.setProperty(key, value);			    
+			}
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	public static void init()
@@ -154,7 +179,6 @@ public class ConfigLoader {
 	
 		Config.setImageName(imageName);
 		Config.setSmtpSettingPath(smtpSettingPath);
-		ConfigSMTP.load(Config.getSmtpSettingPath());		
 
 		
 		Config.setApiSettingPath(apiSettingPath);
@@ -184,7 +208,6 @@ public class ConfigLoader {
 		Config.setSshEnable(sshEnable);
 		Config.setRebootCommand(rebootCommand);
 			
-		
 		Config.setBaseDirConfig(baseDirConfig);		
 		Config.setUserSettingPath(userSettingPath);
 		Config.setDocumentRoot(documentRoot);
@@ -204,7 +227,6 @@ public class ConfigLoader {
 		Config.setDynuSettingPath(dynuSettingPath);
 		Config.setAfraidSettingPath(afraidSettingPath);
 		Config.setGeneralSettingPath(generalSettingPath);
-		Config.setSmtpSettingPath(smtpSettingPath);
 		Config.setRestartCommand(restartCommand);
 		Config.setCleanupCommand(cleanupCommand);
 		Config.setMimeSettingPath(mimeSettingPath);
@@ -215,15 +237,11 @@ public class ConfigLoader {
 		Config.setShowTraffic(showTraffic);
 		Config.setServerPort(serverPort);
 		Config.setUserAPISettingPath(userAPISettingPath);
-		ConfigAPIUser.load(Config.getUserAPISettingPath());
 		Config.setKeystoreSettingPath(keystoreSettingPath);
 		Config.setDebugModem(debugModem);
 		Config.setSmsLogPath(smsLogPath);
 		Config.setKeystoreDataSettingPath(keystoreDataSettingPath);
 		Config.setSmsSettingPath(smsSettingPath);	
-		
-		
-		
 		Config.setAfraidSettingPath(afraidSettingPath);	
 		Config.setDdnsUpdate(ddnsUpdate);
 		Config.setTimeUpdate(timeUpdate);
@@ -231,13 +249,9 @@ public class ConfigLoader {
 		Config.setCronAMQPEnable(cronAMQPEnable);
 		Config.setTimeResolution(timeResolution);
 		Config.setServerStatusSettingPath(serverStatusSettingPath);
-		
-		
-		
-		
-		
-		
-		
+
+		ConfigSMTP.load(Config.getSmtpSettingPath());		
+		ConfigAPIUser.load(Config.getUserAPISettingPath());
 		
 		ConfigDDNS.load(Config.getDdnsSettingPath());
 		ConfigVendorCloudflare.load(Config.getCloudflareSettingPath());
@@ -246,8 +260,6 @@ public class ConfigLoader {
 		ConfigVendorAfraid.load(Config.getAfraidSettingPath());		
 		ConfigGeneral.load(Config.getGeneralSettingPath());		
 		ServerStatus.load(Config.getServerStatusSettingPath());
-		
-		
 		ConfigFeederWS.setFeederWsEnable(feederWsEnable);
 		ConfigFeederWS.setFeederWsSSL(feederWsSSL);
 		ConfigFeederWS.setFeederWsAddress(feederWsAddress);
@@ -259,36 +271,23 @@ public class ConfigLoader {
 		ConfigFeederWS.setFeederWsTimeout(feederWsTimeout);
 		ConfigFeederWS.setFeederWsReconnectDelay(feederWsReconnectDelay);
 		ConfigFeederWS.setFeederWsRefresh(feederWsRefresh);		
-
 		ConfigFeederWS.load(Config.getFeederWSSettingPath());
-		
 		ConfigSMS.load(Config.getSmsSettingPath());
-		
 		ConfigBlocking.setCountryCode(ConfigSMS.getCountryCode());
 		ConfigBlocking.load(Config.getBlockingSettingPath());
-
 		ConfigModem.load(Config.getModemSettingPath());
 		if(ConfigSMS.isLogSMS())
 		{
 			SMSLogger.setPath(Config.getSmsLogPath());
 		}
-
-		
 		GSMUtil.getCallerType().put(Utility.getClassName(RabbitMQReceiver.class.toString()), "amqp");
 		GSMUtil.getCallerType().put(Utility.getClassName(WebSocketClientImpl.class.toString()), "ws");
 		GSMUtil.getCallerType().put(Utility.getClassName(RESTAPI.class.toString()), "rest");
-		
 		ConfigAPI.load(Config.getApiSettingPath());	
-		
 		/**
 		 * Override email setting if exists
 		 */
 		ConfigEmail.load(Config.getEmailSettingPath());
-		
-		
-		ConfigDDNS.load(Config.getDdnsSettingPath());
-		ConfigVendorCloudflare.load(Config.getCloudflareSettingPath());
-		ConfigVendorNoIP.load(Config.getNoIPSettingPath());
 		ConfigGeneral.load(Config.getGeneralSettingPath());
 		ConfigAPI.load(Config.getApiSettingPath());
 		WebUserAccount.load(Config.getUserSettingPath());			

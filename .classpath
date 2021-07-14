@@ -16,7 +16,7 @@
 	<classpathentry kind="lib" path="jar/guava-19.0.jar"/>
 	<classpathentry kind="lib" path="jar/jcabi-ssh-1.6.1.jar"/>
 	<classpathentry kind="lib" path="jar/jsch-0.1.54.jar"/>
-	<classpathentry kind="lib" path="jar/Java-WebSocket-1.5.1.jar" sourcepath="jar/Java-WebSocket-1.5.1.jar"/>
+	<classpathentry kind="lib" path="jar/Java-WebSocket-1.5.1.jar"/>
 	<classpathentry kind="lib" path="jar/log4j-core-2.14.1.jar"/>
 	<classpathentry kind="lib" path="jar/slf4j-api-1.7.31.jar"/>
 	<classpathentry kind="lib" path="jar/slf4j-simple-1.7.31.jar"/>

@@ -59,20 +59,16 @@ public class ConfigFirewall {
 		record.put("protocol", protocol);
 		record.put("active", true);
 		record.put("lastUpdate", System.currentTimeMillis());
-		List<Integer> servicePorts = ConfigFirewall.getServicePorts();
-		if(!servicePorts.contains(record.optInt("port")))
+		try 
 		{
-			try 
-			{
-				ConfigFirewall.records.put(record);		
-				ConfigFirewall.activate(record);
-			} 
-			catch (IOException e) 
-			{
-				/**
-				 * Do nothing
-				 */
-			}
+			ConfigFirewall.records.put(record);		
+			ConfigFirewall.activate(record);
+		} 
+		catch (IOException e) 
+		{
+			/**
+			 * Do nothing
+			 */
 		}
 	}
 	
@@ -112,22 +108,18 @@ public class ConfigFirewall {
 	public static void activate(String id)
 	{
 		JSONObject record = ConfigFirewall.get(id);
-		List<Integer> servicePorts = ConfigFirewall.getServicePorts();
-		if(!servicePorts.contains(record.optInt("port")))
+		try 
 		{
-			try 
-			{
-				ConfigFirewall.activate(record);
-			} 
-			catch (IOException e) 
-			{
-				/**
-				 * Do nothing
-				 */
-			}
-			ConfigFirewall.get(id).put("active", true);
-			ConfigFirewall.get(id).put("lastUpdate", System.currentTimeMillis());
+			ConfigFirewall.activate(record);
+		} 
+		catch (IOException e) 
+		{
+			/**
+			 * Do nothing
+			 */
 		}
+		ConfigFirewall.get(id).put("active", true);
+		ConfigFirewall.get(id).put("lastUpdate", System.currentTimeMillis());
 	}
 	
 	public static void deactivate(String id)
