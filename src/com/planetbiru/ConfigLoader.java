@@ -29,6 +29,7 @@ import com.planetbiru.receiver.amqp.RabbitMQReceiver;
 import com.planetbiru.receiver.ws.WebSocketClientImpl;
 import com.planetbiru.user.WebUserAccount;
 import com.planetbiru.util.FileConfigUtil;
+import com.planetbiru.util.FileNotFoundException;
 import com.planetbiru.util.ServerStatus;
 import com.planetbiru.util.Utility;
 
@@ -68,7 +69,7 @@ public class ConfigLoader {
 			}
 		} 
 	}
-	public static void load(String configPath)
+	public static void load(String configPath) throws FileNotFoundException
 	{
 		configPath = FileConfigUtil.fixFileName(configPath);
 		try(
@@ -90,7 +91,7 @@ public class ConfigLoader {
 		} 
 		catch (IOException e) 
 		{
-			e.printStackTrace();
+			throw new FileNotFoundException(e.getMessage());
 		}
 	}
 	

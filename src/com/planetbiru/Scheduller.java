@@ -52,8 +52,7 @@ public class Scheduller extends Thread{
 		this.cronExpressionDeviceCheck = ConfigLoader.getConfig("otpbroker.cron.expression.device");
 		this.cronExpressionAMQPCheck = ConfigLoader.getConfig("otpbroker.cron.expression.amqp");
 		this.cronExpressionDDNSUpdate = ConfigLoader.getConfig("otpbroker.cron.expression.general");
-		this.cronExpressionStatusServer = ConfigLoader.getConfig("otpbroker.cron.expression.server.status");
-		
+		this.cronExpressionStatusServer = ConfigLoader.getConfig("otpbroker.cron.expression.server.status");		
 		this.updateServerStatus = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.server.status");
 		this.updateDDNS = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.ddns");
 		this.updateAMQP = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.amqp");
@@ -66,15 +65,13 @@ public class Scheduller extends Thread{
 		do
 		{
 			Date currentTime = new Date();
-			System.out.println("Run at "+currentTime);
 			/**
 			 * Update time
 			 */
 			if(!ConfigGeneral.getNtpUpdateInterval().isEmpty())
 			{
 				this.updateTime(currentTime, ConfigGeneral.getNtpUpdateInterval());
-			}
-			
+			}			
 			
 			/**
 			 * Update DDNS
@@ -82,8 +79,7 @@ public class Scheduller extends Thread{
 			if(this.updateDDNS)
 			{
 				this.updateDDNS(currentTime);
-			}
-			
+			}			
 
 			/**
 			 * Check modem
@@ -93,16 +89,13 @@ public class Scheduller extends Thread{
 				this.modemCheck(currentTime);
 			}
 			
-			
-			
 			/**
 			 * Check AMQP
 			 */
 			if(this.updateAMQP)
 			{
 				this.amqpCheck(currentTime);
-			}
-			
+			}			
 			
 			/**
 			 * Status server
@@ -111,14 +104,7 @@ public class Scheduller extends Thread{
 			{
 				this.updateServerStatus(currentTime);
 			}
-			
-			
-			
-			
 			this.delay(this.cronInterval);
-			
-			
-			
 		}
 		while(this.running);
 		
@@ -132,7 +118,6 @@ public class Scheduller extends Thread{
 			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
 			if(currentTime.getTime() > this.nextValidNTP)
 			{
-				System.out.println("Update NTP");
 				this.updateTime();
 				this.nextValidNTP = nextValidTimeAfter.getTime();
 			}
@@ -152,7 +137,6 @@ public class Scheduller extends Thread{
 			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
 			if(currentTime.getTime() > this.nextValidDDNSUpdate)
 			{
-				System.out.println("Update DDNS");
 				this.updateTime();
 				this.nextValidDDNSUpdate = nextValidTimeAfter.getTime();
 			}
@@ -172,7 +156,6 @@ public class Scheduller extends Thread{
 			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
 			if(currentTime.getTime() > this.nextValidDeviceCheck)
 			{
-				System.out.println("Check modem");
 				this.modemCheck();
 				this.nextValidDeviceCheck = nextValidTimeAfter.getTime();
 			}
@@ -192,7 +175,6 @@ public class Scheduller extends Thread{
 			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
 			if(currentTime.getTime() > this.nextValidAMQPCheck)
 			{
-				System.out.println("Check AMQP");
 				this.amqpCheck();
 				this.nextValidAMQPCheck = nextValidTimeAfter.getTime();
 			}
@@ -212,14 +194,15 @@ public class Scheduller extends Thread{
 			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
 			if(currentTime.getTime() > this.nextValidStatusServer)
 			{
-				System.out.println("Status server");
 				this.updateServerStatus();
 				this.nextValidStatusServer = nextValidTimeAfter.getTime();
 			}
 		}
 		catch(JSONException | ParseException e)
 		{
-			e.printStackTrace();
+			/**
+			 * Do nothing
+			 */
 		}
 		
 	}
@@ -228,7 +211,7 @@ public class Scheduller extends Thread{
 	{
 		try 
 		{
-			Thread.sleep(this.cronInterval);
+			Thread.sleep(interval);
 		} 
 		catch (InterruptedException e) 
 		{
@@ -288,17 +271,18 @@ public class Scheduller extends Thread{
 			{
 				exp = new CronExpression(cronExpression);
 				Date currentTime = new Date();
-				Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
-	
-				if(currentTime.getTime() > nextValidNTP)
+				Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);	
+				if(currentTime.getTime() > this.nextValidNTP)
 				{
 					DeviceAPI.syncTime(ntpServer);
-					nextValidNTP = nextValidTimeAfter.getTime();
+					this.nextValidNTP = nextValidTimeAfter.getTime();
 				}
 			}
 			catch(JSONException | ParseException e)
 			{
-
+				/**
+				 * Do nothing
+				 */
 			}
 		}
 	}

@@ -17,6 +17,7 @@ import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.receiver.ws.ClientReceiverWebSocket;
 import com.planetbiru.util.CommandLineExecutor;
 import com.planetbiru.util.FileConfigUtil;
+import com.planetbiru.util.FileNotFoundException;
 import com.planetbiru.util.ProcessKiller;
 import com.planetbiru.util.Utility;
 
@@ -36,77 +37,124 @@ public class Application {
 		String currentJavaJarFilePath = currentJavaJarFile.getAbsolutePath();
 		String currentRootDirectoryPath = currentJavaJarFilePath.replace(currentJavaJarFile.getName(), "");
 
-		ConfigLoader.load("config.ini");	
-		String imageName = ConfigLoader.getConfig("otpbroker.image.name");
-		Config.setImageName(imageName);
-		
-		if(args != null)
+		boolean loaded = loadConfig(currentRootDirectoryPath, "config.ini");
+		boolean needToStart = true;
+		if(loaded)
 		{
-			List<String> list = Arrays.asList(args);
-			if(list.contains("--restart"))
+			String imageName = ConfigLoader.getConfig("otpbroker.image.name");
+			Config.setImageName(imageName);
+			
+			if(args != null)
 			{
-				ProcessKiller killer = new ProcessKiller(Config.getImageName(), true);
-				killer.stop();
-			}
-			if(list.contains("--stop"))
+				List<String> list = Arrays.asList(args);
+				if(list.contains("--start"))
+				{
+					String pingCommand = ConfigLoader.getConfig("otpbroker.ssh.ping.command");
+					String result = CommandLineExecutor.exec(pingCommand).toString();
+					if(result.equals("OK"))
+					{
+						needToStart = false;
+					}
+				}
+				else if(list.contains("--restart"))
+				{
+					ProcessKiller killer = new ProcessKiller(Config.getImageName(), true);
+					killer.stop();					
+				}
+				else if(list.contains("--stop"))
+				{
+					ProcessKiller killer = new ProcessKiller(Config.getImageName(), true);
+					killer.stop();
+					needToStart = false;
+					System.exit(0);
+				}
+			}	
+			if(needToStart)
 			{
-				ProcessKiller killer = new ProcessKiller(Config.getImageName(), true);
-				killer.stop();
-				System.exit(0);
+				ConfigLoader.init();
+				
+				Application.resetConfig();
+		
+				Application.prepareSessionDir();
+		
+				int wsport = Config.getServerPort()+1;
+				/**
+				 * WebSocket Server for Admin
+				 */
+				InetSocketAddress address = new InetSocketAddress(wsport);
+				Application.webSocketAdmin = new ServerWebSocketServerAdmin(address);
+				Application.webSocketAdmin.start();		
+		
+				/**
+				 * Web Server for Admin
+				 */
+				Application.webAdmin = new ServerWebAdmin();
+				Application.webAdmin.start();
+				
+				/**
+				 * WebSocket Client for feeder
+				 */
+				Application.webSocketClient = new ClientReceiverWebSocket();
+				Application.webSocketClient.start();
+				
+				/**
+				 * RabbitMQ Client for feeder
+				 */
+				Application.amqpReceiver = new ClientReceiverAMQP();
+				Application.amqpReceiver.start();
+				
+				/**
+				 * REST API
+				 */
+				Application.rest = new ServerRESTAPI();
+				Application.rest.start();			
+		
+				GSMUtil.start();
+				DialUtil.start();
+		
+				/**
+				 * SMTP Server for send email
+				 */
+				Application.smtp = new ServerEmail();
+				Application.smtp.start();
+				
+				Application.scheduller = new Scheduller();
+				Application.scheduller.start();
+				System.out.println("Service started");
 			}
-		}	
+			else
+			{
+				System.out.println("Service already started");
+			}
+		}
+		else
+		{
+			System.out.println("Service not started because failed to read config file");
+		}
 		
-		ConfigLoader.init();
-		
-		Application.resetConfig();
-
-		Application.prepareSessionDir();
-
-		int wsport = Config.getServerPort()+1;
-		/**
-		 * WebSocket Server for Admin
-		 */
-		InetSocketAddress address = new InetSocketAddress(wsport);
-		Application.webSocketAdmin = new ServerWebSocketServerAdmin(address);
-		Application.webSocketAdmin.start();		
-
-		/**
-		 * Web Server for Admin
-		 */
-		Application.webAdmin = new ServerWebAdmin();
-		Application.webAdmin.start();
-		
-		/**
-		 * WebSocket Client for feeder
-		 */
-		Application.webSocketClient = new ClientReceiverWebSocket();
-		Application.webSocketClient.start();
-		
-		/**
-		 * RabbitMQ Client for feeder
-		 */
-		Application.amqpReceiver = new ClientReceiverAMQP();
-		Application.amqpReceiver.start();
-		
-		/**
-		 * REST API
-		 */
-		Application.rest = new ServerRESTAPI();
-		Application.rest.start();
-		
-
-		GSMUtil.start();
-		DialUtil.start();
-
-		/**
-		 * SMTP Server for send email
-		 */
-		Application.smtp = new ServerEmail();
-		Application.smtp.start();
-		
-		Application.scheduller = new Scheduller();
-		Application.scheduller.start();
-		
+	}
+	
+	public static boolean loadConfig(String currentRootDirectoryPath, String fileName)
+	{
+		boolean loaded = false;
+		try 
+		{
+			ConfigLoader.load(fileName);
+			loaded = true;
+		} 
+		catch (FileNotFoundException e) 
+		{
+			try 
+			{
+				ConfigLoader.load(currentRootDirectoryPath+"/"+fileName);
+				loaded = true;
+			} 
+			catch (FileNotFoundException e1) 
+			{
+				e1.printStackTrace();
+			}
+		}
+		return loaded;	
 	}
 	
 	public static void restartService()
