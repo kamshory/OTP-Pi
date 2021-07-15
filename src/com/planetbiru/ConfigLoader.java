@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.util.Map.Entry;
 import java.util.Properties;
 
-import com.planetbiru.api.RESTAPI;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigAPIUser;
@@ -32,6 +31,7 @@ import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.FileNotFoundException;
 import com.planetbiru.util.ServerStatus;
 import com.planetbiru.util.Utility;
+import com.planetbiru.web.HandlerWebManagerAPI;
 
 public class ConfigLoader {
 	private static Properties properties = new Properties();
@@ -283,7 +283,7 @@ public class ConfigLoader {
 		}
 		GSMUtil.getCallerType().put(Utility.getClassName(RabbitMQReceiver.class.toString()), "amqp");
 		GSMUtil.getCallerType().put(Utility.getClassName(WebSocketClientImpl.class.toString()), "ws");
-		GSMUtil.getCallerType().put(Utility.getClassName(RESTAPI.class.toString()), "rest");
+		GSMUtil.getCallerType().put(Utility.getClassName(HandlerWebManagerAPI.class.toString()), "rest");
 		ConfigAPI.load(Config.getApiSettingPath());	
 		/**
 		 * Override email setting if exists

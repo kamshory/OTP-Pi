@@ -9,7 +9,6 @@ import org.json.JSONObject;
 
 import com.planetbiru.DeviceAPI;
 import com.planetbiru.ServerWebSocketServerAdmin;
-import com.planetbiru.api.RESTAPI;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigEmail;
 import com.planetbiru.constant.ConstantString;
@@ -175,13 +174,11 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			else 
 			{
 				statusCode = HttpStatus.UNAUTHORIZED;
-				responseJSON = RESTAPI.unauthorized(requestBody);					
 			}
 		} 
 		catch (NoUserRegisteredException e) 
 		{
 			statusCode = HttpStatus.UNAUTHORIZED;
-			responseJSON = RESTAPI.unauthorized(requestBody);					
 		}
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
@@ -230,13 +227,11 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			else 
 			{
 				statusCode = HttpStatus.UNAUTHORIZED;
-				responseJSON = RESTAPI.unauthorized(requestBody);					
 			}
 		} 
 		catch (NoUserRegisteredException e) 
 		{
 			statusCode = HttpStatus.UNAUTHORIZED;
-			responseJSON = RESTAPI.unauthorized(requestBody);					
 		}
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);

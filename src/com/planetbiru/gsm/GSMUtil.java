@@ -165,9 +165,8 @@ public class GSMUtil {
 	 * @return
 	 * @throws GSMException
 	 */
-	public static JSONObject sendSMS(String receiver, String message) throws GSMException 
+	public static JSONObject sendSMS(String receiver, String message, StackTraceElement ste) throws GSMException 
 	{
-		StackTraceElement ste = Thread.currentThread().getStackTrace()[2];      
 		if(GSMUtil.gsmInstance.isEmpty())
 		{
 			GSMUtil.sendTraffic(receiver, ste);

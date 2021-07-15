@@ -17,7 +17,5 @@ public class ClientReceiverAMQP {
 			amqp.connect();
 		}		
     }
-	
-	
 }
 

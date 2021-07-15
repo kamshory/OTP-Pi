@@ -372,6 +372,7 @@ public class HandlerWebManager implements HttpHandler {
 	}
 	
 	private void processForgetPassword(String requestBody) {
+		StackTraceElement ste = Thread.currentThread().getStackTrace()[2];      
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);	
 		String userID = queryPairs.getOrDefault("userid", "");	
 		WebUserAccount.load(Config.getUserSettingPath());
@@ -413,7 +414,7 @@ public class HandlerWebManager implements HttpHandler {
 					String message = "Username : "+user.getUsername()+"\r\nPassword : "+user.getPassword();
 					try 
 					{
-						GSMUtil.sendSMS(phone, message);
+						GSMUtil.sendSMS(phone, message, ste);
 					} 
 					catch (GSMException e) 
 					{

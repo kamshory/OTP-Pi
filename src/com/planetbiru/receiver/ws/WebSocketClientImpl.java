@@ -10,12 +10,8 @@ import java.util.Map;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 import org.json.JSONException;
-import org.json.JSONObject;
-
-import com.planetbiru.api.RESTAPI;
+import com.planetbiru.api.MessageAPI;
 import com.planetbiru.config.ConfigFeederWS;
-import com.planetbiru.gsm.GSMException;
-import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.util.Utility;
 
 public class WebSocketClientImpl extends Thread{
@@ -93,23 +89,8 @@ public class WebSocketClientImpl extends Thread{
 	public void evtOnMessage(String message) {
 		try
 		{
-			JSONObject jsonObj = new JSONObject(message);
-			if(!jsonObj.isEmpty())
-			{
-				String command = jsonObj.optString("command", "");
-				if(command.equals("send-sms"))
-				{
-					this.sendSMS(jsonObj);
-				}
-				else if(command.equals("block-msisdn"))
-				{
-					this.blockMSISDN(jsonObj);
-				}
-				else if(command.equals("unblock-msisdn"))
-				{
-					this.unblockMSISDN(jsonObj);
-				}			
-			}
+            MessageAPI api = new MessageAPI();
+            api.processRequest(message);            
 		}
 		catch(JSONException e)
 		{
@@ -185,55 +166,6 @@ public class WebSocketClientImpl extends Thread{
 		{
 			throw new URISyntaxException(e.getMessage(), e.getReason());
 		}
-	}
-	
-	
-
-	private void blockMSISDN(JSONObject jsonObj) {
-		String command = jsonObj.optString("command", "");
-		JSONObject data = jsonObj.optJSONObject("data");
-		String msisdn = data.optString("msisdn", "");
-		try 
-		{
-			RESTAPI.blockMSISDN(command, msisdn);
-		} 
-		catch (GSMException e) 
-		{
-			e.printStackTrace();
-		}
-	}
-	
-	private void unblockMSISDN(JSONObject jsonObj) {
-		String command = jsonObj.optString("command", "");
-		JSONObject data = jsonObj.optJSONObject("data");
-		String msisdn = data.optString("msisdn", "");
-		try 
-		{
-			RESTAPI.unblockMSISDN(command, msisdn);
-		} 
-		catch (GSMException e) 
-		{
-			e.printStackTrace();
-		}
-	}
-	
-	private void sendSMS(JSONObject jsonObj) {
-		JSONObject data = jsonObj.optJSONObject("data");
-		String msisdn = data.optString("msisdn", "");
-		String message = data.optString("message", "");
-		try 
-		{
-			this.sendSMS(msisdn, message);
-		} 
-		catch (GSMException e) 
-		{
-			e.printStackTrace();
-		}	
-	}
-	
-	private void sendSMS(String receiver, String textMessage) throws GSMException 
-	{
-		GSMUtil.sendSMS(receiver, textMessage);	
 	}
 	
 	private String fixWSEndpoint(String endpoint) {

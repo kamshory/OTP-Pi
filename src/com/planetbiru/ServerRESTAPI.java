@@ -13,15 +13,11 @@ import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManagerFactory;
 
-import com.planetbiru.api.HandlerAPIBlocking;
-import com.planetbiru.api.HandlerAPIEmail;
-import com.planetbiru.api.HandlerAPIMessage;
-import com.planetbiru.api.HandlerAPISMS;
-import com.planetbiru.api.HandlerAPIUnblocking;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigKeystore;
 import com.planetbiru.config.DataKeystore;
+import com.planetbiru.receiver.rest.HandlerAPIMessage;
 import com.planetbiru.util.ServiceHTTP;
 import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.HttpsConfigurator;
@@ -61,11 +57,12 @@ public class ServerRESTAPI {
 				    sslContext.init(keyManagementFactory.getKeyManagers(), trustFactory.getTrustManagers(), null);		
 					HttpsConfigurator httpsConfigurator = new HttpsConfigurator(sslContext);
 					ServiceHTTP.getHttpsServer().setHttpsConfigurator(httpsConfigurator);	
-					
+
 			        ServiceHTTP.getHttpsServer().createContext(ConfigAPI.getMessagePath(), new HandlerAPIMessage());
-			        ServiceHTTP.getHttpsServer().createContext(ConfigAPI.getBlockingPath(), new HandlerAPIBlocking());
-			        ServiceHTTP.getHttpsServer().createContext(ConfigAPI.getUnblockingPath(), new HandlerAPIUnblocking());
-			        
+			        ServiceHTTP.getHttpsServer().createContext(ConfigAPI.getSmsPath(), new HandlerAPIMessage());
+			        ServiceHTTP.getHttpsServer().createContext(ConfigAPI.getEmailPath(), new HandlerAPIMessage());
+			        ServiceHTTP.getHttpsServer().createContext(ConfigAPI.getBlockingPath(), new HandlerAPIMessage());
+			        ServiceHTTP.getHttpsServer().createContext(ConfigAPI.getUnblockingPath(), new HandlerAPIMessage());
 			        ServiceHTTP.getHttpsServer().start();
 			        started = true;
 				} 
@@ -99,10 +96,10 @@ public class ServerRESTAPI {
 			{
 				ServiceHTTP.setHttpServer(HttpServer.create(new InetSocketAddress(ConfigAPI.getHttpPort()), 0));
 		        ServiceHTTP.getHttpServer().createContext(ConfigAPI.getMessagePath(), new HandlerAPIMessage());
-		        ServiceHTTP.getHttpServer().createContext(ConfigAPI.getSmsPath(), new HandlerAPISMS());
-		        ServiceHTTP.getHttpServer().createContext(ConfigAPI.getEmailPath(), new HandlerAPIEmail());
-		        ServiceHTTP.getHttpServer().createContext(ConfigAPI.getBlockingPath(), new HandlerAPIBlocking());
-		        ServiceHTTP.getHttpServer().createContext(ConfigAPI.getUnblockingPath(), new HandlerAPIUnblocking());
+		        ServiceHTTP.getHttpServer().createContext(ConfigAPI.getSmsPath(), new HandlerAPIMessage());
+		        ServiceHTTP.getHttpServer().createContext(ConfigAPI.getEmailPath(), new HandlerAPIMessage());
+		        ServiceHTTP.getHttpServer().createContext(ConfigAPI.getBlockingPath(), new HandlerAPIMessage());
+		        ServiceHTTP.getHttpServer().createContext(ConfigAPI.getUnblockingPath(), new HandlerAPIMessage());
 		        ServiceHTTP.getHttpServer().start();
 			} 
 			catch (IOException e) 
