@@ -109,15 +109,18 @@ firewall-cmd --reload
 
 echo -e '#!/bin/sh' > /var/otp-pi/start.sh
 echo -e '' >> /var/otp-pi/start.sh
+echo -e '/sbin/hwclock -s' >> /var/otp-pi/start.sh
 echo -e 'cd /var/otp-pi' >> /var/otp-pi/start.sh
 echo -e '/bin/java -jar /var/otp-pi/otp-pi.jar --start' >> /var/otp-pi/start.sh
 
 echo -e '#!/bin/sh' > /var/otp-pi/restart.sh
 echo -e '' >> /var/otp-pi/restart.sh
+echo -e '/sbin/hwclock -s' >> /var/otp-pi/restart.sh
 echo -e 'cd /var/otp-pi' >> /var/otp-pi/restart.sh
 echo -e '/bin/java -jar /var/otp-pi/otp-pi.jar --restart' >> /var/otp-pi/restart.sh
 
 echo -e '#!/bin/sh' > /var/otp-pi/stop.sh
+echo -e '/sbin/hwclock -s' >> /var/otp-pi/stop.sh
 echo -e '' >> /var/otp-pi/stop.sh
 echo -e 'cd /var/otp-pi' >> /var/otp-pi/stop.sh
 echo -e '/bin/java -jar /var/otp-pi/otp-pi.jar --stop' >> /var/otp-pi/stop.sh

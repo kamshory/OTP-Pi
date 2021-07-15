@@ -17,9 +17,10 @@
 	<classpathentry kind="lib" path="jar/jcabi-ssh-1.6.1.jar"/>
 	<classpathentry kind="lib" path="jar/jsch-0.1.54.jar"/>
 	<classpathentry kind="lib" path="jar/Java-WebSocket-1.5.1.jar"/>
-	<classpathentry kind="lib" path="jar/log4j-core-2.14.1.jar"/>
 	<classpathentry kind="lib" path="jar/slf4j-api-1.7.31.jar" sourcepath="C:/Users/kamshory/.m2/repository/org/slf4j/slf4j-api/1.7.31/slf4j-api-1.7.31-sources.jar"/>
 	<classpathentry kind="lib" path="jar/slf4j-simple-1.7.31.jar"/>
 	<classpathentry kind="lib" path="jar/amqp-client-5.12.0.jar"/>
+	<classpathentry kind="lib" path="jar/log4j-api-2.1.jar"/>
+	<classpathentry kind="lib" path="jar/log4j-core-2.14.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
