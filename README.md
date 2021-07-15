@@ -1,3 +1,4 @@
+
 # OTP-Pi
 
 ![OTP-Pi](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/otp-pi.png)
@@ -354,7 +355,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 	"command":"send-sms",
 	"data":{
 		"id": 123456,
-		"msisdn": "08126666666",
+		"receiver": "08126666666",
 		"message": "OTP Anda adalah 1234"
 	}
 }
@@ -365,7 +366,36 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 | command | String | Perintah ke OTP-Pi |
 | data | Objek | Data untuk OTP-Pi | 
 | `data`.id | String | ID SMS |
-| `data`.msisdn | String | Nomor MSISDN penerima |
+| `data`.receiver | String | Nomor MSISDN penerima |
+| `data`.message| String | Pesan SMS |
+
+**Send Email Request**
+
+```http
+POST /api/sms HTTP/1.1
+Host: sub.domain.tld
+Connection: close
+User-agent: KSPS
+Content-type: application/json
+Content-length: 124
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+{
+	"command":"send-email",
+	"data":{
+		"id": 123456,
+		"receiver": "someone@domain.tld",
+		"message": "OTP Anda adalah 1234"
+	}
+}
+```
+
+| Parameter | Tipe | Deskripsi |
+| --------- | ---- | ----------|
+| command | String | Perintah ke OTP-Pi |
+| data | Objek | Data untuk OTP-Pi | 
+| `data`.id | String | ID SMS |
+| `data`.receiver | String | Alamat email penerima |
 | `data`.message| String | Pesan SMS |
 
 
@@ -383,7 +413,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 {
 	"command":"block-msisdn",
 	"data":{
-		"msisdn": "08126666666",
+		"receiver": "08126666666",
 	}
 }
 ```
@@ -408,7 +438,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 {
 	"command":"unblock-msisdn",
 	"data":{
-		"msisdn": "08126666666",
+		"receiver": "08126666666",
 	}
 }
 ```
@@ -417,36 +447,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 | --------- | ---- | ----------|
 | command | String | Perintah ke OTP-Pi |
 | data | Objek | Data untuk OTP-Pi | 
-| `data`.msisdn | String | Nomor MSISDN yang akan dibuka blokir |
-
-**Send SMS Request**
-
-```http
-POST /api/mail HTTP/1.1
-Host: sub.domain.tld
-Connection: close
-User-agent: KSPS
-Content-type: application/json
-Content-length: 142
-Authorization: Basic dXNlcjpwYXNzd29yZA==
-
-{
-	"command":"send-mail",
-	"data":{
-		"recipient": "admin@domain.tld",
-		"subject": "Reset Password",
-		"message": "OTP Anda adalah 1234"
-	}
-}
-```
-
-| Parameter | Tipe | Deskripsi |
-| --------- | ---- | ----------|
-| command | String | Perintah ke OTP-Pi |
-| data | Objek | Data untuk OTP-Pi | 
-| `data`.recipient | String | Alamat email penerima |
-| `data`.subject | String | Subjek email |
-| `data`.message| String | Pesan email|
+| `data`.receiver | String | Nomor MSISDN yang akan dibuka blokir |
 
 ### Sekenario 2 - OTP-Pi Tidak Dapat Diakses App Server
 
@@ -473,7 +474,7 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 	"command":"send-sms",
 	"data":{
 		"id": 123456,
-		"msisdn": "08126666666",
+		"receiver": "08126666666",
 		"message": "OTP Anda adalah 1234"
 	}
 }
@@ -484,9 +485,29 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | command | String | Perintah ke OTP-Pi |
 | data | Objek | Data untuk OTP-Pi | 
 | `data`.id | String | ID SMS |
-| `data`.msisdn | String | Nomor MSISDN penerima |
+| `data`.receiver | String | Nomor MSISDN penerima |
 | `data`.message| String | Pesan SMS |
 
+**Send Email Request**
+
+```json
+{
+	"command":"send-sms",
+	"data":{
+		"id": 123456,
+		"receiver": "someone@domain.tld",
+		"message": "OTP Anda adalah 1234"
+	}
+}
+```
+
+| Parameter | Tipe | Deskripsi |
+| --------- | ---- | ----------|
+| command | String | Perintah ke OTP-Pi |
+| data | Objek | Data untuk OTP-Pi | 
+| `data`.id | String | ID SMS |
+| `data`.receiver | String | Alamat email penerima |
+| `data`.message| String | Pesan SMS |
 
 **Block Number Request**
 
@@ -494,7 +515,7 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 {
 	"command":"block-msisdn",
 	"data":{
-		"msisdn": "08126666666",
+		"receiver": "08126666666",
 	}
 }
 ```
@@ -503,7 +524,7 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | --------- | ---- | ----------|
 | command | String | Perintah ke OTP-Pi |
 | data | Objek | Data untuk OTP-Pi | 
-| `data`.msisdn | String | Nomor MSISDN yang akan diblokir |
+| `data`.receiver | String | Nomor MSISDN yang akan diblokir |
 
 **Unblock Number Request**
 
@@ -511,7 +532,7 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 {
 	"command":"unblock-msisdn",
 	"data":{
-		"msisdn": "08126666666",
+		"receiver": "08126666666",
 	}
 }
 ```
@@ -520,7 +541,7 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | --------- | ---- | ----------|
 | command | String | Perintah ke OTP-Pi |
 | data | Objek | Data untuk OTP-Pi | 
-| `data`.msisdn | String | Nomor MSISDN yang akan dibuka blokir |
+| `data`.receiver | String | Nomor MSISDN yang akan dibuka blokir |
 
 **2. WSMessageBroker**
 
@@ -528,78 +549,78 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 
 ```json
 {
-	"command":"send-message",
-	"channel":"sms",
-	"data":[{
-		"command":"send-sms",
-		"data":{	
-			"id": 123456,
-			"msisdn": "08126666666",
-			"message": "OTP Anda adalah 1234"
-		}
-	}]
+	"command":"send-sms",
+	"data":{	
+		"id": 123456,
+		"receiver": "08126666666",
+		"message": "OTP Anda adalah 1234"
+	}
 }
 ```
 
 | Parameter | Tipe | Deskripsi |
 | --------- | ---- | ----------|
-| command | String | Perintah kepada WSMessageBroker. Selalu isi dengan `send-message` untuk menirimkan pesan ke channel |
-| channel | String | Nama channel yang dituju |
-| data | Array Object | Berisi array objek yang dikirim ke channel |
-| `data[index]`.command | String | Perintah ke OTP-Pi |
-| `data[index]`.data | Objek | Data untuk OTP-Pi | 
-| `data[index].data`.id | String | ID SMS |
-| `data[index].data`.msisdn | String | Nomor MSISDN penerima |
-| `data[index].data`.message| String | Pesan SMS |
+| command | String | Perintah ke OTP-Pi |
+| data | Objek | Data untuk OTP-Pi | 
+| `data`.id | String | ID SMS |
+| `data`.receiver | String | Nomor MSISDN penerima |
+| `data`.message| String | Pesan SMS |
 
+**Send Email Request**
+
+```json
+{
+	"command":"send-sms",
+	"data":{
+		"id": 123456,
+		"receiver": "someone@domain.tld",
+		"message": "OTP Anda adalah 1234"
+	}
+}
+```
+
+| Parameter | Tipe | Deskripsi |
+| --------- | ---- | ----------|
+| command | String | Perintah ke OTP-Pi |
+| data | Objek | Data untuk OTP-Pi | 
+| `data`.id | String | ID SMS |
+| `data`.receiver | String | Alamat email penerima |
+| `data`.message| String | Pesan SMS |
 
 **Block Number Request**
 
 ```json
 {
-	"command":"send-message",
-	"channel":"sms",
-	"data":[{
-		"command":"block-msisdn",
-		"data":{
-			"msisdn": "08126666666",
-		}
-	}]
+	"command":"block-msisdn",
+	"data":{
+		"receiver": "08126666666",
+	}
 }
 ```
 
 | Parameter | Tipe | Deskripsi |
 | --------- | ---- | ----------|
-| command | String | Perintah kepada WSMessageBroker. Selalu isi dengan `send-message` untuk menirimkan pesan ke channel |
-| channel | String | Nama channel yang dituju |
-| data | Array Object | Berisi array objek yang dikirim ke channel |
-| `data[index]`.command | String | Perintah ke OTP-Pi |
-| `data[index]`.data | Objek | Data untuk OTP-Pi | 
-| `data[index].data`.msisdn | String | Nomor MSISDN yang akan diblokir |
+| command | String | Perintah ke OTP-Pi |
+| data | Objek | Data untuk OTP-Pi | 
+| `data`.receiver | String | Nomor MSISDN yang akan diblokir |
 
 **Unblock Number Request**
 
 ```json
 {
-	"command":"send-message",
-	"channel":"sms",
-	"data":[{
-		"command":"unblock-msisdn",
-		"data":{
-			"msisdn": "08126666666",
-		}
-	}]
+
+	"command":"unblock-msisdn",
+	"data":{
+		"receiver": "08126666666",
+	}
 }
 ```
 
 | Parameter | Tipe | Deskripsi |
 | --------- | ---- | ----------|
-| command | String | Perintah kepada WSMessageBroker. Selalu isi dengan `send-message` untuk menirimkan pesan ke channel |
-| channel | String | Nama channel yang dituju |
-| data | Array Object | Berisi array objek yang dikirim ke channel |
-| `data[index]`.command | String | Perintah ke OTP-Pi |
-| `data[index]`.data | Objek | Data untuk OTP-Pi | 
-| `data[index].data`.msisdn | String | Nomor MSISDN yang akan dibuka blokir |
+| command | String | Perintah ke OTP-Pi |
+| data | Objek | Data untuk OTP-Pi | 
+| `data`.receiver | String | Nomor MSISDN yang akan dibuka blokir |
 
 Server WSMessageBroker berbasis menggunakan protokol WebSocket dan PHP. Silakan download WSMessageBroker di https://github.com/kamshory/Messenger 
 
