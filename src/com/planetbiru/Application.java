@@ -6,11 +6,7 @@ import java.net.InetSocketAddress;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import org.json.JSONObject;
-
 
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigNetDHCP;
@@ -36,11 +32,7 @@ public class Application {
 	private static ServerEmail smtp;
 	private static Scheduller scheduller;
 
-    private static Logger logger = LogManager.getLogger(Application.class);
-
-
 	public static void main(String[] args) {
-		logger.info("AAAAAAAAAAAAAA");
 		File currentJavaJarFile = new File(Application.class.getProtectionDomain().getCodeSource().getLocation().getPath());   
 		String currentJavaJarFilePath = currentJavaJarFile.getAbsolutePath();
 		String currentRootDirectoryPath = currentJavaJarFilePath.replace(currentJavaJarFile.getName(), "");
