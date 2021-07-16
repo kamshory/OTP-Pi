@@ -3,6 +3,7 @@ package com.planetbiru.config;
 import java.io.File;
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,6 +18,8 @@ public class ConfigVendorAfraid {
 	private static String password = "";
 	private static String company = "";
 	private static String configPath = "";
+	
+	private static Logger logger = Logger.getLogger(ConfigVendorAfraid.class);
 	
 	private ConfigVendorAfraid()
 	{
@@ -57,7 +60,7 @@ public class ConfigVendorAfraid {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 		
 	}	
@@ -86,7 +89,7 @@ public class ConfigVendorAfraid {
 		}
 		catch (IOException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	}
 	

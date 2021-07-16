@@ -3,6 +3,7 @@ package com.planetbiru.config;
 import java.io.File;
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,6 +28,8 @@ public class ConfigNetWLAN {
 	private static String osConfigPath = "";
 	private static String osConfigPathWPAPSK = "";
 	private static String configPath = "";
+	
+	private static Logger logger = Logger.getLogger(ConfigNetWLAN.class);
 	
 	public static void load(String path) {
 		ConfigNetWLAN.configPath = path;
@@ -69,7 +72,7 @@ public class ConfigNetWLAN {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 		
 	}	
@@ -98,7 +101,7 @@ public class ConfigNetWLAN {
 		}
 		catch (IOException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	}
 	
@@ -182,7 +185,7 @@ public class ConfigNetWLAN {
 		}
 		catch (IOException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	
 	}

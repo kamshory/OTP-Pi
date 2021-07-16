@@ -3,6 +3,7 @@ package com.planetbiru.config;
 import java.io.File;
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,6 +23,8 @@ public class ConfigNetEthernet {
 	private static String osConfigPath = "";
 
 	private static String configPath = "";
+	
+	private static Logger logger = Logger.getLogger(ConfigNetEthernet.class);
 	
 	private ConfigNetEthernet()
 	{
@@ -65,7 +68,7 @@ public class ConfigNetEthernet {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 		
 	}	
@@ -95,7 +98,7 @@ public class ConfigNetEthernet {
 		}
 		catch (IOException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	}
 	
@@ -166,7 +169,7 @@ public class ConfigNetEthernet {
 		}
 		catch (IOException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	
 	}

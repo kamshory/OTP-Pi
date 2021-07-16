@@ -6,6 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,6 +21,8 @@ public class ConfigBlocking {
 	private static String countryCode = "62";
 	private static Map<String, Boolean> blockList = new LinkedHashMap<>();
 	private static String configPath = "";
+	
+	private static Logger logger = Logger.getLogger(ConfigBlocking.class);
 	
 	private ConfigBlocking()
 	{
@@ -86,7 +89,7 @@ public class ConfigBlocking {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}	
 	}
 	public static void save()
@@ -113,7 +116,7 @@ public class ConfigBlocking {
 		}
 		catch (IOException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	}
 	

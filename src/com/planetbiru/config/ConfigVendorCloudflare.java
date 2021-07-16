@@ -3,6 +3,7 @@ package com.planetbiru.config;
 import java.io.File;
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,6 +18,8 @@ public class ConfigVendorCloudflare {
 	private static String authApiKey = "";
 	private static String authToken = "";
 	private static String configPath = "";
+	
+	private static Logger logger = Logger.getLogger(ConfigVendorCloudflare.class);
 	
 	private ConfigVendorCloudflare()
 	{
@@ -57,7 +60,7 @@ public class ConfigVendorCloudflare {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 		
 	}	
@@ -86,7 +89,7 @@ public class ConfigVendorCloudflare {
 		}
 		catch (IOException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	}
 	

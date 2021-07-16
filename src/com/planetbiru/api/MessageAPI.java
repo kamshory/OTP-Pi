@@ -2,6 +2,7 @@ package com.planetbiru.api;
 
 import javax.mail.MessagingException;
 
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,6 +18,7 @@ import com.planetbiru.mail.NoEmailAccountException;
 
 public class MessageAPI {
 
+	private static Logger logger = Logger.getLogger(MessageAPI.class);
 	public JSONObject processRequest(String requestBody) {
 		JSONObject requestJSON = new JSONObject();
 		JSONObject responseJSON = new JSONObject();
@@ -52,9 +54,7 @@ public class MessageAPI {
 		}
 		catch(JSONException | GSMException e)
 		{
-			/**
-			 * Do nothing
-			 */
+			logger.error(e.getMessage(), e);
 		}
 		return responseJSON;
 	}
@@ -85,6 +85,7 @@ public class MessageAPI {
 			/**
 			 * Do nothing
 			 */
+			logger.error(e.getMessage(), e);
 		}
 		return requestJSON;
 	}
@@ -152,6 +153,7 @@ public class MessageAPI {
 				/**
 				 * Do nothing
 				 */
+				logger.error(e.getMessage(), e);
 			}
 		}	
 	}
@@ -173,7 +175,7 @@ public class MessageAPI {
 			} 
 			catch (GSMException e) 
 			{
-				e.printStackTrace();
+				logger.error(e.getMessage(), e);
 				/**
 				 * Do nothing
 				 */
@@ -200,6 +202,7 @@ public class MessageAPI {
 		} 
 		catch (MessagingException | NoEmailAccountException e) 
 		{
+			logger.error(e.getMessage(), e);
 			result = e.getMessage();
 			responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.FAILED);
 			responseJSON.put(JsonKey.MESSAGE, result);

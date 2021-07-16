@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 import javax.mail.MessagingException;
+
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -59,6 +61,8 @@ import com.sun.net.httpserver.HttpHandler;
 
 public class HandlerWebManager implements HttpHandler {
 
+	private static Logger logger = Logger.getLogger(HandlerWebManager.class);
+	
 	@Override
 	public void handle(HttpExchange httpExchange) throws IOException {
 		long from = System.nanoTime();
@@ -81,7 +85,7 @@ public class HandlerWebManager implements HttpHandler {
 		}
 		httpExchange.close();
 		long dur = System.nanoTime() - from;
-		System.out.println("Finish in "+dur+" : "+(dur/1000000)+" ms");
+		logger.info("Finish in "+dur+" : "+(dur/1000000)+" ms");
 	}
 
 	private WebResponse handleGet(HttpExchange httpExchange, String path) {
@@ -367,8 +371,7 @@ public class HandlerWebManager implements HttpHandler {
 			/**
 			 * Do nothing
 			 */
-		}
-		
+		}	
 	}
 	
 	private void processForgetPassword(String requestBody) {
@@ -716,10 +719,8 @@ public class HandlerWebManager implements HttpHandler {
 			if(!fileName.isEmpty() && !filePassword.isEmpty())
 			{
 				boolean active = queryPairs.getOrDefault(JsonKey.ACTIVE, "").trim().equals("1");
-				JSONObject data = new JSONObject();
-				
-				String fileExtension = FileConfigUtil.getFileExtension(fileName);
-				
+				JSONObject data = new JSONObject();				
+				String fileExtension = FileConfigUtil.getFileExtension(fileName);				
 				data.put("id", id);
 				data.put("fileName", fileName);
 				data.put("fileExtension", fileExtension);
@@ -1961,7 +1962,5 @@ public class HandlerWebManager implements HttpHandler {
 				ConfigDDNS.save();
 			}
 		}
-	}
-
-	
+	}	
 }

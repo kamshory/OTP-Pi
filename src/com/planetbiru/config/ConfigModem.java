@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,6 +24,8 @@ public class ConfigModem {
 	private static String configPath = "";
     private static Map<String, DataModem> modemData = new HashMap<>();
 	
+    private static Logger logger = Logger.getLogger(ConfigNetDHCP.class);
+    
 	private ConfigModem()
 	{
 		
@@ -138,7 +141,7 @@ public class ConfigModem {
 		}
 		catch (IOException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	}
 	

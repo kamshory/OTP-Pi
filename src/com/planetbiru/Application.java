@@ -22,6 +22,8 @@ import com.planetbiru.util.FileNotFoundException;
 import com.planetbiru.util.ProcessKiller;
 import com.planetbiru.util.Utility;
 
+import org.apache.log4j.Logger;
+
 public class Application {
 	
 	private static ServerWebSocketServerAdmin webSocketAdmin;
@@ -31,6 +33,9 @@ public class Application {
 	private static ServerRESTAPI rest;
 	private static ServerEmail smtp;
 	private static Scheduller scheduller;
+	
+	private static Logger logger = Logger.getLogger(Application.class);
+	
 
 	public static void main(String[] args) {
 		File currentJavaJarFile = new File(Application.class.getProtectionDomain().getCodeSource().getLocation().getPath());   
@@ -120,16 +125,16 @@ public class Application {
 				
 				Application.scheduller = new Scheduller();
 				Application.scheduller.start();
-				System.out.println("Service started");
+				logger.info("Service started");
 			}
 			else
 			{
-				System.out.println("Service already started");
+				logger.info("Service already started");
 			}
 		}
 		else
 		{
-			System.out.println("Service not started because failed to read config file");
+			logger.info("Service not started because failed to read config file");
 		}
 		
 	}

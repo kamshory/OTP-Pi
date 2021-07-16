@@ -3,6 +3,7 @@ package com.planetbiru.config;
 import java.io.File;
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,6 +28,8 @@ public class ConfigFeederAMQP {
 	private static int feederAmqpRefresh = 0;
 	private static boolean loaded = false;
 	private static boolean connected = false;
+	
+	private static Logger logger = Logger.getLogger(ConfigFeederAMQP.class);
 
 	
 	private ConfigFeederAMQP()
@@ -68,7 +71,7 @@ public class ConfigFeederAMQP {
 		} 
 		catch (IOException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	}
 	public static void save()

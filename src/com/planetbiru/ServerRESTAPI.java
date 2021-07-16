@@ -13,6 +13,8 @@ import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManagerFactory;
 
+import org.apache.log4j.Logger;
+
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigKeystore;
@@ -24,6 +26,8 @@ import com.sun.net.httpserver.HttpsConfigurator;
 import com.sun.net.httpserver.HttpsServer;
 
 public class ServerRESTAPI {
+	
+	private static Logger logger = Logger.getLogger(ServerRESTAPI.class);
 	
 	public void start()
 	{
@@ -68,13 +72,13 @@ public class ServerRESTAPI {
 				} 
 				catch (IOException | KeyStoreException | NoSuchAlgorithmException | CertificateException | KeyManagementException | UnrecoverableKeyException e) 
 				{
-					e.printStackTrace();
+					logger.error(e.getMessage(), e);
 					started = false;
 				}			
 			} 
 			catch (KeyStoreException e2) 
 			{
-				e2.printStackTrace();
+				logger.error(e2.getMessage(), e2);
 				started = false;
 			}
 			if(!started)
@@ -104,8 +108,7 @@ public class ServerRESTAPI {
 			} 
 			catch (IOException e) 
 			{
-				System.out.println("Can not start HTTP Service at port "+ConfigAPI.getHttpPort());
-				e.printStackTrace();
+				logger.error(e.getMessage(), e);
 			}
 		}		
 	}

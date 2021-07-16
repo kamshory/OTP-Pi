@@ -2,6 +2,8 @@ package com.planetbiru.config;
 
 import java.io.File;
 import java.io.IOException;
+
+import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,6 +19,8 @@ public class ConfigSMTP {
 	private static String serverAddress = "";
 	private static int serverPort = 25;
 	private static boolean active = false;
+	
+	private static Logger logger = Logger.getLogger(ConfigSMTP.class);
 
 	private ConfigSMTP()
 	{
@@ -51,7 +55,7 @@ public class ConfigSMTP {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}		
 	}	
 
@@ -78,7 +82,7 @@ public class ConfigSMTP {
 		}
 		catch (IOException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	}
 	

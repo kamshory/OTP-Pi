@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 
+import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,6 +20,8 @@ public class ConfigGeneral {
 	private static String deviceTimeZone = "";
 	private static String ntpServer = "";
 	private static String ntpUpdateInterval = "";
+	
+	private static Logger logger = Logger.getLogger(ConfigGeneral.class);
 
 	private ConfigGeneral()
 	{
@@ -53,7 +56,7 @@ public class ConfigGeneral {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}		
 	}	
 
@@ -80,7 +83,7 @@ public class ConfigGeneral {
 		}
 		catch (IOException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	}
 	

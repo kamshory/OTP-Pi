@@ -3,6 +3,8 @@ package com.planetbiru;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 
+import org.apache.log4j.Logger;
+
 import com.planetbiru.config.Config;
 import com.planetbiru.util.ServiceHTTP;
 import com.planetbiru.web.HandlerWebManager;
@@ -16,6 +18,9 @@ import com.planetbiru.web.HandlerWebManagerUserInit;
 import com.sun.net.httpserver.HttpServer;
 
 public class ServerWebAdmin {
+	
+	private static Logger logger = Logger.getLogger(ServerWebAdmin.class);
+	
 	public void start() 
 	{
 		try 
@@ -33,7 +38,7 @@ public class ServerWebAdmin {
 		} 
 		catch (IOException e) 
 		{
-			e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	}
 

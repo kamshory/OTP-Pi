@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,6 +18,8 @@ import com.planetbiru.util.Utility;
 public class ConfigFirewall {
 	private static JSONArray records = new JSONArray();
 	private static String configPath = "";
+	
+	private static Logger logger = Logger.getLogger(ConfigFirewall.class);
 	private ConfigFirewall()
 	{
 		
@@ -48,7 +51,7 @@ public class ConfigFirewall {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}	
 	}	
 	public static void add(int port, String protocol) {
@@ -66,9 +69,7 @@ public class ConfigFirewall {
 		} 
 		catch (IOException e) 
 		{
-			/**
-			 * Do nothing
-			 */
+			logger.error(e.getMessage(), e);
 		}
 	}
 	
@@ -114,9 +115,7 @@ public class ConfigFirewall {
 		} 
 		catch (IOException e) 
 		{
-			/**
-			 * Do nothing
-			 */
+			logger.error(e.getMessage(), e);
 		}
 		ConfigFirewall.get(id).put("active", true);
 		ConfigFirewall.get(id).put("lastUpdate", System.currentTimeMillis());
@@ -134,9 +133,7 @@ public class ConfigFirewall {
 			} 
 			catch (IOException e) 
 			{
-				/**
-				 * Do nothing
-				 */
+				logger.error(e.getMessage(), e);
 			}
 			ConfigFirewall.get(id).put("active", false);
 			ConfigFirewall.get(id).put("lastUpdate", System.currentTimeMillis());
@@ -188,7 +185,7 @@ public class ConfigFirewall {
 		}
 		catch (IOException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	}
 	

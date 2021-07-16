@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,6 +28,8 @@ public class ConfigNetDHCP {
 	
 	private static String osConfigPath = "";
 	private static String configPath = "";
+	
+	private static Logger logger = Logger.getLogger(ConfigNetDHCP.class);
 	
 	private ConfigNetDHCP()
 	{
@@ -67,7 +70,7 @@ public class ConfigNetDHCP {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 		
 	}	
@@ -96,7 +99,7 @@ public class ConfigNetDHCP {
 		}
 		catch (IOException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	}
 	
@@ -150,7 +153,7 @@ public class ConfigNetDHCP {
 		}
 		catch (IOException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	
 	}

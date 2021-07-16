@@ -43,9 +43,7 @@ public class DataKeystore {
 		data.put("active", this.active);
 		data.put("fileExtension", this.fileExtension);
 		return data;
-	}
-	
-	
+	}	
 	
 	public String getId() {
 		return id;
@@ -94,7 +92,6 @@ public class DataKeystore {
 		String loc = Config.getKeystoreDataSettingPath();
 		String file = String.format("%s/%s/%s.%s", base, loc, this.id, this.fileExtension);
 		return FileConfigUtil.fixFileName(file);
-	}
-	
+	}	
 
 }

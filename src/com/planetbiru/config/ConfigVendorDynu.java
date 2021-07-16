@@ -3,6 +3,7 @@ package com.planetbiru.config;
 import java.io.File;
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -20,6 +21,8 @@ public class ConfigVendorDynu {
 	private static String company = "";
 
 	private static String configPath = "";
+	
+	private static Logger logger = Logger.getLogger(ConfigVendorDynu.class);
 	
 	private ConfigVendorDynu()
 	{
@@ -64,7 +67,7 @@ public class ConfigVendorDynu {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 		
 	}	
@@ -95,7 +98,7 @@ public class ConfigVendorDynu {
 		}
 		catch (IOException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	}
 	

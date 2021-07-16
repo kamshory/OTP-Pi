@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,6 +18,8 @@ import com.planetbiru.util.Utility;
 public class ConfigEmail {
 	private static String configPath = "";
 	private static List<DataEmail> accounts = new ArrayList<>();
+	
+	private static Logger logger = Logger.getLogger(ConfigEmail.class);
 	
 	private ConfigEmail()
 	{
@@ -75,7 +78,7 @@ public class ConfigEmail {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 		MailUtil.updateIndex();	
 	}	
@@ -113,7 +116,7 @@ public class ConfigEmail {
 		}
 		catch (IOException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 		MailUtil.updateIndex();
 	}

@@ -124,7 +124,9 @@ public class Scheduller extends Thread{
 		}
 		catch(JSONException | ParseException e)
 		{
-			e.printStackTrace();
+			/**
+			 * Do nothing
+			 */
 		}
 		
 	}
@@ -143,7 +145,9 @@ public class Scheduller extends Thread{
 		}
 		catch(JSONException | ParseException e)
 		{
-			e.printStackTrace();
+			/**
+			 * Do nothing
+			 */
 		}
 		
 	}
@@ -162,7 +166,9 @@ public class Scheduller extends Thread{
 		}
 		catch(JSONException | ParseException e)
 		{
-			e.printStackTrace();
+			/**
+			 * Do nothing
+			 */
 		}
 		
 	}
@@ -181,7 +187,9 @@ public class Scheduller extends Thread{
 		}
 		catch(JSONException | ParseException e)
 		{
-			e.printStackTrace();
+			/**
+			 * Do nothing
+			 */
 		}
 		
 	}

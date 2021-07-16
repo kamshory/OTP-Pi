@@ -3,6 +3,7 @@ package com.planetbiru.config;
 import java.io.File;
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,6 +26,8 @@ public class ConfigSMS {
 	private static String countryCode = "62";
 	private static int recipientPrefixLength = 5;
 	private static boolean logSMS = false;
+	
+	private static Logger logger = Logger.getLogger(ConfigSMS.class);
 	
 	private ConfigSMS()
 	{
@@ -62,7 +65,7 @@ public class ConfigSMS {
 		} 
 		catch (IOException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	}
 	
@@ -85,7 +88,7 @@ public class ConfigSMS {
 		} 
 		catch (IOException e) 
 		{
-			//e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	}
 	
