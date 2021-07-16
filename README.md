@@ -622,9 +622,42 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | data | Objek | Data untuk OTP-Pi | 
 | `data`.receiver | String | Nomor MSISDN yang akan dibuka blokir |
 
-Server WSMessageBroker berbasis menggunakan protokol WebSocket dan PHP. Silakan download WSMessageBroker di https://github.com/kamshory/Messenger 
+Server WSMessageBroker berbasis menggunakan protokol WebSocket. Silakan download WSMessageBroker di https://github.com/kamshory/Messenger 
 
-Client untuk mengirimkan SMS ke WSMessageBroker dapat didownload di https://github.com/kamshory/WSClient
+**Handhake**
+
+Handshake antara OTP-Pi dengan WSMessageBroker adalah sebagai berikut:
+1. OTP-Pi sebagai client dan WSMessageBroker sebagai server
+2. OTP-Pi mengirim request ke WSMessageBroker
+
+**Contoh Konfigurasi Feeder WebSocket**
+
+| Parameter | Value |
+|--|--|
+| Host | domain.example |
+| Port | 8000 |
+| Path | /ws |
+| Username | username |
+| Password | password |
+| Channel | sms |
+
+**Contoh Handhake WebSocket**
+
+```http
+GET /ws?channel=sms HTTP/1.1
+Host: domain.example:8000
+Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
+Sec-WebSocket-Version: 13
+```
+
+Server akan memverifikasi apakah username dan password tersebut benar. Jika benar, server akan memasukkan koneksi tersebut ke dalam daftar penerima pesan.
+
+Saat sebuah client mengirimkan pesan, pesan tersebut akan dikirimkan ke semua client dengan channel kecuali si pengirim. Dengan demikian, handshake antara pengirim dan penerima pesan adalah sama.
+
+OTP-Pi tidak pernah mengirim pesan ke server WSMessageBroker. OTP-Pi hanya menerima pesan sesuai dengan channel yang diinginkan.
 
 ## Pengujian Modul
 
