@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.Map;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
+
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigAPIUser;
@@ -156,7 +158,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		}
 		else if(path.startsWith("/data/api-user/detail/"))
 		{
-			this.handleUserAPIGet(httpExchange);
+			this.handleUserAPIDetail(httpExchange);
 		}
 		else if(path.startsWith("/data/ddns-record/list"))
 		{
@@ -166,13 +168,13 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			this.handleFirewallList(httpExchange);
 		}
+		else if(path.startsWith("/data/modem/list"))
+		{
+			this.handleModemList(httpExchange);
+		}
 		else if(path.startsWith("/data/modem/detail/"))
 		{
-			this.handleModemGet(httpExchange);
-		}
-		else if(path.startsWith("/data/recording/list"))
-		{
-			this.handleRecordingList(httpExchange);
+			this.handleModemDetail(httpExchange);
 		}
 		else if(path.startsWith("/data/user/self"))
 		{
@@ -269,8 +271,6 @@ public class HandlerWebManagerData implements HttpHandler {
 		httpExchange.getResponseBody().write(responseBody);
 		httpExchange.close();		
 	}
-	
-		
 		
 	//@GetMapping(path="/user/list")
 	public void handleUserList(HttpExchange httpExchange) throws IOException
@@ -426,7 +426,7 @@ public class HandlerWebManagerData implements HttpHandler {
 	}
 
 	//@GetMapping(path="/data/api-user/detail/{username}")
-	public void handleUserAPIGet(HttpExchange httpExchange) throws IOException
+	public void handleUserAPIDetail(HttpExchange httpExchange) throws IOException
 	{
 		String path = httpExchange.getRequestURI().getPath();
 		String id = path.substring("/data/api-user/detail/".length());
@@ -539,7 +539,7 @@ public class HandlerWebManagerData implements HttpHandler {
 	}
 	
 	//@GetMapping(path="/data/modem/detail/{id}")
-	public void handleModemGet(HttpExchange httpExchange) throws IOException
+	public void handleModemDetail(HttpExchange httpExchange) throws IOException
 	{
 		String path = httpExchange.getRequestURI().getPath();
 		String id = path.substring("/data/modem/detail/".length());
@@ -576,8 +576,8 @@ public class HandlerWebManagerData implements HttpHandler {
 		httpExchange.close();		
 	}
 	
-	//@GetMapping(path="/data/recording/list")
-	public void handleRecordingList(HttpExchange httpExchange) throws IOException
+	//@GetMapping(path="/data/modem/list")
+	public void handleModemList(HttpExchange httpExchange) throws IOException
 	{
 		Headers requestHeaders = httpExchange.getRequestHeaders();
 		Headers responseHeaders = httpExchange.getResponseHeaders();
@@ -588,8 +588,8 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				File directory = new File(Config.getLogDir());
-				JSONArray list = FileUtil.listFile(directory);
+				ConfigModem.load(Config.getModemSettingPath());
+				JSONObject list = ConfigModem.getStatus();
 				responseBody = list.toString().getBytes();
 			}
 			else

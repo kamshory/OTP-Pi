@@ -447,17 +447,20 @@ public class ServerInfo {
 			{
 				item.put(arr1[k], arr2[k]);
 			}
-			item.put("port", extractPort(item.optString("name", "")));
-			String sizeOff = item.optString("size_off", "");
-			if(sizeOff.contains("t"))
+			if(item.optString("name", "").toUpperCase().contains("(LISTEN)"))
 			{
-				String[] arr3 = sizeOff.split("t");
-				int size = Utility.atoi(arr3[0]);
-				int offset = Utility.atoi(arr3[1]);
-				item.put("size", size);
-				item.put("offset", offset);
+				item.put("port", extractPort(item.optString("name", "")));
+				String sizeOff = item.optString("size_off", "");
+				if(sizeOff.contains("t"))
+				{
+					String[] arr3 = sizeOff.split("t");
+					int size = Utility.atoi(arr3[0]);
+					int offset = Utility.atoi(arr3[1]);
+					item.put("size", size);
+					item.put("offset", offset);
+				}
+				return item;
 			}
-			return item;
 		}
 		return null;
 	}

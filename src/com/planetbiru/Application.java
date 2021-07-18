@@ -86,6 +86,13 @@ public class Application {
 				Application.prepareSessionDir();
 		
 				int wsport = Config.getServerPort()+1;
+
+				/**
+				 * Web Server for Admin
+				 */
+				Application.webAdmin = new ServerWebAdmin();
+				Application.webAdmin.start();
+
 				/**
 				 * WebSocket Server for Admin
 				 */
@@ -93,11 +100,6 @@ public class Application {
 				Application.webSocketAdmin = new ServerWebSocketServerAdmin(address);
 				Application.webSocketAdmin.start();		
 		
-				/**
-				 * Web Server for Admin
-				 */
-				Application.webAdmin = new ServerWebAdmin();
-				Application.webAdmin.start();
 				
 				/**
 				 * WebSocket Client for feeder
