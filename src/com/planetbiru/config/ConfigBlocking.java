@@ -89,7 +89,10 @@ public class ConfigBlocking {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			logger.error(e.getMessage(), e);
+			if(Config.isLogConfigNotFound())
+			{
+				logger.error(e.getMessage(), e);
+			}
 		}	
 	}
 	public static void save()

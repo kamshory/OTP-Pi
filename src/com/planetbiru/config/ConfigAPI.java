@@ -14,7 +14,7 @@ import com.planetbiru.util.Utility;
 public class ConfigAPI {
 	private static String configPath = "";
 	
-	private static Logger logger = Logger.getLogger(ConfigAPI.class);
+	private static Logger logger = Logger.getLogger(ConfigAPIUser.class);
 	private ConfigAPI()
 	{
 		
@@ -73,7 +73,10 @@ public class ConfigAPI {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			logger.error(e.getMessage(), e);
+			if(Config.isLogConfigNotFound())
+			{
+				logger.error(e.getMessage(), e);
+			}
 		}
 		
 	}	

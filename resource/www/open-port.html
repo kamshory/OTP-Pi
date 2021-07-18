@@ -54,12 +54,12 @@
                                 <li><a href="api-user.html">API User</a></li>
                                 <li><a href="feeder-setting.html">Feeder Setting</a></li>
                                 <li><a href="sms-setting.html">SMS Setting</a></li>
-                                <li class="active"><a href="block-list.html">Block List</a></li>
+                                <li><a href="block-list.html">Block List</a></li>
                                 <li><a href="modem.html">Modem</a></li>
                                 <li><a href="email-account.html">Email Account</a></li>
                                 <li><a href="network-setting.html">Network Setting</a></li>
-                                <li><a href="firewall.html">Firewall</a></li>
-                <li><a href="open-port.html">Open Port</a></li>
+                                <li class="active"><a href="firewall.html">Firewall</a></li>
+                                <li><a href="open-port.html">Open Port</a></li>
                                 <li><a href="keystore.html">Keystore</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li class="dropdown-header">DDNS Setting</li>
@@ -80,27 +80,16 @@
             </div>
             <!--/.container-fluid -->
         </nav>
-        <style>
-            
-
-        </style>
         <div class="phone-page">
-            <h3>Block List</h3>
-            <form action="block-list.html" method="get">
-                <div class="filter-data">
-                    <input type="text" name="q" placeholder="MSISDN" class="form-control">
-                    <input type="submit" value="Search" class="btn btn-success">
-                </div>    
-            </form>
+            <h3>Open Port</h3>
             <form action="" method="post">
-                <div data-pagination="true" data-self-name="block-list.html" data-max-record="0" data-record-per-page="4" data-hide="false"></div>
                 <table class="row-table" border="1" data-file="ddns-record.html">
                     <thead>
                         <tr>
-                            <td width="16"><input type="checkbox" class="check-all"></td>
-                            <td width="25">No</td>
-                            <td>MSISDN</td>
-                            <td width="60" align="center">Block</td>
+                            <td width="20">No</td>
+                            <td>Port</td>
+                            <td>Node</td>
+                            <td>Type</td>
                         </tr>
                     </thead>
 
@@ -108,74 +97,38 @@
 
                     </tbody>
                 </table>
-                <div data-pagination="true" data-self-name="block-list.html" data-max-record="0" data-record-per-page="4" data-hide="false"></div>
-                <div class="button-area">
-                    <input type="button" class="btn btn-primary" value="Add" onclick="window.location='block-list-add.html'">
-                    <input type="submit" class="btn btn-warning" name="block" value="Block">
-                    <input type="submit" class="btn btn-success" name="unblock" value="Unblock">
-                    <input type="submit" class="btn btn-danger" name="delete" value="Delete"
-                        onclick="return confirm('Are you sure you want to delete this record?')">
-                </div>
             </form>
             <script type="text/javascript">
-            var recordPerPage = 20;
-            var unsortedData = {};
-            var sortedData = {};
-            var q = '';
-            $(document).ready(function (e1) {
-                var urlParams = new URLSearchParams(window.location.search);
-                q = urlParams.get('q') || '';
-                $('[name="q"]').val(q);
-                var offset = Math.abs(parseInt(urlParams.get('offset') || '0'));
-                $('[data-pagination="true"]').attr('data-record-per-page', recordPerPage);
-                $.ajax({
-                    type: "GET",
-                    url: "data/block-list/list",
-                    dataType: "json",
-                    success: function (data) {
-                        unsortedData = filterData(data, q, true);
-                        console.log('unsortedData : ', unsortedData);
-                        sortedData = sortObject(unsortedData, true);
-                        renderData(sortedData);                           
-                    }
-                });
-
-                function renderData(dataToRender)
-                {
-                    var length = Object.size(dataToRender);
-                    $('[data-pagination="true"]').attr('data-max-record', length);
-                    createPagination();
-                    var i = 0;
-                    var j = 0;
-                    for (const key in dataToRender) {
-                        if (dataToRender.hasOwnProperty(key)) {
-                            if(i >= offset && j < recordPerPage)
-                            {
-                                var no = i + 1;
-                                var item = dataToRender[key];
-                                var active = !item ? 'icon-cross' : 'icon-check';
+                $(document).ready(function (e1) {
+                    $.ajax({
+                        type: "GET",
+                        url: "data/port/open",
+                        dataType: "json",
+                        success: function (data) {
+                            var i = 0;
+                            for (const key in data) {
+                                i++;
+                                var item = data[key];
                                 $('.row-table tbody').append(
-                                    '<tr data-pk-id="' + key + '">\r\n' +
-                                    '	<td><input type="checkbox" class="check-all" name="id[]" value="' + key + '"></td>\r\n' +
-                                    '	<td align="right">'+no+'</td>\r\n' +
-                                    '	<td>'+key+'</td>\r\n' +
-                                    '	<td align="center"><span class="icon ' + active + '"></span></td>\r\n' +
+                                    '<tr>\r\n' +
+                                    '	<td align="right">' + i + '</td>\r\n' +
+                                    '	<td>' + item.port + '</td>\r\n' +
+                                    '	<td>' + item.node + '</td>\r\n' +
+                                    '	<td>' + item.type + '</td>\r\n' +
                                     '</tr>\r\n'
                                 );
-                                j++;
+                            
                             }
-                            i++;
                         }
-                    }
-                }
-            });
+                    });
+                });
             </script>
         </div>
         <!-- /container -->
     </div>
-<div class="waiting-server-up">
-    <div class="loading-icon"><span class="animation-pressure"><span></span></span></div>
-</div>
+    <div class="waiting-server-up">
+        <div class="loading-icon"><span class="animation-pressure"><span></span></span></div>
+    </div>
 </body>
 
 </html>

@@ -4,9 +4,9 @@ import com.sun.net.httpserver.Headers;
 
 public class WebResponse {
 
-	public int statusCode = 200;
-	public byte[] responseBody = "".getBytes();
-	public Headers responseHeaders = new Headers();
+	private int statusCode = 200;
+	private byte[] responseBody = "".getBytes();
+	private Headers responseHeaders = new Headers();
 	
 	public WebResponse(int statusCode, Headers responseHeaders, byte[] responseBody)
 	{
@@ -16,7 +16,30 @@ public class WebResponse {
 	}
 
 	public WebResponse() {
-		// TODO Auto-generated constructor stub
+	}
+
+	public int getStatusCode() {
+		return statusCode;
+	}
+
+	public void setStatusCode(int statusCode) {
+		this.statusCode = statusCode;
+	}
+
+	public byte[] getResponseBody() {
+		return responseBody;
+	}
+
+	public void setResponseBody(byte[] responseBody) {
+		this.responseBody = responseBody;
+	}
+
+	public Headers getResponseHeaders() {
+		return responseHeaders;
+	}
+
+	public void setResponseHeaders(Headers responseHeaders) {
+		this.responseHeaders = responseHeaders;
 	}
 
 }

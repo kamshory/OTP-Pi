@@ -773,6 +773,9 @@ display: inline-block; padding-top: 14px; padding-right: 10px; width: 62px;
 .internet .tile-icon{
   background-image: url(../images/icon/internet.png);
 }
+.open-port .tile-icon{
+  background-image: url(../images/icon/port.png);
+}
 .tile-icon > a{
   width: 64px;
   height: 64px;

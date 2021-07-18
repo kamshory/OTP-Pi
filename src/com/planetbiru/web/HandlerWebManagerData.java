@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.util.Map;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
-
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigAPIUser;
@@ -172,9 +170,9 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			this.handleModemGet(httpExchange);
 		}
-		else if(path.startsWith("/data/modem/list"))
+		else if(path.startsWith("/data/recording/list"))
 		{
-			this.handleModemSRecordList(httpExchange);
+			this.handleRecordingList(httpExchange);
 		}
 		else if(path.startsWith("/data/user/self"))
 		{
@@ -188,11 +186,50 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			this.handleUserGet(httpExchange);
 		}
+		else if(path.startsWith("/data/port/open"))
+		{
+			this.handleOpenPort(httpExchange);
+		}
 		else
 		{
 			httpExchange.sendResponseHeaders(404, 0);
 			httpExchange.close();
 		}
+	}
+	
+	public void handleOpenPort(HttpExchange httpExchange) throws IOException
+	{
+		Headers requestHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
+		CookieServer cookie = new CookieServer(requestHeaders, Config.getSessionName(), Config.getSessionLifetime());
+		byte[] responseBody = "".getBytes();
+		int statusCode = HttpStatus.OK;
+		try
+		{
+			if(WebUserAccount.checkUserAuth(requestHeaders))
+			{
+				responseBody = ServerInfo.getOpenPort().toString(4).getBytes();
+			}
+			else
+			{
+				statusCode = HttpStatus.UNAUTHORIZED;			
+			}
+		}
+		catch(NoUserRegisteredException e)
+		{
+			/**
+			 * Do nothing
+			 */
+			statusCode = HttpStatus.UNAUTHORIZED;
+		}		
+		cookie.saveSessionData();
+		cookie.putToHeaders(responseHeaders);
+		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
+		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
+
+		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+		httpExchange.getResponseBody().write(responseBody);
+		httpExchange.close();		
 	}
 	
 	//@GetMapping(path="/data/user/self")
@@ -539,8 +576,8 @@ public class HandlerWebManagerData implements HttpHandler {
 		httpExchange.close();		
 	}
 	
-	//@GetMapping(path="/data/modem/list")
-	public void handleModemSRecordList(HttpExchange httpExchange) throws IOException
+	//@GetMapping(path="/data/recording/list")
+	public void handleRecordingList(HttpExchange httpExchange) throws IOException
 	{
 		Headers requestHeaders = httpExchange.getRequestHeaders();
 		Headers responseHeaders = httpExchange.getResponseHeaders();
@@ -551,9 +588,9 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				ConfigModem.load(Config.getModemSettingPath());
-				JSONObject modemInfo = ConfigModem.getStatus();				
-				responseBody = modemInfo.toString().getBytes();
+				File directory = new File(Config.getLogDir());
+				JSONArray list = FileUtil.listFile(directory);
+				responseBody = list.toString().getBytes();
 			}
 			else
 			{
@@ -562,7 +599,9 @@ public class HandlerWebManagerData implements HttpHandler {
 		}
 		catch(NoUserRegisteredException e)
 		{
-			statusCode = HttpStatus.UNAUTHORIZED;
+			/**
+			 * Do nothing
+			 */
 		}
 		cookie.saveSessionData();
 		cookie.putToHeaders(responseHeaders);
@@ -571,7 +610,7 @@ public class HandlerWebManagerData implements HttpHandler {
 
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 		httpExchange.getResponseBody().write(responseBody);
-		httpExchange.close();	
+		httpExchange.close();
 	}
 	
 	//@GetMapping(path="/data/general-setting/get")

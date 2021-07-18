@@ -83,6 +83,7 @@ public class Config {
 	private static String wvdialCommandDisconnect = "";
 	private static String serverStatusSettingPath = "";
 	private static String imageName = "otp.jar";
+	private static boolean logConfigNotFound = true;
 	
 	private Config()
 	{
@@ -703,6 +704,14 @@ public class Config {
 
 	public static void setImageName(String imageName) {
 		Config.imageName = imageName;
+	}
+
+	public static boolean isLogConfigNotFound() {
+		return logConfigNotFound;
+	}
+
+	public static void setLogConfigNotFound(boolean logConfigNotFound) {
+		Config.logConfigNotFound = logConfigNotFound;
 	}
 	
 }

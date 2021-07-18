@@ -3,9 +3,21 @@
 Attach RTC DS3231 module to Raspberry Pi
 
 ```bash
+
+mkdir /media
+mkdir /media/usb
+mkdir /media/usb/a
+mkdir /media/usb/b
+mkdir /media/usb/c
+mkdir /media/usb/d
+
+
+
 yum install -y nano
+yum install -y telnet
 yum install -y lm_sensors
 yum install -y sysstat
+yum install -y lsof
 yum install -y zip
 yum install -y unzip
 
@@ -107,6 +119,38 @@ firewall-cmd --permanent --add-port=443/tcp
 firewall-cmd --reload
 
 
+echo -e '#!/bin/sh' > /var/otp-pi/mountusb.sh
+echo -e '' >> /var/otp-pi/mountusb.sh
+echo -e '/bin/mount /dev/sda /media/usb/a' >> /var/otp-pi/mountusb.sh
+echo -e '/bin/mount /dev/sdb /media/usb/b' >> /var/otp-pi/mountusb.sh
+echo -e '/bin/mount /dev/sdc /media/usb/c' >> /var/otp-pi/mountusb.sh
+echo -e '/bin/mount /dev/sdd /media/usb/d' >> /var/otp-pi/mountusb.sh
+
+echo -e '#!/bin/sh' > /var/otp-pi/umountusb.sh
+echo -e '' >> /var/otp-pi/mountusb.sh
+echo -e '/bin/umount /dev/sda' >> /var/otp-pi/umountusb.sh
+echo -e '/bin/umount /dev/sdb' >> /var/otp-pi/umountusb.sh
+echo -e '/bin/umount /dev/sdc' >> /var/otp-pi/umountusb.sh
+echo -e '/bin/umount /dev/sdd' >> /var/otp-pi/umountusb.sh
+
+echo -e '[Unit]' > /usr/lib/systemd/system/mountusb.service
+echo -e 'Description=otp-pi' >> /usr/lib/systemd/system/mountusb.service
+echo -e '' >> /usr/lib/systemd/system/mountusb.service
+echo -e '[Service]' >> /usr/lib/systemd/system/mountusb.service
+echo -e 'User=root' >> /usr/lib/systemd/system/mountusb.service
+echo -e 'Type=simple' >> /usr/lib/systemd/system/mountusb.service
+echo -e 'ExecStart=/bin/bash /var/otp-pi/mountusb.sh' >> /usr/lib/systemd/system/mountusb.service
+echo -e 'ExecReload=/bin/bash /var/otp-pi/mountusb.sh' >> /usr/lib/systemd/system/mountusb.service
+echo -e 'ExecStop=/bin/bash /var/otp-pi/umountusb.sh' >> /usr/lib/systemd/system/mountusb.service
+echo -e '' >> /usr/lib/systemd/system/mountusb.service
+echo -e '[Install]' >> /usr/lib/systemd/system/mountusb.service
+echo -e 'WantedBy=multi-user.target' >> /usr/lib/systemd/system/mountusb.service
+systemctl daemon-reload
+systemctl enable mountusb.service
+systemctl start mountusb.service
+
+
+
 echo -e '#!/bin/sh' > /var/otp-pi/start.sh
 echo -e '' >> /var/otp-pi/start.sh
 echo -e '/sbin/hwclock -s' >> /var/otp-pi/start.sh
@@ -124,6 +168,7 @@ echo -e 'cd /var/otp-pi' >> /var/otp-pi/stop.sh
 echo -e '/bin/java -jar /var/otp-pi/otp-pi.jar --stop' >> /var/otp-pi/stop.sh
 echo -e '[Unit]' > /usr/lib/systemd/system/otp-pi.service
 echo -e 'Description=otp-pi' >> /usr/lib/systemd/system/otp-pi.service
+echo -e 'After=mountusb.service'
 echo -e '' >> /usr/lib/systemd/system/otp-pi.service
 echo -e '[Service]' >> /usr/lib/systemd/system/otp-pi.service
 echo -e 'SuccessExitStatus=143' >> /usr/lib/systemd/system/otp-pi.service

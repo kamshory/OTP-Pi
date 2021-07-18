@@ -11,6 +11,8 @@ import com.planetbiru.config.Config;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 public class GSM {
 
     private SerialPort serialPort;
@@ -20,6 +22,8 @@ public class GSM {
     		"MT", 
     		"SM"
     	};
+    
+    private static Logger logger = Logger.getLogger(DialUtil.class);
     
     public GSM()
     {
@@ -131,7 +135,7 @@ public class GSM {
 	            isOpen = false;
 	       		throw new InvalidPortException(e.getMessage());
 	       	}
-    		e.printStackTrace();
+    		logger.error(e.getMessage(), e);
     	}
     	return isOpen;
     }
@@ -146,7 +150,7 @@ public class GSM {
     public String executeAT(String at, int waitingTime) throws GSMException 
     {
     	this.setReady(false);
-    	System.out.println("AT Command : "+at);
+    	logger.info("AT Command : "+at);
     	if(getSerialPort() == null)
     	{
     		throw new GSMException("GSM is not initilized yet");
@@ -420,8 +424,7 @@ public class GSM {
     	this.connected = false;
         if(getSerialPort() != null)
         {
-        	boolean cls = getSerialPort().closePort();
-        	return cls;
+        	return getSerialPort().closePort();
         }
         else
         {
@@ -434,7 +437,7 @@ public class GSM {
 	}
 
 	public void setSerialPort(SerialPort serialPort) {
-		System.out.println("Set Serial Port");
+		logger.info("Set Serial Port");
 		this.serialPort = serialPort;
 	}
 

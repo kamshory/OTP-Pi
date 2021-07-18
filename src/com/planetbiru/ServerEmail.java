@@ -1,11 +1,13 @@
 package com.planetbiru;
 
+import org.apache.log4j.Logger;
 import org.subethamail.smtp.server.SMTPServer;
 
 import com.planetbiru.config.ConfigSMTP;
 import com.planetbiru.mail.PlanetMessageHandlerFactory;
 
 public class ServerEmail {
+	private static Logger logger = Logger.getLogger(ServerEmail.class);
 	private PlanetMessageHandlerFactory handlerFactory = new PlanetMessageHandlerFactory();
 	
 	private String serverAddress = "localhost";
@@ -13,6 +15,7 @@ public class ServerEmail {
 	private String softwareName = "";
 	
 	private SMTPServer server = null;
+	private boolean running = false;
 	
 	public void start()
 	{
@@ -25,27 +28,30 @@ public class ServerEmail {
 		}
 	}
 	
-	public void destroy()
-	{
-		this.stop();
-	}
-	
 	public void stop() 
 	{
-		try 
+		if(this.running)
 		{
-			if(this.server != null)
+			try 
 			{
-				this.server.stop();
+				if(this.server != null)
+				{
+					this.server.stop();
+				}
+				this.server = null;
+			}
+			catch (Exception e)
+			{
+				logger.error(e.getMessage(), e);
+			}
+			finally 
+			{
+				  this.server = null;
 			}
 		}
-		catch (Exception ex)
+		else
 		{
-			ex.printStackTrace();
-		}
-		finally 
-		{
-			  this.server = null;
+			logger.info("Mail server not running");
 		}
 	}
 	
@@ -58,10 +64,11 @@ public class ServerEmail {
         try
         {
             this.server.start();
+            this.running = true;
         }
         catch (Exception e)
         {
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
         }
     }
 }

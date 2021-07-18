@@ -177,7 +177,9 @@ public class ConfigLoader {
 		long feederWsRefresh = ConfigLoader.getConfigLong("otpbroker.ws.refresh.delay");
 		long feederWsReconnectDelay = ConfigLoader.getConfigLong("otpbroker.ws.reconnect.delay");
 		String imageName = ConfigLoader.getConfig("otpbroker.image.name");
+		boolean logConfigNotFound = ConfigLoader.getConfigBoolean("otpbroker.log.config.not.found");
 	
+		Config.setLogConfigNotFound(logConfigNotFound);
 		Config.setImageName(imageName);
 		Config.setSmtpSettingPath(smtpSettingPath);
 

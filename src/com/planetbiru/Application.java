@@ -3,15 +3,15 @@ package com.planetbiru;
 import java.io.File;
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.List;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.planetbiru.config.Config;
-import com.planetbiru.config.ConfigNetDHCP;
-import com.planetbiru.config.ConfigNetEthernet;
-import com.planetbiru.config.ConfigNetWLAN;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.gsm.DialUtil;
 import com.planetbiru.gsm.GSMUtil;
@@ -41,6 +41,7 @@ public class Application {
 		File currentJavaJarFile = new File(Application.class.getProtectionDomain().getCodeSource().getLocation().getPath());   
 		String currentJavaJarFilePath = currentJavaJarFile.getAbsolutePath();
 		String currentRootDirectoryPath = currentJavaJarFilePath.replace(currentJavaJarFile.getName(), "");
+		List<String> argList = Arrays.asList(args);
 
 		boolean loaded = loadConfig(currentRootDirectoryPath, "config.ini");
 		boolean needToStart = true;
@@ -51,8 +52,7 @@ public class Application {
 			
 			if(args != null)
 			{
-				List<String> list = Arrays.asList(args);
-				if(list.contains("--start"))
+				if(argList.contains("--start"))
 				{
 					String pingCommand = ConfigLoader.getConfig("otpbroker.ssh.ping.command");
 					String result = CommandLineExecutor.exec(pingCommand).toString();
@@ -61,12 +61,12 @@ public class Application {
 						needToStart = false;
 					}
 				}
-				else if(list.contains("--restart"))
+				else if(argList.contains("--restart"))
 				{
 					ProcessKiller killer = new ProcessKiller(Config.getImageName(), true);
 					killer.stop();					
 				}
-				else if(list.contains("--stop"))
+				else if(argList.contains("--stop"))
 				{
 					ProcessKiller killer = new ProcessKiller(Config.getImageName(), true);
 					killer.stop();
@@ -78,7 +78,10 @@ public class Application {
 			{
 				ConfigLoader.init();
 				
-				Application.resetConfig();
+				if(argList.contains("--start"))
+				{
+					resetConfig();
+				}
 		
 				Application.prepareSessionDir();
 		
@@ -207,8 +210,11 @@ public class Application {
 	
 	private static void resetConfig() 
 	{
+		logger.info("Reset Config");
 		if(usbPluged())
 		{
+			logger.info("Reset File Exists");
+			/*
 			String defaultConfigDHCP = Config.getDhcpSettingPathDefault();
 			String defaultConfigWLAN = Config.getWlanSettingPathDefault();
 			String defaultConfigEthernet = Config.getEthernetSettingPathDefault();
@@ -228,11 +234,59 @@ public class Application {
 			ConfigNetDHCP.apply(Config.getOsDHCPConfigPath());
 			ConfigNetWLAN.apply(Config.getOsWLANConfigPath(), Config.getOsWLANConfigPath());
 			ConfigNetEthernet.apply(Config.getOsEthernetConfigPath());
-		}		
+			*/
+		}	
+		else
+		{
+			logger.info("Reset File Not Exists");
+		}
 	}
 	
 	private static boolean usbPluged() 
 	{
+		List<String> usbDrives = new ArrayList<>();
+		usbDrives.add("/media/usb/a");
+		usbDrives.add("/media/usb/b");
+		usbDrives.add("/media/usb/c");
+		usbDrives.add("/media/usb/d");
+		
+		String fileName = "/otp-pi/reset-config.txt";
+		
+		for(int i = 0; i<usbDrives.size(); i++)
+		{
+			String path = usbDrives.get(i) + fileName;
+			if(validResetDevice(path))
+			{
+				return true;
+			}
+		}
+		
+		return false;
+	}
+
+	private static boolean validResetDevice(String path) {
+		path = FileConfigUtil.fixFileName(path);
+		try 
+		{
+			byte[] data = FileConfigUtil.read(path);
+			if(data != null)
+			{
+				byte[] decoded = Base64.getDecoder().decode(data);
+				if(decoded != null)
+				{
+					String decodedString = new String(decoded);
+					JSONObject json = new JSONObject(decodedString);
+					String configName = json.optString("configName", "");
+					return configName.equals("resetAll");
+				}
+			}
+		} 
+		catch (FileNotFoundException | JSONException e) 
+		{
+			/**
+			 * Do nothing
+			 */
+		}
 		return false;
 	}
 }

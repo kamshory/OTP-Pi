@@ -51,7 +51,6 @@ public class HandlerWebManagerUserAdd implements HttpHandler {
 				jsonObject.put(JsonKey.PHONE, phone);
 				jsonObject.put(JsonKey.BLOCKED, false);
 				jsonObject.put(JsonKey.ACTIVE, true);
-				System.out.println(jsonObject.toString(4));
 				
 				if(!username.isEmpty())
 				{

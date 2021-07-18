@@ -7,7 +7,9 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.log4j.Logger;
 import org.json.JSONException;
+
 import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.FileNotFoundException;
 import com.planetbiru.util.Utility;
@@ -18,6 +20,8 @@ public class PropertyLoader {
 	private static Map <String, Map<String, String>> mEntries = new HashMap<>();
 	private static boolean loaded = false;
 
+	private static Logger logger = Logger.getLogger(PropertyLoader.class);
+	
 	private PropertyLoader()
 	{
 		
@@ -48,6 +52,10 @@ public class PropertyLoader {
 			/**
 			 * Do nothing
 			 */
+			if(Config.isLogConfigNotFound())
+			{
+				logger.error(e.getMessage(), e);
+			}
 		}
 		PropertyLoader.setLoaded(true);
 	}

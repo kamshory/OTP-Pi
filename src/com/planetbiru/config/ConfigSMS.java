@@ -109,6 +109,10 @@ public class ConfigSMS {
 		} 
 		catch (FileNotFoundException e1) 
 		{
+			if(Config.isLogConfigNotFound())
+			{
+				logger.error(e1.getMessage(), e1);
+			}
 			/**
 			 * Do nothing
 			 */

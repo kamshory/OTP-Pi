@@ -74,14 +74,14 @@ public class HandlerWebManager implements HttpHandler {
 		}
 		WebResponse response = this.handleGet(httpExchange, path);
 		long length = 0;
-		if(response.responseBody != null)
+		if(response.getResponseBody() != null)
 		{
-			length = response.responseBody.length;
+			length = response.getResponseBody().length;
 		}
-		httpExchange.sendResponseHeaders(response.statusCode, length);	
-		if(response.responseBody != null)
+		httpExchange.sendResponseHeaders(response.getStatusCode(), length);	
+		if(response.getResponseBody() != null)
 		{
-			httpExchange.getResponseBody().write(response.responseBody);
+			httpExchange.getResponseBody().write(response.getResponseBody());
 		}
 		httpExchange.close();
 		long dur = System.nanoTime() - from;
@@ -96,8 +96,7 @@ public class HandlerWebManager implements HttpHandler {
 		else
 		{
 			return this.serveDocumentRoot(httpExchange, path);
-		}
-		
+		}		
 	}
 
 	private WebResponse invalidDevice() {
@@ -182,9 +181,9 @@ public class HandlerWebManager implements HttpHandler {
 				responseHeaders.add(ConstantString.CACHE_CONTROL, "public, max-age="+lifetime+", immutable");				
 			}
 		}
-		response.responseHeaders = responseHeaders;
-		response.statusCode = statusCode;
-		response.responseBody = responseBody;
+		response.setResponseHeaders(responseHeaders);
+		response.setStatusCode(statusCode);
+		response.setResponseBody(responseBody);
 		
 		return response;
 	}

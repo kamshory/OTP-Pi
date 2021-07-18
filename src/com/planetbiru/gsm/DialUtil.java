@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigModem;
 import com.planetbiru.config.DataModem;
@@ -18,6 +20,8 @@ public class DialUtil {
 	private static String configPath = "";
 	private static String wvdialCommandConnect = "";
 	private static String wvdialCommandDisconnect = "";
+	
+	private static Logger logger = Logger.getLogger(DialUtil.class);
 	
 	private DialUtil()
 	{
@@ -59,6 +63,7 @@ public class DialUtil {
 			/**
 			 * Do nothing
 			 */
+			logger.error(e.getMessage(), e);
 		}
 		try 
 		{
@@ -66,6 +71,7 @@ public class DialUtil {
 		} 
 		catch (IOException e) 
 		{
+			logger.error(e.getMessage(), e);
 		}
 		boolean ret = false;
 		CommandLineExecutor.exec(wvdialCommandConnect);

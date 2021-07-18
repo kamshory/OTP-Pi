@@ -408,7 +408,76 @@ public class ServerInfo {
 		}
 		return temp;
 	}
-	
+	public static JSONArray getOpenPort() {
+		JSONArray info = new JSONArray();
+		String command = "/sbin/lsof -i -P -n";
+		String result = CommandLineExecutor.exec(command).toString();
+		result = fixingRawData(result).trim();
+		String[] arr = result.split("\r\n");
+		if(arr.length > 1)
+		{
+			String line = arr[0].replaceAll("\\s+", " ").trim();
+			String[] arr1 = line.split(" ", 9);
+			
+			for(int i = 0; i<arr1.length; i++)
+			{
+				arr1[i] = arr1[i].replace("/", "_").replace(" ", "_").toLowerCase().trim();
+			}
+			for(int j = 1; j < arr.length; j++)
+			{
+				JSONObject item = parseOpenPortLine(arr, arr1, j);
+				if(item != null)
+				{
+					info.put(item);
+				}
+			}
+		}
+		return info;		
+	}
+	private static JSONObject parseOpenPortLine(String[] arr, String[] arr1, int j) {
+		String[] arr2 = arr[j].replaceAll("\\s+", " ").trim().split(" ", 9);
+		for(int i = 0; i<arr2.length; i++)
+		{
+			arr2[i] = arr2[i].trim();
+		}
+		if(arr1.length >= 9 && arr2.length >= 9)
+		{
+			JSONObject item = new JSONObject();
+			for(int k = 0; k<9; k++)
+			{
+				item.put(arr1[k], arr2[k]);
+			}
+			item.put("port", extractPort(item.optString("name", "")));
+			String sizeOff = item.optString("size_off", "");
+			if(sizeOff.contains("t"))
+			{
+				String[] arr3 = sizeOff.split("t");
+				int size = Utility.atoi(arr3[0]);
+				int offset = Utility.atoi(arr3[1]);
+				item.put("size", size);
+				item.put("offset", offset);
+			}
+			return item;
+		}
+		return null;
+	}
+
+	public static int extractPort(String nodeNmae)
+	{
+		nodeNmae = nodeNmae.replace("->", " ");
+		int port = 0;
+		String[] arr = nodeNmae.split(" ");
+		for(int i = 0; i<arr.length; i++)
+		{
+			if(arr[i].contains(":"))
+			{
+				String[] p = arr[i].split(":", 2);
+				port = Utility.atoi(p[1]);
+				break;
+			}
+		}
+		return port;
+	}
 	public static JSONObject getCPUTemperature(String[] arr2) {
 		String cpuLabel = arr2[0].trim();
 		String cpuInfo = arr2[1].trim();

@@ -68,6 +68,9 @@ public class ConfigModem {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
+			if(Config.isLogConfigNotFound())
+			{
+			}
 			/**
 			 * Do nothing
 			 */

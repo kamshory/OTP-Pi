@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.planetbiru.constant.JsonKey;
@@ -22,6 +23,8 @@ public class ConfigAPIUser {
 
 	private static Map<String, User> users = new HashMap<>();
 	private static String configPath = "";
+	
+	private static Logger logger = Logger.getLogger(ConfigAPI.class);
 	
 	private ConfigAPIUser()
 	{
@@ -92,6 +95,10 @@ public class ConfigAPIUser {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
+			if(Config.isLogConfigNotFound())
+			{
+				logger.error(e.getMessage(), e);
+			}
 			/**
 			 * Do nothing
 			 */

@@ -97,6 +97,10 @@ public class ConfigFeederAMQP {
 		catch (FileNotFoundException e1) 
 		{
 			ConfigFeederAMQP.loaded = false;
+			if(Config.isLogConfigNotFound())
+			{
+				logger.error(e1.getMessage(), e1);
+			}
 		}
 		if(data != null)
 		{
