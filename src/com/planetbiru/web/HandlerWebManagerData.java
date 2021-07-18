@@ -937,7 +937,6 @@ public class HandlerWebManagerData implements HttpHandler {
 		httpExchange.close();	
 	}
 	
-	
 	//@GetMapping(path="/data/block-list/list")
 	public void handleBlockList(HttpExchange httpExchange) throws IOException
 	{
