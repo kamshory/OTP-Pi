@@ -715,3 +715,5 @@ Caused by: java.net.BindException: Address already in use: bind
 2021-07-18 07:25:20 [INFO  ] HandlerWebManager               :88   - Finish in 2275600 : 2 ms
 2021-07-18 07:25:20 [INFO  ] HandlerWebManager               :88   - Finish in 5971700 : 5 ms
 2021-07-18 07:25:20 [INFO  ] HandlerWebManager               :88   - Finish in 2158100 : 2 ms
+2021-07-18 10:23:48 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-18 10:23:48 [INFO  ] Application                     :131  - Service started
