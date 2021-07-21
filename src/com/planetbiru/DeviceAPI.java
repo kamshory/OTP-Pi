@@ -122,5 +122,10 @@ public class DeviceAPI {
 	{
 		CommandLineExecutor.exec(Config.getCleanupCommand());		
 	}
+
+	public static void expand() {
+		String command = "/usr/bin/rootfs-expand";
+		CommandLineExecutor.exec(command);
+	}
 	
 }

@@ -68,25 +68,44 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			{
 				this.cleanup(httpExchange);
 			}
+			else if(path.startsWith("/api/expand"))
+			{
+				this.expand(httpExchange);
+			}
 		}
 	}
 	
-	//@PostMapping(path="/api/reboot")
-	public void reboot(HttpExchange httpExchange) throws IOException
+	//@PostMapping(path="/api/expand")
+	public void expand(HttpExchange httpExchange) throws IOException
 	{
 		Headers responseHeaders = httpExchange.getResponseHeaders();
-		JSONObject jo = new JSONObject();
-		jo.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
-		byte[] responseBody = jo.toString().getBytes();
 		int statusCode = HttpStatus.OK;
-		DeviceAPI.reboot();		
+		DeviceAPI.expand();		
 
+		byte[] responseBody = ServerInfo.getInfo().getBytes();
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 		httpExchange.getResponseBody().write(responseBody);
 		httpExchange.close();
 	}
+	
+	//@PostMapping(path="/api/reboot")
+		public void reboot(HttpExchange httpExchange) throws IOException
+		{
+			Headers responseHeaders = httpExchange.getResponseHeaders();
+			JSONObject jo = new JSONObject();
+			jo.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
+			byte[] responseBody = jo.toString().getBytes();
+			int statusCode = HttpStatus.OK;
+			DeviceAPI.reboot();		
+
+			responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
+			responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
+			httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+			httpExchange.getResponseBody().write(responseBody);
+			httpExchange.close();
+		}
 	
 	//@PostMapping(path="/api/restart")
 	public void restart(HttpExchange httpExchange) throws IOException

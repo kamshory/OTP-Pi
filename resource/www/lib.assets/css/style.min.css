@@ -776,6 +776,9 @@
   .open-port .tile-icon{
     background-image: url(../images/icon/port.png);
   }
+  .expand .tile-icon{
+    background-image: url(../images/icon/sd-card.png);
+  }
   .tile-icon > a{
     width: 64px;
     height: 64px;
