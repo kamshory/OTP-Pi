@@ -771,7 +771,6 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				System.out.println(Config.getStorageDir());
 				File directory = new File(Config.getStorageDir());
 				JSONArray list = FileUtil.listFile(directory);
 				responseBody = list.toString().getBytes();

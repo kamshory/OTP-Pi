@@ -2,19 +2,29 @@ package com.planetbiru;
 
 import java.text.ParseException;
 import java.util.Date;
+import java.util.Map;
+import java.util.Map.Entry;
 
+import org.apache.log4j.Logger;
 import org.apache.logging.log4j.core.util.CronExpression;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.planetbiru.config.ConfigDDNS;
 import com.planetbiru.config.ConfigFeederAMQP;
 import com.planetbiru.config.ConfigFeederWS;
 import com.planetbiru.config.ConfigGeneral;
 import com.planetbiru.config.ConfigModem;
+import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
+import com.planetbiru.ddns.DDNSRecord;
+import com.planetbiru.ddns.DDNSUpdater;
 import com.planetbiru.gsm.GSMUtil;
+import com.planetbiru.util.ConfigLoader;
 import com.planetbiru.util.ServerInfo;
 import com.planetbiru.util.ServerStatus;
+import com.planetbiru.util.Utility;
 
 public class Scheduller extends Thread{
 
@@ -40,23 +50,25 @@ public class Scheduller extends Thread{
 
 	private long nextValidStatusServer = 0;
 
-	private boolean updateServerStatus = false;
+	private boolean cronUpdateServerStatus = false;
 
-	private boolean updateDDNS = false;
+	private boolean cronUpdateDDNS = false;
 
-	private boolean updateAMQP;
+	private boolean cronUpdateAMQP = false;
 
-	private boolean deviceCheck;
+	private boolean cronCeviceCheck = false;
+	
+	private static Logger logger = Logger.getLogger(Scheduller.class);
 	
 	public Scheduller() {
 		this.cronExpressionDeviceCheck = ConfigLoader.getConfig("otpbroker.cron.expression.device");
 		this.cronExpressionAMQPCheck = ConfigLoader.getConfig("otpbroker.cron.expression.amqp");
 		this.cronExpressionDDNSUpdate = ConfigLoader.getConfig("otpbroker.cron.expression.general");
 		this.cronExpressionStatusServer = ConfigLoader.getConfig("otpbroker.cron.expression.server.status");		
-		this.updateServerStatus = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.server.status");
-		this.updateDDNS = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.ddns");
-		this.updateAMQP = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.amqp");
-		this.deviceCheck = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.device");
+		this.cronUpdateServerStatus = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.server.status");
+		this.cronUpdateDDNS = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.ddns");
+		this.cronUpdateAMQP = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.amqp");
+		this.cronCeviceCheck = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.device");
 	}
 	
 	@Override
@@ -76,7 +88,7 @@ public class Scheduller extends Thread{
 			/**
 			 * Update DDNS
 			 */
-			if(this.updateDDNS)
+			if(this.cronUpdateDDNS)
 			{
 				this.updateDDNS(currentTime);
 			}			
@@ -84,7 +96,7 @@ public class Scheduller extends Thread{
 			/**
 			 * Check modem
 			 */
-			if(this.deviceCheck)
+			if(this.cronCeviceCheck)
 			{
 				this.modemCheck(currentTime);
 			}
@@ -92,7 +104,7 @@ public class Scheduller extends Thread{
 			/**
 			 * Check AMQP
 			 */
-			if(this.updateAMQP)
+			if(this.cronUpdateAMQP)
 			{
 				this.amqpCheck(currentTime);
 			}			
@@ -100,7 +112,7 @@ public class Scheduller extends Thread{
 			/**
 			 * Status server
 			 */
-			if(this.updateServerStatus)
+			if(this.cronUpdateServerStatus)
 			{
 				this.updateServerStatus(currentTime);
 			}
@@ -139,7 +151,7 @@ public class Scheduller extends Thread{
 			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
 			if(currentTime.getTime() > this.nextValidDDNSUpdate)
 			{
-				this.updateTime();
+				this.updateDDNSRecord();
 				this.nextValidDDNSUpdate = nextValidTimeAfter.getTime();
 			}
 		}
@@ -150,6 +162,61 @@ public class Scheduller extends Thread{
 			 */
 		}
 		
+	}
+
+	private void updateDDNSRecord() {
+		int countUpdate = 0;	
+		Map<String, DDNSRecord> list = ConfigDDNS.getRecords();
+		for(Entry<String, DDNSRecord> set : list.entrySet())
+		{
+			String ddnsId = set.getKey();
+			DDNSRecord ddnsRecord = set.getValue();
+			if(ddnsRecord.isActive())
+			{
+				boolean update = updateDNSRecord(ddnsRecord, ddnsId);
+				if(update)
+				{
+					countUpdate++;
+				}
+			}
+		}
+		if(countUpdate > 0)
+		{
+			ConfigDDNS.save();
+		}	
+		
+	}
+
+	private boolean updateDNSRecord(DDNSRecord ddnsRecord, String ddnsId) {
+		boolean update = false;
+		String cronExpression = ddnsRecord.getCronExpression();		
+		CronExpression exp;		
+		try
+		{
+			exp = new CronExpression(cronExpression);
+			Date currentTime = new Date();
+			Date prevFireTime = exp.getPrevFireTime(currentTime);
+			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
+
+			String prevFireTimeStr = Utility.date(ConstantString.MYSQL_DATE_TIME_FORMAT_MS, prevFireTime);
+			String currentTimeStr = Utility.date(ConstantString.MYSQL_DATE_TIME_FORMAT_MS, currentTime);
+			String nextValidTimeAfterStr = Utility.date(ConstantString.MYSQL_DATE_TIME_FORMAT_MS, nextValidTimeAfter);
+			
+			if(currentTime.getTime() > ddnsRecord.getNextValid().getTime())
+			{
+				DDNSUpdater ddns = new DDNSUpdater(ddnsRecord, prevFireTimeStr, currentTimeStr, nextValidTimeAfterStr);
+				ddns.start();
+				
+				ConfigDDNS.getRecords().get(ddnsId).setNextValid(nextValidTimeAfter);		
+				ConfigDDNS.getRecords().get(ddnsId).setLastUpdate(currentTime);
+				update = true;
+			}
+		}
+		catch(JSONException | ParseException e)
+		{
+			logger.error("updateDNS ERROR "+e.getMessage()+" "+cronExpression);
+		}
+		return update;	
 	}
 
 	private void modemCheck(Date currentTime) {

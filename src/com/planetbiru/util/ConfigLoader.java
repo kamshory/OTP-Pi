@@ -1,4 +1,4 @@
-package com.planetbiru;
+package com.planetbiru.util;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -27,10 +27,6 @@ import com.planetbiru.gsm.SMSLogger;
 import com.planetbiru.receiver.amqp.RabbitMQReceiver;
 import com.planetbiru.receiver.ws.WebSocketClientImpl;
 import com.planetbiru.user.WebUserAccount;
-import com.planetbiru.util.FileConfigUtil;
-import com.planetbiru.util.FileNotFoundException;
-import com.planetbiru.util.ServerStatus;
-import com.planetbiru.util.Utility;
 import com.planetbiru.web.HandlerWebManagerAPI;
 
 public class ConfigLoader {
