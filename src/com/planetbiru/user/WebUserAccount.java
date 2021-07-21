@@ -248,7 +248,10 @@ public class WebUserAccount {
 		}
 		return new User();
 	}
-	
+	public static void deleteAll()
+	{
+		WebUserAccount.users = new HashMap<>();
+	}
 	public static boolean isEmpty() {
 		return WebUserAccount.users.isEmpty();
 	}

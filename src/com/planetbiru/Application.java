@@ -1,21 +1,27 @@
 package com.planetbiru;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Base64;
 import java.util.List;
+import java.util.Properties;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.planetbiru.config.Config;
+import com.planetbiru.config.ConfigNetDHCP;
+import com.planetbiru.config.ConfigNetEthernet;
+import com.planetbiru.config.ConfigNetWLAN;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.gsm.DialUtil;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.receiver.ws.ClientReceiverWebSocket;
+import com.planetbiru.user.WebUserAccount;
 import com.planetbiru.util.CommandLineExecutor;
 import com.planetbiru.util.ConfigLoader;
 import com.planetbiru.util.FileConfigUtil;
@@ -214,30 +220,44 @@ public class Application {
 	private static void resetConfig() 
 	{
 		logger.info("Reset Config");
-		if(usbPluged())
+		Properties props = loadResetProfile();
+		if(props != null)
 		{
-			logger.info("Reset File Exists");
-			/*
-			String defaultConfigDHCP = Config.getDhcpSettingPathDefault();
-			String defaultConfigWLAN = Config.getWlanSettingPathDefault();
-			String defaultConfigEthernet = Config.getEthernetSettingPathDefault();
-	
-			String configDHCP = Config.getDhcpSettingPath();
-			String configWLAN = Config.getWlanSettingPath();
-			String configEthernet = Config.getEthernetSettingPath();
+			logger.info("RESET_DHCP     = "+props.get("RESET_DHCP"));
+			logger.info("RESET_WLAN     = "+props.get("RESET_WLAN"));
+			logger.info("RESET_ETHERNET = "+props.get("RESET_DHCP"));
+			logger.info("RESET_USER     = "+props.get("RESET_DHCP"));
 			
-			ConfigNetDHCP.load(defaultConfigDHCP);
-			ConfigNetWLAN.load(defaultConfigWLAN);
-			ConfigNetEthernet.load(defaultConfigEthernet);
-			
-			ConfigNetDHCP.save(configDHCP);
-			ConfigNetWLAN.save(configWLAN);
-			ConfigNetEthernet.save(configEthernet);
-			
-			ConfigNetDHCP.apply(Config.getOsDHCPConfigPath());
-			ConfigNetWLAN.apply(Config.getOsWLANConfigPath(), Config.getOsWLANConfigPath());
-			ConfigNetEthernet.apply(Config.getOsEthernetConfigPath());
-			*/
+			if(props.getOrDefault("RESET_DHCP", "").toString().equalsIgnoreCase("true"))
+			{
+				String defaultConfigDHCP = Config.getDhcpSettingPathDefault();
+				String configDHCP = Config.getDhcpSettingPath();
+				ConfigNetDHCP.load(defaultConfigDHCP);
+				ConfigNetDHCP.save(configDHCP);
+				ConfigNetDHCP.apply(Config.getOsDHCPConfigPath());
+			}
+			if(props.getOrDefault("RESET_WLAN", "").toString().equalsIgnoreCase("true"))
+			{
+				String defaultConfigWLAN = Config.getWlanSettingPathDefault();
+				String configWLAN = Config.getWlanSettingPath();
+				ConfigNetWLAN.load(defaultConfigWLAN);
+				ConfigNetWLAN.save(configWLAN);
+				ConfigNetWLAN.apply(Config.getOsWLANConfigPath(), Config.getOsWLANConfigPath());
+				
+			}
+			if(props.getOrDefault("RESET_ETHERNET", "").toString().equalsIgnoreCase("true"))
+			{
+				String defaultConfigEthernet = Config.getEthernetSettingPathDefault();	
+				String configEthernet = Config.getEthernetSettingPath();
+				ConfigNetEthernet.load(defaultConfigEthernet);
+				ConfigNetEthernet.save(configEthernet);
+				ConfigNetEthernet.apply(Config.getOsEthernetConfigPath());
+			}
+			if(props.getOrDefault("RESET_USER", "").toString().equalsIgnoreCase("true"))
+			{
+				WebUserAccount.deleteAll();
+				WebUserAccount.save();
+			}
 		}	
 		else
 		{
@@ -245,7 +265,7 @@ public class Application {
 		}
 	}
 	
-	private static boolean usbPluged() 
+	private static Properties loadResetProfile() 
 	{
 		List<String> usbDrives = new ArrayList<>();
 		usbDrives.add("/media/usb/a");
@@ -253,44 +273,47 @@ public class Application {
 		usbDrives.add("/media/usb/c");
 		usbDrives.add("/media/usb/d");
 		
-		String fileName = "/otp-pi/reset-config.txt";
+		String fileName = Config.getResetConfigPath();
 		
 		for(int i = 0; i<usbDrives.size(); i++)
 		{
 			String path = usbDrives.get(i) + fileName;
-			if(validResetDevice(path))
+			try 
 			{
-				return true;
+				Properties props = getResetProperties(path);
+				if(verifyResetFile(props.getOrDefault("VERIFY", "").toString()))
+				{
+					return props;
+				}
+			} 
+			catch (IOException e) 
+			{
+				e.printStackTrace();
 			}
+			
 		}
 		
-		return false;
+		return null;
 	}
 
-	private static boolean validResetDevice(String path) {
-		path = FileConfigUtil.fixFileName(path);
-		try 
+	private static boolean verifyResetFile(String verifyString) {
+		try
 		{
-			byte[] data = FileConfigUtil.read(path);
-			if(data != null)
-			{
-				byte[] decoded = Base64.getDecoder().decode(data);
-				if(decoded != null)
-				{
-					String decodedString = new String(decoded);
-					JSONObject json = new JSONObject(decodedString);
-					String configName = json.optString("configName", "");
-					return configName.equals("resetAll");
-				}
-			}
-		} 
-		catch (FileNotFoundException | JSONException e) 
-		{
-			/**
-			 * Do nothing
-			 */
+			JSONObject json = new JSONObject(verifyString);
+			return (json.optString("deviceType", "").equals("RPi") && json.optString("baseName", "").equals("reset-config.ini"));
 		}
-		return false;
+		catch(JSONException e)
+		{
+			return false;
+		}
 	}
+
+	private static Properties getResetProperties(String path) throws IOException {
+		Properties props = new Properties();
+		InputStream inputStream = new FileInputStream(new File(path));
+		props.load(inputStream);
+		return props;
+	}
+
 }
 

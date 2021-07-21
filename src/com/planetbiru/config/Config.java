@@ -85,6 +85,7 @@ public class Config {
 	private static String imageName = "otp.jar";
 	private static boolean logConfigNotFound = true;
 	private static int ddnsTimeout = 10000;
+	private static String resetConfigPath = "/otp-pi/reset-config.ini";
 	
 	private Config()
 	{
@@ -721,6 +722,14 @@ public class Config {
 
 	public static void setDdnsTimeout(int ddnsTimeout) {
 		Config.ddnsTimeout = ddnsTimeout;
+	}
+
+	public static String getResetConfigPath() {
+		return resetConfigPath;
+	}
+
+	public static void setResetConfigPath(String resetConfigPath) {
+		Config.resetConfigPath = resetConfigPath;
 	}
 	
 }

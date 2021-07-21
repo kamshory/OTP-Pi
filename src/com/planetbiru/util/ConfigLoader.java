@@ -39,8 +39,7 @@ public class ConfigLoader {
 	
 	public static void loadRelative(String configPath)
 	{
-		InputStream inputStream; 
-		inputStream = ConfigLoader.class.getClassLoader().getResourceAsStream(configPath);
+		InputStream inputStream = ConfigLoader.class.getClassLoader().getResourceAsStream(configPath);
 		if(inputStream != null) 
 		{
 			try 
@@ -175,9 +174,13 @@ public class ConfigLoader {
 		String imageName = ConfigLoader.getConfig("otpbroker.image.name");
 		boolean logConfigNotFound = ConfigLoader.getConfigBoolean("otpbroker.log.config.not.found");
 	
+		String resetConfigPath = ConfigLoader.getConfig("otpbroker.path.reset.config");
+		
 		Config.setLogConfigNotFound(logConfigNotFound);
 		Config.setImageName(imageName);
 		Config.setSmtpSettingPath(smtpSettingPath);
+		
+		Config.setResetConfigPath(resetConfigPath);
 
 		
 		Config.setApiSettingPath(apiSettingPath);
