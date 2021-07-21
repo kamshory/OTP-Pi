@@ -240,6 +240,20 @@ public class ConfigFeederWS {
 		ConfigFeederWS.connected = connected;
 	}
 
+	public static void reset() {
+		ConfigFeederWS.feederWsEnable = false;
+		ConfigFeederWS.feederWsSSL = false;
+		ConfigFeederWS.feederWsAddress = "";
+		ConfigFeederWS.feederWsPort = 0;
+		ConfigFeederWS.feederWsPath = "";
+		ConfigFeederWS.feederWsUsername = "";
+		ConfigFeederWS.feederWsPassword = "";
+		ConfigFeederWS.feederWsChannel = "";
+		ConfigFeederWS.feederWsTimeout = 0;
+		ConfigFeederWS.feederWsReconnectDelay = 0;
+		ConfigFeederWS.feederWsRefresh = 0;
+	}
+
 	
 
 	

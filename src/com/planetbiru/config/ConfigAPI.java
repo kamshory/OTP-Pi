@@ -217,6 +217,19 @@ public class ConfigAPI {
 		ConfigAPI.unblockingPath = unblockingPath;
 	}
 
+	public static void reset() {
+		ConfigAPI.httpPort = 80;
+		ConfigAPI.httpsPort = 443;
+		ConfigAPI.httpEnable = false;
+		ConfigAPI.httpsEnable = false;					
+		ConfigAPI.messagePath = "/api/message";
+		ConfigAPI.smsPath = "/api/sms";
+		ConfigAPI.emailPath = "/api/email";
+		ConfigAPI.blockingPath = "/api/blocking";
+		ConfigAPI.unblockingPath = "/api/unblocking";
+		
+	}
+
 	
 	
 	

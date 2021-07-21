@@ -192,5 +192,10 @@ public class ConfigBlocking {
         builder.append("\r\n}");
 		return builder.toString();
 	}
+
+	public static void reset() {
+		ConfigBlocking.blockList = new LinkedHashMap<>();
+		
+	}
 	
 }

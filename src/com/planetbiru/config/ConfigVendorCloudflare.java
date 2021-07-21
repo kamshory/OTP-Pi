@@ -50,11 +50,11 @@ public class ConfigVendorCloudflare {
 					String lAuthApiKey = json.optString("authApiKey", "");
 					String lAuthToken = json.optString("authToken", "");
 					
-					ConfigVendorCloudflare.setEndpoint(lEndpoint);
-					ConfigVendorCloudflare.setAccountId(lAccountId);
-					ConfigVendorCloudflare.setAuthEmail(lAuthEmail);
-					ConfigVendorCloudflare.setAuthApiKey(lAuthApiKey);
-					ConfigVendorCloudflare.setAuthToken(lAuthToken);
+					ConfigVendorCloudflare.endpoint = lEndpoint;
+					ConfigVendorCloudflare.accountId = lAccountId;
+					ConfigVendorCloudflare.authEmail = lAuthEmail;
+					ConfigVendorCloudflare.authApiKey = lAuthApiKey;
+					ConfigVendorCloudflare.authToken = lAuthToken;
 				}
 			}
 		} 
@@ -170,6 +170,15 @@ public class ConfigVendorCloudflare {
 	public static JSONObject toJSONObject()
 	{
 		return getJSONObject();
+	}
+
+	public static void reset() {
+		ConfigVendorCloudflare.endpoint = "";
+		ConfigVendorCloudflare.accountId = "";
+		ConfigVendorCloudflare.authEmail = "";
+		ConfigVendorCloudflare.authApiKey = "";
+		ConfigVendorCloudflare.authToken = "";
+		
 	}
 	
 }

@@ -248,7 +248,7 @@ public class WebUserAccount {
 		}
 		return new User();
 	}
-	public static void deleteAll()
+	public static void reset()
 	{
 		WebUserAccount.users = new HashMap<>();
 	}

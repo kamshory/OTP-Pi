@@ -196,4 +196,8 @@ public class ConfigDDNS {
 	{
 		return getJSONObject();
 	}
+
+	public static void reset() {
+		ConfigDDNS.records = new HashMap<>();		
+	}
 }

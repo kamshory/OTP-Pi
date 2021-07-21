@@ -2,6 +2,8 @@ package com.planetbiru.config;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.security.KeyStoreException;
 import java.util.HashMap;
 import java.util.Map;
@@ -199,6 +201,22 @@ public class ConfigKeystore {
 			}
 	    }
 		throw new KeyStoreException("No active keystore found");
+	}
+
+	public static void reset() {
+		for (Map.Entry<String, DataKeystore> set : ConfigKeystore.keystores.entrySet()) 
+		{
+			String filePath = set.getValue().getFullPath();
+			File file = new File(filePath);
+			Path path = file.toPath();
+			try {
+				Files.delete(path);
+			} catch (IOException e) {
+				logger.error(e.getMessage());
+			} 	
+		}
+		ConfigKeystore.keystores = new HashMap<>();
+		
 	}
 	
 }

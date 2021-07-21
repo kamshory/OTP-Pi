@@ -219,4 +219,8 @@ public class ConfigFirewall {
 		ConfigFirewall.records = records;
 	}
 
+	public static void reset() {
+		ConfigFirewall.records = new JSONArray();		
+	}
+
 }

@@ -50,11 +50,11 @@ public class ConfigVendorAfraid {
 					String lPassword = json.optString("password", "");
 					String lCompany = json.optString("company", "");
 					
-					ConfigVendorAfraid.setEndpoint(lEndpoint);
-					ConfigVendorAfraid.setUsername(lUsername);
-					ConfigVendorAfraid.setEmail(lEmail);
-					ConfigVendorAfraid.setPassword(lPassword);
-					ConfigVendorAfraid.setCompany(lCompany);
+					ConfigVendorAfraid.endpoint = lEndpoint;
+					ConfigVendorAfraid.username = lUsername;
+					ConfigVendorAfraid.email = lEmail;
+					ConfigVendorAfraid.password = lPassword;
+					ConfigVendorAfraid.company = lCompany;
 				}
 			}
 		} 
@@ -173,6 +173,15 @@ public class ConfigVendorAfraid {
 	public static JSONObject toJSONObject()
 	{
 		return getJSONObject();
+	}
+
+	public static void reset() {
+		ConfigVendorAfraid.endpoint = "";
+		ConfigVendorAfraid.username = "";
+		ConfigVendorAfraid.email = "";
+		ConfigVendorAfraid.password = "";
+		ConfigVendorAfraid.company = "";
+		
 	}
 	
 }

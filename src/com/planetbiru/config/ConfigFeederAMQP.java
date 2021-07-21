@@ -242,4 +242,17 @@ public class ConfigFeederAMQP {
 		ConfigFeederAMQP.connected = connected;
 	}
 
+	public static void reset() {
+		ConfigFeederAMQP.feederAmqpEnable = false;
+		ConfigFeederAMQP.feederAmqpSSL = false;
+		ConfigFeederAMQP.feederAmqpAddress = "";
+		ConfigFeederAMQP.feederAmqpPort = 0;
+		ConfigFeederAMQP.feederAmqpPath = "";
+		ConfigFeederAMQP.feederAmqpUsername = "";
+		ConfigFeederAMQP.feederAmqpPassword = "";
+		ConfigFeederAMQP.feederAmqpChannel = "";
+		ConfigFeederAMQP.feederAmqpTimeout = 0;
+		ConfigFeederAMQP.feederAmqpRefresh = 0;
+	}
+
 }

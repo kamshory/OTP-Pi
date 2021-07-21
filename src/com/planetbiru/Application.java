@@ -14,9 +14,25 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.planetbiru.config.Config;
+import com.planetbiru.config.ConfigAPI;
+import com.planetbiru.config.ConfigAPIUser;
+import com.planetbiru.config.ConfigBlocking;
+import com.planetbiru.config.ConfigDDNS;
+import com.planetbiru.config.ConfigEmail;
+import com.planetbiru.config.ConfigFeederAMQP;
+import com.planetbiru.config.ConfigFeederWS;
+import com.planetbiru.config.ConfigFirewall;
+import com.planetbiru.config.ConfigKeystore;
+import com.planetbiru.config.ConfigModem;
 import com.planetbiru.config.ConfigNetDHCP;
 import com.planetbiru.config.ConfigNetEthernet;
 import com.planetbiru.config.ConfigNetWLAN;
+import com.planetbiru.config.ConfigSMS;
+import com.planetbiru.config.ConfigSMTP;
+import com.planetbiru.config.ConfigVendorAfraid;
+import com.planetbiru.config.ConfigVendorCloudflare;
+import com.planetbiru.config.ConfigVendorDynu;
+import com.planetbiru.config.ConfigVendorNoIP;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.gsm.DialUtil;
 import com.planetbiru.gsm.GSMUtil;
@@ -223,11 +239,7 @@ public class Application {
 		Properties props = loadResetProfile();
 		if(props != null)
 		{
-			logger.info("RESET_DHCP     = "+props.get("RESET_DHCP"));
-			logger.info("RESET_WLAN     = "+props.get("RESET_WLAN"));
-			logger.info("RESET_ETHERNET = "+props.get("RESET_DHCP"));
-			logger.info("RESET_USER     = "+props.get("RESET_DHCP"));
-			
+
 			if(props.getOrDefault("RESET_DHCP", "").toString().equalsIgnoreCase("true"))
 			{
 				String defaultConfigDHCP = Config.getDhcpSettingPathDefault();
@@ -255,9 +267,93 @@ public class Application {
 			}
 			if(props.getOrDefault("RESET_USER", "").toString().equalsIgnoreCase("true"))
 			{
-				WebUserAccount.deleteAll();
+				WebUserAccount.reset();
 				WebUserAccount.save();
 			}
+			
+			
+			if(props.getOrDefault("RESET_API", "").toString().equalsIgnoreCase("true"))
+			{
+				ConfigAPI.reset();
+				ConfigAPI.save();
+			}
+			if(props.getOrDefault("RESET_API_USER", "").toString().equalsIgnoreCase("true"))
+			{
+				ConfigAPIUser.reset();
+				ConfigAPIUser.save();
+			}
+			if(props.getOrDefault("RESET_BLOCKING", "").toString().equalsIgnoreCase("true"))
+			{
+				ConfigBlocking.reset();
+				ConfigBlocking.save();
+			}
+			if(props.getOrDefault("RESET_DDNS", "").toString().equalsIgnoreCase("true"))
+			{
+				ConfigDDNS.reset();
+				ConfigDDNS.save();
+			}
+			if(props.getOrDefault("RESET_EMAIL", "").toString().equalsIgnoreCase("true"))
+			{
+				ConfigEmail.reset();
+				ConfigEmail.save();
+			}
+			if(props.getOrDefault("RESET_FEEDER_AMQP", "").toString().equalsIgnoreCase("true"))
+			{
+				ConfigFeederAMQP.reset();
+				ConfigFeederAMQP.save();
+			}
+			if(props.getOrDefault("RESET_FEEDER_WS", "").toString().equalsIgnoreCase("true"))
+			{
+				ConfigFeederWS.reset();
+				ConfigFeederWS.save();
+			}
+			if(props.getOrDefault("RESET_FIREWALL", "").toString().equalsIgnoreCase("true"))
+			{
+				ConfigFirewall.reset();
+				ConfigFirewall.save();
+			}
+			if(props.getOrDefault("RESET_KEYSTORE", "").toString().equalsIgnoreCase("true"))
+			{
+				ConfigKeystore.reset();
+				ConfigKeystore.save();
+			}
+			if(props.getOrDefault("RESET_MODEM", "").toString().equalsIgnoreCase("true"))
+			{
+				ConfigModem.reset();
+				ConfigModem.save();
+			}
+			if(props.getOrDefault("RESET_SMS", "").toString().equalsIgnoreCase("true"))
+			{
+				ConfigSMS.reset();
+				ConfigSMS.save();
+			}
+			if(props.getOrDefault("RESET_SMTP", "").toString().equalsIgnoreCase("true"))
+			{
+				ConfigSMTP.reset();
+				ConfigSMTP.save();
+			}
+			if(props.getOrDefault("RESET_VENDOR_AFRAID", "").toString().equalsIgnoreCase("true"))
+			{
+				ConfigVendorAfraid.reset();
+				ConfigVendorAfraid.save();
+			}
+			if(props.getOrDefault("RESET_VENDOR_CLOUDFLARE", "").toString().equalsIgnoreCase("true"))
+			{
+				ConfigVendorCloudflare.reset();
+				ConfigVendorCloudflare.save();
+			}
+			if(props.getOrDefault("RESET_VENDOR_DYNU", "").toString().equalsIgnoreCase("true"))
+			{
+				ConfigVendorDynu.reset();
+				ConfigVendorDynu.save();
+			}
+			if(props.getOrDefault("RESET_VENDOR_NOIP", "").toString().equalsIgnoreCase("true"))
+			{
+				ConfigVendorNoIP.reset();
+				ConfigVendorNoIP.save();
+			}
+			
+			CommandLineExecutor.exec(Config.getRestartCommand());
 		}	
 		else
 		{

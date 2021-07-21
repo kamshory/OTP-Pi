@@ -215,6 +215,10 @@ public class ConfigEmail {
 		ConfigEmail.accounts = newAccounts;
 	}
 
+	public static void reset() {
+		ConfigEmail.accounts = new ArrayList<>();	
+	}
+
 
 	
 

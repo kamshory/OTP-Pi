@@ -235,4 +235,9 @@ public class ConfigAPIUser {
 	{
 		return ConfigAPIUser.toJSONObject().toString();
 	}
+
+	public static void reset() {
+		ConfigAPIUser.users = new HashMap<>();
+		
+	}
 }

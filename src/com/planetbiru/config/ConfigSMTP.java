@@ -162,6 +162,15 @@ public class ConfigSMTP {
 		ConfigSMTP.softwareName = softwareName;
 	}
 
+	public static void reset() {
+		ConfigSMTP.softwareName = "";
+		ConfigSMTP.serverName = "";
+		ConfigSMTP.serverAddress = "";
+		ConfigSMTP.serverPort = 0;
+		ConfigSMTP.active = false;
+		
+	}
+
 	
 	
 }

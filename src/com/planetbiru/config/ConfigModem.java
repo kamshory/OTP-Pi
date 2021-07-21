@@ -24,7 +24,7 @@ public class ConfigModem {
 	private static String configPath = "";
     private static Map<String, DataModem> modemData = new HashMap<>();
 	
-    private static Logger logger = Logger.getLogger(ConfigNetDHCP.class);
+    private static Logger logger = Logger.getLogger(ConfigModem.class);
     
 	private ConfigModem()
 	{
@@ -222,6 +222,11 @@ public class ConfigModem {
 	
 	public static void update(String id, DataModem modem) {
 		ConfigModem.modemData.put(id, modem);		
+	}
+
+	public static void reset() {
+		ConfigModem.modemData = new HashMap<>();
+		
 	}
 
 	

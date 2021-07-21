@@ -198,5 +198,16 @@ public class ConfigVendorDynu {
 	public static void setApiKey(String apiKey) {
 		ConfigVendorDynu.apiKey = apiKey;
 	}
+
+	public static void reset() {
+		ConfigVendorDynu.endpoint = "";
+		ConfigVendorDynu.username = "";
+		ConfigVendorDynu.email = "";
+		ConfigVendorDynu.password = "";
+		ConfigVendorDynu.company = "";
+		ConfigVendorDynu.apiVersion = "";
+		ConfigVendorDynu.apiKey = "";
+		
+	}
 	
 }

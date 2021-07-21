@@ -133,7 +133,7 @@ public class ConfigSMS {
 				ConfigSMS.monitorSMS = smsSetting.optBoolean(JsonKey.MONITOR_SMS, false);
 				ConfigSMS.countryCode = smsSetting.optString(JsonKey.COUNTRY_CODE, "");
 				ConfigSMS.logSMS = smsSetting.optBoolean("logSMS", false);
-				ConfigSMS.setRecipientPrefixLength(smsSetting.optInt("recipientPrefixLength", 0));
+				ConfigSMS.recipientPrefixLength = smsSetting.optInt("recipientPrefixLength", 0);
 			}
 			catch(JSONException e)
 			{
@@ -249,6 +249,22 @@ public class ConfigSMS {
 
 	public static void setRecipientPrefixLength(int recipientPrefixLength) {
 		ConfigSMS.recipientPrefixLength = recipientPrefixLength;
+	}
+
+	public static void reset() {
+		ConfigSMS.connectionType = "";
+		ConfigSMS.smsCenter = "";
+		ConfigSMS.imei = "";
+		ConfigSMS.simCardPIN = "";
+		ConfigSMS.incommingInterval = 0;
+		ConfigSMS.timeRange = 0;
+		ConfigSMS.maxPerTimeRange = 0;
+		ConfigSMS.monitorSMS = false;
+		ConfigSMS.countryCode = "62";
+		ConfigSMS.logSMS = false;
+		ConfigSMS.recipientPrefixLength = 5;
+
+		
 	}
 	
 }

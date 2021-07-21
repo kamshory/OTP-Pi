@@ -51,11 +51,11 @@ public class ConfigVendorNoIP {
 					String lPassword = json.optString("password", "");
 					String lCompany = json.optString("company", "");
 					
-					ConfigVendorNoIP.setEndpoint(lEndpoint);
-					ConfigVendorNoIP.setUsername(lUsername);
-					ConfigVendorNoIP.setEmail(lEmail);
-					ConfigVendorNoIP.setPassword(lPassword);
-					ConfigVendorNoIP.setCompany(lCompany);
+					ConfigVendorNoIP.endpoint = lEndpoint;
+					ConfigVendorNoIP.username = lUsername;
+					ConfigVendorNoIP.email = lEmail;
+					ConfigVendorNoIP.password = lPassword;
+					ConfigVendorNoIP.company = lCompany;
 				}
 			}
 		} 
@@ -166,6 +166,14 @@ public class ConfigVendorNoIP {
 	public static JSONObject toJSONObject()
 	{
 		return getJSONObject();
+	}
+	public static void reset() {
+		ConfigVendorNoIP.endpoint = "";
+		ConfigVendorNoIP.username = "";
+		ConfigVendorNoIP.email = "";
+		ConfigVendorNoIP.password = "";
+		ConfigVendorNoIP.company = "";
+		
 	}
 	
 }
