@@ -44,7 +44,7 @@ public class Scheduller extends Thread{
 
 	private String cronExpressionAMQPCheck = "0 * * * * ?";
 
-	private long cronInterval = 20000;
+	private long cronInterval = 2000;
 
 	private String cronExpressionStatusServer = "0 * * * * ?";
 
@@ -193,6 +193,7 @@ public class Scheduller extends Thread{
 		CronExpression exp;		
 		try
 		{
+			System.out.println("cronExpression : "+cronExpression);
 			exp = new CronExpression(cronExpression);
 			Date currentTime = new Date();
 			Date prevFireTime = exp.getPrevFireTime(currentTime);
@@ -202,7 +203,7 @@ public class Scheduller extends Thread{
 			String currentTimeStr = Utility.date(ConstantString.MYSQL_DATE_TIME_FORMAT_MS, currentTime);
 			String nextValidTimeAfterStr = Utility.date(ConstantString.MYSQL_DATE_TIME_FORMAT_MS, nextValidTimeAfter);
 			
-			if(currentTime.getTime() > ddnsRecord.getNextValid().getTime())
+			//if(currentTime.getTime() > ddnsRecord.getNextValid().getTime())
 			{
 				DDNSUpdater ddns = new DDNSUpdater(ddnsRecord, prevFireTimeStr, currentTimeStr, nextValidTimeAfterStr);
 				ddns.start();

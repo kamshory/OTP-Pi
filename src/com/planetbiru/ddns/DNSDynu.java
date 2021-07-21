@@ -1,5 +1,6 @@
 package com.planetbiru.ddns;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,7 @@ public class DNSDynu extends DNS {
 	private String company = "";
 	
 	@Override
-	public JSONObject update(DDNSRecord ddnsRecord)  
+	public JSONObject update(DDNSRecord ddnsRecord) throws IOException  
 	{
 		JSONObject res = new JSONObject();
 		String ipAddress = this.getIP();
@@ -38,7 +39,7 @@ public class DNSDynu extends DNS {
 		return res;
 	}
 	
-	private JSONObject updateNIC(DDNSRecord ddnsRecord, String ipAddress)
+	private JSONObject updateNIC(DDNSRecord ddnsRecord, String ipAddress) throws IOException
 	{
 		JSONObject res = new JSONObject();
 		String method = "GET";
@@ -55,11 +56,11 @@ public class DNSDynu extends DNS {
 		Headers requestHeaders = new Headers();
 		requestHeaders.add(DDNSKey.HEADER_USER_AGENT, this.createUserAgent());
 		requestHeaders.add(DDNSKey.HEADER_CONNECTION, "close");
-		this.httpExchange(method, url, requestHeaders, body, timeout);
+		this.httpExchange(method, url, null, requestHeaders, body, timeout);
 		return res;
 	}
 	
-	private JSONObject updateV2(DDNSRecord ddnsRecord, String ipAddress) {
+	private JSONObject updateV2(DDNSRecord ddnsRecord, String ipAddress) throws IOException {
 		JSONObject result = new JSONObject();
 		String token = this.getToken();
 		
@@ -111,8 +112,9 @@ public class DNSDynu extends DNS {
 	 * Get a list of domains for DNS service.
 	 * @param token
 	 * @return
+	 * @throws IOException 
 	 */
-	private JSONObject listDomain(String token)
+	private JSONObject listDomain(String token) throws IOException
 	{
 		String base = this.getBase();
 		String url = String.format("%s/dns", base); 
@@ -121,7 +123,7 @@ public class DNSDynu extends DNS {
 		headers.add(ConstantString.ACCEPT, ConstantString.APPLICATION_JSON);
 		headers.add(ConstantString.AUTHORIZATION, ConstantString.BEARER+token);
 		int timeout = 10000;
-		ResponseEntityCustom response = this.httpExchange(method, url, headers, null, timeout);
+		ResponseEntityCustom response = this.httpExchange(method, url, null, headers, null, timeout);
 	
 		JSONObject responseJSON = new JSONObject();
 		try
@@ -145,8 +147,9 @@ public class DNSDynu extends DNS {
 	 * @param domainID
 	 * @param ipAddress
 	 * @return
+	 * @throws IOException 
 	 */
-	private JSONObject addDNSRecord(String token, DDNSRecord ddnsRecord, String domainID, String ipAddress)
+	private JSONObject addDNSRecord(String token, DDNSRecord ddnsRecord, String domainID, String ipAddress) throws IOException
 	{
 		String base = this.getBase();
 		String url = String.format("%s/dns/%s/record", base, domainID); 
@@ -187,7 +190,7 @@ public class DNSDynu extends DNS {
 		
 		String body = requestJSON.toString(4);
 		
-		ResponseEntityCustom response = this.httpExchange(method, url, headers, body, timeout);
+		ResponseEntityCustom response = this.httpExchange(method, url, null, headers, body, timeout);
 	
 		JSONObject responseJSON = new JSONObject();
 		try
@@ -229,7 +232,7 @@ public class DNSDynu extends DNS {
 	}
 
 	private JSONObject updateDNSRecord(String token, DDNSRecord ddnsRecord, String domainID, String dnsRecordID,
-			String ipAddress) {
+			String ipAddress) throws IOException {
 		String base = this.getBase();
 		String url = String.format("%s/dns/%s/record/%s", base, domainID, dnsRecordID); 
 		String method = "GET";		
@@ -267,7 +270,7 @@ public class DNSDynu extends DNS {
 		
 		String requestBody = requestJSON.toString(4);
 		
-		ResponseEntityCustom response = this.httpExchange(method, url, headers, requestBody, timeout);
+		ResponseEntityCustom response = this.httpExchange(method, url, null, headers, requestBody, timeout);
 	
 		JSONObject responseJSON = new JSONObject();
 		try
@@ -317,7 +320,7 @@ public class DNSDynu extends DNS {
 		return null;
 	}
 
-	private String getToken() {
+	private String getToken() throws IOException {
 		String base = this.getBase();
 		String url = String.format("%s/oauth2/token", base); 
 		String basicAuth = Utility.base64Encode(this.username+":"+this.password);
@@ -327,7 +330,7 @@ public class DNSDynu extends DNS {
 		headers.add(ConstantString.AUTHORIZATION, "Basic "+basicAuth);
 		headers.add("Connection", "close");
 		int timeout = 10000;
-		ResponseEntityCustom response = this.httpExchange(method, url, headers, null, timeout);
+		ResponseEntityCustom response = this.httpExchange(method, url, null, headers, null, timeout);
 		JSONObject responseJSON = new JSONObject();
 		try
 		{
@@ -356,8 +359,9 @@ public class DNSDynu extends DNS {
 	 * @param token
 	 * @param ddnsRecord
 	 * @return
+	 * @throws IOException 
 	 */
-	private JSONObject getDNSRecord(String token, DDNSRecord ddnsRecord) {
+	private JSONObject getDNSRecord(String token, DDNSRecord ddnsRecord) throws IOException {
 		String hostName = ddnsRecord.getRecordName();
 		String recordType = ddnsRecord.getType();	
 		String base = this.getBase();
@@ -367,7 +371,7 @@ public class DNSDynu extends DNS {
 		headers.add(ConstantString.ACCEPT, ConstantString.APPLICATION_JSON);
 		headers.add(ConstantString.AUTHORIZATION, ConstantString.BEARER+token);
 		int timeout = 10000;
-		ResponseEntityCustom response = this.httpExchange(method, url, headers, null, timeout);
+		ResponseEntityCustom response = this.httpExchange(method, url, null, headers, null, timeout);
 	
 		JSONObject responseJSON = new JSONObject();
 		try

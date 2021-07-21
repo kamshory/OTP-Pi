@@ -10,6 +10,9 @@
 
 package com.planetbiru.util;
 
+import java.util.List;
+import java.util.Map;
+
 import com.sun.net.httpserver.Headers;
 
 public class ResponseEntityCustom {
@@ -21,6 +24,12 @@ public class ResponseEntityCustom {
 	{
 		this.body = body;
 		this.statusCode = statusCode;
+	}
+	public ResponseEntityCustom(String body, int statusCode, Map<String, List<String>> responseHeader) {
+		Headers headers = Utility.mapToHeaders(responseHeader);
+		this.body = body;
+		this.statusCode = statusCode;
+		this.responseHeaders = headers;
 	}
 	public ResponseEntityCustom(String body, int statusCode, Headers responseHeaders)
 	{
@@ -40,6 +49,10 @@ public class ResponseEntityCustom {
 		this.statusCode = statusCode;
 	}
 	public String getBody() {
+		if(body == null)
+		{
+			return "";
+		}
 		return body;
 	}
 	public void setBody(String body) {

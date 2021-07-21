@@ -32,6 +32,7 @@ import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigBlocking;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.gsm.GSMException;
+import com.sun.net.httpserver.Headers;
 
 public class Utility {
 
@@ -1359,5 +1360,18 @@ public class Utility {
 		      extension = className.substring(index + 1);
 		}
 		return extension;
+	}
+	public static Headers mapToHeaders(Map<String, List<String>> parameters) {
+		Headers headers = new Headers();
+		for (Map.Entry<String, List<String>> entry : parameters.entrySet())
+        {
+        	String key = entry.getKey();
+        	List<String> list = entry.getValue();
+        	for(int i = 0; i<list.size(); i++)
+        	{
+        		headers.add(key, list.get(i));
+        	}
+        }
+		return headers;
 	}
 }

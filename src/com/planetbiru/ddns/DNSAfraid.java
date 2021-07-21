@@ -1,5 +1,6 @@
 package com.planetbiru.ddns;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ public class DNSAfraid extends DNS{
 	private String company = "";
 	
 	@Override
-	public JSONObject update(DDNSRecord ddnsRecord)  
+	public JSONObject update(DDNSRecord ddnsRecord) throws IOException  
 	{
 		JSONObject res = new JSONObject();
 		String method = "GET";
@@ -43,13 +44,14 @@ public class DNSAfraid extends DNS{
 	* @throws Exception
 	*
 	* @return mixed
+	 * @throws IOException 
 	*/
-	public ResponseEntityCustom request(String method, String endpoint, Map<String, String> params)
+	public ResponseEntityCustom request(String method, String endpoint, Map<String, String> params) throws IOException
 	{
 		int timeout = 10000;
 		Headers headers = this.createRequestHeader();
 		String body = null;
-		return this.httpExchange(method, endpoint, headers, body, timeout);
+		return this.httpExchange(method, endpoint, params, headers, body, timeout);
 	}
 
 	public Headers createRequestHeader() {
