@@ -52,7 +52,7 @@ public class DNSDynu extends DNS {
 		String queryString = Utility.buildQuery(params);
 		String url = String.format("%s?%s", base, queryString);
 		String body = null;
-		int timeout = 10000;
+		int timeout = Config.getDdnsTimeout();
 		Headers requestHeaders = new Headers();
 		requestHeaders.add(DDNSKey.HEADER_USER_AGENT, this.createUserAgent());
 		requestHeaders.add(DDNSKey.HEADER_CONNECTION, "close");
@@ -122,7 +122,7 @@ public class DNSDynu extends DNS {
 		Headers headers = new Headers();
 		headers.add(ConstantString.ACCEPT, ConstantString.APPLICATION_JSON);
 		headers.add(ConstantString.AUTHORIZATION, ConstantString.BEARER+token);
-		int timeout = 10000;
+		int timeout = Config.getDdnsTimeout();
 		ResponseEntityCustom response = this.httpExchange(method, url, null, headers, null, timeout);
 	
 		JSONObject responseJSON = new JSONObject();
@@ -157,7 +157,7 @@ public class DNSDynu extends DNS {
 		Headers headers = new Headers();
 		headers.add(ConstantString.ACCEPT, ConstantString.APPLICATION_JSON);
 		headers.add(ConstantString.AUTHORIZATION, ConstantString.BEARER+token);
-		int timeout = 10000;
+		int timeout = Config.getDdnsTimeout();
 		
 		String subdomain = ddnsRecord.getRecordName();
 		String domain = ddnsRecord.getZone();
@@ -239,7 +239,7 @@ public class DNSDynu extends DNS {
 		Headers headers = new Headers();
 		headers.add(ConstantString.ACCEPT, ConstantString.APPLICATION_JSON);
 		headers.add(ConstantString.AUTHORIZATION, ConstantString.BEARER+token);
-		int timeout = 10000;
+		int timeout = Config.getDdnsTimeout();
 		/**
 		 * {
 			  "nodeName": "mail",
@@ -329,7 +329,7 @@ public class DNSDynu extends DNS {
 		headers.add(ConstantString.ACCEPT, ConstantString.APPLICATION_JSON);
 		headers.add(ConstantString.AUTHORIZATION, "Basic "+basicAuth);
 		headers.add("Connection", "close");
-		int timeout = 10000;
+		int timeout = Config.getDdnsTimeout();
 		ResponseEntityCustom response = this.httpExchange(method, url, null, headers, null, timeout);
 		JSONObject responseJSON = new JSONObject();
 		try
@@ -370,7 +370,7 @@ public class DNSDynu extends DNS {
 		Headers headers = new Headers();
 		headers.add(ConstantString.ACCEPT, ConstantString.APPLICATION_JSON);
 		headers.add(ConstantString.AUTHORIZATION, ConstantString.BEARER+token);
-		int timeout = 10000;
+		int timeout = Config.getDdnsTimeout();
 		ResponseEntityCustom response = this.httpExchange(method, url, null, headers, null, timeout);
 	
 		JSONObject responseJSON = new JSONObject();

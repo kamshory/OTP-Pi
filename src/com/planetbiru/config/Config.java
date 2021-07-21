@@ -84,6 +84,7 @@ public class Config {
 	private static String serverStatusSettingPath = "";
 	private static String imageName = "otp.jar";
 	private static boolean logConfigNotFound = true;
+	private static int ddnsTimeout = 10000;
 	
 	private Config()
 	{
@@ -712,6 +713,14 @@ public class Config {
 
 	public static void setLogConfigNotFound(boolean logConfigNotFound) {
 		Config.logConfigNotFound = logConfigNotFound;
+	}
+
+	public static int getDdnsTimeout() {
+		return ddnsTimeout;
+	}
+
+	public static void setDdnsTimeout(int ddnsTimeout) {
+		Config.ddnsTimeout = ddnsTimeout;
 	}
 	
 }

@@ -9,6 +9,8 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.planetbiru.config.Config;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.util.ResponseEntityCustom;
 import com.planetbiru.util.Utility;
@@ -44,7 +46,7 @@ public class DNSCloudflare extends DNS{
 	*/
 	public ResponseEntityCustom request(String method, String endpoint, Map<String, List<String>> params, String contentType) throws IOException
 	{
-		int timeout = 10000;
+		int timeout = Config.getDdnsTimeout();
 		Headers headers = this.createRequestHeader(contentType);
 		headers.add(DDNSKey.HEADER_CONTENT_TYPE, contentType);
 		String body = "";
@@ -134,7 +136,8 @@ public class DNSCloudflare extends DNS{
 	{
 		String url = this.endpoint + "/zones";
 		Headers requestHeaders = this.createRequestHeader();
-		ResponseEntityCustom response = httpExchange("GET", url, params, requestHeaders, null, 10000);
+		int timeout = Config.getDdnsTimeout();
+		ResponseEntityCustom response = httpExchange("GET", url, params, requestHeaders, null, timeout);
 		if(response.getBody().length() > 20)
 		{
 			JSONObject resp = new JSONObject(response.getBody());
@@ -177,8 +180,8 @@ public class DNSCloudflare extends DNS{
 		
 		String url = this.endpoint + DDNSKey.ZONES+zoneId;
 		Headers requestHeaders = this.createRequestHeader();
-		
-		ResponseEntityCustom response = httpExchange("DELETE", url, null, requestHeaders, null, 10000);
+		int timeout = Config.getDdnsTimeout();
+		ResponseEntityCustom response = httpExchange("DELETE", url, null, requestHeaders, null, timeout);
 		
 		JSONObject resp = new JSONObject();
 		
@@ -206,7 +209,8 @@ public class DNSCloudflare extends DNS{
 		String url = this.endpoint + DDNSKey.ZONES+zoneId;
 		Headers requestHeaders = this.createRequestHeader();
 		
-		ResponseEntityCustom response = httpExchange("DELETE", url, null, requestHeaders, null, 10000);
+		int timeout = Config.getDdnsTimeout();
+		ResponseEntityCustom response = httpExchange("DELETE", url, null, requestHeaders, null, timeout);
 		
 		JSONObject resp = new JSONObject();
 		

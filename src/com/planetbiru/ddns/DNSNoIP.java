@@ -44,7 +44,7 @@ public class DNSNoIP extends DNS{
 	*/
 	public ResponseEntityCustom request(String method, String endpoint, Map<String, String> params) throws IOException
 	{
-		int timeout = 10000;
+		int timeout = Config.getDdnsTimeout();
 		Headers headers = this.createRequestHeader();
 		String body = null;
 		return this.httpExchange(method, endpoint, params, headers, body, timeout);
