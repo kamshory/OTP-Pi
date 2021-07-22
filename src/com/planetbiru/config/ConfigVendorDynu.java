@@ -19,6 +19,7 @@ public class ConfigVendorDynu {
 	private static String password = "";
 	private static String apiKey = "";
 	private static String company = "";
+	private static boolean active = false;
 
 	private static String configPath = "";
 	
@@ -54,6 +55,7 @@ public class ConfigVendorDynu {
 					String lPassword = json.optString("password", "").trim();
 					String lCompany = json.optString("company", "").trim();
 					String lApiKey = json.optString("apiKey", "").trim();
+					boolean lActive = json.optBoolean("active", false);
 					
 					ConfigVendorDynu.endpoint = lEndpoint;
 					ConfigVendorDynu.username = lUsername;
@@ -62,6 +64,7 @@ public class ConfigVendorDynu {
 					ConfigVendorDynu.company = lCompany;
 					ConfigVendorDynu.apiVersion = lVersion;
 					ConfigVendorDynu.apiKey = lApiKey;
+					ConfigVendorDynu.active = lActive;
 				}
 			}
 		} 
@@ -133,6 +136,7 @@ public class ConfigVendorDynu {
 		config.put("email", ConfigVendorDynu.email);
 		config.put("password", ConfigVendorDynu.password);
 		config.put("company", ConfigVendorDynu.company);
+		config.put("active", ConfigVendorDynu.active);
 		return config;
 	}
 
@@ -199,6 +203,14 @@ public class ConfigVendorDynu {
 		ConfigVendorDynu.apiKey = apiKey;
 	}
 
+	public static boolean isActive() {
+		return active;
+	}
+
+	public static void setActive(boolean active) {
+		ConfigVendorDynu.active = active;
+	}
+
 	public static void reset() {
 		ConfigVendorDynu.endpoint = "";
 		ConfigVendorDynu.username = "";
@@ -207,6 +219,7 @@ public class ConfigVendorDynu {
 		ConfigVendorDynu.company = "";
 		ConfigVendorDynu.apiVersion = "";
 		ConfigVendorDynu.apiKey = "";
+		ConfigVendorDynu.active = false;
 		
 	}
 	

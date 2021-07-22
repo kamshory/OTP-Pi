@@ -18,6 +18,7 @@ public class ConfigVendorCloudflare {
 	private static String authApiKey = "";
 	private static String authToken = "";
 	private static String configPath = "";
+	private static boolean active = false;
 	
 	private static Logger logger = Logger.getLogger(ConfigVendorCloudflare.class);
 	
@@ -44,17 +45,19 @@ public class ConfigVendorCloudflare {
 				if(text.length() > 7)
 				{
 					JSONObject json = new JSONObject(text);
-					String lEndpoint = json.optString("endpoint", "");
-					String lAccountId = json.optString("accountId", "");
-					String lAuthEmail = json.optString("authEmail", "");
-					String lAuthApiKey = json.optString("authApiKey", "");
-					String lAuthToken = json.optString("authToken", "");
+					String lEndpoint = json.optString("endpoint", "").trim();
+					String lAccountId = json.optString("accountId", "").trim();
+					String lAuthEmail = json.optString("authEmail", "").trim();
+					String lAuthApiKey = json.optString("authApiKey", "").trim();
+					String lAuthToken = json.optString("authToken", "").trim();
+					boolean lActive = json.optBoolean("active", false);
 					
 					ConfigVendorCloudflare.endpoint = lEndpoint;
 					ConfigVendorCloudflare.accountId = lAccountId;
 					ConfigVendorCloudflare.authEmail = lAuthEmail;
 					ConfigVendorCloudflare.authApiKey = lAuthApiKey;
 					ConfigVendorCloudflare.authToken = lAuthToken;
+					ConfigVendorCloudflare.active = lActive;
 				}
 			}
 		} 
@@ -119,11 +122,13 @@ public class ConfigVendorCloudflare {
 	
 	public static JSONObject getJSONObject() {
 		JSONObject config = new JSONObject();
-		config.put("endpoint", ConfigVendorCloudflare.getEndpoint());
-		config.put("accountId", ConfigVendorCloudflare.getAccountId());
-		config.put("authEmail", ConfigVendorCloudflare.getAuthEmail());
-		config.put("authApiKey", ConfigVendorCloudflare.getAuthApiKey());
-		config.put("authToken", ConfigVendorCloudflare.getAuthToken());
+		config.put("endpoint", ConfigVendorCloudflare.endpoint);
+		config.put("accountId", ConfigVendorCloudflare.accountId);
+		config.put("authEmail", ConfigVendorCloudflare.authEmail);
+		config.put("authApiKey", ConfigVendorCloudflare.authApiKey);
+		config.put("authToken", ConfigVendorCloudflare.authToken);
+		config.put("active", ConfigVendorCloudflare.active);
+
 		return config;
 	}
 
@@ -167,6 +172,14 @@ public class ConfigVendorCloudflare {
 		ConfigVendorCloudflare.authToken = authToken;
 	}
 
+	public static boolean isActive() {
+		return active;
+	}
+
+	public static void setActive(boolean active) {
+		ConfigVendorCloudflare.active = active;
+	}
+
 	public static JSONObject toJSONObject()
 	{
 		return getJSONObject();
@@ -178,7 +191,7 @@ public class ConfigVendorCloudflare {
 		ConfigVendorCloudflare.authEmail = "";
 		ConfigVendorCloudflare.authApiKey = "";
 		ConfigVendorCloudflare.authToken = "";
-		
+		ConfigVendorCloudflare.active = false;
 	}
 	
 }

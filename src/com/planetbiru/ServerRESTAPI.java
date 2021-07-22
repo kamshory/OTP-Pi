@@ -60,8 +60,7 @@ public class ServerRESTAPI {
 				    trustFactory.init(keyStore);
 				    sslContext.init(keyManagementFactory.getKeyManagers(), trustFactory.getTrustManagers(), null);		
 					HttpsConfigurator httpsConfigurator = new HttpsConfigurator(sslContext);
-					ServiceHTTP.getHttpsServer().setHttpsConfigurator(httpsConfigurator);	
-
+					ServiceHTTP.getHttpsServer().setHttpsConfigurator(httpsConfigurator);
 			        ServiceHTTP.getHttpsServer().createContext(ConfigAPI.getMessagePath(), new HandlerAPIMessage());
 			        ServiceHTTP.getHttpsServer().createContext(ConfigAPI.getSmsPath(), new HandlerAPIMessage());
 			        ServiceHTTP.getHttpsServer().createContext(ConfigAPI.getEmailPath(), new HandlerAPIMessage());
@@ -72,13 +71,13 @@ public class ServerRESTAPI {
 				} 
 				catch (IOException | KeyStoreException | NoSuchAlgorithmException | CertificateException | KeyManagementException | UnrecoverableKeyException e) 
 				{
-					logger.error(e.getMessage(), e);
+					logger.error(e.getMessage());
 					started = false;
 				}			
 			} 
 			catch (KeyStoreException e2) 
 			{
-				logger.error(e2.getMessage(), e2);
+				logger.error(e2.getMessage());
 				started = false;
 			}
 			if(!started)
@@ -89,7 +88,7 @@ public class ServerRESTAPI {
 				}
 				ServiceHTTP.setHttpsServer(null);
 			}
-		}	
+		}
 	}	
 	
 	private void initHttp() 
@@ -108,7 +107,7 @@ public class ServerRESTAPI {
 			} 
 			catch (IOException e) 
 			{
-				logger.error(e.getMessage(), e);
+				logger.error(e.getMessage());
 			}
 		}		
 	}

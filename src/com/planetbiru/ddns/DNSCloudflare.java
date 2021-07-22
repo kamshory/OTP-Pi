@@ -108,7 +108,14 @@ public class DNSCloudflare extends DNS{
 		JSONObject resp = new JSONObject();
 		try
 		{
-		   resp = new JSONObject(response.getBody());
+			try
+			{
+				resp = new JSONObject(response.getBody());
+			}
+			catch(JSONException e)
+			{
+				return resp;
+			}
 		}
 		catch(JSONException e)
 		{
@@ -140,8 +147,15 @@ public class DNSCloudflare extends DNS{
 		ResponseEntityCustom response = httpExchange("GET", url, params, requestHeaders, null, timeout);
 		if(response.getBody().length() > 20)
 		{
-			JSONObject resp = new JSONObject(response.getBody());
-			return resp.optJSONArray(DDNSKey.RESULT);
+			try
+			{
+				JSONObject resp = new JSONObject(response.getBody());
+				return resp.optJSONArray(DDNSKey.RESULT);
+			}
+			catch(JSONException e)
+			{
+				return null;
+			}
 		}
 		else
 		{
@@ -261,8 +275,15 @@ public class DNSCloudflare extends DNS{
 		String body = json.toString();
 		int timeout = 1000;
 		ResponseEntityCustom response = httpExchange("POST", url, null, requestHeaders, body, timeout);
-		JSONObject resp = new JSONObject(response.getBody());
-		return resp.optJSONObject(DDNSKey.RESULT);
+		try
+		{
+			JSONObject resp = new JSONObject(response.getBody());
+			return resp.optJSONObject(DDNSKey.RESULT);
+		}
+		catch(JSONException e)
+		{
+			return new JSONObject();
+		}
 	}
 	
 	@Override
@@ -478,9 +499,15 @@ public class DNSCloudflare extends DNS{
 		String body = json.toString();
 		int timeout = 1000;
 		ResponseEntityCustom response = httpExchange("PUT", url, null, requestHeaders, body, timeout);		
-		
-		JSONObject resp = new JSONObject(response.getBody());
-		return resp.optJSONObject(DDNSKey.RESULT);
+		try
+		{
+			JSONObject resp = new JSONObject(response.getBody());
+			return resp.optJSONObject(DDNSKey.RESULT);
+		}
+		catch(JSONException e)
+		{
+			return new JSONObject();
+		}
 
 	}
 

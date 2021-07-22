@@ -110,6 +110,11 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>Active</td>
+                            <td><label><input type="checkbox" name="active" id="active" value="1"> Active</label>
+                            </td>
+                        </tr>
+                        <tr>
                             <td></td>
                             <td>
                                 <input type="submit" class="btn btn-success" name="save_ddns_setting"
@@ -132,6 +137,7 @@
                 $('input[name="username"]').val(data.username);
                 $('input[name="email"]').val(data.email);
                 $('input[name="company"]').val(data.company);
+                $('input[name="active"]').prop("checked", data.active);
             }
         });
     });

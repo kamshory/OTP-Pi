@@ -26,6 +26,7 @@ public class ConfigVendorNoIP {
 	private static String email = "";
 	private static String password = "";
 	private static String company = "";
+	private static boolean active = false;
 	
 	public static void load(String path) {
 		ConfigVendorNoIP.configPath = path;
@@ -45,17 +46,19 @@ public class ConfigVendorNoIP {
 				if(text.length() > 7)
 				{
 					JSONObject json = new JSONObject(text);
-					String lEndpoint = json.optString("endpoint", "");
-					String lUsername = json.optString("username", "");
-					String lEmail = json.optString("email", "");
-					String lPassword = json.optString("password", "");
-					String lCompany = json.optString("company", "");
+					String lEndpoint = json.optString("endpoint", "").trim();
+					String lUsername = json.optString("username", "").trim();
+					String lEmail = json.optString("email", "").trim();
+					String lPassword = json.optString("password", "").trim();
+					String lCompany = json.optString("company", "").trim();
+					boolean lActive = json.optBoolean("active", false);
 					
 					ConfigVendorNoIP.endpoint = lEndpoint;
 					ConfigVendorNoIP.username = lUsername;
 					ConfigVendorNoIP.email = lEmail;
 					ConfigVendorNoIP.password = lPassword;
 					ConfigVendorNoIP.company = lCompany;
+					ConfigVendorNoIP.active = lActive;
 				}
 			}
 		} 
@@ -115,11 +118,12 @@ public class ConfigVendorNoIP {
 	
 	public static JSONObject getJSONObject() {
 		JSONObject config = new JSONObject();
-		config.put("endpoint", ConfigVendorNoIP.getEndpoint());
-		config.put("username", ConfigVendorNoIP.getUsername());
-		config.put("email", ConfigVendorNoIP.getEmail());
-		config.put("password", ConfigVendorNoIP.getPassword());
-		config.put("company", ConfigVendorNoIP.getCompany());
+		config.put("endpoint", ConfigVendorNoIP.endpoint);
+		config.put("username", ConfigVendorNoIP.username);
+		config.put("email", ConfigVendorNoIP.email);
+		config.put("password", ConfigVendorNoIP.password);
+		config.put("company", ConfigVendorNoIP.company);
+		config.put("active", ConfigVendorNoIP.active);
 		return config;
 	}
 
@@ -163,6 +167,12 @@ public class ConfigVendorNoIP {
 		ConfigVendorNoIP.company = company;
 	}
 
+	public static boolean isActive() {
+		return active;
+	}
+	public static void setActive(boolean active) {
+		ConfigVendorNoIP.active = active;
+	}
 	public static JSONObject toJSONObject()
 	{
 		return getJSONObject();
@@ -173,6 +183,7 @@ public class ConfigVendorNoIP {
 		ConfigVendorNoIP.email = "";
 		ConfigVendorNoIP.password = "";
 		ConfigVendorNoIP.company = "";
+		ConfigVendorNoIP.active = false;
 		
 	}
 	

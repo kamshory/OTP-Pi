@@ -950,6 +950,7 @@ public class HandlerWebManager implements HttpHandler {
 		String authEmail = queryPairs.getOrDefault("auth_email", "").trim();
 		String authApiKey = queryPairs.getOrDefault("auth_api_key", "").trim();
 		String authToken = queryPairs.getOrDefault("auth_token", "").trim();
+		boolean active = queryPairs.getOrDefault("active", "").trim().equals("1");
 		
 		if(!endpoint.isEmpty())
 		{
@@ -959,6 +960,7 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigVendorCloudflare.setAuthEmail(authEmail);
 			ConfigVendorCloudflare.setAuthApiKey(authApiKey);
 			ConfigVendorCloudflare.setAuthToken(authToken);
+			ConfigVendorCloudflare.setActive(active);
 			ConfigVendorCloudflare.save();
 		}
 	}
@@ -970,6 +972,7 @@ public class HandlerWebManager implements HttpHandler {
 		String email = queryPairs.getOrDefault("email", "").trim();
 		String password = queryPairs.getOrDefault("password", "").trim();
 		String company = queryPairs.getOrDefault("company", "").trim();
+		boolean active = queryPairs.getOrDefault("active", "").trim().equals("1");
 		
 		if(!endpoint.isEmpty())
 		{
@@ -982,6 +985,7 @@ public class HandlerWebManager implements HttpHandler {
 			}
 			ConfigVendorNoIP.setCompany(company);
 			ConfigVendorNoIP.setEmail(email);		
+			ConfigVendorNoIP.setActive(active);
 			ConfigVendorNoIP.save();
 		}
 	}
@@ -993,6 +997,7 @@ public class HandlerWebManager implements HttpHandler {
 		String email = queryPairs.getOrDefault("email", "").trim();
 		String password = queryPairs.getOrDefault("password", "").trim();
 		String company = queryPairs.getOrDefault("company", "").trim();
+		boolean active = queryPairs.getOrDefault("active", "").trim().equals("1");
 		
 		if(!endpoint.isEmpty())
 		{
@@ -1005,6 +1010,7 @@ public class HandlerWebManager implements HttpHandler {
 			}
 			ConfigVendorAfraid.setCompany(company);
 			ConfigVendorAfraid.setEmail(email);		
+			ConfigVendorAfraid.setActive(active);
 			ConfigVendorAfraid.save();
 		}
 	}
@@ -1018,6 +1024,7 @@ public class HandlerWebManager implements HttpHandler {
 		String email = queryPairs.getOrDefault("email", "").trim();
 		String password = queryPairs.getOrDefault("password", "").trim();
 		String company = queryPairs.getOrDefault("company", "").trim();
+		boolean active = queryPairs.getOrDefault("active", "").trim().equals("1");
 		
 		if(!endpoint.isEmpty())
 		{
@@ -1032,6 +1039,7 @@ public class HandlerWebManager implements HttpHandler {
 			}
 			ConfigVendorDynu.setCompany(company);
 			ConfigVendorDynu.setEmail(email);		
+			ConfigVendorDynu.setActive(active);
 			ConfigVendorDynu.save();
 		}
 	}

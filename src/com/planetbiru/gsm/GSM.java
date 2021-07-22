@@ -135,7 +135,7 @@ public class GSM {
 	            isOpen = false;
 	       		throw new InvalidPortException(e.getMessage());
 	       	}
-    		logger.error(e.getMessage(), e);
+    		logger.error(e.getMessage());
     	}
     	return isOpen;
     }

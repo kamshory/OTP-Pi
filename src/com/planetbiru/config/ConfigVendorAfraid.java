@@ -18,6 +18,7 @@ public class ConfigVendorAfraid {
 	private static String password = "";
 	private static String company = "";
 	private static String configPath = "";
+	private static boolean active = false;
 	
 	private static Logger logger = Logger.getLogger(ConfigVendorAfraid.class);
 	
@@ -44,17 +45,19 @@ public class ConfigVendorAfraid {
 				if(text.length() > 7)
 				{
 					JSONObject json = new JSONObject(text);
-					String lEndpoint = json.optString("endpoint", "");
-					String lUsername = json.optString("username", "");
-					String lEmail = json.optString("email", "");
-					String lPassword = json.optString("password", "");
-					String lCompany = json.optString("company", "");
+					String lEndpoint = json.optString("endpoint", "").trim();
+					String lUsername = json.optString("username", "").trim();
+					String lEmail = json.optString("email", "").trim();
+					String lPassword = json.optString("password", "").trim();
+					String lCompany = json.optString("company", "").trim();
+					boolean lActive = json.optBoolean("active", false);
 					
 					ConfigVendorAfraid.endpoint = lEndpoint;
 					ConfigVendorAfraid.username = lUsername;
 					ConfigVendorAfraid.email = lEmail;
 					ConfigVendorAfraid.password = lPassword;
 					ConfigVendorAfraid.company = lCompany;
+					ConfigVendorAfraid.active = lActive;
 				}
 			}
 		} 
@@ -120,11 +123,12 @@ public class ConfigVendorAfraid {
 	public static JSONObject getJSONObject() {
 		JSONObject config = new JSONObject();
 
-		config.put("endpoint", ConfigVendorAfraid.getEndpoint());
-		config.put("username", ConfigVendorAfraid.getUsername());
-		config.put("email", ConfigVendorAfraid.getEmail());
-		config.put("password", ConfigVendorAfraid.getPassword());
-		config.put("company", ConfigVendorAfraid.getCompany());
+		config.put("endpoint", ConfigVendorAfraid.endpoint);
+		config.put("username", ConfigVendorAfraid.username);
+		config.put("email", ConfigVendorAfraid.email);
+		config.put("password", ConfigVendorAfraid.password);
+		config.put("company", ConfigVendorAfraid.company);
+		config.put("active", ConfigVendorAfraid.active);
 		return config;
 	}
 
@@ -175,13 +179,21 @@ public class ConfigVendorAfraid {
 		return getJSONObject();
 	}
 
+	public static boolean isActive() {
+		return active;
+	}
+
+	public static void setActive(boolean active) {
+		ConfigVendorAfraid.active = active;
+	}
+
 	public static void reset() {
 		ConfigVendorAfraid.endpoint = "";
 		ConfigVendorAfraid.username = "";
 		ConfigVendorAfraid.email = "";
 		ConfigVendorAfraid.password = "";
 		ConfigVendorAfraid.company = "";
-		
+		ConfigVendorAfraid.active = false;
 	}
 	
 }
