@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetSocketAddress;
+import java.nio.file.FileSystems;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -52,11 +53,11 @@ public class Application {
 	
 	private static ServerWebSocketServerAdmin webSocketAdmin;
 	private static ServerWebAdmin webAdmin;
-	private static ClientReceiverWebSocket webSocketClient;	
-	private static ClientReceiverAMQP amqpReceiver;
 	private static ServerRESTAPI rest;
 	private static ServerEmail smtp;
 	private static Scheduller scheduller;
+	private static ClientReceiverWebSocket webSocketClient;	
+	private static ClientReceiverAMQP amqpReceiver;
 	
 	private static Logger logger = Logger.getLogger(Application.class);
 	
@@ -65,107 +66,16 @@ public class Application {
 		File currentJavaJarFile = new File(Application.class.getProtectionDomain().getCodeSource().getLocation().getPath());   
 		String currentJavaJarFilePath = currentJavaJarFile.getAbsolutePath();
 		String currentRootDirectoryPath = currentJavaJarFilePath.replace(currentJavaJarFile.getName(), "");
-		List<String> argList = Arrays.asList(args);
 
-		boolean loaded = loadConfig(currentRootDirectoryPath, "config.ini");
-		boolean needToStart = true;
-		if(loaded)
+		boolean configLoaded = loadConfig(currentRootDirectoryPath, "config.ini");
+		if(configLoaded)
 		{
-			String imageName = ConfigLoader.getConfig("otpbroker.image.name");
-			Config.setImageName(imageName);
-			
-			if(args != null)
-			{
-				if(argList.contains("--start"))
-				{
-					String pingCommand = ConfigLoader.getConfig("otpbroker.ssh.ping.command");
-					String result = CommandLineExecutor.exec(pingCommand).toString();
-					if(result.equals("OK"))
-					{
-						needToStart = false;
-					}
-				}
-				else if(argList.contains("--restart"))
-				{
-					ProcessKiller killer = new ProcessKiller(Config.getImageName(), true);
-					killer.stop();					
-				}
-				else if(argList.contains("--stop"))
-				{
-					ProcessKiller killer = new ProcessKiller(Config.getImageName(), true);
-					killer.stop();
-					needToStart = false;
-					System.exit(0);
-				}
-			}	
-			if(needToStart)
-			{
-				ConfigLoader.init();
-				
-				if(argList.contains("--start"))
-				{
-					resetConfig();
-				}
-		
-				Application.prepareSessionDir();
-		
-				int wsport = Config.getServerPort()+1;
-
-				/**
-				 * Web Server for Admin
-				 */
-				Application.webAdmin = new ServerWebAdmin();
-				Application.webAdmin.start();
-
-				/**
-				 * WebSocket Server for Admin
-				 */
-				InetSocketAddress address = new InetSocketAddress(wsport);
-				Application.webSocketAdmin = new ServerWebSocketServerAdmin(address);
-				Application.webSocketAdmin.start();		
-		
-				
-				/**
-				 * WebSocket Client for feeder
-				 */
-				Application.webSocketClient = new ClientReceiverWebSocket();
-				Application.webSocketClient.start();
-				
-				/**
-				 * RabbitMQ Client for feeder
-				 */
-				Application.amqpReceiver = new ClientReceiverAMQP();
-				Application.amqpReceiver.start();
-				
-				/**
-				 * REST API
-				 */
-				Application.rest = new ServerRESTAPI();
-				Application.rest.start();			
-		
-				GSMUtil.start();
-				DialUtil.start();
-		
-				/**
-				 * SMTP Server for send email
-				 */
-				Application.smtp = new ServerEmail();
-				Application.smtp.start();
-				
-				Application.scheduller = new Scheduller();
-				Application.scheduller.start();
-				logger.info("Service started");
-			}
-			else
-			{
-				logger.info("Service already started");
-			}
+			Application.startService(args);
 		}
 		else
 		{
 			logger.info("Service not started because failed to read config file");
-		}
-		
+		}		
 	}
 	
 	public static boolean loadConfig(String currentRootDirectoryPath, String fileName)
@@ -190,6 +100,103 @@ public class Application {
 		}
 		return loaded;	
 	}
+	
+	private static void startService(String[] args) {
+		boolean needToStart = true;
+		String imageName = ConfigLoader.getConfig("otpbroker.image.name");
+		Config.setImageName(imageName);
+		List<String> argList = new ArrayList<>();
+		if(args != null)
+		{
+			argList = Arrays.asList(args);
+			if(argList.contains("--start"))
+			{
+				String pingCommand = ConfigLoader.getConfig("otpbroker.ssh.ping.command");
+				String result = CommandLineExecutor.exec(pingCommand).toString();
+				if(result.equals("OK"))
+				{
+					needToStart = false;
+				}
+			}
+			else if(argList.contains("--restart"))
+			{
+				ProcessKiller killer = new ProcessKiller(Config.getImageName(), true);
+				killer.stop();					
+			}
+			else if(argList.contains("--stop"))
+			{
+				ProcessKiller killer = new ProcessKiller(Config.getImageName(), true);
+				killer.stop();
+				needToStart = false;
+				System.exit(0);
+			}
+		}	
+		if(needToStart)
+		{
+			ConfigLoader.init();
+			
+			if(argList.contains("--start"))
+			{
+				Application.resetConfig();
+			}
+	
+			Application.prepareSessionDir();
+	
+			int wsport = Config.getServerPort()+1;
+
+			/**
+			 * Web Server for Admin
+			 */
+			Application.webAdmin = new ServerWebAdmin();
+			Application.webAdmin.start();
+
+			/**
+			 * WebSocket Server for Admin
+			 */
+			InetSocketAddress address = new InetSocketAddress(wsport);
+			Application.webSocketAdmin = new ServerWebSocketServerAdmin(address);
+			Application.webSocketAdmin.start();		
+	
+			
+			/**
+			 * WebSocket Client for feeder
+			 */
+			Application.webSocketClient = new ClientReceiverWebSocket();
+			Application.webSocketClient.start();
+			
+			/**
+			 * RabbitMQ Client for feeder
+			 */
+			Application.amqpReceiver = new ClientReceiverAMQP();
+			Application.amqpReceiver.start();
+			
+			/**
+			 * REST API
+			 */
+			Application.rest = new ServerRESTAPI();
+			Application.rest.start();			
+	
+			GSMUtil.start();
+			DialUtil.start();
+	
+			/**
+			 * SMTP Server for send email
+			 */
+			Application.smtp = new ServerEmail();
+			Application.smtp.start();
+			
+			Application.scheduller = new Scheduller();
+			Application.scheduller.start();
+			logger.info("Service started");
+		}
+		else
+		{
+			logger.info("Service already started");
+		}
+		
+	}
+
+	
 	
 	public static void restartService()
 	{
@@ -224,11 +231,14 @@ public class Application {
 		{
 			Thread.currentThread().interrupt();
 		}
+		Application.scheduller.stopService();
+		Application.webSocketClient.stopService();
+		Application.amqpReceiver.stopService();
 	}	
 	
 	public static void prepareSessionDir()
 	{
-		String fileName = FileConfigUtil.fixFileName(Utility.getBaseDir()+"/"+Config.getSessionFilePath()+"/ses");
+		String fileName = FileConfigUtil.fixFileName(Utility.getBaseDir()+FileSystems.getDefault().getSeparator()+Config.getSessionFilePath()+"/ses");
 		FileConfigUtil.prepareDir(fileName);
 	}
 	private static void resetBasicConfig(Properties props)
@@ -415,8 +425,19 @@ public class Application {
 
 	private static Properties getResetProperties(String path) throws IOException {
 		Properties props = new Properties();
-		InputStream inputStream = new FileInputStream(new File(path));
-		props.load(inputStream);
+		InputStream inputStream = null;
+		try
+		{
+			inputStream = new FileInputStream(new File(path));
+			props.load(inputStream);
+		}
+		finally 
+		{
+			if(inputStream != null)
+			{
+				inputStream.close();
+			}
+		}
 		return props;
 	}
 

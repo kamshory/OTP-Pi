@@ -71,6 +71,11 @@ public class Scheduller extends Thread{
 		this.cronCeviceCheck = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.device");
 	}
 	
+	public void stopService() {
+		this.running = false;
+		
+	}
+	
 	@Override
 	public void run()
 	{
@@ -361,4 +366,6 @@ public class Scheduller extends Thread{
 			}
 		}
 	}
+
+	
 }

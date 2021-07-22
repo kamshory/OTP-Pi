@@ -99,6 +99,11 @@ public class RabbitMQReceiver{
 		this.connect();
 		
 	}
+	public void stopService() {
+		this.connection = null;
+		this.factory = null;
+		this.channel = null;
+	}
 
 	private void evtTimeout(TimeoutException e) {
 		ConfigFeederAMQP.setConnected(false);
@@ -139,4 +144,5 @@ public class RabbitMQReceiver{
             api.processRequest(message);            
 		}
 	}
+	
 }

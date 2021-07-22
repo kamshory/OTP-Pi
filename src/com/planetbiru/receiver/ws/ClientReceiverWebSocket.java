@@ -42,5 +42,8 @@ public class ClientReceiverWebSocket extends Thread{
 			Thread.currentThread().interrupt();
 		}
 	}
+	public void stopService() {
+		this.running = false;
+	}
 
 }
