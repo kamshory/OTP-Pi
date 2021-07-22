@@ -49,8 +49,7 @@ public class MessageAPI {
 				{
 					responseJSON = this.unblockMSISDN(command, data.optString(JsonKey.RECEIVER, ""));					
 				}
-			}
-			
+			}		
 		}
 		catch(JSONException | GSMException e)
 		{
@@ -110,24 +109,15 @@ public class MessageAPI {
 				{
 					jsonData = GSMUtil.sendSMS(receiver, textMessage, ste);
 					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);					
-				}
-				
+				}			
 			} 
 			catch(MessagingException | NoEmailAccountException e)
 			{
-				e.printStackTrace();
-				/**
-				 * Do nothing
-				 */
 				responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.FAILED);
 				responseJSON.put("error", e.getMessage());				
 			}
 			catch (GSMException e) 
 			{
-				e.printStackTrace();
-				/**
-				 * Do nothing
-				 */
 				responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.NO_DEVICE_CONNECTED);
 				responseJSON.put("error", e.getMessage());
 			}
@@ -170,15 +160,10 @@ public class MessageAPI {
 			try 
 			{
 				jsonData = GSMUtil.sendSMS(receiver, textMessage, ste);
-				responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
-				
+				responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);			
 			} 
 			catch (GSMException e) 
 			{
-				logger.error(e.getMessage(), e);
-				/**
-				 * Do nothing
-				 */
 				responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.NO_DEVICE_CONNECTED);
 				responseJSON.put("error", e.getMessage());
 			}
@@ -202,7 +187,6 @@ public class MessageAPI {
 		} 
 		catch (MessagingException | NoEmailAccountException e) 
 		{
-			logger.error(e.getMessage(), e);
 			result = e.getMessage();
 			responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.FAILED);
 			responseJSON.put(JsonKey.MESSAGE, result);

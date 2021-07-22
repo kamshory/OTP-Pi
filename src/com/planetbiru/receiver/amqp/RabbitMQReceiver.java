@@ -127,12 +127,11 @@ public class RabbitMQReceiver{
 			this.reconnect = true;
 			this.restart();
 		}
-		this.reconnect = false;
-		
+		this.reconnect = false;	
 	}
+	
 	public void evtOnMessage(byte[] body) 
-	{
-		
+	{		
         if(body != null)
 		{
 			String message = new String(body, StandardCharsets.UTF_8);
