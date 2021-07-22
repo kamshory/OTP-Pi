@@ -22,6 +22,7 @@ public class DNSDynu extends DNS {
 	private String endpoint = "https://api.dynu.com/nic/update";
 	private String password = "";
 	private String company = "";
+	private boolean active = false;
 	
 	@Override
 	public JSONObject update(DDNSRecord ddnsRecord) throws IOException  
@@ -392,12 +393,61 @@ public class DNSDynu extends DNS {
 		return String.format("%s %s %s", this.company, Config.getNoIPDevice(), this.email);
 	}
 
-	public void setConfig(String endpoint, String username, String password, String email, String company) {
+	public void setConfig(String endpoint, String username, String password, String email, String company, boolean active) {
 		this.endpoint = endpoint;
 		this.username = username;
 		this.password = password;
 		this.email = email;		
 		this.company = company;
+		this.active = active;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getEndpoint() {
+		return endpoint;
+	}
+
+	public void setEndpoint(String endpoint) {
+		this.endpoint = endpoint;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	

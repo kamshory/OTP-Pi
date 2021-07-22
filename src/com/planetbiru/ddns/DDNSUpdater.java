@@ -22,7 +22,7 @@ public class DDNSUpdater extends Thread{
 	{
 		try
 		{
-			if(this.ddnsRecord.getProvider().equals("cloudflare"))
+			if(this.ddnsRecord.getProvider().equals("cloudflare") && ConfigVendorCloudflare.isActive() && ConfigVendorCloudflare.getEndpoint().contains("://"))
 			{
 				DNSCloudflare ddns = new DNSCloudflare();
 				
@@ -31,7 +31,8 @@ public class DDNSUpdater extends Thread{
 				String authEmail = ConfigVendorCloudflare.getAuthEmail();
 				String authApiKey = ConfigVendorCloudflare.getAuthApiKey();
 				String authToken = ConfigVendorCloudflare.getAuthToken();
-				ddns.setConfig(endpoint, accountId, authEmail, authApiKey, authToken);
+				boolean active = ConfigVendorCloudflare.isActive();
+				ddns.setConfig(endpoint, accountId, authEmail, authApiKey, authToken, active);
 				
 				if(this.ddnsRecord.isForceCreateZone())
 				{
@@ -39,7 +40,7 @@ public class DDNSUpdater extends Thread{
 				}
 				JSONObject res2 = ddns.update(ddnsRecord);		
 			}
-			else if(this.ddnsRecord.getProvider().equals("noip"))
+			else if(this.ddnsRecord.getProvider().equals("noip") && ConfigVendorNoIP.isActive() && ConfigVendorNoIP.getEndpoint().contains("://"))
 			{
 				DNSNoIP ddns = new DNSNoIP();
 				
@@ -48,12 +49,12 @@ public class DDNSUpdater extends Thread{
 				String password = ConfigVendorNoIP.getPassword();
 				String company = ConfigVendorNoIP.getCompany();
 				String email = ConfigVendorNoIP.getEmail();
-				
-				ddns.setConfig(endpoint, username, password, email, company);
+				boolean active = ConfigVendorNoIP.isActive();
+				ddns.setConfig(endpoint, username, password, email, company, active);
 	
 				JSONObject res2 = ddns.update(ddnsRecord);		
 			}
-			else if(this.ddnsRecord.getProvider().equals("afraid"))
+			else if(this.ddnsRecord.getProvider().equals("afraid") && ConfigVendorAfraid.isActive() && ConfigVendorAfraid.getEndpoint().contains("://"))
 			{
 				DNSAfraid ddns = new DNSAfraid();
 				
@@ -62,12 +63,12 @@ public class DDNSUpdater extends Thread{
 				String password = ConfigVendorAfraid.getPassword();
 				String company = ConfigVendorAfraid.getCompany();
 				String email = ConfigVendorAfraid.getEmail();
-				
-				ddns.setConfig(endpoint, username, password, email, company);
+				boolean active = ConfigVendorAfraid.isActive();
+				ddns.setConfig(endpoint, username, password, email, company, active);
 	
 				JSONObject res2 = ddns.update(ddnsRecord);		
 			}
-			else if(this.ddnsRecord.getProvider().equals("dynu"))
+			else if(this.ddnsRecord.getProvider().equals("dynu") && ConfigVendorDynu.isActive() && ConfigVendorDynu.getEndpoint().contains("://"))
 			{
 				DNSDynu ddns = new DNSDynu();
 				
@@ -76,8 +77,8 @@ public class DDNSUpdater extends Thread{
 				String password = ConfigVendorDynu.getPassword();
 				String company = ConfigVendorDynu.getCompany();
 				String email = ConfigVendorDynu.getEmail();
-				
-				ddns.setConfig(endpoint, username, password, email, company);
+				boolean active = ConfigVendorDynu.isActive();
+				ddns.setConfig(endpoint, username, password, email, company, active);
 	
 				JSONObject res2 = ddns.update(ddnsRecord);		
 			}

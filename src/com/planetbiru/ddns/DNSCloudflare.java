@@ -23,14 +23,16 @@ public class DNSCloudflare extends DNS{
 	private String endpoint = "https://api.cloudflare.com/client/v4";
 	private String authApiKey = "";
 	private String authToken = "";
+	private boolean active = false;
 	
-	public void setConfig(String endpoint, String accountId, String authEmail, String authApiKey, String authToken)
+	public void setConfig(String endpoint, String accountId, String authEmail, String authApiKey, String authToken, boolean active)
 	{
 		this.endpoint = endpoint;
 		this.accountId = accountId;
 		this.authEmail = authEmail;
 		this.authApiKey = authApiKey;
 		this.authToken = authToken;
+		this.active = active;
 	}
 	/**
 	* Issues an HTTPS request and returns the result
@@ -544,6 +546,12 @@ public class DNSCloudflare extends DNS{
 	}
 	public void setAuthToken(String authToken) {
 		this.authToken = authToken;
+	}
+	public boolean isActive() {
+		return active;
+	}
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 	
 

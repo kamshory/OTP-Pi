@@ -18,6 +18,7 @@ public class DNSAfraid extends DNS{
 	private String endpoint = "https://freedns.afraid.org/nic/update";
 	private String password = "";
 	private String company = "";
+	private boolean active = false;
 	
 	@Override
 	public JSONObject update(DDNSRecord ddnsRecord) throws IOException  
@@ -67,12 +68,13 @@ public class DNSAfraid extends DNS{
 		return String.format("%s %s %s", this.company, Config.getNoIPDevice(), this.email);
 	}
 
-	public void setConfig(String endpoint, String username, String password, String email, String company) {
+	public void setConfig(String endpoint, String username, String password, String email, String company, boolean active) {
 		this.endpoint = endpoint;
 		this.username = username;
 		this.password = password;
 		this.email = email;		
 		this.company = company;
+		this.active = active;
 	}
 
 	public String getEmail() {
@@ -113,6 +115,14 @@ public class DNSAfraid extends DNS{
 
 	public void setCompany(String company) {
 		this.company = company;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 
