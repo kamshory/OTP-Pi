@@ -61,11 +61,11 @@ import com.sun.net.httpserver.HttpHandler;
 
 public class HandlerWebManager implements HttpHandler {
 
+	@SuppressWarnings("unused")
 	private static Logger logger = Logger.getLogger(HandlerWebManager.class);
 	
 	@Override
 	public void handle(HttpExchange httpExchange) throws IOException {
-		long from = System.nanoTime();
 		String path = httpExchange.getRequestURI().getPath();
 		String method = httpExchange.getRequestMethod();
 		if(path.endsWith(".html") && method.equals("POST"))
@@ -84,8 +84,6 @@ public class HandlerWebManager implements HttpHandler {
 			httpExchange.getResponseBody().write(response.getResponseBody());
 		}
 		httpExchange.close();
-		long dur = System.nanoTime() - from;
-		logger.info("Finish in "+dur+" : "+(dur/1000000)+" ms");
 	}
 
 	private WebResponse handleGet(HttpExchange httpExchange, String path) {
