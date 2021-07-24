@@ -165,22 +165,15 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				String modemID = queryPairs.getOrDefault("id", "");
 				if(!modemID.isEmpty())
 				{
-					try 
+					if(action.equals("connect"))
 					{
-						if(action.equals("connect"))
-						{
-							GSMUtil.connect(modemID);						
-						}
-						else
-						{
-							GSMUtil.disconnect(modemID);
-						} 
-						ServerInfo.sendModemStatus();
+						GSMUtil.connect(modemID);						
 					}
-					catch (GSMException | InvalidPortException e) 
+					else
 					{
-						ServerWebSocketAdmin.broadcastMessage(e.getMessage());
-					}
+						GSMUtil.disconnect(modemID);
+					} 
+					ServerInfo.sendModemStatus();
 				}
 			} 
 			else 
@@ -188,6 +181,10 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				statusCode = HttpStatus.UNAUTHORIZED;
 			}
 		} 
+		catch (GSMException | InvalidPortException e) 
+		{
+			ServerWebSocketAdmin.broadcastMessage(e.getMessage());
+		}
 		catch (NoUserRegisteredException e) 
 		{
 			statusCode = HttpStatus.UNAUTHORIZED;
@@ -282,25 +279,16 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				String message = queryPairs.getOrDefault(JsonKey.MESSAGE, "").trim();
 				String result = "";
 
-				try 
+				if(id.isEmpty())
 				{
-					if(id.isEmpty())
-					{
-						MailUtil.send(to, subject, message, ste);
-					}
-					else
-					{
-						MailUtil.send(to, subject, message, ste, id);	
-					}
-					result = "The message was sent successfuly";
-					response.put(JsonKey.SUCCESS, true);
-				} 
-				catch (MessagingException | NoEmailAccountException e) 
-				{
-					result = e.getMessage();
-					ServerWebSocketAdmin.broadcastMessage(result);
-					response.put(JsonKey.SUCCESS, false);
+					MailUtil.send(to, subject, message, ste);
 				}
+				else
+				{
+					MailUtil.send(to, subject, message, ste, id);	
+				}
+				result = "The message was sent successfuly";
+				response.put(JsonKey.SUCCESS, true);
 				ServerWebSocketAdmin.broadcastMessage(result);
 				response.put(JsonKey.MESSAGE, result);
 			}
@@ -311,6 +299,12 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				response.put(JsonKey.MESSAGE, ConstantString.UNAUTHORIZED);
 			}
 		} 
+		catch (MessagingException | NoEmailAccountException e) 
+		{
+			String result = e.getMessage();
+			ServerWebSocketAdmin.broadcastMessage(result);
+			response.put(JsonKey.SUCCESS, false);
+		}
 		catch (NoUserRegisteredException e) 
 		{
 			response.put(JsonKey.SUCCESS, false);
@@ -350,17 +344,9 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				String receiver = queryPairs.getOrDefault("receiver", "");
 				String message = queryPairs.getOrDefault(JsonKey.MESSAGE, "");
 				String result = "";
-				try 
-				{
-					GSMUtil.sendSMS(receiver, message, modemID);
-					result = "The message was sent via device "+modemID;
-					response.put(JsonKey.SUCCESS, false);
-				} 
-				catch (GSMException e) 
-				{
-					result = e.getMessage();
-					response.put(JsonKey.SUCCESS, false);
-				}
+				GSMUtil.sendSMS(receiver, message, modemID);
+				result = "The message was sent via device "+modemID;
+				response.put(JsonKey.SUCCESS, false);
 				response.put(JsonKey.MESSAGE, result);
 			}
 			else
@@ -370,6 +356,12 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				statusCode = HttpStatus.UNAUTHORIZED;
 			}
 		} 
+		catch (GSMException e) 
+		{
+			String result = e.getMessage();
+			response.put(JsonKey.MESSAGE, result);
+			response.put(JsonKey.SUCCESS, false);
+		}
 		catch (NoUserRegisteredException e) 
 		{
 			statusCode = HttpStatus.UNAUTHORIZED;
@@ -411,16 +403,8 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				String message = "";
 				if(ussd != null && !ussd.isEmpty())
 				{
-					try 
-					{
-						message = GSMUtil.executeUSSD(ussd, modemID);
-						response.put(JsonKey.SUCCESS, true);		
-					} 
-					catch (GSMException e) 
-					{
-						message = e.getMessage();
-						response.put(JsonKey.SUCCESS, false);	
-					}		
+					message = GSMUtil.executeUSSD(ussd, modemID);
+					response.put(JsonKey.SUCCESS, true);		
 				}
 				response.put(JsonKey.MESSAGE, message);
 			}
@@ -432,6 +416,12 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				
 			}
 		} 
+		catch (GSMException e) 
+		{
+			String message = e.getMessage();
+			response.put(JsonKey.MESSAGE, message);
+			response.put(JsonKey.SUCCESS, false);	
+		}		
 		catch (JSONException e)
 		{
 			response.put(JsonKey.MESSAGE, e.getMessage());
