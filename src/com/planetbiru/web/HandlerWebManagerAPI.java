@@ -8,7 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.planetbiru.DeviceAPI;
-import com.planetbiru.ServerWebSocketServerAdmin;
+import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigEmail;
 import com.planetbiru.constant.ConstantString;
@@ -70,13 +70,13 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			}
 			else if(path.startsWith("/api/expand"))
 			{
-				this.expand(httpExchange);
+				this.expandStorage(httpExchange);
 			}
 		}
 	}
 	
 	//@PostMapping(path="/api/expand")
-	public void expand(HttpExchange httpExchange) throws IOException
+	public void expandStorage(HttpExchange httpExchange) throws IOException
 	{
 		Headers responseHeaders = httpExchange.getResponseHeaders();
 		int statusCode = HttpStatus.OK;
@@ -98,13 +98,13 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			jo.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
 			byte[] responseBody = jo.toString().getBytes();
 			int statusCode = HttpStatus.OK;
-			DeviceAPI.reboot();		
 
 			responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 			responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
 			httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 			httpExchange.getResponseBody().write(responseBody);
 			httpExchange.close();
+			DeviceAPI.reboot();		
 		}
 	
 	//@PostMapping(path="/api/restart")
@@ -115,13 +115,13 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		jo.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
 		byte[] responseBody = jo.toString().getBytes();
 		int statusCode = HttpStatus.OK;
-		DeviceAPI.restart();		
 
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 		httpExchange.getResponseBody().write(responseBody);
 		httpExchange.close();
+		DeviceAPI.restart();		
 	}
 	
 	//@PostMapping(path="/api/cleanup")
@@ -145,7 +145,6 @@ public class HandlerWebManagerAPI implements HttpHandler {
 	//@PostMapping(path="/api/device/**")
 	public void modemConnect(HttpExchange httpExchange) throws IOException
 	{
-		System.out.println("public void modemConnect(HttpExchange httpExchange) throws IOException");
 		byte[] req = HttpUtil.getRequestBody(httpExchange);
 		String requestBody = "";
 		if(req != null)
@@ -162,7 +161,6 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				System.out.println("if(WebUserAccount.checkUserAuth(requestHeaders))");
 				String action = queryPairs.getOrDefault("action", "");
 				String modemID = queryPairs.getOrDefault("id", "");
 				if(!modemID.isEmpty())
@@ -171,22 +169,17 @@ public class HandlerWebManagerAPI implements HttpHandler {
 					{
 						if(action.equals("connect"))
 						{
-							System.out.println("if(action.equals(\"connect\")) ModemID = "+modemID);
 							GSMUtil.connect(modemID);						
 						}
 						else
 						{
-							System.out.println("GSMUtil.disconnect(modemID); ModemID = "+modemID);
 							GSMUtil.disconnect(modemID);
 						} 
 						ServerInfo.sendModemStatus();
 					}
 					catch (GSMException | InvalidPortException e) 
 					{
-						/**
-						 * 
-						 */
-						ServerWebSocketServerAdmin.broadcastMessage(e.getMessage());
+						ServerWebSocketAdmin.broadcastMessage(e.getMessage());
 					}
 				}
 			} 
@@ -263,7 +256,8 @@ public class HandlerWebManagerAPI implements HttpHandler {
 
 	//@PostMapping(path="/api/email**")
 	public void sendEmail(HttpExchange httpExchange) throws IOException
-	{		
+	{
+		StackTraceElement ste = Thread.currentThread().getStackTrace()[2];  
 		byte[] req = HttpUtil.getRequestBody(httpExchange);
 		String requestBody = "";
 		if(req != null)
@@ -292,11 +286,11 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				{
 					if(id.isEmpty())
 					{
-						MailUtil.send(to, subject, message);
+						MailUtil.send(to, subject, message, ste);
 					}
 					else
 					{
-						MailUtil.send(to, subject, message, id);	
+						MailUtil.send(to, subject, message, ste, id);	
 					}
 					result = "The message was sent successfuly";
 					response.put(JsonKey.SUCCESS, true);
@@ -304,10 +298,10 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				catch (MessagingException | NoEmailAccountException e) 
 				{
 					result = e.getMessage();
-					ServerWebSocketServerAdmin.broadcastMessage(result);
+					ServerWebSocketAdmin.broadcastMessage(result);
 					response.put(JsonKey.SUCCESS, false);
 				}
-				ServerWebSocketServerAdmin.broadcastMessage(result);
+				ServerWebSocketAdmin.broadcastMessage(result);
 				response.put(JsonKey.MESSAGE, result);
 			}
 			else

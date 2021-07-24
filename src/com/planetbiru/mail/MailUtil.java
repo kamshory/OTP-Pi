@@ -15,10 +15,10 @@ public class MailUtil {
 	{
 		
 	}
-	public static void send(String receiver, String subject, String message, String id) throws MessagingException, NoEmailAccountException {
+	public static void send(String receiver, String subject, String message, StackTraceElement ste, String id) throws MessagingException, NoEmailAccountException {
 		if(id == null || id.isEmpty())
 		{
-			MailUtil.send(receiver, subject, message);
+			MailUtil.send(receiver, subject, message, ste);
 		}
 		if(MailUtil.activeAccounts.isEmpty())
 		{
@@ -27,7 +27,7 @@ public class MailUtil {
 		DataEmail mailer = ConfigEmail.getAccount(id);
 		mailer.send(receiver, subject, message);
 	}
-	public static void send(String receiver, String subject, String message) throws MessagingException, NoEmailAccountException {
+	public static void send(String receiver, String subject, String message, StackTraceElement ste) throws MessagingException, NoEmailAccountException {
 		if(MailUtil.activeAccounts.isEmpty())
 		{
 			throw new NoEmailAccountException("No email account active");

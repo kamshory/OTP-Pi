@@ -25,28 +25,34 @@ public class MessageAPI {
 		try
 		{
 			requestJSON = new JSONObject(requestBody);
+			logger.info(requestJSON.toString(4));
 			String command = requestJSON.optString(JsonKey.COMMAND, "");
 			JSONObject data = requestJSON.optJSONObject(JsonKey.DATA);
 			if(data != null)
 			{
 				if(command.equals(ConstantString.SEND_SMS))
 				{
+					logger.info("Send SMS");
 					responseJSON = this.sendSMS(command, data);		
 				}
 				else if(command.equals(ConstantString.SEND_MAIL))
 				{
+					logger.info("Send Email");
 					responseJSON = this.sendEmail(command, data);					
 				}
 				else if(command.equals(ConstantString.SEND_MESSAGE))
 				{
+					logger.info("Send Message");
 					responseJSON = this.sendMessage(command, data);					
 				}
 				else if(command.equals(ConstantString.BLOCK_MSISDN))
 				{
+					logger.info("Block Number");
 					responseJSON = this.blockMSISDN(command, data.optString(JsonKey.RECEIVER, ""));					
 				}
 				else if(command.equals(ConstantString.UNBLOCK_MSISDN))
 				{
+					logger.info("Unblock Number");
 					responseJSON = this.unblockMSISDN(command, data.optString(JsonKey.RECEIVER, ""));					
 				}
 			}		
@@ -102,7 +108,7 @@ public class MessageAPI {
 			{
 				if(receiver.contains("@"))
 				{
-					MailUtil.send(receiver, subject, textMessage);
+					MailUtil.send(receiver, subject, textMessage, ste);
 					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
 				}
 				else
@@ -136,7 +142,7 @@ public class MessageAPI {
 			String subject = data.optString(JsonKey.SUBJECT, "");
 			try 
 			{
-				MailUtil.send(receiver, subject, textMessage);
+				MailUtil.send(receiver, subject, textMessage, null);
 			} 
 			catch (MessagingException | NoEmailAccountException e) 
 			{
@@ -174,13 +180,13 @@ public class MessageAPI {
 	}
 	private JSONObject sendEmail(String command, JSONObject data) {
 		JSONObject responseJSON = new JSONObject();
-		String to = data.optString("recipient", "");
+		String to = data.optString(JsonKey.RECEIVER, "");
 		String subject = data.optString("subject", "");
 		String message = data.optString("message", "");
 		String result = "";
 		try 
 		{
-			MailUtil.send(to, subject, message);
+			MailUtil.send(to, subject, message, null);
 			result = "The message was sent successfuly";
 			responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
 			responseJSON.put(JsonKey.MESSAGE, result);

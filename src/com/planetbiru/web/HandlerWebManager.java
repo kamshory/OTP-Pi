@@ -400,7 +400,7 @@ public class HandlerWebManager implements HttpHandler {
 					ConfigEmail.load(Config.getEmailSettingPath());
 					try 
 					{
-						MailUtil.send(email, "Account Information", message);
+						MailUtil.send(email, "Account Information", message, ste);
 					} 
 					catch (MessagingException | NoEmailAccountException e) 
 					{

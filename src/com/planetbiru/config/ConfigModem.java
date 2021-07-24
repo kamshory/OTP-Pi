@@ -11,7 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.planetbiru.ServerWebSocketServerAdmin;
+import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.gsm.DialUtil;
 import com.planetbiru.gsm.GSMUtil;
@@ -159,7 +159,7 @@ public class ConfigModem {
 		JSONObject serverInfo = new JSONObject();
 		serverInfo.put(JsonKey.DATA, data);
 		serverInfo.put(JsonKey.COMMAND, "server-info");
-		ServerWebSocketServerAdmin.broadcastMessage(serverInfo.toString());
+		ServerWebSocketAdmin.broadcastMessage(serverInfo.toString());
 	}
 	
 	public static JSONObject toJSONObject()

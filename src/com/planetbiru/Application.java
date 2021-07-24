@@ -51,7 +51,7 @@ import org.apache.log4j.Logger;
 
 public class Application {
 	
-	private static ServerWebSocketServerAdmin webSocketAdmin;
+	private static ServerWebSocketAdmin webSocketAdmin;
 	private static ServerWebAdmin webAdmin;
 	private static ServerRESTAPI rest;
 	private static ServerEmail smtp;
@@ -154,7 +154,7 @@ public class Application {
 			 * WebSocket Server for Admin
 			 */
 			InetSocketAddress address = new InetSocketAddress(wsport);
-			Application.webSocketAdmin = new ServerWebSocketServerAdmin(address);
+			Application.webSocketAdmin = new ServerWebSocketAdmin(address);
 			Application.webSocketAdmin.start();		
 	
 			
@@ -202,7 +202,7 @@ public class Application {
 	{
 		JSONObject info = new JSONObject();
 		info.put(JsonKey.COMMAND, "server-shutdown");
-		ServerWebSocketServerAdmin.broadcastMessage(info.toString());	
+		ServerWebSocketAdmin.broadcastMessage(info.toString());	
 		Application.stopAllServices();
 		/**
 		 * Wait 50 mili seconds before restart the application

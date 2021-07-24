@@ -9,7 +9,7 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.planetbiru.ServerWebSocketServerAdmin;
+import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigModem;
 import com.planetbiru.constant.JsonKey;
@@ -43,7 +43,7 @@ public class ServerInfo {
 		info.put(JsonKey.COMMAND, "server-info");
 		info.put(JsonKey.DATA, data);
 	
-		ServerWebSocketServerAdmin.broadcastMessage(info.toString(4));				
+		ServerWebSocketAdmin.broadcastMessage(info.toString(4));				
 	}
 	
 	public static void sendWSStatus(boolean connected) {
@@ -63,7 +63,7 @@ public class ServerInfo {
 		info.put(JsonKey.COMMAND, "server-info");
 		info.put(JsonKey.DATA, data);
 	
-		ServerWebSocketServerAdmin.broadcastMessage(info.toString(4));
+		ServerWebSocketAdmin.broadcastMessage(info.toString(4));
 	}
 
 	public static void sendModemStatus()
@@ -77,7 +77,7 @@ public class ServerInfo {
 		JSONObject serverInfo = new JSONObject();
 		serverInfo.put(JsonKey.DATA, data);
 		serverInfo.put(JsonKey.COMMAND, "server-info");
-		ServerWebSocketServerAdmin.broadcastMessage(serverInfo.toString());
+		ServerWebSocketAdmin.broadcastMessage(serverInfo.toString());
 	}
 
 	private static String cacheServerInfo = "";

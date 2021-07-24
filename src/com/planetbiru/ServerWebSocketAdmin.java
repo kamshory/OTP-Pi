@@ -20,10 +20,10 @@ import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.user.NoUserRegisteredException;
 import com.planetbiru.user.WebUserAccount;
 
-public class ServerWebSocketServerAdmin extends WebSocketServer{
+public class ServerWebSocketAdmin extends WebSocketServer{
 
 	private static Collection<WebSocketConnection> clients = new ArrayList<>();
-	public ServerWebSocketServerAdmin(InetSocketAddress address) {
+	public ServerWebSocketAdmin(InetSocketAddress address) {
 		super(address);
 	}
 
@@ -46,7 +46,6 @@ public class ServerWebSocketServerAdmin extends WebSocketServer{
 
 	@Override
 	public void onOpen(WebSocket conn, ClientHandshake request) {
-		
 		String rawCookie = request.getFieldValue("Cookie");
 		CookieServer cookie = new CookieServer(rawCookie);
 		String username = cookie.getSessionData().optString(JsonKey.USERNAME, "");
@@ -55,7 +54,7 @@ public class ServerWebSocketServerAdmin extends WebSocketServer{
 		{
 			if(WebUserAccount.checkUserAuth(username, password))
 			{
-				ServerWebSocketServerAdmin.clients.add(new WebSocketConnection(conn, request));
+				ServerWebSocketAdmin.clients.add(new WebSocketConnection(conn, request));
 				this.sendServerStatus(conn);
 			}
 			else
@@ -77,11 +76,11 @@ public class ServerWebSocketServerAdmin extends WebSocketServer{
 	}
 	
 	private void remove(WebSocket conn) {
-		for(WebSocketConnection client : ServerWebSocketServerAdmin.clients)
+		for(WebSocketConnection client : ServerWebSocketAdmin.clients)
 		{
 			if(client.getConn().equals(conn))
 			{
-				ServerWebSocketServerAdmin.clients.remove(client);
+				ServerWebSocketAdmin.clients.remove(client);
 				break;
 			}
 		}		
@@ -89,7 +88,7 @@ public class ServerWebSocketServerAdmin extends WebSocketServer{
 	
 	public static void broadcastMessage(String message)
 	{
-		for(WebSocketConnection client : ServerWebSocketServerAdmin.clients)
+		for(WebSocketConnection client : ServerWebSocketAdmin.clients)
 		{
 			client.send(message);
 		}
@@ -97,7 +96,7 @@ public class ServerWebSocketServerAdmin extends WebSocketServer{
 	
 	public static void broadcastMessage(String message, String path)
 	{
-		for(WebSocketConnection client : ServerWebSocketServerAdmin.clients)
+		for(WebSocketConnection client : ServerWebSocketAdmin.clients)
 		{
 			if(client.getPath().contains(path))
 			{
@@ -107,7 +106,7 @@ public class ServerWebSocketServerAdmin extends WebSocketServer{
 	}
 	public static void broadcastMessage(String message, WebSocket sender)
 	{
-		for(WebSocketConnection client : ServerWebSocketServerAdmin.clients)
+		for(WebSocketConnection client : ServerWebSocketAdmin.clients)
 		{
 			if(!client.getConn().equals(sender))
 			{

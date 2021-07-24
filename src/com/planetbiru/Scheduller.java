@@ -310,7 +310,7 @@ public class Scheduller extends Thread{
 		JSONObject serverInfo = new JSONObject();
 		serverInfo.put(JsonKey.DATA, data);
 		serverInfo.put(JsonKey.COMMAND, "server-info");
-		ServerWebSocketServerAdmin.broadcastMessage(serverInfo.toString());
+		ServerWebSocketAdmin.broadcastMessage(serverInfo.toString());
 	}
 
 	private void amqpCheck()
