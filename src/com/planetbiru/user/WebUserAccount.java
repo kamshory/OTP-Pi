@@ -104,16 +104,16 @@ public class WebUserAccount {
 	public static boolean checkUserAuth(Map<String, List<String>> headers) throws NoUserRegisteredException 
 	{
 		CookieServer cookie = new CookieServer(headers);
-		String username = cookie.getSessionData().optString(JsonKey.USERNAME, "");
-		String password = cookie.getSessionData().optString(JsonKey.PASSWORD, "");
+		String username = cookie.getSessionValue(JsonKey.USERNAME, "");
+		String password = cookie.getSessionValue(JsonKey.PASSWORD, "");
 		return WebUserAccount.checkUserAuth(username, password);
 	}
 	
 	public static boolean checkUserAuth(Headers headers) throws NoUserRegisteredException
 	{
 		CookieServer cookie = new CookieServer(headers);
-		String username = cookie.getSessionData().optString(JsonKey.USERNAME, "");
-		String password = cookie.getSessionData().optString(JsonKey.PASSWORD, "");
+		String username = cookie.getSessionValue(JsonKey.USERNAME, "");
+		String password = cookie.getSessionValue(JsonKey.PASSWORD, "");
 		return WebUserAccount.checkUserAuth(username, password);
 	}
 	

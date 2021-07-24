@@ -292,7 +292,6 @@ public class CookieServer {
 			}
     	}
 	}
-	
 	public void saveSessionData() {
 		String fileName = FileConfigUtil.fixFileName(this.getSessionFile());
 		try 
@@ -342,6 +341,24 @@ public class CookieServer {
 		try 
 		{
 			value = this.getSessionData().get(sessionKey);
+			if(value == null)
+			{
+				value = defaultValue;
+			}
+		}
+		catch(JSONException e)
+		{
+			value = defaultValue;
+		}
+		return value;
+	}
+	
+	public String getSessionValue(String sessionKey, String defaultValue)
+	{
+		String value = "";
+		try 
+		{
+			value = this.getSessionData().optString(sessionKey, defaultValue);
 			if(value == null)
 			{
 				value = defaultValue;

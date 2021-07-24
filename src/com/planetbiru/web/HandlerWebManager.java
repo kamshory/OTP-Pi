@@ -199,8 +199,9 @@ public class HandlerWebManager implements HttpHandler {
 			fileSub = WebManagerTool.getFileName(authFileInfo.optString("data-file", ""));
 		}
 		
-		String username = cookie.getSessionData().optString(JsonKey.USERNAME, "");
-		String password = cookie.getSessionData().optString(JsonKey.PASSWORD, "");
+		String username = cookie.getSessionValue(JsonKey.USERNAME, "");
+		String password = cookie.getSessionValue(JsonKey.PASSWORD, "");
+		
 		if(requireLogin)
 		{
 			responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);

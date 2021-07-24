@@ -55,9 +55,10 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 	public void onOpen(WebSocket conn, ClientHandshake request) {
 		String rawCookie = request.getFieldValue("Cookie");
 		Map<String, String> query = this.getQuery(request);
-		CookieServer cookie = new CookieServer(rawCookie);
-		String username = cookie.getSessionData().optString(JsonKey.USERNAME, "");
-		String password = cookie.getSessionData().optString(JsonKey.PASSWORD, "");
+		CookieServer cookie = new CookieServer(rawCookie);		
+		
+		String username = cookie.getSessionValue(JsonKey.USERNAME, "");
+		String password = cookie.getSessionValue(JsonKey.PASSWORD, "");
 		
 		String path = "";
 		if(query.containsKey("path"))
@@ -75,10 +76,8 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 			    clientCalendar.setTime(clientDate);
 			    
 				Date serverDate = new Date();
-			    Calendar serverCalendar = new GregorianCalendar();
-			    serverCalendar.setTime(serverDate);
 			    
-				if((clientDate.getTime() - serverDate.getTime()) > 86400000 && clientCalendar.get(Calendar.YEAR) > 2020 && serverCalendar.get(Calendar.YEAR) < 2020)
+				if((clientDate.getTime() - serverDate.getTime()) > 86400000 && clientCalendar.get(Calendar.YEAR) > 2020)
 				{
 					DeviceAPI.updateServerTime(clientDate);
 				}
