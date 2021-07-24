@@ -278,6 +278,12 @@ Modul Dynu adalah modul untuk mengatur akun Dynu Dyn DNS yang digunakan.
 
 Modul Afraid adalah modul untuk mengatur akun Free DNS Afraid yang digunakan.
 
+## Real Time Clock
+
+Modul Real Time Clock atau RTC diperlukan untuk menjaga waktu perangkat saat perangkat dimatikan dan tidak terhubung dengan internet. Perangkat harus menggunakan waktu yang benar agar cookie yang dikirim oleh perangkat tidak dihapus oleh browser karena kedaluarsa sehingga administrator dapat mengelola perangkat termasuk melakukan pengaturan. Selain itu, perangkat perlu mencatat waktu saat terjadi kesalahan sehingga catatan kesalahan dapat dibaca oleh pengguna untuk dapat dilakukan dimitigasi.
+
+Modul Real Time Clock tertanam di dalam perangkat dan sudah diprogram untuk dapat bekerja sebagaimana mestinya. Apabila perangkat mati dalam waktu yang lama sehingga menyebabkan daya pada battery RTC habis, maka perangkat dapat menyesuaikan waktu dengan browser yang mengaksesnya tanpa mempedulikan daerah waktu yang digunakan. Selanjutnya, administrator dapat mengatur waktu perangkat jika diperlukan.
+
 ## Reset Device
 
 Pada kasus pengguna tidak dapat mengakses web administrator, baik karena lupa password, atau karena konfigurasi jaringan yang kacau, pengguna dapat melakukan reset device. Reset device dilakukan dengan menancapkan sebuah flash disk yang berisi file sebagai berikut:
