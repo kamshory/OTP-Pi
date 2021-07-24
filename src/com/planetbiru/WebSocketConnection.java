@@ -1,7 +1,5 @@
 package com.planetbiru;
 
-import java.util.Map;
-
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 
@@ -14,26 +12,10 @@ public class WebSocketConnection {
 	private String path = "/";
 	private String sessionID = Utility.sha1(System.nanoTime()+"");
 
-	public WebSocketConnection(WebSocket conn, ClientHandshake request) {
+	public WebSocketConnection(WebSocket conn, ClientHandshake request, String path) {
 		this.conn = conn;
 		this.request = request;
-		this.processRequest(request);
-	}
-
-	private void processRequest(ClientHandshake request) {
-		String requestPath = request.getResourceDescriptor();
-		if(requestPath.contains("?"))
-		{
-			String[] arr = requestPath.split("\\?", 2);
-			if(arr.length > 1)
-			{
-				Map<String, String> query = Utility.parseQueryPairs(arr[1]);
-				if(query.containsKey("path"))
-				{
-					this.path = query.getOrDefault("path", "");
-				}
-			}
-		}
+		this.path = path;
 	}
 
 	public void send(String message) {

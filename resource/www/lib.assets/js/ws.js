@@ -6,7 +6,7 @@ if(pathname == "/" || pathname == "")
 {
     pathname = "/index.html";
 }
-var wsURL = createBaseURL(scheme, hostName, portNumber)+"/websocket/manager?path="+encodeURIComponent(pathname);
+var wsURL = buildWebSoketURL();
 var ws = null;
 var wsConnected = false;
 var connetionInterval = setTimeout('', 1000);
@@ -41,7 +41,12 @@ function createBaseURL(protocol, host, port){
     }
     return url;
 }
-
+function buildWebSoketURL()
+{
+    var date = new Date();
+    var currentTime = date.getTime();
+    return createBaseURL(scheme, hostName, portNumber)+"/websocket/manager?time="+currentTime+"&path="+encodeURIComponent(pathname);
+}
 function initWebSocket()
 {
     if ("WebSocket" in window) 
@@ -66,6 +71,7 @@ function serverUp()
 }
 function connectWebSocket()
 {
+    wsURL = buildWebSoketURL();
     wsConnected = false;
     ws = new WebSocket(wsURL);
         

@@ -76,12 +76,7 @@ public class DeviceAPI {
 
 			    Date date = new Date(atomicNtpTime.getTime());
 			
-			    /**
-			     * URL : https://www.thegeekstuff.com/2013/08/hwclock-examples/
-			     */
-				String currentTime = Utility.date("MM/dd/yyyy HH:mm:ss", date);
-			    String command = "/bin/hwclock --set --date \""+currentTime+"\"";
-			    CommandLineExecutor.exec(command);	
+			    DeviceAPI.updateServerTime(date);
 		    }
 		} 
 		catch (IOException e) 
@@ -92,6 +87,15 @@ public class DeviceAPI {
 		}
 	}
 	
+	public static void updateServerTime(Date date) {
+		/**
+	     * URL : https://www.thegeekstuff.com/2013/08/hwclock-examples/
+	     */
+		String currentTime = Utility.date("MM/dd/yyyy HH:mm:ss", date);
+	    String command = "/bin/hwclock --set --date \""+currentTime+"\"";
+	    CommandLineExecutor.exec(command);			
+	}
+
 	public static void reboot()
 	{
 		CommandLineExecutor.exec(Config.getRebootCommand());

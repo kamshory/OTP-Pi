@@ -2,7 +2,13 @@ package com.planetbiru;
 
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
@@ -19,6 +25,7 @@ import com.planetbiru.cookie.CookieServer;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.user.NoUserRegisteredException;
 import com.planetbiru.user.WebUserAccount;
+import com.planetbiru.util.Utility;
 
 public class ServerWebSocketAdmin extends WebSocketServer{
 
@@ -47,14 +54,42 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 	@Override
 	public void onOpen(WebSocket conn, ClientHandshake request) {
 		String rawCookie = request.getFieldValue("Cookie");
+		Map<String, String> query = this.getQuery(request);
 		CookieServer cookie = new CookieServer(rawCookie);
 		String username = cookie.getSessionData().optString(JsonKey.USERNAME, "");
 		String password = cookie.getSessionData().optString(JsonKey.PASSWORD, "");
+		
+		String path = "";
+		if(query.containsKey("path"))
+		{
+			path = query.getOrDefault("path", "");
+		}
+		if(query.containsKey("time"))
+		{
+			String time = query.getOrDefault("time", "0");
+			long clientTimeMills = Utility.atol(time);
+			if(clientTimeMills > 0)
+			{
+				Date clientDate = new Date(clientTimeMills);
+			    Calendar clientCalendar = new GregorianCalendar();
+			    clientCalendar.setTime(clientDate);
+			    
+				Date serverDate = new Date();
+			    Calendar serverCalendar = new GregorianCalendar();
+			    serverCalendar.setTime(serverDate);
+			    
+				if((clientDate.getTime() - serverDate.getTime()) > 86400000 && clientCalendar.get(Calendar.YEAR) > 2020 && serverCalendar.get(Calendar.YEAR) < 2020)
+				{
+					DeviceAPI.updateServerTime(clientDate);
+				}
+			}
+		}
+		
 		try 
 		{
 			if(WebUserAccount.checkUserAuth(username, password))
 			{
-				ServerWebSocketAdmin.clients.add(new WebSocketConnection(conn, request));
+				ServerWebSocketAdmin.clients.add(new WebSocketConnection(conn, request, path));
 				this.sendServerStatus(conn);
 			}
 			else
@@ -113,6 +148,20 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 				client.send(message);
 			}
 		}
+	}
+	
+	private Map<String, String> getQuery(ClientHandshake request) {
+		Map<String, String> query = new HashMap<>();
+		String requestPath = request.getResourceDescriptor();
+		if(requestPath.contains("?"))
+		{
+			String[] arr = requestPath.split("\\?", 2);
+			if(arr.length > 1)
+			{
+				query = Utility.parseQueryPairs(arr[1]);
+			}
+		}
+		return query;
 	}
 	
 	private void sendServerStatus(WebSocket conn) {
