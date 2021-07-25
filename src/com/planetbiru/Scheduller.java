@@ -133,9 +133,11 @@ public class Scheduller extends Thread{
 		{
 			exp = new CronExpression(cronExpressionNTP);
 			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
-			if(currentTime.getTime() > this.nextValidNTP)
+			String ntpServer = ConfigGeneral.getNtpServer();		
+
+			if(currentTime.getTime() > this.nextValidNTP && ntpServer != null && !ntpServer.isEmpty())
 			{
-				this.updateTime();
+				DeviceAPI.syncTime(ntpServer);
 				this.nextValidNTP = nextValidTimeAfter.getTime();
 			}
 		}
@@ -144,8 +146,34 @@ public class Scheduller extends Thread{
 			/**
 			 * Do nothing
 			 */
+		}		
+	}
+	
+	public void updateTime()
+	{
+		String cronExpression = ConfigGeneral.getNtpUpdateInterval();		
+		String ntpServer = ConfigGeneral.getNtpServer();		
+		if(!cronExpression.isEmpty() && !ntpServer.isEmpty())
+		{
+			CronExpression exp;		
+			try
+			{
+				exp = new CronExpression(cronExpression);
+				Date currentTime = new Date();
+				Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);	
+				if(currentTime.getTime() > this.nextValidNTP)
+				{
+					DeviceAPI.syncTime(ntpServer);
+					this.nextValidNTP = nextValidTimeAfter.getTime();
+				}
+			}
+			catch(JSONException | ParseException e)
+			{
+				/**
+				 * Do nothing
+				 */
+			}
 		}
-		
 	}
 
 	private void updateDDNS(Date currentTime) {
@@ -165,8 +193,7 @@ public class Scheduller extends Thread{
 			/**
 			 * Do nothing
 			 */
-		}
-		
+		}		
 	}
 
 	private void updateDDNSRecord() {
@@ -188,8 +215,7 @@ public class Scheduller extends Thread{
 		if(countUpdate > 0)
 		{
 			ConfigDDNS.save();
-		}	
-		
+		}		
 	}
 
 	private boolean updateDNSRecord(DDNSRecord ddnsRecord, String ddnsId) {
@@ -241,8 +267,7 @@ public class Scheduller extends Thread{
 			/**
 			 * Do nothing
 			 */
-		}
-		
+		}	
 	}
 
 	private void amqpCheck(Date currentTime) {
@@ -262,8 +287,7 @@ public class Scheduller extends Thread{
 			/**
 			 * Do nothing
 			 */
-		}
-		
+		}		
 	}
 
 	private void updateServerStatus(Date currentTime) {
@@ -283,8 +307,7 @@ public class Scheduller extends Thread{
 			/**
 			 * Do nothing
 			 */
-		}
-		
+		}		
 	}
 
 	private void delay(long interval)
@@ -340,32 +363,7 @@ public class Scheduller extends Thread{
 	}
 	
 	
-	public void updateTime()
-	{
-		String cronExpression = ConfigGeneral.getNtpUpdateInterval();		
-		String ntpServer = ConfigGeneral.getNtpServer();		
-		if(!cronExpression.isEmpty() && !ntpServer.isEmpty())
-		{
-			CronExpression exp;		
-			try
-			{
-				exp = new CronExpression(cronExpression);
-				Date currentTime = new Date();
-				Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);	
-				if(currentTime.getTime() > this.nextValidNTP)
-				{
-					DeviceAPI.syncTime(ntpServer);
-					this.nextValidNTP = nextValidTimeAfter.getTime();
-				}
-			}
-			catch(JSONException | ParseException e)
-			{
-				/**
-				 * Do nothing
-				 */
-			}
-		}
-	}
+	
 
 	
 }

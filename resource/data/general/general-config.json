@@ -1,1 +1,1 @@
-{"ntpUpdateInterval":"","deviceTimeZone":"Asia/Jakarta","ntpServer":"pool.ntp.org","deviceName":"OTP Broker"}
+{"ntpUpdateInterval":"0 0 */12 * * ?","deviceTimeZone":"Asia/Jakarta","ntpServer":"pool.ntp.org","deviceName":"OTP Broker"}

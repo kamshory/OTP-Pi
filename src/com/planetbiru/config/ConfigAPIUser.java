@@ -199,8 +199,8 @@ public class ConfigAPIUser {
 	public boolean checkUserAuth(Headers headers)
 	{
 		CookieServer cookie = new CookieServer(headers);
-		String username = cookie.getSessionData().optString(JsonKey.USERNAME, "");
-		String password = cookie.getSessionData().optString(JsonKey.PASSWORD, "");
+		String username = cookie.getSessionValue(JsonKey.USERNAME, "");
+		String password = cookie.getSessionValue(JsonKey.PASSWORD, "");
 		return ConfigAPIUser.checkUserAuth(username, password);
 	}
 	
