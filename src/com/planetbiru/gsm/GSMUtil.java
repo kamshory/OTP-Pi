@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -39,6 +40,8 @@ public class GSMUtil {
 	private static boolean hasPrefix = false;
 	private static Map<String, ModemRouter> modemRouterList = new HashMap<>();
 	private static boolean hasDefaultModem = false;
+	
+	private static Logger logger = Logger.getLogger(GSMUtil.class);
 
 	private GSMUtil()
 	{
@@ -66,7 +69,7 @@ public class GSMUtil {
 				} 
 				catch (GSMException | InvalidPortException e) 
 				{
-					e.printStackTrace();
+					logger.error(e.getMessage());
 				}
 			}
 		}
@@ -103,12 +106,10 @@ public class GSMUtil {
 		{
 			GSMUtil.get(modemID).disconnect();
 			GSMUtil.updateConnectedDevice();		
-			System.out.println("Disconnected");
 		} 
 		catch (GSMException e) 
 		{
-			e.printStackTrace();
-			System.out.println("Disconnected");
+			logger.error(e.getMessage());
 			GSMUtil.updateConnectedDevice();		
 			throw new GSMException(e);
 		}
@@ -492,6 +493,7 @@ public class GSMUtil {
 					/**
 					 * Do nothing
 					 */
+					logger.error(e.getMessage());
 				}
 			}
 		}		

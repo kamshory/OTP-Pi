@@ -77,7 +77,7 @@ public class SMSLogger {
 	private static void prepareFile(Date date) {
 		String baseName = Utility.date("yyyy-MM-dd", date)+".csv";
 		SMSLogger.baseName = baseName;
-		SMSLogger.fileName = FileConfigUtil.fixFileName(SMSLogger.path + "/" + baseName);	
+		SMSLogger.fileName = FileConfigUtil.fixFileName(SMSLogger.path + File.separatorChar + baseName);	
 		SMSLogger.prepareDir(SMSLogger.fileName);
 	}
 	

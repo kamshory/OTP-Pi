@@ -25,16 +25,17 @@ public class MailUtil {
 			throw new NoEmailAccountException("No email account active");
 		}
 		DataEmail mailer = ConfigEmail.getAccount(id);
-		mailer.send(receiver, subject, message);
+		mailer.send(receiver, subject, message, ste);
 	}
-	public static void send(String receiver, String subject, String message, StackTraceElement ste) throws MessagingException, NoEmailAccountException {
+	public static void send(String receiver, String subject, String message, StackTraceElement ste) throws MessagingException, NoEmailAccountException 
+	{
 		if(MailUtil.activeAccounts.isEmpty())
 		{
 			throw new NoEmailAccountException("No email account active");
 		}
 		int index = MailUtil.getIndex();
 		DataEmail mailer = ConfigEmail.getAccounts().get(index);
-		mailer.send(receiver, subject, message);
+		mailer.send(receiver, subject, message, ste);
 	}
 
 	private static int getIndex() {

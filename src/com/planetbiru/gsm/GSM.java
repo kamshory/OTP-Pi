@@ -23,10 +23,13 @@ public class GSM {
     		"SM"
     	};
     
-    private static Logger logger = Logger.getLogger(DialUtil.class);
+    private static Logger logger = Logger.getLogger(GSM.class);
     
     public GSM()
     {
+    	/**
+    	 * Default constructor
+    	 */
     }
     
     

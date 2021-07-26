@@ -121,7 +121,7 @@ public class DataEmail {
         });
         session.setDebug(debug );
 	}
-	public boolean send(String to, String subject, String message) throws MessagingException
+	public boolean send(String to, String subject, String message, StackTraceElement ste) throws MessagingException
 	{
  		return this.send(to, subject, message, this.senderAddress);
 	}
