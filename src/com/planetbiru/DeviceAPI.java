@@ -19,7 +19,7 @@ public class DeviceAPI {
 		
 	}
 	
-	public static String execXXX(String command)
+	public static String execSSH(String command)
 	{
 		Config.setSshEnable(false);
 		String result = "";
