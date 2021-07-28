@@ -161,14 +161,12 @@ public class Application {
 			/**
 			 * WebSocket Client for feeder
 			 */
-			Application.webSocketClient = new ClientReceiverWebSocket();
-			Application.webSocketClient.start();
+			Application.feederWSStart();
 			
 			/**
 			 * RabbitMQ Client for feeder
 			 */
-			Application.amqpReceiver = new ClientReceiverAMQP();
-			Application.amqpReceiver.start();
+			Application.feederAMQPStart();
 			
 			/**
 			 * REST API
@@ -195,9 +193,36 @@ public class Application {
 		}
 		
 	}
+	
+	public static void feederAMQPStart() {
+		if(Application.amqpReceiver == null || !Application.amqpReceiver.isRunning())
+		{
+			Application.amqpReceiver = new ClientReceiverAMQP();
+			Application.amqpReceiver.start();
+		}		
+	}
+	public static void feederAMQPStop() {
+		if(Application.amqpReceiver != null || Application.amqpReceiver.isRunning())
+		{
+			Application.amqpReceiver.stopService();
+		}		
+	}
 
-	
-	
+	public static void feederWSStart() {
+		if(Application.webSocketClient == null || !Application.webSocketClient.isRunning())
+		{
+			Application.webSocketClient = new ClientReceiverWebSocket();
+			Application.webSocketClient.start();	
+		}
+	}
+
+	public static void feederWSStop() {
+		if(Application.webSocketClient != null && Application.webSocketClient.isRunning())
+		{
+			Application.webSocketClient.stopService();	
+		}
+	}
+
 	public static void restartService()
 	{
 		JSONObject info = new JSONObject();

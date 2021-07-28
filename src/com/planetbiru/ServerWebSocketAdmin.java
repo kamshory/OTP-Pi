@@ -163,7 +163,8 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 		return query;
 	}
 	
-	private void sendServerStatus(WebSocket conn) {
+	private static JSONObject buildServerInvo()
+	{
 		JSONArray data = new JSONArray();
 		JSONObject info = new JSONObject();
 		
@@ -199,7 +200,12 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 		
 		info.put("command", "server-info");
 		info.put("data", data);
+		return info;
+	}
+	
+	private void sendServerStatus(WebSocket conn) {
 		
+		JSONObject info = buildServerInvo();
 		try 
 		{
 			conn.send(info.toString());
@@ -210,6 +216,12 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 			 * Do nothing
 			 */
 		}	
+	}
+	
+	public static void broadcastServerInfo()
+	{
+		JSONObject info = buildServerInvo();
+		broadcastMessage(info.toString());
 	}
 
 }

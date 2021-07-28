@@ -7,6 +7,7 @@ import javax.mail.MessagingException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.planetbiru.Application;
 import com.planetbiru.DeviceAPI;
 import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.config.Config;
@@ -72,9 +73,112 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			{
 				this.expandStorage(httpExchange);
 			}
+			else if(path.startsWith("/api/feeder-ws"))
+			{
+				this.feederWS(httpExchange);
+			}
+			else if(path.startsWith("/api/feeder-amqp"))
+			{
+				this.feederAMQP(httpExchange);
+			}
 		}
 	}
+	//@PostMapping(path="/api/feeder-ws")
+	public void feederWS(HttpExchange httpExchange) throws IOException
+	{
+		byte[] req = HttpUtil.getRequestBody(httpExchange);
+		String requestBody = "";
+		if(req != null)
+		{
+			requestBody = new String(req);
+		}
+		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
+		Headers requestHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
+		int statusCode;
+		JSONObject responseJSON = new JSONObject();
+		statusCode = HttpStatus.OK;
+		try 
+		{
+			if(WebUserAccount.checkUserAuth(requestHeaders))
+			{
+				String action = queryPairs.getOrDefault("action", "");
+				if(action.equals("start"))
+				{
+					Application.feederWSStart();					
+				}
+				else
+				{
+					Application.feederWSStop();
+				} 
+				ServerWebSocketAdmin.broadcastServerInfo();
+			} 
+			else 
+			{
+				statusCode = HttpStatus.UNAUTHORIZED;
+			}
+		} 
+		catch (NoUserRegisteredException e) 
+		{
+			statusCode = HttpStatus.UNAUTHORIZED;
+		}
+		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
+		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
+		byte[] responseBody = responseJSON.toString(4).getBytes();
+
+		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+		httpExchange.getResponseBody().write(responseBody);
+		httpExchange.close();
+	}
 	
+	//@PostMapping(path="/api/feeder-amqp")
+	public void feederAMQP(HttpExchange httpExchange) throws IOException
+	{
+		byte[] req = HttpUtil.getRequestBody(httpExchange);
+		String requestBody = "";
+		if(req != null)
+		{
+			requestBody = new String(req);
+		}
+		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
+		Headers requestHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
+		int statusCode;
+		JSONObject responseJSON = new JSONObject();
+		statusCode = HttpStatus.OK;
+		try 
+		{
+			if(WebUserAccount.checkUserAuth(requestHeaders))
+			{
+				String action = queryPairs.getOrDefault("action", "");
+				if(action.equals("start"))
+				{
+					Application.feederAMQPStart();				
+				}
+				else
+				{
+					Application.feederAMQPStop();
+				} 
+				ServerWebSocketAdmin.broadcastServerInfo();
+			} 
+			else 
+			{
+				statusCode = HttpStatus.UNAUTHORIZED;
+			}
+		} 
+		catch (NoUserRegisteredException e) 
+		{
+			statusCode = HttpStatus.UNAUTHORIZED;
+		}
+		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
+		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
+		byte[] responseBody = responseJSON.toString(4).getBytes();
+
+		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+		httpExchange.getResponseBody().write(responseBody);
+		httpExchange.close();
+	}
+		
 	//@PostMapping(path="/api/expand")
 	public void expandStorage(HttpExchange httpExchange) throws IOException
 	{

@@ -717,3 +717,609 @@ Caused by: java.net.BindException: Address already in use: bind
 2021-07-18 07:25:20 [INFO  ] HandlerWebManager               :88   - Finish in 2158100 : 2 ms
 2021-07-18 10:23:48 [INFO  ] DialUtil                        :440  - Set Serial Port
 2021-07-18 10:23:48 [INFO  ] Application                     :131  - Service started
+2021-07-21 09:08:35 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 09:08:35 [INFO  ] Application                     :134  - Service started
+2021-07-21 09:08:45 [INFO  ] HandlerWebManager               :88   - Finish in 82934600 : 82 ms
+2021-07-21 09:08:45 [INFO  ] HandlerWebManager               :88   - Finish in 8510100 : 8 ms
+2021-07-21 09:08:45 [INFO  ] HandlerWebManager               :88   - Finish in 8481700 : 8 ms
+2021-07-21 09:08:45 [INFO  ] HandlerWebManager               :88   - Finish in 3664601 : 3 ms
+2021-07-21 09:08:46 [INFO  ] HandlerWebManager               :88   - Finish in 8691200 : 8 ms
+2021-07-21 09:08:46 [INFO  ] HandlerWebManager               :88   - Finish in 9966800 : 9 ms
+2021-07-21 09:08:46 [INFO  ] HandlerWebManager               :88   - Finish in 2454300 : 2 ms
+2021-07-21 09:08:58 [INFO  ] HandlerWebManager               :88   - Finish in 25171401 : 25 ms
+2021-07-21 09:08:58 [INFO  ] HandlerWebManager               :88   - Finish in 4157800 : 4 ms
+2021-07-21 09:08:58 [INFO  ] HandlerWebManager               :88   - Finish in 4102901 : 4 ms
+2021-07-21 09:08:58 [INFO  ] HandlerWebManager               :88   - Finish in 2114700 : 2 ms
+2021-07-21 09:08:58 [INFO  ] HandlerWebManager               :88   - Finish in 2422100 : 2 ms
+2021-07-21 09:08:58 [INFO  ] HandlerWebManager               :88   - Finish in 4604701 : 4 ms
+2021-07-21 09:08:58 [INFO  ] HandlerWebManager               :88   - Finish in 2666700 : 2 ms
+2021-07-21 09:08:58 [INFO  ] HandlerWebManager               :88   - Finish in 3274199 : 3 ms
+2021-07-21 09:08:58 [INFO  ] HandlerWebManager               :88   - Finish in 2646300 : 2 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 2667100 : 2 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 2870601 : 2 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 2207901 : 2 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 2402801 : 2 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 2145500 : 2 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 3235600 : 3 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 2277400 : 2 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 3166000 : 3 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 4126100 : 4 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 2691199 : 2 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 2180100 : 2 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 2709300 : 2 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 5166600 : 5 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 2561600 : 2 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 2325801 : 2 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 2502000 : 2 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 2340000 : 2 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 3092901 : 3 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 2160900 : 2 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 2055700 : 2 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 2870199 : 2 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 2304600 : 2 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 2442900 : 2 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 2429299 : 2 ms
+2021-07-21 09:08:59 [INFO  ] HandlerWebManager               :88   - Finish in 2506599 : 2 ms
+2021-07-21 09:09:03 [INFO  ] HandlerWebManager               :88   - Finish in 5009600 : 5 ms
+2021-07-21 09:09:05 [INFO  ] HandlerWebManager               :88   - Finish in 2226699 : 2 ms
+2021-07-21 09:09:07 [INFO  ] HandlerWebManager               :88   - Finish in 11075800 : 11 ms
+2021-07-21 09:09:10 [INFO  ] HandlerWebManager               :88   - Finish in 4309300 : 4 ms
+2021-07-21 09:21:11 [INFO  ] HandlerWebManager               :88   - Finish in 3732000 : 3 ms
+2021-07-21 09:21:11 [INFO  ] HandlerWebManager               :88   - Finish in 2585399 : 2 ms
+2021-07-21 09:21:11 [INFO  ] HandlerWebManager               :88   - Finish in 3630400 : 3 ms
+2021-07-21 09:21:11 [INFO  ] HandlerWebManager               :88   - Finish in 1943201 : 1 ms
+2021-07-21 09:21:11 [INFO  ] HandlerWebManager               :88   - Finish in 2130800 : 2 ms
+2021-07-21 09:21:12 [INFO  ] HandlerWebManager               :88   - Finish in 1969500 : 1 ms
+2021-07-21 09:21:13 [INFO  ] HandlerWebManager               :88   - Finish in 1942599 : 1 ms
+2021-07-21 09:21:13 [INFO  ] HandlerWebManager               :88   - Finish in 7171300 : 7 ms
+2021-07-21 09:24:21 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 09:24:21 [INFO  ] Application                     :134  - Service started
+2021-07-21 09:24:34 [INFO  ] HandlerWebManager               :88   - Finish in 21516499 : 21 ms
+2021-07-21 09:24:34 [INFO  ] HandlerWebManager               :88   - Finish in 2944000 : 2 ms
+2021-07-21 09:24:35 [INFO  ] HandlerWebManager               :88   - Finish in 2792000 : 2 ms
+2021-07-21 09:24:35 [INFO  ] HandlerWebManager               :88   - Finish in 3044001 : 3 ms
+2021-07-21 09:24:35 [INFO  ] HandlerWebManager               :88   - Finish in 2627700 : 2 ms
+2021-07-21 09:24:35 [INFO  ] HandlerWebManager               :88   - Finish in 3033101 : 3 ms
+2021-07-21 09:24:35 [INFO  ] HandlerWebManager               :88   - Finish in 2600601 : 2 ms
+2021-07-21 09:24:35 [INFO  ] HandlerWebManager               :88   - Finish in 2461300 : 2 ms
+2021-07-21 09:24:35 [INFO  ] HandlerWebManager               :88   - Finish in 3380700 : 3 ms
+2021-07-21 09:24:35 [INFO  ] HandlerWebManager               :88   - Finish in 2523600 : 2 ms
+2021-07-21 09:24:35 [INFO  ] HandlerWebManager               :88   - Finish in 3245900 : 3 ms
+2021-07-21 09:24:35 [INFO  ] HandlerWebManager               :88   - Finish in 2999700 : 2 ms
+2021-07-21 09:56:17 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 09:56:17 [INFO  ] Application                     :134  - Service started
+2021-07-21 10:49:00 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 10:49:01 [INFO  ] Application                     :134  - Service started
+2021-07-21 11:03:36 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 11:03:36 [INFO  ] Application                     :134  - Service started
+2021-07-21 11:11:00 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 11:11:00 [INFO  ] Application                     :134  - Service started
+2021-07-21 11:11:43 [INFO  ] HandlerWebManager               :88   - Finish in 163185600 : 163 ms
+2021-07-21 11:11:43 [INFO  ] HandlerWebManager               :88   - Finish in 13154300 : 13 ms
+2021-07-21 11:11:43 [INFO  ] HandlerWebManager               :88   - Finish in 12335500 : 12 ms
+2021-07-21 11:11:43 [INFO  ] HandlerWebManager               :88   - Finish in 11872600 : 11 ms
+2021-07-21 11:11:43 [INFO  ] HandlerWebManager               :88   - Finish in 12717600 : 12 ms
+2021-07-21 11:11:43 [INFO  ] HandlerWebManager               :88   - Finish in 64738900 : 64 ms
+2021-07-21 11:11:43 [INFO  ] HandlerWebManager               :88   - Finish in 37171700 : 37 ms
+2021-07-21 11:11:43 [INFO  ] HandlerWebManager               :88   - Finish in 26078900 : 26 ms
+2021-07-21 11:11:43 [INFO  ] HandlerWebManager               :88   - Finish in 89168200 : 89 ms
+2021-07-21 11:11:43 [INFO  ] HandlerWebManager               :88   - Finish in 34537500 : 34 ms
+2021-07-21 11:11:43 [INFO  ] HandlerWebManager               :88   - Finish in 17510100 : 17 ms
+2021-07-21 11:11:43 [INFO  ] HandlerWebManager               :88   - Finish in 28501600 : 28 ms
+2021-07-21 11:11:43 [INFO  ] HandlerWebManager               :88   - Finish in 38646000 : 38 ms
+2021-07-21 11:11:43 [INFO  ] HandlerWebManager               :88   - Finish in 17394900 : 17 ms
+2021-07-21 11:11:43 [INFO  ] HandlerWebManager               :88   - Finish in 15052700 : 15 ms
+2021-07-21 11:11:43 [INFO  ] HandlerWebManager               :88   - Finish in 13434200 : 13 ms
+2021-07-21 11:11:43 [INFO  ] HandlerWebManager               :88   - Finish in 17055300 : 17 ms
+2021-07-21 11:11:44 [INFO  ] HandlerWebManager               :88   - Finish in 14776200 : 14 ms
+2021-07-21 11:11:44 [INFO  ] HandlerWebManager               :88   - Finish in 19465500 : 19 ms
+2021-07-21 11:11:44 [INFO  ] HandlerWebManager               :88   - Finish in 16390100 : 16 ms
+2021-07-21 11:11:44 [INFO  ] HandlerWebManager               :88   - Finish in 12904200 : 12 ms
+2021-07-21 11:11:44 [INFO  ] HandlerWebManager               :88   - Finish in 14956300 : 14 ms
+2021-07-21 11:11:44 [INFO  ] HandlerWebManager               :88   - Finish in 17965700 : 17 ms
+2021-07-21 11:11:44 [INFO  ] HandlerWebManager               :88   - Finish in 23334500 : 23 ms
+2021-07-21 11:11:44 [INFO  ] HandlerWebManager               :88   - Finish in 15391300 : 15 ms
+2021-07-21 11:11:44 [INFO  ] HandlerWebManager               :88   - Finish in 19755300 : 19 ms
+2021-07-21 11:11:44 [INFO  ] HandlerWebManager               :88   - Finish in 15756800 : 15 ms
+2021-07-21 11:11:44 [INFO  ] HandlerWebManager               :88   - Finish in 21351300 : 21 ms
+2021-07-21 11:11:44 [INFO  ] HandlerWebManager               :88   - Finish in 21412100 : 21 ms
+2021-07-21 11:11:44 [INFO  ] HandlerWebManager               :88   - Finish in 15797800 : 15 ms
+2021-07-21 11:11:44 [INFO  ] HandlerWebManager               :88   - Finish in 15864400 : 15 ms
+2021-07-21 11:11:44 [INFO  ] HandlerWebManager               :88   - Finish in 14386200 : 14 ms
+2021-07-21 11:11:44 [INFO  ] HandlerWebManager               :88   - Finish in 14417400 : 14 ms
+2021-07-21 11:11:44 [INFO  ] HandlerWebManager               :88   - Finish in 21487100 : 21 ms
+2021-07-21 11:11:44 [INFO  ] HandlerWebManager               :88   - Finish in 24239800 : 24 ms
+2021-07-21 11:11:51 [INFO  ] HandlerWebManager               :88   - Finish in 8630600 : 8 ms
+2021-07-21 11:11:54 [INFO  ] HandlerWebManager               :88   - Finish in 7975500 : 7 ms
+2021-07-21 11:11:54 [INFO  ] HandlerWebManager               :88   - Finish in 20595100 : 20 ms
+2021-07-21 11:11:54 [INFO  ] HandlerWebManager               :88   - Finish in 27022900 : 27 ms
+2021-07-21 11:12:01 [INFO  ] HandlerWebManager               :88   - Finish in 7646500 : 7 ms
+2021-07-21 11:12:01 [INFO  ] HandlerWebManager               :88   - Finish in 4206400 : 4 ms
+2021-07-21 11:12:03 [INFO  ] HandlerWebManager               :88   - Finish in 3262400 : 3 ms
+2021-07-21 11:12:07 [INFO  ] HandlerWebManager               :88   - Finish in 6083200 : 6 ms
+2021-07-21 11:12:07 [INFO  ] HandlerWebManager               :88   - Finish in 2978800 : 2 ms
+2021-07-21 11:12:10 [INFO  ] HandlerWebManager               :88   - Finish in 3214400 : 3 ms
+2021-07-21 11:12:10 [INFO  ] HandlerWebManager               :88   - Finish in 3083200 : 3 ms
+2021-07-21 11:12:19 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 11:12:19 [INFO  ] Application                     :134  - Service started
+2021-07-21 11:14:59 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 11:14:59 [INFO  ] Application                     :134  - Service started
+2021-07-21 11:15:26 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 11:15:27 [INFO  ] Application                     :134  - Service started
+2021-07-21 11:16:36 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 11:16:37 [INFO  ] Application                     :134  - Service started
+2021-07-21 11:17:38 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 11:17:38 [INFO  ] Application                     :134  - Service started
+2021-07-21 11:19:55 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 11:19:55 [INFO  ] Application                     :134  - Service started
+2021-07-21 11:20:09 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 11:20:09 [INFO  ] Application                     :134  - Service started
+2021-07-21 11:20:46 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 11:20:46 [INFO  ] Application                     :134  - Service started
+2021-07-21 11:21:14 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 11:21:15 [INFO  ] Application                     :134  - Service started
+2021-07-21 11:21:26 [INFO  ] HandlerWebManager               :88   - Finish in 22256800 : 22 ms
+2021-07-21 11:21:31 [INFO  ] HandlerWebManager               :88   - Finish in 9223400 : 9 ms
+2021-07-21 11:22:09 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 11:22:10 [INFO  ] Application                     :134  - Service started
+2021-07-21 11:23:25 [INFO  ] HandlerWebManager               :88   - Finish in 41951800 : 41 ms
+2021-07-21 11:23:26 [INFO  ] HandlerWebManager               :88   - Finish in 3162200 : 3 ms
+2021-07-21 11:23:37 [INFO  ] HandlerWebManager               :88   - Finish in 11098300 : 11 ms
+2021-07-21 11:23:52 [INFO  ] HandlerWebManager               :88   - Finish in 10399500 : 10 ms
+2021-07-21 11:23:54 [INFO  ] HandlerWebManager               :88   - Finish in 4584400 : 4 ms
+2021-07-21 11:24:08 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 11:24:08 [INFO  ] Application                     :134  - Service started
+2021-07-21 11:26:09 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 11:26:10 [INFO  ] Application                     :134  - Service started
+2021-07-21 11:33:59 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 11:34:00 [INFO  ] Application                     :134  - Service started
+2021-07-21 11:34:30 [INFO  ] HandlerWebManager               :88   - Finish in 140797800 : 140 ms
+2021-07-21 11:34:31 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 11:34:31 [INFO  ] Application                     :134  - Service started
+2021-07-21 11:34:31 [INFO  ] HandlerWebManager               :88   - Finish in 6462900 : 6 ms
+2021-07-21 11:34:33 [INFO  ] HandlerWebManager               :88   - Finish in 4324400 : 4 ms
+2021-07-21 11:34:33 [INFO  ] HandlerWebManager               :88   - Finish in 3219200 : 3 ms
+2021-07-21 11:34:33 [INFO  ] HandlerWebManager               :88   - Finish in 2852000 : 2 ms
+2021-07-21 11:34:33 [INFO  ] HandlerWebManager               :88   - Finish in 2489600 : 2 ms
+2021-07-21 11:34:33 [INFO  ] HandlerWebManager               :88   - Finish in 3300200 : 3 ms
+2021-07-21 11:34:39 [INFO  ] HandlerWebManager               :88   - Finish in 4321500 : 4 ms
+2021-07-21 11:34:39 [INFO  ] HandlerWebManager               :88   - Finish in 5975200 : 5 ms
+2021-07-21 11:34:39 [INFO  ] HandlerWebManager               :88   - Finish in 2732600 : 2 ms
+2021-07-21 11:34:39 [INFO  ] HandlerWebManager               :88   - Finish in 2870900 : 2 ms
+2021-07-21 11:34:39 [INFO  ] HandlerWebManager               :88   - Finish in 3336200 : 3 ms
+2021-07-21 11:34:39 [INFO  ] HandlerWebManager               :88   - Finish in 3257600 : 3 ms
+2021-07-21 11:34:45 [INFO  ] HandlerWebManager               :88   - Finish in 4667900 : 4 ms
+2021-07-21 11:34:45 [INFO  ] HandlerWebManager               :88   - Finish in 3581600 : 3 ms
+2021-07-21 11:34:59 [INFO  ] HandlerWebManager               :88   - Finish in 8637600 : 8 ms
+2021-07-21 11:34:59 [INFO  ] HandlerWebManager               :88   - Finish in 2841900 : 2 ms
+2021-07-21 11:37:25 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 11:37:25 [INFO  ] Application                     :134  - Service started
+2021-07-21 11:38:22 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 11:38:23 [INFO  ] Application                     :134  - Service started
+2021-07-21 11:38:58 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 11:38:59 [INFO  ] Application                     :134  - Service started
+2021-07-21 11:43:06 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 11:43:06 [INFO  ] Application                     :134  - Service started
+2021-07-21 11:48:31 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 11:48:32 [INFO  ] Application                     :134  - Service started
+2021-07-21 12:11:49 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 12:11:49 [INFO  ] Application                     :134  - Service started
+2021-07-21 12:14:01 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 12:14:02 [INFO  ] Application                     :134  - Service started
+2021-07-21 12:30:42 [INFO  ] HandlerWebManager               :88   - Finish in 48108200 : 48 ms
+2021-07-21 12:30:57 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 12:30:57 [INFO  ] Application                     :134  - Service started
+2021-07-21 12:33:08 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 12:33:09 [INFO  ] Application                     :134  - Service started
+2021-07-21 12:33:30 [INFO  ] HandlerWebManager               :88   - Finish in 49267600 : 49 ms
+2021-07-21 12:33:41 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 12:33:41 [INFO  ] Application                     :134  - Service started
+2021-07-21 12:38:06 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 12:38:06 [INFO  ] Application                     :134  - Service started
+2021-07-21 12:38:35 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 12:38:35 [INFO  ] Application                     :134  - Service started
+2021-07-21 12:38:44 [INFO  ] HandlerWebManager               :88   - Finish in 47815100 : 47 ms
+2021-07-21 12:38:52 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 12:38:52 [INFO  ] Application                     :134  - Service started
+2021-07-21 12:43:30 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 12:43:31 [INFO  ] Application                     :134  - Service started
+2021-07-21 12:50:33 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 12:50:33 [INFO  ] Application                     :134  - Service started
+2021-07-21 12:51:42 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 12:51:42 [INFO  ] Application                     :134  - Service started
+2021-07-21 12:51:53 [INFO  ] HandlerWebManager               :88   - Finish in 45254900 : 45 ms
+2021-07-21 12:52:03 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 12:52:03 [INFO  ] Application                     :134  - Service started
+2021-07-21 12:53:23 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 12:53:23 [INFO  ] Application                     :134  - Service started
+2021-07-21 12:54:10 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 12:54:11 [INFO  ] Application                     :134  - Service started
+2021-07-21 12:54:33 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 12:54:33 [INFO  ] Application                     :134  - Service started
+2021-07-21 12:56:57 [INFO  ] HandlerWebManager               :88   - Finish in 76021700 : 76 ms
+2021-07-21 12:56:57 [INFO  ] HandlerWebManager               :88   - Finish in 4239200 : 4 ms
+2021-07-21 12:56:57 [INFO  ] HandlerWebManager               :88   - Finish in 3349400 : 3 ms
+2021-07-21 12:56:57 [INFO  ] HandlerWebManager               :88   - Finish in 3269500 : 3 ms
+2021-07-21 12:56:57 [INFO  ] HandlerWebManager               :88   - Finish in 2870400 : 2 ms
+2021-07-21 12:56:57 [INFO  ] HandlerWebManager               :88   - Finish in 3663000 : 3 ms
+2021-07-21 12:56:57 [INFO  ] HandlerWebManager               :88   - Finish in 2892500 : 2 ms
+2021-07-21 12:56:57 [INFO  ] HandlerWebManager               :88   - Finish in 3031800 : 3 ms
+2021-07-21 12:56:57 [INFO  ] HandlerWebManager               :88   - Finish in 2811400 : 2 ms
+2021-07-21 12:56:57 [INFO  ] HandlerWebManager               :88   - Finish in 2568000 : 2 ms
+2021-07-21 12:56:57 [INFO  ] HandlerWebManager               :88   - Finish in 2731600 : 2 ms
+2021-07-21 12:56:57 [INFO  ] HandlerWebManager               :88   - Finish in 2774900 : 2 ms
+2021-07-21 12:56:57 [INFO  ] HandlerWebManager               :88   - Finish in 2999300 : 2 ms
+2021-07-21 12:56:58 [INFO  ] HandlerWebManager               :88   - Finish in 2704800 : 2 ms
+2021-07-21 12:56:58 [INFO  ] HandlerWebManager               :88   - Finish in 2639900 : 2 ms
+2021-07-21 12:56:58 [INFO  ] HandlerWebManager               :88   - Finish in 2820900 : 2 ms
+2021-07-21 12:56:58 [INFO  ] HandlerWebManager               :88   - Finish in 2352700 : 2 ms
+2021-07-21 12:56:58 [INFO  ] HandlerWebManager               :88   - Finish in 2901900 : 2 ms
+2021-07-21 12:56:58 [INFO  ] HandlerWebManager               :88   - Finish in 2485700 : 2 ms
+2021-07-21 12:56:58 [INFO  ] HandlerWebManager               :88   - Finish in 2325500 : 2 ms
+2021-07-21 12:56:58 [INFO  ] HandlerWebManager               :88   - Finish in 2516600 : 2 ms
+2021-07-21 12:56:58 [INFO  ] HandlerWebManager               :88   - Finish in 2810800 : 2 ms
+2021-07-21 12:56:58 [INFO  ] HandlerWebManager               :88   - Finish in 2541200 : 2 ms
+2021-07-21 12:56:58 [INFO  ] HandlerWebManager               :88   - Finish in 2558100 : 2 ms
+2021-07-21 12:56:58 [INFO  ] HandlerWebManager               :88   - Finish in 2422900 : 2 ms
+2021-07-21 12:56:58 [INFO  ] HandlerWebManager               :88   - Finish in 2642900 : 2 ms
+2021-07-21 12:56:58 [INFO  ] HandlerWebManager               :88   - Finish in 2545500 : 2 ms
+2021-07-21 12:56:58 [INFO  ] HandlerWebManager               :88   - Finish in 2545900 : 2 ms
+2021-07-21 12:56:58 [INFO  ] HandlerWebManager               :88   - Finish in 4110000 : 4 ms
+2021-07-21 12:56:58 [INFO  ] HandlerWebManager               :88   - Finish in 4073500 : 4 ms
+2021-07-21 12:56:58 [INFO  ] HandlerWebManager               :88   - Finish in 3401700 : 3 ms
+2021-07-21 12:56:58 [INFO  ] HandlerWebManager               :88   - Finish in 6174000 : 6 ms
+2021-07-21 12:56:58 [INFO  ] HandlerWebManager               :88   - Finish in 3056400 : 3 ms
+2021-07-21 12:56:58 [INFO  ] HandlerWebManager               :88   - Finish in 2742500 : 2 ms
+2021-07-21 12:57:02 [INFO  ] HandlerWebManager               :88   - Finish in 5230600 : 5 ms
+2021-07-21 13:54:01 [INFO  ] HandlerWebManager               :88   - Finish in 3853700 : 3 ms
+2021-07-21 13:54:02 [INFO  ] HandlerWebManager               :88   - Finish in 2014900 : 2 ms
+2021-07-21 13:54:08 [INFO  ] HandlerWebManager               :88   - Finish in 4094200 : 4 ms
+2021-07-21 13:54:09 [INFO  ] HandlerWebManager               :88   - Finish in 2706800 : 2 ms
+2021-07-21 13:54:09 [INFO  ] HandlerWebManager               :88   - Finish in 2502900 : 2 ms
+2021-07-21 13:54:09 [INFO  ] HandlerWebManager               :88   - Finish in 1894900 : 1 ms
+2021-07-21 13:54:09 [INFO  ] HandlerWebManager               :88   - Finish in 2076200 : 2 ms
+2021-07-21 13:54:09 [INFO  ] HandlerWebManager               :88   - Finish in 1873300 : 1 ms
+2021-07-21 14:27:18 [INFO  ] HandlerWebManager               :88   - Finish in 3633900 : 3 ms
+2021-07-21 14:27:18 [INFO  ] HandlerWebManager               :88   - Finish in 3022200 : 3 ms
+2021-07-21 14:35:12 [INFO  ] HandlerWebManager               :88   - Finish in 3793100 : 3 ms
+2021-07-21 14:35:12 [INFO  ] HandlerWebManager               :88   - Finish in 3287700 : 3 ms
+2021-07-21 14:35:12 [INFO  ] HandlerWebManager               :88   - Finish in 1606300 : 1 ms
+2021-07-21 14:35:12 [INFO  ] HandlerWebManager               :88   - Finish in 2287300 : 2 ms
+2021-07-21 14:35:12 [INFO  ] HandlerWebManager               :88   - Finish in 3139900 : 3 ms
+2021-07-21 14:35:12 [INFO  ] HandlerWebManager               :88   - Finish in 2058000 : 2 ms
+2021-07-21 14:35:12 [INFO  ] HandlerWebManager               :88   - Finish in 2501400 : 2 ms
+2021-07-21 14:35:12 [INFO  ] HandlerWebManager               :88   - Finish in 1834900 : 1 ms
+2021-07-21 14:35:12 [INFO  ] HandlerWebManager               :88   - Finish in 2033300 : 2 ms
+2021-07-21 14:35:12 [INFO  ] HandlerWebManager               :88   - Finish in 1951900 : 1 ms
+2021-07-21 14:35:12 [INFO  ] HandlerWebManager               :88   - Finish in 1793900 : 1 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 1814900 : 1 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 1719300 : 1 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 1691100 : 1 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 2105400 : 2 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 1785000 : 1 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 1659000 : 1 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 2165100 : 2 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 1684100 : 1 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 1649200 : 1 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 1580500 : 1 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 1581500 : 1 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 1696800 : 1 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 1663100 : 1 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 1814000 : 1 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 1547500 : 1 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 1584400 : 1 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 2557800 : 2 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 2390000 : 2 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 1985600 : 1 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 1659400 : 1 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 1943000 : 1 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 1689200 : 1 ms
+2021-07-21 14:35:13 [INFO  ] HandlerWebManager               :88   - Finish in 1663200 : 1 ms
+2021-07-21 14:35:14 [INFO  ] HandlerWebManager               :88   - Finish in 1624100 : 1 ms
+2021-07-21 14:54:34 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 14:54:34 [INFO  ] Application                     :134  - Service started
+2021-07-21 21:50:03 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 21:50:03 [INFO  ] Application                     :156  - Service started
+2021-07-21 21:50:19 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 21:50:20 [INFO  ] Application                     :156  - Service started
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 12332700 : 12 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 3154500 : 3 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 2188200 : 2 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 1753600 : 1 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 3291500 : 3 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 2210000 : 2 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 3133300 : 3 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 3972900 : 3 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 2053700 : 2 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 2540600 : 2 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 2755200 : 2 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 2600300 : 2 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 2632200 : 2 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 3151800 : 3 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 2669600 : 2 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 2566400 : 2 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 2395100 : 2 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 4473300 : 4 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 2684400 : 2 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 2932200 : 2 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 2849600 : 2 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 2723600 : 2 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 2860400 : 2 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 2639800 : 2 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 4103700 : 4 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 8304400 : 8 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 4098500 : 4 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 8555200 : 8 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 3819000 : 3 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 11623800 : 11 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 5750400 : 5 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 5353800 : 5 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 3261000 : 3 ms
+2021-07-21 21:50:22 [INFO  ] HandlerWebManager               :88   - Finish in 3918600 : 3 ms
+2021-07-21 21:50:23 [INFO  ] HandlerWebManager               :88   - Finish in 2030000 : 2 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 2614700 : 2 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1498000 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1473000 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1552000 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1610800 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1701000 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1946200 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1831200 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1696900 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1860500 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1927500 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1683400 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1782600 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1734200 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1622600 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1586300 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1584500 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1735200 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1762600 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 2178100 : 2 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1757800 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 2007800 : 2 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 2051800 : 2 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 2365200 : 2 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1980600 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1953700 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1821400 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1571900 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1811600 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 2126500 : 2 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1895000 : 1 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 3625800 : 3 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 2590900 : 2 ms
+2021-07-21 21:50:30 [INFO  ] HandlerWebManager               :88   - Finish in 1896000 : 1 ms
+2021-07-21 21:50:31 [INFO  ] HandlerWebManager               :88   - Finish in 2009300 : 2 ms
+2021-07-21 21:50:32 [INFO  ] HandlerWebManager               :88   - Finish in 1733900 : 1 ms
+2021-07-21 21:50:32 [INFO  ] HandlerWebManager               :88   - Finish in 1515700 : 1 ms
+2021-07-21 21:50:32 [INFO  ] HandlerWebManager               :88   - Finish in 1401100 : 1 ms
+2021-07-21 21:50:32 [INFO  ] HandlerWebManager               :88   - Finish in 1213700 : 1 ms
+2021-07-21 21:50:32 [INFO  ] HandlerWebManager               :88   - Finish in 1283800 : 1 ms
+2021-07-21 21:50:39 [INFO  ] HandlerWebManager               :88   - Finish in 2593800 : 2 ms
+2021-07-21 21:51:08 [INFO  ] HandlerWebManager               :88   - Finish in 1427700 : 1 ms
+2021-07-21 21:51:08 [INFO  ] HandlerWebManager               :88   - Finish in 2059300 : 2 ms
+2021-07-21 21:51:08 [INFO  ] HandlerWebManager               :88   - Finish in 1362000 : 1 ms
+2021-07-21 21:51:08 [INFO  ] HandlerWebManager               :88   - Finish in 3151800 : 3 ms
+2021-07-21 21:51:08 [INFO  ] HandlerWebManager               :88   - Finish in 5988500 : 5 ms
+2021-07-21 21:51:08 [INFO  ] HandlerWebManager               :88   - Finish in 1172300 : 1 ms
+2021-07-21 21:51:08 [INFO  ] HandlerWebManager               :88   - Finish in 1195800 : 1 ms
+2021-07-21 21:51:08 [INFO  ] HandlerWebManager               :88   - Finish in 1504100 : 1 ms
+2021-07-21 21:51:08 [INFO  ] HandlerWebManager               :88   - Finish in 1286800 : 1 ms
+2021-07-21 21:51:09 [INFO  ] HandlerWebManager               :88   - Finish in 1551700 : 1 ms
+2021-07-21 21:51:09 [INFO  ] HandlerWebManager               :88   - Finish in 1336900 : 1 ms
+2021-07-21 21:51:09 [INFO  ] HandlerWebManager               :88   - Finish in 1235500 : 1 ms
+2021-07-21 21:51:09 [INFO  ] HandlerWebManager               :88   - Finish in 1465900 : 1 ms
+2021-07-21 21:51:09 [INFO  ] HandlerWebManager               :88   - Finish in 1145000 : 1 ms
+2021-07-21 21:51:09 [INFO  ] HandlerWebManager               :88   - Finish in 1003400 : 1 ms
+2021-07-21 21:51:09 [INFO  ] HandlerWebManager               :88   - Finish in 1039800 : 1 ms
+2021-07-21 21:51:09 [INFO  ] HandlerWebManager               :88   - Finish in 991500 : 0 ms
+2021-07-21 21:51:09 [INFO  ] HandlerWebManager               :88   - Finish in 1084500 : 1 ms
+2021-07-21 21:51:09 [INFO  ] HandlerWebManager               :88   - Finish in 1090300 : 1 ms
+2021-07-21 21:51:09 [INFO  ] HandlerWebManager               :88   - Finish in 1736900 : 1 ms
+2021-07-21 21:51:09 [INFO  ] HandlerWebManager               :88   - Finish in 1831300 : 1 ms
+2021-07-21 21:51:09 [INFO  ] HandlerWebManager               :88   - Finish in 1814000 : 1 ms
+2021-07-21 21:51:09 [INFO  ] HandlerWebManager               :88   - Finish in 1273700 : 1 ms
+2021-07-21 21:51:09 [INFO  ] HandlerWebManager               :88   - Finish in 1532300 : 1 ms
+2021-07-21 21:51:09 [INFO  ] HandlerWebManager               :88   - Finish in 1907300 : 1 ms
+2021-07-21 21:51:11 [INFO  ] HandlerWebManager               :88   - Finish in 1663200 : 1 ms
+2021-07-21 21:51:11 [INFO  ] HandlerWebManager               :88   - Finish in 1132800 : 1 ms
+2021-07-21 21:51:11 [INFO  ] HandlerWebManager               :88   - Finish in 908700 : 0 ms
+2021-07-21 21:51:11 [INFO  ] HandlerWebManager               :88   - Finish in 782600 : 0 ms
+2021-07-21 21:51:11 [INFO  ] HandlerWebManager               :88   - Finish in 902600 : 0 ms
+2021-07-21 21:51:12 [INFO  ] HandlerWebManager               :88   - Finish in 2421400 : 2 ms
+2021-07-21 21:51:12 [INFO  ] HandlerWebManager               :88   - Finish in 1272100 : 1 ms
+2021-07-21 21:51:12 [INFO  ] HandlerWebManager               :88   - Finish in 1305700 : 1 ms
+2021-07-21 21:51:12 [INFO  ] HandlerWebManager               :88   - Finish in 906100 : 0 ms
+2021-07-21 21:51:12 [INFO  ] HandlerWebManager               :88   - Finish in 1110500 : 1 ms
+2021-07-21 21:51:21 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 21:51:22 [INFO  ] Application                     :156  - Service started
+2021-07-21 21:51:23 [INFO  ] HandlerWebManager               :88   - Finish in 7468900 : 7 ms
+2021-07-21 21:51:23 [INFO  ] HandlerWebManager               :88   - Finish in 2081900 : 2 ms
+2021-07-21 21:51:23 [INFO  ] HandlerWebManager               :88   - Finish in 1761100 : 1 ms
+2021-07-21 21:51:23 [INFO  ] HandlerWebManager               :88   - Finish in 1682600 : 1 ms
+2021-07-21 21:51:23 [INFO  ] HandlerWebManager               :88   - Finish in 1627200 : 1 ms
+2021-07-21 21:51:24 [INFO  ] HandlerWebManager               :88   - Finish in 2382000 : 2 ms
+2021-07-21 21:51:24 [INFO  ] HandlerWebManager               :88   - Finish in 1885100 : 1 ms
+2021-07-21 21:51:24 [INFO  ] HandlerWebManager               :88   - Finish in 1695200 : 1 ms
+2021-07-21 21:51:24 [INFO  ] HandlerWebManager               :88   - Finish in 1616700 : 1 ms
+2021-07-21 21:51:24 [INFO  ] HandlerWebManager               :88   - Finish in 1563100 : 1 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 3925900 : 3 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 3533100 : 3 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 3783800 : 3 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 2987900 : 2 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 3255200 : 3 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 3160800 : 3 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 3103800 : 3 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 3411500 : 3 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 3020600 : 3 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 3207800 : 3 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 5717000 : 5 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 3013500 : 3 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 3276400 : 3 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 3412600 : 3 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 6826000 : 6 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 3119200 : 3 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 3718900 : 3 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 4132100 : 4 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 2513800 : 2 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 3199000 : 3 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 4421500 : 4 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 4883900 : 4 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 2301100 : 2 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 3749400 : 3 ms
+2021-07-21 21:51:25 [INFO  ] HandlerWebManager               :88   - Finish in 2460700 : 2 ms
+2021-07-21 21:51:26 [INFO  ] HandlerWebManager               :88   - Finish in 3121500 : 3 ms
+2021-07-21 21:51:26 [INFO  ] HandlerWebManager               :88   - Finish in 2537000 : 2 ms
+2021-07-21 21:51:26 [INFO  ] HandlerWebManager               :88   - Finish in 2226400 : 2 ms
+2021-07-21 21:51:26 [INFO  ] HandlerWebManager               :88   - Finish in 3923200 : 3 ms
+2021-07-21 21:51:27 [INFO  ] HandlerWebManager               :88   - Finish in 1821300 : 1 ms
+2021-07-21 21:51:27 [INFO  ] HandlerWebManager               :88   - Finish in 1388300 : 1 ms
+2021-07-21 21:51:27 [INFO  ] HandlerWebManager               :88   - Finish in 1333400 : 1 ms
+2021-07-21 21:51:27 [INFO  ] HandlerWebManager               :88   - Finish in 1237300 : 1 ms
+2021-07-21 21:51:27 [INFO  ] HandlerWebManager               :88   - Finish in 1383200 : 1 ms
+2021-07-21 21:51:29 [INFO  ] HandlerWebManager               :88   - Finish in 2259700 : 2 ms
+2021-07-21 21:51:29 [INFO  ] HandlerWebManager               :88   - Finish in 1737700 : 1 ms
+2021-07-21 21:51:29 [INFO  ] HandlerWebManager               :88   - Finish in 2823300 : 2 ms
+2021-07-21 21:51:29 [INFO  ] HandlerWebManager               :88   - Finish in 1489800 : 1 ms
+2021-07-21 21:51:29 [INFO  ] HandlerWebManager               :88   - Finish in 1579600 : 1 ms
+2021-07-21 21:51:30 [INFO  ] HandlerWebManager               :88   - Finish in 1615300 : 1 ms
+2021-07-21 21:51:30 [INFO  ] HandlerWebManager               :88   - Finish in 1600100 : 1 ms
+2021-07-21 21:51:30 [INFO  ] HandlerWebManager               :88   - Finish in 3285600 : 3 ms
+2021-07-21 21:51:30 [INFO  ] HandlerWebManager               :88   - Finish in 1363900 : 1 ms
+2021-07-21 21:51:30 [INFO  ] HandlerWebManager               :88   - Finish in 1721300 : 1 ms
+2021-07-21 21:51:56 [INFO  ] HandlerWebManager               :88   - Finish in 1498300 : 1 ms
+2021-07-21 21:51:56 [INFO  ] HandlerWebManager               :88   - Finish in 1117300 : 1 ms
+2021-07-21 21:51:56 [INFO  ] HandlerWebManager               :88   - Finish in 1234100 : 1 ms
+2021-07-21 21:51:56 [INFO  ] HandlerWebManager               :88   - Finish in 1018900 : 1 ms
+2021-07-21 21:51:56 [INFO  ] HandlerWebManager               :88   - Finish in 957300 : 0 ms
+2021-07-21 21:52:00 [INFO  ] HandlerWebManager               :88   - Finish in 1739500 : 1 ms
+2021-07-21 21:52:00 [INFO  ] HandlerWebManager               :88   - Finish in 10918300 : 10 ms
+2021-07-21 21:52:02 [INFO  ] HandlerWebManager               :88   - Finish in 1413200 : 1 ms
+2021-07-21 21:52:02 [INFO  ] HandlerWebManager               :88   - Finish in 1678100 : 1 ms
+2021-07-21 21:52:02 [INFO  ] HandlerWebManager               :88   - Finish in 1089800 : 1 ms
+2021-07-21 21:52:02 [INFO  ] HandlerWebManager               :88   - Finish in 1003400 : 1 ms
+2021-07-21 21:52:02 [INFO  ] HandlerWebManager               :88   - Finish in 1328500 : 1 ms
+2021-07-21 21:52:03 [INFO  ] HandlerWebManager               :88   - Finish in 4047500 : 4 ms
+2021-07-21 21:52:20 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-21 21:52:20 [INFO  ] Application                     :156  - Service started
+2021-07-21 21:52:21 [INFO  ] HandlerWebManager               :88   - Finish in 18768900 : 18 ms
+2021-07-21 21:52:21 [INFO  ] HandlerWebManager               :88   - Finish in 3010300 : 3 ms
+2021-07-21 21:52:21 [INFO  ] HandlerWebManager               :88   - Finish in 3747400 : 3 ms
+2021-07-21 21:52:21 [INFO  ] HandlerWebManager               :88   - Finish in 2416900 : 2 ms
+2021-07-21 21:52:21 [INFO  ] HandlerWebManager               :88   - Finish in 2267600 : 2 ms
+2021-07-21 21:52:22 [INFO  ] HandlerWebManager               :88   - Finish in 6182300 : 6 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 2024300 : 2 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1358600 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1190500 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1164800 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1528600 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1590700 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 2403600 : 2 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1223900 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1026300 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1239600 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1807200 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1809300 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1735400 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1708900 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 2038400 : 2 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1866100 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 2060700 : 2 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1617300 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1685300 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1686600 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 2295400 : 2 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1294500 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1700600 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1771400 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 2975100 : 2 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1388900 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1850100 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1970900 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1700900 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1751600 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1915600 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 2062800 : 2 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1412000 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 2563100 : 2 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1725600 : 1 ms
+2021-07-21 21:52:29 [INFO  ] HandlerWebManager               :88   - Finish in 1691100 : 1 ms
+2021-07-21 21:52:30 [INFO  ] HandlerWebManager               :88   - Finish in 4417500 : 4 ms
+2021-07-22 20:18:04 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-22 20:18:04 [INFO  ] Application                     :157  - Service started
+2021-07-22 21:08:41 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-22 21:08:41 [INFO  ] Application                     :157  - Service started
+2021-07-22 21:19:29 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-22 21:19:29 [INFO  ] Application                     :157  - Service started
+2021-07-24 17:59:37 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-24 17:59:38 [INFO  ] Application                     :190  - Service started
+2021-07-24 18:00:31 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-24 18:00:32 [INFO  ] Application                     :190  - Service started
+2021-07-24 18:01:15 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-24 18:01:15 [INFO  ] Application                     :190  - Service started
+2021-07-24 18:01:43 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-24 18:01:44 [INFO  ] Application                     :190  - Service started
+2021-07-24 22:04:26 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-24 22:04:37 [INFO  ] Application                     :190  - Service started
+2021-07-24 22:12:25 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-24 22:12:25 [INFO  ] Application                     :190  - Service started
+2021-07-24 22:14:14 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-24 22:14:15 [INFO  ] Application                     :190  - Service started
+2021-07-24 22:20:46 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-24 22:20:46 [INFO  ] Application                     :190  - Service started
+2021-07-24 22:24:22 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-24 22:24:22 [INFO  ] Application                     :190  - Service started
+2021-07-24 22:25:08 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-24 22:25:08 [INFO  ] Application                     :190  - Service started
+2021-07-24 22:29:05 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-24 22:29:06 [INFO  ] Application                     :190  - Service started
+2021-07-24 22:30:24 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-24 22:30:25 [INFO  ] Application                     :190  - Service started
+2021-07-24 22:30:44 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-24 22:30:45 [INFO  ] Application                     :190  - Service started
+2021-07-24 22:31:38 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-24 22:31:39 [INFO  ] Application                     :190  - Service started
+2021-07-24 22:31:55 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-24 22:31:55 [INFO  ] Application                     :190  - Service started
+2021-07-24 22:33:21 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-24 22:33:22 [INFO  ] Application                     :190  - Service started
+2021-07-24 22:33:38 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-24 22:33:39 [INFO  ] Application                     :190  - Service started
+2021-07-24 22:33:52 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-24 22:33:53 [INFO  ] Application                     :190  - Service started
+2021-07-24 22:34:04 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-24 22:34:05 [INFO  ] Application                     :190  - Service started
+2021-07-24 22:36:37 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-24 22:36:38 [INFO  ] Application                     :190  - Service started
+2021-07-24 22:37:04 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-24 22:37:05 [INFO  ] Application                     :190  - Service started
+2021-07-25 05:49:17 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-25 05:49:18 [INFO  ] Application                     :190  - Service started
+2021-07-25 05:51:05 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-25 05:51:05 [INFO  ] Application                     :190  - Service started
+2021-07-25 05:52:37 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-25 05:52:38 [INFO  ] Application                     :190  - Service started
+2021-07-25 07:57:10 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-25 07:57:11 [INFO  ] Application                     :190  - Service started
+2021-07-25 08:22:56 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-25 08:22:56 [INFO  ] Application                     :190  - Service started
+2021-07-25 08:23:49 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-25 08:23:50 [INFO  ] Application                     :190  - Service started
+2021-07-25 08:26:27 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-25 08:26:28 [INFO  ] Application                     :190  - Service started
+2021-07-25 08:27:57 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-25 08:27:57 [INFO  ] Application                     :190  - Service started
+2021-07-25 08:28:43 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-25 08:28:43 [INFO  ] Application                     :190  - Service started
+2021-07-25 08:29:24 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-25 08:29:25 [INFO  ] Application                     :190  - Service started
+2021-07-25 08:32:07 [INFO  ] DialUtil                        :440  - Set Serial Port
+2021-07-25 08:32:08 [INFO  ] Application                     :190  - Service started
+2021-07-26 09:06:28 [INFO  ] GSM                             :443  - Set Serial Port
+2021-07-26 09:06:29 [INFO  ] Application                     :190  - Service started
+2021-07-26 09:11:51 [INFO  ] GSM                             :443  - Set Serial Port
+2021-07-26 09:11:52 [INFO  ] Application                     :190  - Service started
+2021-07-27 09:11:22 [INFO  ] GSM                             :443  - Set Serial Port
+2021-07-27 09:11:23 [INFO  ] Application                     :188  - Service started

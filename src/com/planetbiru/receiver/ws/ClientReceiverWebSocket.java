@@ -20,7 +20,7 @@ public class ClientReceiverWebSocket extends Thread{
 		{
 			this.delay(1000);
 		}
-		while(this.running);
+		while(this.isRunning());
 	}
 	private void startThread(boolean reconnect) {
 		this.ws = null;
@@ -44,6 +44,9 @@ public class ClientReceiverWebSocket extends Thread{
 	}
 	public void stopService() {
 		this.running = false;
+	}
+	public boolean isRunning() {
+		return running;
 	}
 
 }
