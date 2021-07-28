@@ -150,7 +150,7 @@ SMS Setting adalah konfigurasi pengiriman SMS oleh OTP-Pi.
 | IMEI | Modem IMEI |
 | MSISDN | MSISDN of the SIM Card used |
 | IMSI | IMSI of the SIM Card used |
-| Receriver Prefix | Receriver prefix that will receive SMS from this modem. See _Prefix-Based Routing_ secton |
+| Recipient Prefix | Recipient prefix that will receive SMS from this modem. See _Prefix-Based Routing_ secton |
 | SIM Card PIN | SIM Card PIN if exists |
 | Baud Rate | Modem baud rate |
 | Parity Bit | Modem parity bit |
@@ -168,7 +168,7 @@ SMS Setting adalah konfigurasi pengiriman SMS oleh OTP-Pi.
 | Init Dial 5 | Initial AT command to be executed to connect to the internet |
 | Dial Command | Command to be executed to connect to the internet |
 | Send SMS from API | Flag that the modem will be used to send SMS from API or not. If it set to `false`, modem will not send incomming SMS from API but user can send SMS manualy from the management web. |
-| Default Modem | Flag that the modem is default or not. The default modem will be used to send SMS that the prefix is not exists on `Receriver Prefix` of the other modems. |
+| Default Modem | Flag that the modem is default or not. The default modem will be used to send SMS that the prefix is not exists on `Recipient Prefix` of the other modems. |
 | Active | Flag for the modem that will be used or not |
 
 
