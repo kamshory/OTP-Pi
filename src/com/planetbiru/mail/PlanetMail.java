@@ -97,10 +97,10 @@ public class PlanetMail implements Comparable<PlanetMail>
     @Override
     public int compareTo(PlanetMail o)
     {
-        long receivedTime = this.getReceivedTime();
+        long receivedTime1 = this.getReceivedTime();
         long receivedTime2 = o.getReceivedTime();
 
-        long diff = receivedTime - receivedTime2;
+        long diff = receivedTime1 - receivedTime2;
         return (int) diff;
     }
 

@@ -1,7 +1,5 @@
 package com.planetbiru.mail;
 
-import com.planetbiru.config.Config;
-
 import org.subethamail.smtp.MessageContext;
 import org.subethamail.smtp.MessageHandler;
 import org.subethamail.smtp.MessageHandlerFactory;
@@ -122,15 +120,9 @@ public class PlanetMessageHandlerFactory implements MessageHandlerFactory
             }
             catch (MessagingException e)
             {
-                e.printStackTrace();
-            }
-
-            if(Config.isPrintMailConsole())
-            {
-                System.out.println("MAIL DATA");
-                System.out.println("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
-                System.out.println(mockMail.getRawMail());
-                System.out.println("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
+                /**
+                 * Do nothing
+                 */
             }
         }
 
