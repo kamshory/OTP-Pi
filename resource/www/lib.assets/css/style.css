@@ -579,7 +579,7 @@ display: inline-block; padding-top: 14px; padding-right: 10px; width: 62px;
 .service-wrapper .feature {
   width: calc( ( ( 100% / 3 ) * 2) - 20px );
 }
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .service-wrapper .service-item {
     width: 100%;
     margin:0px;
@@ -686,7 +686,18 @@ display: inline-block; padding-top: 14px; padding-right: 10px; width: 62px;
     margin-left: 0;
   }
 }
-@media screen and (max-width: 1200px)  and (min-width: 768px) {
+@media screen and (max-width: 1200px)  and (min-width: 992px) {
+  .tile-area .tile { 
+    width: 9.5%; 
+    margin-left: 1%;    
+  }
+  
+  .tile-area > .tile:nth-child(9n + 1) {
+    margin-left: 0;
+  }
+  
+}
+@media screen and (max-width: 992px)  and (min-width: 768px) {
   .tile-area .tile { 
     width: 14%; 
     margin-left: 1%;    
@@ -697,7 +708,7 @@ display: inline-block; padding-top: 14px; padding-right: 10px; width: 62px;
   }
   
 }
-@media screen and (max-width: 992px) and (min-width: 480px) {
+@media screen and (max-width: 768px) and (min-width: 480px) {
   .tile-area .tile { 
     width: 18.5%; 
     margin-left: 1%;    
@@ -708,13 +719,24 @@ display: inline-block; padding-top: 14px; padding-right: 10px; width: 62px;
   }
   
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 480px) and (min-width: 360px) {
   .tile-area .tile { 
     width: 31.5%; 
     margin-left: 1%;    
   }
   
   .tile-area > .tile:nth-child(3n + 1) {
+    margin-left: 0;
+  }
+  
+}
+@media screen and (max-width: 360px) {
+  .tile-area .tile { 
+    width: 48.5%; 
+    margin-left: 1%;    
+  }
+  
+  .tile-area > .tile:nth-child(2n + 1) {
     margin-left: 0;
   }
   
