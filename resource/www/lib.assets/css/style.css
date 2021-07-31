@@ -27,66 +27,66 @@ body {
   margin-bottom: 20px;
 }
 .all{
-	position:relative;
-	padding:20px;
+    position:relative;
+    padding:20px;
 }
 .title{
-	text-align:center;
-	font-weight:normal;
-	font-size:28px;
+    text-align:center;
+    font-weight:normal;
+    font-size:28px;
 }
 fieldset{
-	border:1px solid #CCCCCC;
-	border-radius:3px;
-	margin:10px 0;
-	padding: 20px;
+    border:1px solid #CCCCCC;
+    border-radius:3px;
+    margin:10px 0;
+    padding: 20px;
 }
 legend{
-	display: auto;
-	width: auto;
-	max-width: auto;
-	padding: 0 10px;
-	margin-bottom: .4rem;
+    display: auto;
+    width: auto;
+    max-width: auto;
+    padding: 0 10px;
+    margin-bottom: .4rem;
   border: none;
 }
 @media all and  (max-width: 600px) {
-	.config-table
-	{
-		width:100%;
-	}
-	.config-table tr
-	{
-		
-	}
-	.config-table tr td
-	{
-		display:block;
-		padding:3px 0;
-		width:100%;
-		box-sizing:border-box;
-	}
-	.config-table tr td:empty{
-		display:none;
-	}
+    .config-table
+    {
+        width:100%;
+    }
+    .config-table tr
+    {
+        
+    }
+    .config-table tr td
+    {
+        display:block;
+        padding:3px 0;
+        width:100%;
+        box-sizing:border-box;
+    }
+    .config-table tr td:empty{
+        display:none;
+    }
 }
 @media all and (min-width: 600px) {
-	.config-table
-	{
-		width:100%;
-	}
-	.config-table tr
-	{
-		position:relative;
-	}
-	.config-table tr td
-	{
-		padding:3px 0;
-		box-sizing:border-box;
-	}
-	.config-table tr > td:nth-child(1)
-	{
-		width:200px;
-	}
+    .config-table
+    {
+        width:100%;
+    }
+    .config-table tr
+    {
+        position:relative;
+    }
+    .config-table tr td
+    {
+        padding:3px 0;
+        box-sizing:border-box;
+    }
+    .config-table tr > td:nth-child(1)
+    {
+        width:200px;
+    }
 }
 .config-table tr td select,
 .config-table tr td input[type="text"],
@@ -97,11 +97,11 @@ legend{
 .config-table tr td input[type="password"],
 .config-table tr td select
 {
-	display:block;
-	width:100%;
-	box-sizing:border-box;
-	border:1px solid #CCCCCC;
-	background-color:#FFFFFF;
+    display:block;
+    width:100%;
+    box-sizing:border-box;
+    border:1px solid #CCCCCC;
+    background-color:#FFFFFF;
 }
 .config-table tr td input[type="text"]:focus,
 .config-table tr td input[type="email"]:focus,
@@ -126,21 +126,21 @@ legend{
 .config-table tr td input[type="tel"],
 .config-table tr td input[type="number"],
 .config-table tr td input[type="password"]{
-	padding:7px 11px;
+    padding:7px 11px;
 }
 .config-table tr td select
 {
-	padding:7px 7px;
+    padding:7px 7px;
 }
 
 .navbar-light .navbar-nav .nav-link{
-	padding-left:14px;
-	padding-right:14px;
+    padding-left:14px;
+    padding-right:14px;
 }
 .navbar-light .navbar-nav .nav-link.active{
-	background-color:#EE0000;
-	color:#FFFFFF;
-	border-radius:4px;
+    background-color:#EE0000;
+    color:#FFFFFF;
+    border-radius:4px;
 }
 input[type=number] {
   -moz-appearance: textfield;
@@ -381,27 +381,27 @@ button span.number{
 
 
 .row-table tbody tr td{
-	position:relative;
+    position:relative;
 }
 .row-table tbody tr td .inline-editor{
-	position:relative;
-	min-height:30px;
-	height:calc(100% + 16px);
-	width:calc(100% + 16px);
-	margin:-7px -7px -7px -7px;
-	padding:7px 7px 7px 7px;
+    position:relative;
+    min-height:30px;
+    height:calc(100% + 16px);
+    width:calc(100% + 16px);
+    margin:-7px -7px -7px -7px;
+    padding:7px 7px 7px 7px;
 }
 .row-table tbody tr td div.inline-editor.no-pad{
-	height:100%;
-	width:100%;
-	padding:0;
+    height:100%;
+    width:100%;
+    padding:0;
 }
 .row-table textarea.inline-editor-text {
-	margin: -2px -2px -4px -2px;
-	border: 1px solid #999999;
-	width: calc(100% + 18px);
-	height: calc(100% + 2px);
-	padding:8px 8px 0px 8px;
+    margin: -2px -2px -4px -2px;
+    border: 1px solid #999999;
+    width: calc(100% + 18px);
+    height: calc(100% + 2px);
+    padding:8px 8px 0px 8px;
 }
 .row-table textarea:focus, .row-table textarea:active{
   outline: none;
@@ -597,20 +597,20 @@ display: inline-block; padding-top: 14px; padding-right: 10px; width: 62px;
 }
 
 [data-pagination="true"]{
-	height:42px;
-	display:block;
-	text-align:center;
-	padding:8px 0px;
-	width:100%;
+    height:42px;
+    display:block;
+    text-align:center;
+    padding:8px 0px;
+    width:100%;
 }
 [data-pagination="true"] a{
-	display:inline-block;
-	height:28px;
-	width:40px;
-	text-align:center;
-	box-sizing:border-box;
-	padding:4px 4px;
-	border:1px solid #DDDDDD;
+    display:inline-block;
+    height:28px;
+    width:40px;
+    text-align:center;
+    box-sizing:border-box;
+    padding:4px 4px;
+    border:1px solid #DDDDDD;
 }
 [data-pagination="true"] a{
     background-color:#F9F9F9;
@@ -667,23 +667,79 @@ display: inline-block; padding-top: 14px; padding-right: 10px; width: 62px;
   padding-bottom: 10px;
 }
 
+.tile-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.tile{
+  margin-bottom: 10px;
+}
+@media screen and (min-width: 1200px) {
+  .tile-area .tile { 
+    width: 8.9%; 
+    margin-left: 1%;    
+  }
+  
+  .tile-area > .tile:nth-child(10n + 1) {
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 1200px)  and (min-width: 768px) {
+  .tile-area .tile { 
+    width: 14%; 
+    margin-left: 1%;    
+  }
+  
+  .tile-area > .tile:nth-child(6n + 1) {
+    margin-left: 0;
+  }
+  
+}
+@media screen and (max-width: 992px) and (min-width: 480px) {
+  .tile-area .tile { 
+    width: 18.5%; 
+    margin-left: 1%;    
+  }
+  
+  .tile-area > .tile:nth-child(5n + 1) {
+    margin-left: 0;
+  }
+  
+}
+@media screen and (max-width: 480px) {
+  .tile-area .tile { 
+    width: 31.5%; 
+    margin-left: 1%;    
+  }
+  
+  .tile-area > .tile:nth-child(3n + 1) {
+    margin-left: 0;
+  }
+  
+}
+/*
 .tile-area{
   padding-bottom: 10px;
 }
 .tile{
+    width: 100px;
     display: inline-block;
     margin-bottom: 10px;
     margin-right: 6px;
 }
+*/
+
 .tile-wrapper{
-    width: 100px;
-    border: 1px solid #DDDDDD;
-    border-radius: 4px;
-    padding-top: 5px;
-    position: relative;
-    overflow: hidden;
-    background-color: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px;
+  padding-top: 5px;
+  position: relative;
+  overflow: hidden;
+  background-color: #FFFFFF;
 }
+
 .tile-icon{
     width: 64px;
     height: 64px;
@@ -775,6 +831,9 @@ display: inline-block; padding-top: 14px; padding-right: 10px; width: 62px;
 }
 .open-port .tile-icon{
   background-image: url(../images/icon/port.png);
+}
+.expand .tile-icon{
+  background-image: url(../images/icon/sd-card.png);
 }
 .tile-icon > a{
   width: 64px;

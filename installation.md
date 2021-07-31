@@ -20,6 +20,8 @@ yum install -y sysstat
 yum install -y lsof
 yum install -y zip
 yum install -y unzip
+yum install -y bridge-utils
+yum install -y dnsmasq
 
 
 echo -e "dtparam=i2c_arm=on" >> /boot/config.txt
