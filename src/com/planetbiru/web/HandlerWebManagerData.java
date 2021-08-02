@@ -64,13 +64,13 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			this.handleLogFile(httpExchange);
 		}
-		else if(path.startsWith("/data/storage/content"))
-		{
-			this.handleLogStorage(httpExchange);
-		}
 		else if(path.startsWith("/data/log/download/"))
 		{
 			this.handleDownloadLogFile(httpExchange);
+		}
+		else if(path.startsWith("/data/storage/content"))
+		{
+			this.handleLogStorage(httpExchange);
 		}
 		else if(path.startsWith("/data/report/sms/list"))
 		{
@@ -813,25 +813,20 @@ public class HandlerWebManagerData implements HttpHandler {
 			{
 				String fullname = Config.getLogDir() + "/" + path;
 				fullname = FileConfigUtil.fixFileName(fullname);	
-				byte[] list = "".getBytes();
-				try 
-				{
-					list = FileUtil.readResource(fullname);
-					responseBody = list;
-					String contentType = HttpUtil.getMIMEType(path);
-					String baseName = HttpUtil.getBaseName(path);
-					responseHeaders.add(ConstantString.CONTENT_TYPE, contentType);
-					responseHeaders.add("Content-disposition", "attachment; filename=\""+baseName+"\"");
-				} 
-				catch (FileNotFoundException e) 
-				{
-					statusCode = HttpStatus.NOT_FOUND;
-				}
+				responseBody = FileUtil.readResource(fullname);
+				String contentType = HttpUtil.getMIMEType(path);
+				String baseName = HttpUtil.getBaseName(path);
+				responseHeaders.add(ConstantString.CONTENT_TYPE, contentType);
+				responseHeaders.add("Content-disposition", "attachment; filename=\""+baseName+"\"");
 			}
 			else
 			{
 				statusCode = HttpStatus.UNAUTHORIZED;			
 			}
+		}
+		catch (FileNotFoundException e) 
+		{
+			statusCode = HttpStatus.NOT_FOUND;
 		}
 		catch(NoUserRegisteredException e)
 		{
@@ -901,25 +896,20 @@ public class HandlerWebManagerData implements HttpHandler {
 			{
 				String fullname = Config.getSmsLogPath() + "/" + path;
 				fullname = FileConfigUtil.fixFileName(fullname);	
-				byte[] list = "".getBytes();
-				try 
-				{
-					list = FileUtil.readResource(fullname);
-					responseBody = list;
-					String contentType = HttpUtil.getMIMEType(path);
-					String baseName = HttpUtil.getBaseName(path);
-					responseHeaders.add(ConstantString.CONTENT_TYPE, contentType);
-					responseHeaders.add("Content-disposition", "attachment; filename=\""+baseName+"\"");
-				} 
-				catch (FileNotFoundException e) 
-				{
-					statusCode = HttpStatus.NOT_FOUND;
-				}
+				responseBody = FileUtil.readResource(fullname);
+				String contentType = HttpUtil.getMIMEType(path);
+				String baseName = HttpUtil.getBaseName(path);
+				responseHeaders.add(ConstantString.CONTENT_TYPE, contentType);
+				responseHeaders.add("Content-disposition", "attachment; filename=\""+baseName+"\"");
 			}
 			else
 			{
 				statusCode = HttpStatus.UNAUTHORIZED;			
 			}
+		}
+		catch (FileNotFoundException e) 
+		{
+			statusCode = HttpStatus.NOT_FOUND;
 		}
 		catch(NoUserRegisteredException e)
 		{
