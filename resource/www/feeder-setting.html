@@ -103,37 +103,37 @@
               </tr>
               <tr>
                 <td>Host</td>
-                <td><input type="text" name="feeder_ws_address" id="feeder_address" value="">	
+                <td><input type="text" name="feeder_ws_address" id="feeder_ws_address" value="">	
                 </td>
               </tr>
               <tr>
                 <td>Port</td>
-                <td><input type="number" max="65535" name="feeder_ws_port" id="feeder_port" value="">	
+                <td><input type="number" max="65535" name="feeder_ws_port" id="feeder_ws_port" value="">	
                 </td>
               </tr>
               <tr>
                 <td>Path</td>
-                <td><input type="text" name="feeder_ws_path" id="feeder_path" value="">	
+                <td><input type="text" name="feeder_ws_path" id="feeder_ws_path" value="">	
                 </td>
               </tr>
               <tr>
                 <td>Username</td>
-                <td><input type="text" name="feeder_ws_username" id="feeder_username" value="">	
+                <td><input type="text" name="feeder_ws_username" id="feeder_ws_username" value="">	
                 </td>
               </tr>
               <tr>
                 <td>Password</td>
-                <td><input type="text" name="feeder_ws_password" id="feeder_password" value="">	
+                <td><input type="text" name="feeder_ws_password" id="feeder_ws_password" value="">	
                 </td>
               </tr>
               <tr>
-                <td>Channel</td>
-                <td><input type="text" name="feeder_ws_channel" id="feeder_channel" value="">	
+                <td>Topic</td>
+                <td><input type="text" name="feeder_ws_topic" id="feeder_ws_topic" value="">	
                 </td>
               </tr>
               <tr>
                 <td>Timeout</td>
-                <td><input type="number" min="0" name="feeder_ws_timeout" id="feeder_timeout" value="">	
+                <td><input type="number" min="0" name="feeder_ws_timeout" id="feeder_ws_timeout" value="">	
                 </td>
               </tr>
               <tr>
@@ -163,8 +163,7 @@
                 </td>
               </tr>
             </tbody>
-          </table>
-        
+          </table>    
         </form>
 
         <h4>RabbitMQ</h4>
@@ -187,37 +186,37 @@
               </tr>
               <tr>
                 <td>Host</td>
-                <td><input type="text" name="feeder_amqp_address" id="feeder_address" value="">	
+                <td><input type="text" name="feeder_amqp_address" id="feeder_amqp_address" value="">	
                 </td>
               </tr>
               <tr>
                 <td>Port</td>
-                <td><input type="number" max="65535" name="feeder_amqp_port" id="feeder_port" value="">	
+                <td><input type="number" max="65535" name="feeder_amqp_port" id="feeder_amqp_port" value="">	
                 </td>
               </tr>
               <tr>
                 <td>Path</td>
-                <td><input type="text" name="feeder_amqp_path" id="feeder_path" value="">	
+                <td><input type="text" name="feeder_amqp_path" id="feeder_amqp_path" value="">	
                 </td>
               </tr>
               <tr>
                 <td>Username</td>
-                <td><input type="text" name="feeder_amqp_username" id="feeder_username" value="">	
+                <td><input type="text" name="feeder_amqp_username" id="feeder_amqp_username" value="">	
                 </td>
               </tr>
               <tr>
                 <td>Password</td>
-                <td><input type="text" name="feeder_amqp_password" id="feeder_password" value="">	
+                <td><input type="text" name="feeder_amqp_password" id="feeder_amqp_password" value="">	
                 </td>
               </tr>
               <tr>
                 <td>Queue</td>
-                <td><input type="text" name="feeder_amqp_channel" id="feeder_channel" value="">	
+                <td><input type="text" name="feeder_amqp_topic" id="feeder_amqp_topic" value="">	
                 </td>
               </tr>
               <tr>
                 <td>Timeout</td>
-                <td><input type="number" min="0" name="feeder_amqp_timeout" id="feeder_timeout" value="">	
+                <td><input type="number" min="0" name="feeder_amqp_timeout" id="feeder_amqp_timeout" value="">	
                 </td>
               </tr>
               <tr>
@@ -261,11 +260,10 @@
                       $('input[name="feeder_ws_path"]').val(data.feederWsPath);
                       $('input[name="feeder_ws_username"]').val(data.feederWsUsername);
                       $('input[name="feeder_ws_password"]').val(data.feederWsPassword);
-                      $('input[name="feeder_ws_channel"]').val(data.feederWsChannel);
+                      $('input[name="feeder_ws_topic"]').val(data.feederWsTopic);
                       $('input[name="feeder_ws_timeout"]').val(data.feederWsTimeout);
                       $('input[name="feeder_ws_reconnect_delay"]').val(data.feederWsReconnectDelay);
                       $('select[name="feeder_ws_refresh"]').val(data.feederWsRefresh+"");
-
                     }
                 });
 
@@ -281,15 +279,13 @@
                       $('input[name="feeder_amqp_path"]').val(data.feederAmqpPath);
                       $('input[name="feeder_amqp_username"]').val(data.feederAmqpUsername);
                       $('input[name="feeder_amqp_password"]').val(data.feederAmqpPassword);
-                      $('input[name="feeder_amqp_channel"]').val(data.feederAmqpChannel);
+                      $('input[name="feeder_amqp_topic"]').val(data.feederAmqpTopic);
                       $('input[name="feeder_amqp_timeout"]').val(data.feederAmqpTimeout);
                       $('select[name="feeder_amqp_refresh"]').val(data.feederAmqpRefresh+"");
                     }
                 });
             });
         </script>
-
-    
     </div>
     <!-- /container -->
   </div>

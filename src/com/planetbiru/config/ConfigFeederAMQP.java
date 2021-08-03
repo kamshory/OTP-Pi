@@ -23,7 +23,7 @@ public class ConfigFeederAMQP {
 	private static String feederAmqpPath = "";
 	private static String feederAmqpUsername = "";
 	private static String feederAmqpPassword = "";
-	private static String feederAmqpChannel = "";
+	private static String feederAmqpTopic = "";
 	private static int feederAmqpTimeout = 0;
 	private static int feederAmqpRefresh = 0;
 	private static boolean loaded = false;
@@ -51,7 +51,7 @@ public class ConfigFeederAMQP {
 		setting.put("feederAmqpPath", ConfigFeederAMQP.feederAmqpPath);
 		setting.put("feederAmqpUsername", ConfigFeederAMQP.feederAmqpUsername);
 		setting.put("feederAmqpPassword", ConfigFeederAMQP.feederAmqpPassword);
-		setting.put("feederAmqpChannel", ConfigFeederAMQP.feederAmqpChannel);
+		setting.put("feederAmqpTopic", ConfigFeederAMQP.feederAmqpTopic);
 		setting.put("feederAmqpTimeout", ConfigFeederAMQP.feederAmqpTimeout);
 		setting.put("feederAmqpRefresh", ConfigFeederAMQP.feederAmqpRefresh);
 		return setting;
@@ -116,7 +116,7 @@ public class ConfigFeederAMQP {
 				ConfigFeederAMQP.feederAmqpPath = setting.optString("feederAmqpPath", "");
 				ConfigFeederAMQP.feederAmqpUsername = setting.optString("feederAmqpUsername", "");
 				ConfigFeederAMQP.feederAmqpPassword = setting.optString("feederAmqpPassword", "");
-				ConfigFeederAMQP.feederAmqpChannel = setting.optString("feederAmqpChannel", "");
+				ConfigFeederAMQP.feederAmqpTopic = setting.optString("feederAmqpTopic", "");
 				ConfigFeederAMQP.feederAmqpTimeout = setting.optInt("feederAmqpTimeout", 0);
 				ConfigFeederAMQP.feederAmqpRefresh = setting.optInt("feederAmqpRefresh", 0);
 			}
@@ -202,12 +202,12 @@ public class ConfigFeederAMQP {
 		ConfigFeederAMQP.feederAmqpPassword = feederAmqpPassword;
 	}
 
-	public static String getFeederAmqpChannel() {
-		return feederAmqpChannel;
+	public static String getFeederAmqpTopic() {
+		return feederAmqpTopic;
 	}
 
-	public static void setFeederAmqpChannel(String feederAmqpChannel) {
-		ConfigFeederAMQP.feederAmqpChannel = feederAmqpChannel;
+	public static void setFeederAmqpTopic(String feederAmqpTopic) {
+		ConfigFeederAMQP.feederAmqpTopic = feederAmqpTopic;
 	}
 
 	public static int getFeederAmqpTimeout() {
@@ -250,7 +250,7 @@ public class ConfigFeederAMQP {
 		ConfigFeederAMQP.feederAmqpPath = "";
 		ConfigFeederAMQP.feederAmqpUsername = "";
 		ConfigFeederAMQP.feederAmqpPassword = "";
-		ConfigFeederAMQP.feederAmqpChannel = "";
+		ConfigFeederAMQP.feederAmqpTopic = "";
 		ConfigFeederAMQP.feederAmqpTimeout = 0;
 		ConfigFeederAMQP.feederAmqpRefresh = 0;
 	}

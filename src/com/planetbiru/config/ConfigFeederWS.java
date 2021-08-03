@@ -20,7 +20,7 @@ public class ConfigFeederWS {
 	private static String feederWsPath = "";
 	private static String feederWsUsername = "";
 	private static String feederWsPassword = "";
-	private static String feederWsChannel = "";
+	private static String feederWsTopic = "";
 	private static long feederWsTimeout = 0;
 	private static long feederWsReconnectDelay = 0;
 	private static long feederWsRefresh = 0;
@@ -45,7 +45,7 @@ public class ConfigFeederWS {
 		setting.put("feederWsPath", ConfigFeederWS.feederWsPath);
 		setting.put("feederWsUsername", ConfigFeederWS.feederWsUsername);
 		setting.put("feederWsPassword", ConfigFeederWS.feederWsPassword);
-		setting.put("feederWsChannel", ConfigFeederWS.feederWsChannel);
+		setting.put("feederWsTopic", ConfigFeederWS.feederWsTopic);
 		setting.put("feederWsTimeout", ConfigFeederWS.feederWsTimeout);
 		setting.put("feederWsReconnectDelay", ConfigFeederWS.feederWsReconnectDelay);
 		setting.put("feederWsRefresh", ConfigFeederWS.feederWsRefresh);
@@ -111,7 +111,7 @@ public class ConfigFeederWS {
 				ConfigFeederWS.feederWsPath = setting.optString("feederWsPath", "");
 				ConfigFeederWS.feederWsUsername = setting.optString("feederWsUsername", "");
 				ConfigFeederWS.feederWsPassword = setting.optString("feederWsPassword", "");
-				ConfigFeederWS.feederWsChannel = setting.optString("feederWsChannel", "");
+				ConfigFeederWS.feederWsTopic = setting.optString("feederWsTopic", "");
 				ConfigFeederWS.feederWsTimeout = setting.optInt("feederWsTimeout", 0);
 				ConfigFeederWS.feederWsReconnectDelay = setting.optInt("feederWsReconnectDelay", 0);
 				ConfigFeederWS.feederWsRefresh = setting.optInt("feederWsRefresh", 0);
@@ -200,12 +200,12 @@ public class ConfigFeederWS {
 		ConfigFeederWS.feederWsPassword = feederWsPassword;
 	}
 
-	public static String getFeederWsChannel() {
-		return feederWsChannel;
+	public static String getFeederWsTopic() {
+		return feederWsTopic;
 	}
 
-	public static void setFeederWsChannel(String feederWsChannel) {
-		ConfigFeederWS.feederWsChannel = feederWsChannel;
+	public static void setFeederWsTopic(String feederWsTopic) {
+		ConfigFeederWS.feederWsTopic = feederWsTopic;
 	}
 
 	public static long getFeederWsTimeout() {
@@ -248,7 +248,7 @@ public class ConfigFeederWS {
 		ConfigFeederWS.feederWsPath = "";
 		ConfigFeederWS.feederWsUsername = "";
 		ConfigFeederWS.feederWsPassword = "";
-		ConfigFeederWS.feederWsChannel = "";
+		ConfigFeederWS.feederWsTopic = "";
 		ConfigFeederWS.feederWsTimeout = 0;
 		ConfigFeederWS.feederWsReconnectDelay = 0;
 		ConfigFeederWS.feederWsRefresh = 0;

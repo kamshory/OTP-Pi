@@ -53,7 +53,7 @@ public class RabbitMQReceiver{
 	    {
 			this.connection = factory.newConnection();
 			this.channel = connection.createChannel();
-		    this.channel.queueDeclare(ConfigFeederAMQP.getFeederAmqpChannel(), false, false, false, null);		    
+		    this.channel.queueDeclare(ConfigFeederAMQP.getFeederAmqpTopic(), false, false, false, null);		    
 		    DefaultConsumer consumer = new DefaultConsumer(channel) {
 		        @Override
 		        public void handleDelivery(
@@ -72,7 +72,7 @@ public class RabbitMQReceiver{
 				
 		    };
 		    ConfigFeederAMQP.setConnected(true);
-		    this.channel.basicConsume(ConfigFeederAMQP.getFeederAmqpChannel(), true, consumer);
+		    this.channel.basicConsume(ConfigFeederAMQP.getFeederAmqpTopic(), true, consumer);
 		} 
 		catch (IOException e) 
 		{

@@ -1348,7 +1348,7 @@ public class HandlerWebManager implements HttpHandler {
 			String feederWsPath = queryPairs.getOrDefault("feeder_ws_path", "");		
 			String feederWsUsername = queryPairs.getOrDefault("feeder_ws_username", "");		
 			String feederWsPassword = queryPairs.getOrDefault("feeder_ws_password", "");		
-			String feederWsChannel = queryPairs.getOrDefault("feeder_ws_channel", "");
+			String feederWsTopic = queryPairs.getOrDefault("feeder_ws_topic", "");
 			
 			String timeout = queryPairs.getOrDefault("feeder_ws_timeout", "0");
 			int feederWsTimeout = Utility.atoi(timeout);	
@@ -1364,7 +1364,7 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigFeederWS.setFeederWsPath(feederWsPath);
 			ConfigFeederWS.setFeederWsUsername(feederWsUsername);
 			ConfigFeederWS.setFeederWsPassword(feederWsPassword);
-			ConfigFeederWS.setFeederWsChannel(feederWsChannel);
+			ConfigFeederWS.setFeederWsTopic(feederWsTopic);
 			ConfigFeederWS.setFeederWsTimeout(feederWsTimeout);
 			ConfigFeederWS.setFeederWsReconnectDelay(feederWsReconnectDelay);
 			ConfigFeederWS.setFeederWsRefresh(feederWsRefresh);		
@@ -1383,7 +1383,7 @@ public class HandlerWebManager implements HttpHandler {
 			String feederAmqpPath = queryPairs.getOrDefault("feeder_amqp_path", "");		
 			String feederAmqpUsername = queryPairs.getOrDefault("feeder_amqp_username", "");		
 			String feederAmqpPassword = queryPairs.getOrDefault("feeder_amqp_password", "");		
-			String feederAmqpChannel = queryPairs.getOrDefault("feeder_amqp_channel", "");
+			String feederAmqpTopic = queryPairs.getOrDefault("feeder_amqp_topic", "");
 			
 			String timeout = queryPairs.getOrDefault("feeder_amqp_timeout", "0");
 			int feederAmqpTimeout = Utility.atoi(timeout);	
@@ -1397,7 +1397,7 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigFeederAMQP.setFeederAmqpPath(feederAmqpPath);
 			ConfigFeederAMQP.setFeederAmqpUsername(feederAmqpUsername);
 			ConfigFeederAMQP.setFeederAmqpPassword(feederAmqpPassword);
-			ConfigFeederAMQP.setFeederAmqpChannel(feederAmqpChannel);
+			ConfigFeederAMQP.setFeederAmqpTopic(feederAmqpTopic);
 			ConfigFeederAMQP.setFeederAmqpTimeout(feederAmqpTimeout);
 			ConfigFeederAMQP.setFeederAmqpRefresh(feederAmqpRefresh);		
 

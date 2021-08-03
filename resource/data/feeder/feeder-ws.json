@@ -1,1 +1,1 @@
-{"feederWsEnable":true,"feederWsPassword":"4lt0@1234","feederWsRefresh":0,"feederWsChannel":"sms","feederWsAddress":"127.0.0.1","feederWsPath":"/ws","feederWsTimeout":5000,"feederWsPort":8890,"feederWsSSL":false,"feederWsUsername":"qa","feederWsReconnectDelay":10000}
+{"feederWsEnable":true,"feederWsPassword":"4lt0@1234","feederWsRefresh":0,"feederWsTopic":"sms","feederWsAddress":"127.0.0.1","feederWsPath":"/ws","feederWsTimeout":5000,"feederWsPort":8890,"feederWsSSL":false,"feederWsUsername":"qa","feederWsReconnectDelay":10000}

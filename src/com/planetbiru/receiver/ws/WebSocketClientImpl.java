@@ -169,7 +169,7 @@ public class WebSocketClientImpl extends Thread{
 	}
 	
 	private String fixWSEndpoint(String endpoint) {
-		String channel = Utility.urlEncode(ConfigFeederWS.getFeederWsChannel());
+		String topic = Utility.urlEncode(ConfigFeederWS.getFeederWsTopic());
 		String path = endpoint;
 		Map<String, List<String>> params = new HashMap<>();
 		String query = "";
@@ -182,9 +182,9 @@ public class WebSocketClientImpl extends Thread{
 				try 
 				{
 					params = Utility.splitQuery(arr[1]);
-					if(params.containsKey("channel"))
+					if(params.containsKey("topic"))
 					{
-						params.remove("channel");
+						params.remove("topic");
 					}				
 				} 
 				catch (UnsupportedEncodingException e) 
@@ -195,7 +195,7 @@ public class WebSocketClientImpl extends Thread{
 				}				
 			}
 		}
-		params.put("channel", Utility.asList(channel));
+		params.put("topic", Utility.asList(topic));
 		query = Utility.buildQuery(params);
 		
 		endpoint = path + "?"+query;

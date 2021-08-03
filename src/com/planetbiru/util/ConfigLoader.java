@@ -167,7 +167,7 @@ public class ConfigLoader {
 		String feederWsPath = ConfigLoader.getConfig("otpbroker.ws.path");
 		String feederWsUsername = ConfigLoader.getConfig("otpbroker.ws.username");
 		String feederWsPassword = ConfigLoader.getConfig("otpbroker.ws.password");
-		String feederWsChannel = ConfigLoader.getConfig("otpbroker.ws.channel");
+		String feederWsTopic = ConfigLoader.getConfig("otpbroker.ws.channel");
 		long feederWsTimeout = ConfigLoader.getConfigLong("otpbroker.ws.timeout");
 		long feederWsRefresh = ConfigLoader.getConfigLong("otpbroker.ws.refresh.delay");
 		long feederWsReconnectDelay = ConfigLoader.getConfigLong("otpbroker.ws.reconnect.delay");
@@ -269,7 +269,7 @@ public class ConfigLoader {
 		ConfigFeederWS.setFeederWsPath(feederWsPath);
 		ConfigFeederWS.setFeederWsUsername(feederWsUsername);
 		ConfigFeederWS.setFeederWsPassword(feederWsPassword);
-		ConfigFeederWS.setFeederWsChannel(feederWsChannel);
+		ConfigFeederWS.setFeederWsTopic(feederWsTopic);
 		ConfigFeederWS.setFeederWsTimeout(feederWsTimeout);
 		ConfigFeederWS.setFeederWsReconnectDelay(feederWsReconnectDelay);
 		ConfigFeederWS.setFeederWsRefresh(feederWsRefresh);		
