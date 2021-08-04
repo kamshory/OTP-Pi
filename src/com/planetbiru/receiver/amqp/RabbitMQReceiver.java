@@ -8,7 +8,7 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
 
 import com.planetbiru.api.MessageAPI;
-import com.planetbiru.config.ConfigFeederAMQP;
+import com.planetbiru.config.ConfigSubscriberAMQP;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -25,13 +25,13 @@ public class RabbitMQReceiver{
 	public void connect()
 	{
 		this.factory = new ConnectionFactory();
-	    this.factory.setHost(ConfigFeederAMQP.getFeederAmqpAddress());
-	    this.factory.setPort(ConfigFeederAMQP.getFeederAmqpPort());
-	    this.factory.setUsername(ConfigFeederAMQP.getFeederAmqpUsername());
-	    this.factory.setPassword(ConfigFeederAMQP.getFeederAmqpPassword());	  
-	    this.factory.setConnectionTimeout(ConfigFeederAMQP.getFeederAmqpTimeout());
+	    this.factory.setHost(ConfigSubscriberAMQP.getSubscriberAmqpAddress());
+	    this.factory.setPort(ConfigSubscriberAMQP.getSubscriberAmqpPort());
+	    this.factory.setUsername(ConfigSubscriberAMQP.getSubscriberAmqpUsername());
+	    this.factory.setPassword(ConfigSubscriberAMQP.getSubscriberAmqpPassword());	  
+	    this.factory.setConnectionTimeout(ConfigSubscriberAMQP.getSubscriberAmqpTimeout());
 	    
-	    if(ConfigFeederAMQP.isFeederAmqpSSL())
+	    if(ConfigSubscriberAMQP.isSubscriberAmqpSSL())
 		{
 			SSLContext sslContext;		
     		try 
@@ -53,7 +53,7 @@ public class RabbitMQReceiver{
 	    {
 			this.connection = factory.newConnection();
 			this.channel = connection.createChannel();
-		    this.channel.queueDeclare(ConfigFeederAMQP.getFeederAmqpTopic(), false, false, false, null);		    
+		    this.channel.queueDeclare(ConfigSubscriberAMQP.getSubscriberAmqpTopic(), false, false, false, null);		    
 		    DefaultConsumer consumer = new DefaultConsumer(channel) {
 		        @Override
 		        public void handleDelivery(
@@ -71,8 +71,8 @@ public class RabbitMQReceiver{
 		        }
 				
 		    };
-		    ConfigFeederAMQP.setConnected(true);
-		    this.channel.basicConsume(ConfigFeederAMQP.getFeederAmqpTopic(), true, consumer);
+		    ConfigSubscriberAMQP.setConnected(true);
+		    this.channel.basicConsume(ConfigSubscriberAMQP.getSubscriberAmqpTopic(), true, consumer);
 		} 
 		catch (IOException e) 
 		{
@@ -90,7 +90,7 @@ public class RabbitMQReceiver{
 		this.channel = null;
 		try 
 		{
-			Thread.sleep(ConfigFeederAMQP.getFeederAmqpTimeout() * 2);
+			Thread.sleep(ConfigSubscriberAMQP.getSubscriberAmqpTimeout() * 2);
 		} 
 		catch (InterruptedException e) 
 		{
@@ -106,7 +106,7 @@ public class RabbitMQReceiver{
 	}
 
 	private void evtTimeout(TimeoutException e) {
-		ConfigFeederAMQP.setConnected(false);
+		ConfigSubscriberAMQP.setConnected(false);
 		if(!this.reconnect)
 		{
 			this.reconnect = true;
@@ -116,7 +116,7 @@ public class RabbitMQReceiver{
 	}
 
 	private void evtIError(IOException e) {
-		ConfigFeederAMQP.setConnected(false);
+		ConfigSubscriberAMQP.setConnected(false);
 		if(!this.reconnect)
 		{
 			this.reconnect = true;
@@ -126,7 +126,7 @@ public class RabbitMQReceiver{
 	}
 
 	private void evtOnClose(String message, ShutdownSignalException e) {
-		ConfigFeederAMQP.setConnected(false);
+		ConfigSubscriberAMQP.setConnected(false);
 		if(!this.reconnect)
 		{
 			this.reconnect = true;

@@ -1,2 +1,159 @@
 2021-08-04 06:16:32 [INFO  ] GSM                             :443  - Set Serial Port
 2021-08-04 06:16:32 [INFO  ] Application                     :188  - Service started
+2021-08-04 09:15:28 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-04 09:15:29 [INFO  ] Application                     :188  - Service started
+2021-08-04 09:19:10 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-04 09:19:10 [INFO  ] Application                     :189  - Service started
+2021-08-04 09:25:03 [ERROR ] ServerWebAdmin                  :41   - Address already in use: bind
+java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:220)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:88)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:101)
+	at jdk.httpserver/sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
+	at jdk.httpserver/sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.HttpServer.create(HttpServer.java:137)
+	at com.planetbiru.ServerWebAdmin.start(ServerWebAdmin.java:28)
+	at com.planetbiru.Application.startService(Application.java:151)
+	at com.planetbiru.Application.main(Application.java:73)
+2021-08-04 09:25:03 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-04 09:25:03 [ERROR ] ServerEmail                     :71   - java.net.BindException: Address already in use: bind
+java.lang.RuntimeException: java.net.BindException: Address already in use: bind
+	at org.subethamail.smtp.server.SMTPServer.start(SMTPServer.java:292)
+	at com.planetbiru.ServerEmail.startService(ServerEmail.java:66)
+	at com.planetbiru.ServerEmail.start(ServerEmail.java:27)
+	at com.planetbiru.Application.startService(Application.java:184)
+	at com.planetbiru.Application.main(Application.java:73)
+Caused by: java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:643)
+	at java.base/java.net.ServerSocket.bind(ServerSocket.java:396)
+	at org.subethamail.smtp.server.SMTPServer.createServerSocket(SMTPServer.java:334)
+	at org.subethamail.smtp.server.SMTPServer.start(SMTPServer.java:288)
+	... 4 more
+2021-08-04 09:25:03 [INFO  ] Application                     :188  - Service started
+2021-08-04 09:25:17 [ERROR ] ServerWebAdmin                  :41   - Address already in use: bind
+java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:220)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:88)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:101)
+	at jdk.httpserver/sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
+	at jdk.httpserver/sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.HttpServer.create(HttpServer.java:137)
+	at com.planetbiru.ServerWebAdmin.start(ServerWebAdmin.java:28)
+	at com.planetbiru.Application.startService(Application.java:151)
+	at com.planetbiru.Application.main(Application.java:73)
+2021-08-04 09:25:18 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-04 09:25:18 [ERROR ] ServerEmail                     :71   - java.net.BindException: Address already in use: bind
+java.lang.RuntimeException: java.net.BindException: Address already in use: bind
+	at org.subethamail.smtp.server.SMTPServer.start(SMTPServer.java:292)
+	at com.planetbiru.ServerEmail.startService(ServerEmail.java:66)
+	at com.planetbiru.ServerEmail.start(ServerEmail.java:27)
+	at com.planetbiru.Application.startService(Application.java:184)
+	at com.planetbiru.Application.main(Application.java:73)
+Caused by: java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:643)
+	at java.base/java.net.ServerSocket.bind(ServerSocket.java:396)
+	at org.subethamail.smtp.server.SMTPServer.createServerSocket(SMTPServer.java:334)
+	at org.subethamail.smtp.server.SMTPServer.start(SMTPServer.java:288)
+	... 4 more
+2021-08-04 09:25:18 [INFO  ] Application                     :188  - Service started
+2021-08-04 09:25:49 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-04 09:25:50 [INFO  ] Application                     :188  - Service started
+2021-08-04 09:27:04 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-04 09:27:05 [INFO  ] Application                     :188  - Service started
+2021-08-04 09:27:49 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-04 09:27:49 [INFO  ] Application                     :188  - Service started
+2021-08-04 09:30:18 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-04 09:30:19 [INFO  ] Application                     :188  - Service started
+2021-08-04 10:54:49 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-04 10:54:50 [INFO  ] Application                     :188  - Service started
+2021-08-04 10:56:19 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-04 10:56:19 [INFO  ] Application                     :188  - Service started
+2021-08-04 10:56:30 [ERROR ] ConfigSubscriberWS              :69   - java.io.FileNotFoundException: C:\bitbucket\OTP-Pi (Access is denied)
+java.io.IOException: java.io.FileNotFoundException: C:\bitbucket\OTP-Pi (Access is denied)
+	at com.planetbiru.util.FileConfigUtil.write(FileConfigUtil.java:62)
+	at com.planetbiru.config.ConfigSubscriberWS.save(ConfigSubscriberWS.java:65)
+	at com.planetbiru.config.ConfigSubscriberWS.save(ConfigSubscriberWS.java:74)
+	at com.planetbiru.web.HandlerWebManager.processSubscriberSetting(HandlerWebManager.java:1372)
+	at com.planetbiru.web.HandlerWebManager.handlePost(HandlerWebManager.java:291)
+	at com.planetbiru.web.HandlerWebManager.handle(HandlerWebManager.java:73)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:77)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:80)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:692)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:77)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:664)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$DefaultExecutor.execute(ServerImpl.java:159)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Dispatcher.handle(ServerImpl.java:442)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Dispatcher.run(ServerImpl.java:408)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: java.io.FileNotFoundException: C:\bitbucket\OTP-Pi (Access is denied)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at com.planetbiru.util.FileConfigUtil.write(FileConfigUtil.java:53)
+	... 15 more
+2021-08-04 10:56:56 [ERROR ] ConfigSubscriberWS              :69   - java.io.FileNotFoundException: C:\bitbucket\OTP-Pi (Access is denied)
+java.io.IOException: java.io.FileNotFoundException: C:\bitbucket\OTP-Pi (Access is denied)
+	at com.planetbiru.util.FileConfigUtil.write(FileConfigUtil.java:62)
+	at com.planetbiru.config.ConfigSubscriberWS.save(ConfigSubscriberWS.java:65)
+	at com.planetbiru.config.ConfigSubscriberWS.save(ConfigSubscriberWS.java:74)
+	at com.planetbiru.web.HandlerWebManager.processSubscriberSetting(HandlerWebManager.java:1372)
+	at com.planetbiru.web.HandlerWebManager.handlePost(HandlerWebManager.java:291)
+	at com.planetbiru.web.HandlerWebManager.handle(HandlerWebManager.java:73)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:77)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:80)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:692)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:77)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:664)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$DefaultExecutor.execute(ServerImpl.java:159)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Dispatcher.handle(ServerImpl.java:442)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Dispatcher.run(ServerImpl.java:408)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: java.io.FileNotFoundException: C:\bitbucket\OTP-Pi (Access is denied)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at com.planetbiru.util.FileConfigUtil.write(FileConfigUtil.java:53)
+	... 15 more
+2021-08-04 10:56:57 [ERROR ] ConfigSubscriberWS              :69   - java.io.FileNotFoundException: C:\bitbucket\OTP-Pi (Access is denied)
+java.io.IOException: java.io.FileNotFoundException: C:\bitbucket\OTP-Pi (Access is denied)
+	at com.planetbiru.util.FileConfigUtil.write(FileConfigUtil.java:62)
+	at com.planetbiru.config.ConfigSubscriberWS.save(ConfigSubscriberWS.java:65)
+	at com.planetbiru.config.ConfigSubscriberWS.save(ConfigSubscriberWS.java:74)
+	at com.planetbiru.web.HandlerWebManager.processSubscriberSetting(HandlerWebManager.java:1372)
+	at com.planetbiru.web.HandlerWebManager.handlePost(HandlerWebManager.java:291)
+	at com.planetbiru.web.HandlerWebManager.handle(HandlerWebManager.java:73)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:77)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:80)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:692)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:77)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:664)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$DefaultExecutor.execute(ServerImpl.java:159)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Dispatcher.handle(ServerImpl.java:442)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Dispatcher.run(ServerImpl.java:408)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: java.io.FileNotFoundException: C:\bitbucket\OTP-Pi (Access is denied)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at com.planetbiru.util.FileConfigUtil.write(FileConfigUtil.java:53)
+	... 15 more
+2021-08-04 10:59:05 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-04 10:59:05 [INFO  ] Application                     :188  - Service started

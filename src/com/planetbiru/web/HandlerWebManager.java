@@ -21,8 +21,8 @@ import com.planetbiru.config.ConfigAPIUser;
 import com.planetbiru.config.ConfigBlocking;
 import com.planetbiru.config.ConfigDDNS;
 import com.planetbiru.config.ConfigEmail;
-import com.planetbiru.config.ConfigFeederAMQP;
-import com.planetbiru.config.ConfigFeederWS;
+import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.config.ConfigFirewall;
 import com.planetbiru.config.ConfigGeneral;
 import com.planetbiru.config.ConfigKeystore;
@@ -286,9 +286,9 @@ public class HandlerWebManager implements HttpHandler {
 				{
 					this.processAPIUser(requestBody);
 				}
-				else if(path.equals("/feeder-setting.html"))
+				else if(path.equals("/subscriber-setting.html"))
 				{
-					this.processFeederSetting(requestBody);
+					this.processSubscriberSetting(requestBody);
 				}
 				else if(path.equals("/sms-setting.html"))
 				{
@@ -1335,73 +1335,73 @@ public class HandlerWebManager implements HttpHandler {
 		ConfigModem.save();	
 	}
 
-	private void processFeederSetting(String requestBody) {
+	private void processSubscriberSetting(String requestBody) {
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
-		if(queryPairs.containsKey("save_feeder_ws_setting"))
+		if(queryPairs.containsKey("save_subscriber_ws_setting"))
 		{
-			ConfigFeederWS.load(Config.getFeederWSSettingPath());
-			boolean feederWsEnable = queryPairs.getOrDefault("feeder_ws_enable", "").equals("1");		
-			boolean feederWsSSL = queryPairs.getOrDefault("feeder_ws_ssl", "").equals("1");		
-			String feederWsAddress = queryPairs.getOrDefault("feeder_ws_address", "");		
-			String port = queryPairs.getOrDefault("feeder_ws_port", "0");
-			int feederWsPort = Utility.atoi(port);
-			String feederWsPath = queryPairs.getOrDefault("feeder_ws_path", "");		
-			String feederWsUsername = queryPairs.getOrDefault("feeder_ws_username", "");		
-			String feederWsPassword = queryPairs.getOrDefault("feeder_ws_password", "");		
-			String feederWsTopic = queryPairs.getOrDefault("feeder_ws_topic", "");
+			ConfigSubscriberWS.load(Config.getSubscriberWSSettingPath());
+			boolean subscriberWsEnable = queryPairs.getOrDefault("subscriber_ws_enable", "").equals("1");		
+			boolean subscriberWsSSL = queryPairs.getOrDefault("subscriber_ws_ssl", "").equals("1");		
+			String subscriberWsAddress = queryPairs.getOrDefault("subscriber_ws_address", "");		
+			String port = queryPairs.getOrDefault("subscriber_ws_port", "0");
+			int subscriberWsPort = Utility.atoi(port);
+			String subscriberWsPath = queryPairs.getOrDefault("subscriber_ws_path", "");		
+			String subscriberWsUsername = queryPairs.getOrDefault("subscriber_ws_username", "");		
+			String subscriberWsPassword = queryPairs.getOrDefault("subscriber_ws_password", "");		
+			String subscriberWsTopic = queryPairs.getOrDefault("subscriber_ws_topic", "");
 			
-			String timeout = queryPairs.getOrDefault("feeder_ws_timeout", "0");
-			int feederWsTimeout = Utility.atoi(timeout);	
-			String reconnect = queryPairs.getOrDefault("feeder_ws_reconnect_delay", "0");
-			int feederWsReconnectDelay = Utility.atoi(reconnect);
-			String refresh = queryPairs.getOrDefault("feeder_ws_refresh", "0");
-			int feederWsRefresh = Utility.atoi(refresh);
+			String timeout = queryPairs.getOrDefault("subscriber_ws_timeout", "0");
+			int subscriberWsTimeout = Utility.atoi(timeout);	
+			String reconnect = queryPairs.getOrDefault("subscriber_ws_reconnect_delay", "0");
+			int subscriberWsReconnectDelay = Utility.atoi(reconnect);
+			String refresh = queryPairs.getOrDefault("subscriber_ws_refresh", "0");
+			int subscriberWsRefresh = Utility.atoi(refresh);
 			
-			ConfigFeederWS.setFeederWsEnable(feederWsEnable);
-			ConfigFeederWS.setFeederWsSSL(feederWsSSL);
-			ConfigFeederWS.setFeederWsAddress(feederWsAddress);
-			ConfigFeederWS.setFeederWsPort(feederWsPort);
-			ConfigFeederWS.setFeederWsPath(feederWsPath);
-			ConfigFeederWS.setFeederWsUsername(feederWsUsername);
-			ConfigFeederWS.setFeederWsPassword(feederWsPassword);
-			ConfigFeederWS.setFeederWsTopic(feederWsTopic);
-			ConfigFeederWS.setFeederWsTimeout(feederWsTimeout);
-			ConfigFeederWS.setFeederWsReconnectDelay(feederWsReconnectDelay);
-			ConfigFeederWS.setFeederWsRefresh(feederWsRefresh);		
+			ConfigSubscriberWS.setSubscriberWsEnable(subscriberWsEnable);
+			ConfigSubscriberWS.setSubscriberWsSSL(subscriberWsSSL);
+			ConfigSubscriberWS.setSubscriberWsAddress(subscriberWsAddress);
+			ConfigSubscriberWS.setSubscriberWsPort(subscriberWsPort);
+			ConfigSubscriberWS.setSubscriberWsPath(subscriberWsPath);
+			ConfigSubscriberWS.setSubscriberWsUsername(subscriberWsUsername);
+			ConfigSubscriberWS.setSubscriberWsPassword(subscriberWsPassword);
+			ConfigSubscriberWS.setSubscriberWsTopic(subscriberWsTopic);
+			ConfigSubscriberWS.setSubscriberWsTimeout(subscriberWsTimeout);
+			ConfigSubscriberWS.setSubscriberWsReconnectDelay(subscriberWsReconnectDelay);
+			ConfigSubscriberWS.setSubscriberWsRefresh(subscriberWsRefresh);		
 			
-			ConfigFeederWS.save();
+			ConfigSubscriberWS.save();
 		}
 		
-		if(queryPairs.containsKey("save_feeder_amqp_setting"))
+		if(queryPairs.containsKey("save_subscriber_amqp_setting"))
 		{
-			ConfigFeederAMQP.load(Config.getFeederAMQPSettingPath());
-			boolean feederAmqpEnable = queryPairs.getOrDefault("feeder_amqp_enable", "").equals("1");		
-			boolean feederAmqpSSL = queryPairs.getOrDefault("feeder_amqp_ssl", "").equals("1");		
-			String feederAmqpAddress = queryPairs.getOrDefault("feeder_amqp_address", "");		
-			String port = queryPairs.getOrDefault("feeder_amqp_port", "0");
-			int feederAmqpPort = Utility.atoi(port);
-			String feederAmqpPath = queryPairs.getOrDefault("feeder_amqp_path", "");		
-			String feederAmqpUsername = queryPairs.getOrDefault("feeder_amqp_username", "");		
-			String feederAmqpPassword = queryPairs.getOrDefault("feeder_amqp_password", "");		
-			String feederAmqpTopic = queryPairs.getOrDefault("feeder_amqp_topic", "");
+			ConfigSubscriberAMQP.load(Config.getSubscriberAMQPSettingPath());
+			boolean subscriberAmqpEnable = queryPairs.getOrDefault("subscriber_amqp_enable", "").equals("1");		
+			boolean subscriberAmqpSSL = queryPairs.getOrDefault("subscriber_amqp_ssl", "").equals("1");		
+			String subscriberAmqpAddress = queryPairs.getOrDefault("subscriber_amqp_address", "");		
+			String port = queryPairs.getOrDefault("subscriber_amqp_port", "0");
+			int subscriberAmqpPort = Utility.atoi(port);
+			String subscriberAmqpPath = queryPairs.getOrDefault("subscriber_amqp_path", "");		
+			String subscriberAmqpUsername = queryPairs.getOrDefault("subscriber_amqp_username", "");		
+			String subscriberAmqpPassword = queryPairs.getOrDefault("subscriber_amqp_password", "");		
+			String subscriberAmqpTopic = queryPairs.getOrDefault("subscriber_amqp_topic", "");
 			
-			String timeout = queryPairs.getOrDefault("feeder_amqp_timeout", "0");
-			int feederAmqpTimeout = Utility.atoi(timeout);	
-			String refresh = queryPairs.getOrDefault("feeder_amqp_refresh", "0");
-			int feederAmqpRefresh = Utility.atoi(refresh);
+			String timeout = queryPairs.getOrDefault("subscriber_amqp_timeout", "0");
+			int subscriberAmqpTimeout = Utility.atoi(timeout);	
+			String refresh = queryPairs.getOrDefault("subscriber_amqp_refresh", "0");
+			int subscriberAmqpRefresh = Utility.atoi(refresh);
 			
-			ConfigFeederAMQP.setFeederAmqpEnable(feederAmqpEnable);
-			ConfigFeederAMQP.setFeederAmqpSSL(feederAmqpSSL);
-			ConfigFeederAMQP.setFeederAmqpAddress(feederAmqpAddress);
-			ConfigFeederAMQP.setFeederAmqpPort(feederAmqpPort);
-			ConfigFeederAMQP.setFeederAmqpPath(feederAmqpPath);
-			ConfigFeederAMQP.setFeederAmqpUsername(feederAmqpUsername);
-			ConfigFeederAMQP.setFeederAmqpPassword(feederAmqpPassword);
-			ConfigFeederAMQP.setFeederAmqpTopic(feederAmqpTopic);
-			ConfigFeederAMQP.setFeederAmqpTimeout(feederAmqpTimeout);
-			ConfigFeederAMQP.setFeederAmqpRefresh(feederAmqpRefresh);		
+			ConfigSubscriberAMQP.setSubscriberAmqpEnable(subscriberAmqpEnable);
+			ConfigSubscriberAMQP.setSubscriberAmqpSSL(subscriberAmqpSSL);
+			ConfigSubscriberAMQP.setSubscriberAmqpAddress(subscriberAmqpAddress);
+			ConfigSubscriberAMQP.setSubscriberAmqpPort(subscriberAmqpPort);
+			ConfigSubscriberAMQP.setSubscriberAmqpPath(subscriberAmqpPath);
+			ConfigSubscriberAMQP.setSubscriberAmqpUsername(subscriberAmqpUsername);
+			ConfigSubscriberAMQP.setSubscriberAmqpPassword(subscriberAmqpPassword);
+			ConfigSubscriberAMQP.setSubscriberAmqpTopic(subscriberAmqpTopic);
+			ConfigSubscriberAMQP.setSubscriberAmqpTimeout(subscriberAmqpTimeout);
+			ConfigSubscriberAMQP.setSubscriberAmqpRefresh(subscriberAmqpRefresh);		
 
-			ConfigFeederAMQP.save();			
+			ConfigSubscriberAMQP.save();			
 		}		
 	}
 	

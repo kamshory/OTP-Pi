@@ -12,8 +12,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.planetbiru.config.ConfigDDNS;
-import com.planetbiru.config.ConfigFeederAMQP;
-import com.planetbiru.config.ConfigFeederWS;
+import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.config.ConfigGeneral;
 import com.planetbiru.config.ConfigModem;
 import com.planetbiru.constant.ConstantString;
@@ -338,7 +338,7 @@ public class Scheduller extends Thread{
 
 	private void amqpCheck()
 	{
-		ServerInfo.sendAMQPStatus(ConfigFeederAMQP.isConnected());
+		ServerInfo.sendAMQPStatus(ConfigSubscriberAMQP.isConnected());
 	}
 	
 	public void updateServerStatus()
@@ -355,8 +355,8 @@ public class Scheduller extends Thread{
 		data.put("ram", (memory.optJSONObject("ram") != null)?memory.optJSONObject("ram").optDouble("percentUsed", 0):0);
 		data.put("swap", (memory.optJSONObject("swap") != null)?memory.optJSONObject("swap").optDouble("percentUsed", 0):0);
 		data.put("modem", GSMUtil.isConnected());
-		data.put("ws", ConfigFeederWS.isConnected());
-		data.put("amqp", ConfigFeederAMQP.isConnected());
+		data.put("ws", ConfigSubscriberWS.isConnected());
+		data.put("amqp", ConfigSubscriberAMQP.isConnected());
 
 		ServerStatus.append(data);
 		ServerStatus.save();

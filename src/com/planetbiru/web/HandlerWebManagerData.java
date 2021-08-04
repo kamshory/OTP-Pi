@@ -13,8 +13,8 @@ import com.planetbiru.config.ConfigAPIUser;
 import com.planetbiru.config.ConfigBlocking;
 import com.planetbiru.config.ConfigDDNS;
 import com.planetbiru.config.ConfigEmail;
-import com.planetbiru.config.ConfigFeederAMQP;
-import com.planetbiru.config.ConfigFeederWS;
+import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.config.ConfigFirewall;
 import com.planetbiru.config.ConfigGeneral;
 import com.planetbiru.config.ConfigKeystore;
@@ -58,7 +58,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		}
 		else if(path.startsWith("/data/feeder-ws-setting/get"))
 		{
-			this.handleFeederWSSetting(httpExchange);
+			this.handleSubscriberWSSetting(httpExchange);
 		}
 		else if(path.startsWith("/data/log/list"))
 		{
@@ -86,7 +86,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		}
 		else if(path.startsWith("/data/feeder-amqp-setting/get"))
 		{
-			this.handleFeederAMQPSetting(httpExchange);
+			this.handleSubscriberAMQPSetting(httpExchange);
 		}
 		else if(path.startsWith("/data/sms-setting/get"))
 		{
@@ -686,7 +686,7 @@ public class HandlerWebManagerData implements HttpHandler {
 	}
 
 	//@GetMapping(path="/data/feeder-ws-setting/get")
-	public void handleFeederWSSetting(HttpExchange httpExchange) throws IOException
+	public void handleSubscriberWSSetting(HttpExchange httpExchange) throws IOException
 	{
 		Headers requestHeaders = httpExchange.getRequestHeaders();
 		Headers responseHeaders = httpExchange.getResponseHeaders();
@@ -697,8 +697,8 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				ConfigFeederWS.load(Config.getFeederWSSettingPath());
-				String list = ConfigFeederWS.toJSONObject().toString();
+				ConfigSubscriberWS.load(Config.getSubscriberWSSettingPath());
+				String list = ConfigSubscriberWS.toJSONObject().toString();
 				responseBody = list.getBytes();
 			}
 			else
@@ -964,7 +964,7 @@ public class HandlerWebManagerData implements HttpHandler {
 	}
 	
 	//@GetMapping(path="/data/feeder-amqp-setting/get")
-	public void handleFeederAMQPSetting(HttpExchange httpExchange) throws IOException
+	public void handleSubscriberAMQPSetting(HttpExchange httpExchange) throws IOException
 	{
 		Headers requestHeaders = httpExchange.getRequestHeaders();
 		Headers responseHeaders = httpExchange.getResponseHeaders();
@@ -975,8 +975,8 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				ConfigFeederAMQP.load(Config.getFeederAMQPSettingPath());
-				String list = ConfigFeederAMQP.toJSONObject().toString();
+				ConfigSubscriberAMQP.load(Config.getSubscriberAMQPSettingPath());
+				String list = ConfigSubscriberAMQP.toJSONObject().toString();
 				responseBody = list.getBytes();
 			}
 			else

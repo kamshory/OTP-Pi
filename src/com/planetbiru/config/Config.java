@@ -15,8 +15,8 @@ public class Config {
 	private static String sessionName = "SMSSESSID";
 	private static long sessionLifetime = 1440000;
 	private static String emailSettingPath = "";
-	private static String feederAMQPSettingPath = "";
-	private static String feederWSSettingPath = "";
+	private static String subscriberAMQPSettingPath = "";
+	private static String subscriberWSSettingPath = "";
 	private static String wlanSettingPath = "";
 	private static String ddnsSettingPath = "";
 	private static String cloudflareSettingPath = "";
@@ -25,7 +25,7 @@ public class Config {
 	private static String dhcpSettingPath = "";
 	private static String ethernetSettingPath = "";
 	private static String modemSettingPath = "";
-	private static long feederWSRecoonectDelay;
+	private static long subscriberWSRecoonectDelay;
 	private static String noIPDevice = "OTP Broker/version 1.0";
 	private static String noIPSettingPath = "";
 	private static String deviceName = "OTP Broker";
@@ -172,20 +172,20 @@ public class Config {
 		Config.emailSettingPath = emailSettingPath;
 	}
 
-	public static String getFeederAMQPSettingPath() {
-		return feederAMQPSettingPath;
+	public static String getSubscriberAMQPSettingPath() {
+		return subscriberAMQPSettingPath;
 	}
 
-	public static void setFeederAMQPSettingPath(String feederAMQPSettingPath) {
-		Config.feederAMQPSettingPath = feederAMQPSettingPath;
+	public static void setSubscriberAMQPSettingPath(String subscriberAMQPSettingPath) {
+		Config.subscriberAMQPSettingPath = subscriberAMQPSettingPath;
 	}
 
-	public static String getFeederWSSettingPath() {
-		return feederWSSettingPath;
+	public static String getSubscriberWSSettingPath() {
+		return subscriberWSSettingPath;
 	}
 
-	public static void setFeederWSSettingPath(String feederWSSettingPath) {
-		Config.feederWSSettingPath = feederWSSettingPath;
+	public static void setSubscriberWSSettingPath(String subscriberWSSettingPath) {
+		Config.subscriberWSSettingPath = subscriberWSSettingPath;
 	}
 
 	public static String getWlanSettingPath() {
@@ -252,12 +252,12 @@ public class Config {
 		Config.modemSettingPath = modemSettingPath;
 	}
 
-	public static long getFeederWSRecoonectDelay() {
-		return feederWSRecoonectDelay;
+	public static long getSubscriberWSRecoonectDelay() {
+		return subscriberWSRecoonectDelay;
 	}
 
-	public static void setFeederWSRecoonectDelay(long feederWSRecoonectDelay) {
-		Config.feederWSRecoonectDelay = feederWSRecoonectDelay;
+	public static void setSubscriberWSRecoonectDelay(long subscriberWSRecoonectDelay) {
+		Config.subscriberWSRecoonectDelay = subscriberWSRecoonectDelay;
 	}
 
 	public static String getNoIPDevice() {

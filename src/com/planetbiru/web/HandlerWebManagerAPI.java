@@ -153,11 +153,11 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				String action = queryPairs.getOrDefault("action", "");
 				if(action.equals("start"))
 				{
-					Application.feederAMQPStart();				
+					Application.subscriberAMQPStart();				
 				}
 				else
 				{
-					Application.feederAMQPStop();
+					Application.subscriberAMQPStop();
 				} 
 				ServerWebSocketAdmin.broadcastServerInfo();
 			} 

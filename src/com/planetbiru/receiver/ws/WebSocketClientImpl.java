@@ -11,7 +11,7 @@ import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 import org.json.JSONException;
 import com.planetbiru.api.MessageAPI;
-import com.planetbiru.config.ConfigFeederWS;
+import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.util.Utility;
 
 public class WebSocketClientImpl extends Thread{
@@ -31,7 +31,7 @@ public class WebSocketClientImpl extends Thread{
 	@Override
 	public void run()
 	{
-		if(ConfigFeederWS.isFeederWsEnable())
+		if(ConfigSubscriberWS.isSubscriberWsEnable())
 		{
 			try 
 			{
@@ -136,7 +136,7 @@ public class WebSocketClientImpl extends Thread{
 		{
 			URI uri = new URI(endpoint);	
 			Map<String, String> headers = new HashMap<>();
-			headers.put("Authorization", Utility.basicAuth(ConfigFeederWS.getFeederWsUsername(), ConfigFeederWS.getFeederWsPassword()));
+			headers.put("Authorization", Utility.basicAuth(ConfigSubscriberWS.getSubscriberWsUsername(), ConfigSubscriberWS.getSubscriberWsPassword()));
 			this.wsClient = null;
 			this.wsClient = new WebSocketClient(uri, headers) {
 			    @Override
@@ -169,7 +169,7 @@ public class WebSocketClientImpl extends Thread{
 	}
 	
 	private String fixWSEndpoint(String endpoint) {
-		String topic = Utility.urlEncode(ConfigFeederWS.getFeederWsTopic());
+		String topic = Utility.urlEncode(ConfigSubscriberWS.getSubscriberWsTopic());
 		String path = endpoint;
 		Map<String, List<String>> params = new HashMap<>();
 		String query = "";
@@ -204,27 +204,27 @@ public class WebSocketClientImpl extends Thread{
 
 	private String createWSEndpoint() {
 		String protocol = "";
-		String host = ConfigFeederWS.getFeederWsAddress();
+		String host = ConfigSubscriberWS.getSubscriberWsAddress();
 		String port = "";
-		String contextPath = ConfigFeederWS.getFeederWsPath();
+		String contextPath = ConfigSubscriberWS.getSubscriberWsPath();
 		if(!contextPath.startsWith("/"))
 		{
 			contextPath = "/"+contextPath;
 		}
-		if(ConfigFeederWS.isFeederWsSSL())
+		if(ConfigSubscriberWS.isSubscriberWsSSL())
 		{
 			protocol = "wss://";
-			if(ConfigFeederWS.getFeederWsPort() != 443)
+			if(ConfigSubscriberWS.getSubscriberWsPort() != 443)
 			{
-				port = ":"+ConfigFeederWS.getFeederWsPort();
+				port = ":"+ConfigSubscriberWS.getSubscriberWsPort();
 			}
 		}
 		else
 		{
 			protocol = "ws://";
-			if(ConfigFeederWS.getFeederWsPort() != 80)
+			if(ConfigSubscriberWS.getSubscriberWsPort() != 80)
 			{
-				port = ":"+ConfigFeederWS.getFeederWsPort();
+				port = ":"+ConfigSubscriberWS.getSubscriberWsPort();
 			}
 		}	
 		return String.format("%s%s%s%s", protocol, host, port, contextPath);

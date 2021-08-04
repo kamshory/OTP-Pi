@@ -20,8 +20,8 @@ import com.planetbiru.config.ConfigAPIUser;
 import com.planetbiru.config.ConfigBlocking;
 import com.planetbiru.config.ConfigDDNS;
 import com.planetbiru.config.ConfigEmail;
-import com.planetbiru.config.ConfigFeederAMQP;
-import com.planetbiru.config.ConfigFeederWS;
+import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.config.ConfigFirewall;
 import com.planetbiru.config.ConfigKeystore;
 import com.planetbiru.config.ConfigModem;
@@ -159,14 +159,14 @@ public class Application {
 	
 			
 			/**
-			 * WebSocket Client for feeder
+			 * WebSocket Client for subscriber
 			 */
 			Application.feederWSStart();
 			
 			/**
-			 * RabbitMQ Client for feeder
+			 * RabbitMQ Client for subscriber
 			 */
-			Application.feederAMQPStart();
+			Application.subscriberAMQPStart();
 			
 			/**
 			 * REST API
@@ -194,14 +194,14 @@ public class Application {
 		
 	}
 	
-	public static void feederAMQPStart() {
+	public static void subscriberAMQPStart() {
 		if(Application.amqpReceiver == null || !Application.amqpReceiver.isRunning())
 		{
 			Application.amqpReceiver = new ClientReceiverAMQP();
 			Application.amqpReceiver.start();
 		}		
 	}
-	public static void feederAMQPStop() {
+	public static void subscriberAMQPStop() {
 		if(Application.amqpReceiver != null || Application.amqpReceiver.isRunning())
 		{
 			Application.amqpReceiver.stopService();
@@ -369,13 +369,13 @@ public class Application {
 		}
 		if(props.getOrDefault("RESET_FEEDER_AMQP", "").toString().equalsIgnoreCase("true"))
 		{
-			ConfigFeederAMQP.reset();
-			ConfigFeederAMQP.save();
+			ConfigSubscriberAMQP.reset();
+			ConfigSubscriberAMQP.save();
 		}
 		if(props.getOrDefault("RESET_FEEDER_WS", "").toString().equalsIgnoreCase("true"))
 		{
-			ConfigFeederWS.reset();
-			ConfigFeederWS.save();
+			ConfigSubscriberWS.reset();
+			ConfigSubscriberWS.save();
 		}
 		if(props.getOrDefault("RESET_FIREWALL", "").toString().equalsIgnoreCase("true"))
 		{

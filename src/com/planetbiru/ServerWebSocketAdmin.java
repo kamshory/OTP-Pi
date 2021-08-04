@@ -17,8 +17,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.planetbiru.config.ConfigAPI;
-import com.planetbiru.config.ConfigFeederAMQP;
-import com.planetbiru.config.ConfigFeederWS;
+import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.config.ConfigModem;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.cookie.CookieServer;
@@ -175,22 +175,22 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 		data.put(modem);
 		JSONObject wsEnable = new JSONObject();
 		wsEnable.put(JsonKey.NAME, "otp-ws-enable");
-		wsEnable.put(JsonKey.VALUE, ConfigFeederWS.isFeederWsEnable());
+		wsEnable.put(JsonKey.VALUE, ConfigSubscriberWS.isSubscriberWsEnable());
 		data.put(wsEnable);
 		
 		JSONObject wsConnected = new JSONObject();
 		wsConnected.put(JsonKey.NAME, "otp-ws-connected");
-		wsConnected.put(JsonKey.VALUE, ConfigFeederWS.isConnected());
+		wsConnected.put(JsonKey.VALUE, ConfigSubscriberWS.isConnected());
 		data.put(wsConnected);
 		
 		JSONObject amqpEnable = new JSONObject();
 		amqpEnable.put(JsonKey.NAME, "otp-amqp-enable");
-		amqpEnable.put(JsonKey.VALUE, ConfigFeederAMQP.isFeederAmqpEnable());
+		amqpEnable.put(JsonKey.VALUE, ConfigSubscriberAMQP.isSubscriberAmqpEnable());
 		data.put(amqpEnable);
 		
 		JSONObject amqpConnected = new JSONObject();
 		amqpConnected.put(JsonKey.NAME, "otp-amqp-connected");
-		amqpConnected.put(JsonKey.VALUE, ConfigFeederAMQP.isConnected());
+		amqpConnected.put(JsonKey.VALUE, ConfigSubscriberAMQP.isConnected());
 		data.put(amqpConnected);
 		
 		JSONObject httpEnable = new JSONObject();
