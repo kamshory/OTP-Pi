@@ -688,8 +688,8 @@
   }
   @media screen and (max-width: 1200px)  and (min-width: 992px) {
     .tile-area .tile { 
-      width: 9.5%; 
-      margin-left: 1%;    
+      width: 10.1%; 
+      margin-left: 0.6%;    
     }
     
     .tile-area > .tile:nth-child(9n + 1) {
