@@ -173,7 +173,7 @@
                   $('#id').val(id);
                   $.ajax({
                       type:"GET",
-                      url:"/ddns-record/detail/"+id,
+                      url:"data/ddns-record/detail/"+id,
                       dataType:"json",
                       success:function(data){
                         $('[name="provider"]').val(data.provider);

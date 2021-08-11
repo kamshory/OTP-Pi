@@ -148,7 +148,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			this.handleKeystoreDetail(httpExchange);
 		}	
-		else if(path.startsWith("/data/ddns-record/detail//"))
+		else if(path.startsWith("/data/ddns-record/detail/"))
 		{
 			this.handleDDNSRecordGet(httpExchange);
 		}
