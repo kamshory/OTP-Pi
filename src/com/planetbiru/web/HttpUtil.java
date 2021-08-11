@@ -14,6 +14,10 @@ import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 
 public class HttpUtil {
+	private HttpUtil()
+	{
+		
+	}
 	public static byte[] getRequestBody(HttpExchange httpExchange)
 	{
         Headers requestHeaders = httpExchange.getRequestHeaders();

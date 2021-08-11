@@ -149,9 +149,9 @@ public class ConfigLoader {
 		String cleanupCommand = ConfigLoader.getConfig("otpbroker.ssh.cleanup.command");
 		String logDir = ConfigLoader.getConfig("otpbroker.log.dir");	
 		String storageDir = ConfigLoader.getConfig("otpbroker.storage.dir");
-		int portManager = ConfigLoader.getConfigInt("server.port");
+		int portManager = ConfigLoader.getConfigInt("otpbroker.server.port");
 		boolean showTraffic = ConfigLoader.getConfigBoolean("otpbroker.show.trafic");
-		int serverPort = ConfigLoader.getConfigInt("server.port");
+		int serverPort = ConfigLoader.getConfigInt("otpbroker.server.port");
 
 		boolean ddnsUpdate = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.ddns");
 		boolean timeUpdate = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.ntp");
@@ -171,6 +171,7 @@ public class ConfigLoader {
 		long subscriberWsTimeout = ConfigLoader.getConfigLong("otpbroker.ws.timeout");
 		long subscriberWsRefresh = ConfigLoader.getConfigLong("otpbroker.ws.refresh.delay");
 		long subscriberWsReconnectDelay = ConfigLoader.getConfigLong("otpbroker.ws.reconnect.delay");
+		long waitLoop = ConfigLoader.getConfigLong("otpbroker.ws.wait.loop");
 		String imageName = ConfigLoader.getConfig("otpbroker.image.name");
 		boolean logConfigNotFound = ConfigLoader.getConfigBoolean("otpbroker.log.config.not.found");
 	
@@ -262,6 +263,8 @@ public class ConfigLoader {
 		ConfigVendorAfraid.load(Config.getAfraidSettingPath());		
 		ConfigGeneral.load(Config.getGeneralSettingPath());		
 		ServerStatus.load(Config.getServerStatusSettingPath());
+		
+		Config.setWaitLoop(waitLoop);
 		ConfigSubscriberWS.setSubscriberWsEnable(subscriberWsEnable);
 		ConfigSubscriberWS.setSubscriberWsSSL(subscriberWsSSL);
 		ConfigSubscriberWS.setSubscriberWsAddress(subscriberWsAddress);
@@ -273,6 +276,9 @@ public class ConfigLoader {
 		ConfigSubscriberWS.setSubscriberWsTimeout(subscriberWsTimeout);
 		ConfigSubscriberWS.setSubscriberWsReconnectDelay(subscriberWsReconnectDelay);
 		ConfigSubscriberWS.setSubscriberWsRefresh(subscriberWsRefresh);		
+		
+		
+		
 		ConfigSubscriberWS.load(Config.getSubscriberWSSettingPath());
 		ConfigSMS.load(Config.getSmsSettingPath());
 		ConfigBlocking.setCountryCode(ConfigSMS.getCountryCode());

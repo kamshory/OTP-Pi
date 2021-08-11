@@ -86,6 +86,7 @@ public class Config {
 	private static boolean logConfigNotFound = true;
 	private static int ddnsTimeout = 10000;
 	private static String resetConfigPath = "/otp-pi/reset-config.ini";
+	private static long waitLoop = 1000;
 	
 	private Config()
 	{
@@ -730,6 +731,14 @@ public class Config {
 
 	public static void setResetConfigPath(String resetConfigPath) {
 		Config.resetConfigPath = resetConfigPath;
+	}
+
+	public static long getWaitLoop() {
+		return waitLoop;
+	}
+
+	public static void setWaitLoop(long waitLoop) {
+		Config.waitLoop = waitLoop;
 	}
 	
 }

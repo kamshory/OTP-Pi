@@ -142,12 +142,13 @@ public class Application {
 	
 			Application.prepareSessionDir();
 	
-			int wsport = Config.getServerPort()+1;
+			int webPort = Config.getServerPort();
+			int wsport = webPort+1;
 
 			/**
 			 * Web Server for Admin
 			 */
-			Application.webAdmin = new ServerWebAdmin();
+			Application.webAdmin = new ServerWebAdmin(webPort);
 			Application.webAdmin.start();
 
 			/**
@@ -211,7 +212,7 @@ public class Application {
 	public static void feederWSStart() {
 		if(Application.webSocketClient == null || !Application.webSocketClient.isRunning())
 		{
-			Application.webSocketClient = new ClientReceiverWebSocket();
+			Application.webSocketClient = new ClientReceiverWebSocket(Config.getReconnectDelay(), Config.getWaitLoop());
 			Application.webSocketClient.start();	
 		}
 	}

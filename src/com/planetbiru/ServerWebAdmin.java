@@ -5,7 +5,6 @@ import java.net.InetSocketAddress;
 
 import org.apache.log4j.Logger;
 
-import com.planetbiru.config.Config;
 import com.planetbiru.util.ServiceHTTP;
 import com.planetbiru.web.HandlerWebManager;
 import com.planetbiru.web.HandlerWebManagerAPI;
@@ -20,12 +19,18 @@ import com.sun.net.httpserver.HttpServer;
 public class ServerWebAdmin {
 	
 	private static Logger logger = Logger.getLogger(ServerWebAdmin.class);
+	private int serverPort;
+	
+	public ServerWebAdmin(int serverPort)
+	{
+		this.serverPort = serverPort;
+	}
 	
 	public void start() 
 	{
 		try 
 		{
-			ServiceHTTP.setHttpServer(HttpServer.create(new InetSocketAddress(Config.getServerPort()), 0));
+			ServiceHTTP.setHttpServer(HttpServer.create(new InetSocketAddress(this.serverPort), 0));
 	        ServiceHTTP.getHttpServer().createContext("/", new HandlerWebManager());
 	        ServiceHTTP.getHttpServer().createContext("/login.html", new HandlerWebManagerLogin());
 	        ServiceHTTP.getHttpServer().createContext("/logout.html", new HandlerWebManagerLogout());

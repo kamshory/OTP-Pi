@@ -1,8 +1,6 @@
 # Setup Environment Variables
 
 ```bash
-echo 'export SPRING_DEVTOOLS_RESTART_ENABLED="true"' >> $HOME/.bashrc
-echo 'export MANAGEMENT_ENDPOINT_RESTART_ENABLED="true"' >> $HOME/.bashrc
 echo 'export OTPBROKER_DEVICE_NAME="OTP Broker"' >> $HOME/.bashrc
 echo 'export OTPBROKER_DEVICE_VERSION="Version 1.0.0"' >> $HOME/.bashrc
 echo 'export OTPBROKER_SERVER_MANAGEMENT_PORT="8888"' >> $HOME/.bashrc
@@ -76,6 +74,7 @@ echo 'export OTPBROKER_WS_CHANNEL="sms"' >> $HOME/.bashrc
 echo 'export OTPBROKER_WS_TIMEOUT="5000"' >> $HOME/.bashrc
 echo 'export OTPBROKER_WS_REFRESH_DELAY="5000"' >> $HOME/.bashrc
 echo 'export OTPBROKER_WS_RECONNECT_DELAY="10000"' >> $HOME/.bashrc
+echo 'export OTPBROKER_WS_WAIT_LOOP="1000"' >> $HOME/.bashrc
 echo 'export OTPBROKER_RABBITMQ_ENABLE="false"' >> $HOME/.bashrc
 echo 'export OTPBROKER_RABBITMQ_SSL="false"' >> $HOME/.bashrc
 echo 'export OTPBROKER_RABBITMQ_HOST="localhost"' >> $HOME/.bashrc
@@ -105,6 +104,6 @@ echo 'export OTPBROKER_SSH_CLEANUP_COMMAND="/etc/bin clean.sh"' >> $HOME/.bashrc
 echo 'export OTPBROKER_SHOW_TRAFIC="true"' >> $HOME/.bashrc
 echo 'export OTPBROKER_DEBUG_MODEM="true"' >> $HOME/.bashrc
 echo 'export OTPBROKER_SERVER_HMAC="4194cbdf197b1a281612e14b5d0b68a692fd7f81d6a817d4abcf7977407fa76b196a39519281c68eea98f96dae255753b1f5a9bf69d851ac505ec8e44daedbb7"' >> $HOME/.bashrc
-echo 'export SERVER_PORT="8888"' >> $HOME/.bashrc
+echo 'export OTPBROKER_SERVER_PORT="8888"' >> $HOME/.bashrc
 
 ```

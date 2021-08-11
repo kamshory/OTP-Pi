@@ -3,14 +3,13 @@ package com.planetbiru.receiver.ws;
 public class ClientReceiverWebSocket extends Thread{
 
 	private boolean running;
-	private long reconnectDelay = 5000;
-	public ClientReceiverWebSocket(long reconnectDelay) {
-		this.reconnectDelay = reconnectDelay;
-	}
-	public ClientReceiverWebSocket() {
-		
-	}
 	private WebSocketClientImpl ws;
+	private long reconnectDelay = 5000;
+	private long waitLoop = 1000;
+	public ClientReceiverWebSocket(long reconnectDelay, long waitLoop) {
+		this.reconnectDelay = reconnectDelay;
+		this.waitLoop = waitLoop;
+	}
 	
 	@Override
 	public void run()
@@ -18,7 +17,7 @@ public class ClientReceiverWebSocket extends Thread{
 		this.startThread(true);
 		do 
 		{
-			this.delay(1000);
+			this.delay(this.waitLoop);
 		}
 		while(this.isRunning());
 	}
