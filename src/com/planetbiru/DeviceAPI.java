@@ -116,7 +116,7 @@ public class DeviceAPI {
 	public static void setTimeZone(String timeZone) {
 		String command1 = "/bin/timedatectl set-timezone " + timeZone;
 		String command2 = "rm -rf /etc/localtime";
-		String command3 = "ln -s /usr/share/zoneinfo/"+timeZone+" /etc/localtime";
+		String command3 = "ln -s /usr/share/zoneinfo/" + timeZone + " /etc/localtime";
 		
 		CommandLineExecutor.exec(command1);
 		CommandLineExecutor.exec(command2);
