@@ -19,8 +19,9 @@ public class ConfigGeneral {
 	private static String deviceName = "";
 	private static String deviceTimeZone = "";
 	private static String ntpServer = "";
-	private static String ntpUpdateInterval = "";
-	
+	private static String ntpUpdateInterval = "";	
+	private static String restartService = "";
+	private static String restartDevice = "";
 	private static Logger logger = Logger.getLogger(ConfigGeneral.class);
 
 	private ConfigGeneral()
@@ -51,6 +52,8 @@ public class ConfigGeneral {
 					ConfigGeneral.deviceTimeZone = json.optString("deviceTimeZone", "").trim();
 					ConfigGeneral.ntpServer = json.optString("ntpServer", "").trim();
 					ConfigGeneral.ntpUpdateInterval = json.optString("ntpUpdateInterval", "").trim();
+					ConfigGeneral.restartService = json.optString("restartService", "").trim();
+					ConfigGeneral.restartDevice = json.optString("restartDevice", "").trim();
 				}
 			}
 		} 
@@ -115,6 +118,8 @@ public class ConfigGeneral {
 		config.put("deviceTimeZone", ConfigGeneral.deviceTimeZone);
 		config.put("ntpServer", ConfigGeneral.ntpServer);
 		config.put("ntpUpdateInterval", ConfigGeneral.ntpUpdateInterval);
+		config.put("restartService", ConfigGeneral.restartService);
+		config.put("restartDevice", ConfigGeneral.restartDevice);
 		return config;
 	}
 
@@ -152,6 +157,22 @@ public class ConfigGeneral {
 
 	public static void setNtpUpdateInterval(String ntpUpdateInterval) {
 		ConfigGeneral.ntpUpdateInterval = ntpUpdateInterval;
+	}
+
+	public static String getRestartService() {
+		return restartService;
+	}
+
+	public static void setRestartService(String restartService) {
+		ConfigGeneral.restartService = restartService;
+	}
+
+	public static String getRestartDevice() {
+		return restartDevice;
+	}
+
+	public static void setRestartDevice(String restartDevice) {
+		ConfigGeneral.restartDevice = restartDevice;
 	}
 
 	public static Date getNextValid() {

@@ -808,12 +808,16 @@ public class HandlerWebManager implements HttpHandler {
 			String deviceTimeZone = queryPairs.getOrDefault("device_time_zone", "").trim();
 			String ntpServer = queryPairs.getOrDefault("ntp_server", "").trim();
 			String ntpUpdateInterval = queryPairs.getOrDefault("ntp_update_interval", "").trim();
+			String restartService = queryPairs.getOrDefault("restart_service", "").trim();
+			String restartDevice = queryPairs.getOrDefault("restart_device", "").trim();
 			
 			ConfigGeneral.setDeviceName(deviceName2);
 			ConfigGeneral.setDeviceTimeZone(deviceTimeZone);
 			ConfigGeneral.setNtpServer(ntpServer);
 			ConfigGeneral.setNtpUpdateInterval(ntpUpdateInterval);
-
+			ConfigGeneral.setRestartService(restartService);
+			ConfigGeneral.setRestartDevice(restartDevice);
+			
 			ConfigGeneral.save();
 			DeviceAPI.setTimeZone(deviceTimeZone);
 		}

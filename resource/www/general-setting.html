@@ -61,6 +61,7 @@
                                 <li><a href="firewall.html">Firewall</a></li>
                 <li><a href="open-port.html">Open Port</a></li>
                                 <li><a href="keystore.html">Keystore</a></li>
+                                <li><a href="cron.html">Cron</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li class="dropdown-header">DDNS Setting</li>
                                 <li><a href="ddns-record.html">DDNS Record</a></li>
@@ -115,7 +116,37 @@
                                     <option value="">Never</option>
                                     <option value="0 0 */6 * * ?">Every 6 hours</option>
                                     <option value="0 0 */12 * * ?">Every 12 hours</option>
-                                    <option value="0 0 0 * * ?">Everyday at 00:00:00</option>
+                                    <option value="0 0 0 * * ?">Everyday at 00:00</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td>Restart Service</td>
+                            <td><select name="restart_service" id="restart_service" class="form-control">
+                                    <option value="">Never</option>
+                                    <option value="0 0 */12 * * ?">Every 12 hours</option>
+                                    <option value="0 0 0 * * ?">Everyday at 00:00</option>
+                                    <option value="0 0 0 ? * MON">Every Monday at 00:00</option>
+                                    <option value="0 0 0 ? * TUE">Every Tuesday at 00:00</option>
+                                    <option value="0 0 0 ? * WED">Every Wednesday at 00:00</option>
+                                    <option value="0 0 0 ? * THU">Every Thursday at 00:00</option>
+                                    <option value="0 0 0 ? * FRI">Every Friday at 00:00</option>
+                                    <option value="0 0 0 ? * SAT">Every Saturday at 00:00</option>
+                                    <option value="0 0 0 ? * SUN">Every Sunday at 00:00</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td>Restart Device</td>
+                            <td><select name="restart_device" id="restart_device" class="form-control">
+                                    <option value="">Never</option>
+                                    <option value="0 0 */12 * * ?">Every 12 hours</option>
+                                    <option value="0 0 0 * * ?">Everyday at 00:00</option>
+                                    <option value="0 0 0 ? * MON">Every Monday at 00:00</option>
+                                    <option value="0 0 0 ? * TUE">Every Tuesday at 00:00</option>
+                                    <option value="0 0 0 ? * WED">Every Wednesday at 00:00</option>
+                                    <option value="0 0 0 ? * THU">Every Thursday at 00:00</option>
+                                    <option value="0 0 0 ? * FRI">Every Friday at 00:00</option>
+                                    <option value="0 0 0 ? * SAT">Every Saturday at 00:00</option>
+                                    <option value="0 0 0 ? * SUN">Every Sunday at 00:00</option>
                                 </select></td>
                         </tr>
                         <tr>
@@ -152,6 +183,8 @@
                 $('[name="device_time_zone"]').val(data.deviceTimeZone);
                 $('[name="ntp_server"]').val(data.ntpServer);
                 $('[name="ntp_update_interval"]').val(data.ntpUpdateInterval);
+                $('[name="restart_service"]').val(data.restartService);
+                $('[name="restart_device"]').val(data.restartDevice);
             }
         });
     });

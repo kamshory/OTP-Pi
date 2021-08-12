@@ -88,7 +88,16 @@ public class Scheduller extends Thread{
 			if(!ConfigGeneral.getNtpUpdateInterval().isEmpty())
 			{
 				this.updateTime(currentTime, ConfigGeneral.getNtpUpdateInterval());
-			}			
+			}
+			
+			if(!ConfigGeneral.getRestartDevice().isEmpty())
+			{
+				this.restartDevice(currentTime, ConfigGeneral.getRestartDevice());
+			}
+			if(!ConfigGeneral.getRestartService().isEmpty())
+			{
+				this.restartService(currentTime, ConfigGeneral.getRestartService());
+			}
 			
 			/**
 			 * Update DDNS
@@ -127,6 +136,44 @@ public class Scheduller extends Thread{
 		
 	}
 	
+	private void restartDevice(Date currentTime, String restartDevice) {
+		CronExpression exp;
+		try
+		{
+			exp = new CronExpression(restartDevice);
+			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
+			if(currentTime.getTime() > nextValidTimeAfter.getTime())
+			{
+				DeviceAPI.reboot();
+			}
+		}
+		catch(JSONException | ParseException e)
+		{
+			/**
+			 * Do nothing
+			 */
+		}		
+	}
+	
+	private void restartService(Date currentTime, String restartService) {
+		CronExpression exp;
+		try
+		{
+			exp = new CronExpression(restartService);
+			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
+			if(currentTime.getTime() > nextValidTimeAfter.getTime())
+			{
+				DeviceAPI.restart();
+			}
+		}
+		catch(JSONException | ParseException e)
+		{
+			/**
+			 * Do nothing
+			 */
+		}		
+	}
+
 	private void updateTime(Date currentTime, String cronExpressionNTP) {
 		CronExpression exp;
 		try
