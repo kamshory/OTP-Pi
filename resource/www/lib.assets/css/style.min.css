@@ -25,7 +25,12 @@
   
   .navbar {
     margin-bottom: 20px;
+    border-top: none;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
   }
+  
+  
   .all{
       position:relative;
       padding:20px;
@@ -756,7 +761,7 @@
   .tile-wrapper{
     border: 1px solid #DDDDDD;
     border-radius: 4px;
-    padding-top: 5px;
+    padding-top: 10px;
     position: relative;
     overflow: hidden;
     background-color: #FFFFFF;
