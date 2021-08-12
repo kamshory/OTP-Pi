@@ -105,5 +105,8 @@ echo 'export OTPBROKER_SHOW_TRAFIC="true"' >> $HOME/.bashrc
 echo 'export OTPBROKER_DEBUG_MODEM="true"' >> $HOME/.bashrc
 echo 'export OTPBROKER_SERVER_HMAC="4194cbdf197b1a281612e14b5d0b68a692fd7f81d6a817d4abcf7977407fa76b196a39519281c68eea98f96dae255753b1f5a9bf69d851ac505ec8e44daedbb7"' >> $HOME/.bashrc
 echo 'export OTPBROKER_SERVER_PORT="8888"' >> $HOME/.bashrc
+echo 'export OTPBROKER_RESET_DEVICE_TYPE="RPi"' >> $HOME/.bashrc
+echo 'export OTPBROKER_RESET_DEVICE_FILE="reset-config.ini"' >> $HOME/.bashrc
+
 
 ```

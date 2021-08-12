@@ -412,8 +412,7 @@ public class Application {
 		usbDrives.add("/media/usb/a");
 		usbDrives.add("/media/usb/b");
 		usbDrives.add("/media/usb/c");
-		usbDrives.add("/media/usb/d");
-		
+		usbDrives.add("/media/usb/d");		
 		String fileName = Config.getResetConfigPath();
 		
 		for(int i = 0; i<usbDrives.size(); i++)
@@ -422,7 +421,7 @@ public class Application {
 			try 
 			{
 				Properties props = getResetProperties(path);
-				if(verifyResetFile(props.getOrDefault("VERIFY", "").toString()))
+				if(verifyResetFile(props.getOrDefault("VERIFY", "").toString(), Config.getResetDeviceType(), Config.getResetDeviceFile()))
 				{
 					return props;
 				}
@@ -433,15 +432,15 @@ public class Application {
 			}
 			
 		}
-		
 		return null;
 	}
 
-	private static boolean verifyResetFile(String verifyString) {
+	private static boolean verifyResetFile(String verifyString, String deviceType, String baseName) {
 		try
 		{
-			JSONObject json = new JSONObject(verifyString);
-			return (json.optString("deviceType", "").equals("RPi") && json.optString("baseName", "").equals("reset-config.ini"));
+			String decoded = Utility.base64Decode(verifyString);
+			JSONObject json = new JSONObject(decoded);
+			return (json.optString("deviceType", "").equals(deviceType) && json.optString("baseName", "").equals(baseName));
 		}
 		catch(JSONException e)
 		{

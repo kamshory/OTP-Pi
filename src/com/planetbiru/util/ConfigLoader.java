@@ -177,6 +177,11 @@ public class ConfigLoader {
 	
 		String resetConfigPath = ConfigLoader.getConfig("otpbroker.path.reset.config");
 		
+		String resetDeviceType = ConfigLoader.getConfig("otpbroker.reset.device.type");
+		String resetDeviceFile = ConfigLoader.getConfig("otpbroker.reset.device.file");
+		
+		Config.setResetDeviceType(resetDeviceType);
+		Config.setResetDeviceFile(resetDeviceFile);
 		Config.setLogConfigNotFound(logConfigNotFound);
 		Config.setImageName(imageName);
 		Config.setSmtpSettingPath(smtpSettingPath);
