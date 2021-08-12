@@ -86,7 +86,8 @@ public class Config {
 	private static boolean logConfigNotFound = true;
 	private static int ddnsTimeout = 10000;
 	private static String resetConfigPath = "/otp-pi/reset-config.ini";
-	private static long waitLoop = 1000;
+	private static long waitLoopParent = 1000;
+	private static long waitLoopChild = 30000;
 	private static String resetDeviceType = "RPi";
 	private static String resetDeviceFile = "reset-config.ini";
 	
@@ -735,14 +736,6 @@ public class Config {
 		Config.resetConfigPath = resetConfigPath;
 	}
 
-	public static long getWaitLoop() {
-		return waitLoop;
-	}
-
-	public static void setWaitLoop(long waitLoop) {
-		Config.waitLoop = waitLoop;
-	}
-
 	public static String getResetDeviceType() {
 		return resetDeviceType;
 	}
@@ -757,6 +750,22 @@ public class Config {
 
 	public static void setResetDeviceFile(String resetDeviceFile) {
 		Config.resetDeviceFile = resetDeviceFile;
+	}
+
+	public static long getWaitLoopParent() {
+		return waitLoopParent;
+	}
+
+	public static void setWaitLoopParent(long waitLoopParent) {
+		Config.waitLoopParent = waitLoopParent;
+	}
+
+	public static long getWaitLoopChild() {
+		return waitLoopChild;
+	}
+
+	public static void setWaitLoopChild(long waitLoopChild) {
+		Config.waitLoopChild = waitLoopChild;
 	}
 	
 }

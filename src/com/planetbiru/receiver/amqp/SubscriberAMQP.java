@@ -4,8 +4,8 @@ import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigSubscriberAMQP;
 
 
-public class ClientReceiverAMQP {
-	RabbitMQReceiver amqp = new RabbitMQReceiver();
+public class SubscriberAMQP {
+	RabbitMQSubscriber amqp = new RabbitMQSubscriber();
 	private boolean running = false;
 	public void start()
 	{
@@ -13,7 +13,7 @@ public class ClientReceiverAMQP {
 		ConfigSubscriberAMQP.load(Config.getSubscriberAMQPSettingPath());
 		if(ConfigSubscriberAMQP.isSubscriberAmqpEnable())
 		{
-			this.amqp = new RabbitMQReceiver();
+			this.amqp = new RabbitMQSubscriber();
 			this.amqp.connect();
 			this.running = true;
 		}		

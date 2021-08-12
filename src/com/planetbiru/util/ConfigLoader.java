@@ -24,7 +24,7 @@ import com.planetbiru.config.ConfigVendorNoIP;
 import com.planetbiru.config.PropertyLoader;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.gsm.SMSLogger;
-import com.planetbiru.receiver.amqp.RabbitMQReceiver;
+import com.planetbiru.receiver.amqp.RabbitMQSubscriber;
 import com.planetbiru.receiver.ws.WebSocketClientImpl;
 import com.planetbiru.user.WebUserAccount;
 import com.planetbiru.web.HandlerWebManagerAPI;
@@ -171,7 +171,8 @@ public class ConfigLoader {
 		long subscriberWsTimeout = ConfigLoader.getConfigLong("otpbroker.ws.timeout");
 		long subscriberWsRefresh = ConfigLoader.getConfigLong("otpbroker.ws.refresh.delay");
 		long subscriberWsReconnectDelay = ConfigLoader.getConfigLong("otpbroker.ws.reconnect.delay");
-		long waitLoop = ConfigLoader.getConfigLong("otpbroker.ws.wait.loop");
+		long waitLoopParent = ConfigLoader.getConfigLong("otpbroker.ws.wait.loop.parent");
+		long waitLoopChild = ConfigLoader.getConfigLong("otpbroker.ws.wait.loop.child");
 		String imageName = ConfigLoader.getConfig("otpbroker.image.name");
 		boolean logConfigNotFound = ConfigLoader.getConfigBoolean("otpbroker.log.config.not.found");
 	
@@ -269,7 +270,8 @@ public class ConfigLoader {
 		ConfigGeneral.load(Config.getGeneralSettingPath());		
 		ServerStatus.load(Config.getServerStatusSettingPath());
 		
-		Config.setWaitLoop(waitLoop);
+		Config.setWaitLoopParent(waitLoopParent);
+		Config.setWaitLoopChild(waitLoopChild);
 		ConfigSubscriberWS.setSubscriberWsEnable(subscriberWsEnable);
 		ConfigSubscriberWS.setSubscriberWsSSL(subscriberWsSSL);
 		ConfigSubscriberWS.setSubscriberWsAddress(subscriberWsAddress);
@@ -293,7 +295,7 @@ public class ConfigLoader {
 		{
 			SMSLogger.setPath(Config.getSmsLogPath());
 		}
-		GSMUtil.getCallerType().put(Utility.getClassName(RabbitMQReceiver.class.toString()), "amqp");
+		GSMUtil.getCallerType().put(Utility.getClassName(RabbitMQSubscriber.class.toString()), "amqp");
 		GSMUtil.getCallerType().put(Utility.getClassName(WebSocketClientImpl.class.toString()), "ws");
 		GSMUtil.getCallerType().put(Utility.getClassName(HandlerWebManagerAPI.class.toString()), "rest");
 		ConfigAPI.load(Config.getApiSettingPath());	

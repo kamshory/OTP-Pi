@@ -18,12 +18,14 @@ public class WebSocketClientImpl extends Thread{
 	private long reconnectDelay = 10000;
 	private boolean stopend = false;
 	private WebSocketClient wsClient;
-	private ClientReceiverWebSocket webSocketTool;
+	private SubscriberWebSocket webSocketTool;
 	private boolean reconnect = false;
+	private long waitLoop = 300000;
 	
-	public WebSocketClientImpl(long reconnectDelay, ClientReceiverWebSocket webSocketTool, boolean reconnect)
+	public WebSocketClientImpl(long reconnectDelay, long waitLoop, SubscriberWebSocket webSocketTool, boolean reconnect)
 	{
 		this.reconnectDelay = reconnectDelay;
+		this.waitLoop = waitLoop;
 		this.webSocketTool = webSocketTool;
 		this.reconnect = reconnect;
 	}	
@@ -48,7 +50,7 @@ public class WebSocketClientImpl extends Thread{
 			{			
 				try 
 				{
-					Thread.sleep(300000);
+					Thread.sleep(this.waitLoop);
 				} 
 				catch (InterruptedException e) 
 				{
@@ -78,7 +80,7 @@ public class WebSocketClientImpl extends Thread{
 		this.wsClient = null;
 		try 
 		{
-			Thread.sleep(reconnectDelay);
+			Thread.sleep(this.reconnectDelay);
 		} 
 		catch (InterruptedException e) 
 		{

@@ -17,7 +17,7 @@ import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
 import com.rabbitmq.client.ShutdownSignalException;
 
-public class RabbitMQReceiver{
+public class RabbitMQSubscriber{
 	private Connection connection;
 	private Channel channel;
 	private ConnectionFactory factory;

@@ -37,8 +37,8 @@ import com.planetbiru.config.ConfigVendorNoIP;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.gsm.DialUtil;
 import com.planetbiru.gsm.GSMUtil;
-import com.planetbiru.receiver.amqp.ClientReceiverAMQP;
-import com.planetbiru.receiver.ws.ClientReceiverWebSocket;
+import com.planetbiru.receiver.amqp.SubscriberAMQP;
+import com.planetbiru.receiver.ws.SubscriberWebSocket;
 import com.planetbiru.user.WebUserAccount;
 import com.planetbiru.util.CommandLineExecutor;
 import com.planetbiru.util.ConfigLoader;
@@ -56,8 +56,8 @@ public class Application {
 	private static ServerRESTAPI rest;
 	private static ServerEmail smtp;
 	private static Scheduller scheduller;
-	private static ClientReceiverWebSocket webSocketClient;	
-	private static ClientReceiverAMQP amqpReceiver;
+	private static SubscriberWebSocket webSocketClient;	
+	private static SubscriberAMQP amqpReceiver;
 	
 	private static Logger logger = Logger.getLogger(Application.class);
 	
@@ -198,7 +198,7 @@ public class Application {
 	public static void subscriberAMQPStart() {
 		if(Application.amqpReceiver == null || !Application.amqpReceiver.isRunning())
 		{
-			Application.amqpReceiver = new ClientReceiverAMQP();
+			Application.amqpReceiver = new SubscriberAMQP();
 			Application.amqpReceiver.start();
 		}		
 	}
@@ -212,7 +212,7 @@ public class Application {
 	public static void feederWSStart() {
 		if(Application.webSocketClient == null || !Application.webSocketClient.isRunning())
 		{
-			Application.webSocketClient = new ClientReceiverWebSocket(Config.getReconnectDelay(), Config.getWaitLoop());
+			Application.webSocketClient = new SubscriberWebSocket(Config.getReconnectDelay(), Config.getWaitLoopParent(), Config.getWaitLoopChild());
 			Application.webSocketClient.start();	
 		}
 	}
