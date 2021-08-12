@@ -12,7 +12,24 @@
 .message-sender{
     font-weight:bold;
     float:left;
-
+}
+.message-sim-card{
+    font-weight: bold;
+    position: relative;
+}
+.message-item .message-sim-card::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    bottom: -3px;
+    left: 0;
+    border-top: 1px solid #f9f4d5;
+    border-bottom: 1px solid #fffced;
+}
+.message-item.message-item-selected .message-sim-card::after {
+    content: "";
+    border-top: 1px solid #f6e892;
+    border-bottom: 1px solid #fff7c9;
 }
 .message-date-time{
     text-align:right;

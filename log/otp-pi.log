@@ -200,3 +200,19 @@ Caused by: java.io.FileNotFoundException: C:\bitbucket\OTP-Pi (Access is denied)
 2021-08-12 09:28:13 [INFO  ] Application                     :189  - Service started
 2021-08-12 09:42:29 [INFO  ] GSM                             :443  - Set Serial Port
 2021-08-12 09:42:30 [INFO  ] Application                     :189  - Service started
+2021-08-12 19:51:38 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-12 19:51:38 [INFO  ] Application                     :189  - Service started
+2021-08-12 20:00:10 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-12 20:00:10 [INFO  ] Application                     :189  - Service started
+2021-08-12 20:03:08 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-12 20:03:08 [INFO  ] Application                     :189  - Service started
+2021-08-12 20:06:15 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-12 20:06:15 [INFO  ] Application                     :189  - Service started
+2021-08-13 06:29:23 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-13 06:29:24 [INFO  ] Application                     :189  - Service started
+2021-08-13 06:32:50 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-13 06:32:50 [INFO  ] Application                     :189  - Service started
+2021-08-13 06:35:36 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-13 06:35:37 [INFO  ] Application                     :189  - Service started
+2021-08-13 06:36:39 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-13 06:36:39 [INFO  ] Application                     :189  - Service started
