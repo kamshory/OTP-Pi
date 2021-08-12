@@ -14,6 +14,13 @@ import com.planetbiru.util.Utility;
 
 public class DeviceAPI {
 	
+	private static long lastRestart = 0;
+	private static long lastReboot = 0;
+	private static long lastUpdateNTP = 0;
+	private static long lastCheckModem = 0;
+	private static long lastCheckStatus = 0;
+	private static long lastCheckAMQP = 0;
+
 	private DeviceAPI()
 	{
 		
@@ -130,6 +137,54 @@ public class DeviceAPI {
 	public static void expand() {
 		String command = "/usr/bin/rootfs-expand";
 		CommandLineExecutor.exec(command);
+	}
+
+	public static long getLastReboot() {
+		return lastReboot;
+	}
+
+	public static void setLastReboot(long lastReboot) {
+		DeviceAPI.lastReboot = lastReboot;
+	}
+
+	public static long getLastRestart() {
+		return lastRestart;
+	}
+
+	public static void setLastRestart(long lastRestart) {
+		DeviceAPI.lastRestart = lastRestart;
+	}
+
+	public static long getLastUpdateNTP() {
+		return lastUpdateNTP;
+	}
+
+	public static void setLastUpdateNTP(long lastUpdateNTP) {
+		DeviceAPI.lastUpdateNTP = lastUpdateNTP;
+	}
+
+	public static long getLastCheckModem() {
+		return lastCheckModem;
+	}
+
+	public static void setLastCheckModem(long lastCheckModem) {
+		DeviceAPI.lastCheckModem = lastCheckModem;
+	}
+
+	public static long getLastCheckStatus() {
+		return lastCheckStatus;
+	}
+
+	public static void setLastCheckStatus(long lastCheckStatus) {
+		DeviceAPI.lastCheckStatus = lastCheckStatus;
+	}
+
+	public static long getLastCheckAMQP() {
+		return lastCheckAMQP;
+	}
+
+	public static void setLastCheckAMQP(long lastCheckAMQP) {
+		DeviceAPI.lastCheckAMQP = lastCheckAMQP;
 	}
 	
 }

@@ -30,25 +30,15 @@ public class Scheduller extends Thread{
 
 	private boolean running = true;
 
-	private long nextValidNTP = 0;
-
-	private long nextValidDDNSUpdate = 0;
-
 	private String cronExpressionDDNSUpdate = "0 * * * * ?";
 	
-	private long nextValidDeviceCheck = 0;
-
 	private String cronExpressionDeviceCheck = "0 * * * * ?";
-
-	private long nextValidAMQPCheck = 0;
 
 	private String cronExpressionAMQPCheck = "0 * * * * ?";
 
 	private long cronInterval = 2000;
 
 	private String cronExpressionStatusServer = "0 * * * * ?";
-
-	private long nextValidStatusServer = 0;
 
 	private boolean cronUpdateServerStatus = false;
 
@@ -142,9 +132,10 @@ public class Scheduller extends Thread{
 		{
 			exp = new CronExpression(restartDevice);
 			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
-			if(currentTime.getTime() > nextValidTimeAfter.getTime())
+			if(currentTime.getTime() > DeviceAPI.getLastReboot() && currentTime.getTime() > nextValidTimeAfter.getTime())
 			{
 				DeviceAPI.reboot();
+				DeviceAPI.setLastReboot(nextValidTimeAfter.getTime());
 			}
 		}
 		catch(JSONException | ParseException e)
@@ -161,9 +152,10 @@ public class Scheduller extends Thread{
 		{
 			exp = new CronExpression(restartService);
 			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
-			if(currentTime.getTime() > nextValidTimeAfter.getTime())
+			if(currentTime.getTime() > DeviceAPI.getLastRestart() && currentTime.getTime() > nextValidTimeAfter.getTime())
 			{
 				DeviceAPI.restart();
+				DeviceAPI.setLastRestart(nextValidTimeAfter.getTime());
 			}
 		}
 		catch(JSONException | ParseException e)
@@ -182,10 +174,10 @@ public class Scheduller extends Thread{
 			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
 			String ntpServer = ConfigGeneral.getNtpServer();		
 
-			if(currentTime.getTime() > this.nextValidNTP && ntpServer != null && !ntpServer.isEmpty())
+			if(currentTime.getTime() > DeviceAPI.getLastUpdateNTP() && ntpServer != null && !ntpServer.isEmpty())
 			{
 				DeviceAPI.syncTime(ntpServer);
-				this.nextValidNTP = nextValidTimeAfter.getTime();
+				DeviceAPI.setLastUpdateNTP(nextValidTimeAfter.getTime());
 			}
 		}
 		catch(JSONException | ParseException e)
@@ -208,10 +200,10 @@ public class Scheduller extends Thread{
 				exp = new CronExpression(cronExpression);
 				Date currentTime = new Date();
 				Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);	
-				if(currentTime.getTime() > this.nextValidNTP)
+				if(currentTime.getTime() > DeviceAPI.getLastUpdateNTP())
 				{
 					DeviceAPI.syncTime(ntpServer);
-					this.nextValidNTP = nextValidTimeAfter.getTime();
+					DeviceAPI.setLastUpdateNTP(nextValidTimeAfter.getTime());
 				}
 			}
 			catch(JSONException | ParseException e)
@@ -229,10 +221,10 @@ public class Scheduller extends Thread{
 		{
 			exp = new CronExpression(this.cronExpressionDDNSUpdate);
 			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
-			if(currentTime.getTime() > this.nextValidDDNSUpdate)
+			if(currentTime.getTime() > DDNSUpdater.getLastUpdate())
 			{
 				this.updateDDNSRecord();
-				this.nextValidDDNSUpdate = nextValidTimeAfter.getTime();
+				DDNSUpdater.setLastUpdate(nextValidTimeAfter.getTime());
 			}
 		}
 		catch(JSONException | ParseException e)
@@ -303,10 +295,10 @@ public class Scheduller extends Thread{
 		{
 			exp = new CronExpression(this.cronExpressionDeviceCheck);
 			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
-			if(currentTime.getTime() > this.nextValidDeviceCheck)
+			if(currentTime.getTime() > DeviceAPI.getLastCheckModem())
 			{
 				this.modemCheck();
-				this.nextValidDeviceCheck = nextValidTimeAfter.getTime();
+				DeviceAPI.setLastCheckModem(nextValidTimeAfter.getTime());
 			}
 		}
 		catch(JSONException | ParseException e)
@@ -323,10 +315,10 @@ public class Scheduller extends Thread{
 		{
 			exp = new CronExpression(this.cronExpressionAMQPCheck);
 			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
-			if(currentTime.getTime() > this.nextValidAMQPCheck)
+			if(currentTime.getTime() > DeviceAPI.getLastCheckAMQP())
 			{
 				this.amqpCheck();
-				this.nextValidAMQPCheck = nextValidTimeAfter.getTime();
+				DeviceAPI.setLastCheckAMQP(nextValidTimeAfter.getTime());
 			}
 		}
 		catch(JSONException | ParseException e)
@@ -343,10 +335,10 @@ public class Scheduller extends Thread{
 		{
 			exp = new CronExpression(this.cronExpressionStatusServer);
 			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
-			if(currentTime.getTime() > this.nextValidStatusServer)
+			if(currentTime.getTime() > DeviceAPI.getLastCheckStatus())
 			{
 				this.updateServerStatus();
-				this.nextValidStatusServer = nextValidTimeAfter.getTime();
+				DeviceAPI.setLastCheckStatus(nextValidTimeAfter.getTime());
 			}
 		}
 		catch(JSONException | ParseException e)

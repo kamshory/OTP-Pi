@@ -11,6 +11,7 @@ import com.planetbiru.config.ConfigVendorNoIP;
 
 public class DDNSUpdater extends Thread{
 	
+	private static long lastUpdate = 0;
 	private DDNSRecord ddnsRecord;
 	public DDNSUpdater(DDNSRecord ddnsRecord, String prevFireTimeStr, String currentTimeStr, String nextValidTimeAfterStr) {
 		this.ddnsRecord = ddnsRecord;
@@ -87,5 +88,13 @@ public class DDNSUpdater extends Thread{
 		{
 			e.printStackTrace();
 		}
+	}
+
+	public static long getLastUpdate() {
+		return lastUpdate;
+	}
+
+	public static void setLastUpdate(long lastUpdate) {
+		DDNSUpdater.lastUpdate = lastUpdate;
 	}
 }
