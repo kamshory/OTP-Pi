@@ -44,9 +44,9 @@ public class ConfigLoader {
 		{
 			try 
 			{
-				ConfigLoader.properties.load(inputStream);
-				
-				for (Entry<Object, Object> entry : ConfigLoader.properties.entrySet()) {
+				ConfigLoader.properties.load(inputStream);		
+				for (Entry<Object, Object> entry : ConfigLoader.properties.entrySet()) 
+				{
 				    String key = (String) entry.getKey();
 				    String keyEnv = key.toUpperCase().replace(".", "_");
 				    String value = (String) entry.getValue();		    
@@ -72,7 +72,8 @@ public class ConfigLoader {
 		) 
 		{
 			ConfigLoader.properties.load(inputStream);			
-			for (Entry<Object, Object> entry : ConfigLoader.properties.entrySet()) {
+			for (Entry<Object, Object> entry : ConfigLoader.properties.entrySet()) 
+			{
 			    String key = (String) entry.getKey();
 			    String keyEnv = key.toUpperCase().replace(".", "_");
 			    String value = (String) entry.getValue();		    
@@ -91,8 +92,7 @@ public class ConfigLoader {
 	}
 	
 	public static void init()
-	{
-		
+	{	
 		String dhcpSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.dhcp");
 		String wlanSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.wlan");
 		String ethernetSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.ethernet");
@@ -110,12 +110,10 @@ public class ConfigLoader {
 		int sshPort = ConfigLoader.getConfigInt("otpbroker.ssh.port");
 		long sshSleep = ConfigLoader.getConfigLong("otpbroker.ssh.sleep");
 		boolean sshEnable = ConfigLoader.getConfigBoolean("otpbroker.ssh.enable");
-		String rebootCommand = ConfigLoader.getConfig("otpbroker.ssh.reboot.command");
-		
+		String rebootCommand = ConfigLoader.getConfig("otpbroker.ssh.reboot.command");		
 		String apiSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.api.service");
 		String userAPISettingPath = ConfigLoader.getConfig("otpbroker.path.setting.api.user");
-		String emailSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.email");
-		
+		String emailSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.email");	
 		String blockingSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.blocking");
 		String keystoreDataSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.keystore.data");
 		String keystoreSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.keystore");
@@ -126,8 +124,7 @@ public class ConfigLoader {
 		String smsLogPath = ConfigLoader.getConfig("otpbroker.path.log.sms");
 		String wvdialSettingPath = ConfigLoader.getConfig("otpbroker.path.wvdial");
 		String wvdialCommandConnect = ConfigLoader.getConfig("otpbroker.wvdial.command.connect");
-		String wvdialCommandDisconnect = ConfigLoader.getConfig("otpbroker.wvdial.command.disconnect");
-		
+		String wvdialCommandDisconnect = ConfigLoader.getConfig("otpbroker.wvdial.command.disconnect");		
 		String deviceName = ConfigLoader.getConfig("otpbroker.device.name");
 		String deviceVersion = ConfigLoader.getConfig("otpbroker.device.version");
 		String sessionName = ConfigLoader.getConfig("otpbroker.web.session.name");
@@ -152,7 +149,6 @@ public class ConfigLoader {
 		int portManager = ConfigLoader.getConfigInt("otpbroker.server.port");
 		boolean showTraffic = ConfigLoader.getConfigBoolean("otpbroker.show.trafic");
 		int serverPort = ConfigLoader.getConfigInt("otpbroker.server.port");
-
 		boolean ddnsUpdate = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.ddns");
 		boolean timeUpdate = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.ntp");
 		boolean cronDeviceEnable = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.device");
@@ -160,6 +156,7 @@ public class ConfigLoader {
 		String timeResolution = ConfigLoader.getConfig("otpbroker.cron.time.resolution:minute");
 		String serverStatusSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.server.status");	
 		
+		/**
 		boolean subscriberWsEnable = ConfigLoader.getConfigBoolean("otpbroker.ws.enable");
 		boolean subscriberWsSSL = ConfigLoader.getConfigBoolean("otpbroker.ws.ssl");
 		String subscriberWsAddress = ConfigLoader.getConfig("otpbroker.ws.address");
@@ -171,13 +168,13 @@ public class ConfigLoader {
 		long subscriberWsTimeout = ConfigLoader.getConfigLong("otpbroker.ws.timeout");
 		long subscriberWsRefresh = ConfigLoader.getConfigLong("otpbroker.ws.refresh.delay");
 		long subscriberWsReconnectDelay = ConfigLoader.getConfigLong("otpbroker.ws.reconnect.delay");
+		*/
 		long waitLoopParent = ConfigLoader.getConfigLong("otpbroker.ws.wait.loop.parent");
 		long waitLoopChild = ConfigLoader.getConfigLong("otpbroker.ws.wait.loop.child");
 		String imageName = ConfigLoader.getConfig("otpbroker.image.name");
 		boolean logConfigNotFound = ConfigLoader.getConfigBoolean("otpbroker.log.config.not.found");
 	
-		String resetConfigPath = ConfigLoader.getConfig("otpbroker.path.reset.config");
-		
+		String resetConfigPath = ConfigLoader.getConfig("otpbroker.path.reset.config");		
 		String resetDeviceType = ConfigLoader.getConfig("otpbroker.reset.device.type");
 		String resetDeviceFile = ConfigLoader.getConfig("otpbroker.reset.device.file");
 		
@@ -272,6 +269,7 @@ public class ConfigLoader {
 		
 		Config.setWaitLoopParent(waitLoopParent);
 		Config.setWaitLoopChild(waitLoopChild);
+		/**
 		ConfigSubscriberWS.setSubscriberWsEnable(subscriberWsEnable);
 		ConfigSubscriberWS.setSubscriberWsSSL(subscriberWsSSL);
 		ConfigSubscriberWS.setSubscriberWsAddress(subscriberWsAddress);
@@ -283,6 +281,7 @@ public class ConfigLoader {
 		ConfigSubscriberWS.setSubscriberWsTimeout(subscriberWsTimeout);
 		ConfigSubscriberWS.setSubscriberWsReconnectDelay(subscriberWsReconnectDelay);
 		ConfigSubscriberWS.setSubscriberWsRefresh(subscriberWsRefresh);		
+		*/
 		
 		
 		
