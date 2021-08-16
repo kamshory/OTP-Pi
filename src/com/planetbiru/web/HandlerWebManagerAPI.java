@@ -81,7 +81,61 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			{
 				this.feederAMQP(httpExchange);
 			}
+			else if(path.startsWith("/api/delete/sms"))
+			{
+				this.deleteSMS(httpExchange);
+			}
 		}
+	}
+	//@PostMapping(path="/api/delete/sms")
+	public void deleteSMS(HttpExchange httpExchange) throws IOException
+	{
+		byte[] req = HttpUtil.getRequestBody(httpExchange);
+		String requestBody = "";
+		if(req != null)
+		{
+			requestBody = new String(req);
+		}
+		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
+		Headers requestHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
+		int statusCode;
+		JSONObject responseJSON = new JSONObject();
+		statusCode = HttpStatus.OK;
+		try 
+		{
+			if(WebUserAccount.checkUserAuth(requestHeaders))
+			{
+				String action = queryPairs.getOrDefault("action", "");
+				if(action.equals("delete-sms"))
+				{
+					String modemID = queryPairs.getOrDefault("modem_id", "");					
+					int smsID = Utility.atoi(queryPairs.getOrDefault("sms_id", "0"));	
+					String storage = "SM";
+					GSMUtil.get(modemID).deleteSMS(smsID, storage);
+				}
+				
+			} 
+			else 
+			{
+				statusCode = HttpStatus.UNAUTHORIZED;
+			}
+		} 
+		catch (NoUserRegisteredException e) 
+		{
+			statusCode = HttpStatus.UNAUTHORIZED;
+		} 
+		catch (GSMException e) 
+		{
+			e.printStackTrace();
+		}
+		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
+		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
+		byte[] responseBody = responseJSON.toString(4).getBytes();
+
+		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+		httpExchange.getResponseBody().write(responseBody);
+		httpExchange.close();
 	}
 	//@PostMapping(path="/api/feeder-ws")
 	public void feederWS(HttpExchange httpExchange) throws IOException

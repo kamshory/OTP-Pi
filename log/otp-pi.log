@@ -220,3 +220,100 @@ Caused by: java.io.FileNotFoundException: C:\bitbucket\OTP-Pi (Access is denied)
 2021-08-13 06:51:16 [INFO  ] Application                     :189  - Service started
 2021-08-13 06:55:29 [INFO  ] GSM                             :443  - Set Serial Port
 2021-08-13 06:55:30 [INFO  ] Application                     :189  - Service started
+2021-08-16 16:18:02 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-16 16:18:02 [INFO  ] Application                     :189  - Service started
+2021-08-16 16:56:47 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-16 16:56:48 [INFO  ] Application                     :189  - Service started
+2021-08-16 16:57:46 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-16 16:57:47 [INFO  ] Application                     :189  - Service started
+2021-08-16 16:58:54 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-16 16:58:55 [INFO  ] Application                     :189  - Service started
+2021-08-16 17:00:07 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-16 17:00:08 [INFO  ] Application                     :189  - Service started
+2021-08-16 17:00:08 [INFO  ] GSM                             :156  - AT Command : ATE0
+2021-08-16 17:00:09 [INFO  ] GSM                             :156  - AT Command : AT+CSCS="GSM"
+2021-08-16 17:00:09 [INFO  ] GSM                             :156  - AT Command : AT+CMGF=1
+2021-08-16 17:00:09 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="MT"
+2021-08-16 17:00:09 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
+2021-08-16 17:00:09 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="SM"
+2021-08-16 17:00:09 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
+2021-08-16 17:00:11 [INFO  ] GSM                             :156  - AT Command : ATE0
+2021-08-16 17:00:11 [INFO  ] GSM                             :156  - AT Command : AT+CSCS="GSM"
+2021-08-16 17:00:11 [INFO  ] GSM                             :156  - AT Command : AT+CMGF=1
+2021-08-16 17:00:11 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="MT"
+2021-08-16 17:00:11 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
+2021-08-16 17:00:11 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="SM"
+2021-08-16 17:00:11 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
+2021-08-16 17:00:14 [INFO  ] GSM                             :156  - AT Command : ATE0
+2021-08-16 17:00:14 [INFO  ] GSM                             :156  - AT Command : AT+CSCS="GSM"
+2021-08-16 17:00:14 [INFO  ] GSM                             :156  - AT Command : AT+CMGF=1
+2021-08-16 17:00:14 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="MT"
+2021-08-16 17:00:14 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
+2021-08-16 17:00:14 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="SM"
+2021-08-16 17:00:14 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
+2021-08-16 17:00:17 [INFO  ] GSM                             :156  - AT Command : ATE0
+2021-08-16 17:00:17 [INFO  ] GSM                             :156  - AT Command : AT+CSCS="GSM"
+2021-08-16 17:00:17 [INFO  ] GSM                             :156  - AT Command : AT+CMGF=1
+2021-08-16 17:00:17 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="MT"
+2021-08-16 17:00:17 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
+2021-08-16 17:00:17 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="SM"
+2021-08-16 17:00:17 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
+2021-08-16 17:03:04 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-16 17:03:05 [INFO  ] Application                     :189  - Service started
+2021-08-16 17:03:08 [INFO  ] GSM                             :156  - AT Command : ATE0
+2021-08-16 17:03:08 [INFO  ] GSM                             :156  - AT Command : AT+CSCS="GSM"
+2021-08-16 17:03:08 [INFO  ] GSM                             :156  - AT Command : AT+CMGF=1
+2021-08-16 17:03:08 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="MT"
+2021-08-16 17:03:08 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
+2021-08-16 17:03:08 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="SM"
+2021-08-16 17:03:08 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
+2021-08-16 17:03:10 [INFO  ] GSM                             :156  - AT Command : ATE0
+2021-08-16 17:03:10 [INFO  ] GSM                             :156  - AT Command : AT+CSCS="GSM"
+2021-08-16 17:03:10 [INFO  ] GSM                             :156  - AT Command : AT+CMGF=1
+2021-08-16 17:03:10 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="MT"
+2021-08-16 17:03:10 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
+2021-08-16 17:03:10 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="SM"
+2021-08-16 17:03:10 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
+2021-08-16 17:05:26 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-16 17:05:27 [INFO  ] Application                     :189  - Service started
+2021-08-16 17:05:58 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-16 17:05:58 [INFO  ] Application                     :189  - Service started
+2021-08-16 17:06:02 [INFO  ] GSM                             :156  - AT Command : ATE0
+2021-08-16 17:06:02 [INFO  ] GSM                             :156  - AT Command : AT+CSCS="GSM"
+2021-08-16 17:06:02 [INFO  ] GSM                             :156  - AT Command : AT+CMGF=1
+2021-08-16 17:06:02 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="MT"
+2021-08-16 17:06:02 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
+2021-08-16 17:06:02 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="SM"
+2021-08-16 17:06:02 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
+2021-08-16 17:06:28 [INFO  ] GSM                             :156  - AT Command : ATE0
+2021-08-16 17:06:28 [INFO  ] GSM                             :156  - AT Command : AT+CSCS="GSM"
+2021-08-16 17:06:28 [INFO  ] GSM                             :156  - AT Command : AT+CMGF=1
+2021-08-16 17:06:28 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="MT"
+2021-08-16 17:06:28 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
+2021-08-16 17:06:28 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="SM"
+2021-08-16 17:06:28 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
+2021-08-16 17:06:31 [INFO  ] GSM                             :156  - AT Command : ATE0
+2021-08-16 17:06:31 [INFO  ] GSM                             :156  - AT Command : AT+CSCS="GSM"
+2021-08-16 17:06:31 [INFO  ] GSM                             :156  - AT Command : AT+CMGF=1
+2021-08-16 17:06:31 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="MT"
+2021-08-16 17:06:31 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
+2021-08-16 17:06:31 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="SM"
+2021-08-16 17:06:31 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
+2021-08-16 17:27:06 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-16 17:27:06 [INFO  ] Application                     :189  - Service started
+2021-08-16 17:28:04 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-16 17:28:04 [INFO  ] Application                     :189  - Service started
+2021-08-16 17:28:15 [INFO  ] GSM                             :156  - AT Command : ATE0
+2021-08-16 17:28:15 [INFO  ] GSM                             :156  - AT Command : AT+CSCS="GSM"
+2021-08-16 17:28:15 [INFO  ] GSM                             :156  - AT Command : AT+CMGF=1
+2021-08-16 17:28:15 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="MT"
+2021-08-16 17:28:15 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
+2021-08-16 17:28:15 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="SM"
+2021-08-16 17:28:15 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
+2021-08-16 17:28:23 [INFO  ] GSM                             :156  - AT Command : ATE0
+2021-08-16 17:28:23 [INFO  ] GSM                             :156  - AT Command : AT+CSCS="GSM"
+2021-08-16 17:28:23 [INFO  ] GSM                             :156  - AT Command : AT+CMGF=1
+2021-08-16 17:28:23 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="MT"
+2021-08-16 17:28:23 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
+2021-08-16 17:28:23 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="SM"
+2021-08-16 17:28:23 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"

@@ -67,6 +67,26 @@ public class GSMInstance {
 		}
 	}
 	
+	public List<SMS> readSMS() throws GSMException
+	{
+		if(this.gsm.getSerialPort() == null)
+		{
+			throw new GSMException(ConstantString.SERIAL_PORT_NULL);
+		}
+		this.waitUntilReady();
+		return this.gsm.readSMS();
+	}
+	
+	public void deleteSMS(int smsID, String storage) throws GSMException 
+    {
+    	this.gsm.deleteSMS(smsID, storage);
+    }
+
+    public void deleteAllSMS(String storage) throws GSMException 
+    {
+    	this.gsm.deleteAllSMS(storage);
+    }
+	
 	private void waitUntilReady() {
 		long maxWaith = Config.getMaxWaitModemReady();
 		long ellapsed = 0;
@@ -76,16 +96,6 @@ public class GSMInstance {
 			this.sleep(Config.getWaithModemReady());
 			ellapsed = System.currentTimeMillis() - startTime;
 		}
-	}
-	
-	public List<SMS> readSMS() throws GSMException
-	{
-		if(this.gsm.getSerialPort() == null)
-		{
-			throw new GSMException(ConstantString.SERIAL_PORT_NULL);
-		}
-		this.waitUntilReady();
-		return this.gsm.readSMS();
 	}
 	
 	public String executeUSSD(String ussd) throws GSMException {

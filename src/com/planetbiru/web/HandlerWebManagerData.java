@@ -2,6 +2,7 @@ package com.planetbiru.web;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
@@ -31,6 +32,10 @@ import com.planetbiru.config.ConfigVendorNoIP;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.cookie.CookieServer;
+import com.planetbiru.gsm.GSMException;
+import com.planetbiru.gsm.GSMInstance;
+import com.planetbiru.gsm.GSMUtil;
+import com.planetbiru.gsm.SMS;
 import com.planetbiru.user.NoUserRegisteredException;
 import com.planetbiru.user.WebUserAccount;
 import com.planetbiru.util.FileConfigUtil;
@@ -80,6 +85,10 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			this.handleDownloadReportFile(httpExchange);
 		}
+		else if(path.startsWith("/data/sms/inbox"))
+		{
+			this.handleSMSInbox(httpExchange);
+		}	
 		else if(path.startsWith("/data/block-list/list"))
 		{
 			this.handleBlockList(httpExchange);
@@ -880,6 +889,77 @@ public class HandlerWebManagerData implements HttpHandler {
 		httpExchange.close();	
 	}
 	
+	//@GetMapping(path="/data/sms/inbox/**")
+	public void handleSMSInbox(HttpExchange httpExchange) throws IOException
+	{
+		Headers requestHeaders = httpExchange.getRequestHeaders();
+		String path = httpExchange.getRequestURI().getPath();
+		String modemID = path.contains("/data/sms/inbox/")?path.substring("/data/sms/inbox/".length()):"";
+		Headers responseHeaders = httpExchange.getResponseHeaders();
+		CookieServer cookie = new CookieServer(requestHeaders, Config.getSessionName(), Config.getSessionLifetime());
+		byte[] responseBody = "".getBytes();
+		int statusCode = HttpStatus.OK;
+		JSONArray allSMS = new JSONArray();
+		try
+		{
+			if(WebUserAccount.checkUserAuth(requestHeaders))
+			{
+				allSMS = this.readSMS(modemID);			
+			}
+			else
+			{
+				statusCode = HttpStatus.UNAUTHORIZED;			
+			}
+			responseBody = allSMS.toString().getBytes();
+		}
+		catch(NoUserRegisteredException e)
+		{
+			/**
+			 * Do nothing
+			 */
+		} 
+		catch (GSMException e) 
+		{
+			e.printStackTrace();
+		}
+		cookie.saveSessionData();
+		cookie.putToHeaders(responseHeaders);
+		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
+		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
+
+		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+		httpExchange.getResponseBody().write(responseBody);
+		httpExchange.close();	
+	}
+	
+	private JSONArray readSMS(String modemID) throws GSMException {
+		JSONArray allSMS = new JSONArray();
+		if(modemID.isEmpty())
+		{
+			System.out.println("Modem ID is empty");
+			List<GSMInstance> instances = GSMUtil.getGsmInstance();
+			for(int i = 0; i<instances.size(); i++)
+			{
+				GSMInstance instance =  GSMUtil.getGsmInstance().get(i);
+				List<SMS> sms = instance.readSMS();
+				for(int j = 0; j < sms.size(); j++)
+				{
+					allSMS.put(sms.get(j).toJSONObject());
+				}
+			}
+		}
+		else
+		{
+			System.out.println("Modem ID = "+modemID);
+			List<SMS> sms = GSMUtil.get(modemID).readSMS();
+			for(int j = 0; j < sms.size(); j++)
+			{
+				allSMS.put(sms.get(j).toJSONObject());
+			}
+		}
+		return allSMS;
+	}
+
 	//@GetMapping(path="/data/report/sms/download/**")
 	public void handleDownloadReportFile(HttpExchange httpExchange) throws IOException
 	{

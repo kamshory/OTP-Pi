@@ -369,7 +369,7 @@ public class GSM {
         return result;
     }
 
-    public String deleteSMS(int smsId, String storage) throws GSMException 
+    public String deleteSMS(int smsID, String storage) throws GSMException 
     {
     	this.setReady(false);
     	String result = "";
@@ -378,7 +378,7 @@ public class GSM {
     	{
     		result = result1;
     	}
-    	String result2 = executeAT("AT+CMGD=" + smsId, 1);
+    	String result2 = executeAT("AT+CMGD=" + smsID, 1);
     	if(result2.isEmpty())
     	{
     		result = result2;
