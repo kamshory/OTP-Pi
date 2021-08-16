@@ -97,8 +97,9 @@
                 </div>
                 <div class="message-list">
                     <div class="message-item" 
-                        data-modem-id="08abe13d976be5cd09a9b667d7e2531c" 
-                        data-sms-id="1">
+                    data-modem-id="08abe13d976be5cd09a9b667d7e2531c" 
+                    data-storage="SM" 
+                    data-sms-id="1">
                         <div class="message-item-wrapper">
                             <div class="message-sender">From: 628126668888</div>
                             <div class="message-date-time">2021-01-11 01:02</div>
@@ -162,11 +163,12 @@ $(document).ready(function(e){
         $('.message-item-selected').each(function(e3){
             var modemID = $(this).attr('data-modem-id');
             var smsID = $(this).attr('data-sms-id');
+            var storage = $(this).attr('data-storage');
             $.ajax({
                 type:"POST",
                 url:"data/sms/inbox/"+modemID,
                 dataType:"json",
-                data:{action:'delete-sms', modem_id:modemID, sms_id:smsID},
+                data:{action:'delete-sms', modem_id:modemID, sms_id:smsID, storage:storage},
                 success:function(data){
                     console.log(data);
                 }
