@@ -936,7 +936,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		JSONArray allSMS = new JSONArray();
 		if(modemID.isEmpty())
 		{
-			System.out.println("Modem ID is empty");
+			System.out.println("Modem ID is empty");			
 			List<GSMInstance> instances = GSMUtil.getGsmInstance();
 			for(int i = 0; i<instances.size(); i++)
 			{
@@ -944,7 +944,7 @@ public class HandlerWebManagerData implements HttpHandler {
 				List<SMS> sms = instance.readSMS();
 				for(int j = 0; j < sms.size(); j++)
 				{
-					allSMS.put(sms.get(j).toJSONObject());
+					allSMS.put(sms.get(j).toJSONObject(instance.getId()));
 				}
 			}
 		}
@@ -954,7 +954,7 @@ public class HandlerWebManagerData implements HttpHandler {
 			List<SMS> sms = GSMUtil.get(modemID).readSMS();
 			for(int j = 0; j < sms.size(); j++)
 			{
-				allSMS.put(sms.get(j).toJSONObject());
+				allSMS.put(sms.get(j).toJSONObject(modemID));
 			}
 		}
 		return allSMS;

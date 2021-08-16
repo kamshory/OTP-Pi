@@ -110,11 +110,10 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				if(action.equals("delete-sms"))
 				{
 					String modemID = queryPairs.getOrDefault("modem_id", "");					
+					String storage = queryPairs.getOrDefault("storage", "");					
 					int smsID = Utility.atoi(queryPairs.getOrDefault("sms_id", "0"));	
-					String storage = "SM";
 					GSMUtil.get(modemID).deleteSMS(smsID, storage);
-				}
-				
+				}				
 			} 
 			else 
 			{

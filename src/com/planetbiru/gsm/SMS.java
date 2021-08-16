@@ -11,7 +11,13 @@ public class SMS {
     private String date;
     private String time;
     private String content;
-    
+
+    public JSONObject toJSONObject(String modemID)
+    {
+    	JSONObject json = this.toJSONObject();
+    	json.put("modem_id", modemID);
+    	return json;
+    }
     public JSONObject toJSONObject()
     {
     	JSONObject json = new JSONObject();

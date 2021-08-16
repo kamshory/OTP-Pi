@@ -317,3 +317,5 @@ Caused by: java.io.FileNotFoundException: C:\bitbucket\OTP-Pi (Access is denied)
 2021-08-16 17:28:23 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
 2021-08-16 17:28:23 [INFO  ] GSM                             :156  - AT Command : AT+CPMS="SM"
 2021-08-16 17:28:23 [INFO  ] GSM                             :156  - AT Command : AT+CMGL="ALL"
+2021-08-16 17:38:05 [INFO  ] GSM                             :443  - Set Serial Port
+2021-08-16 17:38:05 [INFO  ] Application                     :189  - Service started
