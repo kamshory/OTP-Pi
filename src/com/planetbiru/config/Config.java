@@ -25,7 +25,7 @@ public class Config {
 	private static String dhcpSettingPath = "";
 	private static String ethernetSettingPath = "";
 	private static String modemSettingPath = "";
-	private static long subscriberWSRecoonectDelay;
+	private static long subscriberWSRecoonectDelay = 0;
 	private static String noIPDevice = "OTP Broker/version 1.0";
 	private static String noIPSettingPath = "";
 	private static String deviceName = "OTP Broker";
@@ -90,6 +90,7 @@ public class Config {
 	private static long waitLoopChild = 30000;
 	private static String resetDeviceType = "RPi";
 	private static String resetDeviceFile = "reset-config.ini";
+	private static String subscriberMqttSettingPath = "";
 	
 	private Config()
 	{
@@ -766,6 +767,14 @@ public class Config {
 
 	public static void setWaitLoopChild(long waitLoopChild) {
 		Config.waitLoopChild = waitLoopChild;
+	}
+
+	public static String getSubscriberMqttSettingPath() {
+		return subscriberMqttSettingPath;
+	}
+
+	public static void setSubscriberMqttSettingPath(String subscriberMqttSettingPath) {
+		Config.subscriberMqttSettingPath = subscriberMqttSettingPath;
 	}
 	
 }

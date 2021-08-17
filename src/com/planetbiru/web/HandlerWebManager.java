@@ -22,6 +22,7 @@ import com.planetbiru.config.ConfigBlocking;
 import com.planetbiru.config.ConfigDDNS;
 import com.planetbiru.config.ConfigEmail;
 import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.config.ConfigFirewall;
 import com.planetbiru.config.ConfigGeneral;
@@ -1406,7 +1407,39 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigSubscriberAMQP.setSubscriberAmqpRefresh(subscriberAmqpRefresh);		
 
 			ConfigSubscriberAMQP.save();			
-		}		
+		}	
+		
+		if(queryPairs.containsKey("save_subscriber_amqp_setting"))
+		{
+			ConfigSubscriberMQTT.load(Config.getSubscriberMqttSettingPath());
+			boolean subscriberMqttEnable = queryPairs.getOrDefault("subscriber_mqtt_enable", "").equals("1");		
+			boolean subscriberMqttSSL = queryPairs.getOrDefault("subscriber_mqtt_ssl", "").equals("1");		
+			String subscriberMqttAddress = queryPairs.getOrDefault("subscriber_mqtt_address", "");		
+			String port = queryPairs.getOrDefault("subscriber_mqtt_port", "0");
+			int subscriberMqttPort = Utility.atoi(port);
+			String subscriberMqttPath = queryPairs.getOrDefault("subscriber_mqtt_path", "");		
+			String subscriberMqttUsername = queryPairs.getOrDefault("subscriber_mqtt_username", "");		
+			String subscriberMqttPassword = queryPairs.getOrDefault("subscriber_mqtt_password", "");		
+			String subscriberMqttTopic = queryPairs.getOrDefault("subscriber_mqtt_topic", "");
+			
+			String timeout = queryPairs.getOrDefault("subscriber_mqtt_timeout", "0");
+			int subscriberMqttTimeout = Utility.atoi(timeout);	
+			String refresh = queryPairs.getOrDefault("subscriber_mqtt_refresh", "0");
+			int subscriberMqttRefresh = Utility.atoi(refresh);
+			
+			ConfigSubscriberMQTT.setSubscriberMqttEnable(subscriberMqttEnable);
+			ConfigSubscriberMQTT.setSubscriberMqttSSL(subscriberMqttSSL);
+			ConfigSubscriberMQTT.setSubscriberMqttAddress(subscriberMqttAddress);
+			ConfigSubscriberMQTT.setSubscriberMqttPort(subscriberMqttPort);
+			ConfigSubscriberMQTT.setSubscriberMqttPath(subscriberMqttPath);
+			ConfigSubscriberMQTT.setSubscriberMqttUsername(subscriberMqttUsername);
+			ConfigSubscriberMQTT.setSubscriberMqttPassword(subscriberMqttPassword);
+			ConfigSubscriberMQTT.setSubscriberMqttTopic(subscriberMqttTopic);
+			ConfigSubscriberMQTT.setSubscriberMqttTimeout(subscriberMqttTimeout);
+			ConfigSubscriberMQTT.setSubscriberMqttRefresh(subscriberMqttRefresh);		
+
+			ConfigSubscriberMQTT.save();			
+		}	
 	}
 	
 	private void processSMS(String requestBody) {
