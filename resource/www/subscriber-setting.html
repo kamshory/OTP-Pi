@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="require-login" content="true" data-file="/login-form.html">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1; user-scalable=no">
+  <link rel="icon" href="favicon.ico">
+  <link rel="icon" href="favicon.ico">
+  <title>OTP-Pi</title>
+  <link href="lib.assets/css/bootstrap.css" rel="stylesheet">
+  <link href="lib.assets/css/style.min.css" rel="stylesheet">
+  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+  <script src="lib.assets/js/ie-emulation-modes-warning.js"></script>
+  <script src="lib.assets/js/ie10-viewport-bug-workaround.js"></script>
+  <script src="lib.assets/js/jquery.min.js"></script>
+  <script src="lib.assets/js/bootstrap.js"></script>
+  <script src="lib.assets/js/ws.min.js"></script>
+  <script>
+    function handleIncommingMessage(message) {
+      console.log("handleIncommingMessage", message);
+    }
+  </script>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <span class="usb-device-symbol"></span>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+            aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./">OTP-Pi</a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="./">Home</a></li>
+            <li><a href="ussd.html">USSD</a></li>
+            <li><a href="sms.html">SMS</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                aria-expanded="false">Settings <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="general-setting.html">General Setting</a></li>
+                <li><a href="admin.html">Administrator Setting</a></li>
+                <li><a href="api-setting.html">API Setting</a></li>
+                <li><a href="api-user.html">API User</a></li>
+                <li class="active"><a href="subscriber-setting.html">Subscriber Setting</a></li>
+                <li><a href="sms-setting.html">SMS Setting</a></li>
+                <li><a href="block-list.html">Block List</a></li>
+                <li><a href="modem.html">Modem</a></li>
+                <li><a href="email-account.html">Email Account</a></li>
+                <li><a href="network-setting.html">Network Setting</a></li>
+                <li><a href="firewall.html">Firewall</a></li>
+                <li><a href="open-port.html">Open Port</a></li>
+                <li><a href="keystore.html">Keystore</a></li>
+                <li><a href="cron.html">Cron</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">DDNS Setting</li>
+                <li><a href="ddns-record.html">DDNS Record</a></li>
+                <li><a href="cloudflare.html">Cloudflare Account</a></li>
+                <li><a href="noip.html">No IP Account</a></li>
+                <li><a href="dynu.html">Dynu Account</a></li>
+                <li><a href="afraid.html">Afraid Account</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="account.html">Account</a></li>
+            <li><a href="logout.html">Logout</a></li>
+          </ul>
+        </div>
+
+      </div>
+      <!--/.container-fluid -->
+    </nav>
+    <div class="phone-page">
+      <h3>Subscriber Setting</h3>
+      <h4>WSMessageBroker</h4>
+      <form action="subscriber-setting.html" method="post">
+        <table class="config-table config-table-feeder">
+          <tbody>
+            <tr>
+              <td>Enable</td>
+              <td><label><input type="checkbox" name="subscriber_ws_enable" value="1"> Enable</label>
+              </td>
+            </tr>
+            <tr>
+              <td>SSL</td>
+              <td><select name="subscriber_ws_ssl">
+                  <option value="0">No</option>
+                  <option value="1">Yes</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Host</td>
+              <td><input type="text" name="subscriber_ws_address" id="subscriber_ws_address" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>Port</td>
+              <td><input type="number" max="65535" name="subscriber_ws_port" id="subscriber_ws_port" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>Path</td>
+              <td><input type="text" name="subscriber_ws_path" id="subscriber_ws_path" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>Username</td>
+              <td><input type="text" name="subscriber_ws_username" id="subscriber_ws_username" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>Password</td>
+              <td><input type="text" name="subscriber_ws_password" id="subscriber_ws_password" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>Topic</td>
+              <td><input type="text" name="subscriber_ws_topic" id="subscriber_ws_topic" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>Timeout</td>
+              <td><input type="number" min="0" name="subscriber_ws_timeout" id="subscriber_ws_timeout" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>Reconnect Delay</td>
+              <td><input type="number" min="0" name="subscriber_ws_reconnect_delay" id="subscriber_ws_reconnect_delay"
+                  value="">
+              </td>
+            </tr>
+            <tr>
+              <td>Refresh Connection</td>
+              <td><select name="subscriber_ws_refresh">
+                  <option value="0">Never</option>
+                  <option value="600">10 Minutes</option>
+                  <option value="1800">30 Minutes</option>
+                  <option value="3600">1 Hour</option>
+                  <option value="7200">2 Hours</option>
+                  <option value="21600">6 Hours</option>
+                  <option value="43200">12 Hours</option>
+                  <option value="86400">24 Hours</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <input type="submit" class="btn btn-success" name="save_subscriber_ws_setting"
+                  id="save_subscriber_ws_setting" value="Save">
+                <input type="reset" class="btn btn-default" value="Reset">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+
+      <h4>RabbitMQ</h4>
+      <form action="subscriber-setting.html" method="post">
+        <table class="config-table config-table-feeder">
+          <tbody>
+
+            <tr>
+              <td>Enable</td>
+              <td><label><input type="checkbox" name="subscriber_amqp_enable" value="1"> Enable</label>
+              </td>
+            </tr>
+            <tr>
+              <td>SSL</td>
+              <td><select name="subscriber_amqp_ssl">
+                  <option value="0">No</option>
+                  <option value="1">Yes</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Host</td>
+              <td><input type="text" name="subscriber_amqp_address" id="subscriber_amqp_address" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>Port</td>
+              <td><input type="number" max="65535" name="subscriber_amqp_port" id="subscriber_amqp_port" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>Path</td>
+              <td><input type="text" name="subscriber_amqp_path" id="subscriber_amqp_path" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>Username</td>
+              <td><input type="text" name="subscriber_amqp_username" id="subscriber_amqp_username" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>Password</td>
+              <td><input type="text" name="subscriber_amqp_password" id="subscriber_amqp_password" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>Queue</td>
+              <td><input type="text" name="subscriber_amqp_topic" id="subscriber_amqp_topic" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>Timeout</td>
+              <td><input type="number" min="0" name="subscriber_amqp_timeout" id="subscriber_amqp_timeout" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>Refresh Connection</td>
+              <td><select name="subscriber_amqp_refresh">
+                  <option value="0">Never</option>
+                  <option value="600">10 Minutes</option>
+                  <option value="1800">30 Minutes</option>
+                  <option value="3600">1 Hour</option>
+                  <option value="7200">2 Hours</option>
+                  <option value="21600">6 Hours</option>
+                  <option value="43200">12 Hours</option>
+                  <option value="86400">24 Hours</option>
+                </select>
+              </td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <td>
+                <input type="submit" class="btn btn-success" name="save_subscriber_amqp_setting"
+                  id="save_subscriber_amqp_setting" value="Save">
+                <input type="reset" class="btn btn-default" value="Reset">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </form>
+
+      <h4>MQTT</h4>
+      <form action="subscriber-setting.html" method="post">
+        <table class="config-table config-table-feeder">
+          <tbody>
+
+            <tr>
+              <td>Enable</td>
+              <td><label><input type="checkbox" name="subscriber_mqtt_enable" value="1"> Enable</label>
+              </td>
+            </tr>
+            <tr>
+              <td>SSL</td>
+              <td><select name="subscriber_mqtt_ssl">
+                  <option value="0">No</option>
+                  <option value="1">Yes</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Host</td>
+              <td><input type="text" name="subscriber_mqtt_address" id="subscriber_mqtt_address" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>Port</td>
+              <td><input type="number" max="65535" name="subscriber_mqtt_port" id="subscriber_mqtt_port" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>Path</td>
+              <td><input type="text" name="subscriber_mqtt_path" id="subscriber_mqtt_path" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>Username</td>
+              <td><input type="text" name="subscriber_mqtt_username" id="subscriber_mqtt_username" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>Password</td>
+              <td><input type="text" name="subscriber_mqtt_password" id="subscriber_mqtt_password" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>Queue</td>
+              <td><input type="text" name="subscriber_mqtt_topic" id="subscriber_mqtt_topic" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>Timeout</td>
+              <td><input type="number" min="0" name="subscriber_mqtt_timeout" id="subscriber_mqtt_timeout" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>Refresh Connection</td>
+              <td><select name="subscriber_amqp_refresh">
+                  <option value="0">Never</option>
+                  <option value="600">10 Minutes</option>
+                  <option value="1800">30 Minutes</option>
+                  <option value="3600">1 Hour</option>
+                  <option value="7200">2 Hours</option>
+                  <option value="21600">6 Hours</option>
+                  <option value="43200">12 Hours</option>
+                  <option value="86400">24 Hours</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <input type="submit" class="btn btn-success" name="save_subscriber_mqtt_setting"
+                  id="save_subscriber_mqtt_setting" value="Save">
+                <input type="reset" class="btn btn-default" value="Reset">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </form>
+
+      <script type="text/javascript">
+        $(document).ready(function (e) {
+          $.ajax({
+            type: "GET",
+            url: "data/feeder-ws-setting/get",
+            dataType: "json",
+            success: function (data) {
+              $('input[name="subscriber_ws_enable"]').prop("checked", data.subscriberWsEnable);
+              $('select[name="subscriber_ws_ssl"]').val(data.subscriberWsSSL ? "1" : "0");
+              $('input[name="subscriber_ws_address"]').val(data.subscriberWsAddress);
+              $('input[name="subscriber_ws_port"]').val(data.subscriberWsPort);
+              $('input[name="subscriber_ws_path"]').val(data.subscriberWsPath);
+              $('input[name="subscriber_ws_username"]').val(data.subscriberWsUsername);
+              $('input[name="subscriber_ws_password"]').val(data.subscriberWsPassword);
+              $('input[name="subscriber_ws_topic"]').val(data.subscriberWsTopic);
+              $('input[name="subscriber_ws_timeout"]').val(data.subscriberWsTimeout);
+              $('input[name="subscriber_ws_reconnect_delay"]').val(data.subscriberWsReconnectDelay);
+              $('select[name="subscriber_ws_refresh"]').val(data.subscriberWsRefresh + "");
+            }
+          });
+
+          $.ajax({
+            type: "GET",
+            url: "data/feeder-amqp-setting/get",
+            dataType: "json",
+            success: function (data) {
+              $('input[name="subscriber_amqp_enable"]').prop("checked", data.subscriberAmqpEnable);
+              $('select[name="subscriber_amqp_ssl"]').val(data.subscriberAmqpSSL ? "1" : "0");
+              $('input[name="subscriber_amqp_address"]').val(data.subscriberAmqpAddress);
+              $('input[name="subscriber_amqp_port"]').val(data.subscriberAmqpPort);
+              $('input[name="subscriber_amqp_path"]').val(data.subscriberAmqpPath);
+              $('input[name="subscriber_amqp_username"]').val(data.subscriberAmqpUsername);
+              $('input[name="subscriber_amqp_password"]').val(data.subscriberAmqpPassword);
+              $('input[name="subscriber_amqp_topic"]').val(data.subscriberAmqpTopic);
+              $('input[name="subscriber_amqp_timeout"]').val(data.subscriberAmqpTimeout);
+              $('select[name="subscriber_amqp_refresh"]').val(data.subscriberAmqpRefresh + "");
+            }
+          });
+        });
+      </script>
+    </div>
+    <!-- /container -->
+  </div>
+  <div class="waiting-server-up">
+    <div class="loading-icon"><span class="animation-pressure"><span></span></span></div>
+  </div>
+</body>
+
+</html>

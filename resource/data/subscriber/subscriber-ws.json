@@ -1,0 +1,1 @@
+{"subscriberWsSSL":false,"subscriberWsPath":"/ws","subscriberWsPassword":"4lt0@1234","subscriberWsRefresh":0,"subscriberWsUsername":"qa","subscriberWsReconnectDelay":10000,"subscriberWsAddress":"127.0.0.1","subscriberWsTopic":"sms","subscriberWsTimeout":5000,"subscriberWsEnable":false,"subscriberWsPort":8888}

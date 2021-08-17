@@ -1,6 +1,6 @@
 HELP.md
 target/
-resource/
+#resource/
 bin/
 logs/
 .settings/
