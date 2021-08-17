@@ -21,6 +21,7 @@ import com.planetbiru.config.ConfigBlocking;
 import com.planetbiru.config.ConfigDDNS;
 import com.planetbiru.config.ConfigEmail;
 import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.config.ConfigFirewall;
 import com.planetbiru.config.ConfigKeystore;
@@ -38,6 +39,7 @@ import com.planetbiru.constant.JsonKey;
 import com.planetbiru.gsm.DialUtil;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.receiver.amqp.SubscriberAMQP;
+import com.planetbiru.receiver.mqtt.SubscriberMQTT;
 import com.planetbiru.receiver.ws.SubscriberWebSocket;
 import com.planetbiru.user.WebUserAccount;
 import com.planetbiru.util.CommandLineExecutor;
@@ -56,8 +58,10 @@ public class Application {
 	private static ServerRESTAPI rest;
 	private static ServerEmail smtp;
 	private static Scheduller scheduller;
-	private static SubscriberWebSocket webSocketClient;	
-	private static SubscriberAMQP amqpReceiver;
+	
+	private static SubscriberMQTT mqttSubscriber;
+	private static SubscriberWebSocket webSocketSubscriber;	
+	private static SubscriberAMQP amqpSubscriber;
 	
 	private static Logger logger = Logger.getLogger(Application.class);
 	
@@ -162,12 +166,14 @@ public class Application {
 			/**
 			 * WebSocket Client for subscriber
 			 */
-			Application.feederWSStart();
+			Application.subscriberWSStart();
 			
 			/**
 			 * RabbitMQ Client for subscriber
 			 */
 			Application.subscriberAMQPStart();
+			
+			Application.subscriberMQTTStart();
 			
 			/**
 			 * REST API
@@ -195,32 +201,40 @@ public class Application {
 		
 	}
 	
-	public static void subscriberAMQPStart() {
-		if(Application.amqpReceiver == null || !Application.amqpReceiver.isRunning())
+	private static void subscriberMQTTStart() {
+		if(ConfigSubscriberMQTT.isSubscriberMqttEnable() && (Application.mqttSubscriber == null || !Application.mqttSubscriber.isRunning()))
 		{
-			Application.amqpReceiver = new SubscriberAMQP();
-			Application.amqpReceiver.start();
-		}		
-	}
-	public static void subscriberAMQPStop() {
-		if(Application.amqpReceiver != null || Application.amqpReceiver.isRunning())
-		{
-			Application.amqpReceiver.stopService();
+			Application.mqttSubscriber = new SubscriberMQTT();
+			Application.mqttSubscriber.start();
 		}		
 	}
 
-	public static void feederWSStart() {
-		if(Application.webSocketClient == null || !Application.webSocketClient.isRunning())
+	public static void subscriberAMQPStart() {
+		if(ConfigSubscriberAMQP.isSubscriberAmqpEnable() && (Application.amqpSubscriber == null || !Application.amqpSubscriber.isRunning()))
 		{
-			Application.webSocketClient = new SubscriberWebSocket(Config.getReconnectDelay(), Config.getWaitLoopParent(), Config.getWaitLoopChild());
-			Application.webSocketClient.start();	
+			Application.amqpSubscriber = new SubscriberAMQP();
+			Application.amqpSubscriber.start();
+		}		
+	}
+	public static void subscriberAMQPStop() {
+		if(Application.amqpSubscriber != null || Application.amqpSubscriber.isRunning())
+		{
+			Application.amqpSubscriber.stopService();
+		}		
+	}
+
+	public static void subscriberWSStart() {
+		if(ConfigSubscriberWS.isSubscriberWsEnable() && (Application.webSocketSubscriber == null || !Application.webSocketSubscriber.isRunning()))
+		{
+			Application.webSocketSubscriber = new SubscriberWebSocket(Config.getReconnectDelay(), Config.getWaitLoopParent(), Config.getWaitLoopChild());
+			Application.webSocketSubscriber.start();	
 		}
 	}
 
 	public static void feederWSStop() {
-		if(Application.webSocketClient != null && Application.webSocketClient.isRunning())
+		if(Application.webSocketSubscriber != null && Application.webSocketSubscriber.isRunning())
 		{
-			Application.webSocketClient.stopService();	
+			Application.webSocketSubscriber.stopService();	
 		}
 	}
 
@@ -258,8 +272,8 @@ public class Application {
 			Thread.currentThread().interrupt();
 		}
 		Application.scheduller.stopService();
-		Application.webSocketClient.stopService();
-		Application.amqpReceiver.stopService();
+		Application.webSocketSubscriber.stopService();
+		Application.amqpSubscriber.stopService();
 	}	
 	
 	public static void prepareSessionDir()

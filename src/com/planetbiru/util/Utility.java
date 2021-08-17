@@ -427,6 +427,14 @@ public class Utility {
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
 	    return sdf.parse(dateTime);
 	}
+	public static Date stringToTime(String dateTime, String format, int timeZoneOffset) throws ParseException
+	{
+		SimpleDateFormat sdf = new SimpleDateFormat(format);
+		String id = (timeZoneOffset > 0)?("GMT+"+String.format("%02d", timeZoneOffset)):("GMT-"+String.format("%02d", Math.abs(timeZoneOffset)));
+		TimeZone zone = TimeZone.getTimeZone(id);
+		sdf.setTimeZone(zone);
+	    return sdf.parse(dateTime);
+	}
 	/**
 	/**
 	 * Convert array byte to string contains hexadecimal number

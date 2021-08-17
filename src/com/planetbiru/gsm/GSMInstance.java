@@ -16,9 +16,6 @@ public class GSMInstance {
 	private String id = "";
 	public GSMInstance(DataModem modem)
 	{
-		/**
-		 * Constructor
-		 */
 		this.id = modem.getId();
 		this.gsm = new GSM();
 	}
@@ -131,6 +128,4 @@ public class GSMInstance {
 			Thread.currentThread().interrupt();
 		}		
 	}
-	
-
 }

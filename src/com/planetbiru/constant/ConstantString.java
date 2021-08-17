@@ -17,7 +17,7 @@ public class ConstantString {
 	public static final String DDNS_FILE_LEVEL_3               = "../../ddns-record.html";
 	public static final String ADMIN_FILE_LEVEL_3              = "../../admin.html";
 	public static final String API_USER_FILE_LEVEL_3           = "../../api-user.html";
-	public static final String FILTER_INTEGER                  = "[^\\d]";
+	public static final String FILTER_INTEGER                  = "[^\\d\\-]";
 	public static final String FILTER_REAL                     = "[^\\d.\\-]";
 	public static final String ADMIN_INIT                      = "admin-init.html";
 	public static final String SEND_MESSAGE                    = "send-message";

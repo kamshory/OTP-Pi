@@ -10,6 +10,7 @@ import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigModem;
 import com.planetbiru.config.DataModem;
 import com.planetbiru.util.CommandLineExecutor;
+import com.planetbiru.util.CommandLineResult;
 import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.ServerInfo;
 
@@ -74,7 +75,9 @@ public class DialUtil {
 			logger.error(e.getMessage(), e);
 		}
 		boolean ret = false;
-		CommandLineExecutor.exec(wvdialCommandConnect);
+		CommandLineResult result = CommandLineExecutor.exec(wvdialCommandConnect);
+		System.out.println("exec   = "+wvdialCommandConnect);
+		System.out.println("result = "+result);
 		ret = true;
 		DialUtil.internetAccess.put(modemID, ret);
 		return ret;
@@ -83,7 +86,9 @@ public class DialUtil {
 	public static boolean disconnect(String modemID)
 	{
 		DialUtil.internetAccess.remove(modemID);
-		CommandLineExecutor.exec(wvdialCommandDisconnect);
+		CommandLineResult result = CommandLineExecutor.exec(wvdialCommandDisconnect);
+		System.out.println("exec   = "+wvdialCommandDisconnect);
+		System.out.println("result = "+result);
 		return true;
 	}
 

@@ -112,6 +112,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 					String modemID = queryPairs.getOrDefault("modem_id", "");					
 					String storage = queryPairs.getOrDefault("storage", "");					
 					int smsID = Utility.atoi(queryPairs.getOrDefault("sms_id", "0"));	
+					System.out.println(modemID+" "+storage+" "+smsID);
 					GSMUtil.get(modemID).deleteSMS(smsID, storage);
 				}				
 			} 
@@ -158,7 +159,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				String action = queryPairs.getOrDefault("action", "");
 				if(action.equals("start"))
 				{
-					Application.feederWSStart();					
+					Application.subscriberWSStart();					
 				}
 				else
 				{

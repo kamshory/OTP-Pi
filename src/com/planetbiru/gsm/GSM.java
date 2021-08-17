@@ -7,9 +7,10 @@ import com.fazecast.jSerialComm.SerialPortInvalidPortException;
 import com.google.common.base.Splitter;
 import com.google.common.primitives.Longs;
 import com.planetbiru.config.Config;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 
@@ -165,18 +166,29 @@ public class GSM {
         int written = this.serialPort.writeBytes(bytes, bytes.length);
         if(written > 0)
         {
-	        while ((result.trim().equals("") || result.trim().equals("\n")) && i < waitingTime) 
-	        {
-	            try 
+        	do 
+        	{
+	        	byte[] msg = new byte[getSerialPort().bytesAvailable()];
+	            getSerialPort().readBytes(msg, msg.length);
+	            result = new String(msg);
+	            if(result.trim().equals("") || result.trim().equals("\n"))
 	            {
-	                i++;
-	                Thread.sleep(500);
-	            } 
-	            catch (InterruptedException e) 
-	            {
-	                Thread.currentThread().interrupt();
+			        try 
+		            {
+		                i++;
+		                Thread.sleep(500);
+		            } 
+		            catch (InterruptedException e) 
+		            {
+		                Thread.currentThread().interrupt();
+		            }
 	            }
 	        }
+        	while((result.trim().equals("") || result.trim().equals("\n")) && i < waitingTime);
+        }
+        else
+        {
+        	System.out.println("No data written");
         }
         this.setReady(true);
         return result;
@@ -237,6 +249,14 @@ public class GSM {
         return str;
     }
     
+    public String fixingRawData(String result)
+	{
+		result = result.replace("\n", "\r\n");
+		result = result.replace("\r\r\n", "\r\n");
+		result = result.replace("\r", "\r\n");
+		result = result.replace("\r\n\n", "\r\n");
+		return result;
+	}
 
     /**
      * Read the SMS stored in the sim card
@@ -250,7 +270,113 @@ public class GSM {
         executeAT("ATE0", 1);
         executeAT("AT+CSCS=\"GSM\"", 1);
         executeAT("AT+CMGF=1", 1);
-        ArrayList<SMS> str = new ArrayList<>();
+        ArrayList<SMS> smsList = new ArrayList<>();
+		int i;
+
+    	String result = "";
+        for (String storage : smsStorage) 
+        {
+        	executeAT("AT+CPMS=\"" + storage + "\"", 1);
+			
+
+        	result = executeAT("AT+CMGL=\"ALL\"", 5);
+			
+			
+			result = "+CMGL: 1,\"REC READ\",\"+85291234567\",,\"07/02/18,00:05:10+32\"\r\n"
+					+ "Reading text messages \r\n"
+					+ "is easy.\r\n"
+					+ "+CMGL: 2,\"REC READ\",\"+85291234567\",,\"07/02/18,00:07:22+32\"\r\n"
+					+ "A simple demo of SMS text messaging.\r\n"
+					+ "+CMGL: 3,\"REC READ\",\"+85291234567\",,\"07/02/18,00:12:05+32\"\r\n"
+					+ "Hello, welcome to our SMS tutorial.\r\n"
+					+ "+CMGL: 4,\"REC READ\",\"+85291234567\",,\"07/02/18,00:12:11+32\"\r\n"
+					+ "OTP tidak dapat digunakan\r\n"
+					+ "\r\n"
+					+ "OK"
+					+ "";
+			
+			result = this.fixingRawData(result);
+			
+			List<String> allMatches = new ArrayList<>(); 
+			
+			String[] arr = result.split("\r\n");
+			
+			int max = 0;
+			if(arr.length > 2 && arr[arr.length - 1].equals("OK") && arr[arr.length - 2].isEmpty())
+			{
+				max = arr.length - 2;
+			}
+			else
+			{
+				max = arr.length;
+			}
+				
+			
+			for(i = 0; i<max; i++)
+			{
+				String csvLine = arr[i];
+				
+				if(csvLine.startsWith("+CMGL: ")) 
+				{
+					Pattern pattern = Pattern.compile("\"([^\"]*)\"|(?<=,|^)([^,]*)(?=,|$)");
+					Matcher matcher = pattern.matcher(csvLine.substring(7));
+			        String match;
+			        while (matcher.find()) 
+			        {
+			            match = matcher.group(1);
+			            if (match!=null) 
+			            {
+			                allMatches.add(match);
+			            }
+			            else 
+			            {
+			                allMatches.add(matcher.group(2));
+			            }
+			        }
+			        int size = allMatches.size();       
+			        
+			        if(size > 4)
+			        {
+			        	String[] attrs = allMatches.toArray(new String[size]);
+			        	SMS sms = new SMS(storage, attrs[0], attrs[1], attrs[2], attrs[3], attrs[4]);
+			        	smsList.add(sms);
+						allMatches.clear();
+			        }		        
+				}
+				else
+				{				
+					if(!smsList.isEmpty())
+					{
+						String content = smsList.get(smsList.size()-1).getContent();
+						if(!content.isEmpty())
+						{
+							smsList.get(smsList.size()-1).setContent(content+"\r\n"+csvLine);
+						}
+						else
+						{
+							smsList.get(smsList.size()-1).setContent(csvLine);
+						}
+					}				
+				}
+			}
+        }
+        this.setReady(true);
+        return smsList;
+    }
+    
+    /**
+     * Read the SMS stored in the sim card
+     *
+     * @return ArrayList contains the SMS
+     * @throws GSMException 
+     */
+    public List<SMS> readSMS2() throws GSMException 
+    {
+    	this.setReady(false);
+        executeAT("ATE0", 1);
+        executeAT("AT+CSCS=\"GSM\"", 1);
+        executeAT("AT+CMGF=1", 1);
+        List<SMS> smsList = new ArrayList<>();
         for (String value : smsStorage) 
         {
         	String result = "";
@@ -265,15 +391,31 @@ public class GSM {
         	{
         		result = result2;
         	}
+			
+			result = "+CMGL: 1,\"REC READ\",\"+85291234567\",,\"07/02/18,00:05:10+32\"\r\n"
+					+ "Reading text messages is easy.\r\n"
+					+ "+CMGL: 2,\"REC READ\",\"+85291234567\",,\"07/02/18,00:07:22+32\"\r\n"
+					+ "A simple demo of SMS text messaging.\r\n"
+					+ "+CMGL: 3,\"REC READ\",\"+85291234567\",,\"07/02/18,00:12:05+32\"\r\n"
+					+ "Hello, welcome to our SMS tutorial.\r\n"
+					+ "\r\n"
+					+ "OK\r\n"
+					+ "\r\n"
+					+ "\r\n"
+					+ "";
+			System.out.println(result);
         	
             if (result.contains("+CMGL")) 
             {
+            	System.out.println("OK");
                 String[] strs = result.replace("\"", "").split("(?:,)|(?:\r\n)");
                 SMS sms;
                 for (int i = 1; i < strs.length - 1; i++) 
                 {
                     sms = new SMS();
-                    sms.setId(Integer.parseInt(strs[i].charAt(strs[i].length() - 1) + ""));
+                    int id = Integer.parseInt(strs[i].charAt(strs[i].length() - 1) + "");
+                    System.out.println(id);
+                    sms.setId(id);
                     sms.setStorage(value);
                     i++;
                     sms.setStatus(strs[i]);
@@ -282,9 +424,9 @@ public class GSM {
                     i++;
                     sms.setPhoneName(strs[i]);
                     i++;
-                    sms.setDate(strs[i]);
+                    sms.setDateStr(strs[i]);
                     i++;
-                    sms.setTime(strs[i]);
+                    //sms.setTime(strs[i]);
                     i++;
                     if (Longs.tryParse(strs[i].substring(0, 2)) != null) 
                     { 
@@ -309,7 +451,7 @@ public class GSM {
                         sms.setContent(sms.getContent() + "\n" + strs[i]);
                         i++;
                     }
-                    str.add(sms);
+                    smsList.add(sms);
                     if (strs[i + 1].equals("") && strs[i + 2].equals("OK")) 
                     {
                         break;
@@ -318,7 +460,7 @@ public class GSM {
             }
         }
         this.setReady(true);
-        return str;
+        return smsList;
     }
 
     /**

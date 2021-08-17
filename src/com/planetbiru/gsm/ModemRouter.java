@@ -8,7 +8,7 @@ public class ModemRouter {
 	private List<Integer> modemIndex = new ArrayList<>();
 	
 	public ModemRouter(int index) {
-		modemIndex.add(Integer.valueOf(index));
+		this.modemIndex.add(Integer.valueOf(index));
 	}
 
 	public ModemRouter() {
@@ -18,7 +18,7 @@ public class ModemRouter {
 	}
 
 	public void addIndex(int index) {
-		modemIndex.add(Integer.valueOf(index));
+		this.modemIndex.add(Integer.valueOf(index));
 	}
 
 	public int getIndex() throws InvalidModemRouterException

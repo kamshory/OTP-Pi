@@ -897,7 +897,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		String modemID = path.contains("/data/sms/inbox/")?path.substring("/data/sms/inbox/".length()):"";
 		Headers responseHeaders = httpExchange.getResponseHeaders();
 		CookieServer cookie = new CookieServer(requestHeaders, Config.getSessionName(), Config.getSessionLifetime());
-		byte[] responseBody = "".getBytes();
+		byte[] responseBody = "[]".getBytes();
 		int statusCode = HttpStatus.OK;
 		JSONArray allSMS = new JSONArray();
 		try
@@ -920,7 +920,9 @@ public class HandlerWebManagerData implements HttpHandler {
 		} 
 		catch (GSMException e) 
 		{
-			e.printStackTrace();
+			/**
+			 * Do nothing
+			 */
 		}
 		cookie.saveSessionData();
 		cookie.putToHeaders(responseHeaders);

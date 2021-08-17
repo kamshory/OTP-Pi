@@ -96,18 +96,7 @@
                 <input type="button" class="delete-sms btn btn-danger" value="Delete">
                 </div>
                 <div class="message-list">
-                    <div class="message-item" 
-                    data-modem-id="08abe13d976be5cd09a9b667d7e2531c" 
-                    data-storage="SM" 
-                    data-sms-id="1">
-                        <div class="message-item-wrapper">
-                            <div class="message-sender">From: 628126668888</div>
-                            <div class="message-date-time">2021-01-11 01:02</div>
-                            <div class="message-sim-card">Modem: /dev/tty1</div>
-                            <div class="message-action"></div>
-                            <div class="message-message">OTP Saya tidak bisa digunakan...</div>
-                        </div>
-                    </div>
+                    
                     
                 </div>
             </div>
@@ -121,7 +110,44 @@ $(document).ready(function(e){
         url:"data/sms/inbox/"+modemID,
         dataType:"json",
         success:function(data){
-            console.log(data);
+            $('.message-list').empty();
+            for(var i in data)
+            {
+                var sms = data[i];
+
+                var outer = $('<div />');
+                outer.attr({'data-modem-id':sms.modemID, 'data-storage':sms.storage, 'data-sms-id':sms.id});
+                outer.addClass('message-item');
+                var inner = $('<div />');
+                inner.addClass('message-item-wrapper');
+                var inner1 = $('<div />');
+                inner1.addClass('message-sender');
+                inner1.text('From: '+sms.phoneNumber);
+
+                var inner2 = $('<div />');
+                inner2.addClass('message-date-time');
+                inner2.text(sms.date);
+
+                var inner3 = $('<div />');
+                inner3.addClass('message-sim-card');
+                inner3.text('Modem: '+sms.modemID);
+
+                var inner4 = $('<div />');
+                inner4.addClass('message-action');
+
+                var inner5 = $('<div />');
+                inner5.addClass('message-message');
+                inner5.html(sms.content.split('\r\n').join('\r\n<br>'));
+
+                inner.append(inner1);
+                inner.append(inner2);
+                inner.append(inner3);
+                inner.append(inner4);
+                inner.append(inner5);
+                outer.append(inner);
+
+                $('.message-list').append(outer);
+            }
         }
     });
     });
@@ -166,11 +192,11 @@ $(document).ready(function(e){
             var storage = $(this).attr('data-storage');
             $.ajax({
                 type:"POST",
-                url:"data/sms/inbox/"+modemID,
+                url:"api/delete/sms"+modemID,
                 dataType:"json",
                 data:{action:'delete-sms', modem_id:modemID, sms_id:smsID, storage:storage},
                 success:function(data){
-                    console.log(data);
+                    
                 }
             });
             $(this).slideUp(240, function(e4){

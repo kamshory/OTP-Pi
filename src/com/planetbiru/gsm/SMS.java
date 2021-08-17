@@ -1,21 +1,59 @@
 package com.planetbiru.gsm;
 
+import java.text.ParseException;
+import java.util.Calendar;
+import java.util.Date;
+
 import org.json.JSONObject;
 
-public class SMS {
-    private int id;
-    private String storage;
-    private String status;
-    private String phoneNumber;
-    private String phoneName;
-    private String date;
-    private String time;
-    private String content;
+import com.planetbiru.util.Utility;
 
-    public JSONObject toJSONObject(String modemID)
+public class SMS {
+    private int id = 0;
+    private String storage = "";
+    private String status = "";
+    private String phoneNumber = "";
+    private String phoneName = "";
+    private Date date = new Date();
+    private String content = "";
+    
+    public SMS(String storage, String id, String status, String phoneNumber, String phoneName, String date)
+    {
+    	this.id = Utility.atoi(id);
+    	this.storage = storage;
+    	this.status = status;
+    	this.phoneNumber = phoneNumber;
+    	this.phoneName = phoneName;
+    	this.date = this.parseDate(date);
+    }
+
+    private Date parseDate(String date) {
+    	String dateTimeStr = date.substring(0, 17);
+    	int tz = Utility.atoi(date.substring(17));
+		Date dateTime;
+		try 
+		{
+			dateTime = Utility.stringToTime(dateTimeStr, "yy/MM/dd,HH:mm:ss", 0);
+		} 
+		catch (ParseException e) 
+		{
+			e.printStackTrace();
+			dateTime = new Date();
+		}	
+		final Calendar cal = Calendar.getInstance();
+		cal.setTime(dateTime);
+	    cal.add(Calendar.MINUTE, tz * -15);
+	    return cal.getTime();	
+	}
+
+	public SMS() {
+		
+	}
+
+	public JSONObject toJSONObject(String modemID)
     {
     	JSONObject json = this.toJSONObject();
-    	json.put("modem_id", modemID);
+    	json.put("modemID", modemID);
     	return json;
     }
     public JSONObject toJSONObject()
@@ -26,8 +64,7 @@ public class SMS {
        	json.put("status", this.status);
        	json.put("phoneNumber", this.phoneNumber);
        	json.put("phoneName", this.phoneName);
-       	json.put("date", this.date);
-       	json.put("time", this.time);
+       	json.put("date", Utility.date("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", this.date, "UTC"));
        	json.put("content", this.content);
        	return json;
     }
@@ -72,20 +109,12 @@ public class SMS {
         this.phoneName = phoneName;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
     }
 
     public String getContent() {
@@ -98,6 +127,11 @@ public class SMS {
 
     @Override
     public String toString() {
-        return getId() + " " + getStorage() + " " + getStatus() + " " + getPhoneNumber() + " " + getDate() + " " + getTime() + " " + getContent();
+        return getId() + " " + getStorage() + " " + getStatus() + " " + getPhoneNumber() + " " + getDate() + " " + getContent();
     }
+
+	public void setDateStr(String date) {
+		this.date = this.parseDate(date);
+		
+	}
 }
