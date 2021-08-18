@@ -61,6 +61,7 @@ public class ServerEmail {
         this.server.setHostName(this.serverAddress);
         this.server.setSoftwareName(this.softwareName);
         this.server.setPort(this.port);
+        this.server.setLogger(false);
         try
         {
             this.server.start();

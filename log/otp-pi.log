@@ -4542,3 +4542,127 @@ org.json.JSONException: A JSONObject text must begin with '{' at 0 [character 1 
     "command": "send-message"
 }
 2021-08-18 13:09:53 [INFO  ] MessageAPI                      :45   - Send Message
+2021-08-18 13:25:30 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 13:25:31 [INFO  ] Application                     :198  - Service started
+2021-08-18 13:31:28 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 13:31:28 [INFO  ] SMTPServer                      :277  - SMTP server *:25 starting
+2021-08-18 13:31:28 [INFO  ] Application                     :198  - Service started
+2021-08-18 13:33:22 [ERROR ] ServerWebAdmin                  :46   - Address already in use: bind
+java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:220)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:88)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:101)
+	at jdk.httpserver/sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
+	at jdk.httpserver/sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.HttpServer.create(HttpServer.java:137)
+	at com.planetbiru.ServerWebAdmin.start(ServerWebAdmin.java:33)
+	at com.planetbiru.Application.startService(Application.java:156)
+	at com.planetbiru.Application.main(Application.java:77)
+2021-08-18 13:33:23 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 13:33:23 [INFO  ] SMTPServer                      :277  - SMTP server *:25 starting
+2021-08-18 13:33:23 [ERROR ] ServerEmail                     :71   - java.net.BindException: Address already in use: bind
+java.lang.RuntimeException: java.net.BindException: Address already in use: bind
+	at org.subethamail.smtp.server.SMTPServer.start(SMTPServer.java:291)
+	at com.planetbiru.ServerEmail.startService(ServerEmail.java:66)
+	at com.planetbiru.ServerEmail.start(ServerEmail.java:27)
+	at com.planetbiru.Application.startService(Application.java:194)
+	at com.planetbiru.Application.main(Application.java:77)
+Caused by: java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:643)
+	at java.base/java.net.ServerSocket.bind(ServerSocket.java:396)
+	at org.subethamail.smtp.server.SMTPServer.createServerSocket(SMTPServer.java:333)
+	at org.subethamail.smtp.server.SMTPServer.start(SMTPServer.java:287)
+	... 4 more
+2021-08-18 13:33:23 [INFO  ] Application                     :198  - Service started
+2021-08-18 13:34:31 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 13:34:32 [INFO  ] SMTPServer                      :277  - SMTP server *:25 starting
+2021-08-18 13:34:32 [INFO  ] Application                     :198  - Service started
+2021-08-18 13:37:41 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 13:37:42 [INFO  ] SMTPServer                      :277  - SMTP server *:25 starting
+2021-08-18 13:37:42 [INFO  ] Application                     :198  - Service started
+2021-08-18 13:40:28 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 13:40:28 [INFO  ] SMTPServer                      :277  - SMTP server *:25 starting
+2021-08-18 13:40:28 [INFO  ] Application                     :198  - Service started
+2021-08-18 13:40:28 [INFO  ] ServerThread                    :66   - SMTP server *:25 started
+2021-08-18 13:51:23 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 13:51:24 [INFO  ] Application                     :198  - Service started
+2021-08-18 13:51:24 [INFO  ] ServerThread                    :66   - SMTP server *:25 started
+2021-08-18 13:55:14 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 13:55:14 [INFO  ] Application                     :198  - Service started
+2021-08-18 14:09:23 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 14:09:23 [INFO  ] Application                     :198  - Service started
+2021-08-18 14:10:27 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 14:10:27 [INFO  ] Application                     :198  - Service started
+2021-08-18 14:10:34 [ERROR ] MessageAPI                      :62   - A JSONObject text must begin with '{' at 0 [character 1 line 1]
+org.json.JSONException: A JSONObject text must begin with '{' at 0 [character 1 line 1]
+	at org.json.JSONTokener.syntaxError(JSONTokener.java:505)
+	at org.json.JSONObject.<init>(JSONObject.java:205)
+	at org.json.JSONObject.<init>(JSONObject.java:389)
+	at com.planetbiru.api.MessageAPI.processRequest(MessageAPI.java:27)
+	at com.planetbiru.subscriber.mqtt.SubscriberMQTT$1.messageArrived(SubscriberMQTT.java:94)
+	at org.eclipse.paho.client.mqttv3.internal.CommsCallback.deliverMessage(CommsCallback.java:475)
+	at org.eclipse.paho.client.mqttv3.internal.CommsCallback.handleMessage(CommsCallback.java:379)
+	at org.eclipse.paho.client.mqttv3.internal.CommsCallback.run(CommsCallback.java:183)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-08-18 14:11:23 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:11:23 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:11:25 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:11:25 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:11:28 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:11:28 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:13:21 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 14:13:22 [INFO  ] Application                     :198  - Service started
+2021-08-18 14:13:23 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:13:23 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:13:29 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:13:29 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:13:37 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:13:37 [INFO  ] MessageAPI                      :35   - Send SMS
