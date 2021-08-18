@@ -175,7 +175,6 @@
       <form action="subscriber-setting.html" method="post">
         <table class="config-table config-table-feeder">
           <tbody>
-
             <tr>
               <td>Enable</td>
               <td><label><input type="checkbox" name="subscriber_amqp_enable" value="1"> Enable</label>
@@ -197,11 +196,6 @@
             <tr>
               <td>Port</td>
               <td><input type="number" max="65535" name="subscriber_amqp_port" id="subscriber_amqp_port" value="">
-              </td>
-            </tr>
-            <tr>
-              <td>Path</td>
-              <td><input type="text" name="subscriber_amqp_path" id="subscriber_amqp_path" value="">
               </td>
             </tr>
             <tr>
@@ -362,7 +356,6 @@
               $('select[name="subscriber_amqp_ssl"]').val(data.subscriberAmqpSSL ? "1" : "0");
               $('input[name="subscriber_amqp_address"]').val(data.subscriberAmqpAddress);
               $('input[name="subscriber_amqp_port"]').val(data.subscriberAmqpPort);
-              $('input[name="subscriber_amqp_path"]').val(data.subscriberAmqpPath);
               $('input[name="subscriber_amqp_username"]').val(data.subscriberAmqpUsername);
               $('input[name="subscriber_amqp_password"]').val(data.subscriberAmqpPassword);
               $('input[name="subscriber_amqp_topic"]').val(data.subscriberAmqpTopic);
