@@ -15,6 +15,7 @@ import com.planetbiru.config.ConfigBlocking;
 import com.planetbiru.config.ConfigDDNS;
 import com.planetbiru.config.ConfigEmail;
 import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.config.ConfigFirewall;
 import com.planetbiru.config.ConfigGeneral;
@@ -61,7 +62,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			this.handleSMTPSetting(httpExchange);
 		}
-		else if(path.startsWith("/data/feeder-ws-setting/get"))
+		else if(path.startsWith("/data/subscriber-ws-setting/get"))
 		{
 			this.handleSubscriberWSSetting(httpExchange);
 		}
@@ -93,9 +94,13 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			this.handleBlockList(httpExchange);
 		}
-		else if(path.startsWith("/data/feeder-amqp-setting/get"))
+		else if(path.startsWith("/data/subscriber-amqp-setting/get"))
 		{
 			this.handleSubscriberAMQPSetting(httpExchange);
+		}
+		else if(path.startsWith("/data/subscriber-mqtt-setting/get"))
+		{
+			this.handleSubscriberMQTTSetting(httpExchange);
 		}
 		else if(path.startsWith("/data/sms-setting/get"))
 		{
@@ -694,7 +699,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		httpExchange.close();
 	}
 
-	//@GetMapping(path="/data/feeder-ws-setting/get")
+	//@GetMapping(path="/data/subscriber-ws-setting/get")
 	public void handleSubscriberWSSetting(HttpExchange httpExchange) throws IOException
 	{
 		Headers requestHeaders = httpExchange.getRequestHeaders();
@@ -1045,7 +1050,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		httpExchange.close();	
 	}
 	
-	//@GetMapping(path="/data/feeder-amqp-setting/get")
+	//@GetMapping(path="/data/subscriber-amqp-setting/get")
 	public void handleSubscriberAMQPSetting(HttpExchange httpExchange) throws IOException
 	{
 		Headers requestHeaders = httpExchange.getRequestHeaders();
@@ -1059,6 +1064,43 @@ public class HandlerWebManagerData implements HttpHandler {
 			{
 				ConfigSubscriberAMQP.load(Config.getSubscriberAMQPSettingPath());
 				String list = ConfigSubscriberAMQP.toJSONObject().toString();
+				responseBody = list.getBytes();
+			}
+			else
+			{
+				statusCode = HttpStatus.UNAUTHORIZED;			
+			}
+		}
+		catch(NoUserRegisteredException e)
+		{
+			/**
+			 * Do nothing
+			 */
+		}
+		cookie.saveSessionData();
+		cookie.putToHeaders(responseHeaders);
+		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
+		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
+
+		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+		httpExchange.getResponseBody().write(responseBody);
+		httpExchange.close();	
+	}
+	
+	//@GetMapping(path="/data/subscriber-mqtt-setting/get")
+	public void handleSubscriberMQTTSetting(HttpExchange httpExchange) throws IOException
+	{
+		Headers requestHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
+		CookieServer cookie = new CookieServer(requestHeaders, Config.getSessionName(), Config.getSessionLifetime());
+		byte[] responseBody = "".getBytes();
+		int statusCode = HttpStatus.OK;
+		try
+		{
+			if(WebUserAccount.checkUserAuth(requestHeaders))
+			{
+				ConfigSubscriberMQTT.load(Config.getSubscriberMQTTSettingPath());
+				String list = ConfigSubscriberMQTT.toJSONObject().toString();
 				responseBody = list.getBytes();
 			}
 			else

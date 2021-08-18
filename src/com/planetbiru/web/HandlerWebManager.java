@@ -1409,15 +1409,15 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigSubscriberAMQP.save();			
 		}	
 		
-		if(queryPairs.containsKey("save_subscriber_amqp_setting"))
+		if(queryPairs.containsKey("save_subscriber_mqtt_setting"))
 		{
-			ConfigSubscriberMQTT.load(Config.getSubscriberMqttSettingPath());
+			ConfigSubscriberMQTT.load(Config.getSubscriberMQTTSettingPath());
 			boolean subscriberMqttEnable = queryPairs.getOrDefault("subscriber_mqtt_enable", "").equals("1");		
 			boolean subscriberMqttSSL = queryPairs.getOrDefault("subscriber_mqtt_ssl", "").equals("1");		
 			String subscriberMqttAddress = queryPairs.getOrDefault("subscriber_mqtt_address", "");		
 			String port = queryPairs.getOrDefault("subscriber_mqtt_port", "0");
 			int subscriberMqttPort = Utility.atoi(port);
-			String subscriberMqttPath = queryPairs.getOrDefault("subscriber_mqtt_path", "");		
+			String subscriberMqttClientID = queryPairs.getOrDefault("subscriber_mqtt_client_id", "");		
 			String subscriberMqttUsername = queryPairs.getOrDefault("subscriber_mqtt_username", "");		
 			String subscriberMqttPassword = queryPairs.getOrDefault("subscriber_mqtt_password", "");		
 			String subscriberMqttTopic = queryPairs.getOrDefault("subscriber_mqtt_topic", "");
@@ -1431,7 +1431,7 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigSubscriberMQTT.setSubscriberMqttSSL(subscriberMqttSSL);
 			ConfigSubscriberMQTT.setSubscriberMqttAddress(subscriberMqttAddress);
 			ConfigSubscriberMQTT.setSubscriberMqttPort(subscriberMqttPort);
-			ConfigSubscriberMQTT.setSubscriberMqttPath(subscriberMqttPath);
+			ConfigSubscriberMQTT.setSubscriberMqttClientID(subscriberMqttClientID);
 			ConfigSubscriberMQTT.setSubscriberMqttUsername(subscriberMqttUsername);
 			ConfigSubscriberMQTT.setSubscriberMqttPassword(subscriberMqttPassword);
 			ConfigSubscriberMQTT.setSubscriberMqttTopic(subscriberMqttTopic);

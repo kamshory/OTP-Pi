@@ -173,6 +173,9 @@ public class Application {
 			 */
 			Application.subscriberAMQPStart();
 			
+			/**
+			 * Mosquito Client for subscriber
+			 */
 			Application.subscriberMQTTStart();
 			
 			/**

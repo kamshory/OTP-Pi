@@ -17,6 +17,8 @@ import com.planetbiru.config.ConfigGeneral;
 import com.planetbiru.config.ConfigModem;
 import com.planetbiru.config.ConfigSMS;
 import com.planetbiru.config.ConfigSMTP;
+import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigVendorAfraid;
 import com.planetbiru.config.ConfigVendorCloudflare;
 import com.planetbiru.config.ConfigVendorDynu;
@@ -25,6 +27,7 @@ import com.planetbiru.config.PropertyLoader;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.gsm.SMSLogger;
 import com.planetbiru.receiver.amqp.RabbitMQSubscriber;
+import com.planetbiru.receiver.mqtt.SubscriberMQTT;
 import com.planetbiru.receiver.ws.WebSocketClientImpl;
 import com.planetbiru.user.WebUserAccount;
 import com.planetbiru.web.HandlerWebManagerAPI;
@@ -133,6 +136,7 @@ public class ConfigLoader {
 		String documentRoot = ConfigLoader.getConfig("otpbroker.web.document.root");
 		String subscriberWSSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.subscriber.ws");
 		String subscriberAMQPSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.subscriber.amqp");
+		String subscriberMQTTSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.subscriber.mqtt");
 		String mimeSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.all");
 		String userSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.user");
 		String ddnsSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.ddns");
@@ -224,6 +228,8 @@ public class ConfigLoader {
 		Config.setModemSettingPath(modemSettingPath);
 		Config.setSubscriberWSSettingPath(subscriberWSSettingPath);
 		Config.setSubscriberAMQPSettingPath(subscriberAMQPSettingPath);
+		System.out.println(subscriberMQTTSettingPath);
+		Config.setSubscriberMQTTSettingPath(subscriberMQTTSettingPath);
 		Config.setSessionFilePath(sessionFilePath);
 		Config.setSessionName(sessionName);
 		Config.setSessionLifetime(sessionLifetime);
@@ -269,23 +275,11 @@ public class ConfigLoader {
 		
 		Config.setWaitLoopParent(waitLoopParent);
 		Config.setWaitLoopChild(waitLoopChild);
-		/**
-		ConfigSubscriberWS.setSubscriberWsEnable(subscriberWsEnable);
-		ConfigSubscriberWS.setSubscriberWsSSL(subscriberWsSSL);
-		ConfigSubscriberWS.setSubscriberWsAddress(subscriberWsAddress);
-		ConfigSubscriberWS.setSubscriberWsPort(subscriberWsPort);
-		ConfigSubscriberWS.setSubscriberWsPath(subscriberWsPath);
-		ConfigSubscriberWS.setSubscriberWsUsername(subscriberWsUsername);
-		ConfigSubscriberWS.setSubscriberWsPassword(subscriberWsPassword);
-		ConfigSubscriberWS.setSubscriberWsTopic(subscriberWsTopic);
-		ConfigSubscriberWS.setSubscriberWsTimeout(subscriberWsTimeout);
-		ConfigSubscriberWS.setSubscriberWsReconnectDelay(subscriberWsReconnectDelay);
-		ConfigSubscriberWS.setSubscriberWsRefresh(subscriberWsRefresh);		
-		*/
-		
 		
 		
 		ConfigSubscriberWS.load(Config.getSubscriberWSSettingPath());
+		ConfigSubscriberAMQP.load(Config.getSubscriberAMQPSettingPath());
+		ConfigSubscriberMQTT.load(Config.getSubscriberMQTTSettingPath());
 		ConfigSMS.load(Config.getSmsSettingPath());
 		ConfigBlocking.setCountryCode(ConfigSMS.getCountryCode());
 		ConfigBlocking.load(Config.getBlockingSettingPath());
@@ -295,6 +289,7 @@ public class ConfigLoader {
 			SMSLogger.setPath(Config.getSmsLogPath());
 		}
 		GSMUtil.getCallerType().put(Utility.getClassName(RabbitMQSubscriber.class.toString()), "amqp");
+		GSMUtil.getCallerType().put(Utility.getClassName(SubscriberMQTT.class.toString()), "mqtt");
 		GSMUtil.getCallerType().put(Utility.getClassName(WebSocketClientImpl.class.toString()), "ws");
 		GSMUtil.getCallerType().put(Utility.getClassName(HandlerWebManagerAPI.class.toString()), "rest");
 		ConfigAPI.load(Config.getApiSettingPath());	

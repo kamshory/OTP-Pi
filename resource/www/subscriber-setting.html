@@ -281,8 +281,8 @@
               </td>
             </tr>
             <tr>
-              <td>Path</td>
-              <td><input type="text" name="subscriber_mqtt_path" id="subscriber_mqtt_path" value="">
+              <td>Client ID</td>
+              <td><input type="text" name="subscriber_mqtt_client_id" id="subscriber_mqtt_client_id" value="">
               </td>
             </tr>
             <tr>
@@ -296,7 +296,7 @@
               </td>
             </tr>
             <tr>
-              <td>Queue</td>
+              <td>Topic</td>
               <td><input type="text" name="subscriber_mqtt_topic" id="subscriber_mqtt_topic" value="">
               </td>
             </tr>
@@ -336,7 +336,7 @@
         $(document).ready(function (e) {
           $.ajax({
             type: "GET",
-            url: "data/feeder-ws-setting/get",
+            url: "data/subscriber-ws-setting/get",
             dataType: "json",
             success: function (data) {
               $('input[name="subscriber_ws_enable"]').prop("checked", data.subscriberWsEnable);
@@ -355,7 +355,7 @@
 
           $.ajax({
             type: "GET",
-            url: "data/feeder-amqp-setting/get",
+            url: "data/subscriber-amqp-setting/get",
             dataType: "json",
             success: function (data) {
               $('input[name="subscriber_amqp_enable"]').prop("checked", data.subscriberAmqpEnable);
@@ -368,6 +368,23 @@
               $('input[name="subscriber_amqp_topic"]').val(data.subscriberAmqpTopic);
               $('input[name="subscriber_amqp_timeout"]').val(data.subscriberAmqpTimeout);
               $('select[name="subscriber_amqp_refresh"]').val(data.subscriberAmqpRefresh + "");
+            }
+          });
+          $.ajax({
+            type: "GET",
+            url: "data/subscriber-mqtt-setting/get",
+            dataType: "json",
+            success: function (data) {
+              $('input[name="subscriber_mqtt_enable"]').prop("checked", data.subscriberMqttEnable);
+              $('select[name="subscriber_mqtt_ssl"]').val(data.subscriberMqttSSL ? "1" : "0");
+              $('input[name="subscriber_mqtt_address"]').val(data.subscriberMqttAddress);
+              $('input[name="subscriber_mqtt_port"]').val(data.subscriberMqttPort);
+              $('input[name="subscriber_mqtt_client_id"]').val(data.subscriberMqttClientID);
+              $('input[name="subscriber_mqtt_username"]').val(data.subscriberMqttUsername);
+              $('input[name="subscriber_mqtt_password"]').val(data.subscriberMqttPassword);
+              $('input[name="subscriber_mqtt_topic"]').val(data.subscriberMqttTopic);
+              $('input[name="subscriber_mqtt_timeout"]').val(data.subscriberMqttTimeout);
+              $('select[name="subscriber_mqtt_refresh"]').val(data.subscriberAmqpRefresh + "");
             }
           });
         });

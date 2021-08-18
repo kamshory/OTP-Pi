@@ -20,7 +20,7 @@ public class ConfigSubscriberMQTT {
 	private static boolean subscriberMqttSSL = false;
 	private static String subscriberMqttAddress = "127.0.0.1";
 	private static int subscriberMqttPort = 1883;
-	private static String subscriberMqttPath = "";
+	private static String subscriberMqttClientID = "";
 	private static String subscriberMqttUsername = "";
 	private static String subscriberMqttPassword = "";
 	private static String subscriberMqttTopic = "sms";
@@ -49,7 +49,7 @@ public class ConfigSubscriberMQTT {
 		setting.put("subscriberMqttSSL", ConfigSubscriberMQTT.subscriberMqttSSL);
 		setting.put("subscriberMqttAddress", ConfigSubscriberMQTT.subscriberMqttAddress);
 		setting.put("subscriberMqttPort", ConfigSubscriberMQTT.subscriberMqttPort);
-		setting.put("subscriberMqttPath", ConfigSubscriberMQTT.subscriberMqttPath);
+		setting.put("subscriberMqttClientID", ConfigSubscriberMQTT.subscriberMqttClientID);
 		setting.put("subscriberMqttUsername", ConfigSubscriberMQTT.subscriberMqttUsername);
 		setting.put("subscriberMqttPassword", ConfigSubscriberMQTT.subscriberMqttPassword);
 		setting.put("subscriberMqttTopic", ConfigSubscriberMQTT.subscriberMqttTopic);
@@ -115,7 +115,7 @@ public class ConfigSubscriberMQTT {
 				ConfigSubscriberMQTT.subscriberMqttSSL = setting.optBoolean("subscriberMqttSSL", false);
 				ConfigSubscriberMQTT.subscriberMqttAddress = setting.optString("subscriberMqttAddress", "");
 				ConfigSubscriberMQTT.subscriberMqttPort = setting.optInt("subscriberMqttPort", 0);
-				ConfigSubscriberMQTT.subscriberMqttPath = setting.optString("subscriberMqttPath", "");
+				ConfigSubscriberMQTT.subscriberMqttClientID = setting.optString("subscriberMqttClientID", "");
 				ConfigSubscriberMQTT.subscriberMqttUsername = setting.optString("subscriberMqttUsername", "");
 				ConfigSubscriberMQTT.subscriberMqttPassword = setting.optString("subscriberMqttPassword", "");
 				ConfigSubscriberMQTT.subscriberMqttTopic = setting.optString("subscriberMqttTopic", "");
@@ -181,12 +181,12 @@ public class ConfigSubscriberMQTT {
 		ConfigSubscriberMQTT.subscriberMqttPort = subscriberMqttPort;
 	}
 
-	public static String getSubscriberMqttPath() {
-		return subscriberMqttPath;
+	public static String getSubscriberMqttClientID() {
+		return subscriberMqttClientID;
 	}
 
-	public static void setSubscriberMqttPath(String subscriberMqttPath) {
-		ConfigSubscriberMQTT.subscriberMqttPath = subscriberMqttPath;
+	public static void setSubscriberMqttClientID(String subscriberMqttClientID) {
+		ConfigSubscriberMQTT.subscriberMqttClientID = subscriberMqttClientID;
 	}
 
 	public static String getSubscriberMqttUsername() {
@@ -250,7 +250,7 @@ public class ConfigSubscriberMQTT {
 		ConfigSubscriberMQTT.subscriberMqttSSL = false;
 		ConfigSubscriberMQTT.subscriberMqttAddress = "";
 		ConfigSubscriberMQTT.subscriberMqttPort = 0;
-		ConfigSubscriberMQTT.subscriberMqttPath = "";
+		ConfigSubscriberMQTT.subscriberMqttClientID = "";
 		ConfigSubscriberMQTT.subscriberMqttUsername = "";
 		ConfigSubscriberMQTT.subscriberMqttPassword = "";
 		ConfigSubscriberMQTT.subscriberMqttTopic = "";

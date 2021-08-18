@@ -4315,3 +4315,128 @@ java.net.BindException: Address already in use: bind
 2021-08-18 09:50:26 [INFO  ] GSM                             :585  - Set Serial Port
 2021-08-18 09:50:27 [INFO  ] Application                     :195  - Service started
 2021-08-18 09:50:33 [INFO  ] MessageAPI                      :28   - {"command": "test"}
+2021-08-18 11:21:27 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 11:21:27 [INFO  ] Application                     :198  - Service started
+2021-08-18 11:21:42 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 11:21:43 [INFO  ] Application                     :198  - Service started
+2021-08-18 11:22:03 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 11:22:03 [INFO  ] Application                     :198  - Service started
+2021-08-18 11:22:34 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 11:22:35 [INFO  ] Application                     :198  - Service started
+2021-08-18 11:35:51 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 11:35:52 [INFO  ] Application                     :198  - Service started
+2021-08-18 11:48:06 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 11:48:07 [INFO  ] Application                     :198  - Service started
+2021-08-18 11:48:13 [ERROR ] ConfigSubscriberMQTT            :76   - java.io.FileNotFoundException: C:\bitbucket\OTP-Pi (Access is denied)
+java.io.IOException: java.io.FileNotFoundException: C:\bitbucket\OTP-Pi (Access is denied)
+	at com.planetbiru.util.FileUtil.write(FileUtil.java:77)
+	at com.planetbiru.config.ConfigSubscriberMQTT.save(ConfigSubscriberMQTT.java:72)
+	at com.planetbiru.config.ConfigSubscriberMQTT.save(ConfigSubscriberMQTT.java:81)
+	at com.planetbiru.web.HandlerWebManager.processSubscriberSetting(HandlerWebManager.java:1441)
+	at com.planetbiru.web.HandlerWebManager.handlePost(HandlerWebManager.java:292)
+	at com.planetbiru.web.HandlerWebManager.handle(HandlerWebManager.java:74)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:77)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:80)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:692)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:77)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:664)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$DefaultExecutor.execute(ServerImpl.java:159)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Dispatcher.handle(ServerImpl.java:442)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Dispatcher.run(ServerImpl.java:408)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: java.io.FileNotFoundException: C:\bitbucket\OTP-Pi (Access is denied)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at com.planetbiru.util.FileUtil.write(FileUtil.java:68)
+	... 15 more
+2021-08-18 11:49:12 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 11:49:13 [INFO  ] Application                     :198  - Service started
+2021-08-18 11:49:18 [ERROR ] ConfigSubscriberMQTT            :76   - java.io.FileNotFoundException: C:\bitbucket\OTP-Pi (Access is denied)
+java.io.IOException: java.io.FileNotFoundException: C:\bitbucket\OTP-Pi (Access is denied)
+	at com.planetbiru.util.FileUtil.write(FileUtil.java:77)
+	at com.planetbiru.config.ConfigSubscriberMQTT.save(ConfigSubscriberMQTT.java:72)
+	at com.planetbiru.config.ConfigSubscriberMQTT.save(ConfigSubscriberMQTT.java:81)
+	at com.planetbiru.web.HandlerWebManager.processSubscriberSetting(HandlerWebManager.java:1441)
+	at com.planetbiru.web.HandlerWebManager.handlePost(HandlerWebManager.java:292)
+	at com.planetbiru.web.HandlerWebManager.handle(HandlerWebManager.java:74)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:77)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:80)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:692)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:77)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:664)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$DefaultExecutor.execute(ServerImpl.java:159)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Dispatcher.handle(ServerImpl.java:442)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Dispatcher.run(ServerImpl.java:408)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: java.io.FileNotFoundException: C:\bitbucket\OTP-Pi (Access is denied)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at com.planetbiru.util.FileUtil.write(FileUtil.java:68)
+	... 15 more
+2021-08-18 11:57:42 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 11:57:43 [INFO  ] Application                     :198  - Service started
+2021-08-18 11:57:48 [ERROR ] ConfigSubscriberMQTT            :76   - java.io.FileNotFoundException: C:\bitbucket\OTP-Pi (Access is denied)
+java.io.IOException: java.io.FileNotFoundException: C:\bitbucket\OTP-Pi (Access is denied)
+	at com.planetbiru.util.FileUtil.write(FileUtil.java:77)
+	at com.planetbiru.config.ConfigSubscriberMQTT.save(ConfigSubscriberMQTT.java:72)
+	at com.planetbiru.config.ConfigSubscriberMQTT.save(ConfigSubscriberMQTT.java:81)
+	at com.planetbiru.web.HandlerWebManager.processSubscriberSetting(HandlerWebManager.java:1441)
+	at com.planetbiru.web.HandlerWebManager.handlePost(HandlerWebManager.java:292)
+	at com.planetbiru.web.HandlerWebManager.handle(HandlerWebManager.java:74)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:77)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:80)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:692)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:77)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:664)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$DefaultExecutor.execute(ServerImpl.java:159)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Dispatcher.handle(ServerImpl.java:442)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Dispatcher.run(ServerImpl.java:408)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: java.io.FileNotFoundException: C:\bitbucket\OTP-Pi (Access is denied)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at com.planetbiru.util.FileUtil.write(FileUtil.java:68)
+	... 15 more
+2021-08-18 11:58:20 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 11:58:20 [INFO  ] Application                     :198  - Service started
+2021-08-18 12:00:04 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 12:00:04 [INFO  ] Application                     :198  - Service started
+2021-08-18 12:02:24 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 12:02:24 [INFO  ] Application                     :198  - Service started
+2021-08-18 12:06:24 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 12:06:25 [INFO  ] Application                     :198  - Service started
+2021-08-18 12:08:18 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 12:08:18 [INFO  ] Application                     :198  - Service started
+2021-08-18 12:08:45 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 12:08:45 [INFO  ] Application                     :198  - Service started
+2021-08-18 12:10:57 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 12:10:58 [INFO  ] Application                     :198  - Service started
+2021-08-18 12:11:22 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 12:11:22 [INFO  ] Application                     :198  - Service started
+2021-08-18 12:12:15 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 12:12:16 [INFO  ] Application                     :198  - Service started
+2021-08-18 12:15:41 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 12:15:41 [INFO  ] Application                     :198  - Service started
+2021-08-18 12:16:29 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 12:16:29 [INFO  ] Application                     :198  - Service started
+2021-08-18 12:16:35 [ERROR ] MessageAPI                      :62   - A JSONObject text must begin with '{' at 0 [character 1 line 1]
+org.json.JSONException: A JSONObject text must begin with '{' at 0 [character 1 line 1]
+	at org.json.JSONTokener.syntaxError(JSONTokener.java:505)
+	at org.json.JSONObject.<init>(JSONObject.java:205)
+	at org.json.JSONObject.<init>(JSONObject.java:389)
+	at com.planetbiru.api.MessageAPI.processRequest(MessageAPI.java:27)
+	at com.planetbiru.receiver.mqtt.SubscriberMQTT$1.messageArrived(SubscriberMQTT.java:94)
+	at org.eclipse.paho.client.mqttv3.internal.CommsCallback.deliverMessage(CommsCallback.java:475)
+	at org.eclipse.paho.client.mqttv3.internal.CommsCallback.handleMessage(CommsCallback.java:379)
+	at org.eclipse.paho.client.mqttv3.internal.CommsCallback.run(CommsCallback.java:183)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-08-18 12:16:40 [INFO  ] MessageAPI                      :28   - {}

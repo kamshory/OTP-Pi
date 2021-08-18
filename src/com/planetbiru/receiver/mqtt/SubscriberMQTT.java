@@ -23,23 +23,26 @@ public class SubscriberMQTT extends Thread{
 	@Override
 	public void run()
 	{
-		this.connect();
-		do 
+		if(ConfigSubscriberMQTT.isSubscriberMqttEnable())
 		{
-			try 
+			this.connect();
+			do 
 			{
-				Thread.sleep(ConfigSubscriberMQTT.getSubscriberWsReconnectDelay());
-			} 
-			catch (InterruptedException e) 
-			{
-				Thread.currentThread().interrupt();
+				try 
+				{
+					Thread.sleep(ConfigSubscriberMQTT.getSubscriberWsReconnectDelay());
+				} 
+				catch (InterruptedException e) 
+				{
+					Thread.currentThread().interrupt();
+				}
+				if(!this.connected)
+				{
+					this.connect();
+				}
 			}
-			if(!this.connected)
-			{
-				this.connect();
-			}
+			while(this.running);
 		}
-		while(this.running);
 	}
 	private void flagDisconnected()
 	{

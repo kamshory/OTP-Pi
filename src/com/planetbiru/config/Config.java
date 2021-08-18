@@ -185,6 +185,14 @@ public class Config {
 		Config.subscriberAMQPSettingPath = subscriberAMQPSettingPath;
 	}
 
+	public static String getSubscriberMQTTSettingPath() {
+		return subscriberMqttSettingPath;
+	}
+
+	public static void setSubscriberMQTTSettingPath(String subscriberMqttSettingPath) {
+		Config.subscriberMqttSettingPath = subscriberMqttSettingPath;
+	}
+
 	public static String getSubscriberWSSettingPath() {
 		return subscriberWSSettingPath;
 	}
@@ -769,12 +777,5 @@ public class Config {
 		Config.waitLoopChild = waitLoopChild;
 	}
 
-	public static String getSubscriberMqttSettingPath() {
-		return subscriberMqttSettingPath;
-	}
-
-	public static void setSubscriberMqttSettingPath(String subscriberMqttSettingPath) {
-		Config.subscriberMqttSettingPath = subscriberMqttSettingPath;
-	}
 	
 }
