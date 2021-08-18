@@ -354,12 +354,12 @@ Host: sub.domain.tld
 Connection: close
 User-agent: KSPS
 Content-type: application/json
-Content-length: 124
+Content-length: 129
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 {
-	"command":"send-sms",
-	"data":{
+	"command": "send-sms",
+	"data": {
 		"id": 123456,
 		"receiver": "08126666666",
 		"message": "OTP Anda adalah 1234"
@@ -383,12 +383,12 @@ Host: sub.domain.tld
 Connection: close
 User-agent: KSPS
 Content-type: application/json
-Content-length: 124
+Content-length: 138
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 {
-	"command":"send-email",
-	"data":{
+	"command": "send-email",
+	"data": {
 		"id": 123456,
 		"receiver": "someone@domain.tld",
 		"message": "OTP Anda adalah 1234"
@@ -413,12 +413,12 @@ Host: sub.domain.tld
 Connection: close
 User-agent: KSPS
 Content-type: application/json
-Content-length: 86
+Content-length: 70
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 {
-	"command":"block-msisdn",
-	"data":{
+	"command": "block-msisdn",
+	"data": {
 		"receiver": "08126666666",
 	}
 }
@@ -438,12 +438,12 @@ Host: sub.domain.tld
 Connection: close
 User-agent: KSPS
 Content-type: application/json
-Content-length: 86
+Content-length: 81
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 {
-	"command":"unblock-msisdn",
-	"data":{
+	"command": "unblock-msisdn",
+	"data": {
 		"receiver": "08126666666",
 	}
 }
@@ -469,7 +469,7 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 
 1. OTP-Pi
 2. Koneksi internet (tidak memerlukan IP public dan port forwarding)
-3. Server RabbitMQ atau WSMessageBroker
+3. Server RabbitMQ, MQTT atau WSMessageBroker
 
 **1. RabbitMQ**
 
@@ -477,8 +477,8 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 
 ```json
 {
-	"command":"send-sms",
-	"data":{
+	"command": "send-sms",
+	"data": {
 		"id": 123456,
 		"receiver": "08126666666",
 		"message": "OTP Anda adalah 1234"
@@ -499,7 +499,7 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 ```json
 {
 	"command":"send-sms",
-	"data":{
+	"data": {
 		"id": 123456,
 		"receiver": "someone@domain.tld",
 		"message": "OTP Anda adalah 1234"
@@ -519,8 +519,8 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 
 ```json
 {
-	"command":"block-msisdn",
-	"data":{
+	"command": "block-msisdn",
+	"data": {
 		"receiver": "08126666666",
 	}
 }
@@ -536,7 +536,7 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 
 ```json
 {
-	"command":"unblock-msisdn",
+	"command": "unblock-msisdn",
 	"data":{
 		"receiver": "08126666666",
 	}
@@ -549,14 +549,14 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | data | Objek | Data untuk OTP-Pi | 
 | `data`.receiver | String | Nomor MSISDN yang akan dibuka blokir |
 
-**2. WSMessageBroker**
+**2. MQTT**
 
 **Send SMS Request**
 
 ```json
 {
 	"command":"send-sms",
-	"data":{	
+	"data": {
 		"id": 123456,
 		"receiver": "08126666666",
 		"message": "OTP Anda adalah 1234"
@@ -576,8 +576,8 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 
 ```json
 {
-	"command":"send-sms",
-	"data":{
+	"command": "send-sms",
+	"data": {
 		"id": 123456,
 		"receiver": "someone@domain.tld",
 		"message": "OTP Anda adalah 1234"
@@ -597,8 +597,86 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 
 ```json
 {
-	"command":"block-msisdn",
-	"data":{
+	"command": "block-msisdn",
+	"data": {
+		"receiver": "08126666666",
+	}
+}
+```
+
+| Parameter | Tipe | Deskripsi |
+| --------- | ---- | ----------|
+| command | String | Perintah ke OTP-Pi |
+| data | Objek | Data untuk OTP-Pi | 
+| `data`.receiver | String | Nomor MSISDN yang akan diblokir |
+
+**Unblock Number Request**
+
+```json
+{
+	"command": "unblock-msisdn",
+	"data": {
+		"receiver": "08126666666",
+	}
+}
+```
+
+| Parameter | Tipe | Deskripsi |
+| --------- | ---- | ----------|
+| command | String | Perintah ke OTP-Pi |
+| data | Objek | Data untuk OTP-Pi | 
+| `data`.receiver | String | Nomor MSISDN yang akan dibuka blokir |
+
+**3. WSMessageBroker**
+
+**Send SMS Request**
+
+```json
+{
+	"command":"send-sms",
+	"data": {	
+		"id": 123456,
+		"receiver": "08126666666",
+		"message": "OTP Anda adalah 1234"
+	}
+}
+```
+
+| Parameter | Tipe | Deskripsi |
+| --------- | ---- | ----------|
+| command | String | Perintah ke OTP-Pi |
+| data | Objek | Data untuk OTP-Pi | 
+| `data`.id | String | ID SMS |
+| `data`.receiver | String | Nomor MSISDN penerima |
+| `data`.message| String | Pesan SMS |
+
+**Send Email Request**
+
+```json
+{
+	"command": "send-sms",
+	"data": {
+		"id": 123456,
+		"receiver": "someone@domain.tld",
+		"message": "OTP Anda adalah 1234"
+	}
+}
+```
+
+| Parameter | Tipe | Deskripsi |
+| --------- | ---- | ----------|
+| command | String | Perintah ke OTP-Pi |
+| data | Objek | Data untuk OTP-Pi | 
+| `data`.id | String | ID SMS |
+| `data`.receiver | String | Alamat email penerima |
+| `data`.message| String | Pesan SMS |
+
+**Block Number Request**
+
+```json
+{
+	"command": "block-msisdn",
+	"data": {
 		"receiver": "08126666666",
 	}
 }
