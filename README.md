@@ -296,13 +296,45 @@ Network Setting adalah konfigurasi untuk mengatur jaringan dari OTP-Pi. OTP-Pi d
 
 Konfigurasi DHCP akan mengatur DHCP pada akses poin OTP-Pi.
 
+| Field | Value |
+| --- | ------ |
+| Domain Name | Domain name of DHCP |
+| Domain Name Servers | Domain name servers of DHCP |
+| Router Address | Router address of DHCP |
+| Netmask | Netmask of DHCP |
+| Subnetmask | Subnetmask of DHCP |
+| Domain Name Servers Address | Domain Name Servers Address of DHCP |
+| Default Lease Time | Default lease time of the clients |
+| Maximum Lease Time | Maximum lease time of the clients |
+| Range | Allocated IP address range | 
+
 ### Wireless LAN
 
 Konfigurasi Wireless LAN akan mengatur alamat IP pada jaringan wireless OTP-Pi. Alamat IP bawaan dari OTP-Pi adalah 192.168.0.11
 
+| Field | Value |
+| --- | ------ |
+| SSID Name | SSID name |
+| SSID Password | SSID password |
+| Key Management | Key management |
+| IP Address | IP address of the device if client connect via Wifi |
+| Prefix | Nework prefix |
+| Netmask | Netmask |
+| Gateway | Gateway |
+| DNS | DNS |
+
 ### Ethernet
 
 Konfigurasi Ethernet akan mengatur alamat IP ethernet pada OTP-Pi.
+
+| Field | Value |
+| --- | ------ |
+| IP Address | IP address of the device if client connect via Ethernet |
+| Prefix | Nework prefix |
+| Netmask | Netmask |
+| Gateway | Gateway |
+| DNS1 | DNS 1 |
+| DNS2 | DNS 2 |
 
 ## Firewall
 
