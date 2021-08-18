@@ -1,4 +1,5 @@
 
+
 # OTP-Pi
 
 ![OTP-Pi](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/otp-pi.png)
@@ -130,11 +131,60 @@ Phone number adalah informasi kontak berupa nomor telepon dari pengguna API
 **Email**
 Email adalah informasi kontak berupa alamat email dari pengguna API
 
-## Feeder Setting
+## Subscriber Setting
 
-OTP-Pi memberikan pilihan apabila perangkat ini dipasang pada jaringan internet mobile atau pada jaringan di mana perangkat pengirim tidak mungkin dapat menjangkau alamat dari OTP-Pi.
+OTP-Pi memberikan pilihan apabila perangkat ini dipasang pada jaringan internet mobile atau pada jaringan di mana perangkat pengirim tidak mungkin dapat menjangkau alamat dari OTP-Pi. Pengguna dapat mengirimkan OTP dengan message broker sebagai berikut:
 
-OTP-Pi menyediakan 2 cara agar OTP-Pi dapat menerima pesan yang akan dikirimkan melalui SMS yaitu dengan RabbitMQ dan WSMessageBroker.
+1. WSMessageBroker (WebSocket)
+2. RabbitMQ (AMQP)
+3. Mosquito (MQTT)
+
+**WSMessageBroker**
+
+| Field | Description |
+| ----- | ----------- |
+| Enable | Enable or disable WSMessageBroker |
+| SSL | SSL connection |
+| Host | WSMessageBroker host name or IP address |
+| Port | Port number |
+| Path | Context path |
+| Username | Username on basic authorzation |
+| Password | Password on basic authorzation |
+| Topic | Topic of subscribsion | 
+| Timeout | Request time out |
+| Reconnect Delay | Delay to reconnect |
+| Refresh Connection | Refresh WebSocket connection |
+
+**RabbitMQ**
+
+| Field | Description |
+| ----- | ----------- |
+| Enable | Enable or disable RabbitMQ |
+| SSL | SSL connection |
+| Host | RabbitMQ host name or IP address |
+| Port | Port number |
+| Username | Username on basic authorzation |
+| Password | Password on basic authorzation |
+| Queue | Topic of subscribsion | 
+| Timeout | Request time out |
+| Refresh Connection | Refresh RabbitMQ connection |
+
+**Mosquito**
+
+| Field | Description |
+| ----- | ----------- |
+| Enable | Enable or disable Mosquito |
+| SSL | SSL connection |
+| Host | Mosquito host name or IP address |
+| Port | Port number |
+| Client ID | Client ID |
+| Username | Username on basic authorzation |
+| Password | Password on basic authorzation |
+| Topic | Topic of subscribsion | 
+| Timeout | Request time out |
+| Refresh Connection | Refresh Mosquito connection |
+
+
 
 ## SMS Setting
 

@@ -4984,3 +4984,7 @@ org.json.JSONException: A JSONObject text must begin with '{' at 0 [character 1 
     "command": "send-sms"
 }
 2021-08-18 14:40:53 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 17:03:30 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 17:03:31 [INFO  ] Application                     :198  - Service started
+2021-08-18 17:13:43 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 17:13:44 [INFO  ] Application                     :198  - Service started
