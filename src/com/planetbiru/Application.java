@@ -201,11 +201,18 @@ public class Application {
 		
 	}
 	
-	private static void subscriberMQTTStart() {
-		if((Application.mqttSubscriber == null || !Application.mqttSubscriber.isRunning()))
+	public static void subscriberMQTTStart() {
+		if(ConfigSubscriberMQTT.isSubscriberMqttEnable() && (Application.mqttSubscriber == null || !Application.mqttSubscriber.isRunning()))
 		{
 			Application.mqttSubscriber = new SubscriberMQTT();
 			Application.mqttSubscriber.start();
+		}		
+	}
+
+	public static void subscriberMQTTStop() {
+		if(Application.mqttSubscriber != null && Application.mqttSubscriber.isRunning())
+		{
+			Application.mqttSubscriber.stopService();
 		}		
 	}
 
@@ -217,7 +224,7 @@ public class Application {
 		}		
 	}
 	public static void subscriberAMQPStop() {
-		if(Application.amqpSubscriber != null || Application.amqpSubscriber.isRunning())
+		if(Application.amqpSubscriber != null && Application.amqpSubscriber.isRunning())
 		{
 			Application.amqpSubscriber.stopService();
 		}		
@@ -231,7 +238,7 @@ public class Application {
 		}
 	}
 
-	public static void feederWSStop() {
+	public static void subscriberWSStop() {
 		if(Application.webSocketSubscriber != null && Application.webSocketSubscriber.isRunning())
 		{
 			Application.webSocketSubscriber.stopService();	
@@ -274,6 +281,7 @@ public class Application {
 		Application.scheduller.stopService();
 		Application.webSocketSubscriber.stopService();
 		Application.amqpSubscriber.stopService();
+		Application.mqttSubscriber.stopService();
 	}	
 	
 	public static void prepareSessionDir()

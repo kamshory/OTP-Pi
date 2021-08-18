@@ -121,6 +121,10 @@ public class SubscriberMQTT extends Thread{
 	public boolean isRunning() {
 		return running;
 	}
+	public void stopService() {
+		this.running = false;	
+		flagDisconnected();
+	}
 	
 	
 }

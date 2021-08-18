@@ -73,13 +73,13 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			{
 				this.expandStorage(httpExchange);
 			}
-			else if(path.startsWith("/api/feeder-ws"))
+			else if(path.startsWith("/api/subscriber-ws"))
 			{
-				this.feederWS(httpExchange);
+				this.subscriberWS(httpExchange);
 			}
-			else if(path.startsWith("/api/feeder-amqp"))
+			else if(path.startsWith("/api/subscriber-amqp"))
 			{
-				this.feederAMQP(httpExchange);
+				this.subscriberAMQP(httpExchange);
 			}
 			else if(path.startsWith("/api/delete/sms"))
 			{
@@ -137,8 +137,8 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		httpExchange.getResponseBody().write(responseBody);
 		httpExchange.close();
 	}
-	//@PostMapping(path="/api/feeder-ws")
-	public void feederWS(HttpExchange httpExchange) throws IOException
+	//@PostMapping(path="/api/subscriber-ws")
+	public void subscriberWS(HttpExchange httpExchange) throws IOException
 	{
 		byte[] req = HttpUtil.getRequestBody(httpExchange);
 		String requestBody = "";
@@ -163,7 +163,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				}
 				else
 				{
-					Application.feederWSStop();
+					Application.subscriberWSStop();
 				} 
 				ServerWebSocketAdmin.broadcastServerInfo();
 			} 
@@ -185,8 +185,8 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		httpExchange.close();
 	}
 	
-	//@PostMapping(path="/api/feeder-amqp")
-	public void feederAMQP(HttpExchange httpExchange) throws IOException
+	//@PostMapping(path="/api/subscriber-amqp")
+	public void subscriberAMQP(HttpExchange httpExchange) throws IOException
 	{
 		byte[] req = HttpUtil.getRequestBody(httpExchange);
 		String requestBody = "";
