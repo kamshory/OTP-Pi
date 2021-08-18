@@ -185,10 +185,17 @@ OTP-Pi memberikan pilihan apabila perangkat ini dipasang pada jaringan internet 
 | Refresh Connection | Refresh Mosquito connection |
 
 
-
 ## SMS Setting
 
 SMS Setting adalah konfigurasi pengiriman SMS oleh OTP-Pi.
+
+| Field | Description |
+| ----- | ----------- |
+| Country Code | Phone country code (numeric). See https://countrycode.org/ |
+| Recipent Prefix Length | For Indonesia, use 5 |
+| Log Outgoing SMS | Flag to log outgoing SMS |
+| Monitor SMS Traffic | Flag to monitor SMS traffic |
+
 
 ## Modem Setting
 
