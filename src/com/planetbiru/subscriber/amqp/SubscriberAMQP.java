@@ -1,4 +1,4 @@
-package com.planetbiru.receiver.amqp;
+package com.planetbiru.subscriber.amqp;
 
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigSubscriberAMQP;

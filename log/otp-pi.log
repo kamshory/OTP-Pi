@@ -4440,3 +4440,105 @@ org.json.JSONException: A JSONObject text must begin with '{' at 0 [character 1 
 	at org.eclipse.paho.client.mqttv3.internal.CommsCallback.run(CommsCallback.java:183)
 	at java.base/java.lang.Thread.run(Thread.java:832)
 2021-08-18 12:16:40 [INFO  ] MessageAPI                      :28   - {}
+2021-08-18 12:58:39 [INFO  ] MessageAPI                      :28   - {}
+2021-08-18 12:58:48 [INFO  ] MessageAPI                      :28   - {}
+2021-08-18 12:59:05 [INFO  ] MessageAPI                      :28   - {"command": "send-message"}
+2021-08-18 12:59:38 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "recipient": "081266612126",
+        "message": "Halo"
+    },
+    "command": "send-message"
+}
+2021-08-18 12:59:38 [INFO  ] MessageAPI                      :45   - Send Message
+2021-08-18 12:59:51 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "recipient": "081266612126",
+        "message": "Halo"
+    },
+    "command": "send-message"
+}
+2021-08-18 12:59:51 [INFO  ] MessageAPI                      :45   - Send Message
+2021-08-18 12:59:56 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "recipient": "081266612126",
+        "message": "Halo"
+    },
+    "command": "send-message"
+}
+2021-08-18 12:59:56 [INFO  ] MessageAPI                      :45   - Send Message
+2021-08-18 13:00:16 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "recipient": "081266612126",
+        "message": "Halo"
+    },
+    "command": "send-message"
+}
+2021-08-18 13:00:16 [INFO  ] MessageAPI                      :45   - Send Message
+2021-08-18 13:00:45 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "recipient": "081266612126",
+        "message": "Halo"
+    },
+    "command": "send-message"
+}
+2021-08-18 13:00:45 [INFO  ] MessageAPI                      :45   - Send Message
+2021-08-18 13:01:03 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 13:01:15 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "recipient": "081266612126",
+        "message": "Halo"
+    },
+    "command": "send-message"
+}
+2021-08-18 13:01:15 [INFO  ] MessageAPI                      :45   - Send Message
+2021-08-18 13:01:17 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "recipient": "081266612126",
+        "message": "Halo"
+    },
+    "command": "send-message"
+}
+2021-08-18 13:01:17 [INFO  ] MessageAPI                      :45   - Send Message
+2021-08-18 13:01:18 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "recipient": "081266612126",
+        "message": "Halo"
+    },
+    "command": "send-message"
+}
+2021-08-18 13:01:18 [INFO  ] MessageAPI                      :45   - Send Message
+2021-08-18 13:01:18 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "recipient": "081266612126",
+        "message": "Halo"
+    },
+    "command": "send-message"
+}
+2021-08-18 13:01:18 [INFO  ] MessageAPI                      :45   - Send Message
+2021-08-18 13:01:22 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "recipient": "081266612126",
+        "message": "Halo"
+    },
+    "command": "send-message"
+}
+2021-08-18 13:01:22 [INFO  ] MessageAPI                      :45   - Send Message
+2021-08-18 13:01:23 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "recipient": "081266612126",
+        "message": "Halo"
+    },
+    "command": "send-message"
+}
+2021-08-18 13:01:23 [INFO  ] MessageAPI                      :45   - Send Message
+2021-08-18 13:04:31 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 13:04:32 [INFO  ] Application                     :198  - Service started
+2021-08-18 13:09:53 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "recipient": "081266612126",
+        "message": "Halo"
+    },
+    "command": "send-message"
+}
+2021-08-18 13:09:53 [INFO  ] MessageAPI                      :45   - Send Message

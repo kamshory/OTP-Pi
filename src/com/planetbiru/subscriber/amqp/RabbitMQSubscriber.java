@@ -1,4 +1,4 @@
-package com.planetbiru.receiver.amqp;
+package com.planetbiru.subscriber.amqp;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

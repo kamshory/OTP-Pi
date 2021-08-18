@@ -26,9 +26,9 @@ import com.planetbiru.config.ConfigVendorNoIP;
 import com.planetbiru.config.PropertyLoader;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.gsm.SMSLogger;
-import com.planetbiru.receiver.amqp.RabbitMQSubscriber;
-import com.planetbiru.receiver.mqtt.SubscriberMQTT;
-import com.planetbiru.receiver.ws.WebSocketClientImpl;
+import com.planetbiru.subscriber.amqp.RabbitMQSubscriber;
+import com.planetbiru.subscriber.mqtt.SubscriberMQTT;
+import com.planetbiru.subscriber.ws.WebSocketClientImpl;
 import com.planetbiru.user.WebUserAccount;
 import com.planetbiru.web.HandlerWebManagerAPI;
 

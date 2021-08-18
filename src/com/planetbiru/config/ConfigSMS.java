@@ -47,7 +47,7 @@ public class ConfigSMS {
 		smsSetting.put(JsonKey.MONITOR_SMS, ConfigSMS.monitorSMS);
 		smsSetting.put(JsonKey.COUNTRY_CODE, ConfigSMS.countryCode);
 		smsSetting.put(JsonKey.RECIPIENT_PREFIX_LENGTH, ConfigSMS.getRecipientPrefixLength());
-		smsSetting.put("logSMS", logSMS);
+		smsSetting.put("logSMS", ConfigSMS.logSMS);
 		return smsSetting;
 	}
 	

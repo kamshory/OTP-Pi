@@ -1,4 +1,4 @@
-package com.planetbiru.receiver.mqtt;
+package com.planetbiru.subscriber.mqtt;
 
 import java.util.UUID;
 import java.util.concurrent.CountDownLatch;

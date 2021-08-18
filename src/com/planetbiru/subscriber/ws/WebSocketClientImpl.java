@@ -1,4 +1,4 @@
-package com.planetbiru.receiver.ws;
+package com.planetbiru.subscriber.ws;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
