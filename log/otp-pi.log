@@ -4666,3 +4666,321 @@ org.json.JSONException: A JSONObject text must begin with '{' at 0 [character 1 
     "command": "send-sms"
 }
 2021-08-18 14:13:37 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:18:50 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 14:18:50 [INFO  ] Application                     :198  - Service started
+2021-08-18 14:19:01 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:19:01 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:19:13 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:19:13 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:19:14 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:19:14 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:19:59 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 14:20:00 [INFO  ] Application                     :198  - Service started
+2021-08-18 14:20:02 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:20:02 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:21:27 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 14:21:27 [INFO  ] Application                     :198  - Service started
+2021-08-18 14:21:30 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:21:30 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:21:33 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:21:33 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:22:00 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 14:22:00 [INFO  ] Application                     :198  - Service started
+2021-08-18 14:22:03 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:22:03 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:23:15 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:23:15 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:23:24 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:23:24 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:23:29 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:23:29 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:23:30 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:23:30 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:23:31 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:23:31 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:24:20 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 14:24:21 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:24:21 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:24:21 [INFO  ] Application                     :198  - Service started
+2021-08-18 14:24:23 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:24:23 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:24:24 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:24:24 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:24:41 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 14:24:41 [INFO  ] Application                     :198  - Service started
+2021-08-18 14:24:43 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:24:43 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:25:18 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 14:25:18 [INFO  ] Application                     :198  - Service started
+2021-08-18 14:25:19 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:25:19 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:25:24 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:25:24 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:25:26 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:25:26 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:26:11 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 14:26:12 [INFO  ] Application                     :198  - Service started
+2021-08-18 14:26:13 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:26:13 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:26:55 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 14:26:56 [INFO  ] Application                     :198  - Service started
+2021-08-18 14:27:05 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:27:05 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:27:57 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 14:27:57 [INFO  ] Application                     :198  - Service started
+2021-08-18 14:27:58 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:27:58 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:29:50 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 14:29:50 [INFO  ] Application                     :198  - Service started
+2021-08-18 14:29:53 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:29:53 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:35:13 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 14:35:14 [INFO  ] Application                     :198  - Service started
+2021-08-18 14:35:15 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:35:15 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:35:17 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:35:17 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:37:43 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 14:37:43 [INFO  ] Application                     :198  - Service started
+2021-08-18 14:37:48 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:37:48 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:37:57 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:37:57 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:38:04 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:38:04 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:38:16 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:38:16 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:38:17 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:38:17 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:39:22 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 14:39:22 [INFO  ] Application                     :198  - Service started
+2021-08-18 14:39:25 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:39:25 [INFO  ] MessageAPI                      :35   - Send SMS
+2021-08-18 14:40:51 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 14:40:51 [INFO  ] Application                     :198  - Service started
+2021-08-18 14:40:53 [INFO  ] MessageAPI                      :28   - {
+    "data": {
+        "receiver": "08126666666",
+        "id": 123456,
+        "message": "OTP Anda adalah 1234"
+    },
+    "command": "send-sms"
+}
+2021-08-18 14:40:53 [INFO  ] MessageAPI                      :35   - Send SMS

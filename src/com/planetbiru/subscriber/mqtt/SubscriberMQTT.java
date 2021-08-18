@@ -88,13 +88,13 @@ public class SubscriberMQTT extends Thread{
 			this.callback = new MqttCallback() {
 			    @Override
 				public void messageArrived(String topic, MqttMessage payload) throws Exception {
-			    	String message = new String(payload.getPayload());
 			        latch.countDown(); 
-			        MessageAPI api = new MessageAPI();
-			        api.processRequest(message);
+			        onMessage(topic, payload);
 			    }
 	
-			    @Override
+			    
+
+				@Override
 			    public void connectionLost(Throwable cause) {
 			        latch.countDown();			        
 			        flagDisconnected();
@@ -119,6 +119,12 @@ public class SubscriberMQTT extends Thread{
 		{
 			flagDisconnected();
 		}
+		
+	}
+	private void onMessage(String topic, MqttMessage payload) {
+		String message = new String(payload.getPayload());
+        MessageAPI api = new MessageAPI();
+        api.processRequest(message);
 		
 	}
 	public boolean isRunning() {

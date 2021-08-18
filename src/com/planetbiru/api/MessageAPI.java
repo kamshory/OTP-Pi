@@ -156,7 +156,7 @@ public class MessageAPI {
 
 	public JSONObject sendSMS(String command, JSONObject data)
 	{
-		StackTraceElement ste = Thread.currentThread().getStackTrace()[2];      
+		StackTraceElement ste = Thread.currentThread().getStackTrace()[3];      
 		JSONObject responseJSON = new JSONObject();
 		JSONObject jsonData = new JSONObject();
 		if(data != null)

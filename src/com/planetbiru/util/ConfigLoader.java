@@ -228,7 +228,6 @@ public class ConfigLoader {
 		Config.setModemSettingPath(modemSettingPath);
 		Config.setSubscriberWSSettingPath(subscriberWSSettingPath);
 		Config.setSubscriberAMQPSettingPath(subscriberAMQPSettingPath);
-		System.out.println(subscriberMQTTSettingPath);
 		Config.setSubscriberMQTTSettingPath(subscriberMQTTSettingPath);
 		Config.setSessionFilePath(sessionFilePath);
 		Config.setSessionName(sessionName);

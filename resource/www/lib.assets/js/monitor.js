@@ -166,26 +166,28 @@ function addModem(selector, index, data)
     
 }
 function setModemActive(id, senderType, status)
+{
+    console.log(senderType);
+    console.log(status);
+    var selector = 'svg g#modem g#'+id;
+    if(status)
     {
-        var selector = 'svg g#modem g#'+id;
-        if(status)
-        {
-            $(selector).find('line').attr('stroke', '#f80000');
-            $(selector).find('[data-name="led"]').attr('display', '');
-            $('#phoneled').attr('display', '');
-            $('#chipled').attr('display', '');
-            $('#'+senderType).find('text').attr('fill', 'red');
-            $('#'+senderType).find('rect').attr('stroke', 'red');
-            $('#'+senderType).find('line').attr('stroke', 'red');
-        }
-        else
-        {
-            $(selector).find('line').attr('stroke', '#053310');
-            $(selector).find('[data-name="led"]').attr('display', 'none');
-            $('#phoneled').attr('display', 'none');
-            $('#chipled').attr('display', 'none');
-            $('#'+senderType).find('text').attr('fill', 'black');
-            $('#'+senderType).find('rect').attr('stroke', 'black');
-            $('#'+senderType).find('line').attr('stroke', 'black');
-        }
+        $(selector).find('line').attr('stroke', '#f80000');
+        $(selector).find('[data-name="led"]').attr('display', '');
+        $('#phoneled').attr('display', '');
+        $('#chipled').attr('display', '');
+        $('#'+senderType).find('text').attr('fill', 'red');
+        $('#'+senderType).find('rect').attr('stroke', 'red');
+        $('#'+senderType).find('line').attr('stroke', 'red');
     }
+    else
+    {
+        $(selector).find('line').attr('stroke', '#053310');
+        $(selector).find('[data-name="led"]').attr('display', 'none');
+        $('#phoneled').attr('display', 'none');
+        $('#chipled').attr('display', 'none');
+        $('#'+senderType).find('text').attr('fill', 'black');
+        $('#'+senderType).find('rect').attr('stroke', 'black');
+        $('#'+senderType).find('line').attr('stroke', 'black');
+    }
+}
