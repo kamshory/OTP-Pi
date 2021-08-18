@@ -202,7 +202,7 @@ public class Application {
 	}
 	
 	private static void subscriberMQTTStart() {
-		if(ConfigSubscriberMQTT.isSubscriberMqttEnable() && (Application.mqttSubscriber == null || !Application.mqttSubscriber.isRunning()))
+		if((Application.mqttSubscriber == null || !Application.mqttSubscriber.isRunning()))
 		{
 			Application.mqttSubscriber = new SubscriberMQTT();
 			Application.mqttSubscriber.start();

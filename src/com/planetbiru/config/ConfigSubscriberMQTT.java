@@ -18,12 +18,12 @@ public class ConfigSubscriberMQTT {
 	
 	private static boolean subscriberMqttEnable = false;
 	private static boolean subscriberMqttSSL = false;
-	private static String subscriberMqttAddress = "";
-	private static int subscriberMqttPort = 0;
+	private static String subscriberMqttAddress = "127.0.0.1";
+	private static int subscriberMqttPort = 1883;
 	private static String subscriberMqttPath = "";
 	private static String subscriberMqttUsername = "";
 	private static String subscriberMqttPassword = "";
-	private static String subscriberMqttTopic = "";
+	private static String subscriberMqttTopic = "sms";
 	private static int subscriberMqttTimeout = 0;
 	private static int subscriberMqttRefresh = 0;
 	private static long subscriberWsReconnectDelay = 0;

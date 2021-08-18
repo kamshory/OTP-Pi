@@ -2,18 +2,20 @@ package com.planetbiru.receiver.mqtt;
 
 import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
-import org.eclipse.paho.client.mqttv3.IMqttClient;
+
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+
 import com.planetbiru.api.MessageAPI;
 import com.planetbiru.config.ConfigSubscriberMQTT;
 
 public class SubscriberMQTT extends Thread{
-	private IMqttClient subscriber;
+	private MqttClient subscriber;
 	private boolean connected = false;
 	private boolean running = true;
 	private MqttCallback callback;
@@ -59,7 +61,10 @@ public class SubscriberMQTT extends Thread{
 		try 
 		{
 			this.subscriber = null;
-			this.subscriber = new MqttClient("tcp://"+ConfigSubscriberMQTT.getSubscriberMqttAddress()+":"+ConfigSubscriberMQTT.getSubscriberMqttPort(), UUID.randomUUID().toString());
+			String uri = "tcp://"+ConfigSubscriberMQTT.getSubscriberMqttAddress()+":"+ConfigSubscriberMQTT.getSubscriberMqttPort();
+			String clientID = UUID.randomUUID().toString();
+			MemoryPersistence persistence = new MemoryPersistence();
+			this.subscriber = new MqttClient(uri, clientID, persistence);
 		
 			MqttConnectOptions options = new MqttConnectOptions();
 			options.setAutomaticReconnect(false);
@@ -67,8 +72,14 @@ public class SubscriberMQTT extends Thread{
 			options.setConnectionTimeout(ConfigSubscriberMQTT.getSubscriberMqttTimeout());
 			String username = ConfigSubscriberMQTT.getSubscriberMqttUsername();
 			String password = ConfigSubscriberMQTT.getSubscriberMqttPassword();
-			options.setUserName(username);
-			options.setPassword(password.toCharArray());
+			if(!username.isEmpty())
+			{
+				options.setUserName(username);
+			}
+			if(!password.isEmpty())
+			{
+				options.setPassword(password.toCharArray());
+			}
 			CountDownLatch latch = new CountDownLatch(10);
 			this.callback = null;
 			this.callback = new MqttCallback() {
@@ -96,8 +107,8 @@ public class SubscriberMQTT extends Thread{
 	
 			};
 			
-			this.subscriber.setCallback(this.callback);
 			this.subscriber.connect(options);
+			this.subscriber.setCallback(this.callback);
 			this.connected = true;
 			this.subscriber.subscribe(ConfigSubscriberMQTT.getSubscriberMqttTopic(), 0);
 		} 

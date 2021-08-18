@@ -4198,3 +4198,120 @@ org.json.JSONException: A JSONObject text must begin with '{' at 1 [character 2 
 2021-08-17 21:51:12 [INFO  ] Application                     :192  - Service started
 2021-08-17 21:51:14 [INFO  ] MessageAPI                      :28   - {}
 2021-08-17 21:51:16 [INFO  ] MessageAPI                      :28   - {}
+2021-08-18 08:44:49 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 08:44:50 [INFO  ] Application                     :195  - Service started
+2021-08-18 08:45:34 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 08:45:35 [INFO  ] Application                     :195  - Service started
+2021-08-18 08:46:25 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 08:46:25 [INFO  ] Application                     :195  - Service started
+2021-08-18 08:48:07 [ERROR ] ServerWebAdmin                  :46   - Address already in use: bind
+java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:220)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:88)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:101)
+	at jdk.httpserver/sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
+	at jdk.httpserver/sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.HttpServer.create(HttpServer.java:137)
+	at com.planetbiru.ServerWebAdmin.start(ServerWebAdmin.java:33)
+	at com.planetbiru.Application.startService(Application.java:156)
+	at com.planetbiru.Application.main(Application.java:77)
+2021-08-18 08:48:08 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 08:48:08 [ERROR ] ServerEmail                     :71   - java.net.BindException: Address already in use: bind
+java.lang.RuntimeException: java.net.BindException: Address already in use: bind
+	at org.subethamail.smtp.server.SMTPServer.start(SMTPServer.java:292)
+	at com.planetbiru.ServerEmail.startService(ServerEmail.java:66)
+	at com.planetbiru.ServerEmail.start(ServerEmail.java:27)
+	at com.planetbiru.Application.startService(Application.java:191)
+	at com.planetbiru.Application.main(Application.java:77)
+Caused by: java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:643)
+	at java.base/java.net.ServerSocket.bind(ServerSocket.java:396)
+	at org.subethamail.smtp.server.SMTPServer.createServerSocket(SMTPServer.java:334)
+	at org.subethamail.smtp.server.SMTPServer.start(SMTPServer.java:288)
+	... 4 more
+2021-08-18 08:48:08 [INFO  ] Application                     :195  - Service started
+2021-08-18 08:49:01 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 08:49:01 [INFO  ] Application                     :195  - Service started
+2021-08-18 08:49:20 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 08:49:21 [INFO  ] Application                     :195  - Service started
+2021-08-18 08:50:18 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 08:50:19 [INFO  ] Application                     :195  - Service started
+2021-08-18 08:52:01 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 08:52:01 [INFO  ] Application                     :195  - Service started
+2021-08-18 08:53:06 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 08:53:07 [INFO  ] Application                     :195  - Service started
+2021-08-18 08:53:29 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 08:53:29 [INFO  ] Application                     :195  - Service started
+2021-08-18 08:53:33 [INFO  ] MessageAPI                      :28   - {}
+2021-08-18 08:53:36 [INFO  ] MessageAPI                      :28   - {}
+2021-08-18 08:57:49 [ERROR ] ServerWebAdmin                  :46   - Address already in use: bind
+java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:220)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:88)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:101)
+	at jdk.httpserver/sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
+	at jdk.httpserver/sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.HttpServer.create(HttpServer.java:137)
+	at com.planetbiru.ServerWebAdmin.start(ServerWebAdmin.java:33)
+	at com.planetbiru.Application.startService(Application.java:156)
+	at com.planetbiru.Application.main(Application.java:77)
+2021-08-18 08:57:49 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 08:57:50 [INFO  ] Application                     :195  - Service started
+2021-08-18 08:58:26 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 08:58:26 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:00:03 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 09:00:03 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:02:18 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 09:02:19 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:03:20 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 09:03:20 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:05:23 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 09:05:24 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:05:58 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 09:05:59 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:06:15 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 09:06:15 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:08:53 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 09:08:54 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:12:30 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 09:12:30 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:15:35 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 09:15:35 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:18:14 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 09:18:15 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:20:28 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 09:20:29 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:22:34 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 09:22:34 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:24:14 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 09:24:14 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:27:03 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 09:27:04 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:33:21 [INFO  ] MessageAPI                      :28   - {"command": "test"}
+2021-08-18 09:38:48 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 09:38:48 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:39:09 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 09:39:09 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:39:41 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 09:39:41 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:39:56 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 09:39:57 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:44:23 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 09:44:23 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:45:23 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 09:45:23 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:48:28 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 09:48:29 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:48:51 [INFO  ] MessageAPI                      :28   - {"command": "test"}
+2021-08-18 09:50:26 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 09:50:27 [INFO  ] Application                     :195  - Service started
+2021-08-18 09:50:33 [INFO  ] MessageAPI                      :28   - {"command": "test"}
