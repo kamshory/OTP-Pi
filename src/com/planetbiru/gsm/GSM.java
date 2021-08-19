@@ -147,10 +147,6 @@ public class GSM {
 	        }
         	while(requireResult && (result.trim().equals("") || result.trim().equals("\n")) && i < waitingTime);
         }
-        else
-        {
-        	System.out.println("No data written");
-        }
         this.setReady(true);
         return result;
     }
@@ -179,7 +175,7 @@ public class GSM {
     	this.setReady(false);
         String cmd = "AT+CUSD=1,\"" + ussdCode + "\",15";
         String result = "";
-        result = executeAT(cmd, 2, true);
+        result = this.executeAT(cmd, 2, true);
         USSD ussd;
 		if(result.startsWith("ERROR"))
         {
@@ -226,9 +222,9 @@ public class GSM {
     public List<SMS> readSMS() throws GSMException 
     {
     	this.setReady(false);
-        executeAT("ATE0", 1);
-        executeAT("AT+CSCS=\"GSM\"", 1);
-        executeAT("AT+CMGF=1", 1);
+        this.executeAT("ATE0", 1);
+        this.executeAT("AT+CSCS=\"GSM\"", 1);
+        this.executeAT("AT+CMGF=1", 1);
         List<SMS> smsList = new ArrayList<>();
 		for (String storage : smsStorage) 
         {
@@ -241,9 +237,9 @@ public class GSM {
 	public List<SMS> readSMS(String storage) throws GSMException 
     {
     	this.setReady(false);
-        executeAT("ATE0", 1);
-        executeAT("AT+CSCS=\"GSM\"", 1);
-        executeAT("AT+CMGF=1", 1);
+        this.executeAT("ATE0", 1);
+        this.executeAT("AT+CSCS=\"GSM\"", 1);
+        this.executeAT("AT+CMGF=1", 1);
         List<SMS> smsList = new ArrayList<>();
        	this.loadSMS(storage, smsList);
         this.setReady(true);
@@ -252,9 +248,9 @@ public class GSM {
     
     private void loadSMS(String storage, List<SMS> smsList) throws GSMException
     {
-    	executeAT("AT+CPMS=\"" + storage + "\"", 1);
+    	this.executeAT("AT+CPMS=\"" + storage + "\"", 1);
 		
-    	String result = executeAT("AT+CMGL=\"ALL\"", 5, true);		
+    	String result = this.executeAT("AT+CMGL=\"ALL\"", 5, true);		
 		
 		result = "+CMGL: 1,\"REC READ\",\"+85291234567\",,\"07/02/18,00:05:10+32\"\r\n"
 				+ "Reading text messages \r\n"
@@ -350,12 +346,12 @@ public class GSM {
     	String result = "";
     	recipient = recipient.trim();
     	message = message.trim();
-    	executeAT("ATE0", 1);
-    	executeAT("AT+CSCS=\"GSM\"", 1);
-    	executeAT("AT+CMGF=1", 1);
-    	executeAT("AT+CMGS=\"" + recipient + "\"", 2);
-    	executeAT(message, 2);
-    	executeAT(Character.toString((char) 26), 10);
+    	this.executeAT("ATE0", 1);
+    	this.executeAT("AT+CSCS=\"GSM\"", 1);
+    	this.executeAT("AT+CMGF=1", 1);
+    	this.executeAT("AT+CMGS=\"" + recipient + "\"", 2);
+    	this.executeAT(message, 2);
+    	this.executeAT(Character.toString((char) 26), 10);
     	this.setReady(true);
         return result;
     }
@@ -364,8 +360,8 @@ public class GSM {
     {
     	this.setReady(false);
     	String result = "";
-    	executeAT("AT+CPMS=\"" + storage + "\"", 1);
-    	executeAT("AT+CMGD=" + smsID, 1);
+    	this.executeAT("AT+CPMS=\"" + storage + "\"", 1);
+    	this.executeAT("AT+CMGD=" + smsID, 1);
     	this.setReady(true);
         return result;
     }
@@ -374,8 +370,8 @@ public class GSM {
     {
     	this.setReady(false);
     	String result = "";
-    	executeAT("AT+CPMS=\"" + storage + "\"", 1);
-    	executeAT("AT+CMGD=0, 4", 1);
+    	this.executeAT("AT+CPMS=\"" + storage + "\"", 1);
+    	this.executeAT("AT+CMGD=0, 4", 1);
     	this.setReady(true);
         return result;
     }
@@ -423,7 +419,6 @@ public class GSM {
 	}
 
 	public void setSerialPort(SerialPort serialPort) {
-		logger.info("Set Serial Port");
 		this.serialPort = serialPort;
 	}
 

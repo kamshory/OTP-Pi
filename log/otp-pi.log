@@ -5562,3 +5562,6 @@ Caused by: java.net.BindException: Address already in use: bind
 2021-08-19 20:58:10 [INFO  ] Application                     :197  - Service started
 2021-08-19 21:00:30 [INFO  ] GSM                             :426  - Set Serial Port
 2021-08-19 21:00:30 [INFO  ] Application                     :197  - Service started
+2021-08-19 21:16:00 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 21:16:01 [INFO  ] Application                     :197  - Service started
+2021-08-19 21:18:05 [INFO  ] Application                     :197  - Service started
