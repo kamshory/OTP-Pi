@@ -50,10 +50,12 @@ public class SMS {
 		
 	}
 
-	public JSONObject toJSONObject(String modemID)
+	public JSONObject toJSONObject(String modemID, String name, String port)
     {
     	JSONObject json = this.toJSONObject();
     	json.put("modemID", modemID);
+    	json.put("modemName", name);
+    	json.put("modemPort", port);
     	return json;
     }
     public JSONObject toJSONObject()
@@ -125,13 +127,24 @@ public class SMS {
         this.content = content;
     }
 
-    @Override
-    public String toString() {
-        return getId() + " " + getStorage() + " " + getStatus() + " " + getPhoneNumber() + " " + getDate() + " " + getContent();
-    }
-
 	public void setDateStr(String date) {
 		this.date = this.parseDate(date);
 		
 	}
+
+	public void appendContent(String content) {
+		if(!this.content.isEmpty())
+		{
+			this.setContent(this.content+"\r\n"+content);
+		}
+		else
+		{
+			this.setContent(content);
+		}
+	}
+	
+	@Override
+    public String toString() {
+        return getId() + " " + getStorage() + " " + getStatus() + " " + getPhoneNumber() + " " + getDate() + " " + getContent();
+    }
 }

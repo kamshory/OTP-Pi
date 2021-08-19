@@ -15,9 +15,11 @@
     <script src="lib.assets/js/bootstrap.js"></script>
     <script src="lib.assets/js/ws.min.js"></script>
     <script>
+        var modemData = [];
         function handleIncommingMessage(message)
         {
-          var modemData = getModemData();
+          modemData = getModemData();
+          console.log(modemData)
           buildModemMenu(modemData, '#modem');
         }      
         
@@ -122,15 +124,15 @@ $(document).ready(function(e){
                 inner.addClass('message-item-wrapper');
                 var inner1 = $('<div />');
                 inner1.addClass('message-sender');
-                inner1.text('From: '+sms.phoneNumber);
+                inner1.text(sms.phoneNumber);
 
                 var inner2 = $('<div />');
                 inner2.addClass('message-date-time');
-                inner2.text(sms.date);
+                inner2.text(sms.date.substring(0, 19));
 
                 var inner3 = $('<div />');
                 inner3.addClass('message-sim-card');
-                inner3.text('Modem: '+sms.modemID);
+                inner3.text(sms.modemPort+' - '+sms.modemName);
 
                 var inner4 = $('<div />');
                 inner4.addClass('message-action');

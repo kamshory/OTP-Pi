@@ -4988,3 +4988,387 @@ org.json.JSONException: A JSONObject text must begin with '{' at 0 [character 1 
 2021-08-18 17:03:31 [INFO  ] Application                     :198  - Service started
 2021-08-18 17:13:43 [INFO  ] GSM                             :585  - Set Serial Port
 2021-08-18 17:13:44 [INFO  ] Application                     :198  - Service started
+2021-08-18 18:22:45 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 18:22:45 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 18:22:45 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 18:22:45 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:22:45 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:22:45 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:22:45 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:26:09 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 18:26:09 [INFO  ] Application                     :198  - Service started
+2021-08-18 18:28:03 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 18:28:03 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 18:28:03 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 18:28:03 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:28:03 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:28:03 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:28:03 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:28:08 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 18:28:08 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 18:28:08 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 18:28:08 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:28:08 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:28:08 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:28:08 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:30:37 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 18:30:38 [INFO  ] Application                     :198  - Service started
+2021-08-18 18:30:39 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 18:30:39 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 18:30:39 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 18:30:39 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:30:39 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:30:39 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:30:39 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:30:59 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 18:30:59 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 18:30:59 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 18:30:59 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:30:59 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:30:59 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:30:59 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:32:10 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 18:32:11 [INFO  ] Application                     :198  - Service started
+2021-08-18 18:32:15 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 18:32:15 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 18:32:15 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 18:32:15 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:32:15 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:32:15 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:32:15 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:37:09 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 18:37:10 [INFO  ] Application                     :198  - Service started
+2021-08-18 18:37:11 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 18:37:11 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 18:37:11 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 18:37:11 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:37:11 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:37:11 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:37:11 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:37:37 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 18:37:37 [INFO  ] Application                     :198  - Service started
+2021-08-18 18:37:39 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 18:37:39 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 18:37:39 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 18:37:39 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:37:39 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:37:39 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:37:39 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:37:44 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 18:37:44 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 18:37:44 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 18:37:44 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:37:44 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:37:44 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:37:44 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:38:48 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 18:38:48 [INFO  ] Application                     :198  - Service started
+2021-08-18 18:38:55 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 18:38:55 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 18:38:55 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 18:38:55 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:38:55 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:38:55 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:38:55 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:39:46 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 18:39:47 [INFO  ] Application                     :198  - Service started
+2021-08-18 18:39:51 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 18:39:51 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 18:39:51 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 18:39:51 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:39:51 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:39:51 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:39:51 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:39:59 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 18:39:59 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 18:39:59 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 18:39:59 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:39:59 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:39:59 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:39:59 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:40:31 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:40:31 [INFO  ] GSM                             :157  - AT Command : AT+CMGD=1
+2021-08-18 18:40:31 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:40:31 [INFO  ] GSM                             :157  - AT Command : AT+CMGD=2
+2021-08-18 18:40:31 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:40:31 [INFO  ] GSM                             :157  - AT Command : AT+CMGD=3
+2021-08-18 18:40:31 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:40:31 [INFO  ] GSM                             :157  - AT Command : AT+CMGD=4
+2021-08-18 18:40:31 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:40:31 [INFO  ] GSM                             :157  - AT Command : AT+CMGD=1
+2021-08-18 18:40:31 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:40:31 [INFO  ] GSM                             :157  - AT Command : AT+CMGD=2
+2021-08-18 18:40:31 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:40:31 [INFO  ] GSM                             :157  - AT Command : AT+CMGD=3
+2021-08-18 18:40:31 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:40:31 [INFO  ] GSM                             :157  - AT Command : AT+CMGD=4
+2021-08-18 18:40:33 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 18:40:33 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 18:40:33 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 18:40:33 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:40:33 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:40:33 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:40:33 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:40:43 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 18:40:43 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 18:40:43 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 18:40:43 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:40:43 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:40:43 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:40:43 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:40:44 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:40:44 [INFO  ] GSM                             :157  - AT Command : AT+CMGD=1
+2021-08-18 18:40:44 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:40:44 [INFO  ] GSM                             :157  - AT Command : AT+CMGD=2
+2021-08-18 18:40:45 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:40:45 [INFO  ] GSM                             :157  - AT Command : AT+CMGD=3
+2021-08-18 18:40:45 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:40:45 [INFO  ] GSM                             :157  - AT Command : AT+CMGD=4
+2021-08-18 18:40:45 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:40:45 [INFO  ] GSM                             :157  - AT Command : AT+CMGD=1
+2021-08-18 18:40:45 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:40:45 [INFO  ] GSM                             :157  - AT Command : AT+CMGD=2
+2021-08-18 18:40:45 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:40:45 [INFO  ] GSM                             :157  - AT Command : AT+CMGD=3
+2021-08-18 18:40:45 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:40:45 [INFO  ] GSM                             :157  - AT Command : AT+CMGD=4
+2021-08-18 18:40:46 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 18:40:46 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 18:40:46 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 18:40:46 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:40:46 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:40:46 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:40:46 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:41:03 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 18:41:03 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 18:41:03 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 18:41:03 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:41:03 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:41:03 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:41:03 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:41:14 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 18:41:14 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 18:41:14 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 18:41:14 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:41:14 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:41:14 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:41:14 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:41:20 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 18:41:20 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 18:41:20 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 18:41:20 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:41:20 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:41:20 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:41:20 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:41:38 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 18:41:38 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 18:41:38 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 18:41:38 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:41:38 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:41:38 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:41:38 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:59:44 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 18:59:44 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 18:59:44 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 18:59:44 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 18:59:44 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 18:59:44 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 18:59:44 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 19:34:59 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 19:34:59 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 19:34:59 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 19:34:59 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 19:34:59 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 19:34:59 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 19:34:59 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 19:40:39 [INFO  ] GSM                             :585  - Set Serial Port
+2021-08-18 19:40:39 [INFO  ] Application                     :198  - Service started
+2021-08-18 19:40:42 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 19:40:42 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 19:40:42 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 19:40:42 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 19:40:42 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 19:40:45 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 19:40:45 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 19:40:45 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 19:40:45 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 19:40:45 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 19:40:52 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 19:40:52 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 19:40:52 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 19:40:52 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 19:40:52 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 19:40:58 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 19:40:58 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 19:40:58 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 19:40:58 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 19:40:58 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 19:42:40 [INFO  ] GSM                             :588  - Set Serial Port
+2021-08-18 19:42:40 [INFO  ] Application                     :198  - Service started
+2021-08-18 19:42:43 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 19:42:43 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 19:42:43 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 19:42:43 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 19:42:43 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 19:43:21 [INFO  ] GSM                             :589  - Set Serial Port
+2021-08-18 19:43:22 [INFO  ] Application                     :198  - Service started
+2021-08-18 19:43:25 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 19:43:25 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 19:43:25 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 19:43:25 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 19:43:25 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 19:44:26 [INFO  ] GSM                             :592  - Set Serial Port
+2021-08-18 19:44:26 [INFO  ] Application                     :198  - Service started
+2021-08-18 19:44:44 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 19:44:44 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 19:44:44 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 19:44:44 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 19:44:44 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 19:44:44 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 19:44:44 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 19:45:51 [INFO  ] GSM                             :592  - Set Serial Port
+2021-08-18 19:45:51 [INFO  ] Application                     :198  - Service started
+2021-08-18 19:45:53 [INFO  ] GSM                             :157  - AT Command : ATE0
+2021-08-18 19:45:53 [INFO  ] GSM                             :157  - AT Command : AT+CSCS="GSM"
+2021-08-18 19:45:53 [INFO  ] GSM                             :157  - AT Command : AT+CMGF=1
+2021-08-18 19:45:53 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="MT"
+2021-08-18 19:45:53 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 19:45:53 [INFO  ] GSM                             :157  - AT Command : AT+CPMS="SM"
+2021-08-18 19:45:53 [INFO  ] GSM                             :157  - AT Command : AT+CMGL="ALL"
+2021-08-18 20:23:08 [INFO  ] GSM                             :491  - Set Serial Port
+2021-08-18 20:23:08 [INFO  ] Application                     :198  - Service started
+2021-08-18 20:23:17 [INFO  ] GSM                             :155  - AT Command : ATE0
+2021-08-18 20:23:17 [INFO  ] GSM                             :155  - AT Command : AT+CSCS="GSM"
+2021-08-18 20:23:17 [INFO  ] GSM                             :155  - AT Command : AT+CMGF=1
+2021-08-18 20:23:17 [INFO  ] GSM                             :155  - AT Command : AT+CPMS="MT"
+2021-08-18 20:23:17 [INFO  ] GSM                             :155  - AT Command : AT+CMGL="ALL"
+2021-08-18 20:23:17 [INFO  ] GSM                             :155  - AT Command : AT+CPMS="SM"
+2021-08-18 20:23:17 [INFO  ] GSM                             :155  - AT Command : AT+CMGL="ALL"
+2021-08-18 21:50:18 [INFO  ] GSM                             :500  - Set Serial Port
+2021-08-18 21:50:18 [INFO  ] Application                     :198  - Service started
+2021-08-18 21:54:37 [INFO  ] GSM                             :502  - Set Serial Port
+2021-08-18 21:54:37 [INFO  ] Application                     :198  - Service started
+2021-08-18 21:57:27 [INFO  ] GSM                             :502  - Set Serial Port
+2021-08-18 21:57:27 [INFO  ] Application                     :198  - Service started
+2021-08-18 21:58:08 [INFO  ] GSM                             :502  - Set Serial Port
+2021-08-18 21:58:09 [INFO  ] Application                     :198  - Service started
+2021-08-18 22:00:09 [INFO  ] GSM                             :502  - Set Serial Port
+2021-08-18 22:00:10 [INFO  ] Application                     :198  - Service started
+2021-08-18 22:00:22 [INFO  ] GSM                             :502  - Set Serial Port
+2021-08-18 22:00:22 [INFO  ] Application                     :198  - Service started
+2021-08-18 22:02:01 [INFO  ] GSM                             :502  - Set Serial Port
+2021-08-18 22:02:02 [INFO  ] Application                     :198  - Service started
+2021-08-18 22:08:44 [INFO  ] GSM                             :502  - Set Serial Port
+2021-08-18 22:08:44 [INFO  ] Application                     :198  - Service started
+2021-08-18 22:10:03 [INFO  ] GSM                             :502  - Set Serial Port
+2021-08-18 22:10:03 [INFO  ] Application                     :198  - Service started
+2021-08-18 22:10:34 [INFO  ] GSM                             :502  - Set Serial Port
+2021-08-18 22:10:34 [INFO  ] Application                     :198  - Service started
+2021-08-18 22:10:44 [INFO  ] GSM                             :502  - Set Serial Port
+2021-08-18 22:10:45 [INFO  ] Application                     :198  - Service started
+2021-08-18 22:11:20 [INFO  ] GSM                             :502  - Set Serial Port
+2021-08-18 22:11:20 [INFO  ] Application                     :198  - Service started
+2021-08-18 22:12:07 [INFO  ] GSM                             :502  - Set Serial Port
+2021-08-18 22:12:08 [INFO  ] Application                     :198  - Service started
+2021-08-18 22:13:17 [INFO  ] GSM                             :502  - Set Serial Port
+2021-08-18 22:13:17 [INFO  ] Application                     :198  - Service started
+2021-08-18 22:14:57 [INFO  ] GSM                             :502  - Set Serial Port
+2021-08-18 22:14:57 [INFO  ] Application                     :198  - Service started
+2021-08-18 22:15:36 [INFO  ] GSM                             :502  - Set Serial Port
+2021-08-18 22:15:36 [INFO  ] Application                     :198  - Service started
+2021-08-18 22:15:54 [INFO  ] GSM                             :502  - Set Serial Port
+2021-08-18 22:15:54 [INFO  ] Application                     :198  - Service started
+2021-08-18 22:18:45 [INFO  ] GSM                             :502  - Set Serial Port
+2021-08-18 22:18:45 [INFO  ] Application                     :198  - Service started
+2021-08-18 22:33:34 [INFO  ] GSM                             :504  - Set Serial Port
+2021-08-18 22:33:34 [INFO  ] Application                     :198  - Service started
+2021-08-18 22:36:33 [INFO  ] GSM                             :499  - Set Serial Port
+2021-08-18 22:36:33 [INFO  ] Application                     :198  - Service started
+2021-08-19 09:06:15 [INFO  ] GSM                             :466  - Set Serial Port
+2021-08-19 09:06:16 [INFO  ] Application                     :198  - Service started
+2021-08-19 09:08:34 [INFO  ] GSM                             :466  - Set Serial Port
+2021-08-19 09:08:34 [INFO  ] Application                     :198  - Service started
+2021-08-19 09:08:50 [INFO  ] GSM                             :466  - Set Serial Port
+2021-08-19 09:08:50 [INFO  ] Application                     :198  - Service started
+2021-08-19 09:19:24 [INFO  ] GSM                             :472  - Set Serial Port
+2021-08-19 09:19:25 [INFO  ] Application                     :198  - Service started
+2021-08-19 09:25:35 [INFO  ] GSM                             :486  - Set Serial Port
+2021-08-19 09:25:35 [INFO  ] Application                     :198  - Service started
+2021-08-19 09:27:45 [INFO  ] GSM                             :487  - Set Serial Port
+2021-08-19 09:27:46 [INFO  ] Application                     :198  - Service started
+2021-08-19 09:28:21 [INFO  ] GSM                             :488  - Set Serial Port
+2021-08-19 09:28:22 [INFO  ] Application                     :198  - Service started
+2021-08-19 09:29:31 [INFO  ] GSM                             :492  - Set Serial Port
+2021-08-19 09:29:31 [INFO  ] Application                     :198  - Service started
+2021-08-19 09:30:08 [INFO  ] GSM                             :492  - Set Serial Port
+2021-08-19 09:30:08 [INFO  ] Application                     :198  - Service started
+2021-08-19 09:37:51 [ERROR ] ServerWebAdmin                  :46   - Address already in use: bind
+java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:220)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:88)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:101)
+	at jdk.httpserver/sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
+	at jdk.httpserver/sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.HttpServer.create(HttpServer.java:137)
+	at com.planetbiru.ServerWebAdmin.start(ServerWebAdmin.java:33)
+	at com.planetbiru.Application.startService(Application.java:156)
+	at com.planetbiru.Application.main(Application.java:77)
+2021-08-19 09:37:52 [INFO  ] GSM                             :466  - Set Serial Port
+2021-08-19 09:37:52 [ERROR ] ServerEmail                     :72   - java.net.BindException: Address already in use: bind
+java.lang.RuntimeException: java.net.BindException: Address already in use: bind
+	at org.subethamail.smtp.server.SMTPServer.start(SMTPServer.java:296)
+	at com.planetbiru.ServerEmail.startService(ServerEmail.java:67)
+	at com.planetbiru.ServerEmail.start(ServerEmail.java:27)
+	at com.planetbiru.Application.startService(Application.java:194)
+	at com.planetbiru.Application.main(Application.java:77)
+Caused by: java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:643)
+	at java.base/java.net.ServerSocket.bind(ServerSocket.java:396)
+	at org.subethamail.smtp.server.SMTPServer.createServerSocket(SMTPServer.java:342)
+	at org.subethamail.smtp.server.SMTPServer.start(SMTPServer.java:292)
+	... 4 more
+2021-08-19 09:37:52 [INFO  ] Application                     :198  - Service started
+2021-08-19 09:38:09 [ERROR ] ServerWebAdmin                  :46   - Address already in use: bind
+java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:220)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:88)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:101)
+	at jdk.httpserver/sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
+	at jdk.httpserver/sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.HttpServer.create(HttpServer.java:137)
+	at com.planetbiru.ServerWebAdmin.start(ServerWebAdmin.java:33)
+	at com.planetbiru.Application.startService(Application.java:156)
+	at com.planetbiru.Application.main(Application.java:77)
+2021-08-19 09:38:10 [INFO  ] GSM                             :466  - Set Serial Port
+2021-08-19 09:38:11 [ERROR ] ServerEmail                     :72   - java.net.BindException: Address already in use: bind
+java.lang.RuntimeException: java.net.BindException: Address already in use: bind
+	at org.subethamail.smtp.server.SMTPServer.start(SMTPServer.java:296)
+	at com.planetbiru.ServerEmail.startService(ServerEmail.java:67)
+	at com.planetbiru.ServerEmail.start(ServerEmail.java:27)
+	at com.planetbiru.Application.startService(Application.java:194)
+	at com.planetbiru.Application.main(Application.java:77)
+Caused by: java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:643)
+	at java.base/java.net.ServerSocket.bind(ServerSocket.java:396)
+	at org.subethamail.smtp.server.SMTPServer.createServerSocket(SMTPServer.java:342)
+	at org.subethamail.smtp.server.SMTPServer.start(SMTPServer.java:292)
+	... 4 more
+2021-08-19 09:38:11 [INFO  ] Application                     :198  - Service started
+2021-08-19 09:38:57 [INFO  ] GSM                             :464  - Set Serial Port
+2021-08-19 09:38:57 [INFO  ] Application                     :198  - Service started
+2021-08-19 09:39:20 [INFO  ] GSM                             :464  - Set Serial Port
+2021-08-19 09:39:21 [INFO  ] Application                     :198  - Service started
+2021-08-19 09:39:59 [INFO  ] GSM                             :464  - Set Serial Port
+2021-08-19 09:39:59 [INFO  ] Application                     :198  - Service started

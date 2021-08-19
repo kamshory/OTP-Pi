@@ -226,7 +226,7 @@ public class GSMUtil {
 		return GSMUtil.getCallerType().getOrDefault(key, "");
 	}
 
-	public static String executeUSSD(String ussd, String modemID) throws GSMException 
+	public static USSD executeUSSD(String ussd, String modemID) throws GSMException 
 	{
 		if(GSMUtil.getGsmInstance().isEmpty())
 		{

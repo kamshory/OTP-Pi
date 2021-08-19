@@ -76,11 +76,13 @@ public class GSMInstance {
 	
 	public void deleteSMS(int smsID, String storage) throws GSMException 
     {
+		this.waitUntilReady();
     	this.gsm.deleteSMS(smsID, storage);
     }
 
     public void deleteAllSMS(String storage) throws GSMException 
     {
+    	this.waitUntilReady();
     	this.gsm.deleteAllSMS(storage);
     }
 	
@@ -95,7 +97,7 @@ public class GSMInstance {
 		}
 	}
 	
-	public String executeUSSD(String ussd) throws GSMException {
+	public USSD executeUSSD(String ussd) throws GSMException {
 		if(this.gsm.getSerialPort() == null)
 		{
 			throw new GSMException(ConstantString.SERIAL_PORT_NULL);

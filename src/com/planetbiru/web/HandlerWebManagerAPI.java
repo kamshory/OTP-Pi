@@ -19,6 +19,7 @@ import com.planetbiru.gsm.DialUtil;
 import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.gsm.InvalidPortException;
+import com.planetbiru.gsm.USSD;
 import com.planetbiru.mail.MailUtil;
 import com.planetbiru.mail.NoEmailAccountException;
 import com.planetbiru.user.NoUserRegisteredException;
@@ -551,27 +552,31 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		JSONObject responseJSON = new JSONObject();
 		statusCode = HttpStatus.OK;
 		JSONObject response = new JSONObject();
+		boolean replyable = false;
 		try 
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
 				response = new JSONObject();
-				String ussd = queryPairs.getOrDefault("ussd", "");
+				String ussdCode = queryPairs.getOrDefault("ussd", "");
 				String modemID = queryPairs.getOrDefault("modem_id", "");
 				String message = "";
-				if(ussd != null && !ussd.isEmpty())
+				if(ussdCode != null && !ussdCode.isEmpty())
 				{
-					message = GSMUtil.executeUSSD(ussd, modemID);
+					USSD ussd = GSMUtil.executeUSSD(ussdCode, modemID);
+					message = ussd.getContent();
+					replyable = ussd.isReplyable();
 					response.put(JsonKey.SUCCESS, true);		
 				}
 				response.put(JsonKey.MESSAGE, message);
+				response.put(JsonKey.REPLYABLE, replyable);
 			}
 			else
 			{
 				statusCode = HttpStatus.UNAUTHORIZED;
 				response.put(JsonKey.SUCCESS, false);	
 				response.put(JsonKey.MESSAGE, ConstantString.UNAUTHORIZED);
-				
+				response.put(JsonKey.REPLYABLE, replyable);				
 			}
 		} 
 		catch (GSMException e) 
@@ -593,7 +598,6 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
 		byte[] responseBody = responseJSON.toString(4).getBytes();
-
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 		httpExchange.getResponseBody().write(responseBody);
 		httpExchange.close();

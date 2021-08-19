@@ -30,6 +30,7 @@ import com.planetbiru.config.ConfigVendorAfraid;
 import com.planetbiru.config.ConfigVendorCloudflare;
 import com.planetbiru.config.ConfigVendorDynu;
 import com.planetbiru.config.ConfigVendorNoIP;
+import com.planetbiru.config.DataModem;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.cookie.CookieServer;
@@ -943,25 +944,25 @@ public class HandlerWebManagerData implements HttpHandler {
 		JSONArray allSMS = new JSONArray();
 		if(modemID.isEmpty())
 		{
-			System.out.println("Modem ID is empty");			
 			List<GSMInstance> instances = GSMUtil.getGsmInstance();
 			for(int i = 0; i<instances.size(); i++)
 			{
 				GSMInstance instance =  GSMUtil.getGsmInstance().get(i);
+				DataModem modemData = ConfigModem.getModemData(instance.getId());
 				List<SMS> sms = instance.readSMS();
 				for(int j = 0; j < sms.size(); j++)
 				{
-					allSMS.put(sms.get(j).toJSONObject(instance.getId()));
+					allSMS.put(sms.get(j).toJSONObject(modemData.getId(), modemData.getName(), modemData.getPort()));
 				}
 			}
 		}
 		else
 		{
-			System.out.println("Modem ID = "+modemID);
+			DataModem modemData = ConfigModem.getModemData(modemID);
 			List<SMS> sms = GSMUtil.get(modemID).readSMS();
 			for(int j = 0; j < sms.size(); j++)
 			{
-				allSMS.put(sms.get(j).toJSONObject(modemID));
+				allSMS.put(sms.get(j).toJSONObject(modemData.getId(), modemData.getName(), modemData.getPort()));
 			}
 		}
 		return allSMS;

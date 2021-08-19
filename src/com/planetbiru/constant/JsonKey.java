@@ -60,6 +60,7 @@ public class JsonKey {
 	public static final String CONNECTED                     = "connected";
 	public static final String RECIPIENT_PREFIX_LENGTH       = "recipientPrefixLength";
 	public static final String MONITOR_SMS                   = "monitorSMS";
+	public static final String REPLYABLE                     = "replyable";
 	
 	private JsonKey()
 	{
