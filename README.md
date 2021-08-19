@@ -137,7 +137,7 @@ OTP-Pi memberikan pilihan apabila perangkat ini dipasang pada jaringan internet 
 
 1. WSMessageBroker (WebSocket)
 2. RabbitMQ (AMQP)
-3. Mosquito (MQTT)
+3. Mosquitto (MQTT)
 
 **WSMessageBroker**
 
@@ -169,20 +169,20 @@ OTP-Pi memberikan pilihan apabila perangkat ini dipasang pada jaringan internet 
 | Timeout | Request time out |
 | Refresh Connection | Refresh RabbitMQ connection |
 
-**Mosquito**
+**Mosquitto**
 
 | Field | Description |
 | ----- | ----------- |
-| Enable | Enable or disable Mosquito |
+| Enable | Enable or disable Mosquitto |
 | SSL | SSL connection |
-| Host | Mosquito host name or IP address |
+| Host | Mosquitto host name or IP address |
 | Port | Port number |
 | Client ID | Client ID |
 | Username | Username on basic authorzation |
 | Password | Password on basic authorzation |
 | Topic | Topic of subscribsion | 
 | Timeout | Request time out |
-| Refresh Connection | Refresh Mosquito connection |
+| Refresh Connection | Refresh Mosquitto connection |
 
 
 ## SMS Setting

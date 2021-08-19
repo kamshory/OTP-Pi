@@ -159,6 +159,7 @@ public class ConfigLoader {
 		boolean cronAMQPEnable = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.amqp");
 		String timeResolution = ConfigLoader.getConfig("otpbroker.cron.time.resolution:minute");
 		String serverStatusSettingPath = ConfigLoader.getConfig("otpbroker.path.setting.server.status");	
+		boolean cacheHTMLFile = ConfigLoader.getConfigBoolean("otpbroker.cache.file.html");
 		
 		/**
 		boolean subscriberWsEnable = ConfigLoader.getConfigBoolean("otpbroker.ws.enable");
@@ -260,6 +261,8 @@ public class ConfigLoader {
 		Config.setCronAMQPEnable(cronAMQPEnable);
 		Config.setTimeResolution(timeResolution);
 		Config.setServerStatusSettingPath(serverStatusSettingPath);
+		
+		Config.setCacheHTMLFile(cacheHTMLFile);
 
 		ConfigSMTP.load(Config.getSmtpSettingPath());		
 		ConfigAPIUser.load(Config.getUserAPISettingPath());

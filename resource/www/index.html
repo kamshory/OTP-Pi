@@ -154,7 +154,7 @@
         <div class="tile-title"><a href="sms-setting.html">SMS Setting</a></div>
       </div>
     </div>
-<div class="tile feeder">
+<div class="tile Subscriber">
   <div class="tile-wrapper">
     <div class="tile-icon"><a href="subscriber-setting.html"></a></div>
     <div class="tile-title"><a href="subscriber-setting.html">Subscriber Setting</a></div>
@@ -269,7 +269,15 @@
       </div>
     </div>
     <div class="service-item service-ws">
-      <div class="service-label">Feeder WebSocket</div>
+      <div class="service-label">Subscriber WebSocket</div>
+      <div class="service-button">
+        <button class="btn btn-sm btn-primary" onclick="window.location='subscriber-setting.html'">Setting</button>
+        <button class="btn btn-sm btn-success button-connect">Connect</button>
+        <button class="btn btn-sm btn-danger button-disconnect">Disconnect</button>
+      </div>
+      </div>
+      <div class="service-item service-mqtt">
+        <div class="service-label">Subscriber Mosquitto</div>
       <div class="service-button">
         <button class="btn btn-sm btn-primary" onclick="window.location='subscriber-setting.html'">Setting</button>
         <button class="btn btn-sm btn-success button-connect">Connect</button>
@@ -277,7 +285,7 @@
       </div>
     </div>
     <div class="service-item service-amqp">
-      <div class="service-label">Feeder MessageBroker</div>
+      <div class="service-label">Subscriber RabbitMQ</div>
       <div class="service-button">
         <button class="btn btn-sm btn-primary" onclick="window.location='subscriber-setting.html'">Setting</button>
         <button class="btn btn-sm btn-success button-connect">Connect</button>
@@ -285,7 +293,15 @@
       </div>
     </div>
     <div class="service-item service-http">
-      <div class="service-label">REST API</div>
+      <div class="service-label">REST API HTTP</div>
+      <div class="service-button">
+        <button class="btn btn-sm btn-primary" onclick="window.location='api-setting.html'">Setting</button>
+        <button class="btn btn-sm btn-success button-connect">Start</button>
+        <button class="btn btn-sm btn-danger button-disconnect">Stop</button>
+      </div>
+      </div>
+      <div class="service-item service-https">
+        <div class="service-label">REST API HTTPS</div>
       <div class="service-button">
         <button class="btn btn-sm btn-primary" onclick="window.location='api-setting.html'">Setting</button>
         <button class="btn btn-sm btn-success button-connect">Start</button>

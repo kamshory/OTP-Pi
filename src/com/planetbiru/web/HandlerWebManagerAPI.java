@@ -82,6 +82,18 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			{
 				this.subscriberAMQP(httpExchange);
 			}
+			else if(path.startsWith("/api/subscriber-mqtt"))
+			{
+				this.subscriberMQTT(httpExchange);
+			}
+			else if(path.startsWith("/api/subscriber-https"))
+			{
+				this.subscriberHTTPS(httpExchange);
+			}
+			else if(path.startsWith("/api/subscriber-http"))
+			{
+				this.subscriberHTTP(httpExchange);
+			}
 			else if(path.startsWith("/api/delete/sms"))
 			{
 				this.deleteSMS(httpExchange);
@@ -214,6 +226,149 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				{
 					Application.subscriberAMQPStop();
 				} 
+				ServerWebSocketAdmin.broadcastServerInfo();
+			} 
+			else 
+			{
+				statusCode = HttpStatus.UNAUTHORIZED;
+			}
+		} 
+		catch (NoUserRegisteredException e) 
+		{
+			statusCode = HttpStatus.UNAUTHORIZED;
+		}
+		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
+		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
+		byte[] responseBody = responseJSON.toString(4).getBytes();
+
+		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+		httpExchange.getResponseBody().write(responseBody);
+		httpExchange.close();
+	}
+	
+	//@PostMapping(path="/api/subscriber-mqtt")
+	public void subscriberMQTT(HttpExchange httpExchange) throws IOException
+	{
+		byte[] req = HttpUtil.getRequestBody(httpExchange);
+		String requestBody = "";
+		if(req != null)
+		{
+			requestBody = new String(req);
+		}
+		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
+		Headers requestHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
+		int statusCode;
+		JSONObject responseJSON = new JSONObject();
+		statusCode = HttpStatus.OK;
+		try 
+		{
+			if(WebUserAccount.checkUserAuth(requestHeaders))
+			{
+				String action = queryPairs.getOrDefault("action", "");
+				if(action.equals("start"))
+				{
+					Application.subscriberMQTTStart();				
+				}
+				else
+				{
+					Application.subscriberMQTTStop();
+				}
+			} 
+			else 
+			{
+				statusCode = HttpStatus.UNAUTHORIZED;
+			}
+		} 
+		catch (NoUserRegisteredException e) 
+		{
+			statusCode = HttpStatus.UNAUTHORIZED;
+		}
+		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
+		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
+		byte[] responseBody = responseJSON.toString(4).getBytes();
+
+		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+		httpExchange.getResponseBody().write(responseBody);
+		httpExchange.close();
+	}
+	
+	//@PostMapping(path="/api/subscriber-http")
+	public void subscriberHTTP(HttpExchange httpExchange) throws IOException
+	{
+		byte[] req = HttpUtil.getRequestBody(httpExchange);
+		String requestBody = "";
+		if(req != null)
+		{
+			requestBody = new String(req);
+		}
+		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
+		Headers requestHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
+		int statusCode;
+		JSONObject responseJSON = new JSONObject();
+		statusCode = HttpStatus.OK;
+		try 
+		{
+			if(WebUserAccount.checkUserAuth(requestHeaders))
+			{
+				String action = queryPairs.getOrDefault("action", "");
+				if(action.equals("start"))
+				{
+					Application.subscriberHTTPStart();				
+				}
+				else
+				{
+					Application.subscriberHTTPStop();
+				}
+				ServerWebSocketAdmin.broadcastServerInfo();
+			} 
+			else 
+			{
+				statusCode = HttpStatus.UNAUTHORIZED;
+			}
+		} 
+		catch (NoUserRegisteredException e) 
+		{
+			statusCode = HttpStatus.UNAUTHORIZED;
+		}
+		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
+		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
+		byte[] responseBody = responseJSON.toString(4).getBytes();
+
+		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+		httpExchange.getResponseBody().write(responseBody);
+		httpExchange.close();
+	}
+	
+	//@PostMapping(path="/api/subscriber-https")
+	public void subscriberHTTPS(HttpExchange httpExchange) throws IOException
+	{
+		byte[] req = HttpUtil.getRequestBody(httpExchange);
+		String requestBody = "";
+		if(req != null)
+		{
+			requestBody = new String(req);
+		}
+		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
+		Headers requestHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
+		int statusCode;
+		JSONObject responseJSON = new JSONObject();
+		statusCode = HttpStatus.OK;
+		try 
+		{
+			if(WebUserAccount.checkUserAuth(requestHeaders))
+			{
+				String action = queryPairs.getOrDefault("action", "");
+				if(action.equals("start"))
+				{
+					Application.subscriberHTTPSStart();				
+				}
+				else
+				{
+					Application.subscriberHTTPSStop();
+				}
 				ServerWebSocketAdmin.broadcastServerInfo();
 			} 
 			else 

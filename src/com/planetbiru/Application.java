@@ -156,14 +156,6 @@ public class Application {
 			Application.webAdmin.start();
 
 			/**
-			 * WebSocket Server for Admin
-			 */
-			InetSocketAddress address = new InetSocketAddress(wsport);
-			Application.webSocketAdmin = new ServerWebSocketAdmin(address);
-			Application.webSocketAdmin.start();		
-	
-			
-			/**
 			 * WebSocket Client for subscriber
 			 */
 			Application.subscriberWSStart();
@@ -174,19 +166,26 @@ public class Application {
 			Application.subscriberAMQPStart();
 			
 			/**
-			 * Mosquito Client for subscriber
+			 * Mosquitto Client for subscriber
 			 */
 			Application.subscriberMQTTStart();
 			
 			/**
-			 * REST API
+			 * REST API HTTP
 			 */
 			Application.rest = new ServerRESTAPI();
 			Application.rest.start();			
 	
 			GSMUtil.start();
 			DialUtil.start();
-	
+
+			/**
+			 * WebSocket Server for Admin
+			 */
+			InetSocketAddress address = new InetSocketAddress(wsport);
+			Application.webSocketAdmin = new ServerWebSocketAdmin(address);
+			Application.webSocketAdmin.start();
+
 			/**
 			 * SMTP Server for send email
 			 */
@@ -204,6 +203,38 @@ public class Application {
 		
 	}
 	
+	public static ServerRESTAPI getRest() {
+		return rest;
+	}
+
+	public static void setRest(ServerRESTAPI rest) {
+		Application.rest = rest;
+	}
+
+	public static void subscriberHTTPStart() {
+		if (ConfigAPI.isHttpEnable() && !Application.rest.isHttpStarted()) {
+			Application.rest.startHTTP();
+		}
+	}
+
+	public static void subscriberHTTPStop() {
+		if (ConfigAPI.isHttpEnable() && Application.rest.isHttpStarted()) {
+			Application.rest.stopHTTP();
+		}
+	}
+
+	public static void subscriberHTTPSStart() {
+		if (ConfigAPI.isHttpsEnable() && !Application.rest.isHttpsStarted()) {
+			Application.rest.startHTTPS();
+		}
+	}
+
+	public static void subscriberHTTPSStop() {
+		if (ConfigAPI.isHttpsEnable() && Application.rest.isHttpsStarted()) {
+			Application.rest.stopHTTPS();
+		}
+	}
+
 	public static void subscriberMQTTStart() {
 		if(ConfigSubscriberMQTT.isSubscriberMqttEnable() && (Application.mqttSubscriber == null || !Application.mqttSubscriber.isRunning()))
 		{
@@ -490,6 +521,7 @@ public class Application {
 		}
 		return props;
 	}
+
 
 }
 

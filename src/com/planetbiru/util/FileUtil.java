@@ -13,6 +13,8 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.planetbiru.config.Config;
+
 public class FileUtil {
 	private FileUtil()
 	{
@@ -22,7 +24,7 @@ public class FileUtil {
 	
 	public static byte[] readResource(String fileName) throws FileNotFoundException {
 		boolean cache = false;
-		if(fileName.endsWith(".html"))
+		if(fileName.endsWith(".html") && Config.isCacheHTMLFile())
 		{
 			cache = true;
 		}

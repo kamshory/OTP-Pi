@@ -18,6 +18,7 @@ import org.json.JSONObject;
 
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.config.ConfigModem;
 import com.planetbiru.constant.JsonKey;
@@ -193,10 +194,35 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 		amqpConnected.put(JsonKey.VALUE, ConfigSubscriberAMQP.isConnected());
 		data.put(amqpConnected);
 		
+		JSONObject mqttEnable = new JSONObject();
+		mqttEnable.put(JsonKey.NAME, "otp-mqtt-enable");
+		mqttEnable.put(JsonKey.VALUE, ConfigSubscriberMQTT.isSubscriberMqttEnable());
+		data.put(mqttEnable);
+		
+		JSONObject mqttConnected = new JSONObject();
+		mqttConnected.put(JsonKey.NAME, "otp-mqtt-connected");
+		mqttConnected.put(JsonKey.VALUE, ConfigSubscriberMQTT.isConnected());
+		data.put(mqttConnected);
+		
 		JSONObject httpEnable = new JSONObject();
 		httpEnable.put(JsonKey.NAME, "otp-http-enable");
-		httpEnable.put(JsonKey.VALUE, ConfigAPI.isHttpEnable() || ConfigAPI.isHttpsEnable());
+		httpEnable.put(JsonKey.VALUE, ConfigAPI.isHttpEnable());
 		data.put(httpEnable);
+		
+		JSONObject httpsEnable = new JSONObject();
+		httpsEnable.put(JsonKey.NAME, "otp-https-enable");
+		httpsEnable.put(JsonKey.VALUE, ConfigAPI.isHttpsEnable());
+		data.put(httpsEnable);
+		
+		JSONObject httpConneted = new JSONObject();
+		httpConneted.put(JsonKey.NAME, "otp-http-connected");
+		httpConneted.put(JsonKey.VALUE, Application.getRest().isHttpStarted());
+		data.put(httpConneted);
+		
+		JSONObject httpsConneted = new JSONObject();
+		httpsConneted.put(JsonKey.NAME, "otp-https-connected");
+		httpsConneted.put(JsonKey.VALUE, Application.getRest().isHttpsStarted());
+		data.put(httpsConneted);
 		
 		info.put("command", "server-info");
 		info.put("data", data);

@@ -60,46 +60,14 @@ public class GSM {
 	                @Override
 	                public void serialEvent(SerialPortEvent event) 
 	                {
-	                    byte[] msg = new byte[getSerialPort().bytesAvailable()];
-	                    getSerialPort().readBytes(msg, msg.length);
-	                    String result = new String(msg);
-	                    onChangeStateSerial(result);                    
-	                    
-	                    //event.getEventType()
-	                    
-	                    /*
-	                     * switch (event.getEventType()) {
-						  case SerialPortEvent.BI:
-						  case SerialPortEvent.OE:
-						  case SerialPortEvent.FE:
-						  case SerialPortEvent.PE:
-						  case SerialPortEvent.CD:
-						  case SerialPortEvent.CTS:
-						  case SerialPortEvent.DSR:
-						  case SerialPortEvent.RI:
-						  case SerialPortEvent.OUTPUT_BUFFER_EMPTY:
-						    break;
-						  case SerialPortEvent.DATA_AVAILABLE:
-						    byte[] readBuffer = new byte[20];
-						
-						    try {
-						      while (inputStream.available() > 0) {
-						        int numBytes = inputStream.read(readBuffer);
-						      }   
-						      System.out.print(new String(readBuffer));
-						    } catch (IOException e) {
-						    }   
-						    break;
-						  }   
-	                     */
+	                	if(event.getEventType() == SerialPort.LISTENING_EVENT_DATA_AVAILABLE) {
+	                		byte[] msg = new byte[getSerialPort().bytesAvailable()];
+	                		getSerialPort().readBytes(msg, msg.length);
+	                		String result = new String(msg);
+	                		onReceiveData(result);      
+						}   
 	                }
 	            });
-	            // Prepare for USSD
-	//            executeAT("AT^USSDMODE=0", 1);
-	//            if (result.equals(""))
-	//                return false;
-	            // turn off periodic status messages (RSSI status, etc.)
-	//            executeAT("AT^CURC=0", 1);
 	    		this.connected = true;
 	    		this.ready = true;
 	    		isOpen = true;
@@ -412,7 +380,7 @@ public class GSM {
         return result;
     }
  
-    public void onChangeStateSerial(String message)
+    public void onReceiveData(String message)
     {
     	logger.info("Receive Message " + message);
     }

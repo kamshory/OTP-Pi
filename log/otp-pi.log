@@ -5372,3 +5372,193 @@ Caused by: java.net.BindException: Address already in use: bind
 2021-08-19 09:39:21 [INFO  ] Application                     :198  - Service started
 2021-08-19 09:39:59 [INFO  ] GSM                             :464  - Set Serial Port
 2021-08-19 09:39:59 [INFO  ] Application                     :198  - Service started
+2021-08-19 10:27:37 [INFO  ] GSM                             :461  - Set Serial Port
+2021-08-19 10:27:38 [INFO  ] Application                     :198  - Service started
+2021-08-19 10:35:25 [INFO  ] GSM                             :461  - Set Serial Port
+2021-08-19 10:35:25 [INFO  ] Application                     :198  - Service started
+2021-08-19 10:36:02 [INFO  ] GSM                             :461  - Set Serial Port
+2021-08-19 10:36:02 [INFO  ] Application                     :198  - Service started
+2021-08-19 16:45:24 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 16:45:25 [INFO  ] Application                     :198  - Service started
+2021-08-19 16:51:36 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 16:51:37 [INFO  ] Application                     :198  - Service started
+2021-08-19 16:53:20 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 16:53:20 [INFO  ] Application                     :198  - Service started
+2021-08-19 16:56:49 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 16:56:49 [INFO  ] Application                     :198  - Service started
+2021-08-19 16:57:10 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 17:00:39 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 17:01:23 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 17:01:28 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 17:48:24 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 17:48:25 [INFO  ] Application                     :198  - Service started
+2021-08-19 17:49:42 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 17:49:42 [INFO  ] Application                     :198  - Service started
+2021-08-19 17:52:25 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 17:52:25 [INFO  ] Application                     :198  - Service started
+2021-08-19 18:03:02 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 18:03:02 [INFO  ] Application                     :198  - Service started
+2021-08-19 18:04:29 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 18:04:29 [INFO  ] Application                     :198  - Service started
+2021-08-19 18:15:31 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 18:15:32 [INFO  ] Application                     :198  - Service started
+2021-08-19 18:20:51 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 18:20:52 [INFO  ] Application                     :198  - Service started
+2021-08-19 18:21:08 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 18:21:08 [INFO  ] Application                     :198  - Service started
+2021-08-19 18:39:48 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 18:39:48 [INFO  ] Application                     :199  - Service started
+2021-08-19 18:40:08 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 18:40:08 [INFO  ] Application                     :199  - Service started
+2021-08-19 19:30:19 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 19:30:19 [INFO  ] Application                     :197  - Service started
+2021-08-19 19:31:12 [ERROR ] ServerRESTAPI                   :112  - Address already in use: bind
+2021-08-19 19:31:22 [ERROR ] ServerRESTAPI                   :112  - Address already in use: bind
+2021-08-19 19:33:09 [ERROR ] ServerRESTAPI                   :75   - Keystore was tampered with, or password was incorrect
+2021-08-19 19:33:10 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 19:33:10 [INFO  ] Application                     :197  - Service started
+2021-08-19 19:33:43 [ERROR ] ServerRESTAPI                   :75   - Keystore was tampered with, or password was incorrect
+2021-08-19 19:33:43 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 19:33:43 [INFO  ] Application                     :197  - Service started
+2021-08-19 19:34:10 [ERROR ] ServerRESTAPI                   :75   - Keystore was tampered with, or password was incorrect
+2021-08-19 19:34:10 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 19:34:10 [INFO  ] Application                     :197  - Service started
+2021-08-19 19:49:22 [ERROR ] ServerRESTAPI                   :75   - Keystore was tampered with, or password was incorrect
+2021-08-19 19:49:22 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 19:49:22 [INFO  ] Application                     :197  - Service started
+2021-08-19 19:49:57 [ERROR ] ServerRESTAPI                   :75   - Keystore was tampered with, or password was incorrect
+2021-08-19 19:49:57 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 19:49:57 [INFO  ] Application                     :197  - Service started
+2021-08-19 19:53:26 [ERROR ] ServerRESTAPI                   :75   - Keystore was tampered with, or password was incorrect
+2021-08-19 19:53:26 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 19:53:27 [INFO  ] Application                     :197  - Service started
+2021-08-19 19:53:56 [ERROR ] ServerRESTAPI                   :75   - Keystore was tampered with, or password was incorrect
+2021-08-19 19:53:56 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 19:53:56 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:04:31 [ERROR ] ServerRESTAPI                   :75   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:04:32 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:04:32 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:07:17 [ERROR ] ServerRESTAPI                   :75   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:07:17 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:07:17 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:07:21 [ERROR ] ServerRESTAPI                   :75   - Address already in use: bind
+2021-08-19 20:07:39 [ERROR ] ServerRESTAPI                   :75   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:07:39 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:07:40 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:08:41 [ERROR ] ServerRESTAPI                   :75   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:08:41 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:08:42 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:08:52 [ERROR ] ServerRESTAPI                   :75   - Address already in use: bind
+2021-08-19 20:10:41 [ERROR ] ServerRESTAPI                   :76   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:10:41 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:10:42 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:10:49 [ERROR ] ServerRESTAPI                   :76   - Address already in use: bind
+2021-08-19 20:15:31 [ERROR ] ServerRESTAPI                   :76   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:15:31 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:15:31 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:15:41 [ERROR ] ServerRESTAPI                   :76   - Address already in use: bind
+2021-08-19 20:15:50 [ERROR ] ServerRESTAPI                   :76   - Address already in use: bind
+2021-08-19 20:16:37 [ERROR ] ServerRESTAPI                   :77   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:16:37 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:16:37 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:17:38 [ERROR ] ServerRESTAPI                   :77   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:17:38 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:17:38 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:17:54 [ERROR ] ServerRESTAPI                   :77   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:17:54 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:17:54 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:18:00 [ERROR ] ServerRESTAPI                   :77   - Address already in use: bind
+2021-08-19 20:18:14 [ERROR ] ServerRESTAPI                   :77   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:18:14 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:18:15 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:21:06 [ERROR ] ServerRESTAPI                   :78   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:21:06 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:21:06 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:21:45 [ERROR ] ServerRESTAPI                   :78   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:21:45 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:21:46 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:21:59 [ERROR ] ServerRESTAPI                   :78   - Address already in use: bind
+2021-08-19 20:21:59 [ERROR ] ServerRESTAPI                   :78   - Address already in use: bind
+2021-08-19 20:22:09 [ERROR ] ServerRESTAPI                   :78   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:22:09 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:22:10 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:24:28 [ERROR ] ServerRESTAPI                   :79   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:24:28 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:24:29 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:25:00 [ERROR ] ServerRESTAPI                   :79   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:25:00 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:25:01 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:26:55 [ERROR ] ServerRESTAPI                   :79   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:26:57 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:26:57 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:29:58 [ERROR ] ServerRESTAPI                   :79   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:29:58 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:29:58 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:31:13 [ERROR ] ServerRESTAPI                   :79   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:31:13 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:31:13 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:32:02 [ERROR ] ServerRESTAPI                   :80   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:32:02 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:32:03 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:33:03 [ERROR ] ServerRESTAPI                   :80   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:33:03 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:33:03 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:35:30 [ERROR ] ServerRESTAPI                   :81   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:35:30 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:35:30 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:36:05 [ERROR ] ServerRESTAPI                   :81   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:36:05 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:36:06 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:36:27 [ERROR ] ServerRESTAPI                   :82   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:36:27 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:36:27 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:37:18 [ERROR ] ServerRESTAPI                   :82   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:38:44 [ERROR ] ServerRESTAPI                   :78   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:38:44 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:38:44 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:42:57 [ERROR ] ServerRESTAPI                   :77   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:42:57 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:42:58 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:43:03 [ERROR ] ServerRESTAPI                   :77   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:43:14 [ERROR ] ServerRESTAPI                   :77   - Keystore was tampered with, or password was incorrect
+2021-08-19 20:51:56 [ERROR ] ServerWebAdmin                  :46   - Address already in use: bind
+java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:220)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:88)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:101)
+	at jdk.httpserver/sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
+	at jdk.httpserver/sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.HttpServer.create(HttpServer.java:137)
+	at com.planetbiru.ServerWebAdmin.start(ServerWebAdmin.java:33)
+	at com.planetbiru.Application.startService(Application.java:156)
+	at com.planetbiru.Application.main(Application.java:77)
+2021-08-19 20:51:57 [ERROR ] ServerRESTAPI                   :117  - Address already in use: bind
+2021-08-19 20:51:57 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:51:58 [ERROR ] ServerEmail                     :72   - java.net.BindException: Address already in use: bind
+java.lang.RuntimeException: java.net.BindException: Address already in use: bind
+	at org.subethamail.smtp.server.SMTPServer.start(SMTPServer.java:296)
+	at com.planetbiru.ServerEmail.startService(ServerEmail.java:67)
+	at com.planetbiru.ServerEmail.start(ServerEmail.java:27)
+	at com.planetbiru.Application.startService(Application.java:193)
+	at com.planetbiru.Application.main(Application.java:77)
+Caused by: java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:643)
+	at java.base/java.net.ServerSocket.bind(ServerSocket.java:396)
+	at org.subethamail.smtp.server.SMTPServer.createServerSocket(SMTPServer.java:342)
+	at org.subethamail.smtp.server.SMTPServer.start(SMTPServer.java:292)
+	... 4 more
+2021-08-19 20:51:58 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:52:16 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:52:16 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:54:03 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:54:04 [INFO  ] Application                     :197  - Service started
+2021-08-19 20:58:09 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 20:58:10 [INFO  ] Application                     :197  - Service started
+2021-08-19 21:00:30 [INFO  ] GSM                             :426  - Set Serial Port
+2021-08-19 21:00:30 [INFO  ] Application                     :197  - Service started

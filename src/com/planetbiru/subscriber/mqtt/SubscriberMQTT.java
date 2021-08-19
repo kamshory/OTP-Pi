@@ -11,6 +11,7 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
+import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.api.MessageAPI;
 import com.planetbiru.config.ConfigSubscriberMQTT;
 
@@ -25,6 +26,7 @@ public class SubscriberMQTT extends Thread{
 	{
 		if(ConfigSubscriberMQTT.isSubscriberMqttEnable())
 		{
+			ConfigSubscriberMQTT.setConnected(true);
 			this.connect();
 			do 
 			{
@@ -59,6 +61,8 @@ public class SubscriberMQTT extends Thread{
 		}
 		this.connected = false;
 		this.subscriber = null;
+		ConfigSubscriberMQTT.setConnected(false);
+		ServerWebSocketAdmin.broadcastServerInfo();
 	}
 	private void connect() {
 		try 
@@ -90,9 +94,7 @@ public class SubscriberMQTT extends Thread{
 				public void messageArrived(String topic, MqttMessage payload) throws Exception {
 			        latch.countDown(); 
 			        onMessage(topic, payload);
-			    }
-	
-			    
+			    }			    
 
 				@Override
 			    public void connectionLost(Throwable cause) {
@@ -106,20 +108,20 @@ public class SubscriberMQTT extends Thread{
 			    	/**
 			    	 * Do nothing
 			    	 */
-			    }
-	
+			    }	
 			};
 			
 			this.subscriber.connect(options);
 			this.subscriber.setCallback(this.callback);
 			this.connected = true;
 			this.subscriber.subscribe(ConfigSubscriberMQTT.getSubscriberMqttTopic(), 0);
+			ConfigSubscriberMQTT.setConnected(true);
+			ServerWebSocketAdmin.broadcastServerInfo();
 		} 
 		catch (MqttException e) 
 		{
 			flagDisconnected();
-		}
-		
+		}		
 	}
 	private void onMessage(String topic, MqttMessage payload) {
 		String message = new String(payload.getPayload());

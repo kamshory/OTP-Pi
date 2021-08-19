@@ -28,18 +28,20 @@ import com.sun.net.httpserver.HttpsServer;
 public class ServerRESTAPI {
 	
 	private static Logger logger = Logger.getLogger(ServerRESTAPI.class);
+	private boolean httpsStarted = false;
+	private boolean httpStarted = false;
 	
 	public void start()
 	{
-		this.initHttp();
-		this.initHttps();
+		this.startHTTP();
+		this.startHTTPS();
 	}
 	
-	private void initHttps() {
+	void startHTTPS() {
 		if(ConfigAPI.isHttpsEnable())
 		{
+			HttpsServer httpsServer = null;
 			ConfigKeystore.load(Config.getKeystoreSettingPath());		
-			boolean started = false;
 			try 
 			{
 				DataKeystore keystore = ConfigKeystore.getActiveKeystore();
@@ -47,8 +49,6 @@ public class ServerRESTAPI {
 				String keystorePassword = keystore.getFilePassword();
 				try (FileInputStream fileInputStream = new FileInputStream(keystoreFile))
 				{
-					HttpsServer httpsServer = HttpsServer.create(new InetSocketAddress(ConfigAPI.getHttpsPort()), 0);
-					ServiceHTTP.setHttpsServer(httpsServer);
 					char[] password = keystorePassword.toCharArray();
 				    KeyStore keyStore;
 					keyStore = KeyStore.getInstance("JKS");	
@@ -60,38 +60,44 @@ public class ServerRESTAPI {
 				    trustFactory.init(keyStore);
 				    sslContext.init(keyManagementFactory.getKeyManagers(), trustFactory.getTrustManagers(), null);		
 					HttpsConfigurator httpsConfigurator = new HttpsConfigurator(sslContext);
-					ServiceHTTP.getHttpsServer().setHttpsConfigurator(httpsConfigurator);
-			        ServiceHTTP.getHttpsServer().createContext(ConfigAPI.getMessagePath(), new HandlerAPIMessage());
-			        ServiceHTTP.getHttpsServer().createContext(ConfigAPI.getSmsPath(), new HandlerAPIMessage());
-			        ServiceHTTP.getHttpsServer().createContext(ConfigAPI.getEmailPath(), new HandlerAPIMessage());
-			        ServiceHTTP.getHttpsServer().createContext(ConfigAPI.getBlockingPath(), new HandlerAPIMessage());
-			        ServiceHTTP.getHttpsServer().createContext(ConfigAPI.getUnblockingPath(), new HandlerAPIMessage());
-			        ServiceHTTP.getHttpsServer().start();
-			        started = true;
+					
+					httpsServer = HttpsServer.create(new InetSocketAddress(ConfigAPI.getHttpsPort()), 0);
+					httpsServer.setHttpsConfigurator(httpsConfigurator);
+			        httpsServer.createContext(ConfigAPI.getMessagePath(), new HandlerAPIMessage());
+			        httpsServer.createContext(ConfigAPI.getSmsPath(), new HandlerAPIMessage());
+			        httpsServer.createContext(ConfigAPI.getEmailPath(), new HandlerAPIMessage());
+			        httpsServer.createContext(ConfigAPI.getBlockingPath(), new HandlerAPIMessage());
+			        httpsServer.createContext(ConfigAPI.getUnblockingPath(), new HandlerAPIMessage());
+			        httpsServer.start();
+					ServiceHTTP.setHttpsServer(httpsServer);
+			        this.httpsStarted = true;
 				} 
 				catch (IOException | KeyStoreException | NoSuchAlgorithmException | CertificateException | KeyManagementException | UnrecoverableKeyException e) 
 				{
 					logger.error(e.getMessage());
-					started = false;
+					this.httpsStarted = false;
+					ServiceHTTP.setHttpsServer(null);
 				}			
 			} 
-			catch (KeyStoreException e2) 
+			catch (NoKeyStoreException e2) 
 			{
 				logger.error(e2.getMessage());
-				started = false;
+				ServiceHTTP.setHttpsServer(null);
+				this.httpsStarted = false;
 			}
-			if(!started)
+			if(!this.httpsStarted)
 			{
 				if(ServiceHTTP.getHttpsServer() != null)
 				{
 					ServiceHTTP.getHttpsServer().stop(0);
+					ServiceHTTP.setHttpsServer(null);
 				}
 				ServiceHTTP.setHttpsServer(null);
 			}
 		}
 	}	
 	
-	private void initHttp() 
+	void startHTTP() 
 	{
 		if(ConfigAPI.isHttpsEnable())
 		{
@@ -104,24 +110,51 @@ public class ServerRESTAPI {
 		        ServiceHTTP.getHttpServer().createContext(ConfigAPI.getBlockingPath(), new HandlerAPIMessage());
 		        ServiceHTTP.getHttpServer().createContext(ConfigAPI.getUnblockingPath(), new HandlerAPIMessage());
 		        ServiceHTTP.getHttpServer().start();
+		        this.httpStarted = true;
 			} 
 			catch (IOException e) 
 			{
 				logger.error(e.getMessage());
+				this.httpStarted = false;
 			}
 		}		
 	}
-	
-	public void stop()
+	public void stopHTTP()
 	{
 		if(ServiceHTTP.getHttpServer() != null)
 		{
 			ServiceHTTP.getHttpServer().stop(0);
+			this.httpStarted = false;
 		}
+	}
+	public void stopHTTPS()
+	{
 		if(ServiceHTTP.getHttpsServer() != null)
 		{
 			ServiceHTTP.getHttpsServer().stop(0);
+			this.httpsStarted = false;
 		}
+	}
+	public void stop()
+	{
+		this.stopHTTP();
+		this.stopHTTPS();
+	}
+
+	public boolean isHttpsStarted() {
+		return httpsStarted;
+	}
+
+	public void setHttpsStarted(boolean httpsStarted) {
+		this.httpsStarted = httpsStarted;
+	}
+
+	public boolean isHttpStarted() {
+		return httpStarted;
+	}
+
+	public void setHttpStarted(boolean httpStarted) {
+		this.httpStarted = httpStarted;
 	}	
 	
 }

@@ -91,6 +91,7 @@ public class Config {
 	private static String resetDeviceType = "RPi";
 	private static String resetDeviceFile = "reset-config.ini";
 	private static String subscriberMqttSettingPath = "";
+	private static boolean cacheHTMLFile = false;
 	
 	private Config()
 	{
@@ -775,6 +776,14 @@ public class Config {
 
 	public static void setWaitLoopChild(long waitLoopChild) {
 		Config.waitLoopChild = waitLoopChild;
+	}
+
+	public static boolean isCacheHTMLFile() {
+		return cacheHTMLFile;
+	}
+
+	public static void setCacheHTMLFile(boolean cacheHTMLFile) {
+		Config.cacheHTMLFile = cacheHTMLFile;
 	}
 
 	
