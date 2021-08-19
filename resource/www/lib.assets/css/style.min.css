@@ -802,7 +802,7 @@
   .sms-setting .tile-icon{
     background-image: url(../images/icon/sms.png);
   }
-  .feeder .tile-icon{
+  .subscriber .tile-icon{
     background-image: url(../images/icon/subscribe.png);
   }
   .api .tile-icon{

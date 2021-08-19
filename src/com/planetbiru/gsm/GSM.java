@@ -166,14 +166,14 @@ public class GSM {
     /**
      * Execute USSD command
      *
-     * @param ussd : the USSD command
+     * @param ussdCommand The USSD command
      * @return String contains the response
      * @throws GSMException 
      */
-    public USSD executeUSSD(String ussdCode) throws GSMException 
+    public USSD executeUSSD(String ussdCommand) throws GSMException 
     {
     	this.setReady(false);
-        String cmd = "AT+CUSD=1,\"" + ussdCode + "\",15";
+        String cmd = "AT+CUSD=1,\"" + ussdCommand + "\",15";
         String result = "";
         result = this.executeAT(cmd, 2, true);
         USSD ussd;
@@ -190,8 +190,7 @@ public class GSM {
             byte[] msg = new byte[getSerialPort().bytesAvailable()];
             getSerialPort().readBytes(msg, msg.length);
             result = new String(msg);
-        }
-        
+        }     
         if(result.startsWith("+CUSD")) 
         {
             ussd = new USSD(result);
@@ -316,7 +315,6 @@ public class GSM {
 			allMatches.clear();
         }	
 	}
-
 
 	private int getMax(String[] arr) {
     	int max = 0;
