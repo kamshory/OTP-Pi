@@ -117,7 +117,7 @@ public class HandlerWebManager implements HttpHandler {
 				} 
 				catch (FileNotFoundException e1) 
 				{
-					e1.printStackTrace();
+					logger.error(e1.getMessage(), e1);
 				}
 			}
 		}
@@ -473,7 +473,7 @@ public class HandlerWebManager implements HttpHandler {
 					} 
 					catch (IOException e) 
 					{
-						e.printStackTrace();
+						logger.error(e.getMessage(), e);
 					}
 				}
 			}
@@ -500,7 +500,7 @@ public class HandlerWebManager implements HttpHandler {
 					} 
 					catch (IOException e) 
 					{
-						e.printStackTrace();
+						logger.error(e.getMessage(), e);
 					}
 				}
 			}
@@ -703,8 +703,7 @@ public class HandlerWebManager implements HttpHandler {
 				{
 					data.put("filePassword", filePassword);
 				}
-				data.put(JsonKey.ACTIVE, active);
-				
+				data.put(JsonKey.ACTIVE, active);				
 				ConfigKeystore.update(id, data);
 				ConfigKeystore.save();
 			}

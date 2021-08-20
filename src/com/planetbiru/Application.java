@@ -100,6 +100,7 @@ public class Application {
 			catch (FileNotFoundException e1) 
 			{
 				e1.printStackTrace();
+				logger.error(e1.getMessage(), e1);
 			}
 		}
 		return loaded;	

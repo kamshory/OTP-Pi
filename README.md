@@ -14,7 +14,7 @@ OTP yang paling populer dikirimkan melalui SMS atau Short Message Service. Pengg
 6. Memiliki jangkauan yang sangat luas
 7. Perangkat penerima SMS tersedia dalam berbagai kelas harga sehingga dapat dijangkau oleh hampir semua kalangan 
 
-Dari sekian banyak kelebihan di atas, ternyata SMS memiliki keterbatasan secara teknis. SMS harus dikirim melalui operator telekomunikasi yang secara legal terdaftar di negara pengirim. SMS dapat dikirm menggunakan perangkat GSM yang tersambung ke operator telekomunikasi. Perangkat yang paling murah untuk mengirimkan SMS adalah telepon seluler dan modem GSM.
+Dari sekian banyak kelebihan di atas, ternyata SMS memiliki keterbatasan. SMS harus dikirim melalui operator telekomunikasi yang secara legal terdaftar di negara pengirim. SMS dapat dikirim menggunakan perangkat GSM yang tersambung ke operator telekomunikasi. Perangkat yang paling murah untuk mengirimkan SMS adalah telepon seluler dan modem. Selain itu, pengirim harus membayar biaya layanan kepada operator telekomunikasi. Biaya ini akan dibagi ke semua operator yang terlibat dalam pengiriman SMS.
 
 Cara lain untuk mengirimkan SMS yaitu dengan bekerjasama langsung dengan operator telekomunikasi atau menggunakan jasa pihak ketiga. Kerjasama dengan operator telekomunikasi tentu saja tidak mudah. Selain harus berbadan hukum, biaya yang diperlukan tentu saja tidak sedikit. Selain itu, volume pengiriman SMS juga menjadi bahan pertimbangan kerjasama tersebut diterima atau tidak oleh operator telekomunikasi. Penggunaan jasa pihak ketiga adalah opsi lain. Faktor keamanan tentu saja menjadi pertimbangan. Penyedia layanan tentu saja harus bisa dipercaya untuk menjaga kerahasiaan OTP yang dikirimkan.
 

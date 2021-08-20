@@ -251,19 +251,22 @@ public class GSM {
 		
     	String result = this.executeAT("AT+CMGL=\"ALL\"", 5, true);		
 		
-		result = "+CMGL: 1,\"REC READ\",\"+85291234567\",,\"07/02/18,00:05:10+32\"\r\n"
-				+ "Reading text messages \r\n"
-				+ "is easy.\r\n"
-				+ "+CMGL: 2,\"REC READ\",\"+85291234567\",,\"07/02/18,00:07:22+32\"\r\n"
-				+ "A simple demo of SMS text messaging.\r\n"
-				+ "+CMGL: 3,\"REC READ\",\"+85291234567\",,\"07/02/18,00:12:05+32\"\r\n"
-				+ "Hello, welcome to our SMS tutorial.\r\n"
-				+ "+CMGL: 4,\"REC READ\",\"+85291234567\",,\"07/02/18,00:12:11+32\"\r\n"
-				+ "OTP tidak dapat digunakan\r\n"
-				+ "\r\n"
-				+ "OK"
-				+ "";
-		
+    	if(Config.isDebugReadSMS())
+    	{
+			result = "+CMGL: 1,\"REC READ\",\"+85291234567\",,\"07/02/18,00:05:10+32\"\r\n"
+					+ "Reading text messages \r\n"
+					+ "is easy.\r\n"
+					+ "+CMGL: 2,\"REC READ\",\"+85291234567\",,\"07/02/18,00:07:22+32\"\r\n"
+					+ "A simple demo of SMS text messaging.\r\n"
+					+ "+CMGL: 3,\"REC READ\",\"+85291234567\",,\"07/02/18,00:12:05+32\"\r\n"
+					+ "Hello, welcome to our SMS tutorial.\r\n"
+					+ "+CMGL: 4,\"REC READ\",\"+85291234567\",,\"07/02/18,00:12:11+32\"\r\n"
+					+ "OTP tidak dapat digunakan\r\n"
+					+ "\r\n"
+					+ "OK"
+					+ "";
+    	}
+    	
 		result = this.fixingRawData(result);		
 		
 		String[] arr = result.split("\r\n");

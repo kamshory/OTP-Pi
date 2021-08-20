@@ -1,5 +1,6 @@
 package com.planetbiru.mail;
 
+import org.apache.log4j.Logger;
 import org.subethamail.smtp.MessageContext;
 import org.subethamail.smtp.MessageHandler;
 import org.subethamail.smtp.MessageHandlerFactory;
@@ -16,6 +17,8 @@ import java.util.Properties;
 public class PlanetMessageHandlerFactory implements MessageHandlerFactory
 {
 
+	private static Logger logger = Logger.getLogger(PlanetMessageHandlerFactory.class);
+	
 	@Override
     public MessageHandler create(MessageContext messageContext)
     {
@@ -154,7 +157,7 @@ public class PlanetMessageHandlerFactory implements MessageHandlerFactory
             }
             catch (IOException e)
             {
-                e.printStackTrace();
+                logger.error(e.getMessage(), e);
             }
 
             return stringBuilder.toString();

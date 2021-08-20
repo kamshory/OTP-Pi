@@ -30,7 +30,11 @@ import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
+import org.apache.log4j.Logger;
+
 public class HandlerWebManagerAPI implements HttpHandler {
+	
+	private static Logger logger = Logger.getLogger(HandlerWebManagerAPI.class);
 
 	@Override
 	public void handle(HttpExchange httpExchange) throws IOException {
@@ -141,6 +145,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		catch (GSMException e) 
 		{
 			e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);

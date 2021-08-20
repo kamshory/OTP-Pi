@@ -2,6 +2,7 @@ package com.planetbiru.ddns;
 
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
 import org.json.JSONObject;
 
 import com.planetbiru.config.ConfigVendorAfraid;
@@ -11,6 +12,7 @@ import com.planetbiru.config.ConfigVendorNoIP;
 
 public class DDNSUpdater extends Thread{
 	
+	private static Logger logger = Logger.getLogger(DDNSUpdater.class);
 	private static long lastUpdate = 0;
 	private DDNSRecord ddnsRecord;
 	public DDNSUpdater(DDNSRecord ddnsRecord, String prevFireTimeStr, String currentTimeStr, String nextValidTimeAfterStr) {
@@ -86,7 +88,7 @@ public class DDNSUpdater extends Thread{
 		}
 		catch(IOException e)
 		{
-			e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	}
 

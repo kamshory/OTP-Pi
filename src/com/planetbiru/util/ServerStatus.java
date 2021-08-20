@@ -3,14 +3,19 @@ package com.planetbiru.util;
 import java.io.File;
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 
 public class ServerStatus {
 	private static JSONArray status = new JSONArray();
 	private static int maxRecord = 1000;
 	private static String configPath = "";
+	
+	private static Logger logger = Logger.getLogger(ServerStatus.class);
+	
 	private ServerStatus()
 	{
 		
@@ -151,7 +156,7 @@ public class ServerStatus {
 		}
 		catch (IOException e) 
 		{
-			e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	}
 	

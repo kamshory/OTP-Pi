@@ -3,7 +3,7 @@ package com.planetbiru.config;
 public class Config {
 	private static String smsLogPath = "";
 	private static String generalSettingPath = "";
-	private static String otpSalt = "IJUjhrfytR^&r7jkjojO";
+	//private static String otpSalt = "IJUjhrfytR^&r7jkjojO";
 	private static String secretKey = "planetsecret";
 	
 	private static String defaultFile = "/index.html";
@@ -90,21 +90,16 @@ public class Config {
 	private static long waitLoopChild = 30000;
 	private static String resetDeviceType = "RPi";
 	private static String resetDeviceFile = "reset-config.ini";
-	private static String subscriberMqttSettingPath = "";
+	private static String subscriberMQTTSettingPath = "";
 	private static boolean cacheHTMLFile = false;
+	private static boolean debugReadSMS = false;
 	
 	private Config()
 	{
 		
 	}
 
-	public static String getOtpSalt() {
-		return otpSalt;
-	}
-
-	public static void setOtpSalt(String otpSalt) {
-		Config.otpSalt = otpSalt;
-	}
+	
 
 	public static String getSecretKey() {
 		return secretKey;
@@ -187,11 +182,11 @@ public class Config {
 	}
 
 	public static String getSubscriberMQTTSettingPath() {
-		return subscriberMqttSettingPath;
+		return subscriberMQTTSettingPath;
 	}
 
 	public static void setSubscriberMQTTSettingPath(String subscriberMqttSettingPath) {
-		Config.subscriberMqttSettingPath = subscriberMqttSettingPath;
+		Config.subscriberMQTTSettingPath = subscriberMqttSettingPath;
 	}
 
 	public static String getSubscriberWSSettingPath() {
@@ -786,5 +781,12 @@ public class Config {
 		Config.cacheHTMLFile = cacheHTMLFile;
 	}
 
-	
+	public static boolean isDebugReadSMS() {
+		return debugReadSMS;
+	}
+
+	public static void setDebugReadSMS(boolean debugReadSMS) {
+		Config.debugReadSMS = debugReadSMS;
+	}
+
 }
