@@ -75,9 +75,11 @@ public class DialUtil {
 			logger.error(e.getMessage(), e);
 		}
 		boolean ret = false;
-		CommandLineResult result = CommandLineExecutor.exec(wvdialCommandConnect);
+		CommandLineResult result = CommandLineExecutor.exec(DialUtil.wvdialCommandConnect);
+		/*
 		System.out.println("exec   = "+wvdialCommandConnect);
 		System.out.println("result = "+result);
+		*/
 		ret = true;
 		DialUtil.internetAccess.put(modemID, ret);
 		return ret;
@@ -86,9 +88,11 @@ public class DialUtil {
 	public static boolean disconnect(String modemID)
 	{
 		DialUtil.internetAccess.remove(modemID);
-		CommandLineResult result = CommandLineExecutor.exec(wvdialCommandDisconnect);
-		System.out.println("exec   = "+wvdialCommandDisconnect);
+		CommandLineResult result = CommandLineExecutor.exec(DialUtil.wvdialCommandDisconnect);
+		/*
+		System.out.println("exec   = "+DialUtil.wvdialCommandDisconnect);
 		System.out.println("result = "+result);
+		*/
 		return true;
 	}
 

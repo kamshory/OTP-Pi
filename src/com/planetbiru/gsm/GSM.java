@@ -250,7 +250,6 @@ public class GSM {
     	this.executeAT("AT+CPMS=\"" + storage + "\"", 1);
 		
     	String result = this.executeAT("AT+CMGL=\"ALL\"", 5, true);		
-		
     	if(Config.isDebugReadSMS())
     	{
 			result = "+CMGL: 1,\"REC READ\",\"+85291234567\",,\"07/02/18,00:05:10+32\"\r\n"

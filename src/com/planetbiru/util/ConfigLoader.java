@@ -183,6 +183,8 @@ public class ConfigLoader {
 		String resetDeviceType = ConfigLoader.getConfig("otpbroker.reset.device.type");
 		String resetDeviceFile = ConfigLoader.getConfig("otpbroker.reset.device.file");
 		
+		boolean debugReadSMS = ConfigLoader.getConfigBoolean("otpbroker.debug.read.sms");
+		
 		Config.setResetDeviceType(resetDeviceType);
 		Config.setResetDeviceFile(resetDeviceFile);
 		Config.setLogConfigNotFound(logConfigNotFound);
@@ -277,6 +279,7 @@ public class ConfigLoader {
 		
 		Config.setWaitLoopParent(waitLoopParent);
 		Config.setWaitLoopChild(waitLoopChild);
+		Config.setDebugReadSMS(debugReadSMS);
 		
 		
 		ConfigSubscriberWS.load(Config.getSubscriberWSSettingPath());

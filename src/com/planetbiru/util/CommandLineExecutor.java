@@ -81,10 +81,8 @@ public class CommandLineExecutor {
 	}
 	public static String execSSH(String command, long sleep, String host, int port, String username, String password) throws IOException 
 	{
-		System.out.println(Utility.now("yyyy-mm-dd HH:mm:ss.SSS")+" "+command);
 		Shell shell = new Ssh(host, port, username, password);
-		String stdout = new Shell.Plain(shell).exec(command);
-		
+		String stdout = new Shell.Plain(shell).exec(command);		
 		return stdout;
 	}
 }

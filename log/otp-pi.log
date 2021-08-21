@@ -5567,3 +5567,11 @@ Caused by: java.net.BindException: Address already in use: bind
 2021-08-19 21:18:05 [INFO  ] Application                     :197  - Service started
 2021-08-19 21:47:33 [INFO  ] Application                     :197  - Service started
 2021-08-20 08:14:01 [INFO  ] Application                     :197  - Service started
+2021-08-22 06:03:15 [INFO  ] Application                     :198  - Service started
+2021-08-22 06:03:27 [INFO  ] GSM                             :125  - AT Command : ATE0
+2021-08-22 06:03:27 [INFO  ] GSM                             :125  - AT Command : AT+CSCS="GSM"
+2021-08-22 06:03:27 [INFO  ] GSM                             :125  - AT Command : AT+CMGF=1
+2021-08-22 06:03:27 [INFO  ] GSM                             :125  - AT Command : AT+CPMS="MT"
+2021-08-22 06:03:27 [INFO  ] GSM                             :125  - AT Command : AT+CMGL="ALL"
+2021-08-22 06:03:27 [INFO  ] GSM                             :125  - AT Command : AT+CPMS="SM"
+2021-08-22 06:03:27 [INFO  ] GSM                             :125  - AT Command : AT+CMGL="ALL"
