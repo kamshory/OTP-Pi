@@ -20,6 +20,9 @@ public class MessageAPI {
 
 	private static Logger logger = Logger.getLogger(MessageAPI.class);
 	public JSONObject processRequest(String requestBody) {
+		return this.processRequest(requestBody, "");	
+	}
+	public JSONObject processRequest(String requestBody, String topic) {
 		JSONObject requestJSON = new JSONObject();
 		JSONObject responseJSON = new JSONObject();
 		try
@@ -218,4 +221,6 @@ public class MessageAPI {
 		responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
 		return responseJSON;		
 	}
+
+	
 }

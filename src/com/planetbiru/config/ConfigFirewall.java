@@ -148,16 +148,16 @@ public class ConfigFirewall {
 	{
 		String command1 = String.format("firewall-cmd --permanent --add-port=%d/%s", record.optInt("port", 0), record.optString("protocol", ""));
 		String command2 = "firewall-cmd --reload"; 
-		CommandLineExecutor.execSSH(command1, 10);
-		CommandLineExecutor.execSSH(command2, 10);
+		CommandLineExecutor.exec(command1);
+		CommandLineExecutor.exec(command2);
 	}
 
 	private static void deactivate(JSONObject record) throws IOException 
 	{
 		String command1 = String.format("firewall-cmd --permanent --remove-port=%d/%s", record.optInt("port", 0), record.optString("protocol", ""));
 		String command2 = "firewall-cmd --reload"; 
-		CommandLineExecutor.execSSH(command1, 10);
-		CommandLineExecutor.execSSH(command2, 10);
+		CommandLineExecutor.exec(command1);
+		CommandLineExecutor.exec(command2);
 	}
 
 	public static List<Integer> getServicePorts()

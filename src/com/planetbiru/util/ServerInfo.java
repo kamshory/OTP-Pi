@@ -1,6 +1,5 @@
 package com.planetbiru.util;
 
-import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
@@ -158,14 +157,7 @@ public class ServerInfo {
 
 		
 		String command = "more /proc/cpuinfo | grep Serial";
-		int sleep = 10;
-		try 
-		{
-			result = CommandLineExecutor.execSSH(command, sleep);
-		} 
-		catch (IOException e) 
-		{
-		}
+		result = CommandLineExecutor.exec(command).toString();
 		
 		
 		result = fixingRawData(result);

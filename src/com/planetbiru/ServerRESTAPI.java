@@ -40,45 +40,14 @@ public class ServerRESTAPI {
 	void startHTTPS() {
 		if(ConfigAPI.isHttpsEnable())
 		{
-			HttpsServer httpsServer = null;
 			ConfigKeystore.load(Config.getKeystoreSettingPath());		
 			try 
 			{
 				DataKeystore keystore = ConfigKeystore.getActiveKeystore();
 				String keystoreFile = keystore.getFullPath();
 				String keystorePassword = keystore.getFilePassword();
-				try (FileInputStream fileInputStream = new FileInputStream(keystoreFile))
-				{
-					char[] password = keystorePassword.toCharArray();
-				    KeyStore keyStore;
-					keyStore = KeyStore.getInstance("JKS");	
-					SSLContext sslContext = SSLContext.getInstance("TLS");
-					keyStore.load(fileInputStream, password);
-				    KeyManagerFactory keyManagementFactory = KeyManagerFactory.getInstance("SunX509");
-				    keyManagementFactory.init (keyStore, password);
-				    TrustManagerFactory trustFactory = TrustManagerFactory.getInstance("SunX509");
-				    trustFactory.init(keyStore);
-				    sslContext.init(keyManagementFactory.getKeyManagers(), trustFactory.getTrustManagers(), null);		
-					HttpsConfigurator httpsConfigurator = new HttpsConfigurator(sslContext);
-					
-					httpsServer = HttpsServer.create(new InetSocketAddress(ConfigAPI.getHttpsPort()), 0);
-					httpsServer.setHttpsConfigurator(httpsConfigurator);
-			        httpsServer.createContext(ConfigAPI.getMessagePath(), new HandlerAPIMessage());
-			        httpsServer.createContext(ConfigAPI.getSmsPath(), new HandlerAPIMessage());
-			        httpsServer.createContext(ConfigAPI.getEmailPath(), new HandlerAPIMessage());
-			        httpsServer.createContext(ConfigAPI.getBlockingPath(), new HandlerAPIMessage());
-			        httpsServer.createContext(ConfigAPI.getUnblockingPath(), new HandlerAPIMessage());
-			        httpsServer.start();
-					ServiceHTTP.setHttpsServer(httpsServer);
-			        this.httpsStarted = true;
-				} 
-				catch (IOException | KeyStoreException | NoSuchAlgorithmException | CertificateException | KeyManagementException | UnrecoverableKeyException e) 
-				{
-					logger.error(e.getMessage());
-					this.httpsStarted = false;
-					ServiceHTTP.setHttpsServer(null);
-				}			
-			} 
+				this.createHTTPSServer(keystoreFile, keystorePassword);		
+			}
 			catch (NoKeyStoreException e2) 
 			{
 				logger.error(e2.getMessage());
@@ -97,6 +66,42 @@ public class ServerRESTAPI {
 		}
 	}	
 	
+	private void createHTTPSServer(String keystoreFile, String keystorePassword) {
+		HttpsServer httpsServer = null;
+		try (FileInputStream fileInputStream = new FileInputStream(keystoreFile))
+		{
+			char[] password = keystorePassword.toCharArray();
+		    KeyStore keyStore;
+			keyStore = KeyStore.getInstance("JKS");	
+			SSLContext sslContext = SSLContext.getInstance("TLS");
+			keyStore.load(fileInputStream, password);
+		    KeyManagerFactory keyManagementFactory = KeyManagerFactory.getInstance("SunX509");
+		    keyManagementFactory.init (keyStore, password);
+		    TrustManagerFactory trustFactory = TrustManagerFactory.getInstance("SunX509");
+		    trustFactory.init(keyStore);
+		    sslContext.init(keyManagementFactory.getKeyManagers(), trustFactory.getTrustManagers(), null);		
+			HttpsConfigurator httpsConfigurator = new HttpsConfigurator(sslContext);
+			
+			httpsServer = HttpsServer.create(new InetSocketAddress(ConfigAPI.getHttpsPort()), 0);
+			httpsServer.setHttpsConfigurator(httpsConfigurator);
+	        httpsServer.createContext(ConfigAPI.getMessagePath(), new HandlerAPIMessage());
+	        httpsServer.createContext(ConfigAPI.getSmsPath(), new HandlerAPIMessage());
+	        httpsServer.createContext(ConfigAPI.getEmailPath(), new HandlerAPIMessage());
+	        httpsServer.createContext(ConfigAPI.getBlockingPath(), new HandlerAPIMessage());
+	        httpsServer.createContext(ConfigAPI.getUnblockingPath(), new HandlerAPIMessage());
+	        httpsServer.start();
+			ServiceHTTP.setHttpsServer(httpsServer);
+	        this.httpsStarted = true;
+		} 
+		catch (IOException | KeyStoreException | NoSuchAlgorithmException | CertificateException | KeyManagementException | UnrecoverableKeyException e) 
+		{
+			logger.error(e.getMessage());
+			this.httpsStarted = false;
+			ServiceHTTP.setHttpsServer(null);
+		}	
+		
+	}
+
 	void startHTTP() 
 	{
 		if(ConfigAPI.isHttpsEnable())

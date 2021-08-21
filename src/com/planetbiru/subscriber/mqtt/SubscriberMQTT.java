@@ -46,6 +46,7 @@ public class SubscriberMQTT extends Thread{
 			while(this.running);
 		}
 	}
+	
 	private void flagDisconnected()
 	{
 		this.callback = null;
@@ -64,6 +65,7 @@ public class SubscriberMQTT extends Thread{
 		ConfigSubscriberMQTT.setConnected(false);
 		ServerWebSocketAdmin.broadcastServerInfo();
 	}
+	
 	private void connect() {
 		try 
 		{
@@ -123,15 +125,18 @@ public class SubscriberMQTT extends Thread{
 			flagDisconnected();
 		}		
 	}
+	
 	private void onMessage(String topic, MqttMessage payload) {
 		String message = new String(payload.getPayload());
         MessageAPI api = new MessageAPI();
-        api.processRequest(message);
+        api.processRequest(message, topic);
 		
 	}
+	
 	public boolean isRunning() {
 		return running;
 	}
+	
 	public void stopService() {
 		this.running = false;	
 		flagDisconnected();

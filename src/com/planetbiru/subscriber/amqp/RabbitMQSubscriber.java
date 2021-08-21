@@ -61,13 +61,12 @@ public class RabbitMQSubscriber{
 		            Envelope envelope, 
 		            AMQP.BasicProperties properties, 
 		            byte[] body) throws IOException {		     
-		                // process the message
 		                evtOnMessage(body);
 		        }
 		        @Override
-		        public void handleShutdownSignal(String msg, ShutdownSignalException e)
+		        public void handleShutdownSignal(String message, ShutdownSignalException e)
 		        {
-		        	evtOnClose(msg, e);
+		        	evtOnClose(message, e);
 		        }
 				
 		    };
@@ -90,7 +89,7 @@ public class RabbitMQSubscriber{
 		this.channel = null;
 		try 
 		{
-			Thread.sleep(ConfigSubscriberAMQP.getSubscriberAmqpTimeout() * 2);
+			Thread.sleep(ConfigSubscriberAMQP.getSubscriberAmqpTimeout() * 2L);
 		} 
 		catch (InterruptedException e) 
 		{

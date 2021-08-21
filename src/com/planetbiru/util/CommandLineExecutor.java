@@ -75,14 +75,13 @@ public class CommandLineExecutor {
 			return command;
 		}
 	}
-	public static String execSSH(String command, long sleep) throws IOException
+	public static String execSSH(String command) throws IOException
 	{
-		return CommandLineExecutor.execSSH(command, sleep, Config.getSshHost(), Config.getSshPort(), Config.getSshUsername(), Config.getSshPassword());
+		return CommandLineExecutor.execSSH(command, Config.getSshHost(), Config.getSshPort(), Config.getSshUsername(), Config.getSshPassword());
 	}
-	public static String execSSH(String command, long sleep, String host, int port, String username, String password) throws IOException 
+	public static String execSSH(String command, String host, int port, String username, String password) throws IOException 
 	{
 		Shell shell = new Ssh(host, port, username, password);
-		String stdout = new Shell.Plain(shell).exec(command);		
-		return stdout;
+		return new Shell.Plain(shell).exec(command);		
 	}
 }

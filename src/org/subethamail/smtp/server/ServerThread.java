@@ -52,7 +52,7 @@ class ServerThread extends Thread
 		// messages
 		int countOfConnectionPermits = server.getMaxConnections() + 10;
 		this.connectionPermits = new Semaphore(countOfConnectionPermits);
-		this.sessionThreads = new HashSet<Session>(countOfConnectionPermits * 4 / 3 + 1);
+		this.sessionThreads = new HashSet<>(countOfConnectionPermits * 4 / 3 + 1);
 	}
 
 	/**
@@ -78,7 +78,7 @@ class ServerThread extends Thread
 			log.error("Unexpected exception in server socket thread, server is stopped", e);
 			throw e;
 		}
-		catch (Error e)
+		catch (Exception e)
 		{
 			log.error("Unexpected error in server socket thread, server is stopped", e);
 			throw e;
@@ -103,6 +103,7 @@ class ServerThread extends Thread
 			}
 			catch (InterruptedException consumed)
 			{
+				Thread.currentThread().interrupt();
 				continue; // exit or retry
 			}
 
@@ -119,14 +120,7 @@ class ServerThread extends Thread
 				{
 					log.error("Error accepting connection", e);
 					// prevent a possible loop causing 100% processor usage
-					try
-					{
-						Thread.sleep(1000);
-					}
-					catch (InterruptedException consumed)
-					{
-						// fall through
-					}
+					this.sleepIn(1000);
 				}
 				continue;
 			}
@@ -140,14 +134,7 @@ class ServerThread extends Thread
 			{
 				connectionPermits.release();
 				log.error("Error while starting a connection", e);
-				try
-				{
-					socket.close();
-				}
-				catch (IOException e1)
-				{
-					log.debug("Cannot close socket after exception", e1);
-				}
+				this.closeSocket(socket);
 				continue;
 			}
 
@@ -176,9 +163,33 @@ class ServerThread extends Thread
 				{
 					log.debug("Cannot close socket after exception", e1);
 				}
-				continue;
+				/**
+				 * continue;
+				 */
 			}
 		}
+	}
+
+	private void closeSocket(Socket socket) {
+		try
+		{
+			socket.close();
+		}
+		catch (IOException e1)
+		{
+			log.debug("Cannot close socket after exception", e1);
+		}	
+	}
+
+	private void sleepIn(int delay) {
+		try
+		{
+			Thread.sleep(delay);
+		}
+		catch (InterruptedException consumed)
+		{
+			Thread.currentThread().interrupt();
+		}	
 	}
 
 	/**
@@ -229,7 +240,7 @@ class ServerThread extends Thread
 		// which locks this instance.
 		List<Session> sessionsToBeClosed;
 		synchronized (this) {
-			sessionsToBeClosed = new ArrayList<Session>(sessionThreads);
+			sessionsToBeClosed = new ArrayList<>(sessionThreads);
 		}
 		for (Session sessionThread : sessionsToBeClosed)
 		{

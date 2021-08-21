@@ -36,7 +36,6 @@ public class DeviceAPI {
 			{
 				result = CommandLineExecutor.execSSH(
 						command, 
-						Config.getSshSleep(),
 						Config.getSshHost(), 
 						Config.getSshPort(), 
 						Config.getSshUsername(), 

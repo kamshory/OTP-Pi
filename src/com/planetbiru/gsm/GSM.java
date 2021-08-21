@@ -266,12 +266,9 @@ public class GSM {
 					+ "";
     	}
     	
-		result = this.fixingRawData(result);		
-		
-		String[] arr = result.split("\r\n");
-		
-		int max = this.getMax(arr);		
-		
+		result = this.fixingRawData(result);				
+		String[] arr = result.split("\r\n");	
+		int max = this.getMax(arr);				
 		for(int i = 0; i<max; i++)
 		{
 			String csvLine = arr[i];
