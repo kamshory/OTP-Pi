@@ -100,7 +100,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><input type="button" class="btn btn-success" value="Detect"></td>
+                            <td><input type="button" class="btn btn-success" id="detect" value="Detect"></td>
                         </tr>
                         <tr>
                             <td>SMS Center</td>
@@ -246,6 +246,25 @@
                     dataType:"json",
                     success:function(data){
                         setting = data;
+                    }
+                });
+
+                $(document).on('click', '#detect', function(e2){
+                    var port = $(this).closest('form').find('[name="port"]').val().trim();
+                    if(port == '')
+                    {
+                        $(this).closest('form').find('[name="port"]').select();
+                    }
+                    else
+                    {
+                        $.ajax({
+                            type:"GET",
+                            url:"data/modem-info/get/"+encodeURIComponent(port),
+                            dataType:"json",
+                            success:function(data){
+                                console.log(data)
+                            }
+                        });
                     }
                 });
                 

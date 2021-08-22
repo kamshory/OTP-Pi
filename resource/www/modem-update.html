@@ -318,15 +318,22 @@
                     });
 
                     $(document).on('click', '#detect', function(e2){
-                        var port = $(this).closest('form').find('[name="port').val();
-                        $.ajax({
-                        type:"GET",
-                        url:"data/modem-info/get/"+encodeURIComponent(port),
-                        dataType:"json",
-                        success:function(data){
-                            
+                        var port = $(this).closest('form').find('[name="port"]').val().trim();
+                        if(port == '')
+                        {
+                            $(this).closest('form').find('[name="port"]').select();
                         }
-                    });
+                        else
+                        {
+                            $.ajax({
+                                type:"GET",
+                                url:"data/modem-info/get/"+encodeURIComponent(port),
+                                dataType:"json",
+                                success:function(data){
+                                    console.log(data)
+                                }
+                            });
+                        }
                     });
                     
                 });

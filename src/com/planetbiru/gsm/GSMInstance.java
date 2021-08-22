@@ -119,10 +119,10 @@ public class GSMInstance {
     }
 	
 	private void waitUntilReady() {
-		long maxWaith = Config.getMaxWaitModemReady();
+		long maxWait = Config.getMaxWaitModemReady();
 		long ellapsed = 0;
 		long startTime = System.currentTimeMillis();
-		while(!this.gsm.isReady() && ellapsed < maxWaith)
+		while(!this.gsm.isReady() && ellapsed < maxWait)
 		{
 			this.sleep(Config.getWaithModemReady());
 			ellapsed = System.currentTimeMillis() - startTime;

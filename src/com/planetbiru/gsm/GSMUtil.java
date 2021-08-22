@@ -513,17 +513,21 @@ public class GSMUtil {
 
 	public static JSONObject getInstalledModemInfo(String port) {
 		GSMInstance instance;
+		boolean addHock = false;
 		JSONObject info = new JSONObject();
-		try {
+		try 
+		{
 			instance = GSMUtil.getGSMInstanceByPort(port);	
 		} 
 		catch (ModemNotFoundException e) 
 		{
 			instance = new GSMInstance(port);
-			e.printStackTrace();
+			addHock = true;
 		}
 		
-		try {
+		try 
+		{
+			instance.connect();
 			String imei = instance.getIMEI();
 			String imsi = instance.getIMSI();
 			String iccid = instance.getICCID();
@@ -534,8 +538,17 @@ public class GSMUtil {
 			info.put("iccid", iccid);
 			info.put("msisdn", msisdn);
 			
-		} catch (GSMException e) {
-			e.printStackTrace();
+			if(addHock)
+			{
+				instance.disconnect();
+			}
+			
+		} 
+		catch (GSMException | InvalidPortException e) 
+		{
+			/**
+			 * Do nothing
+			 */
 		}
 		return info;
 	}

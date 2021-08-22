@@ -5583,3 +5583,26 @@ Caused by: java.net.BindException: Address already in use: bind
 2021-08-22 09:38:34 [INFO  ] GSM                             :123  - AT Command : AT+CMGL="ALL"
 2021-08-22 09:38:34 [INFO  ] GSM                             :123  - AT Command : AT+CPMS="SM"
 2021-08-22 09:38:34 [INFO  ] GSM                             :123  - AT Command : AT+CMGL="ALL"
+2021-08-22 20:51:55 [INFO  ] Application                     :198  - Service started
+2021-08-23 00:52:21 [INFO  ] Application                     :198  - Service started
+2021-08-23 00:54:47 [INFO  ] Application                     :198  - Service started
+2021-08-23 00:56:01 [INFO  ] GSM                             :123  - AT Command : AT+CGSN
+2021-08-23 00:56:37 [INFO  ] GSM                             :123  - AT Command : AT+CGSN
+2021-08-23 00:59:15 [INFO  ] Application                     :198  - Service started
+2021-08-23 00:59:17 [INFO  ] GSM                             :123  - AT Command : AT+CGSN
+2021-08-23 00:59:17 [INFO  ] GSM                             :123  - AT Command : AT+CIMI
+2021-08-23 00:59:17 [INFO  ] GSM                             :123  - AT Command : AT+CCID
+2021-08-23 00:59:17 [INFO  ] GSM                             :123  - AT Command : AT+CNUM
+2021-08-23 00:59:52 [INFO  ] Application                     :198  - Service started
+2021-08-23 01:00:00 [INFO  ] GSM                             :123  - AT Command : AT+CGSN
+2021-08-23 01:00:00 [INFO  ] GSM                             :123  - AT Command : AT+CIMI
+2021-08-23 01:00:00 [INFO  ] GSM                             :123  - AT Command : AT+CCID
+2021-08-23 01:00:00 [INFO  ] GSM                             :123  - AT Command : AT+CNUM
+2021-08-23 01:00:24 [INFO  ] GSM                             :123  - AT Command : AT+CGSN
+2021-08-23 01:00:24 [INFO  ] GSM                             :123  - AT Command : AT+CIMI
+2021-08-23 01:00:24 [INFO  ] GSM                             :123  - AT Command : AT+CCID
+2021-08-23 01:00:24 [INFO  ] GSM                             :123  - AT Command : AT+CNUM
+2021-08-23 01:05:20 [INFO  ] GSM                             :123  - AT Command : AT+CGSN
+2021-08-23 01:05:20 [INFO  ] GSM                             :123  - AT Command : AT+CIMI
+2021-08-23 01:05:20 [INFO  ] GSM                             :123  - AT Command : AT+CCID
+2021-08-23 01:05:20 [INFO  ] GSM                             :123  - AT Command : AT+CNUM
