@@ -19,7 +19,7 @@ import com.planetbiru.gsm.DialUtil;
 import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.gsm.InvalidPortException;
-import com.planetbiru.gsm.USSD;
+import com.planetbiru.gsm.USSDParser;
 import com.planetbiru.mail.MailUtil;
 import com.planetbiru.mail.NoEmailAccountException;
 import com.planetbiru.user.NoUserRegisteredException;
@@ -723,7 +723,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				String message = "";
 				if(ussdCode != null && !ussdCode.isEmpty())
 				{
-					USSD ussd = GSMUtil.executeUSSD(ussdCode, modemID);
+					USSDParser ussd = GSMUtil.executeUSSD(ussdCode, modemID);
 					message = ussd.getContent();
 					replyable = ussd.isReplyable();
 					response.put(JsonKey.SUCCESS, true);		

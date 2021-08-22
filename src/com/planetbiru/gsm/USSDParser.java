@@ -7,7 +7,7 @@ import java.util.Map;
 
 import com.google.common.base.Splitter;
 
-public class USSD {
+public class USSDParser {
 
 	private boolean replyable = false;
 	private String contentRaw = "";
@@ -15,10 +15,10 @@ public class USSD {
 	private String header = "";
 	private String footer = "";
 
-	public USSD() {
+	public USSDParser() {
 	}
 
-	public USSD(String contentRaw) {
+	public USSDParser(String contentRaw) {
 		this.contentRaw = contentRaw;
 		Map<String, String> parsed = this.parseUSSDResponse(contentRaw);
 		this.replyable = parsed.getOrDefault("footer", "0").equals("0");

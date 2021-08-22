@@ -129,7 +129,7 @@ public class GSMInstance {
 		}
 	}
 	
-	public USSD executeUSSD(String ussd) throws GSMException {
+	public USSDParser executeUSSD(String ussd) throws GSMException {
 		if(this.gsm.getSerialPort() == null)
 		{
 			throw new GSMException(ConstantString.SERIAL_PORT_NULL);

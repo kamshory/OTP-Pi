@@ -165,21 +165,21 @@ public class GSM {
     /**
      * Execute USSD command
      *
-     * @param ussdCommand The USSD command
+     * @param ussd The USSD command
      * @return String contains the response
      * @throws GSMException 
      */
-    public USSD executeUSSD(String ussdCommand) throws GSMException 
+    public USSDParser executeUSSD(String ussd) throws GSMException 
     {
     	this.setReady(false);
-        String cmd = "AT+CUSD=1,\"" + ussdCommand + "\",15";
+        String cmd = "AT+CUSD=1,\"" + ussd + "\",15";
         String result = "";
         result = this.executeAT(cmd, 2, true);
-        USSD ussd;
+        USSDParser ussdParser;
 		if(result.startsWith("ERROR"))
         {
-        	ussd = new USSD();
-            return ussd;
+        	ussdParser = new USSDParser();
+            return ussdParser;
         }
         int waiting = 0;
         while ((result.trim().equals("") || result.trim().equals("\n")) && waiting < 10) 
@@ -192,14 +192,14 @@ public class GSM {
         }     
         if(result.startsWith("+CUSD")) 
         {
-            ussd = new USSD(result);
+            ussdParser = new USSDParser(result);
         }
         else
         {
-        	ussd = new USSD();
+        	ussdParser = new USSDParser();
         }
         this.setReady(true);
-        return ussd;
+        return ussdParser;
     }
     
     public String fixingRawData(String result)
@@ -357,7 +357,7 @@ public class GSM {
     }
 
 	private void gcDeleteSent() {
-		GCDeleteSMS gc = new GCDeleteSMS(this);
+		GSMSMSCleaner gc = new GSMSMSCleaner(this);
 		gc.start();		
 	}
 

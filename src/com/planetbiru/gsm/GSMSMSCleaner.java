@@ -3,13 +3,13 @@ package com.planetbiru.gsm;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class GCDeleteSMS extends Thread {
+public class GSMSMSCleaner extends Thread {
 
-	private static final Logger logger = LogManager.getLogger(GCDeleteSMS.class);
+	private static final Logger logger = LogManager.getLogger(GSMSMSCleaner.class);
 	
 	private GSM gsm;
 
-	public GCDeleteSMS(GSM gsm) {
+	public GSMSMSCleaner(GSM gsm) {
 		this.gsm = gsm;
 	}
 
