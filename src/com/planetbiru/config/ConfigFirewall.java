@@ -65,15 +65,8 @@ public class ConfigFirewall {
 		record.put("protocol", protocol);
 		record.put("active", true);
 		record.put("lastUpdate", System.currentTimeMillis());
-		try 
-		{
-			ConfigFirewall.records.put(record);		
-			ConfigFirewall.activate(record);
-		} 
-		catch (IOException e) 
-		{
-			logger.error(e.getMessage(), e);
-		}
+		ConfigFirewall.records.put(record);		
+		ConfigFirewall.activate(record);
 	}
 	
 	public static void save()
@@ -112,14 +105,7 @@ public class ConfigFirewall {
 	public static void activate(String id)
 	{
 		JSONObject record = ConfigFirewall.get(id);
-		try 
-		{
-			ConfigFirewall.activate(record);
-		} 
-		catch (IOException e) 
-		{
-			logger.error(e.getMessage(), e);
-		}
+		ConfigFirewall.activate(record);
 		ConfigFirewall.get(id).put("active", true);
 		ConfigFirewall.get(id).put("lastUpdate", System.currentTimeMillis());
 	}
@@ -130,21 +116,13 @@ public class ConfigFirewall {
 		List<Integer> servicePorts = ConfigFirewall.getServicePorts();
 		if(!servicePorts.contains(record.optInt("port")))
 		{
-			try 
-			{
-				ConfigFirewall.deactivate(record);
-			} 
-			catch (IOException e) 
-			{
-				logger.error(e.getMessage(), e);
-			}
+			ConfigFirewall.deactivate(record);
 			ConfigFirewall.get(id).put("active", false);
 			ConfigFirewall.get(id).put("lastUpdate", System.currentTimeMillis());
-
 		}
 	}
 	
-	private static void activate(JSONObject record) throws IOException 
+	private static void activate(JSONObject record) 
 	{
 		String command1 = String.format("firewall-cmd --permanent --add-port=%d/%s", record.optInt("port", 0), record.optString("protocol", ""));
 		String command2 = "firewall-cmd --reload"; 
@@ -152,7 +130,7 @@ public class ConfigFirewall {
 		CommandLineExecutor.exec(command2);
 	}
 
-	private static void deactivate(JSONObject record) throws IOException 
+	private static void deactivate(JSONObject record) 
 	{
 		String command1 = String.format("firewall-cmd --permanent --remove-port=%d/%s", record.optInt("port", 0), record.optString("protocol", ""));
 		String command2 = "firewall-cmd --reload"; 

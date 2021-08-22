@@ -70,7 +70,19 @@ public class ConfigEmail {
 						String host = json.optString("host", "");
 						int port = json.optInt("port", 0);
 						boolean active = json.optBoolean("active", false);
-						DataEmail dataEmail = new DataEmail(id, senderAddress, senderPassword, senderName, auth, host, port, startTLS, ssl, active);
+						DataEmail dataEmail = new DataEmail();
+						
+						dataEmail.setId(id);
+						dataEmail.setSenderAddress(senderAddress);
+						dataEmail.setSenderPassword(senderPassword);
+						dataEmail.setSenderName(senderName);
+						dataEmail.setAuth(auth);
+						dataEmail.setHost(host);
+						dataEmail.setPort(port);
+						dataEmail.setStartTLS(startTLS);
+						dataEmail.setSsl(ssl);
+						dataEmail.setActive(active);
+						
 						ConfigEmail.getAccounts().add(dataEmail);
 					}
 				}

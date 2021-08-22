@@ -35,8 +35,7 @@ public class ConfigVendorNoIP {
 		{
 			dir = dir.substring(0, dir.length() - 1);
 		}
-		String fileName = FileConfigUtil.fixFileName(dir + path);
-		
+		String fileName = FileConfigUtil.fixFileName(dir + path);		
 		try 
 		{
 			byte[] data = FileConfigUtil.read(fileName);		
@@ -68,19 +67,22 @@ public class ConfigVendorNoIP {
 			{
 				logger.error(e.getMessage(), e);
 			}
-		}
-		
-	}	
+		}		
+	}
+	
 	public static void save() 
 	{
 		ConfigVendorNoIP.save(ConfigVendorNoIP.configPath);
 	}
-	public static void save(String path) {
+	
+	public static void save(String path) 
+	{
 		JSONObject config = getJSONObject();
 		save(path, config);
 	}
 
-	public static void save(String path, JSONObject config) {
+	public static void save(String path, JSONObject config) 
+	{
 		
 		String dir = Utility.getBaseDir();
 		if(dir.endsWith("/") && path.startsWith("/"))
@@ -99,7 +101,8 @@ public class ConfigVendorNoIP {
 		}
 	}
 	
-	private static void prepareDir(String fileName) {
+	private static void prepareDir(String fileName) 
+	{
 		File file = new File(fileName);
 		String directory1 = file.getParent();
 		File file2 = new File(directory1);
@@ -116,7 +119,8 @@ public class ConfigVendorNoIP {
 		}		
 	}
 	
-	public static JSONObject getJSONObject() {
+	public static JSONObject getJSONObject() 
+	{
 		JSONObject config = new JSONObject();
 		config.put("endpoint", ConfigVendorNoIP.endpoint);
 		config.put("username", ConfigVendorNoIP.username);

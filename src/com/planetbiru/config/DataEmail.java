@@ -19,8 +19,6 @@ import javax.mail.internet.MimeMultipart;
 
 import org.json.JSONObject;
 
-import com.planetbiru.util.Utility;
-
 public class DataEmail {
 	private String id = "";
 	private String senderAddress = "";
@@ -36,23 +34,7 @@ public class DataEmail {
 	private boolean debug = false;
 	
 	
-	public DataEmail(String id, String senderAddress, String senderPassword, String senderName, boolean auth, String host, int port, boolean startTLS, boolean ssl, boolean active)
-	{
-		if(id.isEmpty())
-		{
-			id = Utility.md5(System.nanoTime()+"");
-		}
-		this.id = id;
-		this.senderAddress = senderAddress;
-		this.senderPassword = senderPassword;
-		this.senderName = senderName;
-		this.auth = auth;
-		this.host = host;
-		this.port = port;
-		this.startTLS = startTLS;
-		this.ssl = ssl;
-		this.active = active;
-	}
+	
 	
 	public void set(DataEmail newData) {
 		this.id = newData.id;
@@ -112,14 +94,14 @@ public class DataEmail {
         String localSmtpUser = this.senderAddress;
         String localSmtpPassword = this.senderPassword;
         
-        session = Session.getInstance(properties, new Authenticator() {
+        this.session = Session.getInstance(properties, new Authenticator() {
         	@Override
 			protected PasswordAuthentication getPasswordAuthentication() 
         	{
                 return new PasswordAuthentication(localSmtpUser, localSmtpPassword);
             }
         });
-        session.setDebug(debug );
+        this.session.setDebug(debug );
 	}
 	public boolean send(String to, String subject, String message, StackTraceElement ste) throws MessagingException
 	{

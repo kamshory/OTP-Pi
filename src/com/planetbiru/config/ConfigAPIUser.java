@@ -22,9 +22,8 @@ import com.sun.net.httpserver.Headers;
 public class ConfigAPIUser {
 
 	private static Map<String, User> users = new HashMap<>();
-	private static String configPath = "";
-	
-	private static Logger logger = Logger.getLogger(ConfigAPI.class);
+	private static String configPath = "";	
+	private static Logger logger = Logger.getLogger(ConfigAPIUser.class);
 	
 	private ConfigAPIUser()
 	{
@@ -99,9 +98,6 @@ public class ConfigAPIUser {
 			{
 				logger.error(e.getMessage(), e);
 			}
-			/**
-			 * Do nothing
-			 */
 		}
 	}
 	
