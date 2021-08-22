@@ -29,7 +29,8 @@ public class GSMUtil {
 	private static final String MONITOR_PATH = "monitor.html";
 	private static final String SMS_TRAFFIC = "sms-traffic";
 	
-	
+	private static long lastDelete = 0;
+
 	private static boolean initialized = false;
 	private static List<GSMInstance> gsmInstance = new ArrayList<>();
 	private static List<Integer> connectedDevices = new ArrayList<>();
@@ -502,6 +503,14 @@ public class GSMUtil {
 
 	public static List<GSMInstance> getGsmInstance() {
 		return gsmInstance;
+	}
+
+	public static long getLastDelete() {
+		return lastDelete;
+	}
+
+	public static void setLastDelete(long lastDelete) {
+		GSMUtil.lastDelete = lastDelete;
 	}
 
 }

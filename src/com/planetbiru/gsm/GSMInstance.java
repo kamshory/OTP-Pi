@@ -40,21 +40,29 @@ public class GSMInstance {
 		this.gsm.closePort();
 	}
 	
-	public String sendSMS(String receiver, String message) throws GSMException
+	public String sendSMS(String receiver, String message, boolean deleteSent) throws GSMException
 	{
 		if(this.gsm.getSerialPort() == null)
 		{
 			throw new GSMException(ConstantString.SERIAL_PORT_NULL);
 		}
 		this.waitUntilReady();
-		return this.gsm.sendSMS(receiver, message);
+		return this.gsm.sendSMS(receiver, message, deleteSent);
 	}
-	
-	public String sendSMS(String receiver, String message, DataModem modemData) throws GSMException {
+
+	public String sendSMS(String receiver, String message) throws GSMException {
+		return this.sendSMS(receiver, message, true);
+	}
+
+	public String sendSMS(String receiver, String message, DataModem modemData, boolean deleteSent) throws GSMException {
 		Date date = new Date();
 		String sender = modemData.getMsisdn();
 		this.logSendSMS(sender, Utility.maskMSISDN(receiver), date, message.length());
-		return this.sendSMS(receiver, message);
+		return this.sendSMS(receiver, message, deleteSent);
+	}
+	
+	public String sendSMS(String receiver, String message, DataModem modemData) throws GSMException {
+		return this.sendSMS(receiver, message, modemData, true);
 	}
 	
 	private void logSendSMS(String sender, String receiver, Date date, int length) {
@@ -130,4 +138,6 @@ public class GSMInstance {
 			Thread.currentThread().interrupt();
 		}		
 	}
+
+	
 }

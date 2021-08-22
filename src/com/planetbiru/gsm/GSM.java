@@ -259,7 +259,6 @@ public class GSM {
 					+ "Hello, welcome to our SMS tutorial.\r\n"
 					+ "+CMGL: 4,\"REC READ\",\"+85291234567\",,\"07/02/18,00:12:11+32\"\r\n"
 					+ "OTP tidak dapat digunakan\r\n"
-					+ "\r\n"
 					+ "OK";
     	}
     	
@@ -331,10 +330,11 @@ public class GSM {
      *
      * @param recipient the destination number
      * @param message the body of the SMS
+	 * @param deleteSent 
      * @return ?
      * @throws GSMException 
      */
-    public String sendSMS(String recipient, String message) throws GSMException 
+    public String sendSMS(String recipient, String message, boolean deleteSent) throws GSMException 
     {
     	this.setReady(false);
     	String result = "";
@@ -347,8 +347,18 @@ public class GSM {
     	this.executeAT(message, 2);
     	this.executeAT(Character.toString((char) 26), 10);
     	this.setReady(true);
+    	
+    	if(deleteSent)
+    	{
+    		this.gcDeleteSent();
+    	}
         return result;
     }
+
+	private void gcDeleteSent() {
+		GCDeleteSMS gc = new GCDeleteSMS(this);
+		gc.start();		
+	}
 
 	public String deleteSMS(int smsID, String storage) throws GSMException 
     {
@@ -369,6 +379,21 @@ public class GSM {
     	this.setReady(true);
         return result;
     }
+    
+    public void deleteAllSentSMS() throws GSMException 
+    {
+   	
+    	this.setReady(false);
+        this.executeAT("ATE0", 1);
+        this.executeAT(this.selectProtocol("GSM"), 1);
+        this.executeAT(this.selectOperator("1"), 1);
+		for (String storage : CGSMConst.getSmsStorage()) 
+        {
+			this.executeAT(this.selectStorage(storage), 1);
+	    	this.executeAT(CGSMConst.CREATE_DELETE_SMS_ALL, 1);
+        }
+        this.setReady(true);
+ 	}
     
 
     public String createDeleteSMS(int smsID)
@@ -451,5 +476,7 @@ public class GSM {
 	public void setReady(boolean ready) {
 		this.ready = ready;
 	}
+
+	
 	
 }
