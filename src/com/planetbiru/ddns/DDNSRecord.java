@@ -26,45 +26,7 @@ public class DDNSRecord {
 		return date;
 	}
 	
-	public DDNSRecord(String id, String zone, String recordName, String type, boolean proxied, int ttl, boolean forceCreateZone, String provider, boolean active, String cronExpression) {
-		this.setId(id);
-		this.setZone(zone);
-		this.setRecordName(recordName);
-		this.setType(type);
-		this.setProxied(proxied);
-		this.setTtl(ttl);
-		this.setForceCreateZone(forceCreateZone);
-		this.setCronExpression(cronExpression);
-		this.setActive(active);
-		this.setProvider(provider);
-	}
-
-	public DDNSRecord(String id, String zone, String recordName, String type, boolean proxied, int ttl, boolean forceCreateZone, String provider, boolean active) {
-		this.setId(id);
-		this.setZone(zone);
-		this.setRecordName(recordName);
-		this.setType(type);
-		this.setProxied(proxied);
-		this.setTtl(ttl);
-		this.setForceCreateZone(forceCreateZone);
-		this.setActive(active);
-		this.setProvider(provider);
-	}
-
-	public DDNSRecord(String id, String zone, String recordName, String type, boolean proxied, int ttl, boolean forceCreateZone, String provider, boolean active, String cronExpression, Date nextValid, Date lastUpdate) {
-		this.setId(id);
-		this.setZone(zone);
-		this.setRecordName(recordName);
-		this.setType(type);
-		this.setProxied(proxied);
-		this.setTtl(ttl);
-		this.setForceCreateZone(forceCreateZone);
-		this.setCronExpression(cronExpression);
-		this.setActive(active);
-		this.setProvider(provider);
-		this.setNextValid(nextValid);
-		this.setLastUpdate(lastUpdate);
-	}
+	
 
 	public DDNSRecord() {
 	}

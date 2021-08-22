@@ -1843,7 +1843,7 @@ public class HandlerWebManager implements HttpHandler {
 		    String email = queryPairs.getOrDefault(JsonKey.EMAIL, "");
 		    String name = queryPairs.getOrDefault(JsonKey.NAME, "");
 		    String phone = queryPairs.getOrDefault(JsonKey.PHONE, "");
-	
+		    
 		    JSONObject jsonObject = new JSONObject();
 			jsonObject.put(JsonKey.USERNAME, username);
 			jsonObject.put(JsonKey.NAME, name);
@@ -1997,7 +1997,19 @@ public class HandlerWebManager implements HttpHandler {
 			int ttl = Utility.atoi(ttls);
 			String type = queryPairs.getOrDefault(JsonKey.TYPE, "0");
 			String id = Utility.md5(zone+":"+recordName);
-			DDNSRecord record = new DDNSRecord(id, zone, recordName, type, proxied, ttl, forceCreateZone, provider, active, cronExpression);
+			DDNSRecord record = new DDNSRecord();
+			
+			record.setId(id);
+			record.setZone(zone);
+			record.setRecordName(recordName);
+			record.setType(type);
+			record.setProxied(proxied);
+			record.setTtl(ttl);
+			record.setForceCreateZone(forceCreateZone);
+			record.setProvider(provider);
+			record.setActive(active);
+			record.setCronExpression(cronExpression);
+			
 			if(!zone.isEmpty() && !recordName.isEmpty())
 			{
 				ConfigDDNS.getRecords().put(id, record);	

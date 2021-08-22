@@ -67,8 +67,22 @@ public class ConfigDDNS {
 							Date lastUpdate = DDNSRecord.longToDate(json.optLong("lastUpdate", 0));
 							Date nextValid = DDNSRecord.longToDate(json.optLong("nextValid", 0));
 							String type = "A";
-							DDNSRecord rec = new DDNSRecord(lID, lZone, lRecordName, type, lProxied, lTTL, lForceCreateZone, lProvider, lActive, lcronExpression, nextValid, lastUpdate);
-							ConfigDDNS.getRecords().put(lID, rec);
+							DDNSRecord record = new DDNSRecord();
+							record.setId(lID);
+							record.setZone(lZone);
+							record.setRecordName(lRecordName);
+							record.setType(type);
+							record.setProxied(lProxied);
+							record.setTtl(lTTL);
+							record.setForceCreateZone(lForceCreateZone);
+							record.setProvider(lProvider);
+							record.setActive(lActive);
+							record.setCronExpression(lcronExpression);
+							
+							record.setNextValid(nextValid);
+							record.setLastUpdate(lastUpdate);
+							
+							ConfigDDNS.getRecords().put(lID, record);
 					    }
 					}				
 				}
