@@ -62,11 +62,10 @@ public class GSMUtil {
 			DataModem modem = entry.getValue();
 			if(modem.isActive() && !modem.isInternetAccess())
 			{
-				String port = modem.getPort();			
 				GSMInstance instance = new GSMInstance(modem);
 				try 
 				{
-					instance.connect(port);
+					instance.connect();
 					GSMUtil.getGsmInstance().add(instance);
 				} 
 				catch (GSMException | InvalidPortException e) 
@@ -97,8 +96,7 @@ public class GSMUtil {
 		{
 			GSMUtil.getGsmInstance().add(instance);
 		}
-		instance.connect(modem.getPort());
-		
+		instance.connect();	
 		GSMUtil.updateConnectedDevice();
 	}
 	
@@ -511,6 +509,46 @@ public class GSMUtil {
 
 	public static void setLastDelete(long lastDelete) {
 		GSMUtil.lastDelete = lastDelete;
+	}
+
+	public static JSONObject getInstalledModemInfo(String port) {
+		GSMInstance instance;
+		JSONObject info = new JSONObject();
+		try {
+			instance = GSMUtil.getGSMInstanceByPort(port);	
+		} 
+		catch (ModemNotFoundException e) 
+		{
+			instance = new GSMInstance(port);
+			e.printStackTrace();
+		}
+		
+		try {
+			String imei = instance.getIMEI();
+			String imsi = instance.getIMSI();
+			String iccid = instance.getICCID();
+			String msisdn = instance.getMSISDN();
+			
+			info.put("imei", imei);
+			info.put("imsi", imsi);
+			info.put("iccid", iccid);
+			info.put("msisdn", msisdn);
+			
+		} catch (GSMException e) {
+			e.printStackTrace();
+		}
+		return info;
+	}
+
+	private static GSMInstance getGSMInstanceByPort(String port) throws ModemNotFoundException {
+		for(int i = 0; i < GSMUtil.getGsmInstance().size(); i++)
+		{
+			if(GSMUtil.getGsmInstance().get(i).getPort().equals(port))
+			{
+				return GSMUtil.getGsmInstance().get(i);
+			}
+		}
+		throw new ModemNotFoundException("No modem use port "+port);
 	}
 
 }

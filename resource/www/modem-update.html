@@ -58,7 +58,7 @@
                             <li><a href="email-account.html">Email Account</a></li>
                             <li><a href="network-setting.html">Network Setting</a></li>
                             <li><a href="firewall.html">Firewall</a></li>
-                <li><a href="open-port.html">Open Port</a></li>
+                            <li><a href="open-port.html">Open Port</a></li>
                             <li><a href="keystore.html">Keystore</a></li>
                             <li><a href="cron.html">Cron</a></li>
                             <li role="separator" class="divider"></li>
@@ -97,6 +97,10 @@
                         <tr>
                             <td>Port</td>
                             <td><input type="text" class="form-control" name="port" value=""></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="button" class="btn btn-success" id="detect" value="Detect"></td>
                         </tr>
                         <tr>
                             <td>SMS Center</td>
@@ -311,6 +315,18 @@
                         {
                             $('.tr-dial').css('display', 'none');
                         }
+                    });
+
+                    $(document).on('click', '#detect', function(e2){
+                        var port = $(this).closest('form').find('[name="port').val();
+                        $.ajax({
+                        type:"GET",
+                        url:"data/modem-info/get/"+encodeURIComponent(port),
+                        dataType:"json",
+                        success:function(data){
+                            
+                        }
+                    });
                     });
                     
                 });

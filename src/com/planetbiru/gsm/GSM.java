@@ -223,7 +223,7 @@ public class GSM {
         this.executeAT(this.selectProtocol("GSM"), 1);
         this.executeAT(this.selectOperator("1"), 1);
         List<SMS> smsList = new ArrayList<>();
-		for (String storage : CGSMConst.getSmsStorage()) 
+		for (String storage : GSMConst.getSmsStorage()) 
         {
         	this.loadSMS(storage, smsList);
         }
@@ -375,7 +375,7 @@ public class GSM {
     	this.setReady(false);
     	String result = "";
     	this.executeAT(this.selectStorage(storage), 1);
-    	this.executeAT(CGSMConst.CREATE_DELETE_SMS_ALL, 1);
+    	this.executeAT(GSMConst.CREATE_DELETE_SMS_ALL, 1);
     	this.setReady(true);
         return result;
     }
@@ -386,10 +386,10 @@ public class GSM {
         this.executeAT("ATE0", 1);
         this.executeAT(this.selectProtocol("GSM"), 1);
         this.executeAT(this.selectOperator("1"), 1);
-		for (String storage : CGSMConst.getSmsStorage()) 
+		for (String storage : GSMConst.getSmsStorage()) 
         {
 			this.executeAT(this.selectStorage(storage), 1);
-	    	this.executeAT(CGSMConst.CREATE_DELETE_SMS_ALL, 1);
+	    	this.executeAT(GSMConst.CREATE_DELETE_SMS_ALL, 1);
         }
         this.setReady(true);
  	}

@@ -14,17 +14,24 @@ public class GSMInstance {
 	
 	private GSM gsm;
 	private String id = "";
+	private String port = "";
 	public GSMInstance(DataModem modem)
 	{
+		this.port = modem.getPort();
 		this.id = modem.getId();
 		this.gsm = new GSM();
 	}
 	
-	public boolean connect(String port) throws GSMException, InvalidPortException 
+	public GSMInstance(String port) {
+		this.port = port;
+		this.gsm = new GSM();
+	}
+
+	public boolean connect() throws GSMException, InvalidPortException 
 	{
 		try
 		{
-			return this.gsm.connect(port);
+			return this.gsm.connect(this.port);
 		}
 		catch(SerialPortInvalidPortException e)
 		{
@@ -82,16 +89,31 @@ public class GSMInstance {
 		return this.gsm.readSMS();
 	}
 	
-	public void deleteSMS(int smsID, String storage) throws GSMException 
+	
+    
+    public void deleteAllSentSMS() throws GSMException 
+    { 	
+    	this.gsm.deleteAllSentSMS();
+ 	}
+    
+    public String getIMEI() throws GSMException 
     {
-		this.waitUntilReady();
-    	this.gsm.deleteSMS(smsID, storage);
+        return this.gsm.getIMEI();
+    }
+    
+    public String getIMSI() throws GSMException 
+    {
+    	return this.gsm.getIMSI();
+    }
+    
+    public String getICCID() throws GSMException 
+    {
+    	return this.gsm.getICCID();
     }
 
-    public void deleteAllSMS(String storage) throws GSMException 
+    public String getMSISDN() throws GSMException 
     {
-    	this.waitUntilReady();
-    	this.gsm.deleteAllSMS(storage);
+    	return this.gsm.getMSISDN();
     }
 	
 	private void waitUntilReady() {
@@ -127,6 +149,14 @@ public class GSMInstance {
 		this.id = id;
 	}
 	
+	public GSM getGsm() {
+		return gsm;
+	}
+
+	public String getPort() {
+		return port;
+	}
+
 	private void sleep(long sleep) 
 	{
 		try 
@@ -138,6 +168,6 @@ public class GSMInstance {
 			Thread.currentThread().interrupt();
 		}		
 	}
-
+	
 	
 }

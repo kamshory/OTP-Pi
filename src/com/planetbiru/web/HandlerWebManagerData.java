@@ -191,6 +191,10 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			this.handleModemDetail(httpExchange);
 		}
+		else if(path.startsWith("/data/modem-info/get/"))
+		{
+			this.handleModemInfo(httpExchange);
+		}
 		else if(path.startsWith("/data/user/self"))
 		{
 			this.handleSelfAccount(httpExchange);
@@ -591,6 +595,43 @@ public class HandlerWebManagerData implements HttpHandler {
 		httpExchange.close();		
 	}
 	
+	//@GetMapping(path="/data/modem/detail/{port}")
+	public void handleModemInfo(HttpExchange httpExchange) throws IOException
+	{
+		String path = httpExchange.getRequestURI().getPath();
+		String port = path.substring("/data/modem-info/get/".length());
+		port = Utility.urlDecode(port);
+		Headers requestHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
+		CookieServer cookie = new CookieServer(requestHeaders, Config.getSessionName(), Config.getSessionLifetime());
+		byte[] responseBody = "".getBytes();
+		int statusCode = HttpStatus.OK;
+		try
+		{
+			if(WebUserAccount.checkUserAuth(requestHeaders))
+			{
+				JSONObject info = GSMUtil.getInstalledModemInfo(port);
+				responseBody = info.toString().getBytes();
+			}
+			else
+			{
+				statusCode = HttpStatus.UNAUTHORIZED;			
+			}
+		}
+		catch(NoUserRegisteredException e)
+		{
+			statusCode = HttpStatus.UNAUTHORIZED;
+		}
+		cookie.saveSessionData();
+		cookie.putToHeaders(responseHeaders);
+		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
+		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
+
+		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+		httpExchange.getResponseBody().write(responseBody);
+		httpExchange.close();		
+	}
+
 	//@GetMapping(path="/data/modem/list")
 	public void handleModemList(HttpExchange httpExchange) throws IOException
 	{
