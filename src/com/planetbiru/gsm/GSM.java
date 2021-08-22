@@ -17,7 +17,8 @@ public class GSM {
 	
     private SerialPort serialPort;
     private boolean connected = false;
-	private boolean ready = false;   
+	private boolean ready = false;
+	private boolean gcRunning = false;   
     
     
     private static Logger logger = Logger.getLogger(GSM.class);
@@ -505,6 +506,14 @@ public class GSM {
 
 	public void setReady(boolean ready) {
 		this.ready = ready;
+	}
+
+	public boolean isGcRunning() {
+		return gcRunning;
+	}
+
+	public void setGcRunning(boolean gcRunning) {
+		this.gcRunning = gcRunning;
 	}
 
 	

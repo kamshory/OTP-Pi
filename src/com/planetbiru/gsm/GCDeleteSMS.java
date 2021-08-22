@@ -16,9 +16,11 @@ public class GCDeleteSMS extends Thread {
 	@Override
 	public void run()
 	{
-		long min = System.currentTimeMillis() - 5000;
-		if(GSMUtil.getLastDelete() <= min)
+		this.waitUntil(10000);		
+		if(!this.gsm.isGcRunning())
 		{
+			this.gsm.setGcRunning(true);
+			this.waitUntil(5000);
 			try 
 			{
 				this.gsm.deleteAllSentSMS();
@@ -27,7 +29,18 @@ public class GCDeleteSMS extends Thread {
 			{
 				logger.error(e.getMessage());
 			}
-			GSMUtil.setLastDelete(System.currentTimeMillis());
+			this.gsm.setGcRunning(false);
 		}
 	}
+
+	private void waitUntil(int sleep) {
+		try {
+			Thread.sleep(sleep);
+		} catch (InterruptedException e1) {
+			Thread.currentThread().interrupt();
+		}
+		
+	}
+	
+	
 }
