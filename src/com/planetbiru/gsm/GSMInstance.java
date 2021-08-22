@@ -89,7 +89,9 @@ public class GSMInstance {
 		return this.gsm.readSMS();
 	}
 	
-	
+	public void deleteSMS(int smsID, String storage) throws GSMException {
+		this.gsm.deleteSMS(smsID, storage);		
+	}
     
     public void deleteAllSentSMS() throws GSMException 
     { 	
@@ -168,6 +170,8 @@ public class GSMInstance {
 			Thread.currentThread().interrupt();
 		}		
 	}
+
+	
 	
 	
 }

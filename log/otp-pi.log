@@ -5575,3 +5575,11 @@ Caused by: java.net.BindException: Address already in use: bind
 2021-08-22 06:03:27 [INFO  ] GSM                             :125  - AT Command : AT+CMGL="ALL"
 2021-08-22 06:03:27 [INFO  ] GSM                             :125  - AT Command : AT+CPMS="SM"
 2021-08-22 06:03:27 [INFO  ] GSM                             :125  - AT Command : AT+CMGL="ALL"
+2021-08-22 09:17:28 [INFO  ] Application                     :198  - Service started
+2021-08-22 09:38:34 [INFO  ] GSM                             :123  - AT Command : ATE0
+2021-08-22 09:38:34 [INFO  ] GSM                             :123  - AT Command : AT+CSCS="GSM"
+2021-08-22 09:38:34 [INFO  ] GSM                             :123  - AT Command : AT+CMGF=1
+2021-08-22 09:38:34 [INFO  ] GSM                             :123  - AT Command : AT+CPMS="MT"
+2021-08-22 09:38:34 [INFO  ] GSM                             :123  - AT Command : AT+CMGL="ALL"
+2021-08-22 09:38:34 [INFO  ] GSM                             :123  - AT Command : AT+CPMS="SM"
+2021-08-22 09:38:34 [INFO  ] GSM                             :123  - AT Command : AT+CMGL="ALL"

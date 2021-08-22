@@ -1,6 +1,6 @@
 package com.planetbiru.gsm;
 
-public class CGSMConst {
+public class GSMConst {
 
 	public static final String CREATE_DELETE_SMS_READ             = "AT+CMGD=0,1";
 	public static final String CREATE_DELETE_SMS_READ_SENT        = "AT+CMGD=0,2";
@@ -11,7 +11,7 @@ public class CGSMConst {
     		"SM"
     	};
 	
-	private CGSMConst()
+	private GSMConst()
 	{
 		
 	}
