@@ -33,7 +33,7 @@ Aplikasi yang berjalan pada desktop dan laptop tentu saja memerlukan biaya inves
 
 OTP-Pi menjawab semua tantangan di atas. Dengan perangkat yang sangat murah, pengguna dapat memiliki sebuah SMS gateway yang memberikan banyak fitur serta dapat dioperasikan dengan biaya yang sangat murah.
 
-OTP-Pi adalah server untuk mengirimkan SMS melalui protokol HTTP, WebSocket dan Message Broker. Pengguna dapat memasang OTP-Pi pada server dengan IP address statis yang diapat diakses oleh klien yang akan mengirimkan SMS. Selain itu, pengguna juga dapat memasang OTP-Pi pada server dengan IP address dinamis. Server ini kemudian mengakses sebuah server websocket atau server RabbitMQ. OTP-Pi bertindak sebagai consumer yang akan mengirimkan semua SMS yang diterimanya.
+OTP-Pi adalah server untuk mengirimkan SMS melalui protokol HTTP, WebSocket dan Message Broker. Pengguna dapat memasang OTP-Pi pada server dengan IP address statis yang diapat diakses oleh klien yang akan mengirimkan SMS. Selain itu, pengguna juga dapat memasang OTP-Pi pada server dengan IP address dinamis. Server ini kemudian mengakses sebuah server websocket, server RabbitMQ atau server Mosquitto. OTP-Pi bertindak sebagai consumer yang akan mengirimkan semua SMS yang diterimanya.
 
 # System Requirement
 
@@ -240,7 +240,7 @@ SMS Setting adalah konfigurasi pengiriman SMS oleh OTP-Pi.
 
 ## Blocking List
 
-Bloking list adalah daftar nomor telepon yang diblokir. Nomor yang diblokir tidak akan menerima SMS dari modem manapun. Daftar ini dapat ditambah dan diputihkanmelalui REST API, RabbitMQ dan WebSocket. Daftar ini juga dapat secara manual ditambah, diputihkan, atau dihapus melalui web admin.
+Bloking list adalah daftar nomor telepon yang diblokir. Nomor yang diblokir tidak akan menerima SMS dari modem manapun. Daftar ini dapat ditambah dan diputihkanmelalui REST API, abbitMQ, Mosquitto dan WebSocket. Daftar ini juga dapat secara manual ditambah, diputihkan, atau dihapus melalui web admin.
 
 ## Multiple Email Account
 
@@ -411,7 +411,10 @@ Baik WebSocket maupun Message Broker menggunakan sebuah channel yang dapat diset
 
 Untuk menggunakan WebSocket, silakan gunakan library WSMessageBrocker dengan link https://github.com/kamshory/Messenger atau anda dapat membuatnya sendiri. 
 
-Untuk menggunakan Message Broker, silakan gunakan RabbitMQ dengan link https://www.rabbitmq.com/
+Untuk menggunakan RabbitMQ, silakan buka link https://www.rabbitmq.com/
+
+Untuk menggunakan Mosquitto, silakan buka link https://mosquitto.org/
+
 
 ![OTP-Pi Topology](https://raw.githubusercontent.com/kamshory/OTP-Broker/main/src/main/resources/static/www/lib.assets/images/topology.png)
 
@@ -544,19 +547,19 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 ### Sekenario 2 - OTP-Pi Tidak Dapat Diakses App Server
 
-Pada skenario ini, App Server dapat mengirimkan OTP ke RabbitMQ Server atau WSMessageBroker. WSMessageBroker menggunakan protokol WebSoket dan Basic Authentication. Baik App Server maupun OTP-Pi bertindak sebagai client dari WSMessageBroker.
+Pada skenario ini, App Server dapat mengirimkan OTP ke RabbitMQ Server, Mosquitto Server atau WSMessageBroker. WSMessageBroker menggunakan protokol WebSoket dan Basic Authentication. Baik App Server maupun OTP-Pi bertindak sebagai client dari WSMessageBroker.
 
-App Server bertindak sebagai publisher dan OTP-Pi menjadi consumer dari RabbitMQ Server dan WSMessageBroker. Keduanya harus menggunakan channel yang sama agar semua OTP yang dikirimkan oleh App Server dapat diterima oleh OTP-Pi.
+App Server bertindak sebagai publisher dan OTP-Pi menjadi consumer dari RabbitMQ Server, Mosquitto Server dan WSMessageBroker. Keduanya harus menggunakan channel yang sama agar semua OTP yang dikirimkan oleh App Server dapat diterima oleh OTP-Pi.
 
 ![OTP-Pi Topology Skenario 2](https://raw.githubusercontent.com/kamshory/OTP-Broker/main/src/main/resources/static/www/lib.assets/images/topology-2.png)
 
-Dari kedua skenario di atas, OTP-Pi akan mengirmkan SMS menggunakan modem GSM yang terpasang secara fisik pada perangkat OTP-Pi. Pengguna dapat menggunakan salah satu dari RabbitMQ Server atau WSMessageBroker dan dapat pula menggunakan keduanya dalam waktu bersamaan. Akan tetapi, apabila App Server mengirimkan sebuah OTP yang sama ke RabbitMQ Server dan WSMessageBroker, maka OTP-Pi akan mengirimkan SMS tersebut dua kali ke nomor penerima.
+Dari kedua skenario di atas, OTP-Pi akan mengirmkan SMS menggunakan modem GSM yang terpasang secara fisik pada perangkat OTP-Pi. Pengguna dapat menggunakan salah satu dari RabbitMQ Server, Mosquitto Server atau WSMessageBroker dan dapat pula menggunakan keduanya dalam waktu bersamaan. Akan tetapi, apabila App Server mengirimkan sebuah OTP yang sama ke RabbitMQ Server, Mosquitto Server dan WSMessageBroker, maka OTP-Pi akan mengirimkan SMS tersebut dua kali ke nomor penerima.
 
 Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerlukan:
 
 1. OTP-Pi
 2. Koneksi internet (tidak memerlukan IP public dan port forwarding)
-3. Server RabbitMQ, MQTT atau WSMessageBroker
+3. Server RabbitMQ, Mosquitto atau WSMessageBroker
 
 **1. RabbitMQ**
 
@@ -636,7 +639,7 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | data | Objek | Data untuk OTP-Pi | 
 | `data`.receiver | String | Nomor MSISDN yang akan dibuka blokir |
 
-**2. MQTT**
+**2. Mosquitto**
 
 **Send SMS Request**
 
