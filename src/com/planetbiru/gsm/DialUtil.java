@@ -76,11 +76,13 @@ public class DialUtil {
 		}
 		boolean ret = false;
 		CommandLineResult result = CommandLineExecutor.exec(DialUtil.wvdialCommandConnect);
-		/*
+		String resultStr = result.toString();
+		ret = resultStr.contains("started") || resultStr.contains("running");
+		/**
 		System.out.println("exec   = "+wvdialCommandConnect);
 		System.out.println("result = "+result);
-		*/
 		ret = true;
+		*/
 		DialUtil.internetAccess.put(modemID, ret);
 		return ret;
 	}
@@ -89,11 +91,12 @@ public class DialUtil {
 	{
 		DialUtil.internetAccess.remove(modemID);
 		CommandLineResult result = CommandLineExecutor.exec(DialUtil.wvdialCommandDisconnect);
-		/*
+		String resultStr = result.toString();
+		/**
 		System.out.println("exec   = "+DialUtil.wvdialCommandDisconnect);
 		System.out.println("result = "+result);
 		*/
-		return true;
+		return resultStr.contains("stoped");
 	}
 
 	public static boolean isConnected(String modemID) {

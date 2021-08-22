@@ -14,13 +14,11 @@ import org.apache.log4j.Logger;
 
 public class GSM {
 
+	
     private SerialPort serialPort;
     private boolean connected = false;
 	private boolean ready = false;   
-    private static String[] smsStorage = new String[]{
-    		"MT", 
-    		"SM"
-    	};
+    
     
     private static Logger logger = Logger.getLogger(GSM.class);
     
@@ -222,10 +220,10 @@ public class GSM {
     {
     	this.setReady(false);
         this.executeAT("ATE0", 1);
-        this.executeAT("AT+CSCS=\"GSM\"", 1);
-        this.executeAT("AT+CMGF=1", 1);
+        this.executeAT(this.selectProtocol("GSM"), 1);
+        this.executeAT(this.selectOperator("1"), 1);
         List<SMS> smsList = new ArrayList<>();
-		for (String storage : smsStorage) 
+		for (String storage : CGSMConst.getSmsStorage()) 
         {
         	this.loadSMS(storage, smsList);
         }
@@ -237,8 +235,8 @@ public class GSM {
     {
     	this.setReady(false);
         this.executeAT("ATE0", 1);
-        this.executeAT("AT+CSCS=\"GSM\"", 1);
-        this.executeAT("AT+CMGF=1", 1);
+        this.executeAT(this.selectProtocol("GSM"), 1);
+        this.executeAT(this.selectOperator("1"), 1);
         List<SMS> smsList = new ArrayList<>();
        	this.loadSMS(storage, smsList);
         this.setReady(true);
@@ -247,7 +245,7 @@ public class GSM {
     
     private void loadSMS(String storage, List<SMS> smsList) throws GSMException
     {
-    	this.executeAT("AT+CPMS=\"" + storage + "\"", 1);
+    	this.executeAT(this.selectStorage(storage), 1);
 		
     	String result = this.executeAT("AT+CMGL=\"ALL\"", 5, true);		
     	if(Config.isDebugReadSMS())
@@ -262,8 +260,7 @@ public class GSM {
 					+ "+CMGL: 4,\"REC READ\",\"+85291234567\",,\"07/02/18,00:12:11+32\"\r\n"
 					+ "OTP tidak dapat digunakan\r\n"
 					+ "\r\n"
-					+ "OK"
-					+ "";
+					+ "OK";
     	}
     	
 		result = this.fixingRawData(result);				
@@ -344,8 +341,8 @@ public class GSM {
     	recipient = recipient.trim();
     	message = message.trim();
     	this.executeAT("ATE0", 1);
-    	this.executeAT("AT+CSCS=\"GSM\"", 1);
-    	this.executeAT("AT+CMGF=1", 1);
+    	this.executeAT(this.selectProtocol("GSM"), 1);
+    	this.executeAT(this.selectOperator("1"), 1);
     	this.executeAT("AT+CMGS=\"" + recipient + "\"", 2);
     	this.executeAT(message, 2);
     	this.executeAT(Character.toString((char) 26), 10);
@@ -353,12 +350,12 @@ public class GSM {
         return result;
     }
 
-    public String deleteSMS(int smsID, String storage) throws GSMException 
+	public String deleteSMS(int smsID, String storage) throws GSMException 
     {
     	this.setReady(false);
     	String result = "";
-    	this.executeAT("AT+CPMS=\"" + storage + "\"", 1);
-    	this.executeAT("AT+CMGD=" + smsID, 1);
+    	this.executeAT(this.selectStorage(storage), 1);
+    	this.executeAT(this.createDeleteSMS(smsID), 1);
     	this.setReady(true);
         return result;
     }
@@ -367,13 +364,33 @@ public class GSM {
     {
     	this.setReady(false);
     	String result = "";
-    	this.executeAT("AT+CPMS=\"" + storage + "\"", 1);
-    	this.executeAT("AT+CMGD=0, 4", 1);
+    	this.executeAT(this.selectStorage(storage), 1);
+    	this.executeAT(CGSMConst.CREATE_DELETE_SMS_ALL, 1);
     	this.setReady(true);
         return result;
     }
+    
+
+    public String createDeleteSMS(int smsID)
+    {
+    	return "AT+CMGD=" + smsID;
+    }
  
-    public void onReceiveData(String message)
+    public String selectStorage(String storage) {
+		return "AT+CPMS=\"" + storage + "\"";
+	}
+
+    private String selectOperator(String operator) 
+    {
+		return "AT+CMGF="+operator;
+	}
+
+	private String selectProtocol(String protocol) 
+    {
+		return "AT+CSCS=\""+protocol+"\"";
+	}
+	
+	public void onReceiveData(String message)
     {
     	logger.info("Receive Message " + message);
     }

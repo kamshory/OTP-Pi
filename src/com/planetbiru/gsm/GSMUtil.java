@@ -42,6 +42,7 @@ public class GSMUtil {
 	private static boolean hasDefaultModem = false;
 	
 	private static Logger logger = Logger.getLogger(GSMUtil.class);
+	
 
 	private GSMUtil()
 	{
