@@ -381,8 +381,7 @@ public class GSM {
     }
     
     public void deleteAllSentSMS() throws GSMException 
-    {
-   	
+    { 	
     	this.setReady(false);
         this.executeAT("ATE0", 1);
         this.executeAT(this.selectProtocol("GSM"), 1);
@@ -395,6 +394,37 @@ public class GSM {
         this.setReady(true);
  	}
     
+    public String getIMEI() throws GSMException 
+    {
+    	this.setReady(false);
+    	String result = this.executeAT("AT+CGSN", 1, true);
+    	this.setReady(true);
+        return result;
+    }
+    
+    public String getIMSI() throws GSMException 
+    {
+    	this.setReady(false);
+    	String result = this.executeAT("AT+CIMI", 1, true);
+    	this.setReady(true);
+        return result;
+    }
+    
+    public String getICCID() throws GSMException 
+    {
+    	this.setReady(false);
+    	String result = this.executeAT("AT+CCID", 1, true);
+    	this.setReady(true);
+        return result;
+    }
+
+    public String getMSISDN() throws GSMException 
+    {
+    	this.setReady(false);
+    	String result = this.executeAT("AT+CNUM", 1, true);
+    	this.setReady(true);
+        return result;
+    }
 
     public String createDeleteSMS(int smsID)
     {
