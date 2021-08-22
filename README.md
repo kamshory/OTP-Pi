@@ -369,6 +369,8 @@ Modul Afraid adalah modul untuk mengatur akun Free DNS Afraid yang digunakan.
 
 Modul Real Time Clock atau RTC diperlukan untuk menjaga waktu perangkat saat perangkat dimatikan dan tidak terhubung dengan internet. Perangkat harus menggunakan waktu yang benar agar cookie yang dikirim oleh perangkat tidak dihapus oleh browser karena kedaluarsa sehingga administrator dapat mengelola perangkat termasuk melakukan pengaturan. Selain itu, perangkat perlu mencatat waktu saat terjadi kesalahan sehingga catatan kesalahan dapat dibaca oleh pengguna untuk dapat dilakukan dimitigasi.
 
+![OTP-Pi](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/ds3231.png)
+
 Modul Real Time Clock tertanam di dalam perangkat dan sudah diprogram untuk dapat bekerja sebagaimana mestinya. Apabila perangkat mati dalam waktu yang lama sehingga menyebabkan daya pada battery RTC habis, maka perangkat dapat menyesuaikan waktu dengan browser yang mengaksesnya tanpa mempedulikan daerah waktu yang digunakan. Selanjutnya, administrator dapat mengatur waktu perangkat jika diperlukan.
 
 ## Reset Device
