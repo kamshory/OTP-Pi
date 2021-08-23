@@ -341,41 +341,41 @@ The Ethernet configuration will set the ethernet IP address on the OTP-Pi.
 | DNS1 | DNS 1 |
 | DNS2 | DNS 2 |
 
-## Firewall
+## Firewalls
 
-OTP-Pi dapat membuka dan mentutup port dari sistem operasi yang digunakan oleh SMS Broker. Penutupan port ini akan membuat firewall di lapis sistem operasi. Dalam hal ini, apabila port ditutup, maka equest tidak akan sampai masuk ke aplikasi.
+OTP-Pi can open and close ports of the operating system used by SMS Broker. Closing this port will create a firewall at the operating system layer. In this case, if the port is closed, the equest will not reach the application.
 
 ## Monitor
 
-Monitor dapat digunakan untuk melihat aktivitas modem yang terpasang di OTP-Pi. Pada saat OTP-Pi mengirimkan SMS, OTP-Pi akan menunjukkan dari mana request SMS masuk dan modem mana yang digunakan.  Selain itu, status dari modem akan ditunjukkan sehingga akan terlihat modem mana saja yang terhubung dengan benar.
+The monitor can be used to view the activity of the modem installed on the OTP-Pi. When the OTP-Pi sends an SMS, the OTP-Pi will show where the SMS request came from and which modem was used. In addition, the status of the modem will be shown so that it will be seen which modems are connected correctly.
 
 ## Cloudflare
 
-Modul Cloudflare adalah modul untuk mengatur akun Cloudflare yang digunakan.
+The Cloudflare module is a module to manage the Cloudflare account used.
 
 ## NoIP
 
-Modul NoIP adalah modul untuk mengatur akun NoIP yang digunakan.
+The NoIP module is a module to manage the NoIP account used.
 
 ## Dynu
 
-Modul Dynu adalah modul untuk mengatur akun Dynu Dyn DNS yang digunakan.
+The Dynu module is a module for managing the Dynu Dyn DNS account used.
 
 ## Afraid
 
-Modul Afraid adalah modul untuk mengatur akun Free DNS Afraid yang digunakan.
+The Afraid module is a module to manage the Free DNS Afraid account used.
 
 ## Real Time Clock
 
-Modul Real Time Clock atau RTC diperlukan untuk menjaga waktu perangkat saat perangkat dimatikan dan tidak terhubung dengan internet. Perangkat harus menggunakan waktu yang benar agar cookie yang dikirim oleh perangkat tidak dihapus oleh browser karena kedaluarsa sehingga administrator dapat mengelola perangkat termasuk melakukan pengaturan. Selain itu, perangkat perlu mencatat waktu saat terjadi kesalahan sehingga catatan kesalahan dapat dibaca oleh pengguna untuk dapat dilakukan dimitigasi.
+The Real Time Clock or RTC module is required to keep the device time when the device is turned off and not connected to the internet. The device must use the correct time so that the cookies sent by the device are not deleted by the browser due to expiration so that the administrator can manage the device including making settings. In addition, the device needs to record the time when an error occurred so that the error log can be read by the user for mitigation.
 
 ![OTP-Pi](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/ds3231.png)
 
-Modul Real Time Clock tertanam di dalam perangkat dan sudah diprogram untuk dapat bekerja sebagaimana mestinya. Apabila perangkat mati dalam waktu yang lama sehingga menyebabkan daya pada battery RTC habis, maka perangkat dapat menyesuaikan waktu dengan browser yang mengaksesnya tanpa mempedulikan daerah waktu yang digunakan. Selanjutnya, administrator dapat mengatur waktu perangkat jika diperlukan.
+The Real Time Clock module is built into the device and is programmed to work as intended. If the device is off for a long time causing the RTC battery to run out, the device can adjust the time according to the browser that accesses it regardless of the time zone used. Furthermore, the administrator can set the device time if needed.
 
 ## Reset Device
 
-Pada kasus pengguna tidak dapat mengakses web administrator, baik karena lupa password, atau karena konfigurasi jaringan yang kacau, pengguna dapat melakukan reset device. Reset device dilakukan dengan menancapkan sebuah flash disk yang berisi file sebagai berikut:
+In case the user cannot access the web administrator, either because he forgot his password, or because the network configuration is messed up, the user can reset the device. Reset the device is done by plugging in a flash disk containing the following files:
 
 `/optb/reset.txt`
 
