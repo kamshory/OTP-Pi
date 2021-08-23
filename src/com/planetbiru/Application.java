@@ -36,7 +36,7 @@ import com.planetbiru.config.ConfigVendorCloudflare;
 import com.planetbiru.config.ConfigVendorDynu;
 import com.planetbiru.config.ConfigVendorNoIP;
 import com.planetbiru.constant.JsonKey;
-import com.planetbiru.gsm.DialUtil;
+import com.planetbiru.gsm.InternetDialUtil;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.subscriber.amqp.SubscriberAMQP;
 import com.planetbiru.subscriber.mqtt.SubscriberMQTT;
@@ -147,14 +147,12 @@ public class Application {
 	
 			Application.prepareSessionDir();
 	
-			int webPort = Config.getServerPort();
-			int wsport = webPort+1;
-
+			
 			/**
 			 * Web Server for Admin
 			 */
-			Application.webAdmin = new ServerWebAdmin(webPort);
-			Application.webAdmin.start();
+			Application.webAdminServerStart();
+			
 
 			/**
 			 * WebSocket Client for subscriber
@@ -174,27 +172,24 @@ public class Application {
 			/**
 			 * REST API HTTP
 			 */
-			Application.rest = new ServerRESTAPI();
-			Application.rest.start();			
+			Application.restAPIStart();
+					
 	
-			GSMUtil.start();
-			DialUtil.start();
+			Application.modemSMSStart();
+			
+			Application.modemInternetStart();
 
 			/**
 			 * WebSocket Server for Admin
 			 */
-			InetSocketAddress address = new InetSocketAddress(wsport);
-			Application.webSocketAdmin = new ServerWebSocketAdmin(address);
-			Application.webSocketAdmin.start();
+			Application.webSocketAdminServerStart();
 
 			/**
 			 * SMTP Server for send email
 			 */
-			Application.smtp = new ServerEmail();
-			Application.smtp.start();
+			Application.serverEmailStart();
 			
-			Application.scheduller = new Scheduller();
-			Application.scheduller.start();
+			Application.schedulerStart();
 			logger.info("Service started");
 		}
 		else
@@ -204,6 +199,44 @@ public class Application {
 		
 	}
 	
+	private static void schedulerStart() {
+		Application.scheduller = new Scheduller();
+		Application.scheduller.start();		
+	}
+
+	private static void serverEmailStart() {
+		Application.smtp = new ServerEmail();
+		Application.smtp.start();
+		
+	}
+
+	private static void modemInternetStart() {
+		InternetDialUtil.start();
+	}
+
+	private static void modemSMSStart() {
+		GSMUtil.start();	
+	}
+
+	private static void restAPIStart() {
+		Application.rest = new ServerRESTAPI();
+		Application.rest.start();
+	}
+
+	private static void webSocketAdminServerStart() {
+		int port = Config.getServerPort() + 1;
+		InetSocketAddress address = new InetSocketAddress(port);
+		Application.webSocketAdmin = new ServerWebSocketAdmin(address);
+		Application.webSocketAdmin.start();
+		
+	}
+
+	private static void webAdminServerStart() {
+		int port = Config.getServerPort();
+		Application.webAdmin = new ServerWebAdmin(port);
+		Application.webAdmin.start();	
+	}
+
 	public static ServerRESTAPI getRest() {
 		return rest;
 	}

@@ -13,7 +13,7 @@ import org.json.JSONObject;
 
 import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.constant.JsonKey;
-import com.planetbiru.gsm.DialUtil;
+import com.planetbiru.gsm.InternetDialUtil;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.FileNotFoundException;
@@ -184,7 +184,7 @@ public class ConfigModem {
 			modem.put("id", id);
 			modem.put("connected", GSMUtil.isConnected(id));
 			modem.put("internetAccess", value.isInternetAccess());
-			modem.put("internetConnected", DialUtil.isConnected(id));
+			modem.put("internetConnected", InternetDialUtil.isConnected(id));
 			modem.put("name", value.getName());
 			modem.put("imei", value.getImei());
 			modem.put("active", value.isActive());

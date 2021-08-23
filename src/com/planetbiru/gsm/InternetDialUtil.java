@@ -14,7 +14,7 @@ import com.planetbiru.util.CommandLineResult;
 import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.ServerInfo;
 
-public class DialUtil {
+public class InternetDialUtil {
 	
 	
 	private static Map<String, Boolean> internetAccess = new HashMap<>();
@@ -22,24 +22,24 @@ public class DialUtil {
 	private static String wvdialCommandConnect = "";
 	private static String wvdialCommandDisconnect = "";
 	
-	private static Logger logger = Logger.getLogger(DialUtil.class);
+	private static Logger logger = Logger.getLogger(InternetDialUtil.class);
 	
-	private DialUtil()
+	private InternetDialUtil()
 	{
 		
 	}
 
 	public static void start() {
-		DialUtil.configPath = Config.getWvdialSettingPath();
-		DialUtil.wvdialCommandConnect = Config.getWvdialCommandConnect();
-		DialUtil.wvdialCommandDisconnect = Config.getWvdialCommandDisconnect();
+		InternetDialUtil.configPath = Config.getWvdialSettingPath();
+		InternetDialUtil.wvdialCommandConnect = Config.getWvdialCommandConnect();
+		InternetDialUtil.wvdialCommandDisconnect = Config.getWvdialCommandDisconnect();
 		for (Map.Entry<String, DataModem> entry : ConfigModem.getModemData().entrySet())
 		{
 			String modemID = entry.getKey();
 			DataModem modemData = entry.getValue();
 			if(modemData.isInternetAccess() && modemData.isActive())
 			{
-				boolean connected = DialUtil.connect(modemID);
+				boolean connected = InternetDialUtil.connect(modemID);
 				if(connected)
 				{
 					break;
@@ -68,14 +68,14 @@ public class DialUtil {
 		}
 		try 
 		{
-			DialUtil.apply(modemData);
+			InternetDialUtil.apply(modemData);
 		} 
 		catch (IOException e) 
 		{
 			logger.error(e.getMessage(), e);
 		}
 		boolean ret = false;
-		CommandLineResult result = CommandLineExecutor.exec(DialUtil.wvdialCommandConnect);
+		CommandLineResult result = CommandLineExecutor.exec(InternetDialUtil.wvdialCommandConnect);
 		String resultStr = result.toString();
 		ret = resultStr.contains("started") || resultStr.contains("running");
 		/**
@@ -83,14 +83,14 @@ public class DialUtil {
 		System.out.println("result = "+result);
 		ret = true;
 		*/
-		DialUtil.internetAccess.put(modemID, ret);
+		InternetDialUtil.internetAccess.put(modemID, ret);
 		return ret;
 	}
 	
 	public static boolean disconnect(String modemID)
 	{
-		DialUtil.internetAccess.remove(modemID);
-		CommandLineResult result = CommandLineExecutor.exec(DialUtil.wvdialCommandDisconnect);
+		InternetDialUtil.internetAccess.remove(modemID);
+		CommandLineResult result = CommandLineExecutor.exec(InternetDialUtil.wvdialCommandDisconnect);
 		String resultStr = result.toString();
 		/**
 		System.out.println("exec   = "+DialUtil.wvdialCommandDisconnect);
@@ -100,13 +100,13 @@ public class DialUtil {
 	}
 
 	public static boolean isConnected(String modemID) {
-		if(DialUtil.internetAccess.isEmpty())
+		if(InternetDialUtil.internetAccess.isEmpty())
 		{
 			return false;
 		}
-		if(DialUtil.internetAccess.containsKey(modemID))
+		if(InternetDialUtil.internetAccess.containsKey(modemID))
 		{
-			return DialUtil.internetAccess.get(modemID).booleanValue();
+			return InternetDialUtil.internetAccess.get(modemID).booleanValue();
 		}
 		return false;
 	}
@@ -132,7 +132,7 @@ public class DialUtil {
 				+ "[Dialer pulse]\r\n"
 				+ "Dial Command = "+modemData.getDialCommand()+"";
 		
-		String fileName = FileConfigUtil.fixFileName(DialUtil.configPath);
+		String fileName = FileConfigUtil.fixFileName(InternetDialUtil.configPath);
 		FileConfigUtil.write(fileName, configStr.getBytes());
 	}
 	

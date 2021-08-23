@@ -15,7 +15,7 @@ import com.planetbiru.config.ConfigEmail;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.constant.ResponseCode;
-import com.planetbiru.gsm.DialUtil;
+import com.planetbiru.gsm.InternetDialUtil;
 import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.gsm.InvalidPortException;
@@ -543,11 +543,11 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				{
 					if(action.equals("connect"))
 					{
-						DialUtil.connect(modemID);						
+						InternetDialUtil.connect(modemID);						
 					}
 					else
 					{
-						DialUtil.disconnect(modemID);
+						InternetDialUtil.disconnect(modemID);
 					} 
 					ServerInfo.sendModemStatus();
 				}
