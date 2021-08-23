@@ -513,7 +513,7 @@ public class Application {
 		
 		for(int i = 0; i<usbDrives.size(); i++)
 		{
-			String path = usbDrives.get(i) + fileName;
+			String path = usbDrives.get(i) + "/otppi/" + fileName;
 			try 
 			{
 				Properties props = getResetProperties(path);

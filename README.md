@@ -380,9 +380,9 @@ The Real Time Clock module is built into the device and is programmed to work as
 
 In case the user cannot access the web administrator, either because he forgot his password, or because the network configuration is messed up, the user can reset the device. Reset the device is done by plugging in a flash disk containing the following file:
 
-`/optb/reset-config.ini`
+`/otppi/reset-config.ini`
 
-Directory name, file name and extension must be written correctly in lower case. The `/optb/reset-config.ini` file should contain the following text:
+Directory name, file name and extension must be written correctly in lower case. The `/otppi/reset-config.ini` file should contain the following text:
 
 ```ini
 VERIFY = eyJkZXZpY2VUeXBlIjoiUlBpIiwgImJhc2VOYW1lIjoicmVzZXQtY29uZmlnLmluaSJ9
