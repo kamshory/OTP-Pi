@@ -2,136 +2,136 @@
 
 ![OTP-Pi](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/otp-pi.png)
 
-OTP atau `One Time Password` adalah sebuah password satu kali pakai yang memiliki masa berlaku tertentu. Umumnya masa berlaku dibuat sangat singkat dan hanya memberikan kesempatan kepada penerimanya untuk memasukkannya ke dalam aplikasi dan mengirimkannya ke server aplikasi yang memerlukannya. OTP bersifat sangat rahasia sehingga `clear text` dari OTP tidak boleh disimpan oleh pihak manapun. Bahkan, server aplikasi hanya menyimpan `hash` atau `token` yang cocok dengan OTP tersebut. `Clear text` hanya dibuat lalu dikirim ke penerima. Dengan kata lain, `clear text` hanya diketahui oleh penerima OTP saja.
+OTP or `One Time Password` is a one-time use password that has a certain validity period. Generally the validity period is made very short and only gives the opportunity to the recipient to enter it into the application and send it to the application server that requires it. OTP is strictly confidential so the `clear text` of the OTP should not be stored by any party. In fact, the application server only stores the `hash` or `token` that matches the OTP. `Clear text` is only generated and then sent to the recipient. In other words, `clear text` is only known to the OTP recipient.
 
-OTP yang paling populer dikirimkan melalui SMS atau Short Message Service. Penggunaan SMS memiliki kelebihan sebagai berikut:
+The most popular OTPs are sent via SMS or Short Message Service. The use of SMS has the following advantages:
 
-1. Hanya dapat diterima oleh perangkat di mana SIM card dari nomor penerima terpasang. Hal ini tentu saja berkaitan dengan `What you have` pada `multifactor authentication`
-2. Dapat dengan mudah dibaca pada hampir semua merek dan model perangkat telepon seluler
-3. Umumnya perangkat langsung memberitahukan adanya pesan masuk tanpa memerlukan aksi pengguna
-4. Pada perangkat telepon seluler pintar, aplikasi pengguna OTP dapat langsung membaca pesan masuk apabila diijinkan oleh penggunanya. Dengan demikian, aplikasi dapat langsung memverifikasi OTP tanpa memerlukan tindakan manual dari penggunanya. Hal ini akan menghemat waktu dan mengurangi kesalahan 
-5. Tidak memerlukan credit penerima sehingga penerima pesan tidak perlu membayar apapun untuk dapat menerima pesan tersebut
-6. Memiliki jangkauan yang sangat luas
-7. Perangkat penerima SMS tersedia dalam berbagai kelas harga sehingga dapat dijangkau oleh hampir semua kalangan 
+1. Can only be received by the device where the SIM card of the recipient number is installed. This of course has to do with `What you have` in `multifactor authentication`
+2. Easily readable on almost all makes and models of mobile phone devices
+3. Generally the device immediately notifies the presence of an incoming message without requiring user action
+4. On smart cellular phone devices, OTP user applications can directly read incoming messages if permitted by the user. Thus, the application can directly verify the OTP without requiring manual action from the user. This will save time and reduce errors
+5. Does not require the recipient's credit so that the recipient of the message does not have to pay anything to be able to receive the message
+6. Has a very wide range
+7. SMS receiving devices are available in various price classes so that they can be reached by almost all people
 
-Dari sekian banyak kelebihan di atas, ternyata SMS memiliki keterbatasan. SMS harus dikirim melalui operator telekomunikasi yang secara legal terdaftar di negara pengirim. SMS dapat dikirim menggunakan perangkat GSM yang tersambung ke operator telekomunikasi. Perangkat yang paling murah untuk mengirimkan SMS adalah telepon seluler dan modem. Selain itu, pengirim harus membayar biaya layanan kepada operator telekomunikasi. Biaya ini akan dibagi ke semua operator yang terlibat dalam pengiriman SMS.
+Of the many advantages above, it turns out that SMS has limitations. SMS must be sent through a telecommunications operator legally registered in the sending country. SMS can be sent using a GSM device connected to a telecommunications operator. The cheapest devices for sending SMS are cell phones and modems. In addition, the sender must pay a service fee to the telecommunications operator. This fee will be shared to all operators involved in sending SMS.
 
-Cara lain untuk mengirimkan SMS yaitu dengan bekerjasama langsung dengan operator telekomunikasi atau menggunakan jasa pihak ketiga. Kerjasama dengan operator telekomunikasi tentu saja tidak mudah. Selain harus berbadan hukum, biaya yang diperlukan tentu saja tidak sedikit. Selain itu, volume pengiriman SMS juga menjadi bahan pertimbangan kerjasama tersebut diterima atau tidak oleh operator telekomunikasi. Penggunaan jasa pihak ketiga adalah opsi lain. Faktor keamanan tentu saja menjadi pertimbangan. Penyedia layanan tentu saja harus bisa dipercaya untuk menjaga kerahasiaan OTP yang dikirimkan.
+Another way to send SMS is by working directly with telecommunications operators or using third party services. Cooperation with telecommunications operators is certainly not easy. In addition to having a legal entity, the costs required are of course not small. In addition, the volume of SMS sending is also a consideration for whether the cooperation is accepted or not by the telecommunications operator. The use of third party services is another option. The safety factor is of course a consideration. The service provider must of course be trusted to maintain the confidentiality of the OTP sent.
 
-Bagi perusahaan berskala kecil yang ingin membangun sendiri sistem pengiriman OTP dapat menggunakan berbagai macam aplikasi yang tersedia secara gratis maupun berbayar di pasaran. Beberapa pertimbangan dalam memilih aplikasi OTP adalah sebagai berikut:
+For small-scale companies who want to build their own OTP delivery system, they can use a variety of applications that are available for free or paid in the market. Some considerations in choosing an OTP application are as follows:
 
-1. Kecepatan pengiriman
-2. Keamanan/kerahasiaan
-3. Kemudahan dalam instalasi dan integrasi
-4. Biaya awal dan biaya operasional
+1. Delivery speed
+2. Security/confidentiality
+3. Ease of installation and integration
+4. Initial costs and operational costs
 
-Aplikasi yang menggunakan database untuk menghubungkan antara sisi penerima pesan dan modem GSM tentu saja tidak aman. Data di dalam database dapat dibaca oleh administrator. Bahkan, administrator dapat meminta OTP pada saat pengguna sedang tidak menyadarinya dan sedang tidak bertransaksi.
+Applications that use a database to connect between the receiving side of the message and the GSM modem are of course not secure. The data in the database can be read by the administrator. In fact, administrators can request OTP when the user is not aware of it and is not transacting.
 
-Aplikasi yang mewajibkan penggunaan public IP address tentu saja tidak memberikan keleluasaan bagi pengguna. Perusahaan atau perorangan yang tidak berlangganan internet dengan IP public tidak dapat menggunakan palikasi tersebut. Pengguna perlu menempatkan server pada jaringan dengan IP public.
+Applications that require the use of a public IP address of course do not provide flexibility for users. Companies or individuals who do not subscribe to the internet with a public IP cannot use the application. Users need to place the server on a network with a public IP.
 
-Aplikasi yang berjalan pada desktop dan laptop tentu saja memerlukan biaya investasi dan biaya operasional yang tinggi. Laptop atau desktop yang digunakan harus beroperasi selama 24 jam sehari dan 7 hari dalam seminggu. Listrik yang digunakan tentu saja tidak sedikit.
+Applications that run on desktops and laptops of course require high investment and operational costs. The laptop or desktop that is used must operate 24 hours a day and 7 days a week. Of course, the electricity used is not small.
 
-OTP-Pi menjawab semua tantangan di atas. Dengan perangkat yang sangat murah, pengguna dapat memiliki sebuah SMS gateway yang memberikan banyak fitur serta dapat dioperasikan dengan biaya yang sangat murah.
+OTP-Pi answers all of the above challenges. With a very cheap device, users can have an SMS gateway that provides many features and can be operated at a very low cost.
 
-OTP-Pi adalah server untuk mengirimkan SMS melalui protokol HTTP, WebSocket dan Message Broker. Pengguna dapat memasang OTP-Pi pada server dengan IP address statis yang diapat diakses oleh klien yang akan mengirimkan SMS. Selain itu, pengguna juga dapat memasang OTP-Pi pada server dengan IP address dinamis. Server ini kemudian mengakses sebuah server websocket, server RabbitMQ atau server Mosquitto. OTP-Pi bertindak sebagai consumer yang akan mengirimkan semua SMS yang diterimanya.
+OTP-Pi is a server for sending SMS via HTTP, WebSocket and Message Broker protocols. Users can install OTP-Pi on the server with a static IP address that can be accessed by clients who will send SMS. In addition, users can also install OTP-Pi on servers with dynamic IP addresses. This server then accesses a websocket server, RabbitMQ server or Mosquitto server. OTP-Pi acts as a consumer that will send all SMS it receives.
 
 # System Requirement
 
-OTP-Pi membutuhkan Raspberry Pi 3 Model B atau yang lebih tinggi. RAM minimum adalah 1 GB dan SD Card minimum 16 GB. SD Card 32 GB lebih direkomendasikan. Power supplay 5 Volt 3 Ampre untuk mencegah Raspberry Pi beroperasi dengan under voltage.
+OTP-Pi requires Raspberry Pi 3 Model B or higher. Minimum RAM is 1 GB and SD Card minimum is 16 GB. 32GB SD Card is recommended. Power supply 5 Volt 3 Ampre to prevent the Raspberry Pi from operating with under voltage.
 
 # Feature
 
 
 ## Multiple Device
 
-Modem adalah daftar modem yang terpasang pada OTP-Pi. Modem diberi nama berdasarkan merek dan model perangkat serta koneksi yang digunakan. Modem dapat diaktifkan dan dinonaktirkan kapan saja. Modem yang tidak aktif tidak akan digunakan untuk mengirimkan SMS meskipun secara fisik terpasang pada OTP-Pi dan menerima aliran daya.
+Modem is a list of modems installed on the OTP-Pi. Modems are named based on the make and model of the device and the connection used. The modem can be turned on and off at any time. An inactive modem will not be used to send SMS even if it is physically attached to the OTP-Pi and receiving power.
 
-OTP-Pi dapat menggunakan beberapa modem sekaligus. Pengiriman SMS akan menggunakan algoritma Round-Robin di mana semua modem yang aktif akan digunakan secara bergilir.
+OTP-Pi can use multiple modems at once. Sending SMS will use the Round-Robin algorithm where all active modems will be used in rotation.
 
 ## Prefix-Based Routing
 
-Dalam kenyataannya, efisiensi biaya menjadi hal yang sangat penting bagi pengguna. Biaya pengiriman SMS harus dapat ditekan semaksimal mungkin. Operator telekomunikasi biasannya menerapkan biaya yang lebih rendah saat mengirim SMS ke nomor pelanggan dari operator telekomunikasi yang sama. Sebaliknya, biaya pengiriman SMS akan lebih tinggi saat mengirim SMS ke nomor pelanggan dari operator lain.
+In reality, cost efficiency becomes very important for users. The cost of sending SMS should be reduced as much as possible. Telecommunications operators usually apply lower fees when sending SMS to subscriber numbers of the same telecommunications operator. On the other hand, the cost of sending SMS will be higher when sending SMS to customer numbers from other operators.
 
-OTP-Pi memungkinkan pengguna mengatur pengiriman SMS. Sebagai contoh: pengguna menggunakan 4 modem dengan 4 SIM card yang berbeda dari operator telekomunikasi yang berbeda. 
+OTP-Pi allows users to set up SMS sending. For example: a user uses 4 modems with 4 different SIM cards from different telecommunication operators.
 
-1. Modem 1 dengan SIM Card dari Operator Telekomunikasi 1
-2. Modem 2 dengan SIM Card dari Operator Telekomunikasi 2
-3. Modem 3 dengan SIM Card dari Operator Telekomunikasi 3
-4. Modem 4 dengan SIM Card dari Operator Telekomunikasi 4
+1. Modem 1 with SIM Card from Telecommunications Operator 1
+2. Modem 2 with SIM Card from Telecommunication Operator 2
+3. Modem 3 with SIM Card from Telecommunication Operator 3
+4. Modem 4 with SIM Card from Telecommunications Operator 4
 
-Operator Telekomunikasi 1 menerapkan biaya Rp 50 untuk nomor dengan prefix `62871` dan `62872` dan menerapkan biaya Rp 350 untuk nomor selain itu.
-Operator Telekomunikasi 2 menerapkan biaya Rp 100 untuk nomor dengan prefix `62835`, `62856`, dan `62837` dan menerapkan biaya Rp 350 untuk nomor selain itu.
-Operator Telekomunikasi 3 menerapkan biaya Rp 60 untuk nomor dengan prefix `62845` dan menerapkan biaya Rp 250 untuk nomor selain itu.
-Operator Telekomunikasi 4 menerapkan biaya Rp 90 untuk nomor dengan prefix `62848` dan `62849` dan menerapkan biaya Rp 200 untuk nomor selain itu.
+Telecommunications Operator 1 applies a fee of IDR 50 for numbers with prefixes `62871` and `62872` and applies a fee of IDR 350 for numbers other than that.
+Telecommunications Operator 2 applies a fee of Rp 100 for numbers with prefixes `62835`, `62856`, and `62837` and applies a fee of Rp 350 for numbers other than that.
+Telecommunications Operator 3 applies a fee of Rp. 60 for numbers with the prefix `62845` and applies a fee of Rp. 250 for numbers other than that.
+Telecommunications Operator 4 applies a fee of Rp 90 for numbers with prefixes `62848` and `62849` and applies a fee of Rp 200 for numbers other than that.
 
-Dari kasus di atas, biaya paling rendah untuk operator lain adalah Rp 200. Pengguna dapat mengatur modem 4 sebagai modem default. Semua SMS selain dari prefix `62871`, `62872`, `62835`, `62856`, `62837` dan `62845` akan menggunakan modem ini dan dikirim melalui Operator Telekomunikasi 4. Semua SMS untuk nomor dengan prefix `62871` dan `62872` menggunakan modem 1 dan dikirim melalui Operator Telekomunikasi 1. Semua SMS untuk nomor dengan prefix `62835`, `62856`, dan `62837` menggunakan modem 2 dan dikirim melalui Operator Telekomunikasi 2. Semua SMS untuk nomor dengan prefix `62845` menggunakan modem 3 dan dikirim melalui Operator Telekomunikasi 3. Dengan demikian, biaya pengiriman SMS akan dapat ditekan. 
+From the case above, the lowest cost for other operators is Rp. 200. Users can set modem 4 as the default modem. All SMS other than the prefixes `62871`, `62872`, `62835`, `62856`, `62837` and `62845` will use this modem and are sent via Telecommunications Operator 4. All SMS for numbers with prefixes `62871` and ` 62872` uses modem 1 and is sent via Telecommunication Operator 1. All SMS for numbers with prefix `62835`, `62856`, and `62837` use modem 2 and are sent via Telecommunication Operator 2. All SMS for numbers with prefix `62845` use modem 3 and sent via Telecommunication Operator 3. Thus, the cost of sending SMS will be reduced.
 
-Pengguna dapat menggunakan 2 atau lebih SIM Card dari satu operator yang sama. Modem akan digunakan secara bergantian dengan algoritma Round-Robin saat OTP-Pi mengirimkan SMS ke nomor dengan prefix yang sama.
+Users can use 2 or more SIM cards from the same operator. The modem will be used interchangeably with the Round-Robin algorithm when OTP-Pi sends SMS to numbers with the same prefix.
 
-Biaya pengiriman SMS akan lebih murah lagi ketika pengguna memanfaatkan promo dari operator telekomunikasi yang bersangkutan. Beberapa operator akan menerapkan biaya pengiriman SMS yang sangat rendah setelah pengguna mengirimkan beberapa SMS dengan ketentuan tertentu.
+The cost of sending SMS will be even lower when the user takes advantage of the promo from the telecommunications operator in question. Some operators will apply very low SMS sending fees after the user sends several SMS with certain conditions.
 
-Pengaturan prefix menggunakan MSISDN. Dengan demikian, pada contoh di atas, saat pengguna di Indonesia mengatur prefix 0871, maka yang tersimpan adalah 62871. Dengan demikian, pengguna harus menggunakan panjang prefix 5 alih-alih 4.
+Prefix setting using MSISDN. Thus, in the example above, when a user in Indonesia sets the prefix 0871, it stores 62871. Thus, the user must use the prefix length of 5 instead of 4.
 
 ## USSD Support
 
-OTP-Pi memungkinkan pengguna melakukan perintah USSD pada masing-masing modem. Perintah USSD tentu saja tergantung dari masing-masing operator seluler yang digunakan pada masing-masing SIM card yang terpasang pada masing-masing modem.
+OTP-Pi allows users to perform USSD commands on individual modems. The USSD command, of course, depends on each cellular operator used on each SIM card installed on each modem.
 
 ## Manual SMS
 
-Manual SMS digunakan untuk menguji apakah masing-masing modem dapat mengirimkan SMS. 
+Manual SMS is used to test whether each modem can send SMS.
 
 ## Internet Mobile
 
-OTP-Pi dapat terhubung ke internet menggunakan modem mobile. Dengan demikian, pengguna tidak perlu menghubungkan OTP-Pi dengan internet kabel atau optik. Ini memberikan alternatif bagi pengguna dalam memilih koneksi internet.
+The OTP-Pi can connect to the internet using a mobile modem. Thus, users do not need to connect the OTP-Pi with wired or optical internet. It provides an alternative for users in choosing an internet connection.
 
 ## Administrator Setting
 
-Administrator Setting adalah menu untuk melakukan konfigurasi administrator. Perangkat OTP-Pi baru belum memiliki administrator. Pengguna harus membuat administrator terlebih dahulu sebelum menggunakannya. Silakan masuk ke akses poin OTP-Pi sesuai dengan SSID dan password yang tertera pada brosur dan pindai QR Code pada brosur menggunakan smartphone.
+Administrator Settings is a menu to configure administrator. New OTP-Pi devices don't have an administrator yet. The user must create an administrator first before using it. Please enter the OTP-Pi access point according to the SSID and password listed on the brochure and scan the QR Code on the brochure using a smartphone.
 
-Alamat bawaan dari web manajemen adalah http://192.168.0.11:8888 
-
-**Username**
-Username adalah pengenal administrator saat login ke OTP-Pi
-
-**Password**
-Username adalah pengaman administrator saat login ke OTP-Pi
-
-**Phone Number**
-Phone number dapat digunakan jika administrator lupa password. Password akan dikirim melalui SMS. Tentu saja ini baru bisa dilakukan ketika OTP-Pi telah terkonfigurasi dengan benar.
-
-**Email**
-Email dapat digunakan jika administrator lupa password. Password akan dikirim melalui email. Tentu saja ini baru bisa dilakukan ketika OTP-Pi telah terkonfigurasi dengan benar.
-
-## API Setting
-
-API Setting adalah konfigurasi REST API untuk mengirimkan SMS.
-1. **HTTP Port** adalah port server untuk HTTP
-2. **Enable HTTP** adalah pengaturan untuk mengaktifkan atau menonaktifkan port HTTP
-3. **HTTPS Port** adalah port server untuk HTTPS
-4. **Enable HTTPS** adalah pengaturan untuk mengaktifkan atau menonaktifkan port HTTPS
-5. **Message Path** adalah path untuk mengirimkan SMS dan email
-6. **Blocking Path** adalah path untuk memblokir nomor telepon agar OTP-Pi tidak mengirimkan SMS ke nomor tersebut
-7. **Unblocking Path** adalah path untuk membuka blokir nomor telepon agar OTP-Pi dapat kembali mengirimkan SMS ke nomor tersebut
-
-## API User
-
-API User adalah akun pengirim SMS melalui REST API.
+The default address of web management is http://192.168.0.11:8888
 
 **Username**
-Username adalah pengenal pengirim saat mengirimkan SMS ke OTP-Pi
+Username is administrator identifier when logging in to OTP-Pi
 
 **Password**
-Username adalah pengaman pengirim saat mengirimkan SMS ke OTP-Pi
+Username is administrator's security when logging into OTP-Pi
 
 **Phone Number**
-Phone number adalah informasi kontak berupa nomor telepon dari pengguna API
+The phone number can be used if the administrator forgets the password. Password will be sent via SMS. Of course this can only be done when the OTP-Pi has been configured correctly.
 
-**Email**
-Email adalah informasi kontak berupa alamat email dari pengguna API
+**E-mail**
+Email can be used if the administrator forgets the password. Password will be sent via email. Of course this can only be done when the OTP-Pi has been configured correctly.
 
-## Subscriber Setting
+## API Settings
 
-OTP-Pi memberikan pilihan apabila perangkat ini dipasang pada jaringan internet mobile atau pada jaringan di mana perangkat pengirim tidak mungkin dapat menjangkau alamat dari OTP-Pi. Pengguna dapat mengirimkan OTP dengan message broker sebagai berikut:
+API Setting is a REST API configuration for sending SMS.
+1. **HTTP Port** is the server port for HTTP
+2. **Enable HTTP** is a setting to enable or disable HTTP port
+3. **HTTPS Port** is the server port for HTTPS
+4. **Enable HTTPS** is a setting to enable or disable HTTPS port
+5. **Message Path** is the path to send SMS and email
+6. **Blocking Path** is a path to block a phone number so that OTP-Pi does not send SMS to that number
+7. **Unblocking Path** is a path to unblock a phone number so that OTP-Pi can send SMS to that number again
+
+## API Users
+
+API User is an account that sends SMS via REST API.
+
+**Username**
+Username is the sender identifier when sending SMS to OTP-Pi
+
+**Password**
+Username is the sender's security when sending SMS to OTP-Pi
+
+**Phone Number**
+Phone number is contact information in the form of phone numbers from API users
+
+**E-mail**
+Email is contact information in the form of email addresses of API users
+
+## Subscriber Settings
+
+OTP-Pi provides an option if this device is installed on a mobile internet network or on a network where the sending device may not be able to reach the address of the OTP-Pi. Users can send OTP with message broker as follows:
 
 1. WSMessageBroker (WebSocket)
 2. RabbitMQ (AMQP)
@@ -185,7 +185,7 @@ OTP-Pi memberikan pilihan apabila perangkat ini dipasang pada jaringan internet 
 
 ## SMS Setting
 
-SMS Setting adalah konfigurasi pengiriman SMS oleh OTP-Pi.
+SMS Setting is the configuration of sending SMS by OTP-Pi.
 
 | Field | Description |
 | ----- | ----------- |
@@ -240,17 +240,17 @@ SMS Setting adalah konfigurasi pengiriman SMS oleh OTP-Pi.
 
 ## Blocking List
 
-Bloking list adalah daftar nomor telepon yang diblokir. Nomor yang diblokir tidak akan menerima SMS dari modem manapun. Daftar ini dapat ditambah dan diputihkanmelalui REST API, abbitMQ, Mosquitto dan WebSocket. Daftar ini juga dapat secara manual ditambah, diputihkan, atau dihapus melalui web admin.
+Blocking list is a list of blocked phone numbers. Blocked numbers will not receive SMS from any modem. This list can be added and whitened via the REST API, abbitMQ, Mosquitto and WebSocket. This list can also be manually added, whitened, or deleted via the web admin.
 
 ## Multiple Email Account
 
-OTP-Pi mendukung multiple email account. Email account adalah konfigurasi yang berisi alamat SMTP Server, port SMTP server, username, password, dan konfigurasi lainnya.
+OTP-Pi supports multiple email accounts. Email account is a configuration that contains SMTP Server address, SMTP server port, username, password, and other configurations.
 
-SMTP Server digunakan untuk mengirimkan OTP ke alamat email dan dapat digunakan untuk melakukan reset password.
+SMTP Server is used to send OTP to email addresses and can be used to reset passwords.
 
-Penggunaan banyak akun email lebih direkomendasikan karena jumlah email yang dikirim oleh setiap akun email akan berkurang. Sebagai contoh: sebuah SMTP server membatasi 500 email perhari. Dengan menggunakan 20 akun email, OTP-Pi dapat mengirim hingga 10.000 email perhari.
+The use of multiple email accounts is recommended because the number of emails sent by each email account will decrease. For example: an SMTP server limits 500 emails per day. Using 20 email accounts, OTP-Pi can send up to 10,000 emails per day.
 
-Untuk menggunakan SMTP Gmail, gunakan konfigurasi berikut:
+To use Gmail SMTP, use the following configuration:
 
 **Use Port 587**
 
@@ -280,13 +280,13 @@ Untuk menggunakan SMTP Gmail, gunakan konfigurasi berikut:
 
 ## Local SMTP Server
 
-OPT Broker dilengkapi dengan local SMTP server untuk mengirim email. Dengan adanya local SMTP server ini, pengguna dapat mengirimkan email tanpa memerlukan external SMTP server. Meskipun demikian, local SMTP server tidak direkomendasikan karena mail server tujuan dapat saja memblokir email yang dikirim dari local SMTP server. 
+The OTP-Pi is equipped with a local SMTP server for sending email. With this local SMTP server, users can send email without needing an external SMTP server. However, a local SMTP server is not recommended because the destination mail server may block email sent from the local SMTP server.
 
 ## DDNS Record
 
-DDNS Record adalah data untuk melakukan pengaturan DNS secara dinamis. DDNS atau Dymanic Domain Name System adalah sebuah mekanisme pengaturan DNS yang dilakukan secara berulang-ulang disebabkan karena alamat IP publik dari server yang selalu berubah-ubah.
+DDNS Records are records for dynamic DNS settings. DDNS or Dymanic Domain Name System is a DNS setting mechanism that is done repeatedly because the public IP address of the server is always changing.
 
-OTP-Pi menyediakan pengaturan DDNS menggunakan vendor DDNS. Beberapa vendor DDNS yang didukung adalah sebagai berikut:
+OTP-Pi provides DDNS setup using DDNS vendor. Some of the supported DDNS vendors are as follows:
 
 1. Cloudflare - https://www.cloudflare.com/
 2. NoIP - https://www.noip.com/
@@ -295,7 +295,7 @@ OTP-Pi menyediakan pengaturan DDNS menggunakan vendor DDNS. Beberapa vendor DDNS
 
 ## Network Setting 
 
-Network Setting adalah konfigurasi untuk mengatur jaringan dari OTP-Pi. OTP-Pi dilengkapi dengan akses poin sehingga dapat diakses langsung menggunakan laptop atau handphone tanpa harus memasangnya ke jaringan kabel. Hal ini akan memudahkan pengguna karena konfigurasi jaringan LAN pengguna berbeda-beda. Pengguna cukup mengatur alamat IP pada jaringan ethernet sesuai dengan konfigurasi jaringan LAN yang digunakan.
+Network Setting is a configuration to manage network from OTP-Pi. OTP-Pi is equipped with an access point so that it can be accessed directly using a laptop or cellphone without having to plug it into a wired network. This will make it easier for users because the user's LAN network configuration is different. Users simply set the IP address on the ethernet network according to the LAN network configuration used.
 
 ### DHCP
 
@@ -315,7 +315,7 @@ Konfigurasi DHCP akan mengatur DHCP pada akses poin OTP-Pi.
 
 ### Wireless LAN
 
-Konfigurasi Wireless LAN akan mengatur alamat IP pada jaringan wireless OTP-Pi. Alamat IP bawaan dari OTP-Pi adalah 192.168.0.11
+Wireless LAN configuration will set the IP address on the OTP-Pi wireless network. The default IP address of the OTP-Pi is 192.168.0.11
 
 | Field | Value |
 | --- | ------ |
@@ -330,7 +330,7 @@ Konfigurasi Wireless LAN akan mengatur alamat IP pada jaringan wireless OTP-Pi. 
 
 ### Ethernet
 
-Konfigurasi Ethernet akan mengatur alamat IP ethernet pada OTP-Pi.
+The Ethernet configuration will set the ethernet IP address on the OTP-Pi.
 
 | Field | Value |
 | --- | ------ |
