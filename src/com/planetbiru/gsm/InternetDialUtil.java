@@ -61,9 +61,6 @@ public class InternetDialUtil {
 		} 
 		catch (GSMException e) 
 		{
-			/**
-			 * Do nothing
-			 */
 			logger.error(e.getMessage(), e);
 		}
 		try 
@@ -74,17 +71,51 @@ public class InternetDialUtil {
 		{
 			logger.error(e.getMessage(), e);
 		}
-		boolean ret = false;
 		CommandLineResult result = CommandLineExecutor.exec(InternetDialUtil.wvdialCommandConnect);
 		String resultStr = result.toString();
-		ret = resultStr.contains("started") || resultStr.contains("running");
-		/**
-		System.out.println("exec   = "+wvdialCommandConnect);
-		System.out.println("result = "+result);
-		ret = true;
-		*/
-		InternetDialUtil.internetAccess.put(modemID, ret);
-		return ret;
+		boolean success = isDialSuccess(resultStr);
+		InternetDialUtil.internetAccess.put(modemID, success);
+		return success;
+	}
+	
+	private static boolean isDialSuccess(String resultStr) 
+	{
+		String[] lines = resultStr.split("\r\n");
+		int status = 0;
+		for(int i = 0; i<lines.length; i++)
+		{
+			String line = lines[i];		
+			if(InternetDialUtil.lineContains(line, "local IP address".split(" ")) && status < 1)
+			{
+				status = 1;
+			}
+			if(InternetDialUtil.lineContains(line, "remote IP address".split(" ")) && status < 2)
+			{
+				status = 2;
+			}
+			if(InternetDialUtil.lineContains(line, "primary DNS address".split(" ")) && status < 3)
+			{
+				status = 3;
+			}
+			if(InternetDialUtil.lineContains(line, "secondary DNS address".split(" ")) && status < 4)
+			{
+				status = 4;
+			}
+		}
+		return status >= 4;
+	}
+
+	private static boolean lineContains(String haystack, String[] search)
+	{
+		for(int i = 0; i<search.length; i++)
+		{
+			search[i] = search[i].replaceAll("\\s+", " ").trim();
+			if(!haystack.contains(search[i]))
+			{
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	public static boolean disconnect(String modemID)
@@ -92,10 +123,6 @@ public class InternetDialUtil {
 		InternetDialUtil.internetAccess.remove(modemID);
 		CommandLineResult result = CommandLineExecutor.exec(InternetDialUtil.wvdialCommandDisconnect);
 		String resultStr = result.toString();
-		/**
-		System.out.println("exec   = "+DialUtil.wvdialCommandDisconnect);
-		System.out.println("result = "+result);
-		*/
 		return resultStr.contains("stoped");
 	}
 
