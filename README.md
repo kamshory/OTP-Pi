@@ -410,12 +410,38 @@ RESET_VENDOR_DYNU = false
 RESET_VENDOR_NOIP = false
 ```
 
+VERIFY must be set with `eyJkZXZpY2VUeXBlIjoiUlBpIiwgImJhc2VOYW1lIjoicmVzZXQtY29uZmlnLmluaSJ9`. Other configuration properties must be set wit `true` or `false`. `true` means that yo will reset the configuration and `false` means that you will not reset the configuration. 
+
 Reset device will do the following things:
 
-1. Restore the DHCP configuration to the beginning
-2. Restore the original Wireless LAN configuration
-3. Restore the original LAN configuration
-4. Delete all administrator accounts
+**A. Basic Configuration**
+
+1. RESET_DHCP (Restore the DHCP configuration to the default)
+2. RESET_WLAN (Restore the Wireless LAN configuration to the default)
+3. RESET_ETHERNET (Restore the LAN configuration to the default)
+4. RESET_USER (Delete all administrator accounts)
+
+**B. Advanced Configuration**
+
+1. RESET_API 
+2. RESET_API_USER 
+3. RESET_BLOCKING 
+4. RESET_DDNS 
+5. RESET_EMAIL 
+6. RESET_FEEDER_AMQP 
+7. RESET_FEEDER_WS 
+8. RESET_FIREWALL 
+9. RESET_KEYSTORE 
+10. RESET_MODEM 
+11. RESET_SMS 
+12. RESET_SMTP 
+
+**C. Vendor Configuration**
+
+1. RESET_VENDOR_AFRAID 
+2. RESET_VENDOR_CLOUDFLARE 
+3. RESET_VENDOR_DYNU 
+4. RESET_VENDOR_NOIP 
 
 To reset the device, perform the following steps:
 
