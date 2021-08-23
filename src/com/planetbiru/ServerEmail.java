@@ -28,7 +28,7 @@ public class ServerEmail {
 		}
 	}
 	
-	public void stop() 
+	public void stopService() 
 	{
 		if(this.running)
 		{

@@ -1,5 +1,6 @@
 package com.planetbiru;
 
+import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -109,7 +110,10 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 		 * Do nothing
 		 */
 	}
-	
+	public void stopService() throws IOException, InterruptedException
+	{
+		this.stop();
+	}
 	private void remove(WebSocket conn) {
 		for(WebSocketConnection client : ServerWebSocketAdmin.clients)
 		{

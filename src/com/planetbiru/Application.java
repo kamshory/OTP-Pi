@@ -108,6 +108,7 @@ public class Application {
 	
 	private static void startService(String[] args) {
 		boolean needToStart = true;
+		boolean needToReset = false;
 		String imageName = ConfigLoader.getConfig("otpbroker.image.name");
 		Config.setImageName(imageName);
 		List<String> argList = new ArrayList<>();
@@ -116,6 +117,7 @@ public class Application {
 			argList = Arrays.asList(args);
 			if(argList.contains("--start"))
 			{
+				needToReset = true;
 				String pingCommand = ConfigLoader.getConfig("otpbroker.ssh.ping.command");
 				String result = CommandLineExecutor.exec(pingCommand).toString();
 				if(result.equals("OK"))
@@ -140,7 +142,7 @@ public class Application {
 		{
 			ConfigLoader.init();
 			
-			if(argList.contains("--start"))
+			if(needToReset)
 			{
 				Application.resetConfig();
 			}
@@ -335,12 +337,12 @@ public class Application {
 	
 	public static void stopAllServices()
 	{
-		Application.smtp.stop();
-		Application.rest.stop();
-		Application.webAdmin.stop();
+		Application.smtp.stopService();
+		Application.rest.stopService();
+		Application.webAdmin.stopService();
 		try 
 		{
-			Application.webSocketAdmin.stop();
+			Application.webSocketAdmin.stopService();
 		} 
 		catch (IOException | InterruptedException e) 
 		{

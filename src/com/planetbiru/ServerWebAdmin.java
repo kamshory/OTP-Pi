@@ -47,7 +47,7 @@ public class ServerWebAdmin {
 		}
 	}
 
-	public void stop() {
+	public void stopService() {
 		if(ServiceHTTP.getHttpServer() != null)
 		{
 			ServiceHTTP.getHttpServer().stop(0);

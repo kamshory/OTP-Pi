@@ -140,7 +140,7 @@ public class ServerRESTAPI {
 			this.httpsStarted = false;
 		}
 	}
-	public void stop()
+	public void stopService()
 	{
 		this.stopHTTP();
 		this.stopHTTPS();
