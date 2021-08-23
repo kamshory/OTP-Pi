@@ -61,6 +61,9 @@ public class JsonKey {
 	public static final String RECIPIENT_PREFIX_LENGTH       = "recipientPrefixLength";
 	public static final String MONITOR_SMS                   = "monitorSMS";
 	public static final String REPLYABLE                     = "replyable";
+	public static final String FOOTER                        = "footer";
+	public static final String BODY                          = "body";
+	public static final String HEADER                        = "header";
 	
 	private JsonKey()
 	{

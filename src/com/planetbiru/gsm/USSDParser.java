@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.common.base.Splitter;
+import com.planetbiru.constant.JsonKey;
 
 public class USSDParser {
 
@@ -21,10 +22,10 @@ public class USSDParser {
 	public USSDParser(String contentRaw) {
 		this.contentRaw = contentRaw;
 		Map<String, String> parsed = this.parseUSSDResponse(contentRaw);
-		this.replyable = parsed.getOrDefault("footer", "0").equals("0");
-		String body = parsed.getOrDefault("body", "");
-		this.header = parsed.getOrDefault("header", "");
-		this.footer = parsed.getOrDefault("footer", "");
+		this.replyable = parsed.getOrDefault(JsonKey.FOOTER, "0").equals("0");
+		String body = parsed.getOrDefault(JsonKey.BODY, "");
+		this.header = parsed.getOrDefault(JsonKey.HEADER, "");
+		this.footer = parsed.getOrDefault(JsonKey.FOOTER, "");
 		if(this.isUCS2(body))
 		{
 	        Iterable<String> arr = Splitter.fixedLength(4).split(body);
@@ -45,7 +46,7 @@ public class USSDParser {
 	public Map<String, String> parseUSSDResponse(String resp)
     {
     	String[] arr = resp.split("\\,");
-    	String header = arr[0];
+    	String lHeader = arr[0];
     	List<String> list = new ArrayList<>();
     	for(int i = 1; i<arr.length-1; i++)
     	{
@@ -56,11 +57,11 @@ public class USSDParser {
     	{
     		body = body.substring(1, body.length()-1);
     	}
-    	String footer = arr[arr.length-1];
+    	String lFooter = arr[arr.length-1];
     	Map<String, String> result = new HashMap<>();
-    	result.put("header", header);
-    	result.put("body", body);
-    	result.put("footer", footer);
+    	result.put(JsonKey.HEADER, lHeader);
+    	result.put(JsonKey.BODY, body);
+    	result.put(JsonKey.FOOTER, lFooter);
     	return result;
     }
 

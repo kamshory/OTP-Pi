@@ -5651,3 +5651,7 @@ Caused by: java.net.BindException: Address already in use: bind
 2021-08-23 11:54:09 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
 2021-08-23 11:54:09 [INFO  ] GSM                             :124  - AT Command : AT+CCID
 2021-08-23 11:54:09 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-08-23 13:20:16 [INFO  ] Application                     :195  - Service started
+2021-08-23 13:55:13 [INFO  ] Application                     :195  - Service started
+2021-08-23 20:10:47 [INFO  ] Application                     :195  - Service started
+2021-08-23 20:34:25 [INFO  ] Application                     :194  - Service started

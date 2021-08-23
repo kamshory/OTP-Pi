@@ -24,30 +24,28 @@ public class WebManagerTool {
 		do 
 		{
 			start = responseString.toLowerCase().indexOf("<meta ", end);
-			if(start == -1)
+			if(start > -1)
 			{
-				break;
-			}
-			end = responseString.toLowerCase().indexOf(">", start);
-			
-			if(start >-1 && end >-1 && end < responseString.length())
-			{
-				String meta = responseString.substring(start, end+1);
-				meta = WebManagerTool.fixMeta(meta);
-				try
+				end = responseString.toLowerCase().indexOf(">", start);				
+				if(start >-1 && end >-1 && end < responseString.length())
 				{
-					JSONObject metaObj = XML.toJSONObject(meta);
-					JSONObject metaObjFixed = WebManagerTool.lowerCaseJSONKey(metaObj);
-					if(requireLogin(metaObjFixed))
+					String meta = responseString.substring(start, end+1);
+					meta = WebManagerTool.fixMeta(meta);
+					try
 					{
-						return metaObjFixed.optJSONObject(JsonKey.META);
+						JSONObject metaObj = XML.toJSONObject(meta);
+						JSONObject metaObjFixed = WebManagerTool.lowerCaseJSONKey(metaObj);
+						if(requireLogin(metaObjFixed))
+						{
+							return metaObjFixed.optJSONObject(JsonKey.META);
+						}
 					}
-				}
-				catch(JSONException e)
-				{
-					/**
-					 * Do nothing
-					 */
+					catch(JSONException e)
+					{
+						/**
+						 * Do nothing
+						 */
+					}
 				}
 			}
 		}
@@ -60,45 +58,36 @@ public class WebManagerTool {
 		String responseString = new String(responseBody);
 		int start = 0;
 		int end = 0;
-		String metaOri = "";
-		boolean found = false;
 		do 
 		{
 			start = responseString.toLowerCase().indexOf("<meta ", end);
-			if(start == -1)
-			{
-				break;
-			}
-			end = responseString.toLowerCase().indexOf(">", start);
-			if(start >-1 && end >-1 && end < responseString.length())
-			{
-				metaOri = responseString.substring(start, end+1);
-				String meta = WebManagerTool.fixMeta(metaOri);
-				try
+			if(start > -1)
+			{				
+				end = responseString.toLowerCase().indexOf(">", start);
+				if(start >-1 && end >-1 && end < responseString.length())
 				{
-					JSONObject metaObj = XML.toJSONObject(meta);
-					JSONObject metaObjFixed = WebManagerTool.lowerCaseJSONKey(metaObj); 
-					if(requireLogin(metaObjFixed))
+					String metaOri = responseString.substring(start, end+1);
+					String meta = WebManagerTool.fixMeta(metaOri);
+					try
 					{
-						found = true;
-						break;
+						JSONObject metaObj = XML.toJSONObject(meta);
+						JSONObject metaObjFixed = WebManagerTool.lowerCaseJSONKey(metaObj); 
+						if(requireLogin(metaObjFixed))
+						{
+							String content = new String(responseBody);
+							return content.replace(metaOri, "").getBytes();
+						}
 					}
-				}
-				catch(JSONException e)
-				{
-					/**
-					 * Do nothing
-					 */
+					catch(JSONException e)
+					{
+						/**
+						 * Do nothing
+						 */
+					}
 				}
 			}
 		}
 		while(start > -1);
-		String content = "";
-		if(found && responseBody != null)
-		{
-			content = new String(responseBody);
-			return content.replace(metaOri, "").getBytes();
-		}
 		return responseBody;
 	}
 

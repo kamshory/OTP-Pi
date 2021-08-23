@@ -959,13 +959,7 @@ public class HandlerWebManagerData implements HttpHandler {
 			}
 			responseBody = allSMS.toString().getBytes();
 		}
-		catch(NoUserRegisteredException e)
-		{
-			/**
-			 * Do nothing
-			 */
-		} 
-		catch (GSMException e) 
+		catch(NoUserRegisteredException | GSMException e)
 		{
 			/**
 			 * Do nothing

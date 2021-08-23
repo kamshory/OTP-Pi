@@ -129,7 +129,6 @@ public class HandlerWebManagerAPI implements HttpHandler {
 					String modemID = queryPairs.getOrDefault("modem_id", "");					
 					String storage = queryPairs.getOrDefault("storage", "");					
 					int smsID = Utility.atoi(queryPairs.getOrDefault("sms_id", "0"));	
-					System.out.println(modemID+" "+storage+" "+smsID);
 					GSMUtil.get(modemID).deleteSMS(smsID, storage);
 				}				
 			} 
@@ -144,7 +143,6 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		} 
 		catch (GSMException e) 
 		{
-			e.printStackTrace();
 			logger.error(e.getMessage(), e);
 		}
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
@@ -410,21 +408,21 @@ public class HandlerWebManagerAPI implements HttpHandler {
 	}
 	
 	//@PostMapping(path="/api/reboot")
-		public void reboot(HttpExchange httpExchange) throws IOException
-		{
-			Headers responseHeaders = httpExchange.getResponseHeaders();
-			JSONObject jo = new JSONObject();
-			jo.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
-			byte[] responseBody = jo.toString().getBytes();
-			int statusCode = HttpStatus.OK;
+	public void reboot(HttpExchange httpExchange) throws IOException
+	{
+		Headers responseHeaders = httpExchange.getResponseHeaders();
+		JSONObject jo = new JSONObject();
+		jo.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
+		byte[] responseBody = jo.toString().getBytes();
+		int statusCode = HttpStatus.OK;
 
-			responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
-			responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
-			httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
-			httpExchange.getResponseBody().write(responseBody);
-			httpExchange.close();
-			DeviceAPI.reboot();		
-		}
+		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
+		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
+		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+		httpExchange.getResponseBody().write(responseBody);
+		httpExchange.close();
+		DeviceAPI.reboot();		
+	}
 	
 	//@PostMapping(path="/api/restart")
 	public void restart(HttpExchange httpExchange) throws IOException

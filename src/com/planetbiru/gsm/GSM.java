@@ -13,13 +13,10 @@ import java.util.regex.Pattern;
 import org.apache.log4j.Logger;
 
 public class GSM {
-
-	
     private SerialPort serialPort;
     private boolean connected = false;
 	private boolean ready = false;
-	private boolean gcRunning = false;   
-    
+	private boolean gcRunning = false; 
     
     private static Logger logger = Logger.getLogger(GSM.class);
     

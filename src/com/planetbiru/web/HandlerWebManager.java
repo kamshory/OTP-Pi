@@ -210,19 +210,16 @@ public class HandlerWebManager implements HttpHandler {
 			{
 				if(!WebUserAccount.checkUserAuth(username, password))	
 				{
-					try 
-					{
-						responseBody = FileUtil.readResource(fileSub);
-						return this.updateContent(fileSub, responseHeaders, responseBody, statusCode, cookie);
-					} 
-					catch (FileNotFoundException e) 
-					{
-						statusCode = HttpStatus.NOT_FOUND;
-						webContent.setStatusCode(statusCode);
-					}	
+					responseBody = FileUtil.readResource(fileSub);
+					return this.updateContent(fileSub, responseHeaders, responseBody, statusCode, cookie);
 				}
 				responseBody = WebManagerTool.removeMeta(responseBody);
 			}
+			catch (FileNotFoundException e) 
+			{
+				statusCode = HttpStatus.NOT_FOUND;
+				webContent.setStatusCode(statusCode);
+			}	
 			catch(NoUserRegisteredException e)
 			{
 				/**

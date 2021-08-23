@@ -111,10 +111,9 @@ public class Application {
 		boolean needToReset = false;
 		String imageName = ConfigLoader.getConfig("otpbroker.image.name");
 		Config.setImageName(imageName);
-		List<String> argList = new ArrayList<>();
 		if(args != null)
 		{
-			argList = Arrays.asList(args);
+			List<String> argList = Arrays.asList(args);
 			if(argList.contains("--start"))
 			{
 				needToReset = true;

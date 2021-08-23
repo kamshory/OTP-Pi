@@ -20,6 +20,7 @@ import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigKeystore;
 import com.planetbiru.config.DataKeystore;
 import com.planetbiru.subscriber.rest.HandlerAPIMessage;
+import com.planetbiru.subscriber.rest.NoKeyStoreException;
 import com.planetbiru.util.ServiceHTTP;
 import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.HttpsConfigurator;

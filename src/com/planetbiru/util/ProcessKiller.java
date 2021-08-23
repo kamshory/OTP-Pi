@@ -1,6 +1,7 @@
 package com.planetbiru.util;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -90,59 +91,60 @@ public class ProcessKiller {
         int processToKill = 0;
 		try 
 		{
-			try
-	        {            
-				Runtime rt = Runtime.getRuntime();
-		        Process proc = rt.exec(commandLine);
-		        proc.waitFor();
-	            InputStream simpuStream = proc.getInputStream();
-	            InputStreamReader simpuStreamReader = new InputStreamReader(simpuStream);
-	            BufferedReader bufferedReader = new BufferedReader(simpuStreamReader);
-				String line = null;
-				while ((line = bufferedReader.readLine()) != null)
-	            {
-	            	if(line.toLowerCase().contains("java ") && line.toLowerCase().contains("-jar ") && line.toLowerCase().contains(this.baseName(this.path).toLowerCase()))
-	            	{
-	            		line = line.replace("\t", " ");
-	            		line = line.replace("  ", " ").trim();
-	            		line = line.replace("  ", " ").trim();
-	            		line = line.replace("  ", " ").trim();
-	            		line = line.replace("  ", " ").trim();
-	            		line = line.replace("  ", " ").trim();
-	            		String[] arr = line.split(" ");
-	            		if(arr.length > 1)
-	            		{
-	            			pid = arr[1];
-	            			processList.add(pid.trim());	            				            			
+			Runtime rt = Runtime.getRuntime();
+	        Process proc = rt.exec(commandLine);
+	        proc.waitFor();
+            InputStream simpuStream = proc.getInputStream();
+            InputStreamReader simpuStreamReader = new InputStreamReader(simpuStream);
+            BufferedReader bufferedReader = new BufferedReader(simpuStreamReader);
+			String line = null;
+			while ((line = bufferedReader.readLine()) != null)
+            {
+            	if(line.toLowerCase().contains("java ") && line.toLowerCase().contains("-jar ") && line.toLowerCase().contains(this.baseName(this.path).toLowerCase()))
+            	{
+            		line = line.replace("\t", " ");
+            		line = line.replace("  ", " ").trim();
+            		line = line.replace("  ", " ").trim();
+            		line = line.replace("  ", " ").trim();
+            		line = line.replace("  ", " ").trim();
+            		line = line.replace("  ", " ").trim();
+            		String[] arr = line.split(" ");
+            		if(arr.length > 1)
+            		{
+            			pid = arr[1];
+            			processList.add(pid.trim());	            				            			
 
-	            		}
-	            	}
-	            }
-	            bufferedReader.close();
-		        prcosessCount = processList.size();
-		        if(this.exceptThis)
-		        {
-		        	processToKill = prcosessCount - 1;
-		        }
-		        else
-		        {
-		        	processToKill = prcosessCount;
-		        }
-	        	for(i = 0; i < processToKill; i++)
-	        	{
-	        		pid = processList.get(i).toString();
-        			String commandLine2 = "kill -9 "+pid+"";
-        			Runtime rt2 = Runtime.getRuntime();
-    		        rt2.exec(commandLine2);
- 	        	}
-	        } 
-			catch (Throwable t)
+            		}
+            	}
+            }
+            bufferedReader.close();
+	        prcosessCount = processList.size();
+	        if(this.exceptThis)
 	        {
+	        	processToKill = prcosessCount - 1;
 	        }
-		} 
-		catch (Exception e) 
+	        else
+	        {
+	        	processToKill = prcosessCount;
+	        }
+        	for(i = 0; i < processToKill; i++)
+        	{
+        		pid = processList.get(i);
+    			String commandLine2 = "kill -9 "+pid+"";
+    			Runtime rt2 = Runtime.getRuntime();
+		        rt2.exec(commandLine2);
+        	}
+        } 
+		catch (IOException e)
+        {
+			/**
+			 * Do nothing
+			 */
+        } 
+		catch (InterruptedException e) 
 		{
-		}		
+			Thread.currentThread().interrupt();
+		}	
 	}
 	private void killProcessWindow(String commandLine) {
 		List<String> processListWindows = new ArrayList<>();
@@ -156,7 +158,7 @@ public class ProcessKiller {
         {            
 			Runtime rt = Runtime.getRuntime();
 	        Process proc = rt.exec(commandLine);
-	        //proc.waitFor();
+	        proc.waitFor();
             InputStream simpuStream = proc.getInputStream();
             InputStreamReader simpuStreamReader = new InputStreamReader(simpuStream);
             BufferedReader bufferedReader = new BufferedReader(simpuStreamReader);
@@ -170,7 +172,6 @@ public class ProcessKiller {
             	}
             	
             }
-            System.out.println(processListWindows);
             bufferedReader.close();	 
             // Sort by date and time
             Collections.sort(processListWindows);
@@ -201,9 +202,16 @@ public class ProcessKiller {
 		        rt2.exec(commandLine2);
         	}
         } 
-		catch (Throwable t)
+		catch (IOException e)
         {
-        }
+			/**
+			 * Do nothing
+			 */
+        } 
+		catch (InterruptedException e) 
+		{
+			Thread.currentThread().interrupt();
+		}
 		
 	}
 	private String kill(String line, String datetime) {
@@ -212,15 +220,16 @@ public class ProcessKiller {
 		if(line.toLowerCase().contains("java") && line.toLowerCase().contains(this.baseName(this.path).toLowerCase()))
     	{
     		String[] arr = line.split(",");
-    		if(arr.length > 4)
-    		{
-    			if(arr[1].toLowerCase().contains("java") && arr[1].toLowerCase().contains(this.baseName(this.path).toLowerCase()) && (arr[3].toLowerCase().contains("java.exe") || arr[3].toLowerCase().contains("javaw.exe")))
-    			{
-    				datetime = arr[2];
-        			pid = arr[4];
-        			proceeeFlag = datetime+","+pid;	            				            			
-    			}
-    		}
+    		if(arr.length > 4 && 
+    				(arr[1].toLowerCase().contains("java") 
+    						&& arr[1].toLowerCase().contains(this.baseName(this.path).toLowerCase()) 
+    						&& (arr[3].toLowerCase().contains("java.exe") 
+    								|| arr[3].toLowerCase().contains("javaw.exe"))))
+			{
+				datetime = arr[2];
+    			pid = arr[4];
+    			proceeeFlag = datetime+","+pid;	            				            			
+			}
     	}
 		return proceeeFlag;
 		

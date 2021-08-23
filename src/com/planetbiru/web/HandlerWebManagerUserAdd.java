@@ -73,7 +73,6 @@ public class HandlerWebManagerUserAdd implements HttpHandler {
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 		httpExchange.getResponseBody().write(responseBody);
 		httpExchange.close();
-
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.planetbiru;
+package com.planetbiru.subscriber.rest;
 
 public class NoKeyStoreException extends Exception {
 	/**

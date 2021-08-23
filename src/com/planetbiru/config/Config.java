@@ -3,7 +3,6 @@ package com.planetbiru.config;
 public class Config {
 	private static String smsLogPath = "";
 	private static String generalSettingPath = "";
-	//private static String otpSalt = "IJUjhrfytR^&r7jkjojO";
 	private static String secretKey = "planetsecret";
 	
 	private static String defaultFile = "/index.html";
