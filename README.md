@@ -464,7 +464,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 | --------- | ---- | ----------|
 | command | String | Perintah ke OTP-Pi |
 | data | Objek | Data untuk OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when message is transmitted by the applications | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.id | String | ID SMS |
 | `data`.receiver | String | Nomor MSISDN penerima |
 | `data`.message| String | Pesan SMS |
@@ -495,7 +495,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 | --------- | ---- | ----------|
 | command | String | Perintah ke OTP-Pi |
 | data | Objek | Data untuk OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when message is transmitted by the applications | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.id | String | ID SMS |
 | `data`.receiver | String | Alamat email penerima |
 | `data`.message| String | Pesan SMS |
@@ -525,7 +525,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 | --------- | ---- | ----------|
 | command | String | Perintah ke OTP-Pi |
 | data | Objek | Data untuk OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when message is transmitted by the applications | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.msisdn | String | Nomor MSISDN yang akan diblokir |
 
 **Unblock Number Request**
@@ -552,7 +552,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 | --------- | ---- | ----------|
 | command | String | Perintah ke OTP-Pi |
 | data | Objek | Data untuk OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when message is transmitted by the applications | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.receiver | String | Nomor MSISDN yang akan dibuka blokir |
 
 ### Sekenario 2 - OTP-Pi Tidak Dapat Diakses App Server
@@ -591,7 +591,7 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | --------- | ---- | ----------|
 | command | String | Perintah ke OTP-Pi |
 | data | Objek | Data untuk OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when message is transmitted by the applications | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.id | String | ID SMS |
 | `data`.receiver | String | Nomor MSISDN penerima |
 | `data`.message| String | Pesan SMS |
@@ -614,7 +614,7 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | --------- | ---- | ----------|
 | command | String | Perintah ke OTP-Pi |
 | data | Objek | Data untuk OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when message is transmitted by the applications | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.id | String | ID SMS |
 | `data`.receiver | String | Alamat email penerima |
 | `data`.message| String | Pesan SMS |
@@ -635,7 +635,7 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | --------- | ---- | ----------|
 | command | String | Perintah ke OTP-Pi |
 | data | Objek | Data untuk OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when message is transmitted by the applications | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.receiver | String | Nomor MSISDN yang akan diblokir |
 
 **Unblock Number Request**
@@ -654,7 +654,7 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | --------- | ---- | ----------|
 | command | String | Perintah ke OTP-Pi |
 | data | Objek | Data untuk OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when message is transmitted by the applications | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.receiver | String | Nomor MSISDN yang akan dibuka blokir |
 
 **2. Mosquitto**
@@ -677,7 +677,7 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | --------- | ---- | ----------|
 | command | String | Perintah ke OTP-Pi |
 | data | Objek | Data untuk OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when message is transmitted by the applications | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.id | String | ID SMS |
 | `data`.receiver | String | Nomor MSISDN penerima |
 | `data`.message| String | Pesan SMS |
@@ -700,7 +700,7 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | --------- | ---- | ----------|
 | command | String | Perintah ke OTP-Pi |
 | data | Objek | Data untuk OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when message is transmitted by the applications | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.id | String | ID SMS |
 | `data`.receiver | String | Alamat email penerima |
 | `data`.message| String | Pesan SMS |
@@ -721,7 +721,7 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | --------- | ---- | ----------|
 | command | String | Perintah ke OTP-Pi |
 | data | Objek | Data untuk OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when message is transmitted by the applications | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.receiver | String | Nomor MSISDN yang akan diblokir |
 
 **Unblock Number Request**
@@ -740,7 +740,7 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | --------- | ---- | ----------|
 | command | String | Perintah ke OTP-Pi |
 | data | Objek | Data untuk OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when message is transmitted by the applications | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.receiver | String | Nomor MSISDN yang akan dibuka blokir |
 
 **3. WSMessageBroker**
@@ -763,7 +763,7 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | --------- | ---- | ----------|
 | command | String | Perintah ke OTP-Pi |
 | data | Objek | Data untuk OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when message is transmitted by the applications | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.id | String | ID SMS |
 | `data`.receiver | String | Nomor MSISDN penerima |
 | `data`.message| String | Pesan SMS |
@@ -786,7 +786,7 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | --------- | ---- | ----------|
 | command | String | Perintah ke OTP-Pi |
 | data | Objek | Data untuk OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when message is transmitted by the applications | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.id | String | ID SMS |
 | `data`.receiver | String | Alamat email penerima |
 | `data`.message| String | Pesan SMS |
@@ -807,7 +807,7 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | --------- | ---- | ----------|
 | command | String | Perintah ke OTP-Pi |
 | data | Objek | Data untuk OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when message is transmitted by the applications | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.receiver | String | Nomor MSISDN yang akan diblokir |
 
 **Unblock Number Request**
@@ -827,7 +827,7 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | --------- | ---- | ----------|
 | command | String | Perintah ke OTP-Pi |
 | data | Objek | Data untuk OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when message is transmitted by the applications | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.receiver | String | Nomor MSISDN yang akan dibuka blokir |
 
 Server WSMessageBroker berbasis menggunakan protokol WebSocket. Silakan download WSMessageBroker di https://github.com/kamshory/Messenger 
