@@ -412,7 +412,7 @@ To reset the device, perform the following steps:
 
 # Topology
 
-Both WebSocket and Message Broker use a channel that can be configured from both sides (sender and receiver).
+Both WebSocket and Message Broker use a topic that can be configured from both sides (sender and receiver).
 
 To use WebSocket, please use the WSMessageBrocker library with the link https://github.com/kamshory/Messenger or you can create your own.
 
@@ -562,7 +562,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 In this scenario, the App Server may send the OTP to RabbitMQ Server, Mosquitto Server or WSMessageBroker. WSMessageBroker uses the WebSoket protocol and Basic Authentication. Both App Server and OTP-Pi act as clients of WSMessageBroker.
 
-App Server acts as publisher and OTP-Pi becomes consumer of RabbitMQ Server, Mosquitto Server and WSMessageBroker. Both must use the same channel so that all OTPs sent by the App Server can be received by the OTP-Pi.
+App Server acts as publisher and OTP-Pi becomes consumer of RabbitMQ Server, Mosquitto Server and WSMessageBroker. Both must use the same topic so that all OTPs sent by the App Server can be received by the OTP-Pi.
 
 ![OTP-Pi Topology Scenario 2](https://raw.githubusercontent.com/kamshory/OTP-Broker/main/src/main/resources/static/www/lib.assets/images/topology-2.png)
 
@@ -850,12 +850,12 @@ The handshake between OTP-Pi and WSMessageBroker is as follows:
 | Path | /ws |
 | Username | username |
 | Password | password |
-| Channel | sms |
+| Topic | sms |
 
 **Contoh Handhake WebSocket**
 
 ```http
-GET /ws?channel=sms HTTP/1.1
+GET /ws?topic=sms HTTP/1.1
 Host: domain.example:8000
 Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=
 Upgrade: websocket
@@ -866,9 +866,9 @@ Sec-WebSocket-Version: 13
 
 The server will verify whether the username and password are correct. If true, the server will add the connection to the list of recipients of the message.
 
-When a client sends a message, the message will be sent to all clients by channel except the sender. Thus, the handshake between the sender and the recipient of the message is the same.
+When a client sends a message, the message will be sent to all clients by topic except the sender. Thus, the handshake between the sender and the recipient of the message is the same.
 
-The OTP-Pi never sends messages to the WSMessageBroker server. OTP-Pi only accepts messages according to the desired channel.
+The OTP-Pi never sends messages to the WSMessageBroker server. OTP-Pi only accepts messages according to the desired topic.
 
 ## Module Testing
 
