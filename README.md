@@ -2,6 +2,8 @@
 
 ![OTP-Pi](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/otp-pi.png)
 
+![Screenshot](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/ss-desktop.png)
+
 OTP or `One Time Password` is a one-time use password that has a certain validity period. Generally the validity period is made very short and only gives the opportunity to the recipient to enter it into the application and send it to the application server that requires it. OTP is strictly confidential so the `clear text` of the OTP should not be stored by any party. In fact, the application server only stores the `hash` or `token` that matches the OTP. `Clear text` is only generated and then sent to the recipient. In other words, `clear text` is only known to the OTP recipient.
 
 The most popular OTPs are sent via SMS or Short Message Service. The use of SMS has the following advantages:
