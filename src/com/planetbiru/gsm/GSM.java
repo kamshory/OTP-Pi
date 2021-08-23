@@ -415,7 +415,7 @@ public class GSM {
     {
     	this.setReady(false);
     	String result = this.executeAT("AT+CCID", 1, true);
-    	this.setReady(true);
+    	this.setReady(true);    	
         return result;
     }
 

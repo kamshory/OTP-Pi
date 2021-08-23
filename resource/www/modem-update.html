@@ -330,7 +330,9 @@
                                 url:"data/modem-info/get/"+encodeURIComponent(port),
                                 dataType:"json",
                                 success:function(data){
-                                    console.log(data)
+                                    $('[name="imei"]').val(data.imei || '');
+                                    $('[name="msisdn"]').val(data.msisdn || '');
+                                    $('[name="imsi"]').val(data.imsi || '');
                                 }
                             });
                         }
