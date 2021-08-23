@@ -6,10 +6,10 @@ OTP or `One Time Password` is a one-time use password that has a certain validit
 
 The most popular OTPs are sent via SMS or Short Message Service. The use of SMS has the following advantages:
 
-1. Can only be received by the device where the SIM card of the recipient number is installed. This of course has to do with `What you have` in `multifactor authentication`
+1. Can only be received by the device where the SIM card is installed. This of course comply `What you have` role in `multifactor authentication`
 2. Easily readable on almost all makes and models of mobile phone devices
 3. Generally the device immediately notifies the presence of an incoming message without requiring user action
-4. On smart cellular phone devices, OTP user applications can directly read incoming messages if permitted by the user. Thus, the application can directly verify the OTP without requiring manual action from the user. This will save time and reduce errors
+4. On smartphone devices, applications can directly read the message if permitted by the user. Thus, the application can directly verify the OTP without requiring manual action from the user. This will save time and reduce errors
 5. Does not require the recipient's credit so that the recipient of the message does not have to pay anything to be able to receive the message
 6. Has a very wide range
 7. SMS receiving devices are available in various price classes so that they can be reached by almost all people
@@ -50,7 +50,7 @@ OTP-Pi can use multiple modems at once. Sending SMS will use the Round-Robin alg
 
 ## Prefix-Based Routing
 
-In reality, cost efficiency becomes very important for users. The cost of sending SMS should be reduced as much as possible. Telecommunications operators usually apply lower fees when sending SMS to subscriber numbers of the same telecommunications operator. On the other hand, the cost of sending SMS will be higher when sending SMS to customer numbers from other operators.
+In reality, cost efficiency becomes very important for users. The cost of sending SMS should be reduced as much as possible. Telecommunications operators usually apply lower cost when sending SMS to subscriber numbers of the same telecommunications operator. On the other hand, the cost of sending SMS will be higher when sending SMS to customer numbers from other operators.
 
 OTP-Pi allows users to set up SMS sending. For example: a user uses 4 modems with 4 different SIM cards from different telecommunication operators.
 
@@ -181,7 +181,6 @@ OTP-Pi provides an option if this device is installed on a mobile internet netwo
 | Topic | Topic of subscribsion | 
 | Timeout | Request time out |
 | Refresh Connection | Refresh Mosquitto connection |
-
 
 ## SMS Setting
 
@@ -385,56 +384,56 @@ Nama direktori, nama file dan ekstensi harus ditulis dengan benar dalam huruf ke
 ????????????????
 ```
 
-Reset device akan melakukan hal-hal sebagai berikut:
+Reset device will do the following things:
 
-1. Mengembalikan konfigurasi DHCP ke awal
-2. Mengembalikan konfigurasi Wireless LAN ke awal
-3. Mengembalikan konfigurasi LAN ke awal
-4. Menghapus semua akun administrator
+1. Restore the DHCP configuration to the beginning
+2. Restore the original Wireless LAN configuration
+3. Restore the original LAN configuration
+4. Delete all administrator accounts
 
-Untuk melakukan reset device, lakukan langkah-langkah sebagai berikut:
+To reset the device, perform the following steps:
 
-1. Persiapkan sebuah flash disk dengan file seperti dijelaskan di atas
-2. Cabut semua modem yang terpasang pada perangkat
-3. Pasang flash disk di sembarang port USB perangkat
-4. Cabut catu daya (power supplay) ke perangkat
-5. Pasang kembali catu daya (power supplay) ke perangkat
-6. Tunggu hingga 10 menit
-7. Cabut flash disk dari perangkat
-8. Pasang kembali catu daya (power supplay) ke perangkat
-9. Masuk ke akses poin dengan SSID dan password seperti tertera pada brosur menggunakan smartphone atau PC
-10. Buka halaman 192.168.0.8888 dengan browser menggunakan smartphone atau PC yang telah terhubung ke akses poin di atas
-11. Login ke halaman yang disediakan
-12. Buat administrator baru untuk perangkat
+1. Prepare a flash disk with files as described above
+2. Unplug all modems installed on the device
+3. Insert the flash disk in any USB port of the device
+4. Unplug the power supply to the device
+5. Reconnect the power supply to the device
+6. Wait up to 10 minutes
+7. Remove the flash disk from the device
+8. Reconnect the power supply to the device
+9. Enter the access point with the SSID and password as stated in the brochure using a smartphone or PC
+10. Open page 192.168.0.8888 with a browser using a smartphone or PC that has been connected to the access point above
+11. Login to the page provided
+12. Create a new administrator for the device
 
 # Topology
 
-Baik WebSocket maupun Message Broker menggunakan sebuah channel yang dapat diseting dari kedua sisi (pengirim dan penerima).
+Both WebSocket and Message Broker use a channel that can be configured from both sides (sender and receiver).
 
-Untuk menggunakan WebSocket, silakan gunakan library WSMessageBrocker dengan link https://github.com/kamshory/Messenger atau anda dapat membuatnya sendiri. 
+To use WebSocket, please use the WSMessageBrocker library with the link https://github.com/kamshory/Messenger or you can create your own.
 
-Untuk menggunakan RabbitMQ, silakan buka link https://www.rabbitmq.com/
+To use RabbitMQ, please go to the link https://www.rabbitmq.com/
 
-Untuk menggunakan Mosquitto, silakan buka link https://mosquitto.org/
+To use Mosquitto, please open the link https://mosquitto.org/
 
 
 ![OTP-Pi Topology](https://raw.githubusercontent.com/kamshory/OTP-Broker/main/src/main/resources/static/www/lib.assets/images/topology.png)
 
 
 
-### Sekenario 1 - OTP-Pi Dapat Diakses App Server
+### Scenario 1 - OTP-Pi App Server Accessible
 
-Pada skenario ini, App Server dapat langsung mengirimkan OTP ke OTP-Pi melalui HTTP.
+In this scenario, the App Server can directly send the OTP to the OTP-Pi via HTTP.
 
-![OTP-Pi Topology Skenario 1](https://raw.githubusercontent.com/kamshory/OTP-Broker/main/src/main/resources/static/www/lib.assets/images/topology-1.png)
+![OTP-Pi Topology Scenario 1](https://raw.githubusercontent.com/kamshory/OTP-Broker/main/src/main/resources/static/www/lib.assets/images/topology-1.png)
 
-Pengguna dapat menggunakan sebuah domain murah dan menggunakan Dynamic Domain Name System gratis. Dengan penggunaan port forwarding pada router, OTP-Pi dapat diakses dari manapun dengan menggunakan domain atau subdomain. Dalam skenario ini, pengguna membutuhkan:
+Users can use a cheap domain and use the Dynamic Domain Name System for free. With the use of port forwarding on the router, OTP-Pi can be accessed from anywhere using a domain or subdomain. In this scenario, the user needs:
 
 1. OTP-Pi
-2. Koneksi internet fix dengan IP public (statis atau dinamis)
-3. Router yang dapat melakukan port forwarding
-4. Domain yang name servernya dapat diatur
-5. Layanan Dynamic DNS (gratis maupun berbayar)
+2. Fixed internet connection with public IP (static or dynamic)
+3. Router that can do port forwarding
+4. Domains whose name servers can be set
+5. Dynamic DNS service (free or paid)
 
 **1. REST API**
 
@@ -555,21 +554,21 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.receiver | String | Nomor MSISDN yang akan dibuka blokir |
 
-### Sekenario 2 - OTP-Pi Tidak Dapat Diakses App Server
+### Scenario 2 - OTP-Pi Can't Access App Server
 
-Pada skenario ini, App Server dapat mengirimkan OTP ke RabbitMQ Server, Mosquitto Server atau WSMessageBroker. WSMessageBroker menggunakan protokol WebSoket dan Basic Authentication. Baik App Server maupun OTP-Pi bertindak sebagai client dari WSMessageBroker.
+In this scenario, the App Server may send the OTP to RabbitMQ Server, Mosquitto Server or WSMessageBroker. WSMessageBroker uses the WebSoket protocol and Basic Authentication. Both App Server and OTP-Pi act as clients of WSMessageBroker.
 
-App Server bertindak sebagai publisher dan OTP-Pi menjadi consumer dari RabbitMQ Server, Mosquitto Server dan WSMessageBroker. Keduanya harus menggunakan channel yang sama agar semua OTP yang dikirimkan oleh App Server dapat diterima oleh OTP-Pi.
+App Server acts as publisher and OTP-Pi becomes consumer of RabbitMQ Server, Mosquitto Server and WSMessageBroker. Both must use the same channel so that all OTPs sent by the App Server can be received by the OTP-Pi.
 
-![OTP-Pi Topology Skenario 2](https://raw.githubusercontent.com/kamshory/OTP-Broker/main/src/main/resources/static/www/lib.assets/images/topology-2.png)
+![OTP-Pi Topology Scenario 2](https://raw.githubusercontent.com/kamshory/OTP-Broker/main/src/main/resources/static/www/lib.assets/images/topology-2.png)
 
-Dari kedua skenario di atas, OTP-Pi akan mengirmkan SMS menggunakan modem GSM yang terpasang secara fisik pada perangkat OTP-Pi. Pengguna dapat menggunakan salah satu dari RabbitMQ Server, Mosquitto Server atau WSMessageBroker dan dapat pula menggunakan keduanya dalam waktu bersamaan. Akan tetapi, apabila App Server mengirimkan sebuah OTP yang sama ke RabbitMQ Server, Mosquitto Server dan WSMessageBroker, maka OTP-Pi akan mengirimkan SMS tersebut dua kali ke nomor penerima.
+From the two scenarios above, the OTP-Pi will send SMS using a GSM modem that is physically attached to the OTP-Pi device. Users can use either RabbitMQ Server, Mosquitto Server or WSMessageBroker and can also use both at the same time. However, if the App Server sends the same OTP to RabbitMQ Server, Mosquitto Server and WSMessageBroker, the OTP-Pi will send the SMS twice to the recipient number.
 
-Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerlukan:
+In this scenario, the user does not need a public IP. Users only need:
 
 1. OTP-Pi
-2. Koneksi internet (tidak memerlukan IP public dan port forwarding)
-3. Server RabbitMQ, Mosquitto atau WSMessageBroker
+2. Internet connection (no need for public IP and port forwarding)
+3. RabbitMQ, Mosquitto or WSMessageBroker servers
 
 **1. RabbitMQ**
 
@@ -830,13 +829,13 @@ Pada skenario ini, pengguna tidak memerlukan IP public. Pengguna hanya memerluka
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.receiver | String | Nomor MSISDN yang akan dibuka blokir |
 
-Server WSMessageBroker berbasis menggunakan protokol WebSocket. Silakan download WSMessageBroker di https://github.com/kamshory/Messenger 
+The WSMessageBroker-based server uses the WebSocket protocol. Please download WSMessageBroker at https://github.com/kamshory/Messenger
 
-**Handhake**
+**Handhakes**
 
-Handshake antara OTP-Pi dengan WSMessageBroker adalah sebagai berikut:
-1. OTP-Pi sebagai client dan WSMessageBroker sebagai server
-2. OTP-Pi mengirim request ke WSMessageBroker
+The handshake between OTP-Pi and WSMessageBroker is as follows:
+1. OTP-Pi as client and WSMessageBroker as server
+2. OTP-Pi sends request to WSMessageBroker
 
 **Contoh Konfigurasi Feeder WebSocket**
 
@@ -861,15 +860,15 @@ Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
 Sec-WebSocket-Version: 13
 ```
 
-Server akan memverifikasi apakah username dan password tersebut benar. Jika benar, server akan memasukkan koneksi tersebut ke dalam daftar penerima pesan.
+The server will verify whether the username and password are correct. If true, the server will add the connection to the list of recipients of the message.
 
-Saat sebuah client mengirimkan pesan, pesan tersebut akan dikirimkan ke semua client dengan channel kecuali si pengirim. Dengan demikian, handshake antara pengirim dan penerima pesan adalah sama.
+When a client sends a message, the message will be sent to all clients by channel except the sender. Thus, the handshake between the sender and the recipient of the message is the same.
 
-OTP-Pi tidak pernah mengirim pesan ke server WSMessageBroker. OTP-Pi hanya menerima pesan sesuai dengan channel yang diinginkan.
+The OTP-Pi never sends messages to the WSMessageBroker server. OTP-Pi only accepts messages according to the desired channel.
 
-## Pengujian Modul
+## Module Testing
 
-**Home** 
+**Home**
 
 1. Service Status : OK
 2. Server Status : OK
@@ -889,29 +888,29 @@ OTP-Pi tidak pernah mengirim pesan ke server WSMessageBroker. OTP-Pi hanya mener
 3. Edit : OK
 4. Delete : OK
 5. Activate : OK
-6. Deactivate : OK
-7. Block : OK
+6. Deactivate: OK
+7. Block: OK
 8. Unblock : OK
-	
-**API Setting**
 
-1. Update : OK
-2. API User
+**API Settings**
+
+1. Update: OK
+2. API Users
 3. View : OK
 4. Add : OK
 5. Edit : OK
 6. Delete : OK
-7. Activate : OK
+7. Activate: OK
 8. Deactivate : OK
 9. Block : OK
 10. Unblock : OK
-	
-**Feeder Setting**
+
+**Feeder Settings**
 
 1. WSMessageBroker : OK
 2. RabbitMQ : OK
-	
-**SMS Setting**
+
+**SMS Settings**
 
 1. Send SMS : OK
 
@@ -920,36 +919,36 @@ OTP-Pi tidak pernah mengirim pesan ke server WSMessageBroker. OTP-Pi hanya mener
 1. Add : OK
 2. Edit : OK
 3. Delete : OK
-4. Activate : OK
+4. Activate: OK
 5. Deactivate : OK
-	
-**Email Setting**
 
-1. Update
+**Email Settings**
 
-**DNS Record**
+1. Updates
+
+**DNS Records**
 
 1. Add : OK
 2. Edit : OK
 3. Delete : OK
-4. Activate : OK
+4. Activate: OK
 5. Deactivate : OK
 6. Proxied : OK
 7. Unproxied : OK
-	
-**Network Setting**
 
-1. DHCP : OK
+**Network Settings**
+
+1. DHCP: OK
 2. Wireless LAN : OK
-3. Ethernet : OK
-	
-**Cloudflare** 
+3. Ethernet: OK
 
-1. Update : OK
+**Cloudflare**
+
+1. Update: OK
 
 **No IP**
 
-1. Update : OK
+1. Update: OK
 
 
 ## AT Command Documentation
