@@ -45,7 +45,6 @@ OTP-Pi requires Raspberry Pi 3 Model B or higher. Minimum RAM is 1 GB and SD Car
 
 # Feature
 
-
 ## Multiple Device
 
 Modem is a list of modems installed on the OTP-Pi. Modems are named based on the make and model of the device and the connection used. The modem can be turned on and off at any time. An inactive modem will not be used to send SMS even if it is physically attached to the OTP-Pi and receiving power.
@@ -92,7 +91,7 @@ The OTP-Pi can connect to the internet using a mobile modem. Thus, users do not 
 
 Administrator Settings is a menu to configure administrator. New OTP-Pi devices don't have an administrator yet. The user must create an administrator first before using it. Please enter the OTP-Pi access point according to the SSID and password listed on the brochure and scan the QR Code on the brochure using a smartphone.
 
-The default address of web management is http://192.168.0.11:8888
+The default address of administration web is http://192.168.0.11:8888
 
 **Username**
 Username is administrator identifier when logging in to OTP-Pi
