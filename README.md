@@ -64,11 +64,11 @@ OTP-Pi allows users to set up SMS sending. For example: a user uses 4 modems wit
 4. Modem 4 with SIM Card from Telecommunications Operator 4
 
 Telecommunications Operator 1 applies a fee of IDR 50 for numbers with prefixes `62871` and `62872` and applies a fee of IDR 350 for numbers other than that.
-Telecommunications Operator 2 applies a fee of Rp 100 for numbers with prefixes `62835`, `62856`, and `62837` and applies a fee of Rp 350 for numbers other than that.
-Telecommunications Operator 3 applies a fee of Rp. 60 for numbers with the prefix `62845` and applies a fee of Rp. 250 for numbers other than that.
-Telecommunications Operator 4 applies a fee of Rp 90 for numbers with prefixes `62848` and `62849` and applies a fee of Rp 200 for numbers other than that.
+Telecommunications Operator 2 applies a fee of IDR 100 for numbers with prefixes `62835`, `62856`, and `62837` and applies a fee of IDR 350 for numbers other than that.
+Telecommunications Operator 3 applies a fee of IDR 60 for numbers with the prefix `62845` and applies a fee of IDR 250 for numbers other than that.
+Telecommunications Operator 4 applies a fee of IDR 90 for numbers with prefixes `62848` and `62849` and applies a fee of IDR 200 for numbers other than that.
 
-From the case above, the lowest cost for other operators is Rp. 200. Users can set modem 4 as the default modem. All SMS other than the prefixes `62871`, `62872`, `62835`, `62856`, `62837` and `62845` will use this modem and are sent via Telecommunications Operator 4. All SMS for numbers with prefixes `62871` and ` 62872` uses modem 1 and is sent via Telecommunication Operator 1. All SMS for numbers with prefix `62835`, `62856`, and `62837` use modem 2 and are sent via Telecommunication Operator 2. All SMS for numbers with prefix `62845` use modem 3 and sent via Telecommunication Operator 3. Thus, the cost of sending SMS will be reduced.
+From the case above, the lowest cost for other operators is IDR 200. Users can set modem 4 as the default modem. All SMS other than the prefixes `62871`, `62872`, `62835`, `62856`, `62837` and `62845` will use this modem and are sent via Telecommunications Operator 4. All SMS for numbers with prefixes `62871` and ` 62872` uses modem 1 and is sent via Telecommunication Operator 1. All SMS for numbers with prefix `62835`, `62856`, and `62837` use modem 2 and are sent via Telecommunication Operator 2. All SMS for numbers with prefix `62845` use modem 3 and sent via Telecommunication Operator 3. Thus, the cost of sending SMS will be reduced.
 
 Users can use 2 or more SIM cards from the same operator. The modem will be used interchangeably with the Round-Robin algorithm when OTP-Pi sends SMS to numbers with the same prefix.
 
@@ -78,7 +78,7 @@ Prefix setting using MSISDN. Thus, in the example above, when a user in Indonesi
 
 ## USSD Support
 
-OTP-Pi allows users to perform USSD commands on individual modems. The USSD command, of course, depends on each cellular operator used on each SIM card installed on each modem.
+OTP-Pi allows users to perform USSD commands on individual modems. The USSD command, of course, depends on each telecomunications operator used on each SIM card installed on each modem.
 
 ## Manual SMS
 
