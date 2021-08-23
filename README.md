@@ -382,7 +382,7 @@ In case the user cannot access the web administrator, either because he forgot h
 
 `/optb/reset-config.ini`
 
-Directory names, file names and extensions must be written correctly in lower case (lower case). The `/optb/reset-config.ini` file should contain the following text:
+Directory name, file name and extension must be written correctly in lower case. The `/optb/reset-config.ini` file should contain the following text:
 
 ```ini
 VERIFY = eyJkZXZpY2VUeXBlIjoiUlBpIiwgImJhc2VOYW1lIjoicmVzZXQtY29uZmlnLmluaSJ9
