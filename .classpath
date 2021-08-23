@@ -6,9 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="jar/cactoos-0.16.jar"/>
-	<classpathentry kind="lib" path="jar/commons-net-3.6.jar"/>
-	<classpathentry kind="lib" path="jar/org-apache-commons-codec.jar"/>
 	<classpathentry kind="lib" path="jar/cron-utils-9.1.5.jar" sorcepath="jar/src/cron-utils-9.1.5-source.jar"/>
 	<classpathentry kind="lib" path="jar/jSerialComm-2.7.0.jar" sourcepath="jar/src/jSerialComm-2.7.0-sources.jar"/>
 	<classpathentry kind="lib" path="jar/jcabi-ssh-1.6.1.jar" sourcepath="jar/src/jcabi-ssh-1.6.1-sources.jar"/>
@@ -19,13 +16,16 @@
 	<classpathentry kind="lib" path="jar/jsch-0.1.55.jar" sourcepath="jar/src/jsch-0.1.55-sources.jar"/>
 	<classpathentry kind="lib" path="jar/guava-20.0.jar" sourcepath="jar/src/guava-20.0-sources.jar"/>
 	<classpathentry kind="lib" path="jar/json-20200518.jar" sourcepath="jar/src/json-20200518-sources.jar"/>
-	<classpathentry kind="lib" path="jar/amqp-client-5.10.0.jar" sourcepath="C:/Users/kamshory/.m2/repository/com/rabbitmq/amqp-client/5.10.0/amqp-client-5.10.0-sources.jar"/>
-	<classpathentry kind="lib" path="jar/slf4j-simple-1.7.30.jar" sourcepath="C:/Users/kamshory/.m2/repository/org/slf4j/slf4j-simple/1.7.30/slf4j-simple-1.7.30-sources.jar"/>
+	<classpathentry kind="lib" path="jar/amqp-client-5.10.0.jar" sourcepath="jar/src/amqp-client-5.10.0-sources.jar"/>
+	<classpathentry kind="lib" path="jar/slf4j-simple-1.7.30.jar" sourcepath="jar/src/slf4j-simple-1.7.30-sources.jar"/>
 	<classpathentry kind="lib" path="jar/slf4j-api-1.7.30.jar" sourcepath="jar/src/slf4j-api-1.7.30-sources.jar"/>
 	<classpathentry kind="lib" path="jar/http-20070405.jar" sourcepath="jar/src/http-20070405-sources.jar"/>
 	<classpathentry kind="lib" path="jar/log4j-api-2.13.3.jar" sourcepath="jar/src/log4j-api-2.13.3-sources.jar"/>
-	<classpathentry kind="lib" path="jar/log4j-core-2.13.3.jar" sourcepath="C:/Users/kamshory/.m2/repository/org/apache/logging/log4j/log4j-core/2.13.3/log4j-core-2.13.3-sources.jar"/>
+	<classpathentry kind="lib" path="jar/log4j-core-2.13.3.jar" sourcepath="jar/src/log4j-core-2.13.3-sources.jar"/>
 	<classpathentry kind="lib" path="jar/org.openjdk.dio-1.1.0.jar" sourcepath="jar/src/org.openjdk.dio-1.1.0-sources.jar"/>
 	<classpathentry kind="lib" path="jar/javax.mail-1.4.5.jar" sourcepath="jar/src/javax.mail-1.4.5-sources.jar"/>
+	<classpathentry kind="lib" path="jar/org.apache.commons.codec-1.8.jar" sourcepath="jar/src/org.apache.commons.codec-1.8-sources.jar"/>
+	<classpathentry kind="lib" path="jar/commons-net-3.6.jar" sourcepath="jar/src/commons-net-3.6-sources.jar"/>
+	<classpathentry kind="lib" path="jar/commons-codec-1.15.jar" sourcepath="jar/src/commons-codec-1.15-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
