@@ -410,7 +410,7 @@ RESET_VENDOR_DYNU = false
 RESET_VENDOR_NOIP = false
 ```
 
-VERIFY must be set with `eyJkZXZpY2VUeXBlIjoiUlBpIiwgImJhc2VOYW1lIjoicmVzZXQtY29uZmlnLmluaSJ9`. Other configuration properties must be set wit `true` or `false`. `true` means that yo will reset the configuration and `false` means that you will not reset the configuration. 
+VERIFY must be set with `eyJkZXZpY2VUeXBlIjoiUlBpIiwgImJhc2VOYW1lIjoicmVzZXQtY29uZmlnLmluaSJ9`. Other configuration properties must be set with `true` or `false`. `true` means that you will reset the configuration and `false` means that you will not reset the configuration. 
 
 Reset device will do the following things:
 
