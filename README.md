@@ -449,7 +449,7 @@ Host: sub.domain.tld
 Connection: close
 User-agent: KSPS
 Content-type: application/json
-Content-length: 157
+Content-length: 153
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 {
@@ -458,19 +458,19 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 		"date_time": 1629685778,
 		"id": 123456,
 		"receiver": "08126666666",
-		"message": "OTP Anda adalah 1234"
+		"message": "Your OTP is 1234"
 	}
 }
 ```
 
-| Parameter | Tipe | Deskripsi |
+| Parameter | Type | Description |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP-Pi |
-| data | Objek | Data untuk OTP-Pi | 
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.id | String | ID SMS |
-| `data`.receiver | String | Nomor MSISDN penerima |
-| `data`.message| String | Pesan SMS |
+| `data`.id | String | SMS ID |
+| `data`.receiver | String | MSISDN of the receiver |
+| `data`.message | String | Content of the SMS |
 
 **Send Email Request**
 
@@ -480,7 +480,7 @@ Host: sub.domain.tld
 Connection: close
 User-agent: KSPS
 Content-type: application/json
-Content-length: 166
+Content-length: 162
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 {
@@ -489,19 +489,19 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 		"date_time": 1629685778,
 		"id": 123456,
 		"receiver": "someone@domain.tld",
-		"message": "OTP Anda adalah 1234"
+		"message": "Your OTP is 1234"
 	}
 }
 ```
 
-| Parameter | Tipe | Deskripsi |
+| Parameter | Type | Description |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP-Pi |
-| data | Objek | Data untuk OTP-Pi | 
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.id | String | ID SMS |
-| `data`.receiver | String | Alamat email penerima |
-| `data`.message| String | Pesan SMS |
+| `data`.id | String | SMS ID |
+| `data`.receiver | String | Recipient's email address |
+| `data`.message | String | Content of the SMS |
 
 
 **Block Number Request**
@@ -524,12 +524,12 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 }
 ```
 
-| Parameter | Tipe | Deskripsi |
+| Parameter | Type | Description |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP-Pi |
-| data | Objek | Data untuk OTP-Pi | 
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.msisdn | String | Nomor MSISDN yang akan diblokir |
+| `data`.msisdn | String | MSISDN number to block |
 
 **Unblock Number Request**
 
@@ -551,12 +551,12 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 }
 ```
 
-| Parameter | Tipe | Deskripsi |
+| Parameter | Type | Description |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP-Pi |
-| data | Objek | Data untuk OTP-Pi | 
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.receiver | String | Nomor MSISDN yang akan dibuka blokir |
+| `data`.receiver | String | MSISDN number to be unblocked |
 
 ### Scenario 2 - OTP-Pi Can't Access App Server
 
@@ -585,19 +585,19 @@ In this scenario, the user does not need a public IP. Users only need:
 		"date_time": 1629685778,
 		"id": 123456,
 		"receiver": "08126666666",
-		"message": "OTP Anda adalah 1234"
+		"message": "Your OTP is 1234"
 	}
 }
 ```
 
-| Parameter | Tipe | Deskripsi |
+| Parameter | Type | Description |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP-Pi |
-| data | Objek | Data untuk OTP-Pi | 
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.id | String | ID SMS |
-| `data`.receiver | String | Nomor MSISDN penerima |
-| `data`.message| String | Pesan SMS |
+| `data`.id | String | SMS ID |
+| `data`.receiver | String | MSISDN of the receiver |
+| `data`.message | String | Content of the SMS |
 
 **Send Email Request**
 
@@ -608,19 +608,19 @@ In this scenario, the user does not need a public IP. Users only need:
 		"date_time": 1629685778,
 		"id": 123456,
 		"receiver": "someone@domain.tld",
-		"message": "OTP Anda adalah 1234"
+		"message": "Your OTP is 1234"
 	}
 }
 ```
 
-| Parameter | Tipe | Deskripsi |
+| Parameter | Type | Description |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP-Pi |
-| data | Objek | Data untuk OTP-Pi | 
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.id | String | ID SMS |
-| `data`.receiver | String | Alamat email penerima |
-| `data`.message| String | Pesan SMS |
+| `data`.id | String | SMS ID |
+| `data`.receiver | String | Recipient's email address |
+| `data`.message | String | Content of the SMS |
 
 **Block Number Request**
 
@@ -634,12 +634,12 @@ In this scenario, the user does not need a public IP. Users only need:
 }
 ```
 
-| Parameter | Tipe | Deskripsi |
+| Parameter | Type | Description |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP-Pi |
-| data | Objek | Data untuk OTP-Pi | 
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.receiver | String | Nomor MSISDN yang akan diblokir |
+| `data`.receiver | String | MSISDN number to block |
 
 **Unblock Number Request**
 
@@ -653,12 +653,12 @@ In this scenario, the user does not need a public IP. Users only need:
 }
 ```
 
-| Parameter | Tipe | Deskripsi |
+| Parameter | Type | Description |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP-Pi |
-| data | Objek | Data untuk OTP-Pi | 
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.receiver | String | Nomor MSISDN yang akan dibuka blokir |
+| `data`.receiver | String | MSISDN number to be unblocked |
 
 **2. Mosquitto**
 
@@ -671,19 +671,19 @@ In this scenario, the user does not need a public IP. Users only need:
 		"date_time": 1629685778,
 		"id": 123456,
 		"receiver": "08126666666",
-		"message": "OTP Anda adalah 1234"
+		"message": "Your OTP is 1234"
 	}
 }
 ```
 
-| Parameter | Tipe | Deskripsi |
+| Parameter | Type | Description |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP-Pi |
-| data | Objek | Data untuk OTP-Pi | 
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.id | String | ID SMS |
-| `data`.receiver | String | Nomor MSISDN penerima |
-| `data`.message| String | Pesan SMS |
+| `data`.id | String | SMS ID |
+| `data`.receiver | String | MSISDN of the receiver |
+| `data`.message | String | Content of the SMS |
 
 **Send Email Request**
 
@@ -694,19 +694,19 @@ In this scenario, the user does not need a public IP. Users only need:
 		"date_time": 1629685778,
 		"id": 123456,
 		"receiver": "someone@domain.tld",
-		"message": "OTP Anda adalah 1234"
+		"message": "Your OTP is 1234"
 	}
 }
 ```
 
-| Parameter | Tipe | Deskripsi |
+| Parameter | Type | Description |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP-Pi |
-| data | Objek | Data untuk OTP-Pi | 
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.id | String | ID SMS |
-| `data`.receiver | String | Alamat email penerima |
-| `data`.message| String | Pesan SMS |
+| `data`.id | String | SMS ID |
+| `data`.receiver | String | Recipient's email address |
+| `data`.message | String | Content of the SMS |
 
 **Block Number Request**
 
@@ -720,12 +720,12 @@ In this scenario, the user does not need a public IP. Users only need:
 }
 ```
 
-| Parameter | Tipe | Deskripsi |
+| Parameter | Type | Description |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP-Pi |
-| data | Objek | Data untuk OTP-Pi | 
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.receiver | String | Nomor MSISDN yang akan diblokir |
+| `data`.receiver | String | MSISDN number to block |
 
 **Unblock Number Request**
 
@@ -739,12 +739,12 @@ In this scenario, the user does not need a public IP. Users only need:
 }
 ```
 
-| Parameter | Tipe | Deskripsi |
+| Parameter | Type | Description |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP-Pi |
-| data | Objek | Data untuk OTP-Pi | 
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.receiver | String | Nomor MSISDN yang akan dibuka blokir |
+| `data`.receiver | String | MSISDN number to be unblocked |
 
 **3. WSMessageBroker**
 
@@ -757,19 +757,19 @@ In this scenario, the user does not need a public IP. Users only need:
 		"date_time": 1629685778,
 		"id": 123456,
 		"receiver": "08126666666",
-		"message": "OTP Anda adalah 1234"
+		"message": "Your OTP is 1234"
 	}
 }
 ```
 
-| Parameter | Tipe | Deskripsi |
+| Parameter | Type | Description |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP-Pi |
-| data | Objek | Data untuk OTP-Pi | 
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.id | String | ID SMS |
-| `data`.receiver | String | Nomor MSISDN penerima |
-| `data`.message| String | Pesan SMS |
+| `data`.id | String | SMS ID |
+| `data`.receiver | String | MSISDN of the receiver |
+| `data`.message | String | Content of the SMS |
 
 **Send Email Request**
 
@@ -780,19 +780,19 @@ In this scenario, the user does not need a public IP. Users only need:
 		"date_time": 1629685778,
 		"id": 123456,
 		"receiver": "someone@domain.tld",
-		"message": "OTP Anda adalah 1234"
+		"message": "Your OTP is 1234"
 	}
 }
 ```
 
-| Parameter | Tipe | Deskripsi |
+| Parameter | Type | Description |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP-Pi |
-| data | Objek | Data untuk OTP-Pi | 
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.id | String | ID SMS |
-| `data`.receiver | String | Alamat email penerima |
-| `data`.message| String | Pesan SMS |
+| `data`.id | String | SMS ID |
+| `data`.receiver | String | Recipient's email address |
+| `data`.message | String | Content of the SMS |
 
 **Block Number Request**
 
@@ -806,12 +806,12 @@ In this scenario, the user does not need a public IP. Users only need:
 }
 ```
 
-| Parameter | Tipe | Deskripsi |
+| Parameter | Type | Description |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP-Pi |
-| data | Objek | Data untuk OTP-Pi | 
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.receiver | String | Nomor MSISDN yang akan diblokir |
+| `data`.receiver | String | MSISDN number to block |
 
 **Unblock Number Request**
 
@@ -826,12 +826,12 @@ In this scenario, the user does not need a public IP. Users only need:
 }
 ```
 
-| Parameter | Tipe | Deskripsi |
+| Parameter | Type | Description |
 | --------- | ---- | ----------|
-| command | String | Perintah ke OTP-Pi |
-| data | Objek | Data untuk OTP-Pi | 
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.receiver | String | Nomor MSISDN yang akan dibuka blokir |
+| `data`.receiver | String | MSISDN number to be unblocked |
 
 The WSMessageBroker-based server uses the WebSocket protocol. Please download WSMessageBroker at https://github.com/kamshory/Messenger
 
