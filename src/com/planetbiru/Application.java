@@ -409,29 +409,6 @@ public class Application {
 			logger.info("Reset File Not Exists");
 		}
 	}
-	
-	private static void resetVendorConfig(Properties props) {
-		if(props.getOrDefault("RESET_VENDOR_AFRAID", "").toString().equalsIgnoreCase("true"))
-		{
-			ConfigVendorAfraid.reset();
-			ConfigVendorAfraid.save();
-		}
-		if(props.getOrDefault("RESET_VENDOR_CLOUDFLARE", "").toString().equalsIgnoreCase("true"))
-		{
-			ConfigVendorCloudflare.reset();
-			ConfigVendorCloudflare.save();
-		}
-		if(props.getOrDefault("RESET_VENDOR_DYNU", "").toString().equalsIgnoreCase("true"))
-		{
-			ConfigVendorDynu.reset();
-			ConfigVendorDynu.save();
-		}
-		if(props.getOrDefault("RESET_VENDOR_NOIP", "").toString().equalsIgnoreCase("true"))
-		{
-			ConfigVendorNoIP.reset();
-			ConfigVendorNoIP.save();
-		}		
-	}
 
 	private static void resetAdvancedConfig(Properties props) {
 		if(props.getOrDefault("RESET_API", "").toString().equalsIgnoreCase("true"))
@@ -464,6 +441,11 @@ public class Application {
 			ConfigSubscriberAMQP.reset();
 			ConfigSubscriberAMQP.save();
 		}
+		if(props.getOrDefault("RESET_FEEDER_MQTT", "").toString().equalsIgnoreCase("true"))
+		{
+			ConfigSubscriberMQTT.reset();
+			ConfigSubscriberMQTT.save();
+		}
 		if(props.getOrDefault("RESET_FEEDER_WS", "").toString().equalsIgnoreCase("true"))
 		{
 			ConfigSubscriberWS.reset();
@@ -495,6 +477,29 @@ public class Application {
 			ConfigSMTP.save();
 		}
 		
+	}
+	
+	private static void resetVendorConfig(Properties props) {
+		if(props.getOrDefault("RESET_VENDOR_AFRAID", "").toString().equalsIgnoreCase("true"))
+		{
+			ConfigVendorAfraid.reset();
+			ConfigVendorAfraid.save();
+		}
+		if(props.getOrDefault("RESET_VENDOR_CLOUDFLARE", "").toString().equalsIgnoreCase("true"))
+		{
+			ConfigVendorCloudflare.reset();
+			ConfigVendorCloudflare.save();
+		}
+		if(props.getOrDefault("RESET_VENDOR_DYNU", "").toString().equalsIgnoreCase("true"))
+		{
+			ConfigVendorDynu.reset();
+			ConfigVendorDynu.save();
+		}
+		if(props.getOrDefault("RESET_VENDOR_NOIP", "").toString().equalsIgnoreCase("true"))
+		{
+			ConfigVendorNoIP.reset();
+			ConfigVendorNoIP.save();
+		}		
 	}
 
 	private static Properties loadResetProfile() 

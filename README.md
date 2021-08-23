@@ -378,14 +378,36 @@ The Real Time Clock module is built into the device and is programmed to work as
 
 ## Reset Device
 
-In case the user cannot access the web administrator, either because he forgot his password, or because the network configuration is messed up, the user can reset the device. Reset the device is done by plugging in a flash disk containing the following files:
+In case the user cannot access the web administrator, either because he forgot his password, or because the network configuration is messed up, the user can reset the device. Reset the device is done by plugging in a flash disk containing the following file:
 
-`/optb/reset.txt`
+`/optb/reset-config.ini`
 
-Nama direktori, nama file dan ekstensi harus ditulis dengan benar dalam huruf kecil (lower case). File `/optb/reset.txt` harus beriksi tesk sebagai berikut:
+Directory names, file names and extensions must be written correctly in lower case (lower case). The `/optb/reset-config.ini` file should contain the following text:
 
-```txt
-????????????????
+```ini
+VERIFY = eyJkZXZpY2VUeXBlIjoiUlBpIiwgImJhc2VOYW1lIjoicmVzZXQtY29uZmlnLmluaSJ9
+RESET_DHCP = true
+RESET_WLAN = true
+RESET_ETHERNET = true
+RESET_USER = true
+
+RESET_API = false
+RESET_API_USER = false
+RESET_BLOCKING = false
+RESET_DDNS = false
+RESET_EMAIL = false
+RESET_FEEDER_AMQP = false
+RESET_FEEDER_WS = false
+RESET_FIREWALL = false
+RESET_KEYSTORE = false
+RESET_MODEM = false
+RESET_SMS = false
+RESET_SMTP = false
+
+RESET_VENDOR_AFRAID = false
+RESET_VENDOR_CLOUDFLARE = false
+RESET_VENDOR_DYNU = false
+RESET_VENDOR_NOIP = false
 ```
 
 Reset device will do the following things:
