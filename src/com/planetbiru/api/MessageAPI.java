@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.planetbiru.config.ConfigBlocking;
+import com.planetbiru.config.ConfigGeneral;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.constant.ResponseCode;
@@ -166,15 +167,33 @@ public class MessageAPI {
 		{
 			String receiver = data.optString(JsonKey.RECEIVER, "");
 			String textMessage = data.optString(JsonKey.MESSAGE, "");
-			try 
+			boolean dropOTPExpire = ConfigGeneral.isDropExpireOTP();
+			boolean sendOTP = false;
+			if(dropOTPExpire)
 			{
-				jsonData = GSMUtil.sendSMS(receiver, textMessage, ste);
-				responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);			
-			} 
-			catch (GSMException e) 
+				long currentTime = System.currentTimeMillis();
+				long expiration = (data.optLong("date_time", 0) * 1000) + ConfigGeneral.getOtpExpiration();
+				if(currentTime < expiration)
+				{
+					sendOTP = true;
+				}
+			}
+			else
 			{
-				responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.NO_DEVICE_CONNECTED);
-				responseJSON.put("error", e.getMessage());
+				sendOTP = true;
+			}
+			if(sendOTP)
+			{
+				try 
+				{
+					jsonData = GSMUtil.sendSMS(receiver, textMessage, ste);
+					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);			
+				} 
+				catch (GSMException e) 
+				{
+					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.NO_DEVICE_CONNECTED);
+					responseJSON.put("error", e.getMessage());
+				}
 			}
 		}
 		responseJSON.put(JsonKey.COMMAND, command);
@@ -187,19 +206,37 @@ public class MessageAPI {
 		String subject = data.optString("subject", "");
 		String message = data.optString("message", "");
 		String result = "";
-		try 
+		boolean dropOTPExpire = ConfigGeneral.isDropExpireOTP();
+		boolean sendOTP = false;
+		if(dropOTPExpire)
 		{
-			MailUtil.send(to, subject, message, null);
-			result = "The message was sent successfuly";
-			responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
-			responseJSON.put(JsonKey.MESSAGE, result);
-		} 
-		catch (MessagingException | NoEmailAccountException e) 
+			long currentTime = System.currentTimeMillis();
+			long expiration = (data.optLong("date_time", 0) * 1000) + ConfigGeneral.getOtpExpiration();
+			if(currentTime < expiration)
+			{
+				sendOTP = true;
+			}
+		}
+		else
 		{
-			result = e.getMessage();
-			responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.FAILED);
-			responseJSON.put(JsonKey.MESSAGE, result);
-		}	
+			sendOTP = true;
+		}
+		if(sendOTP)
+		{
+			try 
+			{
+				MailUtil.send(to, subject, message, null);
+				result = "The message was sent successfuly";
+				responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
+				responseJSON.put(JsonKey.MESSAGE, result);
+			} 
+			catch (MessagingException | NoEmailAccountException e) 
+			{
+				result = e.getMessage();
+				responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.FAILED);
+				responseJSON.put(JsonKey.MESSAGE, result);
+			}	
+		}
 		responseJSON.put(JsonKey.COMMAND, command);
 		return responseJSON;	
 	}

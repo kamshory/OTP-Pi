@@ -22,6 +22,8 @@ public class ConfigGeneral {
 	private static String ntpUpdateInterval = "";	
 	private static String restartService = "";
 	private static String restartDevice = "";
+	private static boolean dropExpireOTP = false;
+	private static long otpExpiration = 30000;
 	private static Logger logger = Logger.getLogger(ConfigGeneral.class);
 
 	private ConfigGeneral()
@@ -54,6 +56,8 @@ public class ConfigGeneral {
 					ConfigGeneral.ntpUpdateInterval = json.optString("ntpUpdateInterval", "").trim();
 					ConfigGeneral.restartService = json.optString("restartService", "").trim();
 					ConfigGeneral.restartDevice = json.optString("restartDevice", "").trim();
+					ConfigGeneral.setDropExpireOTP(json.optBoolean("dropExpireOTP", false));
+					ConfigGeneral.setOtpExpiration(json.optLong("otpExpiration", 0));
 				}
 			}
 		} 
@@ -120,6 +124,8 @@ public class ConfigGeneral {
 		config.put("ntpUpdateInterval", ConfigGeneral.ntpUpdateInterval);
 		config.put("restartService", ConfigGeneral.restartService);
 		config.put("restartDevice", ConfigGeneral.restartDevice);
+		config.put("dropExpireOTP", ConfigGeneral.isDropExpireOTP());
+		config.put("otpExpiration", ConfigGeneral.getOtpExpiration());
 		return config;
 	}
 
@@ -181,6 +187,22 @@ public class ConfigGeneral {
 
 	public static void setNextValid(Date nextValid) {
 		ConfigGeneral.nextValid = nextValid;
+	}
+
+	public static boolean isDropExpireOTP() {
+		return dropExpireOTP;
+	}
+
+	public static void setDropExpireOTP(boolean dropOTPExpire) {
+		ConfigGeneral.dropExpireOTP = dropOTPExpire;
+	}
+
+	public static long getOtpExpiration() {
+		return otpExpiration;
+	}
+
+	public static void setOtpExpiration(long otpExpiration) {
+		ConfigGeneral.otpExpiration = otpExpiration;
 	}
 	
 }

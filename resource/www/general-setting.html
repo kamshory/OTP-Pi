@@ -59,7 +59,7 @@
                                 <li><a href="email-account.html">Email Account</a></li>
                                 <li><a href="network-setting.html">Network Setting</a></li>
                                 <li><a href="firewall.html">Firewall</a></li>
-                <li><a href="open-port.html">Open Port</a></li>
+                                <li><a href="open-port.html">Open Port</a></li>
                                 <li><a href="keystore.html">Keystore</a></li>
                                 <li><a href="cron.html">Cron</a></li>
                                 <li role="separator" class="divider"></li>
@@ -89,6 +89,16 @@
                         <tr>
                             <td>Device Name</td>
                             <td><input type="text" name="device_name" id="device_name" value="OTP-Pi">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>OTP Expiration</td>
+                            <td><input type="number" min="5000" name="otp_expiration" id="otp_expiration" value="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Drop Expire OTP</td>
+                            <td><label for="drop_expire_otp"><input type="checkbox" name="drop_expire_otp" id="drop_expire_otp" value="1"> Drop Expire OTP</label>
                             </td>
                         </tr>
                         <tr>
@@ -185,6 +195,10 @@
                 $('[name="ntp_update_interval"]').val(data.ntpUpdateInterval);
                 $('[name="restart_service"]').val(data.restartService);
                 $('[name="restart_device"]').val(data.restartDevice);
+
+                $('[name="otp_expiration"]').val(data.otpExpiration);
+                $('[name="drop_expire_otp"]').prop('checked', data.dropExpireOTP);
+
             }
         });
     });
