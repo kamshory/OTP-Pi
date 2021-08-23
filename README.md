@@ -841,7 +841,7 @@ The handshake between OTP-Pi and WSMessageBroker is as follows:
 1. OTP-Pi as client and WSMessageBroker as server
 2. OTP-Pi sends request to WSMessageBroker
 
-**WebSocket Feeder Configuration Example**
+**WebSocket Subscriber Configuration Example**
 
 | Parameter | Value |
 |--|--|
