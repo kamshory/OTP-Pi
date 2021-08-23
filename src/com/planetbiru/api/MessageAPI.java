@@ -1,6 +1,8 @@
 package com.planetbiru.api;
 
 
+import javax.mail.MessagingException;
+
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
