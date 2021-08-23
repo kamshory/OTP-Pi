@@ -56,8 +56,8 @@ public class ConfigGeneral {
 					ConfigGeneral.ntpUpdateInterval = json.optString("ntpUpdateInterval", "").trim();
 					ConfigGeneral.restartService = json.optString("restartService", "").trim();
 					ConfigGeneral.restartDevice = json.optString("restartDevice", "").trim();
-					ConfigGeneral.setDropExpireOTP(json.optBoolean("dropExpireOTP", false));
-					ConfigGeneral.setOtpExpiration(json.optLong("otpExpiration", 0));
+					ConfigGeneral.dropExpireOTP = json.optBoolean("dropExpireOTP", false);
+					ConfigGeneral.otpExpiration = json.optLong("otpExpiration", 0);
 				}
 			}
 		} 
@@ -124,8 +124,8 @@ public class ConfigGeneral {
 		config.put("ntpUpdateInterval", ConfigGeneral.ntpUpdateInterval);
 		config.put("restartService", ConfigGeneral.restartService);
 		config.put("restartDevice", ConfigGeneral.restartDevice);
-		config.put("dropExpireOTP", ConfigGeneral.isDropExpireOTP());
-		config.put("otpExpiration", ConfigGeneral.getOtpExpiration());
+		config.put("dropExpireOTP", ConfigGeneral.dropExpireOTP);
+		config.put("otpExpiration", ConfigGeneral.otpExpiration);
 		return config;
 	}
 
