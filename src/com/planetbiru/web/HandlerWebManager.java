@@ -62,7 +62,6 @@ import com.sun.net.httpserver.HttpHandler;
 
 public class HandlerWebManager implements HttpHandler {
 
-	@SuppressWarnings("unused")
 	private static Logger logger = Logger.getLogger(HandlerWebManager.class);
 	
 	@Override

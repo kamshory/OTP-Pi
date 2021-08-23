@@ -5647,3 +5647,7 @@ Caused by: java.net.BindException: Address already in use: bind
 2021-08-23 10:39:15 [INFO  ] Application                     :195  - Service started
 2021-08-23 10:57:52 [INFO  ] Application                     :195  - Service started
 2021-08-23 11:03:32 [INFO  ] Application                     :195  - Service started
+2021-08-23 11:54:09 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-08-23 11:54:09 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-08-23 11:54:09 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-08-23 11:54:09 [INFO  ] GSM                             :124  - AT Command : AT+CNUM

@@ -1,0 +1,663 @@
+[INFO   ] 2021-08-23 10:18:58.562 [http-nio-8080-exec-9] RequestHandler                 : Receipt request from 127.0.0.1
+[INFO   ] 2021-08-23 10:18:58.562 [http-nio-8080-exec-9] RequestHandler                 : Request header       [accept:"text/plain, application/json, application/*+json, */*", content-type:"application/json", content-length:"1460", host:"syb-adapter:8080", connection:"Keep-Alive", user-agent:"Apache-HttpClient/4.5.13 (Java/1.8.0_251)", accept-encoding:"gzip,deflate"]
+[INFO   ] 2021-08-23 10:18:58.562 [http-nio-8080-exec-9] RequestHandler                 : Request body         {
+  "transaction_id": 15949,
+  "request": {
+    "data": {
+      "amount": 550000,
+      "fwd_stan": "000020",
+      "fwd_reference_number": "000000000021",
+      "product_code": "305111",
+      "reference_number": "123456789992",
+      "currency_code": "IDR",
+      "total_admin_fee": "2500",
+      "customer_reference_id_2": "0",
+      "date_time": "2020-07-13T11:11:14.558Z",
+      "customer_reference_id_1": "0",
+      "contract_number": "5040000000466",
+      "customer_name": "DUMMY NONTAGLIS 6",
+      "channel_type": "6011",
+      "customer_id": "5040000000466",
+      "merchant_type": "6021"
+    },
+    "command": "payment"
+  },
+  "product_type": "1003",
+  "partner_product_info": {
+    "price_buy": 0,
+    "destination_endpoint": "http://syb-adapter:8080/process-biller",
+    "partner_id": 32,
+    "partner_name": "SYB",
+    "partner_product_id": 146,
+    "partner_product_code": "305111",
+    "fee_partner": 500,
+    "product_name": "PLN Non Tagihan Listrik",
+    "product_routing_type_id": 50,
+    "suspended": false
+  },
+  "product_info": {
+    "amount": 0,
+    "product_subcategory_id": 4,
+    "fee_inquiry": 0,
+    "price": 0,
+    "product_id": 3,
+    "name": "PLN Non Tagihan Listrik",
+    "require_routing": true,
+    "fee_payment": 900,
+    "fee_advice": 0,
+    "product_type_id": "1003",
+    "product_code": "054504",
+    "product_category_id": "005"
+  },
+  "client_name": "Alto Saja",
+  "reference_number": "123456789992",
+  "client_id": 6
+}
+[INFO   ] 2021-08-23 10:18:58.563 [http-nio-8080-exec-9] TransactionRouter              : productTypeID : 1003
+[INFO   ] 2021-08-23 10:18:58.563 [http-nio-8080-exec-9] TransactionRouter              : Electricyty Classic
+[INFO   ] 2021-08-23 10:18:58.563 [http-nio-8080-exec-9] TransactionIElectricityClassic : productTypeID : 1003
+[INFO   ] 2021-08-23 10:18:58.563 [http-nio-8080-exec-9] TransactionIElectricityClassic : Nonusage Payment
+[INFO   ] 2021-08-23 10:18:58.564 [http-nio-8080-exec-9] TransactionIElectricityClassic :   2 '2724815671800012345'
+  3 '800000'
+  4 '000000552500'
+  7 '0713111114'
+ 11 '000020'
+ 12 '101858'
+ 13 '0823'
+ 14 '9912'
+ 15 '0824'
+ 18 '5612'
+ 32 '360003'
+ 37 '000000000021'
+ 41 'KOI     '
+ 48 '30511105040000000466       23082021101858DUMMY NONTAGLIS 6             000000550000000000002500                                                                '
+ 49 '360'
+120 ''
+
+[INFO   ] 2021-08-23 10:18:58.565 [http-nio-8080-exec-9] TransactionIElectricityClassic : Request To SYB         : '{
+    "date": "23082021",
+    "total_bill_amount": "552500",
+    "pin_data": "",
+    "issuer_switch_id": "12345678901",
+    "fwd_stan": "000020",
+    "transaction_indicator": "3",
+    "language": "0",
+    "fwd_reference_number": "000000000021",
+    "expiration_date": "9912",
+    "terminal_location": "ALTO",
+    "total_admin_fee": "2500",
+    "fwd_institution_code": "360003",
+    "card_acceptor_identification_code": "111111111111111",
+    "date_time": "2020-07-13T11:11:14.558Z",
+    "local_time": "101858",
+    "pan": "2724815671800012345",
+    "icc_data": "",
+    "destination_account": "1234567890",
+    "settlement_date": "0824",
+    "bill_amount": "550000",
+    "processing_code": "800000",
+    "reference_number": "000000000021",
+    "dst_institution_code": "1234567",
+    "local_date": "0823",
+    "transmission_date_time": "0713111114558",
+    "transaction_currency_code": "360",
+    "source_account": "1234567890",
+    "product_code": "305111",
+    "original_data_element": "",
+    "biller_aggregator_id": "12345678901",
+    "currency_code": "IDR",
+    "point_of_service_condition_mode": "00",
+    "contract_number": "5040000000466",
+    "acq_institution_code": "360003",
+    "rec_institution_code": "1234567",
+    "channel_type": "5612",
+    "merchant_type": "6021",
+    "track_2_data": "9999999999999999999=000000000000",
+    "amount": "550000",
+    "payment_mode": "12",
+    "biller_aggregator_switch_id": "12345678901",
+    "customer_reference_id_2": "5040000000466",
+    "customer_reference_id_1": "0",
+    "card_acceptor_terminal_id": "KOI",
+    "point_of_service_entry_mode": "000",
+    "stan": "000020",
+    "customer_name": "DUMMY NONTAGLIS 6",
+    "time": "101858",
+    "customer_id": "5040000000466"
+}'
+[INFO   ] 2021-08-23 10:18:58.565 [http-nio-8080-exec-9] TransactionMaster              : Send message to  : 127.0.0.1 port 8081
+[INFO   ] 2021-08-23 10:18:58.565 [http-nio-8080-exec-9] TransactionMaster              : Request Message  : 0200F23E40010881800000000000000001001927248156718000123458000000000005525000713111114000020101858082399120824561206360003000000000021KOI     15930511105040000000466       23082021101858DUMMY NONTAGLIS 6             000000550000000000002500                                                                36000
+[INFO   ] 2021-08-23 10:18:58.565 [http-nio-8080-exec-9] Transporter                    : Send message without header
+[INFO   ] 2021-08-23 10:18:58.566 [http-nio-8080-exec-9] Transporter                    : Read message without header
+[INFO   ] 2021-08-23 10:18:58.921 [http-nio-8080-exec-9] TransactionMaster              : Response Message : 0210F23E40010A8180040000000000000100192724815671800012345800000000000750000071311111400002010185808239912082456120636000300000000002103KOI     15930511105040000000466       23082021101858DUMMY NONTAGLIS 3             000000750000000000002500                                                                36051218       STRUK NON TAGIHAN LISTRIK|TRANSAKSI      : PERUBAHAN DAYA|NO REGISTRASI  : 5040000000466|TGL REGISTRASI : 2020-09-30|NAMA           : DUMMY NONTAGLIS 3|IDPEL          : 528466664594|BIAYA PLN      : Rp.         750.000|NO REF         : rnE817DE37B0CCD3A3||    PLN menyatakan struk ini sebagai|      bukti pembayaran yang sah.||ADMIN BANK     : Rp.           2.500|TOTAL BAYAR    : Rp.         752.500||  Informasi Hubungi Contact Center 123|                Atau|  Hub. PLN Terdekat : [no. telp rayon]|0000
+[INFO   ] 2021-08-23 10:18:58.923 [http-nio-8080-exec-9] TransactionIElectricityClassic : Response Data From SYB : '{
+    "date": "23082021",
+    "total_bill_amount": "750000",
+    "response_code": "03",
+    "transaction_currency_code": "360",
+    "language": "0",
+    "expiration_date": "9912",
+    "product_code": "305111",
+    "total_admin_fee": "2500",
+    "local_time": "101858",
+    "screen_receipt_data": "18       STRUK NON TAGIHAN LISTRIK|TRANSAKSI      : PERUBAHAN DAYA|NO REGISTRASI  : 5040000000466|TGL REGISTRASI : 2020-09-30|NAMA           : DUMMY NONTAGLIS 3|IDPEL          : 528466664594|BIAYA PLN      : Rp.         750.000|NO REF         : rnE817DE37B0CCD3A3||    PLN menyatakan struk ini sebagai|      bukti pembayaran yang sah.||ADMIN BANK     : Rp.           2.500|TOTAL BAYAR    : Rp.         752.500||  Informasi Hubungi Contact Center 123|                Atau|  Hub. PLN Terdekat : [no. telp rayon]|00",
+    "acq_institution_code": "360003",
+    "pan": "2724815671800012345",
+    "channel_type": "5612",
+    "settlement_date": "0824",
+    "bill_amount": "750000",
+    "switch_relay_key": "",
+    "processing_code": "800000",
+    "reference_number": "000000000021",
+    "local_date": "0823",
+    "reference_1": "                                ",
+    "transmission_date_time": "0713111114",
+    "reference_2": "                                ",
+    "card_acceptor_terminal_id": "KOI     ",
+    "stan": "000020",
+    "time": "101858",
+    "customer_name": "DUMMY NONTAGLIS 3             ",
+    "customer_id": "5040000000466       "
+}'
+[INFO   ] 2021-08-23 10:18:58.923 [http-nio-8080-exec-9] TransactionIElectricityClassic : productTypeID    : 1003
+[INFO   ] 2021-08-23 10:18:58.923 [http-nio-8080-exec-9] TransactionIElectricityClassic : followerCommand  : {"suspect": [
+    "reversal",
+    "advice"
+]}
+[INFO   ] 2021-08-23 10:18:58.923 [http-nio-8080-exec-9] TransactionIElectricityClassic : jsonResponse     : {
+    "response_code": "002",
+    "message_to_provider": "0200F23E40010881800000000000000001001927248156718000123458000000000005525000713111114000020101858082399120824561206360003000000000021KOI     15930511105040000000466       23082021101858DUMMY NONTAGLIS 6             000000550000000000002500                                                                36000",
+    "data": {
+        "amount": "750000",
+        "fwd_stan": "000020",
+        "receipt": [
+            "       STRUK NON TAGIHAN LISTRIK",
+            "TRANSAKSI      : PERUBAHAN DAYA",
+            "NO REGISTRASI  : 5040000000466",
+            "TGL REGISTRASI : 2020-09-30",
+            "NAMA           : DUMMY NONTAGLIS 3",
+            "IDPEL          : 528466664594",
+            "BIAYA PLN      : Rp.         750.000",
+            "NO REF         : rnE817DE37B0CCD3A3",
+            "",
+            "    PLN menyatakan struk ini sebagai",
+            "      bukti pembayaran yang sah.",
+            "",
+            "ADMIN BANK     : Rp.           2.500",
+            "TOTAL BAYAR    : Rp.         752.500",
+            "",
+            "  Informasi Hubungi Contact Center 123",
+            "                Atau",
+            "  Hub. PLN Terdekat : [no. telp rayon]"
+        ],
+        "customer_name": "DUMMY NONTAGLIS 3",
+        "channel_type": "5612",
+        "customer_id": "5040000000466",
+        "fwd_reference_number": "000000000021",
+        "reference_number": "000000000021",
+        "currency_code": "IDR",
+        "total_admin_fee": "2500"
+    },
+    "response_text": "Suspect",
+    "follower_command": {"suspect": [
+        "reversal",
+        "advice"
+    ]},
+    "remarks": {
+        "reference_1": "                                ",
+        "reference_2": "                                ",
+        "channel_type": "5612"
+    },
+    "command": "payment",
+    "message_from_provider": "0210F23E40010A8180040000000000000100192724815671800012345800000000000750000071311111400002010185808239912082456120636000300000000002103KOI     15930511105040000000466       23082021101858DUMMY NONTAGLIS 3             000000750000000000002500                                                                36051218       STRUK NON TAGIHAN LISTRIK|TRANSAKSI      : PERUBAHAN DAYA|NO REGISTRASI  : 5040000000466|TGL REGISTRASI : 2020-09-30|NAMA           : DUMMY NONTAGLIS 3|IDPEL          : 528466664594|BIAYA PLN      : Rp.         750.000|NO REF         : rnE817DE37B0CCD3A3||    PLN menyatakan struk ini sebagai|      bukti pembayaran yang sah.||ADMIN BANK     : Rp.           2.500|TOTAL BAYAR    : Rp.         752.500||  Informasi Hubungi Contact Center 123|                Atau|  Hub. PLN Terdekat : [no. telp rayon]|0000",
+    "response_code_from_provider": "03"
+}
+[INFO   ] 2021-08-23 10:18:58.951 [http-nio-8080-exec-6] RequestHandler                 : Receipt request from 127.0.0.1
+[INFO   ] 2021-08-23 10:18:58.951 [http-nio-8080-exec-6] RequestHandler                 : Request header       [accept:"text/plain, application/json, application/*+json, */*", content-type:"application/json", content-length:"1649", host:"syb-adapter:8080", connection:"Keep-Alive", user-agent:"Apache-HttpClient/4.5.13 (Java/1.8.0_251)", accept-encoding:"gzip,deflate"]
+[INFO   ] 2021-08-23 10:18:58.951 [http-nio-8080-exec-6] RequestHandler                 : Request body         {
+  "transaction_id": 15949,
+  "request": {
+    "data": {
+      "amount": 550000,
+      "fwd_stan": "000020",
+      "fwd_reference_number": "000000000021",
+      "product_code": "305111",
+      "reference_number": "123456789992",
+      "currency_code": "IDR",
+      "total_admin_fee": "2500",
+      "customer_reference_id_2": "0",
+      "date_time": "2020-07-13T11:11:14.558Z",
+      "customer_reference_id_1": "0",
+      "contract_number": "5040000000466",
+      "customer_name": "DUMMY NONTAGLIS 6",
+      "channel_type": "6011",
+      "customer_id": "5040000000466",
+      "merchant_type": "6021"
+    },
+    "repetition": 1,
+    "remarks": {
+      "reference_1": "                                ",
+      "reference_2": "                                ",
+      "channel_type": "5612"
+    },
+    "command": "reversal"
+  },
+  "product_type": "1003",
+  "partner_product_info": {
+    "price_buy": 0,
+    "destination_endpoint": "http://syb-adapter:8080/process-biller",
+    "partner_id": 32,
+    "partner_name": "SYB",
+    "partner_product_id": 146,
+    "partner_product_code": "305111",
+    "fee_partner": 500,
+    "product_name": "PLN Non Tagihan Listrik",
+    "product_routing_type_id": 50,
+    "suspended": false
+  },
+  "product_info": {
+    "amount": 0,
+    "product_subcategory_id": 4,
+    "fee_inquiry": 0,
+    "price": 0,
+    "product_id": 3,
+    "name": "PLN Non Tagihan Listrik",
+    "require_routing": true,
+    "fee_payment": 900,
+    "fee_advice": 0,
+    "product_type_id": "1003",
+    "product_code": "054504",
+    "product_category_id": "005"
+  },
+  "client_name": "Alto Saja",
+  "reference_number": "123456789992",
+  "client_id": 6
+}
+[INFO   ] 2021-08-23 10:18:58.951 [http-nio-8080-exec-6] TransactionRouter              : productTypeID : 1003
+[INFO   ] 2021-08-23 10:18:58.951 [http-nio-8080-exec-6] TransactionRouter              : Electricyty Classic
+[INFO   ] 2021-08-23 10:18:58.951 [http-nio-8080-exec-6] TransactionIElectricityClassic : productTypeID : 1003
+[INFO   ] 2021-08-23 10:18:58.951 [http-nio-8080-exec-6] TransactionIElectricityClassic : Nonusage Reversal
+[INFO   ] 2021-08-23 10:18:58.953 [http-nio-8080-exec-6] TransactionIElectricityClassic :   2 '2724815671800012345'
+  3 '800000'
+  4 '000000552500'
+  7 '0713111114'
+ 11 '000020'
+ 12 '101858'
+ 13 '0823'
+ 14 '9912'
+ 15 '0824'
+ 18 '5612'
+ 32 '360003'
+ 37 '000000000021'
+ 41 'KOI     '
+ 48 '30511105040000000466       23082021101858DUMMY NONTAGLIS 6             000000550000000000002500                                                                '
+ 49 '360'
+120 ''
+
+[INFO   ] 2021-08-23 10:18:58.953 [http-nio-8080-exec-6] TransactionIElectricityClassic : Request To SYB         : '{
+    "date": "23082021",
+    "total_bill_amount": "552500",
+    "pin_data": "",
+    "issuer_switch_id": "12345678901",
+    "fwd_stan": "000020",
+    "transaction_indicator": "3",
+    "language": "0",
+    "fwd_reference_number": "000000000021",
+    "expiration_date": "9912",
+    "terminal_location": "ALTO",
+    "total_admin_fee": "2500",
+    "fwd_institution_code": "360003",
+    "card_acceptor_identification_code": "111111111111111",
+    "date_time": "2020-07-13T11:11:14.558Z",
+    "local_time": "101858",
+    "pan": "2724815671800012345",
+    "icc_data": "",
+    "destination_account": "1234567890",
+    "settlement_date": "0824",
+    "bill_amount": "550000",
+    "processing_code": "800000",
+    "reference_number": "000000000021",
+    "dst_institution_code": "1234567",
+    "local_date": "0823",
+    "transmission_date_time": "0713111114558",
+    "transaction_currency_code": "360",
+    "source_account": "1234567890",
+    "product_code": "305111",
+    "original_data_element": "",
+    "biller_aggregator_id": "12345678901",
+    "currency_code": "IDR",
+    "point_of_service_condition_mode": "00",
+    "contract_number": "5040000000466",
+    "acq_institution_code": "360003",
+    "rec_institution_code": "1234567",
+    "channel_type": "5612",
+    "merchant_type": "6021",
+    "track_2_data": "9999999999999999999=000000000000",
+    "amount": "550000",
+    "payment_mode": "12",
+    "biller_aggregator_switch_id": "12345678901",
+    "customer_reference_id_2": "5040000000466",
+    "customer_reference_id_1": "0",
+    "card_acceptor_terminal_id": "KOI",
+    "point_of_service_entry_mode": "000",
+    "stan": "000020",
+    "customer_name": "DUMMY NONTAGLIS 6",
+    "time": "101858",
+    "customer_id": "5040000000466"
+}'
+[INFO   ] 2021-08-23 10:18:58.953 [http-nio-8080-exec-6] TransactionMaster              : Send message to  : 127.0.0.1 port 8081
+[INFO   ] 2021-08-23 10:18:58.953 [http-nio-8080-exec-6] TransactionMaster              : Request Message  : 0400F23E40010881800000000000000001001927248156718000123458000000000005525000713111114000020101858082399120824561206360003000000000021KOI     15930511105040000000466       23082021101858DUMMY NONTAGLIS 6             000000550000000000002500                                                                36000
+[INFO   ] 2021-08-23 10:18:58.954 [http-nio-8080-exec-6] Transporter                    : Send message without header
+[INFO   ] 2021-08-23 10:18:58.954 [http-nio-8080-exec-6] Transporter                    : Read message without header
+[INFO   ] 2021-08-23 10:18:59.054 [http-nio-8080-exec-6] TransactionMaster              : Response Message : 0230F23E40010A8180040000000000000100192724815671800012345800000000000750000071311111400002010185808239912082456120636000300000000002103KOI     15930511105040000000466       23082021101858DUMMY NONTAGLIS 3             000000750000000000002500                                                                36049418       STRUK NON TAGIHAN LISTRIK|TRANSAKSI      : PERUBAHAN DAYA|NO REGISTRASI  : 5040000000466|TGL REGISTRASI : 2020-09-30|NAMA           : DUMMY NONTAGLIS 3|IDPEL          : 528466664594|BIAYA PLN      : Rp.         750.000|NO REF         : ||    PLN menyatakan struk ini sebagai|      bukti pembayaran yang sah.||ADMIN BANK     : Rp.           2.500|TOTAL BAYAR    : Rp.         752.500||  Informasi Hubungi Contact Center 123|                Atau|  Hub. PLN Terdekat : [no. telp rayon]|0000
+[INFO   ] 2021-08-23 10:18:59.055 [http-nio-8080-exec-6] TransactionIElectricityClassic : Response Data From SYB : '{
+    "date": "23082021",
+    "total_bill_amount": "750000",
+    "response_code": "03",
+    "transaction_currency_code": "360",
+    "language": "0",
+    "expiration_date": "9912",
+    "product_code": "305111",
+    "total_admin_fee": "2500",
+    "local_time": "101858",
+    "screen_receipt_data": "18       STRUK NON TAGIHAN LISTRIK|TRANSAKSI      : PERUBAHAN DAYA|NO REGISTRASI  : 5040000000466|TGL REGISTRASI : 2020-09-30|NAMA           : DUMMY NONTAGLIS 3|IDPEL          : 528466664594|BIAYA PLN      : Rp.         750.000|NO REF         : ||    PLN menyatakan struk ini sebagai|      bukti pembayaran yang sah.||ADMIN BANK     : Rp.           2.500|TOTAL BAYAR    : Rp.         752.500||  Informasi Hubungi Contact Center 123|                Atau|  Hub. PLN Terdekat : [no. telp rayon]|00",
+    "acq_institution_code": "360003",
+    "pan": "2724815671800012345",
+    "channel_type": "5612",
+    "settlement_date": "0824",
+    "bill_amount": "750000",
+    "switch_relay_key": "",
+    "processing_code": "800000",
+    "reference_number": "000000000021",
+    "local_date": "0823",
+    "reference_1": "                                ",
+    "transmission_date_time": "0713111114",
+    "reference_2": "                                ",
+    "card_acceptor_terminal_id": "KOI     ",
+    "stan": "000020",
+    "time": "101858",
+    "customer_name": "DUMMY NONTAGLIS 3             ",
+    "customer_id": "5040000000466       "
+}'
+[INFO   ] 2021-08-23 10:18:59.056 [http-nio-8080-exec-6] TransactionIElectricityClassic : productTypeID    : 1003
+[INFO   ] 2021-08-23 10:18:59.056 [http-nio-8080-exec-6] TransactionIElectricityClassic : followerCommand  : {"suspect": [
+    "reversal",
+    "advice"
+]}
+[INFO   ] 2021-08-23 10:18:59.056 [http-nio-8080-exec-6] TransactionIElectricityClassic : jsonResponse     : {
+    "response_code": "002",
+    "message_to_provider": "0400F23E40010881800000000000000001001927248156718000123458000000000005525000713111114000020101858082399120824561206360003000000000021KOI     15930511105040000000466       23082021101858DUMMY NONTAGLIS 6             000000550000000000002500                                                                36000",
+    "data": {
+        "amount": "750000",
+        "fwd_stan": "000020",
+        "receipt": [
+            "       STRUK NON TAGIHAN LISTRIK",
+            "TRANSAKSI      : PERUBAHAN DAYA",
+            "NO REGISTRASI  : 5040000000466",
+            "TGL REGISTRASI : 2020-09-30",
+            "NAMA           : DUMMY NONTAGLIS 3",
+            "IDPEL          : 528466664594",
+            "BIAYA PLN      : Rp.         750.000",
+            "NO REF         : ",
+            "",
+            "    PLN menyatakan struk ini sebagai",
+            "      bukti pembayaran yang sah.",
+            "",
+            "ADMIN BANK     : Rp.           2.500",
+            "TOTAL BAYAR    : Rp.         752.500",
+            "",
+            "  Informasi Hubungi Contact Center 123",
+            "                Atau",
+            "  Hub. PLN Terdekat : [no. telp rayon]"
+        ],
+        "customer_name": "DUMMY NONTAGLIS 3",
+        "channel_type": "5612",
+        "customer_id": "5040000000466",
+        "fwd_reference_number": "000000000021",
+        "reference_number": "000000000021",
+        "currency_code": "IDR",
+        "total_admin_fee": "2500"
+    },
+    "response_text": "Suspect",
+    "follower_command": {"suspect": [
+        "reversal",
+        "advice"
+    ]},
+    "remarks": {
+        "reference_1": "                                ",
+        "reference_2": "                                ",
+        "channel_type": "5612"
+    },
+    "command": "reversal",
+    "message_from_provider": "0230F23E40010A8180040000000000000100192724815671800012345800000000000750000071311111400002010185808239912082456120636000300000000002103KOI     15930511105040000000466       23082021101858DUMMY NONTAGLIS 3             000000750000000000002500                                                                36049418       STRUK NON TAGIHAN LISTRIK|TRANSAKSI      : PERUBAHAN DAYA|NO REGISTRASI  : 5040000000466|TGL REGISTRASI : 2020-09-30|NAMA           : DUMMY NONTAGLIS 3|IDPEL          : 528466664594|BIAYA PLN      : Rp.         750.000|NO REF         : ||    PLN menyatakan struk ini sebagai|      bukti pembayaran yang sah.||ADMIN BANK     : Rp.           2.500|TOTAL BAYAR    : Rp.         752.500||  Informasi Hubungi Contact Center 123|                Atau|  Hub. PLN Terdekat : [no. telp rayon]|0000",
+    "response_code_from_provider": "03"
+}
+[INFO   ] 2021-08-23 10:18:59.084 [http-nio-8080-exec-10] RequestHandler                 : Receipt request from 127.0.0.1
+[INFO   ] 2021-08-23 10:18:59.085 [http-nio-8080-exec-10] RequestHandler                 : Request header       [accept:"text/plain, application/json, application/*+json, */*", content-type:"application/json", content-length:"1649", host:"syb-adapter:8080", connection:"Keep-Alive", user-agent:"Apache-HttpClient/4.5.13 (Java/1.8.0_251)", accept-encoding:"gzip,deflate"]
+[INFO   ] 2021-08-23 10:18:59.085 [http-nio-8080-exec-10] RequestHandler                 : Request body         {
+  "transaction_id": 15949,
+  "request": {
+    "data": {
+      "amount": 550000,
+      "fwd_stan": "000020",
+      "fwd_reference_number": "000000000021",
+      "product_code": "305111",
+      "reference_number": "123456789992",
+      "currency_code": "IDR",
+      "total_admin_fee": "2500",
+      "customer_reference_id_2": "0",
+      "date_time": "2020-07-13T11:11:14.558Z",
+      "customer_reference_id_1": "0",
+      "contract_number": "5040000000466",
+      "customer_name": "DUMMY NONTAGLIS 6",
+      "channel_type": "6011",
+      "customer_id": "5040000000466",
+      "merchant_type": "6021"
+    },
+    "repetition": 2,
+    "remarks": {
+      "reference_1": "                                ",
+      "reference_2": "                                ",
+      "channel_type": "5612"
+    },
+    "command": "reversal"
+  },
+  "product_type": "1003",
+  "partner_product_info": {
+    "price_buy": 0,
+    "destination_endpoint": "http://syb-adapter:8080/process-biller",
+    "partner_id": 32,
+    "partner_name": "SYB",
+    "partner_product_id": 146,
+    "partner_product_code": "305111",
+    "fee_partner": 500,
+    "product_name": "PLN Non Tagihan Listrik",
+    "product_routing_type_id": 50,
+    "suspended": false
+  },
+  "product_info": {
+    "amount": 0,
+    "product_subcategory_id": 4,
+    "fee_inquiry": 0,
+    "price": 0,
+    "product_id": 3,
+    "name": "PLN Non Tagihan Listrik",
+    "require_routing": true,
+    "fee_payment": 900,
+    "fee_advice": 0,
+    "product_type_id": "1003",
+    "product_code": "054504",
+    "product_category_id": "005"
+  },
+  "client_name": "Alto Saja",
+  "reference_number": "123456789992",
+  "client_id": 6
+}
+[INFO   ] 2021-08-23 10:18:59.085 [http-nio-8080-exec-10] TransactionRouter              : productTypeID : 1003
+[INFO   ] 2021-08-23 10:18:59.085 [http-nio-8080-exec-10] TransactionRouter              : Electricyty Classic
+[INFO   ] 2021-08-23 10:18:59.085 [http-nio-8080-exec-10] TransactionIElectricityClassic : productTypeID : 1003
+[INFO   ] 2021-08-23 10:18:59.085 [http-nio-8080-exec-10] TransactionIElectricityClassic : Nonusage Reversal
+[INFO   ] 2021-08-23 10:18:59.087 [http-nio-8080-exec-10] TransactionIElectricityClassic :   2 '2724815671800012345'
+  3 '800000'
+  4 '000000552500'
+  7 '0713111114'
+ 11 '000020'
+ 12 '101859'
+ 13 '0823'
+ 14 '9912'
+ 15 '0824'
+ 18 '5612'
+ 32 '360003'
+ 37 '000000000021'
+ 41 'KOI     '
+ 48 '30511105040000000466       23082021101859DUMMY NONTAGLIS 6             000000550000000000002500                                                                '
+ 49 '360'
+120 ''
+
+[INFO   ] 2021-08-23 10:18:59.087 [http-nio-8080-exec-10] TransactionIElectricityClassic : Request To SYB         : '{
+    "date": "23082021",
+    "total_bill_amount": "552500",
+    "pin_data": "",
+    "issuer_switch_id": "12345678901",
+    "fwd_stan": "000020",
+    "transaction_indicator": "3",
+    "language": "0",
+    "fwd_reference_number": "000000000021",
+    "expiration_date": "9912",
+    "terminal_location": "ALTO",
+    "total_admin_fee": "2500",
+    "fwd_institution_code": "360003",
+    "card_acceptor_identification_code": "111111111111111",
+    "date_time": "2020-07-13T11:11:14.558Z",
+    "local_time": "101859",
+    "pan": "2724815671800012345",
+    "icc_data": "",
+    "destination_account": "1234567890",
+    "settlement_date": "0824",
+    "bill_amount": "550000",
+    "processing_code": "800000",
+    "reference_number": "000000000021",
+    "dst_institution_code": "1234567",
+    "local_date": "0823",
+    "transmission_date_time": "0713111114558",
+    "transaction_currency_code": "360",
+    "source_account": "1234567890",
+    "product_code": "305111",
+    "original_data_element": "",
+    "biller_aggregator_id": "12345678901",
+    "currency_code": "IDR",
+    "point_of_service_condition_mode": "00",
+    "contract_number": "5040000000466",
+    "acq_institution_code": "360003",
+    "rec_institution_code": "1234567",
+    "channel_type": "5612",
+    "merchant_type": "6021",
+    "track_2_data": "9999999999999999999=000000000000",
+    "amount": "550000",
+    "payment_mode": "12",
+    "biller_aggregator_switch_id": "12345678901",
+    "customer_reference_id_2": "5040000000466",
+    "customer_reference_id_1": "0",
+    "card_acceptor_terminal_id": "KOI",
+    "point_of_service_entry_mode": "000",
+    "stan": "000020",
+    "customer_name": "DUMMY NONTAGLIS 6",
+    "time": "101859",
+    "customer_id": "5040000000466"
+}'
+[INFO   ] 2021-08-23 10:18:59.087 [http-nio-8080-exec-10] TransactionMaster              : Send message to  : 127.0.0.1 port 8081
+[INFO   ] 2021-08-23 10:18:59.087 [http-nio-8080-exec-10] TransactionMaster              : Request Message  : 0401F23E40010881800000000000000001001927248156718000123458000000000005525000713111114000020101859082399120824561206360003000000000021KOI     15930511105040000000466       23082021101859DUMMY NONTAGLIS 6             000000550000000000002500                                                                36000
+[INFO   ] 2021-08-23 10:18:59.088 [http-nio-8080-exec-10] Transporter                    : Send message without header
+[INFO   ] 2021-08-23 10:18:59.088 [http-nio-8080-exec-10] Transporter                    : Read message without header
+[INFO   ] 2021-08-23 10:18:59.343 [http-nio-8080-exec-10] TransactionMaster              : Response Message : 0230F23E40010A8180040000000000000100192724815671800012345800000000000750000071311111400002010185908239912082456120636000300000000002100KOI     15930511105040000000466       23082021101859DUMMY NONTAGLIS 3             000000750000000000002500                                                                36049418       STRUK NON TAGIHAN LISTRIK|TRANSAKSI      : PERUBAHAN DAYA|NO REGISTRASI  : 5040000000466|TGL REGISTRASI : 2020-09-30|NAMA           : DUMMY NONTAGLIS 3|IDPEL          : 528466664594|BIAYA PLN      : Rp.         750.000|NO REF         : ||    PLN menyatakan struk ini sebagai|      bukti pembayaran yang sah.||ADMIN BANK     : Rp.           2.500|TOTAL BAYAR    : Rp.         752.500||  Informasi Hubungi Contact Center 123|                Atau|  Hub. PLN Terdekat : [no. telp rayon]|0000
+[INFO   ] 2021-08-23 10:18:59.344 [http-nio-8080-exec-10] TransactionIElectricityClassic : Response Data From SYB : '{
+    "date": "23082021",
+    "total_bill_amount": "750000",
+    "response_code": "00",
+    "transaction_currency_code": "360",
+    "language": "0",
+    "expiration_date": "9912",
+    "product_code": "305111",
+    "total_admin_fee": "2500",
+    "local_time": "101859",
+    "screen_receipt_data": "18       STRUK NON TAGIHAN LISTRIK|TRANSAKSI      : PERUBAHAN DAYA|NO REGISTRASI  : 5040000000466|TGL REGISTRASI : 2020-09-30|NAMA           : DUMMY NONTAGLIS 3|IDPEL          : 528466664594|BIAYA PLN      : Rp.         750.000|NO REF         : ||    PLN menyatakan struk ini sebagai|      bukti pembayaran yang sah.||ADMIN BANK     : Rp.           2.500|TOTAL BAYAR    : Rp.         752.500||  Informasi Hubungi Contact Center 123|                Atau|  Hub. PLN Terdekat : [no. telp rayon]|00",
+    "acq_institution_code": "360003",
+    "pan": "2724815671800012345",
+    "channel_type": "5612",
+    "settlement_date": "0824",
+    "bill_amount": "750000",
+    "switch_relay_key": "",
+    "processing_code": "800000",
+    "reference_number": "000000000021",
+    "local_date": "0823",
+    "reference_1": "                                ",
+    "transmission_date_time": "0713111114",
+    "reference_2": "                                ",
+    "card_acceptor_terminal_id": "KOI     ",
+    "stan": "000020",
+    "time": "101859",
+    "customer_name": "DUMMY NONTAGLIS 3             ",
+    "customer_id": "5040000000466       "
+}'
+[INFO   ] 2021-08-23 10:18:59.345 [http-nio-8080-exec-10] TransactionIElectricityClassic : productTypeID    : 1003
+[INFO   ] 2021-08-23 10:18:59.345 [http-nio-8080-exec-10] TransactionIElectricityClassic : followerCommand  : {"suspect": [
+    "reversal",
+    "advice"
+]}
+[INFO   ] 2021-08-23 10:18:59.345 [http-nio-8080-exec-10] TransactionIElectricityClassic : jsonResponse     : {
+    "response_code": "001",
+    "message_to_provider": "0401F23E40010881800000000000000001001927248156718000123458000000000005525000713111114000020101859082399120824561206360003000000000021KOI     15930511105040000000466       23082021101859DUMMY NONTAGLIS 6             000000550000000000002500                                                                36000",
+    "data": {
+        "amount": "750000",
+        "fwd_stan": "000020",
+        "receipt": [
+            "       STRUK NON TAGIHAN LISTRIK",
+            "TRANSAKSI      : PERUBAHAN DAYA",
+            "NO REGISTRASI  : 5040000000466",
+            "TGL REGISTRASI : 2020-09-30",
+            "NAMA           : DUMMY NONTAGLIS 3",
+            "IDPEL          : 528466664594",
+            "BIAYA PLN      : Rp.         750.000",
+            "NO REF         : ",
+            "",
+            "    PLN menyatakan struk ini sebagai",
+            "      bukti pembayaran yang sah.",
+            "",
+            "ADMIN BANK     : Rp.           2.500",
+            "TOTAL BAYAR    : Rp.         752.500",
+            "",
+            "  Informasi Hubungi Contact Center 123",
+            "                Atau",
+            "  Hub. PLN Terdekat : [no. telp rayon]"
+        ],
+        "customer_name": "DUMMY NONTAGLIS 3",
+        "channel_type": "5612",
+        "customer_id": "5040000000466",
+        "fwd_reference_number": "000000000021",
+        "reference_number": "000000000021",
+        "currency_code": "IDR",
+        "total_admin_fee": "2500"
+    },
+    "response_text": "Success",
+    "follower_command": {"suspect": [
+        "reversal",
+        "advice"
+    ]},
+    "remarks": {
+        "reference_1": "                                ",
+        "reference_2": "                                ",
+        "channel_type": "5612"
+    },
+    "command": "reversal",
+    "message_from_provider": "0230F23E40010A8180040000000000000100192724815671800012345800000000000750000071311111400002010185908239912082456120636000300000000002100KOI     15930511105040000000466       23082021101859DUMMY NONTAGLIS 3             000000750000000000002500                                                                36049418       STRUK NON TAGIHAN LISTRIK|TRANSAKSI      : PERUBAHAN DAYA|NO REGISTRASI  : 5040000000466|TGL REGISTRASI : 2020-09-30|NAMA           : DUMMY NONTAGLIS 3|IDPEL          : 528466664594|BIAYA PLN      : Rp.         750.000|NO REF         : ||    PLN menyatakan struk ini sebagai|      bukti pembayaran yang sah.||ADMIN BANK     : Rp.           2.500|TOTAL BAYAR    : Rp.         752.500||  Informasi Hubungi Contact Center 123|                Atau|  Hub. PLN Terdekat : [no. telp rayon]|0000",
+    "response_code_from_provider": "00"
+}
+[INFO   ] 2021-08-23 10:50:21.445 [restartedMain] BillerApplication              : Starting BillerApplication on NB0230 with PID 27760 (C:\bitbucket\syb-adapter\target\classes started by kamshory in C:\bitbucket\syb-adapter)
+[DEBUG  ] 2021-08-23 10:50:21.451 [restartedMain] BillerApplication              : Running with Spring Boot v2.2.0.RELEASE, Spring v5.2.0.RELEASE
+[INFO   ] 2021-08-23 10:50:21.453 [restartedMain] BillerApplication              : No active profile set, falling back to default profiles: default
+[INFO   ] 2021-08-23 10:50:24.558 [restartedMain] CacheUtil                      : initializing redis connection factory...
+[INFO   ] 2021-08-23 10:50:24.730 [restartedMain] RequestHandler                 : Minimum Amount       : {}
+[INFO   ] 2021-08-23 10:50:24.730 [restartedMain] RequestHandler                 : Maximum Amount       : {}
+[INFO   ] 2021-08-23 10:50:24.730 [restartedMain] RequestHandler                 : Use redis            : false
+[INFO   ] 2021-08-23 10:50:24.730 [restartedMain] RequestHandler                 : JSON Request Timeout : 30000
+[INFO   ] 2021-08-23 10:50:25.744 [restartedMain] BillerApplication              : Started BillerApplication in 5.029 seconds (JVM running for 2808.882)
