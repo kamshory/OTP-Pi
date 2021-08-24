@@ -6,7 +6,7 @@
 
 ![Screenshot](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/ss-desktop2.png)
 
-OTP or `One Time Password` is a one-time use password that has a certain validity period. Generally the validity period is made very short and only gives the opportunity to the recipient to enter it into the application and send it to the application server that requires it. OTP is strictly confidential so the `clear text` of the OTP should not be stored by any party. In fact, the application server only stores the `hash` or `token` that matches the OTP. `Clear text` is only generated and then sent to the recipient. In other words, `clear text` is only known to the OTP recipient.
+OTP or `One Time Password` is a one-time use password that has a certain validity period. Generally the validity period is made very short and only gives the chance to the recipient to enter it into the application and send it to the application server that requires it. OTP is strictly confidential so the `clear text` of the OTP should not be stored by any party. In fact, the application server only stores the `hash` or `token` that matches the OTP. `Clear text` is only generated and then sent to the recipient. In other words, `clear text` is only known to the OTP recipient.
 
 The most popular OTPs are sent via SMS or Short Message Service. The use of SMS has the following advantages:
 
@@ -93,14 +93,11 @@ Administrator Settings is a menu to configure administrator. New OTP-Pi devices 
 
 The default address of administration web is http://192.168.0.11:8888
 
-**Username**
-Username is administrator identifier when logging in to OTP-Pi
-
-**Password**
-Username is administrator's security when logging into OTP-Pi
-
-**Phone Number**
-The phone number can be used if the administrator forgets the password. Password will be sent via SMS. Of course this can only be done when the OTP-Pi has been configured correctly.
+| Field | Description |
+| ----- | ----------- |
+| Username | Administrator identifier when logging in to OTP-Pi |
+| Password | Administrator's security when logging into OTP-Pi |
+| Phone Number | The phone number can be used if the administrator forgets the password. Password will be sent via SMS. Of course this can only be done when the OTP-Pi has been configured correctly | 
 
 **E-mail**
 Email can be used if the administrator forgets the password. Password will be sent via email. Of course this can only be done when the OTP-Pi has been configured correctly.
@@ -108,29 +105,49 @@ Email can be used if the administrator forgets the password. Password will be se
 ## API Settings
 
 API Setting is a REST API configuration for sending SMS.
-1. **HTTP Port** is the server port for HTTP
-2. **Enable HTTP** is a setting to enable or disable HTTP port
-3. **HTTPS Port** is the server port for HTTPS
-4. **Enable HTTPS** is a setting to enable or disable HTTPS port
-5. **Message Path** is the path to send SMS and email
-6. **Blocking Path** is a path to block a phone number so that OTP-Pi does not send SMS to that number
-7. **Unblocking Path** is a path to unblock a phone number so that OTP-Pi can send SMS to that number again
+
+| Field | Description |
+| ----- | ----------- |
+| HTTP Port | The server port for HTTP |
+| Enable HTTP | Setting to enable or disable HTTP port |
+| HTTPS Port | he server port for HTTPS |
+| Enable HTTPS | Setting to enable or disable HTTPS port |
+| Message Path | The path to send SMS and email
+| Blocking Path | Path to block a phone number so that OTP-Pi does not send SMS to that number |
+| Unblocking Path | Path to unblock a phone number so that OTP-Pi can send SMS to that number again |
+
+## General Settings
+
+| Field | Description |
+| ----- | ----------- |
+| Device Name | Device name |
+| OTP Expiration | OTP expiration in mili second. Application must send the `date_time`. See message specification |
+| Drop Expire OTP | Flag that OTP-Pi will drop or ignone the expire OTP. Application must send the `date_time`. See message specification |
+| Device Time Zone | The device time zone. Select one of the time zone listed |
+| NTP Server | NTP server address to update the device time |
+| Update Timer | Time to update the device time |
+| Restart Service | Time to restart the service |
+| Restart Device | Time to reboot the device |
+
+## Time Setting
+
+| Field | Description |
+| ----- | ----------- |
+| Device Time | Device time |
+| Device Time Zone | The device time zone. Select one of the time zone listed |
+| NTP Server | NTP server address to update the device time |
+| Update Timer | Time to update the device time |
 
 ## API Users
 
 API User is an account that sends SMS via REST API.
 
-**Username**
-Username is the sender identifier when sending SMS to OTP-Pi
-
-**Password**
-Username is the sender's security when sending SMS to OTP-Pi
-
-**Phone Number**
-Phone number is contact information in the form of phone numbers from API users
-
-**E-mail**
-Email is contact information in the form of email addresses of API users
+| Field | Description |
+| ----- | ----------- |
+| Username | Username is the sender identifier when sending SMS to OTP-Pi |
+| Email | Email is contact information in the form of email addresses of API users |
+| Phone Number | Phone number is contact information in the form of phone numbers from API users |
+| Password | Username is the sender's security when sending SMS to OTP-Pi |
 
 ## Subscriber Settings
 
