@@ -55,6 +55,9 @@ public class Utility {
 		}
 		catch(Exception e)
 		{
+			/**
+			 * Do nothing
+			 */
 		}
 		return result;
 	}
@@ -108,7 +111,9 @@ public class Utility {
 		}
 		catch(Exception e)
 		{
-			//logger.error(e.getMessage());
+			/**
+			 * Do nothing
+			 */
 		}
 		return result;
 	}
@@ -164,7 +169,9 @@ public class Utility {
 		}
 		catch(Exception e)
 		{
-			//logger.error(e.getMessage());
+			/**
+			 * Do nothing
+			 */
 		}
 		return result;
 	}
@@ -184,7 +191,9 @@ public class Utility {
 		}
 		catch(Exception e)
 		{
-			//logger.error(e.getMessage());
+			/**
+			 * Do nothing
+			 */
 		}
 		return result;
 	}
@@ -204,7 +213,9 @@ public class Utility {
 		}
 		catch(Exception e)
 		{
-			//logger.error(e.getMessage());
+			/**
+			 * Do nothing
+			 */
 		}
 		return result;
 	}
@@ -224,7 +235,9 @@ public class Utility {
 		}
 		catch(Exception e)
 		{
-			//logger.error(e.getMessage());
+			/**
+			 * Do nothing
+			 */
 		}
 		return result;
 	}
@@ -246,7 +259,9 @@ public class Utility {
 		}
 		catch(Exception e)
 		{
-			//logger.error(e.getMessage());
+			/**
+			 * Do nothing
+			 */
 		}
 		return result;
 	}
@@ -307,7 +322,9 @@ public class Utility {
 		}
 		catch(Exception e)
 		{
-			//logger.error(e.getMessage());
+			/**
+			 * Do nothing
+			 */
 		}
 		return result;
 	}
@@ -327,7 +344,9 @@ public class Utility {
 		}
 		catch(Exception e)
 		{
-			//logger.error(e.getMessage());
+			/**
+			 * Do nothing
+			 */
 		}
 		return result;
 	}
@@ -348,7 +367,9 @@ public class Utility {
 		}
 		catch(Exception e)
 		{
-			//logger.error(e.getMessage());
+			/**
+			 * Do nothing
+			 */
 		}
 		return result;
 	}
@@ -369,7 +390,9 @@ public class Utility {
 		}
 		catch(Exception e)
 		{
-			//logger.error(e.getMessage());
+			/**
+			 * Do nothing
+			 */
 		}
 		return result;
 	}
@@ -586,7 +609,9 @@ public class Utility {
 		} 
 		catch (UnsupportedEncodingException e) 
 		{
-			//logger.error(e.getMessage());
+			/**
+			 * Do nothing
+			 */
 		}
     	return result;
 	}
@@ -604,7 +629,9 @@ public class Utility {
 		} 
 		catch (UnsupportedEncodingException e) 
 		{
-			//logger.error(e.getMessage());
+			/**
+			 * Do nothing
+			 */
 		}
     	return result;
     }
@@ -838,7 +865,9 @@ public class Utility {
         } 
         catch (ParseException e) 
         {
-        	//logger.error(e.getMessage());
+        	/**
+			 * Do nothing
+			 */
         }
         return result;
 	}
@@ -853,7 +882,9 @@ public class Utility {
         } 
         catch (ParseException e) 
         {
-        	//logger.error(e.getMessage());
+        	/**
+			 * Do nothing
+			 */
         }
         return dateTime;
 	}
@@ -1176,7 +1207,9 @@ public class Utility {
 		} 
 		catch (ParseException e) 
 		{
-			//logger.error(e.getMessage());
+			/**
+			 * Do nothing
+			 */
 		}
 		return newDateString;
 	}
@@ -1191,24 +1224,17 @@ public class Utility {
 	    	if(pair.contains("="))
 	    	{
 		        int idx = pair.indexOf("=");
-		        try 
-		        {
-		        	String key = Utility.fixURLEncodeKey(URLDecoder.decode(pair.substring(0, idx), "UTF-8"), index);
-		        	String value = URLDecoder.decode(pair.substring(idx + 1), "UTF-8");
-		        	if(queryPairs.containsKey(key))
-		        	{
-		        		queryPairs.get(key).add(value);
-		        	}
-		        	else
-		        	{
-		        		List<String> list = new ArrayList<>();
-		        		list.add(value);
-		        		queryPairs.put(key, list);
-		        	}
-				} 
-		        catch (UnsupportedEncodingException e) 
-		        {
-					//logger.error(e.getMessage());
+		        String key = Utility.fixURLEncodeKey(URLDecoder.decode(pair.substring(0, idx), StandardCharsets.UTF_8), index);
+				String value = URLDecoder.decode(pair.substring(idx + 1), StandardCharsets.UTF_8);
+				if(queryPairs.containsKey(key))
+				{
+					queryPairs.get(key).add(value);
+				}
+				else
+				{
+					List<String> list = new ArrayList<>();
+					list.add(value);
+					queryPairs.put(key, list);
 				}
 		        index++;
 	    	}
@@ -1233,7 +1259,9 @@ public class Utility {
 				} 
 		        catch (UnsupportedEncodingException e) 
 		        {
-					//logger.error(e.getMessage());
+		        	/**
+					 * Do nothing
+					 */
 				}
 		        index++;
 	    	}

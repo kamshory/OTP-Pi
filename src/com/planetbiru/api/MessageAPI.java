@@ -30,11 +30,14 @@ public class MessageAPI {
 		try
 		{
 			requestJSON = new JSONObject(requestBody);
-			logger.info(requestJSON.toString(4));
 			String command = requestJSON.optString(JsonKey.COMMAND, "");
 			JSONObject data = requestJSON.optJSONObject(JsonKey.DATA);
 			if(data != null)
 			{
+				logger.info("Topic     : " + topic);
+				logger.info("Message   : " + requestJSON.toString(4));
+				logger.info("Command   : " + command);
+				logger.info("Date Time : " + data.optLong("date_time", 0));
 				if(command.equals(ConstantString.SEND_SMS))
 				{
 					logger.info("Send SMS");

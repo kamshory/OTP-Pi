@@ -13,10 +13,10 @@ public class HandlerWebManagerPing implements HttpHandler {
 	@Override
 	public void handle(HttpExchange httpExchange) throws IOException {
         Headers responseHeaders = httpExchange.getResponseHeaders();       
-        String response = "OK";      
+        byte[] responseBody = "OK".getBytes();      
         responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.TEXT_PLAIN);
-        httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, response.length());	 
-        httpExchange.getResponseBody().write(response.getBytes());
+        httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, responseBody.length);	 
+        httpExchange.getResponseBody().write(responseBody);
         httpExchange.close();
 	}
 
