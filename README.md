@@ -312,6 +312,18 @@ OTP-Pi provides DDNS setup using DDNS vendor. Some of the supported DDNS vendors
 3. Dynu Dyn DNS - https://www.dynu.com/
 4. Free DNS Afraid - https://freedns.afraid.org/
 
+| Field | Description |
+| ----- | ----------- |
+| Provider | DNS Server Provider |
+| Type | Record type. Currently only support `A Record` |
+| Zone | Zone or domain name | 
+| Record Name | Record name or subdomain |
+| TTL | Time to leave |
+| Proxied | For Cloudflare only. It will use Cloudflare proxy and cache or not |
+| Update DNS | Interval to update DNS. OTP-Pi will update it by sending request to the DNS server provider |
+| Force Create Zone | For Cloudflare only. It will create zone if not exists |
+| Active | Flag that DDNS record is active or not |
+
 ## Network Setting 
 
 Network Setting is a configuration to manage network from OTP-Pi. OTP-Pi is equipped with an access point so that it can be accessed directly using a laptop or cellphone without having to plug it into a wired network. This will make it easier for users because the user's LAN network configuration is different. Users simply set the IP address on the ethernet network according to the LAN network configuration used.
@@ -486,8 +498,6 @@ To use Mosquitto, please open the link https://mosquitto.org/
 
 
 ![OTP-Pi Topology](https://raw.githubusercontent.com/kamshory/OTP-Broker/main/src/main/resources/static/www/lib.assets/images/topology.png)
-
-
 
 ### Scenario 1 - OTP-Pi App Server Accessible
 
