@@ -22,9 +22,15 @@ public class MessageAPI {
 
 	private static Logger logger = Logger.getLogger(MessageAPI.class);
 	public JSONObject processRequest(String requestBody) {
-		return this.processRequest(requestBody, "");	
+		StackTraceElement ste = Thread.currentThread().getStackTrace()[2]; 
+		return this.processRequest(requestBody, "", ste);	
 	}
-	public JSONObject processRequest(String requestBody, String topic) {
+	public JSONObject processRequest(String requestBody, String topic)
+	{
+		StackTraceElement ste = Thread.currentThread().getStackTrace()[2]; 
+		return this.processRequest(requestBody, topic, ste);	
+	}
+	public JSONObject processRequest(String requestBody, String topic, StackTraceElement ste) {
 		JSONObject requestJSON = new JSONObject();
 		JSONObject responseJSON = new JSONObject();
 		try
@@ -37,31 +43,31 @@ public class MessageAPI {
 				logger.info("Topic     : " + topic);
 				logger.info("Message   : " + requestJSON.toString(4));
 				logger.info("Command   : " + command);
-				logger.info("Date Time : " + data.optLong("date_time", 0));
+				logger.info("Date Time : " + data.optLong(JsonKey.DATE_TIME, 0));
 				if(command.equals(ConstantString.SEND_SMS))
 				{
 					logger.info("Send SMS");
-					responseJSON = this.sendSMS(command, data);		
+					responseJSON = this.sendSMS(command, data, ste);		
 				}
 				else if(command.equals(ConstantString.SEND_MAIL))
 				{
 					logger.info("Send Email");
-					responseJSON = this.sendEmail(command, data);					
+					responseJSON = this.sendEmail(command, data, ste);					
 				}
 				else if(command.equals(ConstantString.SEND_MESSAGE))
 				{
 					logger.info("Send Message");
-					responseJSON = this.sendMessage(command, data);					
+					responseJSON = this.sendMessage(command, data, ste);					
 				}
 				else if(command.equals(ConstantString.BLOCK_MSISDN))
 				{
 					logger.info("Block Number");
-					responseJSON = this.blockMSISDN(command, data.optString(JsonKey.RECEIVER, ""));					
+					responseJSON = this.blockMSISDN(command, data);					
 				}
 				else if(command.equals(ConstantString.UNBLOCK_MSISDN))
 				{
 					logger.info("Unblock Number");
-					responseJSON = this.unblockMSISDN(command, data.optString(JsonKey.RECEIVER, ""));					
+					responseJSON = this.unblockMSISDN(command, data);					
 				}
 			}		
 		}
@@ -72,7 +78,7 @@ public class MessageAPI {
 		return responseJSON;
 	}
 	
-	public JSONObject processEmailRequest(String requestBody) 
+	public JSONObject processEmailRequest(String requestBody, StackTraceElement ste) 
 	{
 		JSONObject requestJSON = new JSONObject();
 		try
@@ -88,7 +94,7 @@ public class MessageAPI {
 					int i;
 					for(i = 0; i<length; i++)
 					{
-						this.sendMail(data.getJSONObject(i));					
+						this.sendMail(command, data.getJSONObject(i), ste);					
 					}
 				}
 			}
@@ -103,37 +109,21 @@ public class MessageAPI {
 		return requestJSON;
 	}
 	
-	private JSONObject sendMessage(String command, JSONObject data) {
-		StackTraceElement ste = Thread.currentThread().getStackTrace()[2];      
+	private JSONObject sendMessage(String command, JSONObject data, StackTraceElement ste) {
 		JSONObject responseJSON = new JSONObject();
 		JSONObject jsonData = new JSONObject();
 		if(data != null)
 		{
 			String receiver = data.optString(JsonKey.RECEIVER, "");
-			String subject = data.optString(JsonKey.SUBJECT, "");
-			String textMessage = data.optString(JsonKey.MESSAGE, "");
-			try 
+			if(receiver.contains("@"))
 			{
-				if(receiver.contains("@"))
-				{
-					MailUtil.send(receiver, subject, textMessage, ste);
-					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
-				}
-				else
-				{
-					jsonData = GSMUtil.sendSMS(receiver, textMessage, ste);
-					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);					
-				}			
-			} 
-			catch(MessagingException | NoEmailAccountException e)
-			{
-				responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.FAILED);
-				responseJSON.put("error", e.getMessage());				
+				this.sendMail(command, data, ste);
+				responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
 			}
-			catch (GSMException e) 
+			else
 			{
-				responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.NO_DEVICE_CONNECTED);
-				responseJSON.put("error", e.getMessage());
+				jsonData = this.sendSMS(command, data, ste);
+				responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);					
 			}
 		}
 		responseJSON.put(JsonKey.COMMAND, command);
@@ -141,7 +131,7 @@ public class MessageAPI {
 		return responseJSON;		
 	}
 	
-	public void sendMail(JSONObject data) 
+	public void sendMail(String command, JSONObject data, StackTraceElement ste) 
 	{
 		if(data != null)
 		{
@@ -162,9 +152,8 @@ public class MessageAPI {
 		}	
 	}
 
-	public JSONObject sendSMS(String command, JSONObject data)
+	public JSONObject sendSMS(String command, JSONObject data, StackTraceElement ste)
 	{
-		StackTraceElement ste = Thread.currentThread().getStackTrace()[3];      
 		JSONObject responseJSON = new JSONObject();
 		JSONObject jsonData = new JSONObject();
 		if(data != null)
@@ -176,7 +165,7 @@ public class MessageAPI {
 			if(dropOTPExpire)
 			{
 				long currentTime = System.currentTimeMillis();
-				long expiration = (data.optLong("date_time", 0) * 1000) + ConfigGeneral.getOtpExpiration();
+				long expiration = (data.optLong(JsonKey.DATE_TIME, 0) * 1000) + ConfigGeneral.getOtpExpirationOffset();
 				if(currentTime < expiration)
 				{
 					sendOTP = true;
@@ -196,7 +185,7 @@ public class MessageAPI {
 				catch (GSMException e) 
 				{
 					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.NO_DEVICE_CONNECTED);
-					responseJSON.put("error", e.getMessage());
+					responseJSON.put(JsonKey.ERROR, e.getMessage());
 				}
 			}
 		}
@@ -204,7 +193,7 @@ public class MessageAPI {
 		responseJSON.put(JsonKey.DATA, jsonData);
 		return responseJSON;		
 	}
-	private JSONObject sendEmail(String command, JSONObject data) {
+	private JSONObject sendEmail(String command, JSONObject data, StackTraceElement ste) {
 		JSONObject responseJSON = new JSONObject();
 		String to = data.optString(JsonKey.RECEIVER, "");
 		String subject = data.optString("subject", "");
@@ -215,7 +204,7 @@ public class MessageAPI {
 		if(dropOTPExpire)
 		{
 			long currentTime = System.currentTimeMillis();
-			long expiration = (data.optLong("date_time", 0) * 1000) + ConfigGeneral.getOtpExpiration();
+			long expiration = (data.optLong(JsonKey.DATE_TIME, 0) * 1000) + ConfigGeneral.getOtpExpirationOffset();
 			if(currentTime < expiration)
 			{
 				sendOTP = true;
@@ -243,6 +232,14 @@ public class MessageAPI {
 		}
 		responseJSON.put(JsonKey.COMMAND, command);
 		return responseJSON;	
+	}
+	
+	public JSONObject blockMSISDN(String command, JSONObject data) throws GSMException {
+		return this.blockMSISDN(command, data.optString(JsonKey.RECEIVER, ""));	
+	}
+	
+	public JSONObject unblockMSISDN(String command, JSONObject data) throws GSMException {
+		return this.unblockMSISDN(command, data.optString(JsonKey.RECEIVER, ""));	
 	}
 	
 	public JSONObject blockMSISDN(String command, String msisdn) throws GSMException {

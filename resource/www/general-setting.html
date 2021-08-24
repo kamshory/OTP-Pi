@@ -92,8 +92,8 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>OTP Expiration</td>
-                            <td><input type="number" min="5000" name="otp_expiration" id="otp_expiration" value="">
+                            <td>OTP Expiration Offset</td>
+                            <td><input type="number" min="-86460" max="86460" name="otp_expiration_offset" id="otp_expiration_offset" value="">
                             </td>
                         </tr>
                         <tr>
@@ -196,7 +196,7 @@
                 $('[name="restart_service"]').val(data.restartService);
                 $('[name="restart_device"]').val(data.restartDevice);
 
-                $('[name="otp_expiration"]').val(data.otpExpiration);
+                $('[name="otp_expiration_offset"]').val(data.otpExpirationOffset);
                 $('[name="drop_expire_otp"]').prop('checked', data.dropExpireOTP);
 
             }

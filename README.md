@@ -554,13 +554,14 @@ Host: sub.domain.tld
 Connection: close
 User-agent: KSPS
 Content-type: application/json
-Content-length: 153
+Content-length: 182
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 {
 	"command": "send-sms",
 	"data": {
 		"date_time": 1629685778,
+		"expiration": 1629685838,
 		"id": 123456,
 		"receiver": "08126666666",
 		"message": "Your OTP is 1234"
@@ -585,13 +586,14 @@ Host: sub.domain.tld
 Connection: close
 User-agent: KSPS
 Content-type: application/json
-Content-length: 162
+Content-length: 191
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 {
 	"command": "send-email",
 	"data": {
 		"date_time": 1629685778,
+		"expiration": 1629685838,
 		"id": 123456,
 		"receiver": "someone@domain.tld",
 		"message": "Your OTP is 1234"
@@ -688,6 +690,7 @@ In this scenario, the user does not need a public IP. Users only need:
 	"command": "send-sms",
 	"data": {
 		"date_time": 1629685778,
+		"expiration": 1629685838,
 		"id": 123456,
 		"receiver": "08126666666",
 		"message": "Your OTP is 1234"
@@ -708,9 +711,10 @@ In this scenario, the user does not need a public IP. Users only need:
 
 ```json
 {
-	"command":"send-sms",
+	"command": "send-email",
 	"data": {
 		"date_time": 1629685778,
+		"expiration": 1629685838,
 		"id": 123456,
 		"receiver": "someone@domain.tld",
 		"message": "Your OTP is 1234"
@@ -774,6 +778,7 @@ In this scenario, the user does not need a public IP. Users only need:
 	"command":"send-sms",
 	"data": {
 		"date_time": 1629685778,
+		"expiration": 1629685838,
 		"id": 123456,
 		"receiver": "08126666666",
 		"message": "Your OTP is 1234"
@@ -794,9 +799,10 @@ In this scenario, the user does not need a public IP. Users only need:
 
 ```json
 {
-	"command": "send-sms",
+	"command": "send-email",
 	"data": {
 		"date_time": 1629685778,
+		"expiration": 1629685838,
 		"id": 123456,
 		"receiver": "someone@domain.tld",
 		"message": "Your OTP is 1234"
@@ -857,9 +863,10 @@ In this scenario, the user does not need a public IP. Users only need:
 
 ```json
 {
-	"command":"send-sms",
+	"command": "send-sms",
 	"data": {	
 		"date_time": 1629685778,
+		"expiration": 1629685838,
 		"id": 123456,
 		"receiver": "08126666666",
 		"message": "Your OTP is 1234"
@@ -880,9 +887,10 @@ In this scenario, the user does not need a public IP. Users only need:
 
 ```json
 {
-	"command": "send-sms",
+	"command": "send-email",
 	"data": {
 		"date_time": 1629685778,
+		"expiration": 1629685838,
 		"id": 123456,
 		"receiver": "someone@domain.tld",
 		"message": "Your OTP is 1234"
@@ -923,7 +931,7 @@ In this scenario, the user does not need a public IP. Users only need:
 ```json
 {
 
-	"command":"unblock-msisdn",
+	"command": "unblock-msisdn",
 	"data":{
 		"date_time": 1629685778,
 		"receiver": "08126666666",

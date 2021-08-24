@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.planetbiru.constant.JsonKey;
 import com.planetbiru.util.CommandLineExecutor;
 import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.FileNotFoundException;
@@ -62,9 +63,9 @@ public class ConfigFirewall {
 		JSONObject record = new JSONObject();
 		record.put("id", id);
 		record.put("port", port);
-		record.put("protocol", protocol);
-		record.put("active", true);
-		record.put("lastUpdate", System.currentTimeMillis());
+		record.put(JsonKey.PROTOCOL, protocol);
+		record.put(JsonKey.ACTIVE, true);
+		record.put(JsonKey.LAST_UPDATE, System.currentTimeMillis());
 		ConfigFirewall.records.put(record);		
 		ConfigFirewall.activate(record);
 	}
@@ -106,8 +107,8 @@ public class ConfigFirewall {
 	{
 		JSONObject record = ConfigFirewall.get(id);
 		ConfigFirewall.activate(record);
-		ConfigFirewall.get(id).put("active", true);
-		ConfigFirewall.get(id).put("lastUpdate", System.currentTimeMillis());
+		ConfigFirewall.get(id).put(JsonKey.ACTIVE, true);
+		ConfigFirewall.get(id).put(JsonKey.LAST_UPDATE, System.currentTimeMillis());
 	}
 	
 	public static void deactivate(String id)
@@ -117,14 +118,14 @@ public class ConfigFirewall {
 		if(!servicePorts.contains(record.optInt("port")))
 		{
 			ConfigFirewall.deactivate(record);
-			ConfigFirewall.get(id).put("active", false);
-			ConfigFirewall.get(id).put("lastUpdate", System.currentTimeMillis());
+			ConfigFirewall.get(id).put(JsonKey.ACTIVE, false);
+			ConfigFirewall.get(id).put(JsonKey.LAST_UPDATE, System.currentTimeMillis());
 		}
 	}
 	
 	private static void activate(JSONObject record) 
 	{
-		String command1 = String.format("firewall-cmd --permanent --add-port=%d/%s", record.optInt("port", 0), record.optString("protocol", ""));
+		String command1 = String.format("firewall-cmd --permanent --add-port=%d/%s", record.optInt("port", 0), record.optString(JsonKey.PROTOCOL, ""));
 		String command2 = "firewall-cmd --reload"; 
 		CommandLineExecutor.exec(command1);
 		CommandLineExecutor.exec(command2);
@@ -132,7 +133,7 @@ public class ConfigFirewall {
 
 	private static void deactivate(JSONObject record) 
 	{
-		String command1 = String.format("firewall-cmd --permanent --remove-port=%d/%s", record.optInt("port", 0), record.optString("protocol", ""));
+		String command1 = String.format("firewall-cmd --permanent --remove-port=%d/%s", record.optInt("port", 0), record.optString(JsonKey.PROTOCOL, ""));
 		String command2 = "firewall-cmd --reload"; 
 		CommandLineExecutor.exec(command1);
 		CommandLineExecutor.exec(command2);

@@ -806,12 +806,8 @@ public class HandlerWebManager implements HttpHandler {
 			String ntpUpdateInterval = queryPairs.getOrDefault("ntp_update_interval", "").trim();
 			String restartService = queryPairs.getOrDefault("restart_service", "").trim();
 			String restartDevice = queryPairs.getOrDefault("restart_device", "").trim();
-			String exp = queryPairs.getOrDefault("otp_expiration", "0").trim();
-			long otpExpiration = Utility.atol(exp);
-			if(otpExpiration == 0)
-			{
-				otpExpiration = 60000;
-			}
+			String exp = queryPairs.getOrDefault("otp_expiration_offset", "0").trim();
+			long otpExpirationOffset = Utility.atol(exp);
 			boolean dropExpireOTP = queryPairs.getOrDefault("drop_expire_otp", "").trim().equals("1");
 			
 			ConfigGeneral.setDeviceName(deviceName2);
@@ -820,7 +816,7 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigGeneral.setNtpUpdateInterval(ntpUpdateInterval);
 			ConfigGeneral.setRestartService(restartService);
 			ConfigGeneral.setRestartDevice(restartDevice);
-			ConfigGeneral.setOtpExpiration(otpExpiration);
+			ConfigGeneral.setOtpExpirationOffset(otpExpirationOffset);
 			ConfigGeneral.setDropExpireOTP(dropExpireOTP);
 			
 			ConfigGeneral.save();
