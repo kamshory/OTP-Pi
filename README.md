@@ -87,7 +87,7 @@ Manual SMS is used to test whether each modem can send SMS.
 
 The OTP-Pi can connect to the internet using a mobile modem. Thus, users do not need to connect the OTP-Pi with wired or optical internet. It provides an alternative for users in choosing an internet connection.
 
-## Administrator Setting
+## Administrator Settings
 
 Administrator Settings is a menu to configure administrator. New OTP-Pi devices don't have an administrator yet. The user must create an administrator first before using it. Please enter the OTP-Pi access point according to the SSID and password listed on the brochure and scan the QR Code on the brochure using a smartphone.
 
@@ -129,7 +129,7 @@ API Setting is a REST API configuration for sending SMS.
 | Restart Service | Time to restart the service |
 | Restart Device | Time to reboot the device |
 
-## Time Setting
+## Time Settings
 
 | Field | Description |
 | ----- | ----------- |
@@ -202,7 +202,7 @@ OTP-Pi provides an option if this device is installed on a mobile internet netwo
 | Timeout | Request time out |
 | Refresh Connection | Refresh Mosquitto connection |
 
-## SMS Setting
+## SMS Settings
 
 SMS Setting is the configuration of sending SMS by OTP-Pi.
 
@@ -214,7 +214,7 @@ SMS Setting is the configuration of sending SMS by OTP-Pi.
 | Monitor SMS Traffic | Flag to monitor SMS traffic |
 
 
-## Modem Setting
+## Modem Settings
 
 | Field | Description |
 | ----- | ----------- |
@@ -246,7 +246,7 @@ SMS Setting is the configuration of sending SMS by OTP-Pi.
 | Active | Flag for the modem that will be used or not |
 
 
-### APN Setting for Indonesian Telco
+### APN Settings for Indonesian Telco
 
 | Operator | APN | Username | Password | Dial UP |
 | -- | -- | -- | -- | -- |
