@@ -1251,7 +1251,7 @@ public class HandlerWebManager implements HttpHandler {
 		String imsi = queryPairs.getOrDefault("imsi", "").trim();
 		String name = queryPairs.getOrDefault("name", "").trim();
 		String recipientPrefix = queryPairs.getOrDefault("recipient_prefix", "").trim();
-		
+		boolean deleteSentSMS = queryPairs.getOrDefault("delete_sent_sms", "").trim().equals("1");
 		if(!recipientPrefix.isEmpty())
 		{
 			recipientPrefix = recipientPrefix.replace("\n", "\r\n");
@@ -1339,7 +1339,7 @@ public class HandlerWebManager implements HttpHandler {
 		modem.setInitDial5(initDial5);
 		modem.setDialCommand(dialCommand);
 		modem.setAutoreconnect(autoreconnect);
-
+		modem.setDeleteSentSMS(deleteSentSMS);
 		ConfigModem.update(id, modem);
 		ConfigModem.save();	
 	}

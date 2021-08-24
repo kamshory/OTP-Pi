@@ -25,6 +25,7 @@ public class DataModem {
 	private String stopBits = "";
 	private boolean internetAccess = false;
 	private boolean smsAPI = false;
+	private boolean deleteSentSMS = false;
 	private boolean defaultModem = false;
 	private boolean active = false;
 	
@@ -56,7 +57,7 @@ public class DataModem {
 		this.imei = jsonObject.optString("imei", "");
 		this.msisdn = jsonObject.optString("msisdn", "");
 		this.imsi = jsonObject.optString("imsi", "");
-		this.setRecipientPrefix(jsonObject.optString("recipientPrefix", ""));
+		this.recipientPrefix = jsonObject.optString("recipientPrefix", "");
 		this.simCardPIN = jsonObject.optString("simCardPIN", "");
 		this.baudRate = jsonObject.optInt("baudRate", 0);
 		this.parityBit = jsonObject.optString("parityBit", "");
@@ -64,6 +65,7 @@ public class DataModem {
 		this.stopBits = jsonObject.optString("stopBits", "");
 		this.internetAccess = jsonObject.optBoolean("internetAccess", false);
 		this.smsAPI = jsonObject.optBoolean("smsAPI", false);
+		this.deleteSentSMS = jsonObject.optBoolean("deleteSentSMS", false);
 		this.defaultModem = jsonObject.optBoolean("defaultModem", false);
 		this.active = jsonObject.optBoolean("active", false);
 		this.apn = jsonObject.optString("apn", "");
@@ -100,6 +102,7 @@ public class DataModem {
 		jsonObject.put("stopBits", this.stopBits);
 		jsonObject.put("internetAccess", this.internetAccess);
 		jsonObject.put("smsAPI", this.smsAPI);
+		jsonObject.put("deleteSentSMS", this.deleteSentSMS);
 		jsonObject.put("defaultModem", this.defaultModem);
 		jsonObject.put("active", this.active);
 		
@@ -375,6 +378,14 @@ public class DataModem {
 
 	public void setAutoreconnect(boolean autoreconnect) {
 		this.autoreconnect = autoreconnect;
+	}
+
+	public boolean isDeleteSentSMS() {
+		return deleteSentSMS;
+	}
+
+	public void setDeleteSentSMS(boolean deleteSentSMS) {
+		this.deleteSentSMS = deleteSentSMS;
 	}
 
 	public List<String> getRecipientPrefixList() {

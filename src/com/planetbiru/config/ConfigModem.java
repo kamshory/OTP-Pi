@@ -228,10 +228,4 @@ public class ConfigModem {
 		ConfigModem.modemData = new HashMap<>();
 		
 	}
-
-	
-
-	
-	
-	
 }

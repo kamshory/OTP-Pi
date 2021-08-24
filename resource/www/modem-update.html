@@ -213,6 +213,10 @@
                             <td><label><input type="checkbox" name="sms_api" value="1"> Yes</label></td>
                         </tr>
                         <tr>
+                            <td>Delete Sent SMS</td>
+                            <td><label><input type="checkbox" name="delete_sent_sms" value="1"> Yes</label></td>
+                        </tr>
+                        <tr>
                             <td>Default Modem</td>
                             <td><label><input type="checkbox" name="default_modem" value="1"> Yes</label></td>
                         </tr>
@@ -289,6 +293,7 @@
                                 $('input[name="autoreconnect"]').prop('checked', data.autoreconnect);
 
                                 $('input[name="sms_api"]').prop('checked', data.smsAPI);
+                                $('input[name="delete_sent_sms"]').prop('checked', data.deleteSentSMS);
                                 $('input[name="default_modem"]').prop('checked', data.defaultModem);
                                 $('input[name="active"]').prop('checked', data.active);
                                 

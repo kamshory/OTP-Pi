@@ -61,15 +61,12 @@ public class GSMInstance {
 		return this.sendSMS(receiver, message, true);
 	}
 
-	public String sendSMS(String receiver, String message, DataModem modemData, boolean deleteSent) throws GSMException {
+	
+	public String sendSMS(String receiver, String message, DataModem modemData) throws GSMException {
 		Date date = new Date();
 		String sender = modemData.getMsisdn();
 		this.logSendSMS(sender, Utility.maskMSISDN(receiver), date, message.length());
-		return this.sendSMS(receiver, message, deleteSent);
-	}
-	
-	public String sendSMS(String receiver, String message, DataModem modemData) throws GSMException {
-		return this.sendSMS(receiver, message, modemData, true);
+		return this.sendSMS(receiver, message, modemData.isDeleteSentSMS());
 	}
 	
 	private void logSendSMS(String sender, String receiver, Date date, int length) {

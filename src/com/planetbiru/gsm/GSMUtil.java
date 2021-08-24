@@ -152,7 +152,7 @@ public class GSMUtil {
 		{
 			GSMUtil.sendTraffic(receiver, ste, modemData);
 		}		
-		String result = GSMUtil.get(modemID).sendSMS(receiver, message);			
+		String result = GSMUtil.get(modemID).sendSMS(receiver, message, modemData);			
 		JSONObject response = new JSONObject();
 		response.put(GSMUtil.MODEM_ID, modemData.getId());
 		response.put(GSMUtil.RESULT, result);

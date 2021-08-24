@@ -5655,3 +5655,6 @@ Caused by: java.net.BindException: Address already in use: bind
 2021-08-23 13:55:13 [INFO  ] Application                     :195  - Service started
 2021-08-23 20:10:47 [INFO  ] Application                     :195  - Service started
 2021-08-23 20:34:25 [INFO  ] Application                     :194  - Service started
+2021-08-23 23:18:19 [INFO  ] Application                     :194  - Service started
+2021-08-24 12:08:36 [INFO  ] Application                     :194  - Service started
+2021-08-24 12:17:00 [INFO  ] Application                     :194  - Service started
