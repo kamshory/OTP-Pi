@@ -6,6 +6,8 @@ import org.subethamail.smtp.MessageHandler;
 import org.subethamail.smtp.MessageHandlerFactory;
 import org.subethamail.smtp.RejectException;
 
+import com.google.common.eventbus.EventBus;
+
 import javax.mail.BodyPart;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
@@ -24,11 +26,12 @@ public class PlanetMessageHandlerFactory implements MessageHandlerFactory
     {
         return new PlanetMailHandler(messageContext);
     }
+	
 
     class PlanetMailHandler implements MessageHandler
     {
         MessageContext context;
-        PlanetMail mockMail;
+        PlanetMail email;
 
         /**
          * Constructor
@@ -37,8 +40,8 @@ public class PlanetMessageHandlerFactory implements MessageHandlerFactory
         public PlanetMailHandler(MessageContext context)
         {
             this.context = context;
-            this.mockMail = new PlanetMail();
-            this.mockMail.setId(System.currentTimeMillis());
+            this.email = new PlanetMail();
+            this.email.setId(System.currentTimeMillis());
         }
 
         /**
@@ -49,7 +52,8 @@ public class PlanetMessageHandlerFactory implements MessageHandlerFactory
         @Override
         public void from(String from) throws RejectException
         {
-            this.mockMail.setFrom(from);
+            this.email.setFrom(from);
+            System.out.println("from : "+from);
         }
 
         /**
@@ -61,7 +65,8 @@ public class PlanetMessageHandlerFactory implements MessageHandlerFactory
         @Override
         public void recipient(String recipient) throws RejectException
         {
-            this.mockMail.setTo(recipient);
+            this.email.setTo(recipient);
+            System.out.println("recipient : "+recipient);
         }
 
         /**
@@ -74,7 +79,7 @@ public class PlanetMessageHandlerFactory implements MessageHandlerFactory
         public void data(InputStream data) throws RejectException, IOException
         {
             String rawMail = this.convertStreamToString(data);
-            mockMail.setRawMail(rawMail);
+            email.setRawMail(rawMail);
 
             Session session = Session.getDefaultInstance(new Properties());
             InputStream is = new ByteArrayInputStream(rawMail.getBytes());
@@ -82,8 +87,8 @@ public class PlanetMessageHandlerFactory implements MessageHandlerFactory
             try
             {
                 MimeMessage message = new MimeMessage(session, is);
-                mockMail.setSubject(message.getSubject());
-                mockMail.setMimeMessage(message);
+                email.setSubject(message.getSubject());
+                email.setMimeMessage(message);
 
                 Object messageContent = message.getContent();
                 if(messageContent instanceof Multipart)
@@ -95,29 +100,29 @@ public class PlanetMessageHandlerFactory implements MessageHandlerFactory
                         String contentType = bodyPart.getContentType();
                         if(contentType.matches("text/plain.*"))
                         {
-                            mockMail.setBody(convertStreamToString(bodyPart.getInputStream()));
+                            email.setBody(convertStreamToString(bodyPart.getInputStream()));
                         }
                         else if(contentType.matches("text/html.*"))
                         {
-                            mockMail.setBodyHtml(convertStreamToString(bodyPart.getInputStream()));
+                            email.setBodyHtml(convertStreamToString(bodyPart.getInputStream()));
                         }
                     }
                 }
                 else if(messageContent instanceof InputStream)
                 {
                     InputStream mailContent = (InputStream) messageContent;
-                    mockMail.setBody(convertStreamToString(mailContent));
+                    email.setBody(convertStreamToString(mailContent));
                 }
                 else if(messageContent instanceof String)
                 {
                     String contentType = message.getContentType();
                     if(contentType.matches("text/plain.*"))
                     {
-                        mockMail.setBody(messageContent.toString());
+                        email.setBody(messageContent.toString());
                     }
                     else if(contentType.matches("text/html.*"))
                     {
-                        mockMail.setBodyHtml(messageContent.toString());
+                        email.setBodyHtml(messageContent.toString());
                     }
                 }
             }
@@ -133,7 +138,12 @@ public class PlanetMessageHandlerFactory implements MessageHandlerFactory
         public void done()
         {
             // set the received date
-            mockMail.setReceivedTime(System.currentTimeMillis());
+        	
+            email.setReceivedTime(System.currentTimeMillis());
+            
+            System.out.println("Complete ");
+            System.out.println("Subject : "+email.getSubject());
+            System.out.println("RAW EMAIL:\r\n\r\n"+email.getRawMail());
         }
 
         /**

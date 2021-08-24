@@ -86,7 +86,9 @@ public class WiserMessage
 	public String toString()
 	{
 		if (this.getData() == null)
+		{
 			return "";
+		}
 
 		return new String(this.getData());
 	}

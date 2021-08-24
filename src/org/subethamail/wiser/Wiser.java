@@ -107,7 +107,9 @@ public class Wiser implements SimpleMessageListener
 	public boolean accept(String from, String recipient)
 	{
 		if (log.isDebugEnabled())
+		{
 			log.debug("Accepting mail from " + from + " to " + recipient);
+		}
 
 		return true;
 	}
@@ -116,7 +118,9 @@ public class Wiser implements SimpleMessageListener
 	public void deliver(String from, String recipient, InputStream data) throws TooMuchDataException, IOException
 	{
 		if (log.isDebugEnabled())
+		{
 			log.debug("Delivering mail from " + from + " to " + recipient);
+		}
 
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		data = new BufferedInputStream(data);
@@ -131,7 +135,9 @@ public class Wiser implements SimpleMessageListener
 		byte[] bytes = out.toByteArray();
 
 		if (log.isDebugEnabled())
+		{
 			log.debug("Creating message from data with " + bytes.length + " bytes");
+		}
 
 		// create a new WiserMessage.
 		this.messages.add(new WiserMessage(this, from, recipient, bytes));
@@ -169,7 +175,9 @@ public class Wiser implements SimpleMessageListener
 		out.println("----- Start printing messages -----");
 
 		for (WiserMessage wmsg: this.getMessages())
+		{
 			wmsg.dumpMessage(out);
+		}
 
 		out.println("----- End printing messages -----");
 	}

@@ -5659,3 +5659,65 @@ Caused by: java.net.BindException: Address already in use: bind
 2021-08-24 12:08:36 [INFO  ] Application                     :194  - Service started
 2021-08-24 12:17:00 [INFO  ] Application                     :194  - Service started
 2021-08-24 14:54:00 [INFO  ] Application                     :194  - Service started
+2021-08-24 16:27:24 [INFO  ] Application                     :194  - Service started
+2021-08-24 16:33:28 [ERROR ] PlanetMessageHandlerFactory     :166  - Pre-mature end of <CRLF>.<CRLF> terminated data
+java.io.EOFException: Pre-mature end of <CRLF>.<CRLF> terminated data
+	at org.subethamail.smtp.io.DotTerminatedInputStream.read(DotTerminatedInputStream.java:73)
+	at org.subethamail.smtp.io.DotUnstuffingInputStream.read(DotUnstuffingInputStream.java:47)
+	at org.subethamail.smtp.io.DotUnstuffingInputStream.read(DotUnstuffingInputStream.java:85)
+	at java.base/java.io.FilterInputStream.read(FilterInputStream.java:132)
+	at org.subethamail.smtp.io.ReceivedHeaderStream.read(ReceivedHeaderStream.java:131)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:297)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:339)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:188)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:181)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:161)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:326)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:392)
+	at com.planetbiru.mail.PlanetMessageHandlerFactory$PlanetMailHandler.convertStreamToString(PlanetMessageHandlerFactory.java:158)
+	at com.planetbiru.mail.PlanetMessageHandlerFactory$PlanetMailHandler.data(PlanetMessageHandlerFactory.java:79)
+	at org.subethamail.smtp.command.DataCommand.execute(DataCommand.java:64)
+	at org.subethamail.smtp.server.RequireTLSCommandWrapper.execute(RequireTLSCommandWrapper.java:30)
+	at org.subethamail.smtp.server.CommandHandler.handleCommand(CommandHandler.java:99)
+	at org.subethamail.smtp.server.Session.runCommandLoop(Session.java:244)
+	at org.subethamail.smtp.server.Session.run(Session.java:145)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-08-24 16:35:33 [ERROR ] PlanetMessageHandlerFactory     :166  - Read timed out
+java.net.SocketTimeoutException: Read timed out
+	at java.base/sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:283)
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:309)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:350)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:803)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:982)
+	at java.base/java.io.BufferedInputStream.fill(BufferedInputStream.java:244)
+	at java.base/java.io.BufferedInputStream.read(BufferedInputStream.java:263)
+	at org.subethamail.smtp.io.DotTerminatedInputStream.initNextBytes(DotTerminatedInputStream.java:82)
+	at org.subethamail.smtp.io.DotTerminatedInputStream.read(DotTerminatedInputStream.java:61)
+	at org.subethamail.smtp.io.DotUnstuffingInputStream.read(DotUnstuffingInputStream.java:47)
+	at org.subethamail.smtp.io.DotUnstuffingInputStream.read(DotUnstuffingInputStream.java:76)
+	at java.base/java.io.FilterInputStream.read(FilterInputStream.java:132)
+	at org.subethamail.smtp.io.ReceivedHeaderStream.read(ReceivedHeaderStream.java:131)
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:297)
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:339)
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:188)
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:181)
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:161)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:326)
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:392)
+	at com.planetbiru.mail.PlanetMessageHandlerFactory$PlanetMailHandler.convertStreamToString(PlanetMessageHandlerFactory.java:158)
+	at com.planetbiru.mail.PlanetMessageHandlerFactory$PlanetMailHandler.data(PlanetMessageHandlerFactory.java:79)
+	at org.subethamail.smtp.command.DataCommand.execute(DataCommand.java:64)
+	at org.subethamail.smtp.server.RequireTLSCommandWrapper.execute(RequireTLSCommandWrapper.java:30)
+	at org.subethamail.smtp.server.CommandHandler.handleCommand(CommandHandler.java:99)
+	at org.subethamail.smtp.server.Session.runCommandLoop(Session.java:244)
+	at org.subethamail.smtp.server.Session.run(Session.java:145)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-08-24 16:41:57 [INFO  ] Application                     :194  - Service started
+2021-08-24 16:46:39 [INFO  ] Application                     :194  - Service started
+2021-08-24 16:50:20 [INFO  ] Application                     :194  - Service started
+2021-08-24 16:52:29 [INFO  ] Application                     :194  - Service started
+2021-08-24 17:47:07 [INFO  ] Application                     :194  - Service started

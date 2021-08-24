@@ -297,6 +297,8 @@ To use Gmail SMTP, use the following configuration:
 | Sender Password | Gmail Password |
 | Active | Yes |
 
+See https://mkyong.com/java/javamail-api-sending-email-via-gmail-smtp-example/
+
 ## Local SMTP Server
 
 The OTP-Pi is equipped with a local SMTP server for sending email. With this local SMTP server, users can send email without needing an external SMTP server. However, a local SMTP server is not recommended because the destination mail server may block email sent from the local SMTP server.
