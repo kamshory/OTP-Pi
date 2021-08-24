@@ -59,8 +59,8 @@ public class Application {
 	private static ServerEmail smtp;
 	private static Scheduller scheduller;
 	
-	private static SubscriberMQTT mqttSubscriber;
 	private static SubscriberWebSocket webSocketSubscriber;	
+	private static SubscriberMQTT mqttSubscriber;
 	private static SubscriberAMQP amqpSubscriber;
 	
 	private static Logger logger = Logger.getLogger(Application.class);
@@ -475,8 +475,7 @@ public class Application {
 		{
 			ConfigSMTP.reset();
 			ConfigSMTP.save();
-		}
-		
+		}	
 	}
 	
 	private static void resetVendorConfig(Properties props) {
@@ -524,9 +523,8 @@ public class Application {
 			} 
 			catch (IOException e) 
 			{
-				e.printStackTrace();
-			}
-			
+				logger.error(e.getMessage(), e);
+			}			
 		}
 		return null;
 	}

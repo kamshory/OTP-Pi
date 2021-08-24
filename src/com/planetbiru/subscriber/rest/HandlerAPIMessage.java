@@ -37,10 +37,10 @@ public class HandlerAPIMessage implements HttpHandler {
     	            String requestBodyStr = new String(requestBody);     
     	            MessageAPI api = new MessageAPI();
     	            JSONObject result = api.processRequest(requestBodyStr);            
-    	            String response = result.toString(4);            
+    	            byte[] response = result.toString(4).getBytes();            
     	            responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
-    	            httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, response.length());	 
-    	            httpExchange.getResponseBody().write(response.getBytes());
+    	            httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, response.length);	 
+    	            httpExchange.getResponseBody().write(response);
     	        }
     	        else
     	        {
@@ -56,7 +56,6 @@ public class HandlerAPIMessage implements HttpHandler {
         {
         	httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_FORBIDDEN, 0);	
         }
-       	
         httpExchange.close();
 	}
 	public static JSONObject unauthorized(String requestBody) {
@@ -110,7 +109,5 @@ public class HandlerAPIMessage implements HttpHandler {
 			}
     	}
     	return false;
-	}	
-	
-
+	}
 }
