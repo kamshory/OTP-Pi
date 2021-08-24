@@ -544,13 +544,13 @@ To use RabbitMQ, please go to the link https://www.rabbitmq.com/
 To use Mosquitto, please open the link https://mosquitto.org/
 
 
-![OTP-Pi Topology](https://raw.githubusercontent.com/kamshory/OTP-Broker/main/src/main/resources/static/www/lib.assets/images/topology.svg)
+![OTP-Pi Topology](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/src/main/resources/static/www/lib.assets/images/topology.svg)
 
 ### Scenario 1 - OTP-Pi App Server Accessible
 
 In this scenario, the App Server can directly send the OTP to the OTP-Pi via HTTP.
 
-![OTP-Pi Topology Scenario 1](https://raw.githubusercontent.com/kamshory/OTP-Broker/main/src/main/resources/static/www/lib.assets/images/topology-1.svg)
+![OTP-Pi Topology Scenario 1](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/src/main/resources/static/www/lib.assets/images/topology-1.svg)
 
 Users can use a cheap domain and use the Dynamic Domain Name System for free. With the use of port forwarding on the router, OTP-Pi can be accessed from anywhere using a domain or subdomain. In this scenario, the user needs:
 
@@ -685,7 +685,7 @@ In this scenario, the App Server may send the OTP to RabbitMQ Server, Mosquitto 
 
 App Server acts as publisher and OTP-Pi becomes consumer of RabbitMQ Server, Mosquitto Server and WSMessageBroker. Both must use the same topic so that all OTPs sent by the App Server can be received by the OTP-Pi.
 
-![OTP-Pi Topology Scenario 2](https://raw.githubusercontent.com/kamshory/OTP-Broker/main/src/main/resources/static/www/lib.assets/images/topology-2.svg)
+![OTP-Pi Topology Scenario 2](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/src/main/resources/static/www/lib.assets/images/topology-2.svg)
 
 From the two scenarios above, the OTP-Pi will send SMS using a GSM modem that is physically attached to the OTP-Pi device. Users can use either RabbitMQ Server, Mosquitto Server or WSMessageBroker and can also use both at the same time. However, if the App Server sends the same OTP to RabbitMQ Server, Mosquitto Server and WSMessageBroker, the OTP-Pi will send the SMS twice to the recipient number.
 
