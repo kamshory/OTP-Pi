@@ -305,16 +305,9 @@ The OTP-Pi is equipped with a local SMTP server for sending email. With this loc
 
 DDNS Records are records for dynamic DNS settings. DDNS or Dymanic Domain Name System is a DNS setting mechanism that is done repeatedly because the public IP address of the server is always changing.
 
-OTP-Pi provides DDNS setup using DDNS vendor. Some of the supported DDNS vendors are as follows:
-
-1. Cloudflare - https://www.cloudflare.com/
-2. NoIP - https://www.noip.com/
-3. Dynu Dyn DNS - https://www.dynu.com/
-4. Free DNS Afraid - https://freedns.afraid.org/
-
 | Field | Description |
 | ----- | ----------- |
-| Provider | DNS Server Provider |
+| Provider | DNS server provider or vendor |
 | Type | Record type. Currently only support `A Record` |
 | Zone | Zone or domain name | 
 | Record Name | Record name or subdomain |
@@ -323,6 +316,60 @@ OTP-Pi provides DDNS setup using DDNS vendor. Some of the supported DDNS vendors
 | Update DNS | Interval to update DNS. OTP-Pi will update it by sending request to the DNS server provider |
 | Force Create Zone | For Cloudflare only. It will create zone if not exists |
 | Active | Flag that DDNS record is active or not |
+
+OTP-Pi provides DDNS setup using DDNS vendor. Some of the supported DDNS vendors are as follows:
+
+1. Cloudflare - https://www.cloudflare.com/
+2. NoIP - https://www.noip.com/
+3. Dynu Dyn DNS - https://www.dynu.com/
+4. Free DNS Afraid - https://freedns.afraid.org/
+
+### Cloudflare Account
+
+| Field | Description |
+| ----- | ----------- |
+| Cloudflare Endpoint | Cloudflare endpoint |
+| Account ID | Cloudflare account ID |
+| Email | Cloudflare email |
+| API Key | Cloudflare API key |
+| Token | Cloudflare Token |
+| Active | Flag that this Cloudflare account is active or not |
+
+### No IP Account
+
+| Field | Description |
+| ----- | ----------- |
+| No IP Endpoint | No IP endpoint |
+| Username | No IP username |
+| Password | No IP password |
+| Company Name | Your nompany name |
+| Maintainer Email | Maintainer email or your company |
+| Active | Flag that this No IP account is active or not |
+
+### Dynu Account
+
+| Field | Description |
+| ----- | ----------- |
+| API Version | Dynu API version |
+| Dynu Endpoint | Dynu endpoint |
+| API Key | Dynu API key |
+| Username | Dynu username |
+| Password | Dynu password |
+| Company Name | Your nompany name |
+| Maintainer Email | Maintainer email or your company |
+| Active | Flag that this Dynu account is active or not |
+
+### Afraid Account
+
+| Field | Description |
+| ----- | ----------- |
+| Afraid Endpoint | Free DNS Afraid endpoint |
+| Username | Free DNS Afraid username |
+| Password | Free DNS Afraid password |
+| Company Name | Your nompany name |
+| Maintainer Email | Maintainer email or your company |
+| Active | Flag that this Free DNS Afraid account is active or not |
+
 
 ## Network Setting 
 
