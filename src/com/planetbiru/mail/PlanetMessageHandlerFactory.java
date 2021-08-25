@@ -6,8 +6,6 @@ import org.subethamail.smtp.MessageHandler;
 import org.subethamail.smtp.MessageHandlerFactory;
 import org.subethamail.smtp.RejectException;
 
-import com.google.common.eventbus.EventBus;
-
 import javax.mail.BodyPart;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
@@ -53,7 +51,6 @@ public class PlanetMessageHandlerFactory implements MessageHandlerFactory
         public void from(String from) throws RejectException
         {
             this.email.setFrom(from);
-            System.out.println("from : "+from);
         }
 
         /**
@@ -66,7 +63,6 @@ public class PlanetMessageHandlerFactory implements MessageHandlerFactory
         public void recipient(String recipient) throws RejectException
         {
             this.email.setTo(recipient);
-            System.out.println("recipient : "+recipient);
         }
 
         /**
@@ -140,10 +136,7 @@ public class PlanetMessageHandlerFactory implements MessageHandlerFactory
             // set the received date
         	
             email.setReceivedTime(System.currentTimeMillis());
-            
-            System.out.println("Complete ");
-            System.out.println("Subject : "+email.getSubject());
-            System.out.println("RAW EMAIL:\r\n\r\n"+email.getRawMail());
+           
         }
 
         /**
