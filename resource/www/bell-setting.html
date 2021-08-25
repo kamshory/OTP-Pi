@@ -115,8 +115,9 @@
                             <td>
                                 <input type="submit" class="btn btn-success" name="save_bell_setting"
                                     id="save_bell_setting" value="Save">
-                                <input type="reset" class="btn btn-default" value="Reset">
-                            </td>
+                                    <input type="button" class="btn btn-primary" id="test_bell" value="Test Bell">
+                                    <input type="reset" class="btn btn-default" value="Reset">
+                                </td>
                         </tr>
                     </tbody>
                 </table>
@@ -134,6 +135,17 @@
                             $('input[name="mqtt_disconnected"]').prop("checked", data.mqttDisconnected);
                             $('input[name="ws_disconnected"]').prop("checked", data.wsDisconnected);                          
                         }
+                    });
+                    $(document).on('click', '#test_bell', function(e2){
+                        $.ajax({
+                        type: "POST",
+                        url: "api/bell/test",
+                        dataType: "json",
+                        data:{action:'ring', duration:2000},
+                        success: function (data) {
+                                                    
+                        }
+                    });
                     });
                 });
             </script>
