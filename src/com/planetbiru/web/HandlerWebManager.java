@@ -18,6 +18,7 @@ import com.planetbiru.DeviceAPI;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigAPIUser;
+import com.planetbiru.config.ConfigBell;
 import com.planetbiru.config.ConfigBlocking;
 import com.planetbiru.config.ConfigDDNS;
 import com.planetbiru.config.ConfigEmail;
@@ -310,6 +311,10 @@ public class HandlerWebManager implements HttpHandler {
 				else if(path.equals("/general-setting.html"))
 				{
 					this.processGeneralSetting(requestBody);
+				}
+				else if(path.equals("/bell-setting.html"))
+				{
+					this.processBellSetting(requestBody);
 				}
 				else if(path.equals("/date-time-setting.html"))
 				{
@@ -821,6 +826,28 @@ public class HandlerWebManager implements HttpHandler {
 			
 			ConfigGeneral.save();
 			DeviceAPI.setTimeZone(deviceTimeZone);
+		}
+	}
+
+	
+	private void processBellSetting(String requestBody) {
+		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
+		if(queryPairs.containsKey("save_bell_setting"))
+		{
+			ConfigGeneral.load(Config.getGeneralSettingPath());
+			
+			boolean smsFailure = queryPairs.getOrDefault("sms_failure", "").trim().equals("1");
+			boolean amqpDisconnected = queryPairs.getOrDefault("amqp_disconnected", "").trim().equals("1");
+			boolean mqttDisconnected = queryPairs.getOrDefault("mqtt_disconnected", "").trim().equals("1");
+			boolean wsDisconnected = queryPairs.getOrDefault("ws_disconnected", "").trim().equals("1");
+			
+			ConfigBell.setSmsFailure(smsFailure);
+			ConfigBell.setAmqpDisconnected(amqpDisconnected);
+			ConfigBell.setMqttDisconnected(mqttDisconnected);
+			ConfigBell.setWsDisconnected(wsDisconnected);
+			
+			ConfigBell.save();
+			
 		}
 	}
 

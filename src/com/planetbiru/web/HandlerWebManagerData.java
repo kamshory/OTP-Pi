@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigAPIUser;
+import com.planetbiru.config.ConfigBell;
 import com.planetbiru.config.ConfigBlocking;
 import com.planetbiru.config.ConfigDDNS;
 import com.planetbiru.config.ConfigEmail;
@@ -58,6 +59,10 @@ public class HandlerWebManagerData implements HttpHandler {
 		if(path.startsWith("/data/general-setting/get"))
 		{
 			this.handleGeneralSetting(httpExchange);
+		}
+		if(path.startsWith("/data/bell-setting/get"))
+		{
+			this.handleBellSetting(httpExchange);
 		}
 		else if(path.startsWith("/data/smtp-setting/get"))
 		{
@@ -682,6 +687,42 @@ public class HandlerWebManagerData implements HttpHandler {
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
 				String list = ConfigGeneral.toJSONObject().toString();
+				responseBody = list.getBytes();
+			}
+			else
+			{
+				statusCode = HttpStatus.UNAUTHORIZED;			
+			}
+		}
+		catch(NoUserRegisteredException e)
+		{
+			/**
+			 * Do nothing
+			 */
+		}
+		cookie.saveSessionData();
+		cookie.putToHeaders(responseHeaders);
+		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
+		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
+		
+		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+		httpExchange.getResponseBody().write(responseBody);
+		httpExchange.close();	
+	}
+	
+	//@GetMapping(path="/data/bell-setting/get")
+	public void handleBellSetting(HttpExchange httpExchange) throws IOException
+	{
+		Headers requestHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
+		CookieServer cookie = new CookieServer(requestHeaders, Config.getSessionName(), Config.getSessionLifetime());
+		byte[] responseBody = "".getBytes();
+		int statusCode = HttpStatus.OK;
+		try
+		{
+			if(WebUserAccount.checkUserAuth(requestHeaders))
+			{
+				String list = ConfigBell.toJSONObject().toString();
 				responseBody = list.getBytes();
 			}
 			else

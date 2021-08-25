@@ -9,6 +9,7 @@ import java.util.Properties;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigAPIUser;
+import com.planetbiru.config.ConfigBell;
 import com.planetbiru.config.ConfigBlocking;
 import com.planetbiru.config.ConfigDDNS;
 import com.planetbiru.config.ConfigEmail;
@@ -184,7 +185,9 @@ public class ConfigLoader {
 		String resetDeviceFile = ConfigLoader.getConfig("otppi.reset.device.file");
 		
 		boolean debugReadSMS = ConfigLoader.getConfigBoolean("otppi.debug.read.sms");
+		String bellSettingPath = ConfigLoader.getConfig("otppi.path.setting.bell");
 		
+		Config.setBellSettingPath(bellSettingPath);
 		Config.setResetDeviceType(resetDeviceType);
 		Config.setResetDeviceFile(resetDeviceFile);
 		Config.setLogConfigNotFound(logConfigNotFound);
@@ -276,7 +279,9 @@ public class ConfigLoader {
 		ConfigVendorAfraid.load(Config.getAfraidSettingPath());		
 		ConfigGeneral.load(Config.getGeneralSettingPath());		
 		ServerStatus.load(Config.getServerStatusSettingPath());
-		
+
+		ConfigBell.load(Config.getBellSettingPath());		
+
 		Config.setWaitLoopParent(waitLoopParent);
 		Config.setWaitLoopChild(waitLoopChild);
 		Config.setDebugReadSMS(debugReadSMS);

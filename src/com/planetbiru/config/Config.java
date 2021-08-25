@@ -1,6 +1,7 @@
 package com.planetbiru.config;
 
 public class Config {
+	private static String bellSettingPath = "";
 	private static String smsLogPath = "";
 	private static String generalSettingPath = "";
 	private static String secretKey = "planetsecret";
@@ -786,6 +787,18 @@ public class Config {
 
 	public static void setDebugReadSMS(boolean debugReadSMS) {
 		Config.debugReadSMS = debugReadSMS;
+	}
+
+
+
+	public static String getBellSettingPath() {
+		return bellSettingPath;
+	}
+
+
+
+	public static void setBellSettingPath(String bellSettingPath) {
+		Config.bellSettingPath = bellSettingPath;
 	}
 
 }
