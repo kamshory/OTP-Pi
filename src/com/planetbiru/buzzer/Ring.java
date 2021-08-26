@@ -2,21 +2,36 @@ package com.planetbiru.buzzer;
 
 public class Ring extends Thread {
 
-	private boolean running = false;
 	private long duration = 0;
 
 	public Ring(long duration) {
 		this.duration = duration;
 	}
 
-	public void stopService() {
-		this.running = false;	
+	public void stopService() {	
 	}
 	
+	@Override
 	public void run()
 	{
-		this.running = true;
+		this.on();
+		this.waitUntil(this.duration);
+		this.off();
+	}
+
+	private void waitUntil(long duration) {
+		try {
+			Thread.sleep(duration);
+		} catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
+		}
 		
+	}
+
+	private void on() {
+	}
+
+	private void off() {
 	}
 
 }
