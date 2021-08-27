@@ -2,6 +2,10 @@ package com.planetbiru.buzzer;
 
 public class Buzzer {
 	
+	private static Ring ring = new Ring();
+
+
+
 	private Buzzer()
 	{
 		
@@ -10,8 +14,9 @@ public class Buzzer {
 	
 
 	public static void ring(long duration) {
-		// TODO Auto-generated method stub
-		
+		Buzzer.ring.stopService();
+		Buzzer.ring = new Ring(duration);
+		Buzzer.ring.start();
 	}
 
 }
