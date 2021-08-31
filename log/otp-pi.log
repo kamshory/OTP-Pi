@@ -5721,3 +5721,224 @@ java.net.SocketTimeoutException: Read timed out
 2021-08-24 16:50:20 [INFO  ] Application                     :194  - Service started
 2021-08-24 16:52:29 [INFO  ] Application                     :194  - Service started
 2021-08-24 17:47:07 [INFO  ] Application                     :194  - Service started
+2021-08-24 21:12:45 [INFO  ] Application                     :194  - Service started
+2021-08-24 21:15:23 [INFO  ] Application                     :194  - Service started
+2021-08-24 21:18:14 [INFO  ] Application                     :194  - Service started
+2021-08-25 07:23:14 [INFO  ] Application                     :194  - Service started
+2021-08-25 07:24:37 [INFO  ] Application                     :194  - Service started
+2021-08-25 07:26:46 [INFO  ] Application                     :194  - Service started
+2021-08-25 07:28:42 [INFO  ] Application                     :194  - Service started
+2021-08-25 07:29:25 [INFO  ] Application                     :194  - Service started
+2021-08-25 07:29:45 [INFO  ] Application                     :194  - Service started
+2021-08-25 07:30:02 [INFO  ] Application                     :194  - Service started
+2021-08-25 07:35:10 [INFO  ] Application                     :194  - Service started
+2021-08-25 07:36:01 [INFO  ] Application                     :194  - Service started
+2021-08-25 07:40:12 [INFO  ] Application                     :194  - Service started
+2021-08-25 07:42:37 [INFO  ] Application                     :194  - Service started
+2021-08-25 07:42:51 [INFO  ] Application                     :194  - Service started
+2021-08-25 07:42:55 [ERROR ] ServerWebAdmin                  :46   - Address already in use: bind
+java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:220)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:88)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:101)
+	at jdk.httpserver/sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
+	at jdk.httpserver/sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.HttpServer.create(HttpServer.java:137)
+	at com.planetbiru.ServerWebAdmin.start(ServerWebAdmin.java:33)
+	at com.planetbiru.Application.webAdminServerStart(Application.java:238)
+	at com.planetbiru.Application.startService(Application.java:155)
+	at com.planetbiru.Application.main(Application.java:77)
+2021-08-25 07:42:56 [ERROR ] ServerRESTAPI                   :123  - Address already in use: bind
+2021-08-25 07:42:56 [ERROR ] ServerRESTAPI                   :99   - Address already in use: bind
+2021-08-25 07:42:57 [ERROR ] ServerEmail                     :72   - java.net.BindException: Address already in use: bind
+java.lang.RuntimeException: java.net.BindException: Address already in use: bind
+	at org.subethamail.smtp.server.SMTPServer.start(SMTPServer.java:296)
+	at com.planetbiru.ServerEmail.startService(ServerEmail.java:67)
+	at com.planetbiru.ServerEmail.start(ServerEmail.java:27)
+	at com.planetbiru.Application.serverEmailStart(Application.java:210)
+	at com.planetbiru.Application.startService(Application.java:191)
+	at com.planetbiru.Application.main(Application.java:77)
+Caused by: java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:643)
+	at java.base/java.net.ServerSocket.bind(ServerSocket.java:396)
+	at org.subethamail.smtp.server.SMTPServer.createServerSocket(SMTPServer.java:342)
+	at org.subethamail.smtp.server.SMTPServer.start(SMTPServer.java:292)
+	... 5 more
+2021-08-25 07:42:57 [INFO  ] Application                     :194  - Service started
+2021-08-25 07:43:08 [ERROR ] ServerWebAdmin                  :46   - Address already in use: bind
+java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:220)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:88)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:101)
+	at jdk.httpserver/sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
+	at jdk.httpserver/sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.HttpServer.create(HttpServer.java:137)
+	at com.planetbiru.ServerWebAdmin.start(ServerWebAdmin.java:33)
+	at com.planetbiru.Application.webAdminServerStart(Application.java:238)
+	at com.planetbiru.Application.startService(Application.java:155)
+	at com.planetbiru.Application.main(Application.java:77)
+2021-08-25 07:43:08 [ERROR ] ServerRESTAPI                   :123  - Address already in use: bind
+2021-08-25 07:43:09 [ERROR ] ServerRESTAPI                   :99   - Address already in use: bind
+2021-08-25 07:43:09 [ERROR ] ServerEmail                     :72   - java.net.BindException: Address already in use: bind
+java.lang.RuntimeException: java.net.BindException: Address already in use: bind
+	at org.subethamail.smtp.server.SMTPServer.start(SMTPServer.java:296)
+	at com.planetbiru.ServerEmail.startService(ServerEmail.java:67)
+	at com.planetbiru.ServerEmail.start(ServerEmail.java:27)
+	at com.planetbiru.Application.serverEmailStart(Application.java:210)
+	at com.planetbiru.Application.startService(Application.java:191)
+	at com.planetbiru.Application.main(Application.java:77)
+Caused by: java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:643)
+	at java.base/java.net.ServerSocket.bind(ServerSocket.java:396)
+	at org.subethamail.smtp.server.SMTPServer.createServerSocket(SMTPServer.java:342)
+	at org.subethamail.smtp.server.SMTPServer.start(SMTPServer.java:292)
+	... 5 more
+2021-08-25 07:43:09 [INFO  ] Application                     :194  - Service started
+2021-08-25 07:43:16 [ERROR ] ServerWebAdmin                  :46   - Address already in use: bind
+java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:220)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:88)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:101)
+	at jdk.httpserver/sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
+	at jdk.httpserver/sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.HttpServer.create(HttpServer.java:137)
+	at com.planetbiru.ServerWebAdmin.start(ServerWebAdmin.java:33)
+	at com.planetbiru.Application.webAdminServerStart(Application.java:238)
+	at com.planetbiru.Application.startService(Application.java:155)
+	at com.planetbiru.Application.main(Application.java:77)
+2021-08-25 07:43:16 [ERROR ] ServerWebAdmin                  :46   - Address already in use: bind
+java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:220)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:88)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:101)
+	at jdk.httpserver/sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
+	at jdk.httpserver/sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.HttpServer.create(HttpServer.java:137)
+	at com.planetbiru.ServerWebAdmin.start(ServerWebAdmin.java:33)
+	at com.planetbiru.Application.webAdminServerStart(Application.java:238)
+	at com.planetbiru.Application.startService(Application.java:155)
+	at com.planetbiru.Application.main(Application.java:77)
+2021-08-25 07:43:18 [ERROR ] ServerRESTAPI                   :123  - Address already in use: bind
+2021-08-25 07:43:18 [ERROR ] ServerRESTAPI                   :123  - Address already in use: bind
+2021-08-25 07:43:18 [ERROR ] ServerRESTAPI                   :99   - Address already in use: bind
+2021-08-25 07:43:19 [ERROR ] ServerRESTAPI                   :99   - Address already in use: bind
+2021-08-25 07:43:19 [ERROR ] ServerEmail                     :72   - java.net.BindException: Address already in use: bind
+java.lang.RuntimeException: java.net.BindException: Address already in use: bind
+	at org.subethamail.smtp.server.SMTPServer.start(SMTPServer.java:296)
+	at com.planetbiru.ServerEmail.startService(ServerEmail.java:67)
+	at com.planetbiru.ServerEmail.start(ServerEmail.java:27)
+	at com.planetbiru.Application.serverEmailStart(Application.java:210)
+	at com.planetbiru.Application.startService(Application.java:191)
+	at com.planetbiru.Application.main(Application.java:77)
+Caused by: java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:643)
+	at java.base/java.net.ServerSocket.bind(ServerSocket.java:396)
+	at org.subethamail.smtp.server.SMTPServer.createServerSocket(SMTPServer.java:342)
+	at org.subethamail.smtp.server.SMTPServer.start(SMTPServer.java:292)
+	... 5 more
+2021-08-25 07:43:19 [INFO  ] Application                     :194  - Service started
+2021-08-25 07:43:19 [ERROR ] ServerEmail                     :72   - java.net.BindException: Address already in use: bind
+java.lang.RuntimeException: java.net.BindException: Address already in use: bind
+	at org.subethamail.smtp.server.SMTPServer.start(SMTPServer.java:296)
+	at com.planetbiru.ServerEmail.startService(ServerEmail.java:67)
+	at com.planetbiru.ServerEmail.start(ServerEmail.java:27)
+	at com.planetbiru.Application.serverEmailStart(Application.java:210)
+	at com.planetbiru.Application.startService(Application.java:191)
+	at com.planetbiru.Application.main(Application.java:77)
+Caused by: java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:643)
+	at java.base/java.net.ServerSocket.bind(ServerSocket.java:396)
+	at org.subethamail.smtp.server.SMTPServer.createServerSocket(SMTPServer.java:342)
+	at org.subethamail.smtp.server.SMTPServer.start(SMTPServer.java:292)
+	... 5 more
+2021-08-25 07:43:19 [INFO  ] Application                     :194  - Service started
+2021-08-25 07:44:12 [INFO  ] Application                     :194  - Service started
+2021-08-25 07:44:58 [INFO  ] Application                     :194  - Service started
+2021-08-25 07:45:22 [INFO  ] Application                     :194  - Service started
+2021-08-25 08:07:47 [INFO  ] Application                     :194  - Service started
+2021-08-25 08:08:20 [INFO  ] Application                     :194  - Service started
+2021-08-25 08:32:49 [INFO  ] Application                     :194  - Service started
+2021-08-25 08:33:55 [INFO  ] Application                     :194  - Service started
+2021-08-25 08:42:38 [INFO  ] Application                     :194  - Service started
+2021-08-25 08:43:21 [INFO  ] Application                     :194  - Service started
+2021-08-25 08:48:40 [INFO  ] Application                     :194  - Service started
+2021-08-25 08:50:34 [INFO  ] Application                     :194  - Service started
+2021-08-25 08:51:29 [INFO  ] Application                     :194  - Service started
+2021-08-25 08:51:46 [INFO  ] Application                     :194  - Service started
+2021-08-25 08:52:45 [INFO  ] Application                     :194  - Service started
+2021-08-25 08:53:28 [INFO  ] Application                     :194  - Service started
+2021-08-25 08:54:51 [INFO  ] Application                     :194  - Service started
+2021-08-25 08:55:16 [INFO  ] Application                     :194  - Service started
+2021-08-25 08:55:43 [INFO  ] Application                     :194  - Service started
+2021-08-25 08:56:30 [INFO  ] Application                     :194  - Service started
+2021-08-25 08:56:39 [INFO  ] Application                     :194  - Service started
+2021-08-25 08:57:20 [INFO  ] Application                     :194  - Service started
+2021-08-25 08:57:43 [INFO  ] Application                     :194  - Service started
+2021-08-25 09:12:22 [INFO  ] Application                     :194  - Service started
+2021-08-25 09:18:35 [INFO  ] Application                     :194  - Service started
+2021-08-25 16:31:26 [INFO  ] Application                     :194  - Service started
+2021-08-25 16:52:56 [INFO  ] Application                     :194  - Service started
+2021-08-25 16:53:37 [INFO  ] Application                     :194  - Service started
+2021-08-25 17:01:56 [INFO  ] Application                     :194  - Service started
+2021-08-25 17:03:31 [INFO  ] Application                     :194  - Service started
+2021-08-25 17:04:22 [INFO  ] Application                     :194  - Service started
+2021-08-25 17:04:47 [INFO  ] Application                     :194  - Service started
+2021-08-25 17:05:28 [INFO  ] Application                     :194  - Service started
+2021-08-25 17:05:56 [INFO  ] Application                     :194  - Service started
+2021-08-25 17:06:27 [INFO  ] Application                     :194  - Service started
+2021-08-26 17:06:10 [INFO  ] Application                     :194  - Service started
+2021-08-26 17:06:57 [INFO  ] GSM                             :121  - AT Command : AT+CGSN
+2021-08-26 17:06:57 [INFO  ] GSM                             :121  - AT Command : AT+CIMI
+2021-08-26 17:07:52 [INFO  ] Application                     :194  - Service started
+2021-08-26 17:10:00 [INFO  ] GSM                             :121  - AT Command : AT+CGSN
+2021-08-26 17:10:01 [INFO  ] GSM                             :121  - AT Command : AT+CIMI
+2021-08-26 17:14:15 [INFO  ] GSM                             :121  - AT Command : AT+CCID
+2021-08-26 17:14:16 [INFO  ] GSM                             :121  - AT Command : AT+CNUM
+2021-08-26 17:23:09 [INFO  ] Application                     :194  - Service started
+2021-08-26 17:23:37 [INFO  ] Application                     :194  - Service started
+2021-08-26 17:24:49 [INFO  ] Application                     :194  - Service started
+2021-08-26 17:25:21 [INFO  ] Application                     :194  - Service started
+2021-08-26 17:26:22 [INFO  ] Application                     :194  - Service started
+2021-08-26 17:26:47 [INFO  ] Application                     :194  - Service started
+2021-08-26 17:27:42 [INFO  ] Application                     :194  - Service started
+2021-08-26 17:28:08 [INFO  ] Application                     :194  - Service started
+2021-08-26 17:28:37 [INFO  ] Application                     :194  - Service started
+2021-08-26 17:30:33 [INFO  ] Application                     :194  - Service started
+2021-08-26 17:30:48 [INFO  ] Application                     :194  - Service started
+2021-08-26 17:31:20 [INFO  ] Application                     :194  - Service started
+2021-08-26 17:31:35 [INFO  ] Application                     :194  - Service started
+2021-08-26 17:32:12 [INFO  ] Application                     :194  - Service started
+2021-08-26 17:32:54 [INFO  ] Application                     :194  - Service started
+2021-08-26 17:33:27 [INFO  ] Application                     :194  - Service started
+2021-08-26 17:34:15 [INFO  ] Application                     :194  - Service started
+2021-08-26 18:26:44 [INFO  ] Application                     :194  - Service started
+2021-08-26 18:27:41 [INFO  ] Application                     :194  - Service started
+2021-08-26 18:28:07 [INFO  ] Application                     :194  - Service started
+2021-08-26 18:37:39 [INFO  ] Application                     :194  - Service started
+2021-08-26 18:40:05 [INFO  ] Application                     :194  - Service started
+2021-08-26 18:43:02 [INFO  ] Application                     :194  - Service started
+2021-08-26 18:43:21 [INFO  ] Application                     :194  - Service started

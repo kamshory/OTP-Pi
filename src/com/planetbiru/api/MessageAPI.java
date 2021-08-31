@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigBlocking;
 import com.planetbiru.config.ConfigGeneral;
 import com.planetbiru.constant.ConstantString;
@@ -184,6 +185,7 @@ public class MessageAPI {
 				} 
 				catch (GSMException e) 
 				{
+					Buzzer.alert(Buzzer.SMS_FAILED);
 					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.NO_DEVICE_CONNECTED);
 					responseJSON.put(JsonKey.ERROR, e.getMessage());
 				}

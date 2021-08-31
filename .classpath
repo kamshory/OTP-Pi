@@ -22,12 +22,12 @@
 	<classpathentry kind="lib" path="jar/http-20070405.jar" sourcepath="jar/src/http-20070405-sources.jar"/>
 	<classpathentry kind="lib" path="jar/log4j-api-2.13.3.jar" sourcepath="jar/src/log4j-api-2.13.3-sources.jar"/>
 	<classpathentry kind="lib" path="jar/log4j-core-2.13.3.jar" sourcepath="jar/src/log4j-core-2.13.3-sources.jar"/>
-	<classpathentry kind="lib" path="jar/org.openjdk.dio-1.1.0.jar" sourcepath="jar/src/org.openjdk.dio-1.1.0-sources.jar"/>
 	<classpathentry kind="lib" path="jar/javax.mail-1.4.5.jar" sourcepath="jar/src/javax.mail-1.4.5-sources.jar"/>
 	<classpathentry kind="lib" path="jar/org.apache.commons.codec-1.8.jar" sourcepath="jar/src/org.apache.commons.codec-1.8-sources.jar"/>
 	<classpathentry kind="lib" path="jar/commons-net-3.6.jar" sourcepath="jar/src/commons-net-3.6-sources.jar"/>
 	<classpathentry kind="lib" path="jar/commons-codec-1.15.jar" sourcepath="jar/src/commons-codec-1.15-sources.jar"/>
 	<classpathentry kind="lib" path="jar/cactoos-0.16.jar"/>
 	<classpathentry kind="lib" path="jar/javax.activation-1.2.0.jar" sourcepath="jar/src/javax.activation-1.2.0-sources.jar"/>
+	<classpathentry kind="lib" path="jar/pi4j-core.jar" sourcepath="jar/src/pi4j-core-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

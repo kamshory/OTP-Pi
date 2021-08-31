@@ -41,7 +41,7 @@ public class GSM {
     	
     	try
     	{
-	   		setSerialPort(SerialPort.getCommPort(portName));
+	   		this.setSerialPort(SerialPort.getCommPort(portName));
 	    	isOpen = this.serialPort.openPort();
 	        if(isOpen)
 	    	{		
@@ -257,6 +257,7 @@ public class GSM {
 					+ "Hello, welcome to our SMS tutorial.\r\n"
 					+ "+CMGL: 4,\"REC READ\",\"+85291234567\",,\"07/02/18,00:12:11+32\"\r\n"
 					+ "OTP tidak dapat digunakan\r\n"
+					+ "\r\n"
 					+ "OK";
     	}
     	

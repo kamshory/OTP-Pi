@@ -133,7 +133,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				{
 					String dur = queryPairs.getOrDefault("duration", "0");
 					long duration = Utility.atol(dur);
-					Buzzer.ring(duration);
+					Buzzer.ringing(duration);
 				}				
 			} 
 			else 

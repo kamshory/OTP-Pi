@@ -1,8 +1,11 @@
 package com.planetbiru.buzzer;
 
+import com.planetbiru.config.ConfigBell;
+
 public class Buzzer {
 	
-	private static Ring ring = new Ring();
+	public static final int SMS_FAILED = 1;
+	private static Ring ringTone = new Ring();
 
 
 
@@ -13,10 +16,20 @@ public class Buzzer {
 	
 	
 
-	public static void ring(long duration) {
-		Buzzer.ring.stopService();
-		Buzzer.ring = new Ring(duration);
-		Buzzer.ring.start();
+	public static void ringing(long duration) {
+		Buzzer.ringTone.stopService();
+		Buzzer.ringTone = new Ring(duration);
+		Buzzer.ringTone.start();
+	}
+
+
+
+	public static void alert(int code) {
+		if(code == SMS_FAILED && ConfigBell.isSmsFailure())
+		{
+			Buzzer.ringing(1000);
+		}
+		
 	}
 
 }
