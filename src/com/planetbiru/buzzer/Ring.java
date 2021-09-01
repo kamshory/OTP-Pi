@@ -36,6 +36,7 @@ public class Ring extends Thread {
 	public void run()
 	{
 		System.out.println("Start Ring");
+		
 		try 
 		{
 			this.on();
@@ -46,6 +47,7 @@ public class Ring extends Thread {
 		{
 			e.printStackTrace();
 		}
+		
 		System.out.println("Stop Ring");
 	}
 
@@ -57,8 +59,7 @@ public class Ring extends Thread {
 		catch (InterruptedException e) 
 		{
 			Thread.currentThread().interrupt();
-		}
-		
+		}	
 	}
 
 	private void on() throws IOException {
