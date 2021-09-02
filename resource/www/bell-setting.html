@@ -115,8 +115,8 @@
                             <td>
                                 <input type="submit" class="btn btn-success" name="save_bell_setting"
                                     id="save_bell_setting" value="Save">
-                                    <input type="button" class="btn btn-primary" id="test_bell" value="Test Bell">
-                                    <input type="reset" class="btn btn-default" value="Reset">
+                                    <input type="button" class="btn btn-primary" id="play" value="Play">
+                                    <input type="button" class="btn btn-primary" id="stop" value="Stop">
                                 </td>
                         </tr>
                     </tbody>
@@ -136,12 +136,23 @@
                             $('input[name="ws_disconnected"]').prop("checked", data.wsDisconnected);                          
                         }
                     });
-                    $(document).on('click', '#test_bell', function(e2){
+                    $(document).on('click', '#play', function(e2){
                         $.ajax({
                             type: "POST",
-                            url: "api/tone/test",
+                            url: "api/tone",
                             dataType: "json",
-                            data:{action:'tone', octave:-2, song:"16c2 16d2 6e2 8d2 8c2 4d2 4g2 32- 6c2 8c2 8b1 16a1 4b1 4e2 32- 6a1 6b1 6c2 6g1 6b1 8c2 6d2 6e2 8c2 4d2"},
+                            data:{action:'play', octave:-2, tempo:80, song:"16c2 16d2 6e2 8d2 8c2 4d2 4g2 32- 6c2 8c2 8b1 16a1 4b1 4e2 32- 6a1 6b1 6c2 6g1 6b1 8c2 6d2 6e2 8c2 4d2"},
+                            success: function (data) {
+                                                        
+                            }
+                        });
+                    });
+                    $(document).on('click', '#stop', function(e2){
+                        $.ajax({
+                            type: "POST",
+                            url: "api/tone",
+                            dataType: "json",
+                            data:{action:'stop'},
                             success: function (data) {
                                                         
                             }

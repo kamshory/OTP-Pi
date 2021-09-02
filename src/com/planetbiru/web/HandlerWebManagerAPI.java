@@ -108,13 +108,13 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			{
 				this.testBell(httpExchange);
 			}
-			else if(path.startsWith("/api/tone/test"))
+			else if(path.startsWith("/api/tone"))
 			{
 				this.testTone(httpExchange);
 			}
 		}
 	}
-	//@PostMapping(path="/api/tone/test")
+	//@PostMapping(path="/api/tone")
 	public void testTone(HttpExchange httpExchange) throws IOException
 	{
 		byte[] req = HttpUtil.getRequestBody(httpExchange);
@@ -136,10 +136,15 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
 				String song = queryPairs.getOrDefault("song", "");
 				int octave = Utility.atoi(queryPairs.getOrDefault("octave", "0"));
-				if(action.equals("tone"))
+				int tempo = Utility.atoi(queryPairs.getOrDefault("tempo", "0"));
+				if(action.equals("play"))
 				{
-					Music.play(Config.getSoundPIN(), song, octave);
-				}				
+					Music.play(Config.getSoundPIN(), song, octave, tempo);
+				}
+				else if(action.equals("stop"))
+				{
+					Music.stop(Config.getSoundPIN());
+				}
 			} 
 			else 
 			{
