@@ -13,8 +13,6 @@ public class Buzzer {
 	{
 		
 	}
-	
-	
 
 	public static void ringing(long duration) {
 		Buzzer.ringTone.stopService();

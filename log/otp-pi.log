@@ -5942,3 +5942,43 @@ Caused by: java.net.BindException: Address already in use: bind
 2021-08-26 18:40:05 [INFO  ] Application                     :194  - Service started
 2021-08-26 18:43:02 [INFO  ] Application                     :194  - Service started
 2021-08-26 18:43:21 [INFO  ] Application                     :194  - Service started
+2021-09-01 21:44:17 [INFO  ] Application                     :196  - Service started
+2021-09-01 21:45:25 [INFO  ] Application                     :196  - Service started
+2021-09-01 21:46:26 [INFO  ] Application                     :196  - Service started
+2021-09-01 21:46:45 [INFO  ] Application                     :196  - Service started
+2021-09-01 21:46:55 [INFO  ] Application                     :196  - Service started
+2021-09-01 21:48:04 [INFO  ] Application                     :196  - Service started
+2021-09-01 21:48:23 [INFO  ] Application                     :196  - Service started
+2021-09-02 09:03:19 [ERROR ] ServerWebAdmin                  :46   - Address already in use: bind
+java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:479)
+	at java.base/sun.nio.ch.Net.bind(Net.java:468)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:220)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:88)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:101)
+	at jdk.httpserver/sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
+	at jdk.httpserver/sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.HttpServer.create(HttpServer.java:137)
+	at com.planetbiru.ServerWebAdmin.start(ServerWebAdmin.java:33)
+	at com.planetbiru.Application.webAdminServerStart(Application.java:247)
+	at com.planetbiru.Application.startService(Application.java:164)
+	at com.planetbiru.Application.main(Application.java:86)
+2021-09-02 09:03:20 [ERROR ] ServerRESTAPI                   :123  - Address already in use: bind
+2021-09-02 09:03:21 [ERROR ] ServerRESTAPI                   :99   - Address already in use: bind
+2021-09-02 09:03:21 [INFO  ] Application                     :203  - Service started
+2021-09-02 09:04:11 [INFO  ] Application                     :203  - Service started
+2021-09-02 09:22:35 [INFO  ] Application                     :203  - Service started
+2021-09-02 09:59:43 [INFO  ] Application                     :203  - Service started
+2021-09-02 09:59:57 [INFO  ] Application                     :203  - Service started
+2021-09-02 14:40:03 [INFO  ] Application                     :199  - Service started
+2021-09-02 14:41:23 [INFO  ] Application                     :199  - Service started
+2021-09-02 14:49:33 [INFO  ] Application                     :208  - Service started
+2021-09-02 14:53:47 [INFO  ] Application                     :208  - Service started
+2021-09-02 14:56:41 [INFO  ] Application                     :208  - Service started
+2021-09-02 17:22:39 [INFO  ] Application                     :196  - Service started
+2021-09-02 17:26:08 [INFO  ] Application                     :196  - Service started
+2021-09-02 17:26:56 [INFO  ] Application                     :196  - Service started
+2021-09-02 17:29:28 [INFO  ] Application                     :196  - Service started
+2021-09-02 17:33:30 [INFO  ] Application                     :195  - Service started
+2021-09-02 17:38:57 [INFO  ] Application                     :195  - Service started

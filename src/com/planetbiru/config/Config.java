@@ -93,13 +93,13 @@ public class Config {
 	private static String subscriberMQTTSettingPath = "";
 	private static boolean cacheHTMLFile = false;
 	private static boolean debugReadSMS = false;
+	private static boolean soundEnable = false;
+	private static int soundPIN = 26;
 	
 	private Config()
 	{
 		
-	}
-
-	
+	}	
 
 	public static String getSecretKey() {
 		return secretKey;
@@ -799,6 +799,30 @@ public class Config {
 
 	public static void setBellSettingPath(String bellSettingPath) {
 		Config.bellSettingPath = bellSettingPath;
+	}
+
+
+
+	public static int getSoundPIN() {
+		return soundPIN;
+	}
+
+
+
+	public static void setSoundPIN(int soundPIN) {
+		Config.soundPIN = soundPIN;
+	}
+
+
+
+	public static boolean isSoundEnable() {
+		return soundEnable;
+	}
+
+
+
+	public static void setSoundEnable(boolean soundEnable) {
+		Config.soundEnable = soundEnable;
 	}
 
 }

@@ -11,6 +11,7 @@ import com.planetbiru.Application;
 import com.planetbiru.DeviceAPI;
 import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.buzzer.Buzzer;
+import com.planetbiru.buzzer.Music;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigEmail;
 import com.planetbiru.constant.ConstantString;
@@ -107,9 +108,56 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			{
 				this.testBell(httpExchange);
 			}
+			else if(path.startsWith("/api/tone/test"))
+			{
+				this.testTone(httpExchange);
+			}
 		}
 	}
-	//@PostMapping(path="/api/delete/sms")
+	//@PostMapping(path="/api/tone/test")
+	public void testTone(HttpExchange httpExchange) throws IOException
+	{
+		byte[] req = HttpUtil.getRequestBody(httpExchange);
+		String requestBody = "";
+		if(req != null)
+		{
+			requestBody = new String(req);
+		}
+		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
+		Headers requestHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
+		int statusCode;
+		JSONObject responseJSON = new JSONObject();
+		statusCode = HttpStatus.OK;
+		try 
+		{
+			if(WebUserAccount.checkUserAuth(requestHeaders))
+			{
+				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
+				String song = queryPairs.getOrDefault("song", "");
+				int octave = Utility.atoi(queryPairs.getOrDefault("octave", "0"));
+				if(action.equals("tone"))
+				{
+					Music.play(Config.getSoundPIN(), song, octave);
+				}				
+			} 
+			else 
+			{
+				statusCode = HttpStatus.UNAUTHORIZED;
+			}
+		} 
+		catch (NoUserRegisteredException e) 
+		{
+			statusCode = HttpStatus.UNAUTHORIZED;
+		}
+		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
+		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
+		byte[] responseBody = responseJSON.toString(4).getBytes();
+		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+		httpExchange.getResponseBody().write(responseBody);
+		httpExchange.close();
+	}
+	//@PostMapping(path="/api/bell/test")
 	public void testBell(HttpExchange httpExchange) throws IOException
 	{
 		byte[] req = HttpUtil.getRequestBody(httpExchange);
@@ -128,7 +176,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				String action = queryPairs.getOrDefault("action", "");
+				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
 				if(action.equals("ring"))
 				{
 					String dur = queryPairs.getOrDefault("duration", "0");
@@ -171,10 +219,10 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				String action = queryPairs.getOrDefault("action", "");
+				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
 				if(action.equals("delete-sms"))
 				{
-					String modemID = queryPairs.getOrDefault("modem_id", "");					
+					String modemID = queryPairs.getOrDefault(JsonKey.MODEM_ID, "");					
 					String storage = queryPairs.getOrDefault("storage", "");					
 					int smsID = Utility.atoi(queryPairs.getOrDefault("sms_id", "0"));	
 					GSMUtil.get(modemID).deleteSMS(smsID, storage);
@@ -195,7 +243,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		}
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
-		byte[] responseBody = responseJSON.toString(4).getBytes();
+		byte[] responseBody = responseJSON.toString(0).getBytes();
 
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 		httpExchange.getResponseBody().write(responseBody);
@@ -220,8 +268,8 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				String action = queryPairs.getOrDefault("action", "");
-				if(action.equals("start"))
+				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
+				if(action.equals(JsonKey.START))
 				{
 					Application.subscriberWSStart();					
 				}
@@ -242,7 +290,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		}
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
-		byte[] responseBody = responseJSON.toString(4).getBytes();
+		byte[] responseBody = responseJSON.toString(0).getBytes();
 
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 		httpExchange.getResponseBody().write(responseBody);
@@ -268,8 +316,8 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				String action = queryPairs.getOrDefault("action", "");
-				if(action.equals("start"))
+				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
+				if(action.equals(JsonKey.START))
 				{
 					Application.subscriberAMQPStart();				
 				}
@@ -290,7 +338,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		}
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
-		byte[] responseBody = responseJSON.toString(4).getBytes();
+		byte[] responseBody = responseJSON.toString(0).getBytes();
 
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 		httpExchange.getResponseBody().write(responseBody);
@@ -316,8 +364,8 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				String action = queryPairs.getOrDefault("action", "");
-				if(action.equals("start"))
+				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
+				if(action.equals(JsonKey.START))
 				{
 					Application.subscriberMQTTStart();				
 				}
@@ -337,7 +385,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		}
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
-		byte[] responseBody = responseJSON.toString(4).getBytes();
+		byte[] responseBody = responseJSON.toString(0).getBytes();
 
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 		httpExchange.getResponseBody().write(responseBody);
@@ -363,8 +411,8 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				String action = queryPairs.getOrDefault("action", "");
-				if(action.equals("start"))
+				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
+				if(action.equals(JsonKey.START))
 				{
 					Application.subscriberHTTPStart();				
 				}
@@ -385,7 +433,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		}
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
-		byte[] responseBody = responseJSON.toString(4).getBytes();
+		byte[] responseBody = responseJSON.toString(0).getBytes();
 
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 		httpExchange.getResponseBody().write(responseBody);
@@ -411,8 +459,8 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				String action = queryPairs.getOrDefault("action", "");
-				if(action.equals("start"))
+				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
+				if(action.equals(JsonKey.START))
 				{
 					Application.subscriberHTTPSStart();				
 				}
@@ -433,7 +481,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		}
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
-		byte[] responseBody = responseJSON.toString(4).getBytes();
+		byte[] responseBody = responseJSON.toString(0).getBytes();
 
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 		httpExchange.getResponseBody().write(responseBody);
@@ -526,7 +574,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				String action = queryPairs.getOrDefault("action", "");
+				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
 				String modemID = queryPairs.getOrDefault("id", "");
 				if(!modemID.isEmpty())
 				{
@@ -556,7 +604,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		}
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
-		byte[] responseBody = responseJSON.toString(4).getBytes();
+		byte[] responseBody = responseJSON.toString(0).getBytes();
 
 
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
@@ -583,7 +631,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				String action = queryPairs.getOrDefault("action", "");
+				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
 				String modemID = queryPairs.getOrDefault("id", "");
 				if(!modemID.isEmpty())
 				{
@@ -609,7 +657,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		}
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
-		byte[] responseBody = responseJSON.toString(4).getBytes();
+		byte[] responseBody = responseJSON.toString(0).getBytes();
 
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 		httpExchange.getResponseBody().write(responseBody);
@@ -678,7 +726,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		}
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
-		byte[] responseBody = responseJSON.toString(4).getBytes();
+		byte[] responseBody = responseJSON.toString(0).getBytes();
 
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 		httpExchange.getResponseBody().write(responseBody);
@@ -705,7 +753,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				String modemID = queryPairs.getOrDefault("modem_id", "");
+				String modemID = queryPairs.getOrDefault(JsonKey.MODEM_ID, "");
 				String receiver = queryPairs.getOrDefault("receiver", "");
 				String message = queryPairs.getOrDefault(JsonKey.MESSAGE, "");
 				String result = "";
@@ -735,7 +783,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		}
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
-		byte[] responseBody = responseJSON.toString(4).getBytes();
+		byte[] responseBody = responseJSON.toString(0).getBytes();
 
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 		httpExchange.getResponseBody().write(responseBody);
@@ -765,7 +813,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			{
 				response = new JSONObject();
 				String ussdCode = queryPairs.getOrDefault("ussd", "");
-				String modemID = queryPairs.getOrDefault("modem_id", "");
+				String modemID = queryPairs.getOrDefault(JsonKey.MODEM_ID, "");
 				String message = "";
 				if(ussdCode != null && !ussdCode.isEmpty())
 				{
@@ -803,7 +851,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		}
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
-		byte[] responseBody = responseJSON.toString(4).getBytes();
+		byte[] responseBody = responseJSON.toString(0).getBytes();
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 		httpExchange.getResponseBody().write(responseBody);
 		httpExchange.close();

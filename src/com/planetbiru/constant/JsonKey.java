@@ -67,6 +67,9 @@ public class JsonKey {
 	public static final String ERROR                         = "error";
 	public static final String LAST_UPDATE                   = "lastUpdate";
 	public static final String PROTOCOL                      = "protocol";
+	public static final String ACTION                        = "action";
+	public static final String START                         = "start";
+	public static final String MODEM_ID                      = "modem_id";
 	
 	private JsonKey()
 	{
