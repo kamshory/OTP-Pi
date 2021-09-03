@@ -12,14 +12,17 @@ public class Sound extends Thread {
 	private int octave = 0;
 	private int tempo = 120;
 	
-	public Sound(int pin, String song, int octave, int tempo) {
+	public Sound(int pin, String song, int octave, int tempo) 
+	{
 		this.pin = pin;
 		this.song = song.replaceAll("/s+/", " ").trim();
 		this.octave = octave;
 		this.tempo = tempo;
+		SoftTone.softToneCreate(this.pin);
 	}
 	
-	public Sound() {
+	public Sound() 
+	{
 	}
 	
 	@Override
@@ -78,7 +81,9 @@ public class Sound extends Thread {
 		{
 			SoftTone.softToneWrite(pin, frequency);
 		}
-		System.out.println(frequency);
+		/**
+		 * System.out.println(frequency);
+		 */
 	}
 	
 	private void softToneStop(int pin) 
@@ -98,7 +103,7 @@ public class Sound extends Thread {
 		tone = tone.toUpperCase();		
 		double idx = (double) Stat.getList().indexOf(tone);
 		idx-=9;		
-		idx += (octav * 12);		
+		idx += (octav * 12);
 		return (440 * Math.pow(2, idx/12));
 	}
 	
@@ -112,10 +117,10 @@ public class Sound extends Thread {
             i++;
         }
         while(Stat.getNumbers().indexOf(chr) >= 0 && !chr.isEmpty());     
-        long dur = Utility.atoi(tone.substring(0, i-1));
+        long duration = Utility.atoi(tone.substring(0, i-1));
         int start = i-1;
         String note = "";
-		int octav = 0;
+		int octave = 0;
 		if(i < tone.length())
         {
 	        do
@@ -125,9 +130,9 @@ public class Sound extends Thread {
 	        }
 	        while(Stat.getNumbers().indexOf(chr) == -1 && !chr.isEmpty());	        
 	        note = tone.substring(start, i-1);
-	        octav = Utility.atoi(tone.substring(i-1));
+	        octave = Utility.atoi(tone.substring(i-1));
         }
-        return new Tone(note, dur, octav);
+        return new Tone(note, duration, octave);
     }
 
 	public void stopSound(int pin) 
