@@ -18,7 +18,10 @@ public class Sound extends Thread {
 		this.song = song.replaceAll("/s+/", " ").trim();
 		this.octave = octave;
 		this.tempo = tempo;
-		SoftTone.softToneCreate(this.pin);
+		if(Config.isSoundEnable())
+		{
+			SoftTone.softToneCreate(this.pin);
+		}
 	}
 	
 	public Sound() 
