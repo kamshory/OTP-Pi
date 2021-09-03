@@ -43,7 +43,7 @@ OTP-Pi is a server for sending SMS via HTTP, WebSocket and Message Broker protoc
 
 OTP-Pi requires Raspberry Pi 3 Model B or higher. Minimum RAM is 1 GB and SD Card minimum is 16 GB. 32GB SD Card is recommended. Power supply 5 Volt 3 Ampre to prevent the Raspberry Pi from operating with under voltage. RTC DS3231 installed on Raspberry Pi.
 
-# Feature
+# Features
 
 ## Multiple Device
 
@@ -100,6 +100,7 @@ The default address of administration web is http://192.168.0.11:8888
 | Phone Number | The phone number can be used if the administrator forgets the password. Password will be sent via SMS. Of course this can only be done when the OTP-Pi has been configured correctly | 
 
 **E-mail**
+
 Email can be used if the administrator forgets the password. Password will be sent via email. Of course this can only be done when the OTP-Pi has been configured correctly.
 
 ## API Settings
@@ -379,7 +380,8 @@ Network Setting is a configuration to manage network from OTP-Pi. OTP-Pi is equi
 
 ### DHCP
 
-Konfigurasi DHCP akan mengatur DHCP pada akses poin OTP-Pi.
+
+The DHCP configuration will set up DHCP on the OTP-Pi access point.
 
 | Field | Value |
 | --- | ------ |
