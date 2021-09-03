@@ -34,17 +34,14 @@ public class Sound extends Thread {
 	
 	private void play()
 	{
-        String[] tones = this.song.split(" ");       
-
+        String[] tones = this.song.split(" ");
         for(int i = 0; i < tones.length && this.running; i++)
         {
             Tone parsed = parseTone(tones[i].trim());
-            double timeDouble = (240000/((double) this.tempo * (double) parsed.getDuration()));
-            
+            double timeDouble = (240000/((double) this.tempo * (double) parsed.getDuration()));           
             int lOctave = parsed.getOctav();
             lOctave += this.octave;
-            String tone = parsed.getNote();
-            
+            String tone = parsed.getNote();         
             if(tone.indexOf('.') >=0)
             {
                 tone = tone.replace(".", "");
@@ -58,7 +55,6 @@ public class Sound extends Thread {
             {
                 tone = "0";
                 lOctave = 0;
-
             }  
             int frequency = (int) Math.round(createOscillation(tone, lOctave));
             long time = (long) timeDouble;            
