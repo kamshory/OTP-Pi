@@ -8,10 +8,10 @@ public class Ring extends Thread {
 	public static final int MODE_OUTPUT_PUSH_PULL  = 4;
 	public static final int MODE_OUTPUT_OPEN_DRAIN = 8;
 
-	private int pin = 1;
+	private int pin = 26;
 	private String song = "";
 	private int octave = 0;
-	private int tempo = 80;
+	private int tempo = 120;
 
 	@Override
 	public void run()
