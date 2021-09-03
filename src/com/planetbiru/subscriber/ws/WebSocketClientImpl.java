@@ -11,6 +11,7 @@ import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 import org.json.JSONException;
 import com.planetbiru.api.MessageAPI;
+import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.util.Utility;
 
@@ -115,6 +116,7 @@ public class WebSocketClientImpl extends Thread{
 	
 	public void evtOnClose(int code, String reason, boolean remote)
 	{
+		Buzzer.toneDisconnectWs();
 		if(this.reconnect)
 		{
 			this.reconnect = false;
@@ -123,6 +125,7 @@ public class WebSocketClientImpl extends Thread{
 	}
 	public void evtOnError(Exception e)
 	{
+		Buzzer.toneDisconnectWs();
 		if(this.reconnect)
 		{
 			this.reconnect = false;

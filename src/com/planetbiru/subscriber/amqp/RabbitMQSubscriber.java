@@ -8,6 +8,7 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
 
 import com.planetbiru.api.MessageAPI;
+import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigSubscriberAMQP;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
@@ -115,6 +116,7 @@ public class RabbitMQSubscriber{
 	}
 
 	private void evtIError(IOException e) {
+		Buzzer.toneDisconnectAmqp();
 		ConfigSubscriberAMQP.setConnected(false);
 		if(!this.reconnect)
 		{
@@ -125,6 +127,7 @@ public class RabbitMQSubscriber{
 	}
 
 	private void evtOnClose(String message, ShutdownSignalException e) {
+		Buzzer.toneDisconnectAmqp();
 		ConfigSubscriberAMQP.setConnected(false);
 		if(!this.reconnect)
 		{

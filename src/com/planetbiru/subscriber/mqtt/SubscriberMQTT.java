@@ -13,6 +13,7 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.api.MessageAPI;
+import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigSubscriberMQTT;
 
 public class SubscriberMQTT extends Thread{
@@ -49,6 +50,7 @@ public class SubscriberMQTT extends Thread{
 	
 	private void flagDisconnected()
 	{
+		Buzzer.toneDisconnectMqtt();
 		this.callback = null;
 		try 
 		{

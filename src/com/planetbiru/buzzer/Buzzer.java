@@ -1,13 +1,11 @@
 package com.planetbiru.buzzer;
 
+import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigBell;
 
 public class Buzzer {
 	
-	public static final int SMS_FAILED = 1;
 	private static Ring ringTone = new Ring();
-
-
 
 	private Buzzer()
 	{
@@ -20,14 +18,32 @@ public class Buzzer {
 		Buzzer.ringTone.start();
 	}
 
-
-
-	public static void alert(int code) {
-		if(code == SMS_FAILED && ConfigBell.isSmsFailure())
+	public static void toneDisconnectAmqp() {
+		if(ConfigBell.isAmqpDisconnected())
 		{
-			Buzzer.ringing();
+			Music.play(Config.getSoundPIN(), Config.getSoundDisconnectTone(), Config.getSoundDisconnectOctave(), Config.getSoundDisconnectTempo());
+		}		
+	}
+
+	public static void toneDisconnectMqtt() {
+		if(ConfigBell.isMqttDisconnected())
+		{
+			Music.play(Config.getSoundPIN(), Config.getSoundDisconnectTone(), Config.getSoundDisconnectOctave(), Config.getSoundDisconnectTempo());
+		}		
+	}
+
+	public static void toneDisconnectWs() {
+		if(ConfigBell.isWsDisconnected())
+		{
+			Music.play(Config.getSoundPIN(), Config.getSoundDisconnectTone(), Config.getSoundDisconnectOctave(), Config.getSoundDisconnectTempo());
+		}		
+	}
+
+	public static void toneSMSFailed() {
+		if(ConfigBell.isSmsFailure())
+		{
+			Music.play(Config.getSoundPIN(), Config.getSoundAlertTone(), Config.getSoundAlertOctave(), Config.getSoundAlertTempo());
 		}
-		
 	}
 
 }

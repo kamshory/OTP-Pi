@@ -3,10 +3,6 @@ package com.planetbiru.buzzer;
 
 public class Ring extends Thread {
 	
-	public static final int MODE_INPUT_PULL_UP     = 1;
-	public static final int MODE_INPUT_PULL_DOWN   = 2;
-	public static final int MODE_OUTPUT_PUSH_PULL  = 4;
-	public static final int MODE_OUTPUT_OPEN_DRAIN = 8;
 
 	private int pin = 26;
 	private String song = "";

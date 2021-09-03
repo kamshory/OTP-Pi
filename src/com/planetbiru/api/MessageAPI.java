@@ -185,7 +185,7 @@ public class MessageAPI {
 				} 
 				catch (GSMException e) 
 				{
-					Buzzer.alert(Buzzer.SMS_FAILED);
+					Buzzer.toneSMSFailed();
 					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.NO_DEVICE_CONNECTED);
 					responseJSON.put(JsonKey.ERROR, e.getMessage());
 				}

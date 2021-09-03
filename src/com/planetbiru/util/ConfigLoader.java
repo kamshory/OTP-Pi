@@ -187,6 +187,35 @@ public class ConfigLoader {
 		boolean debugReadSMS = ConfigLoader.getConfigBoolean("otppi.debug.read.sms");
 		String bellSettingPath = ConfigLoader.getConfig("otppi.path.setting.bell");
 		
+		String soundTestTone = ConfigLoader.getConfig("otppi.sound.test.tone");
+		int soundTestOctave = ConfigLoader.getConfigInt("otppi.sound.test.octave");
+		int soundTestTempo = ConfigLoader.getConfigInt("otppi.sound.test.tempo");
+		
+		String soundAlertTone = ConfigLoader.getConfig("otppi.sound.alert.tone");
+		int soundAlertOctave = ConfigLoader.getConfigInt("otppi.sound.alert.octave");
+		int soundAlertTempo = ConfigLoader.getConfigInt("otppi.sound.alert.tempo");
+		
+		String soundDisconnectTone = ConfigLoader.getConfig("otppi.sound.disconnect.tone");
+		int soundDisconnectOctave = ConfigLoader.getConfigInt("otppi.sound.disconnect.octave");
+		int soundDisconnectTempo = ConfigLoader.getConfigInt("otppi.sound.disconnect.tempo");
+		
+		String soundErrorTone = ConfigLoader.getConfig("otppi.sound.error.tone");
+		int soundErrorOctave = ConfigLoader.getConfigInt("otppi.sound.error.octave");
+		int soundErrorTempo = ConfigLoader.getConfigInt("otppi.sound.error.tempo");
+		
+		Config.setSoundTestTone(soundTestTone);
+		Config.setSoundTestOctave(soundTestOctave);
+		Config.setSoundTestTempo(soundTestTempo);
+		Config.setSoundAlertTone(soundAlertTone);
+		Config.setSoundAlertOctave(soundAlertOctave);
+		Config.setSoundAlertTempo(soundAlertTempo);
+		Config.setSoundDisconnectTone(soundDisconnectTone);
+		Config.setSoundDisconnectOctave(soundDisconnectOctave);
+		Config.setSoundDisconnectTempo(soundDisconnectTempo);
+		Config.setSoundErrorTone(soundErrorTone);
+		Config.setSoundErrorOctave(soundErrorOctave);
+		Config.setSoundErrorTempo(soundErrorTempo);	
+		
 		Config.setBellSettingPath(bellSettingPath);
 		Config.setResetDeviceType(resetDeviceType);
 		Config.setResetDeviceFile(resetDeviceFile);

@@ -95,6 +95,18 @@ public class Config {
 	private static boolean debugReadSMS = false;
 	private static boolean soundEnable = false;
 	private static int soundPIN = 26;
+	private static String soundTestTone = "";
+	private static int soundTestOctave = 0;
+	private static int soundTestTempo = 0;
+	private static String soundAlertTone = "";
+	private static int soundAlertOctave = 0;
+	private static int soundAlertTempo = 0;
+	private static String soundDisconnectTone = "";
+	private static int soundDisconnectOctave = 0;
+	private static int soundDisconnectTempo = 0;
+	private static String soundErrorTone = "";
+	private static int soundErrorOctave = 0;
+	private static int soundErrorTempo = 0;
 	
 	private Config()
 	{
@@ -823,6 +835,102 @@ public class Config {
 
 	public static void setSoundEnable(boolean soundEnable) {
 		Config.soundEnable = soundEnable;
+	}
+
+	public static String getSoundTestTone() {
+		return soundTestTone;
+	}
+
+	public static void setSoundTestTone(String soundTestTone) {
+		Config.soundTestTone = soundTestTone;
+	}
+
+	public static int getSoundTestOctave() {
+		return soundTestOctave;
+	}
+
+	public static void setSoundTestOctave(int soundTestOctave) {
+		Config.soundTestOctave = soundTestOctave;
+	}
+
+	public static int getSoundTestTempo() {
+		return soundTestTempo;
+	}
+
+	public static void setSoundTestTempo(int soundTestTempo) {
+		Config.soundTestTempo = soundTestTempo;
+	}
+
+	public static String getSoundAlertTone() {
+		return soundAlertTone;
+	}
+
+	public static void setSoundAlertTone(String soundAlertTone) {
+		Config.soundAlertTone = soundAlertTone;
+	}
+
+	public static int getSoundAlertOctave() {
+		return soundAlertOctave;
+	}
+
+	public static void setSoundAlertOctave(int soundAlertOctave) {
+		Config.soundAlertOctave = soundAlertOctave;
+	}
+
+	public static int getSoundAlertTempo() {
+		return soundAlertTempo;
+	}
+
+	public static void setSoundAlertTempo(int soundAlertTempo) {
+		Config.soundAlertTempo = soundAlertTempo;
+	}
+
+	public static String getSoundDisconnectTone() {
+		return soundDisconnectTone;
+	}
+
+	public static void setSoundDisconnectTone(String soundDisconnectTone) {
+		Config.soundDisconnectTone = soundDisconnectTone;
+	}
+
+	public static int getSoundDisconnectOctave() {
+		return soundDisconnectOctave;
+	}
+
+	public static void setSoundDisconnectOctave(int soundDisconnectOctave) {
+		Config.soundDisconnectOctave = soundDisconnectOctave;
+	}
+
+	public static int getSoundDisconnectTempo() {
+		return soundDisconnectTempo;
+	}
+
+	public static void setSoundDisconnectTempo(int soundDisconnectTempo) {
+		Config.soundDisconnectTempo = soundDisconnectTempo;
+	}
+
+	public static String getSoundErrorTone() {
+		return soundErrorTone;
+	}
+
+	public static void setSoundErrorTone(String soundErrorTone) {
+		Config.soundErrorTone = soundErrorTone;
+	}
+
+	public static int getSoundErrorOctave() {
+		return soundErrorOctave;
+	}
+
+	public static void setSoundErrorOctave(int soundErrorOctave) {
+		Config.soundErrorOctave = soundErrorOctave;
+	}
+
+	public static int getSoundErrorTempo() {
+		return soundErrorTempo;
+	}
+
+	public static void setSoundErrorTempo(int soundErrorTempo) {
+		Config.soundErrorTempo = soundErrorTempo;
 	}
 
 }
