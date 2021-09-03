@@ -951,7 +951,7 @@ public class HandlerWebManagerData implements HttpHandler {
 				}
 				else
 				{
-					byte fileContent[] = new byte[(int)file.length()];					
+					byte[] fileContent = new byte[(int) file.length()];					
 					int read = inputStream.read(fileContent);
 					if(read > 0)
 					{
