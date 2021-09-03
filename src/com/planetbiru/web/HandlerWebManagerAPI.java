@@ -184,9 +184,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
 				if(action.equals("ring"))
 				{
-					String dur = queryPairs.getOrDefault("duration", "0");
-					long duration = Utility.atol(dur);
-					Buzzer.ringing(duration);
+					Buzzer.ringing();
 				}				
 			} 
 			else 

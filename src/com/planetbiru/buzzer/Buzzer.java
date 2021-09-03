@@ -14,9 +14,9 @@ public class Buzzer {
 		
 	}
 
-	public static void ringing(long duration) {
+	public static void ringing() {
 		Buzzer.ringTone.stopService();
-		Buzzer.ringTone = new Ring(duration);
+		Buzzer.ringTone = new Ring();
 		Buzzer.ringTone.start();
 	}
 
@@ -25,7 +25,7 @@ public class Buzzer {
 	public static void alert(int code) {
 		if(code == SMS_FAILED && ConfigBell.isSmsFailure())
 		{
-			Buzzer.ringing(1000);
+			Buzzer.ringing();
 		}
 		
 	}
