@@ -1,7 +1,9 @@
 package com.planetbiru.web;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -904,13 +906,18 @@ public class HandlerWebManagerData implements HttpHandler {
 		CookieServer cookie = new CookieServer(requestHeaders, Config.getSessionName(), Config.getSessionLifetime());
 		byte[] responseBody = "".getBytes();
 		int statusCode = HttpStatus.OK;
+		boolean download = false;
+		File file = null;
+		String fullname = "";
 		try
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				String fullname = Config.getLogDir() + "/" + path;
+				download = true;			
+				fullname = Config.getLogDir() + "/" + path;
 				fullname = FileConfigUtil.fixFileName(fullname);	
-				responseBody = FileUtil.readResource(fullname);
+				file = new File(fullname);	
+				
 				String contentType = HttpUtil.getMIMEType(path);
 				String baseName = HttpUtil.getBaseName(path);
 				responseHeaders.add(ConstantString.CONTENT_TYPE, contentType);
@@ -921,22 +928,54 @@ public class HandlerWebManagerData implements HttpHandler {
 				statusCode = HttpStatus.UNAUTHORIZED;			
 			}
 		}
-		catch (FileNotFoundException e) 
-		{
-			statusCode = HttpStatus.NOT_FOUND;
-		}
 		catch(NoUserRegisteredException e)
 		{
-			/**
-			 * Do nothing
-			 */
+			statusCode = HttpStatus.UNAUTHORIZED;	
 		}
 		cookie.saveSessionData();
 		cookie.putToHeaders(responseHeaders);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
 
-		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
-		httpExchange.getResponseBody().write(responseBody);
+		try(InputStream inputStream = new FileInputStream(fullname))
+		{
+			if(download)
+			{
+				if(file.length() > 10000000)
+				{
+					httpExchange.sendResponseHeaders(statusCode, file.length());	
+					int data = -1;
+					while((data = inputStream.read()) > -1)
+					{
+						httpExchange.getResponseBody().write(data);
+					}
+				}
+				else
+				{
+					byte fileContent[] = new byte[(int)file.length()];					
+					int read = inputStream.read(fileContent);
+					if(read > 0)
+					{
+						httpExchange.sendResponseHeaders(statusCode, file.length());	
+						httpExchange.getResponseBody().write(fileContent);
+					}
+					else
+					{
+						statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+						httpExchange.sendResponseHeaders(statusCode, 0);							
+					}
+				}
+			}
+			else
+			{
+				httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+				httpExchange.getResponseBody().write(responseBody);		
+			}
+		}
+		catch (IOException ex) 
+		{
+			statusCode = HttpStatus.NOT_FOUND;
+			httpExchange.sendResponseHeaders(statusCode, 0);	 
+		}		
 		httpExchange.close();	
 	}
 	

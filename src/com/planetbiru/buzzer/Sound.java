@@ -120,7 +120,7 @@ public class Sound extends Thread {
         long duration = Utility.atoi(tone.substring(0, i-1));
         int start = i-1;
         String note = "";
-		int octave = 0;
+		int lOctave = 0;
 		if(i < tone.length())
         {
 	        do
@@ -130,9 +130,9 @@ public class Sound extends Thread {
 	        }
 	        while(Stat.getNumbers().indexOf(chr) == -1 && !chr.isEmpty());	        
 	        note = tone.substring(start, i-1);
-	        octave = Utility.atoi(tone.substring(i-1));
+	        lOctave = Utility.atoi(tone.substring(i-1));
         }
-        return new Tone(note, duration, octave);
+        return new Tone(note, duration, lOctave);
     }
 
 	public void stopSound(int pin) 
