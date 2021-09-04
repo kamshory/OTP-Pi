@@ -2,215 +2,203 @@
 <html lang="en">
 
 <head>
-    <meta name="require-login" content="true" data-file="/login-form.html">
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1; user-scalable=no">
-    <link rel="icon" href="favicon.ico">
-    <title>OTP-Pi</title>
-    <link href="lib.assets/css/bootstrap.css" rel="stylesheet">
-    <link href="lib.assets/css/style.min.css" rel="stylesheet">
-    <script src="lib.assets/js/jquery.min.js"></script>
-    <script src="lib.assets/js/bootstrap.js"></script>
-    <script src="lib.assets/js/ws.min.js"></script>
-    <script>
-        function handleIncommingMessage(message) {
-            console.log("handleIncommingMessage", message);
-        }
-    </script>
+	<meta name="require-login" content="true" data-file="/login-form.html">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1; user-scalable=no">
+	<link rel="icon" href="favicon.ico">
+	<title>OTP-Pi</title>
+	<link href="lib.assets/css/bootstrap.css" rel="stylesheet">
+	<link href="lib.assets/css/style.min.css" rel="stylesheet">
+	<script src="lib.assets/js/jquery.min.js"></script>
+	<script src="lib.assets/js/bootstrap.js"></script>
+	<script src="lib.assets/js/ws.min.js"></script>
+	<script>
+	function handleIncommingMessage(message) {
+		console.log("handleIncommingMessage", message);
+	}
+	</script>
 </head>
 
 <body>
-    <div class="container">
-
-        <!-- Static navbar -->
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <span class="usb-device-symbol"></span>
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                        aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="./">OTP-Pi</a>
-                </div>
-
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                <li><a href="./">Home</a></li>
-                <li><a href="ussd.html">USSD</a></li>
-                <li><a href="sms.html">SMS</a></li>
-                <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                        <li class="active"><a href="general-setting.html">General Setting</a></li>
-                        <li><a href="admin.html">Administrator Setting</a></li>
-                        <li><a href="api-setting.html">API Setting</a></li>
-                        <li><a href="api-user.html">API User</a></li>
-                        <li><a href="subscriber-setting.html">Subscriber Setting</a></li>
-                        <li><a href="sms-setting.html">SMS Setting</a></li>
-                        <li><a href="block-list.html">Block List</a></li>
-                        <li><a href="modem.html">Modem</a></li>
-                        <li><a href="email-account.html">Email Account</a></li>
-                        <li><a href="network-setting.html">Network Setting</a></li>
-                        <li><a href="firewall.html">Firewall</a></li>
-                        <li><a href="open-port.html">Open Port</a></li>
-                        <li><a href="keystore.html">Keystore</a></li>
-                        <li><a href="bell-setting.html">Bell Setting</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">DDNS Setting</li>
-                        <li><a href="ddns-record.html">DDNS Record</a></li>
-                        <li><a href="cloudflare.html">Cloudflare Account</a></li>
-                        <li><a href="noip.html">No IP Account</a></li>
-                        <li><a href="dynu.html">Dynu Account</a></li>
-                        <li><a href="afraid.html">Afraid Account</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                <li><a href="account.html">Account</a></li>
-                <li><a href="logout.html">Logout</a></li>
-                    </ul>
-                </div>
-
-            </div>
-            <!--/.container-fluid -->
-        </nav>
-        <div class="phone-page">
-            <h3>General Setting</h3>
-            <form action="general-setting.html" method="post">
-                <table class="config-table config-table-connection">
-                    <tbody>
-                        <tr>
-                            <td>Device Name</td>
-                            <td><input type="text" name="device_name" id="device_name" value="OTP-Pi">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>OTP Expiration Offset</td>
-                            <td><input type="number" min="-86460" max="86460" name="otp_expiration_offset" id="otp_expiration_offset" value="">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Drop Expire OTP</td>
-                            <td><label for="drop_expire_otp"><input type="checkbox" name="drop_expire_otp" id="drop_expire_otp" value="1"> Drop Expire OTP</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Device Time Zone</td>
-                            <td><select name="device_time_zone" id="device_time_zone">
-                                    
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>NTP Server</td>
-                            <td>
-                                <select name="ntp_server" id="ntp_server" class="form-control">
-                                    <option value="pool.ntp.org">pool.ntp.org</option>
-                                    <option value="0.centos.pool.ntp.org">0.centos.pool.ntp.org</option>
-                                    <option value="1.centos.pool.ntp.org">1.centos.pool.ntp.org</option>
-                                    <option value="2.centos.pool.ntp.org">2.centos.pool.ntp.org</option>
-                                    <option value="3.centos.pool.ntp.org">3.centos.pool.ntp.org</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Update Time</td>
-                            <td><select name="ntp_update_interval" id="ntp_update_interval" class="form-control">
-                                    <option value="">Never</option>
-                                    <option value="0 0 */6 * * ?">Every 6 hours</option>
-                                    <option value="0 0 */12 * * ?">Every 12 hours</option>
-                                    <option value="0 0 0 * * ?">Everyday at 00:00</option>
-                                </select></td>
-                        </tr>
-                        <tr>
-                            <td>Restart Service</td>
-                            <td><select name="restart_service" id="restart_service" class="form-control">
-                                    <option value="">Never</option>
-                                    <option value="0 0 */12 * * ?">Every 12 hours</option>
-                                    <option value="0 0 0 * * ?">Everyday at 00:00</option>
-                                    <option value="0 0 0 ? * MON">Every Monday at 00:00</option>
-                                    <option value="0 0 0 ? * TUE">Every Tuesday at 00:00</option>
-                                    <option value="0 0 0 ? * WED">Every Wednesday at 00:00</option>
-                                    <option value="0 0 0 ? * THU">Every Thursday at 00:00</option>
-                                    <option value="0 0 0 ? * FRI">Every Friday at 00:00</option>
-                                    <option value="0 0 0 ? * SAT">Every Saturday at 00:00</option>
-                                    <option value="0 0 0 ? * SUN">Every Sunday at 00:00</option>
-                                </select></td>
-                        </tr>
-                        <tr>
-                            <td>Restart Device</td>
-                            <td><select name="restart_device" id="restart_device" class="form-control">
-                                    <option value="">Never</option>
-                                    <option value="0 0 */12 * * ?">Every 12 hours</option>
-                                    <option value="0 0 0 * * ?">Everyday at 00:00</option>
-                                    <option value="0 0 0 ? * MON">Every Monday at 00:00</option>
-                                    <option value="0 0 0 ? * TUE">Every Tuesday at 00:00</option>
-                                    <option value="0 0 0 ? * WED">Every Wednesday at 00:00</option>
-                                    <option value="0 0 0 ? * THU">Every Thursday at 00:00</option>
-                                    <option value="0 0 0 ? * FRI">Every Friday at 00:00</option>
-                                    <option value="0 0 0 ? * SAT">Every Saturday at 00:00</option>
-                                    <option value="0 0 0 ? * SUN">Every Sunday at 00:00</option>
-                                </select></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>
-                                <input type="submit" class="btn btn-success" name="save_general_setting"
-                                    id="save_api_setting" value="Save">
-                                <input type="reset" class="btn btn-default" value="Reset">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
-<script src="lib.assets/js/timezone.js"></script>            
-<script type="text/javascript">
-    $(document).ready(function (e) {
-        for (var grp in timezoneList) {
-            if (timezoneList.hasOwnProperty(grp)) {
-                var group = $('<optgroup />');
-                group.attr('label', grp);
-                for (var i = 0; i < timezoneList[grp].length; i++) {
-                    var val = timezoneList[grp][i];
-                    group.append(new Option(val, val))
-                }
-                $('[name="device_time_zone"]').append(group);
-            }
-        }
-        $.ajax({
-            type: "GET",
-            url: "data/general-setting/get",
-            dataType: "json",
-            success: function (data) {
-                $('input[name="device_name"]').val(data.deviceName);
-                $('[name="device_time_zone"]').val(data.deviceTimeZone);
-                $('[name="ntp_server"]').val(data.ntpServer);
-                $('[name="ntp_update_interval"]').val(data.ntpUpdateInterval);
-                $('[name="restart_service"]').val(data.restartService);
-                $('[name="restart_device"]').val(data.restartDevice);
-
-                $('[name="otp_expiration_offset"]').val(data.otpExpirationOffset);
-                $('[name="drop_expire_otp"]').prop('checked', data.dropExpireOTP);
-
-            }
-        });
-    });
-        </script>
-
-
-        </div>
-        <!-- /container -->
-    </div>
-<div class="waiting-server-up">
-    <div class="loading-icon"><span class="animation-pressure"><span></span></span></div>
-</div>
+	<div class="container">
+		<!-- Static navbar -->
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header"> <span class="usb-device-symbol"></span>
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="./">OTP-Pi</a> </div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="./">Home</a></li>
+						<li><a href="ussd.html">USSD</a></li>
+						<li><a href="sms.html">SMS</a></li>
+						<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li class="active"><a href="general-setting.html">General Setting</a></li>
+								<li><a href="admin.html">Administrator Setting</a></li>
+								<li><a href="api-setting.html">API Setting</a></li>
+								<li><a href="api-user.html">API User</a></li>
+								<li><a href="subscriber-setting.html">Subscriber Setting</a></li>
+								<li><a href="sms-setting.html">SMS Setting</a></li>
+								<li><a href="block-list.html">Block List</a></li>
+								<li><a href="modem.html">Modem</a></li>
+								<li><a href="email-account.html">Email Account</a></li>
+								<li><a href="network-setting.html">Network Setting</a></li>
+								<li><a href="firewall.html">Firewall</a></li>
+								<li><a href="open-port.html">Open Port</a></li>
+								<li><a href="keystore.html">Keystore</a></li>
+								<li><a href="bell-setting.html">Bell Setting</a></li>
+								<li role="separator" class="divider"></li>
+								<li class="dropdown-header">DDNS Setting</li>
+								<li><a href="ddns-record.html">DDNS Record</a></li>
+								<li><a href="cloudflare.html">Cloudflare Account</a></li>
+								<li><a href="noip.html">No IP Account</a></li>
+								<li><a href="dynu.html">Dynu Account</a></li>
+								<li><a href="afraid.html">Afraid Account</a></li>
+							</ul>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="account.html">Account</a></li>
+						<li><a href="logout.html">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+			<!--/.container-fluid -->
+		</nav>
+		<div class="phone-page">
+			<h3>General Setting</h3>
+			<form action="general-setting.html" method="post">
+				<table class="config-table config-table-connection">
+					<tbody>
+						<tr>
+							<td>Device Name</td>
+							<td>
+								<input type="text" name="device_name" id="device_name" value="OTP-Pi"> </td>
+						</tr>
+						<tr>
+							<td>OTP Expiration Offset</td>
+							<td>
+								<input type="number" min="-86460" max="86460" name="otp_expiration_offset" id="otp_expiration_offset" value=""> </td>
+						</tr>
+						<tr>
+							<td>Drop Expire OTP</td>
+							<td>
+								<label for="drop_expire_otp">
+									<input type="checkbox" name="drop_expire_otp" id="drop_expire_otp" value="1"> Drop Expire OTP</label>
+							</td>
+						</tr>
+						<tr>
+							<td>Device Time Zone</td>
+							<td>
+								<select name="device_time_zone" id="device_time_zone"> </select>
+							</td>
+						</tr>
+						<tr>
+							<td>NTP Server</td>
+							<td>
+								<select name="ntp_server" id="ntp_server" class="form-control">
+									<option value="pool.ntp.org">pool.ntp.org</option>
+									<option value="0.centos.pool.ntp.org">0.centos.pool.ntp.org</option>
+									<option value="1.centos.pool.ntp.org">1.centos.pool.ntp.org</option>
+									<option value="2.centos.pool.ntp.org">2.centos.pool.ntp.org</option>
+									<option value="3.centos.pool.ntp.org">3.centos.pool.ntp.org</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Update Time</td>
+							<td>
+								<select name="ntp_update_interval" id="ntp_update_interval" class="form-control">
+									<option value="">Never</option>
+									<option value="0 0 */6 * * ?">Every 6 hours</option>
+									<option value="0 0 */12 * * ?">Every 12 hours</option>
+									<option value="0 0 0 * * ?">Everyday at 00:00</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Restart Service</td>
+							<td>
+								<select name="restart_service" id="restart_service" class="form-control">
+									<option value="">Never</option>
+									<option value="0 0 */12 * * ?">Every 12 hours</option>
+									<option value="0 0 0 * * ?">Everyday at 00:00</option>
+									<option value="0 0 0 ? * MON">Every Monday at 00:00</option>
+									<option value="0 0 0 ? * TUE">Every Tuesday at 00:00</option>
+									<option value="0 0 0 ? * WED">Every Wednesday at 00:00</option>
+									<option value="0 0 0 ? * THU">Every Thursday at 00:00</option>
+									<option value="0 0 0 ? * FRI">Every Friday at 00:00</option>
+									<option value="0 0 0 ? * SAT">Every Saturday at 00:00</option>
+									<option value="0 0 0 ? * SUN">Every Sunday at 00:00</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Restart Device</td>
+							<td>
+								<select name="restart_device" id="restart_device" class="form-control">
+									<option value="">Never</option>
+									<option value="0 0 */12 * * ?">Every 12 hours</option>
+									<option value="0 0 0 * * ?">Everyday at 00:00</option>
+									<option value="0 0 0 ? * MON">Every Monday at 00:00</option>
+									<option value="0 0 0 ? * TUE">Every Tuesday at 00:00</option>
+									<option value="0 0 0 ? * WED">Every Wednesday at 00:00</option>
+									<option value="0 0 0 ? * THU">Every Thursday at 00:00</option>
+									<option value="0 0 0 ? * FRI">Every Friday at 00:00</option>
+									<option value="0 0 0 ? * SAT">Every Saturday at 00:00</option>
+									<option value="0 0 0 ? * SUN">Every Sunday at 00:00</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<input type="submit" class="btn btn-success" name="save_general_setting" id="save_api_setting" value="Save">
+								<input type="reset" class="btn btn-default" value="Reset"> </td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+			<script src="lib.assets/js/timezone.js"></script>
+			<script type="text/javascript">
+			$(document).ready(function(e) {
+				for(var grp in timezoneList) {
+					if(timezoneList.hasOwnProperty(grp)) {
+						var group = $('<optgroup />');
+						group.attr('label', grp);
+						for(var i = 0; i < timezoneList[grp].length; i++) {
+							var val = timezoneList[grp][i];
+							group.append(new Option(val, val))
+						}
+						$('[name="device_time_zone"]').append(group);
+					}
+				}
+				$.ajax({
+					type: "GET",
+					url: "data/general-setting/get",
+					dataType: "json",
+					success: function(data) {
+						$('input[name="device_name"]').val(data.deviceName);
+						$('[name="device_time_zone"]').val(data.deviceTimeZone);
+						$('[name="ntp_server"]').val(data.ntpServer);
+						$('[name="ntp_update_interval"]').val(data.ntpUpdateInterval);
+						$('[name="restart_service"]').val(data.restartService);
+						$('[name="restart_device"]').val(data.restartDevice);
+						$('[name="otp_expiration_offset"]').val(data.otpExpirationOffset);
+						$('[name="drop_expire_otp"]').prop('checked', data.dropExpireOTP);
+					}
+				});
+			});
+			</script>
+		</div>
+		<!-- /container -->
+	</div>
+	<div class="waiting-server-up">
+		<div class="loading-icon"><span class="animation-pressure"><span></span></span>
+		</div>
+	</div>
 </body>
 
 </html>
