@@ -2,374 +2,389 @@
 <html lang="en">
 
 <head>
-    <meta name="require-login" content="true" data-file="/login-form.html">
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1; user-scalable=no">
-    <link rel="icon" href="favicon.ico">
-    <title>OTP-Pi</title>
-    <link href="lib.assets/css/bootstrap.css" rel="stylesheet">
-    <link href="lib.assets/css/style.min.css" rel="stylesheet">
-    <script src="lib.assets/js/jquery.min.js"></script>
-    <script src="lib.assets/js/bootstrap.js"></script>
-    <script src="lib.assets/js/ws.min.js"></script>
-    <script>
-        function handleIncommingMessage(message) {
-            console.log("handleIncommingMessage", message);
-        }
-    </script>
+	<meta name="require-login" content="true" data-file="/login-form.html">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1; user-scalable=no">
+	<link rel="icon" href="favicon.ico">
+	<title>OTP-Pi</title>
+	<link href="lib.assets/css/bootstrap.css" rel="stylesheet">
+	<link href="lib.assets/css/style.min.css" rel="stylesheet">
+	<script src="lib.assets/js/jquery.min.js"></script>
+	<script src="lib.assets/js/bootstrap.js"></script>
+	<script src="lib.assets/js/ws.min.js"></script>
+	<script>
+	function handleIncommingMessage(message) {
+		console.log("handleIncommingMessage", message);
+	}
+	</script>
 </head>
 
 <body>
-    <div class="container">
+	<div class="container">
+		<!-- Static navbar -->
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header"> <span class="usb-device-symbol"></span>
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="./">OTP-Pi</a> </div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="./">Home</a></li>
+						<li><a href="ussd.html">USSD</a></li>
+						<li><a href="sms.html">SMS</a></li>
+						<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="general-setting.html">General Setting</a></li>
+								<li><a href="admin.html">Administrator Setting</a></li>
+								<li><a href="api-setting.html">API Setting</a></li>
+								<li><a href="api-user.html">API User</a></li>
+								<li><a href="subscriber-setting.html">Subscriber Setting</a></li>
+								<li><a href="sms-setting.html">SMS Setting</a></li>
+								<li><a href="block-list.html">Block List</a></li>
+								<li class="active"><a href="modem.html">Modem</a></li>
+								<li><a href="email-account.html">Email Account</a></li>
+								<li><a href="network-setting.html">Network Setting</a></li>
+								<li><a href="firewall.html">Firewall</a></li>
+								<li><a href="open-port.html">Open Port</a></li>
+								<li><a href="keystore.html">Keystore</a></li>
+								<li><a href="bell-setting.html">Bell Setting</a></li>
+								<li role="separator" class="divider"></li>
+								<li class="dropdown-header">DDNS Setting</li>
+								<li><a href="ddns-record.html">DDNS Record</a></li>
+								<li><a href="cloudflare.html">Cloudflare Account</a></li>
+								<li><a href="noip.html">No IP Account</a></li>
+								<li><a href="dynu.html">Dynu Account</a></li>
+								<li><a href="afraid.html">Afraid Account</a></li>
+							</ul>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="account.html">Account</a></li>
+						<li><a href="logout.html">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+			<!--/.container-fluid -->
+		</nav>
+		<div class="phone-page">
+			<h3>Modem</h3>
+			<style>
+			.tr-dial {
+				display: none;
+			}
+			</style>
+			<form action="modem.html" method="post">
+				<table class="config-table config-table-connection">
+					<tbody>
+						<tr>
+							<td>Name</td>
+							<td>
+								<input type="text" class="form-control" name="name" value="">
+							</td>
+						</tr>
+						<tr>
+							<td>Port</td>
+							<td>
+								<input type="text" class="form-control" name="port" value="">
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<input type="button" class="btn btn-success" id="detect" value="Detect">
+							</td>
+						</tr>
+						<tr>
+							<td>SMS Center</td>
+							<td>
+								<input type="text" class="form-control" name="sms_center" value="">
+							</td>
+						</tr>
+						<tr>
+							<td>IMEI</td>
+							<td>
+								<input type="tel" class="form-control" name="imei" value="">
+							</td>
+						</tr>
+						<tr>
+							<td>MSISDN</td>
+							<td>
+								<input type="text" class="form-control" name="msisdn" value="">
+							</td>
+						</tr>
+						<tr>
+							<td>IMSI</td>
+							<td>
+								<input type="text" class="form-control" name="imsi" value="">
+							</td>
+						</tr>
+						<tr>
+							<td>Recipient Prefix</td>
+							<td>
+								<textarea class="form-control" name="recipient_prefix"></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td>SIM Card PIN</td>
+							<td>
+								<input type="password" class="form-control" name="sim_card_pin">
+							</td>
+						</tr>
+						<tr>
+							<td>Baud Rate</td>
+							<td>
+								<input type="number" class="form-control" name="baud_rate">
+							</td>
+						</tr>
+						<tr>
+							<td>Parity Bit</td>
+							<td>
+								<select name="parity_bit" class="form-control">
+									<option value="N">Nome</option>
+									<option value="O">Odd</option>
+									<option value="E">Even</option>
+									<option value="M">Mark</option>
+									<option value="S">Space</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Start Bits</td>
+							<td>
+								<input type="text" class="form-control" name="start_bits">
+							</td>
+						</tr>
+						<tr>
+							<td>Stop Bits</td>
+							<td>
+								<input type="text" class="form-control" name="stop_bits">
+							</td>
+						</tr>
+						<tr>
+							<td>Internet Access</td>
+							<td>
+								<label>
+									<input type="checkbox" name="internet_access" value="1"> Yes</label>
+							</td>
+						</tr>
+						<tr class="tr-dial">
+							<td>APN</td>
+							<td>
+								<input type="text" class="form-control" name="apn">
+							</td>
+						</tr>
+						<tr class="tr-dial">
+							<td>APN Username</td>
+							<td>
+								<input type="text" class="form-control" name="apn_username">
+							</td>
+						</tr>
+						<tr class="tr-dial">
+							<td>APN Password</td>
+							<td>
+								<input type="text" class="form-control" name="apn_password">
+							</td>
+						</tr>
+						<tr class="tr-dial">
+							<td>Dial Number</td>
+							<td>
+								<input type="text" class="form-control" name="dial_number">
+							</td>
+						</tr>
+						<tr class="tr-dial">
+							<td>Init Dial 1</td>
+							<td>
+								<input type="text" class="form-control" name="init_dial_1">
+							</td>
+						</tr>
+						<tr class="tr-dial">
+							<td>Init Dial 2</td>
+							<td>
+								<input type="text" class="form-control" name="init_dial_2">
+							</td>
+						</tr>
+						<tr class="tr-dial">
+							<td>Init Dial 3</td>
+							<td>
+								<input type="text" class="form-control" name="init_dial_3">
+							</td>
+						</tr>
+						<tr class="tr-dial">
+							<td>Init Dial 4</td>
+							<td>
+								<input type="text" class="form-control" name="init_dial_4">
+							</td>
+						</tr>
+						<tr class="tr-dial">
+							<td>Init Dial 5</td>
+							<td>
+								<input type="text" class="form-control" name="init_dial_5">
+							</td>
+						</tr>
+						<tr class="tr-dial">
+							<td>Dial Command</td>
+							<td>
+								<input type="text" class="form-control" name="dial_command">
+							</td>
+						</tr>
+						<tr class="tr-dial">
+							<td>Autoreconnect</td>
+							<td>
+								<label>
+									<input type="checkbox" name="autoreconnect" value="1"> Yes</label>
+							</td>
+						</tr>
+						<tr>
+							<td>Send SMS from API</td>
+							<td>
+								<label>
+									<input type="checkbox" name="sms_api" value="1"> Yes</label>
+							</td>
+						</tr>
+						<tr>
+							<td>Delete Sent SMS</td>
+							<td>
+								<label>
+									<input type="checkbox" name="delete_sent_sms" value="1"> Yes</label>
+							</td>
+						</tr>
+						<tr>
+							<td>Default Modem</td>
+							<td>
+								<label>
+									<input type="checkbox" name="default_modem" value="1"> Yes</label>
+							</td>
+						</tr>
+						<tr>
+							<td>Active</td>
+							<td>
+								<label>
+									<input type="checkbox" name="active" value="1"> Yes</label>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="config-table config-table-connection">
+					<tbody>
+						<tr>
+							<td></td>
+							<td>
+								<input type="hidden" name="id" value="">
+								<input type="submit" class="btn btn-success" value="Save Changes" onclick="return confirm('Are you sure you want to save changes')" name="update">
+								<input type="button" class="btn btn-primary" value="Cancel" onclick="window.location='modem.html'"> </td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+			<script type="text/javascript">
+			var setting = {};
+			$(document).ready(function(e) {
+				$.ajax({
+					type: "GET",
+					url: "data/sms-setting/get",
+					dataType: "json",
+					success: function(data) {
+						setting = data;
+						applyTag();
+					}
+				});
+				$(document).on('blur', '[name="recipient_prefix"]', function(e2) {
+					applyTag();
+				});
+				var urlParams = new URLSearchParams(window.location.search);
+				var id = urlParams.get('id') || '';
+				if(id.length > 0) {
+					$.ajax({
+						type: "GET",
+						url: "data/modem/detail/" + id,
+						dataType: "json",
+						success: function(data) {
+							$('input[name="id"]').val(data.id);
+							$('input[name="name"]').val(data.name);
+							$('input[name="port"]').val(data.port);
+							$('input[name="sms_center"]').val(data.smsCenter);
+							$('input[name="imei"]').val(data.imei);
+							$('input[name="msisdn"]').val(data.msisdn);
+							$('input[name="imsi"]').val(data.imsi);
+							$('[name="recipient_prefix"]').val(data.recipientPrefix);
+							$('input[name="baud_rate"]').val(data.baudRate);
+							$('[name="parity_bit"]').val(data.parityBit);
+							$('input[name="start_bits"]').val(data.startBits);
+							$('input[name="stop_bits"]').val(data.stopBits);
+							$('input[name="internet_access"]').prop('checked', data.internetAccess);
+							$('input[name="apn"]').val(data.apn);
+							$('input[name="apn_username"]').val(data.apnUsername);
+							$('input[name="apn_password"]').val(data.apnPassword);
+							$('input[name="dial_number"]').val(data.dialNumner);
+							$('input[name="init_dial_1"]').val(data.initDial1);
+							$('input[name="init_dial_2"]').val(data.initDial2);
+							$('input[name="init_dial_3"]').val(data.initDial3);
+							$('input[name="init_dial_4"]').val(data.initDial4);
+							$('input[name="init_dial_5"]').val(data.initDial5);
+							$('input[name="dial_command"]').val(data.dialCommand);
+							$('input[name="autoreconnect"]').prop('checked', data.autoreconnect);
+							$('input[name="sms_api"]').prop('checked', data.smsAPI);
+							$('input[name="delete_sent_sms"]').prop('checked', data.deleteSentSMS);
+							$('input[name="default_modem"]').prop('checked', data.defaultModem);
+							$('input[name="active"]').prop('checked', data.active);
+							if(data.internetAccess) {
+								$('.tr-dial').css('display', 'table-row');
+							}
+							applyTag();
+						}
+					});
+				} else {
+					window.location = "modem.html";
+				}
+				$(document).on('change', '[name="internet_access"]', function(e2) {
+					if($(this).prop('checked')) {
+						$('.tr-dial').css('display', 'table-row');
+					} else {
+						$('.tr-dial').css('display', 'none');
+					}
+				});
+				$(document).on('click', '#detect', function(e2) {
+					var port = $(this).closest('form').find('[name="port"]').val().trim();
+					if(port == '') {
+						$(this).closest('form').find('[name="port"]').select();
+					} else {
+						$.ajax({
+							type: "GET",
+							url: "data/modem-info/get/" + encodeURIComponent(port),
+							dataType: "json",
+							success: function(data) {
+								$('[name="imei"]').val(data.imei || '');
+								$('[name="msisdn"]').val(data.msisdn || '');
+								$('[name="imsi"]').val(data.imsi || '');
+							}
+						});
+					}
+				});
+			});
 
-        <!-- Static navbar -->
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <span class="usb-device-symbol"></span>
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                        aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="./">OTP-Pi</a>
-                </div>
-
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-            <li><a href="./">Home</a></li>
-            <li><a href="ussd.html">USSD</a></li>
-            <li><a href="sms.html">SMS</a></li>
-            <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                    <li><a href="general-setting.html">General Setting</a></li>
-                    <li><a href="admin.html">Administrator Setting</a></li>
-                    <li><a href="api-setting.html">API Setting</a></li>
-                    <li><a href="api-user.html">API User</a></li>
-                    <li><a href="subscriber-setting.html">Subscriber Setting</a></li>
-                    <li><a href="sms-setting.html">SMS Setting</a></li>
-                    <li><a href="block-list.html">Block List</a></li>
-                    <li class="active"><a href="modem.html">Modem</a></li>
-                    <li><a href="email-account.html">Email Account</a></li>
-                    <li><a href="network-setting.html">Network Setting</a></li>
-                    <li><a href="firewall.html">Firewall</a></li>
-                    <li><a href="open-port.html">Open Port</a></li>
-                    <li><a href="keystore.html">Keystore</a></li>
-                    <li><a href="bell-setting.html">Bell Setting</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li class="dropdown-header">DDNS Setting</li>
-                    <li><a href="ddns-record.html">DDNS Record</a></li>
-                    <li><a href="cloudflare.html">Cloudflare Account</a></li>
-                    <li><a href="noip.html">No IP Account</a></li>
-                    <li><a href="dynu.html">Dynu Account</a></li>
-                    <li><a href="afraid.html">Afraid Account</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-            <li><a href="account.html">Account</a></li>
-            <li><a href="logout.html">Logout</a></li>
-                    </ul>
-                </div>
-
-            </div>
-            <!--/.container-fluid -->
-        </nav>
-        <div class="phone-page">
-            <h3>Modem</h3>
-            <style>
-                .tr-dial{
-                    display: none;
-                }
-            </style>
-            <form action="modem.html" method="post">
-                <table class="config-table config-table-connection">
-                    <tbody>
-                        <tr>
-                            <td>Name</td>
-                            <td><input type="text" class="form-control" name="name" value=""></td>
-                        </tr>
-                        <tr>
-                            <td>Port</td>
-                            <td><input type="text" class="form-control" name="port" value=""></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td><input type="button" class="btn btn-success" id="detect" value="Detect"></td>
-                        </tr>
-                        <tr>
-                            <td>SMS Center</td>
-                            <td><input type="text" class="form-control" name="sms_center" value=""></td>
-                        </tr>
-                        <tr>
-                            <td>IMEI</td>
-                            <td><input type="tel" class="form-control" name="imei" value=""></td>
-                        </tr>
-                        <tr>
-                            <td>MSISDN</td>
-                            <td><input type="text" class="form-control" name="msisdn" value=""></td>
-                        </tr>
-                        <tr>
-                            <td>IMSI</td>
-                            <td><input type="text" class="form-control" name="imsi" value=""></td>
-                        </tr>
-                        <tr>
-                            <td>Recipient Prefix</td>
-                            <td><textarea class="form-control" name="recipient_prefix"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>SIM Card PIN</td>
-                            <td><input type="password" class="form-control" name="sim_card_pin"></td>
-                        </tr>
-                        <tr>
-                            <td>Baud Rate</td>
-                            <td><input type="number" class="form-control" name="baud_rate"></td>
-                        </tr>
-                        <tr>
-                            <td>Parity Bit</td>
-                            <td><select name="parity_bit" class="form-control">
-                                <option value="N">Nome</option>
-                                <option value="O">Odd</option>
-                                <option value="E">Even</option>
-                                <option value="M">Mark</option>
-                                <option value="S">Space</option>
-                            </select></td>
-                        </tr>
-                        <tr>
-                            <td>Start Bits</td>
-                            <td><input type="text" class="form-control" name="start_bits"></td>
-                        </tr>
-                        <tr>
-                            <td>Stop Bits</td>
-                            <td><input type="text" class="form-control" name="stop_bits"></td>
-                        </tr>
-                        <tr>
-                            <td>Internet Access</td>
-                            <td><label><input type="checkbox" name="internet_access" value="1"> Yes</label></td>
-                        </tr>
-
-                        <tr class="tr-dial">
-                            <td>APN</td>
-                            <td><input type="text" class="form-control" name="apn"></td>
-                        </tr>
-
-                        <tr class="tr-dial">
-                            <td>APN Username</td>
-                            <td><input type="text" class="form-control" name="apn_username"></td>
-                        </tr>
-
-                        <tr class="tr-dial">
-                            <td>APN Password</td>
-                            <td><input type="text" class="form-control" name="apn_password"></td>
-                        </tr>
-
-                        <tr class="tr-dial">
-                            <td>Dial Number</td>
-                            <td><input type="text" class="form-control" name="dial_number"></td>
-                        </tr>
-
-                        <tr class="tr-dial">
-                            <td>Init Dial 1</td>
-                            <td><input type="text" class="form-control" name="init_dial_1"></td>
-                        </tr>
-
-                        <tr class="tr-dial">
-                            <td>Init Dial 2</td>
-                            <td><input type="text" class="form-control" name="init_dial_2"></td>
-                        </tr>
-
-                        <tr class="tr-dial">
-                            <td>Init Dial 3</td>
-                            <td><input type="text" class="form-control" name="init_dial_3"></td>
-                        </tr>
-
-                        <tr class="tr-dial">
-                            <td>Init Dial 4</td>
-                            <td><input type="text" class="form-control" name="init_dial_4"></td>
-                        </tr>
-
-                        <tr class="tr-dial">
-                            <td>Init Dial 5</td>
-                            <td><input type="text" class="form-control" name="init_dial_5"></td>
-                        </tr>
-
-                        <tr class="tr-dial">
-                            <td>Dial Command</td>
-                            <td><input type="text" class="form-control" name="dial_command"></td>
-                        </tr>
-
-                        <tr class="tr-dial">
-                            <td>Autoreconnect</td>
-                            <td><label><input type="checkbox" name="autoreconnect" value="1"> Yes</label></td>
-                        </tr>
-
-                        <tr>
-                            <td>Send SMS from API</td>
-                            <td><label><input type="checkbox" name="sms_api" value="1"> Yes</label></td>
-                        </tr>
-                        <tr>
-                            <td>Delete Sent SMS</td>
-                            <td><label><input type="checkbox" name="delete_sent_sms" value="1"> Yes</label></td>
-                        </tr>
-                        <tr>
-                            <td>Default Modem</td>
-                            <td><label><input type="checkbox" name="default_modem" value="1"> Yes</label></td>
-                        </tr>
-                        <tr>
-                            <td>Active</td>
-                            <td><label><input type="checkbox" name="active" value="1"> Yes</label></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="config-table config-table-connection">
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td>
-                                <input type="hidden" name="id" value="">
-                                <input type="submit" class="btn btn-success" value="Save Changes"
-                                    onclick="return confirm('Are you sure you want to save changes')" name="update">
-                                <input type="button" class="btn btn-primary" value="Cancel"
-                                    onclick="window.location='modem.html'">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
-            <script type="text/javascript">
-                var setting = {};
-                $(document).ready(function(e){
-                    $.ajax({
-                        type:"GET",
-                        url:"data/sms-setting/get",
-                        dataType:"json",
-                        success:function(data){
-                            setting = data;
-                            applyTag();
-                        }
-                    });
-                    
-                    $(document).on('blur', '[name="recipient_prefix"]', function(e2){
-                        applyTag();
-                    });
- 
-                    var urlParams = new URLSearchParams(window.location.search);
-                    var id = urlParams.get('id') || '';
-                    if (id.length > 0) {
-                        $.ajax({
-                            type: "GET",
-                            url: "data/modem/detail/" + id,
-                            dataType: "json",
-                            success: function (data) {
-                                $('input[name="id"]').val(data.id);
-                                $('input[name="name"]').val(data.name);
-                                $('input[name="port"]').val(data.port);
-                                $('input[name="sms_center"]').val(data.smsCenter);
-                                $('input[name="imei"]').val(data.imei);
-                                $('input[name="msisdn"]').val(data.msisdn);
-                                $('input[name="imsi"]').val(data.imsi);
-                                $('[name="recipient_prefix"]').val(data.recipientPrefix);
-                                $('input[name="baud_rate"]').val(data.baudRate);
-                                $('[name="parity_bit"]').val(data.parityBit);
-                                $('input[name="start_bits"]').val(data.startBits);
-                                $('input[name="stop_bits"]').val(data.stopBits);
-                                $('input[name="internet_access"]').prop('checked', data.internetAccess);
-
-                                $('input[name="apn"]').val(data.apn);
-                                $('input[name="apn_username"]').val(data.apnUsername);
-                                $('input[name="apn_password"]').val(data.apnPassword);
-                                $('input[name="dial_number"]').val(data.dialNumner);
-                                $('input[name="init_dial_1"]').val(data.initDial1);
-                                $('input[name="init_dial_2"]').val(data.initDial2);
-                                $('input[name="init_dial_3"]').val(data.initDial3);
-                                $('input[name="init_dial_4"]').val(data.initDial4);
-                                $('input[name="init_dial_5"]').val(data.initDial5);
-                                $('input[name="dial_command"]').val(data.dialCommand);
-                                $('input[name="autoreconnect"]').prop('checked', data.autoreconnect);
-
-                                $('input[name="sms_api"]').prop('checked', data.smsAPI);
-                                $('input[name="delete_sent_sms"]').prop('checked', data.deleteSentSMS);
-                                $('input[name="default_modem"]').prop('checked', data.defaultModem);
-                                $('input[name="active"]').prop('checked', data.active);
-                                
-                                if(data.internetAccess)
-                                {
-                                	$('.tr-dial').css('display', 'table-row');
-                                }
-                                
-                                applyTag();
-                            }
-                        });
-                    }
-                    else 
-                    {
-                        window.location = "modem.html";
-                    }
-
-                    $(document).on('change', '[name="internet_access"]', function(e2){
-                        if($(this).prop('checked'))
-                        {
-                            $('.tr-dial').css('display', 'table-row');
-                        }
-                        else
-                        {
-                            $('.tr-dial').css('display', 'none');
-                        }
-                    });
-
-                    $(document).on('click', '#detect', function(e2){
-                        var port = $(this).closest('form').find('[name="port"]').val().trim();
-                        if(port == '')
-                        {
-                            $(this).closest('form').find('[name="port"]').select();
-                        }
-                        else
-                        {
-                            $.ajax({
-                                type:"GET",
-                                url:"data/modem-info/get/"+encodeURIComponent(port),
-                                dataType:"json",
-                                success:function(data){
-                                    $('[name="imei"]').val(data.imei || '');
-                                    $('[name="msisdn"]').val(data.msisdn || '');
-                                    $('[name="imsi"]').val(data.imsi || '');
-                                }
-                            });
-                        }
-                    });
-                    
-                });
-                function applyTag()
-                {
-                    if(setting.countryCode != '' && setting.recipientPrefixLength > 0)
-                    {
-                        var value = $('[name="recipient_prefix"]').val();
-                        var arr = value.split(',');
-                        for(i in arr)
-                        {
-                            arr[i] = arr[i].trim();
-                            if(arr[i].indexOf('0') == 0 && arr[i].length > 1)
-                            {
-                                arr[i] = setting.countryCode + arr[i].substring(1);
-                            }
-                        }
-                        value = arr.join(', ');
-                        $('[name="recipient_prefix"]').val(value);
-                    }
-                }
-            </script>
-
-        </div>
-        <!-- /container -->
-    </div>
-<div class="waiting-server-up">
-    <div class="loading-icon"><span class="animation-pressure"><span></span></span></div>
-</div>
+			function applyTag() {
+				if(setting.countryCode != '' && setting.recipientPrefixLength > 0) {
+					var value = $('[name="recipient_prefix"]').val();
+					var arr = value.split(',');
+					for(i in arr) {
+						arr[i] = arr[i].trim();
+						if(arr[i].indexOf('0') == 0 && arr[i].length > 1) {
+							arr[i] = setting.countryCode + arr[i].substring(1);
+						}
+					}
+					value = arr.join(', ');
+					$('[name="recipient_prefix"]').val(value);
+				}
+			}
+			</script>
+		</div>
+		<!-- /container -->
+	</div>
+	<div class="waiting-server-up">
+		<div class="loading-icon"><span class="animation-pressure"><span></span></span>
+		</div>
+	</div>
 </body>
 
 </html>
