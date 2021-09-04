@@ -84,7 +84,6 @@ public class HandlerWebManagerLogin implements HttpHandler {
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 		httpExchange.getResponseBody().write(responseBody);
 		httpExchange.close();
-
 	}
 
 }
