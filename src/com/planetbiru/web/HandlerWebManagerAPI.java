@@ -10,7 +10,6 @@ import org.json.JSONObject;
 import com.planetbiru.Application;
 import com.planetbiru.DeviceAPI;
 import com.planetbiru.ServerWebSocketAdmin;
-import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.buzzer.Music;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigEmail;
@@ -184,7 +183,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
 				if(action.equals("ring"))
 				{
-					Buzzer.ringing();
+					Music.play(Config.getSoundPIN(), Config.getSoundTestTone(), Config.getSoundTestOctave(), Config.getSoundTestTempo());
 				}				
 			} 
 			else 

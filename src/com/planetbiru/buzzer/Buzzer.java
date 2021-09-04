@@ -5,22 +5,15 @@ import com.planetbiru.config.ConfigBell;
 
 public class Buzzer {
 	
-	private static Ring ringTone = new Ring();
-
 	private Buzzer()
 	{
 		
 	}
 
-	public static void ringing() {
-		Buzzer.ringTone.stopService();
-		Buzzer.ringTone = new Ring();
-		Buzzer.ringTone.start();
-	}
-
 	public static void toneDisconnectAmqp() {
 		if(ConfigBell.isAmqpDisconnected())
 		{
+			System.out.println("toneDisconnectAmqp");
 			Music.play(Config.getSoundPIN(), Config.getSoundDisconnectTone(), Config.getSoundDisconnectOctave(), Config.getSoundDisconnectTempo());
 		}		
 	}
@@ -28,6 +21,7 @@ public class Buzzer {
 	public static void toneDisconnectMqtt() {
 		if(ConfigBell.isMqttDisconnected())
 		{
+			System.out.println("toneDisconnectMqtt");
 			Music.play(Config.getSoundPIN(), Config.getSoundDisconnectTone(), Config.getSoundDisconnectOctave(), Config.getSoundDisconnectTempo());
 		}		
 	}
@@ -35,6 +29,7 @@ public class Buzzer {
 	public static void toneDisconnectWs() {
 		if(ConfigBell.isWsDisconnected())
 		{
+			System.out.println("toneDisconnectWs");
 			Music.play(Config.getSoundPIN(), Config.getSoundDisconnectTone(), Config.getSoundDisconnectOctave(), Config.getSoundDisconnectTempo());
 		}		
 	}
@@ -42,6 +37,7 @@ public class Buzzer {
 	public static void toneSMSFailed() {
 		if(ConfigBell.isSmsFailure())
 		{
+			System.out.println("toneSMSFailed");
 			Music.play(Config.getSoundPIN(), Config.getSoundAlertTone(), Config.getSoundAlertOctave(), Config.getSoundAlertTempo());
 		}
 	}

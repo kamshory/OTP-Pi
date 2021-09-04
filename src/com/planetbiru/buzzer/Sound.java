@@ -80,9 +80,7 @@ public class Sound extends Thread {
 		{
 			SoftTone.softToneWrite(pin, frequency);
 		}
-		/**
-		 * System.out.println(frequency);
-		 */
+		System.out.println(frequency);	
 	}
 	
 	private void softToneStop(int pin) 
