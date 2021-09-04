@@ -1,62 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Export Config</title>
-    <style>
-        body{
-            margin: 0;
-        }
-        .textarea{
-            padding: 10px;
-            position: relative;
-        }
-        .textarea textarea{
-            width: 100%;
-            height: 300px;
-            box-sizing: border-box;
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Export Config</title>
+	<style>
+	body {
+		margin: 0;
+	}
+	
+	.textarea {
+		padding: 10px;
+		position: relative;
+	}
+	
+	.textarea textarea {
+		width: 100%;
+		height: 300px;
+		box-sizing: border-box;
+	}
+	</style>
 </head>
+
 <body>
-    <script>
-        window.onload = function(e){
-            document.querySelector('#input').addEventListener('change', function(e){
-                var val = document.querySelector('#input').value;
-                var arr = val.split("\n");
-                var res = [];
-                for(var i in arr)
-                {
-                    var line = arr[i].trim();
-                    if(line.length > 4 && line.indexOf('#') != 0)
-                    {
-                       var arr2 = line.split('=', 2);
-                          if(arr2.length == 2)
-                        {
-                            console.log(arr2);
-                            var key = arr2[0].toUpperCase();
-                            key = key.split('.').join('_');
-                            var value = arr2[1];
-                            var pair = 'echo >> export '+key+'="'+value+'"';
-                            res.push(pair);
-                        }
-                    }
-                }
-                document.querySelector('#output').value = res.join('\r\n');
-            });
-        }
-    </script>
-    <div class="textarea">
-        <textarea name="input" id="input" cols="30" rows="10"></textarea>
-    </div>
-    <div class="textarea">
-        <textarea name="output" id="output" cols="30" rows="10"></textarea>
-    </div>
-    
-<div class="waiting-server-up">
-    <div class="loading-icon"><span class="animation-pressure"><span></span></span></div>
-</div>
+	<script>
+	window.onload = function(e) {
+		document.querySelector('#input').addEventListener('change', function(e) {
+			var val = document.querySelector('#input').value;
+			var arr = val.split("\n");
+			var res = [];
+			for(var i in arr) {
+				var line = arr[i].trim();
+				if(line.length > 4 && line.indexOf('#') != 0) {
+					var arr2 = line.split('=', 2);
+					if(arr2.length == 2) {
+						console.log(arr2);
+						var key = arr2[0].toUpperCase();
+						key = key.split('.').join('_');
+						var value = arr2[1];
+						var pair = 'echo >> export ' + key + '="' + value + '"';
+						res.push(pair);
+					}
+				}
+			}
+			document.querySelector('#output').value = res.join('\r\n');
+		});
+	}
+	</script>
+	<div class="textarea">
+		<textarea name="input" id="input" cols="30" rows="10"></textarea>
+	</div>
+	<div class="textarea">
+		<textarea name="output" id="output" cols="30" rows="10"></textarea>
+	</div>
+	<div class="waiting-server-up">
+		<div class="loading-icon"><span class="animation-pressure"><span></span></span>
+		</div>
+	</div>
 </body>
+
 </html>
