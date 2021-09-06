@@ -300,9 +300,9 @@ To use Gmail SMTP, use the following configuration:
 
 See https://mkyong.com/java/javamail-api-sending-email-via-gmail-smtp-example/
 
-## Local SMTP Server
+## Bell Setting
 
-The OTP-Pi is equipped with a local SMTP server for sending email. With this local SMTP server, users can send email without needing an external SMTP server. However, a local SMTP server is not recommended because the destination mail server may block email sent from the local SMTP server.
+The OTP-Pi is equipped with a passive buzzer. The passive buzzer will make a sound when an undesirable condition occurs. The user can set any conditions that will cause the buzzer to make a sound.
 
 ## DDNS Record
 
