@@ -10,6 +10,10 @@ public class Music {
 	
 	public static void play(int pin, String song, int octave, int tempo)
 	{
+		if(Music.sound.isRunning())
+		{
+			Music.sound.stopSound(pin);
+		}
 		Music.sound = new Sound(pin, song, octave, tempo);
 		Music.sound.start();
 	}
