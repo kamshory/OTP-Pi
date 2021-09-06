@@ -162,19 +162,6 @@ public class ConfigLoader {
 		String serverStatusSettingPath = ConfigLoader.getConfig("otppi.path.setting.server.status");	
 		boolean cacheHTMLFile = ConfigLoader.getConfigBoolean("otppi.cache.file.html");
 		
-		/**
-		boolean subscriberWsEnable = ConfigLoader.getConfigBoolean("otppi.ws.enable");
-		boolean subscriberWsSSL = ConfigLoader.getConfigBoolean("otppi.ws.ssl");
-		String subscriberWsAddress = ConfigLoader.getConfig("otppi.ws.address");
-		int subscriberWsPort = ConfigLoader.getConfigInt("otppi.ws.port");
-		String subscriberWsPath = ConfigLoader.getConfig("otppi.ws.path");
-		String subscriberWsUsername = ConfigLoader.getConfig("otppi.ws.username");
-		String subscriberWsPassword = ConfigLoader.getConfig("otppi.ws.password");
-		String subscriberWsTopic = ConfigLoader.getConfig("otppi.ws.channel");
-		long subscriberWsTimeout = ConfigLoader.getConfigLong("otppi.ws.timeout");
-		long subscriberWsRefresh = ConfigLoader.getConfigLong("otppi.ws.refresh.delay");
-		long subscriberWsReconnectDelay = ConfigLoader.getConfigLong("otppi.ws.reconnect.delay");
-		*/
 		long waitLoopParent = ConfigLoader.getConfigLong("otppi.ws.wait.loop.parent");
 		long waitLoopChild = ConfigLoader.getConfigLong("otppi.ws.wait.loop.child");
 		String imageName = ConfigLoader.getConfig("otppi.image.name");

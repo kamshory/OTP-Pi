@@ -6008,3 +6008,5 @@ java.net.BindException: Address already in use: bind
 2021-09-03 21:05:18 [INFO  ] Application                     :195  - Service started
 2021-09-04 07:57:06 [INFO  ] Application                     :195  - Service started
 2021-09-04 08:02:54 [INFO  ] Application                     :195  - Service started
+2021-09-06 12:59:31 [INFO  ] Application                     :195  - Service started
+2021-09-06 13:03:31 [INFO  ] Application                     :195  - Service started
