@@ -121,14 +121,14 @@ API Setting is a REST API configuration for sending SMS.
 
 | Field | Description |
 | ----- | ----------- |
-| Device Name | Device name |
-| OTP Expiration | OTP expiration in mili second. Application must send the `date_time`. See message specification |
-| Drop Expire OTP | Flag that OTP-Pi will drop or ignone the expire OTP. Application must send the `date_time`. See message specification |
+| Device Name | The device name of OTP-Pi |
+| OTP Expiration | OTP expiration in mili second. Application must send the `expiration`. See message specification |
+| Drop Expire OTP | Flag that OTP-Pi will drop or ignone the expire OTP. Application must send the `expiration`. See message specification |
 | Device Time Zone | The device time zone. Select one of the time zone listed |
 | NTP Server | NTP server address to update the device time |
-| Update Timer | Time to update the device time |
-| Restart Service | Time to restart the service |
-| Restart Device | Time to reboot the device |
+| Update Timer | Time to update the device time. Set to `Never` if the device is offline |
+| Restart Service | Time to restart the service. Set to `Never` if if you will not restart the device periodically |
+| Restart Device | Time to reboot the device. Set to `Never` if if you will not reboot the device periodically |
 
 ## Time Settings
 
@@ -137,7 +137,7 @@ API Setting is a REST API configuration for sending SMS.
 | Device Time | Device time |
 | Device Time Zone | The device time zone. Select one of the time zone listed |
 | NTP Server | NTP server address to update the device time |
-| Update Timer | Time to update the device time |
+| Update Timer | Time to update the device time. Set to `Never` if if you will not restart the device periodically |
 
 ## API Users
 
@@ -346,6 +346,7 @@ OTP-Pi provides DDNS setup using DDNS vendor. Some of the supported DDNS vendors
 | Token | Cloudflare Token |
 | Active | Flag that this Cloudflare account is active or not |
 
+
 ### No IP Account
 
 | Field | Description |
@@ -356,6 +357,7 @@ OTP-Pi provides DDNS setup using DDNS vendor. Some of the supported DDNS vendors
 | Company Name | Your nompany name |
 | Maintainer Email | Maintainer email or your company |
 | Active | Flag that this No IP account is active or not |
+
 
 ### Dynu Account
 
@@ -369,6 +371,7 @@ OTP-Pi provides DDNS setup using DDNS vendor. Some of the supported DDNS vendors
 | Company Name | Your nompany name |
 | Maintainer Email | Maintainer email or your company |
 | Active | Flag that this Dynu account is active or not |
+
 
 ### Afraid Account
 
