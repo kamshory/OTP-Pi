@@ -403,6 +403,40 @@ The DHCP configuration will set up DHCP on the OTP-Pi access point.
 | Maximum Lease Time | Maximum lease time of the clients |
 | Range | Allocated IP address range | 
 
+
+**Example**
+
+| Field | Value |
+| --- | ------ |
+| Domain Name | otppi.lan |
+| Domain Name Servers | ns1.otppi.lan, ns2.otppi.lan |
+| Router Address | 192.168.0.1 |
+| Netmask | 192.168.1.0 |
+| Subnetmask | 255.255.255.0 |
+| Domain Name Servers Address | 192.168.0.11 |
+| Default Lease Time | 3600 |
+| Maximum Lease Time | 7200 |
+| Range | 192.168.0.10-192.168.0.100, 192.168.0.110-192.168.0.200 | 
+
+The configuration above will create file `/etc/dhcp/dhcpd.conf` with its content as follows:
+
+```
+option domain-name "otppi.lan";
+option domain-name-servers ns1.otppi.lan, ns2.otppi.lan;
+default-lease-time 3600; 
+max-lease-time 7200;
+authoritative;
+
+subnet 192.168.1.0 netmask 255.255.255.0 {
+        option routers                  192.168.0.1;
+        option subnet-mask              255.255.255.0;
+        option domain-search            "otppi.lan";
+        option domain-name-servers      192.168.0.11;
+        range   192.168.0.10   192.168.0.100;
+        range   192.168.0.110   192.168.0.200;
+}
+```
+
 ### Wireless LAN
 
 Wireless LAN configuration will set the IP address on the OTP-Pi wireless network. The default IP address of the OTP-Pi is 192.168.0.11
