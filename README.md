@@ -411,7 +411,7 @@ The DHCP configuration will set up DHCP on the OTP-Pi access point.
 | Domain Name | otppi.lan |
 | Domain Name Servers | ns1.otppi.lan, ns2.otppi.lan |
 | Router Address | 192.168.0.1 |
-| Netmask | 192.168.1.0 |
+| Netmask | 255.255.255.0 |
 | Subnetmask | 255.255.255.0 |
 | Domain Name Servers Address | 192.168.0.11 |
 | Default Lease Time | 3600 |
