@@ -304,6 +304,14 @@ See https://mkyong.com/java/javamail-api-sending-email-via-gmail-smtp-example/
 
 The OTP-Pi is equipped with a passive buzzer. The passive buzzer will make a sound when an undesirable condition occurs. The user can set any conditions that will cause the buzzer to make a sound.
 
+| Field | Description |
+| ----- | ----------- |
+| Fail Send SMS | Bell on SMS failure |
+| AMQP Disconnected | Bell on RabbitMQ disconnected |
+| MQTT Disconnected | Bell on Mosquitto disconnected |
+| WS  Disconnected | Bell on WebSocket disconnected |
+
+
 ## DDNS Record
 
 DDNS Records are records for dynamic DNS settings. DDNS or Dymanic Domain Name System is a DNS setting mechanism that is done repeatedly because the public IP address of the server is always changing.
