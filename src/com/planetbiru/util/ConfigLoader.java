@@ -189,6 +189,8 @@ public class ConfigLoader {
 		String soundErrorTone = ConfigLoader.getConfig("otppi.sound.error.tone");
 		int soundErrorOctave = ConfigLoader.getConfigInt("otppi.sound.error.octave");
 		int soundErrorTempo = ConfigLoader.getConfigInt("otppi.sound.error.tempo");
+		int soundPIN = ConfigLoader.getConfigInt("otppi.sound.pin");
+		boolean soundEnable = ConfigLoader.getConfigBoolean("otppi.sound.enable");
 		
 		Config.setSoundTestTone(soundTestTone);
 		Config.setSoundTestOctave(soundTestOctave);
@@ -209,6 +211,8 @@ public class ConfigLoader {
 		Config.setLogConfigNotFound(logConfigNotFound);
 		Config.setImageName(imageName);
 		Config.setSmtpSettingPath(smtpSettingPath);
+		Config.setSoundEnable(soundEnable);
+		Config.setSoundPIN(soundPIN);
 		
 		Config.setResetConfigPath(resetConfigPath);
 

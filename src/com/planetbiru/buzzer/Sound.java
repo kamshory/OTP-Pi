@@ -1,17 +1,15 @@
 package com.planetbiru.buzzer;
 
-import com.pi4j.wiringpi.SoftTone;
 import com.planetbiru.config.Config;
 import com.planetbiru.util.Utility;
 
 public class Sound extends Thread {
 
 	private String song = "";
-	private boolean running = true;
+	private boolean running = false;
 	private int pin = 26;
 	private int octave = 0;
 	private int tempo = 120;
-	
 	public Sound(int pin, String song, int octave, int tempo) 
 	{
 		this.pin = pin;
@@ -61,7 +59,7 @@ public class Sound extends Thread {
             }  
             int frequency = (int) Math.round(createOscillation(tone, lOctave));
             long time = (long) timeDouble;            
-            softToneWrite(this.pin, frequency);
+            softToneWrite(this.pin, frequency, time);
             try 
             {
 				Thread.sleep(time);
@@ -74,20 +72,19 @@ public class Sound extends Thread {
         softToneStop(this.pin);
 	}
 	
-	private void softToneWrite(int pin, int frequency) 
+	private void softToneWrite(int pin, int frequency, long time) 
 	{
 		if(Config.isSoundEnable())
 		{
-			SoftTone.softToneWrite(pin, frequency);
+			SoftTone.softToneWrite(pin, frequency, time);
 		}
-		System.out.println(frequency);	
 	}
 	
 	private void softToneStop(int pin) 
 	{
 		if(Config.isSoundEnable())
 		{
-			SoftTone.softToneStop(pin);		
+			SoftTone.softToneStop(pin);	
 		}
 	}
 	
