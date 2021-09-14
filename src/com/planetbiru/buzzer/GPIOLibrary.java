@@ -8,28 +8,28 @@ import java.io.PrintWriter;
 
 public class GPIOLibrary
 {
-	public static final String EXP = "/sys/class/gpio/";
-	public final int[] pins = { 0, 1, 4, 7, 8, 9, 10, 11, 14, 15, 17, 18, 21, 22, 23, 24, 25, 26, 27 };
 	private ToneThread toneThread = new ToneThread();
+	private int pin = 0;
 	private boolean[] used;
 	
 	/**
 	 * Constructor, needed to add the shutdown hook to prevent locked gpio pins
 	 */
-	public GPIOLibrary()
+	public GPIOLibrary(int pin)
 	{
-		this.used = new boolean[pins.length];
+		this.pin = pin;
+		this.used = new boolean[Stat.PINS.length];
 		Runtime.getRuntime().addShutdownHook(new Thread() {
-		    @Override public void run() 
+		    @Override 
+		    public void run() 
 		    {
 		    	for(int i = 0; i<used.length; i++)
 		    	{
 		    		if(used[i])
 		    		{
-		    			unExport(pins[i]);
+		    			unExport(Stat.PINS[i]);
 		    		}
-		    	}
-		    			
+		    	}		    			
 		    }
 		 });
 	}
@@ -39,9 +39,9 @@ public class GPIOLibrary
 	 * @param in true for a "in" pin and false for a "out" pin
 	 * @param n pin number. If invalid the functions does nothing
 	 */
-	public void exportPin(boolean in, int n)
-	{
-		if (!validPin(n) || inUse(n))
+	public void exportPin(boolean in)
+	{		
+		if (!validPin(this.pin) || inUse(this.pin))
 		{
 			/**
 			 * Do nothing
@@ -54,13 +54,13 @@ public class GPIOLibrary
 				this.toneThread.stopSound();
 				this.toneThread = null;
 				this.toneThread = new ToneThread();
-				PrintWriter export = new PrintWriter(new FileWriter(EXP + "export", true));
-				export.write(String.format("%d", n));
+				PrintWriter export = new PrintWriter(new FileWriter(Stat.EXP + "export", true));
+				export.write(String.format("%d", this.pin));
 				export.close();
-				PrintWriter dir = new PrintWriter(new FileWriter(EXP + "gpio" + n + "/direction", true));
+				PrintWriter dir = new PrintWriter(new FileWriter(Stat.EXP + "gpio" + this.pin + "/direction", true));
 				dir.write(in ? "in" : "out");
 				dir.close();
-				setUsed(n, true);
+				setUsed(this.pin, true);
 			}
 			catch (IOException e)
 			{
@@ -73,9 +73,14 @@ public class GPIOLibrary
 	 * Lets the user unlock the gpio pins for later use
 	 * @param n pin number. If invalid the function does nothing
 	 */
-	public void unExport(int n)
+	public void unExport()
 	{
-		if (!validPin(n))
+		this.unExport(this.pin);
+	}
+	
+	public void unExport(int pin)
+	{
+		if (!validPin(pin))
 		{
 			/**
 			 * Do nothing
@@ -85,10 +90,10 @@ public class GPIOLibrary
 		{
 			try
 			{
-				PrintWriter unexport = new PrintWriter(new FileWriter(EXP + "unexport", true));
-				unexport.write(String.format("%d", n));
+				PrintWriter unexport = new PrintWriter(new FileWriter(Stat.EXP + "unexport", true));
+				unexport.write(String.format("%d", pin));
 				unexport.close();
-				setUsed(n, false);
+				setUsed(pin, false);
 			}
 			catch (IOException e)
 			{
@@ -110,7 +115,7 @@ public class GPIOLibrary
 		}
 		else
 		{
-			try(FileInputStream in = new FileInputStream(new File(EXP + "/gpio" + n + "/value")))
+			try(FileInputStream in = new FileInputStream(new File(Stat.EXP + "/gpio" + n + "/value")))
 			{				
 				int i = in.read();
 				return i==30 ? 0 : 1;
@@ -128,9 +133,9 @@ public class GPIOLibrary
 	 * @param n pin number. If invalid the function does nothing
 	 * @param out true for 1 and false for 0
 	 */
-	public void writePin(int n, boolean out)
+	public void writePin(boolean out)
 	{
-		if (!validPin(n))
+		if (!validPin(this.pin))
 		{
 			/**
 			 * Do nothing
@@ -138,17 +143,14 @@ public class GPIOLibrary
 		}
 		else
 		{
-				try
-				{
-					PrintWriter pin;
-					pin = new PrintWriter(new FileWriter(EXP + "gpio" + n + "/value"));
-					pin.write(out ? "1" : "0");
-					pin.close();
-				}
-				catch (IOException e)
-				{
-					e.printStackTrace();
-				}	
+			try(PrintWriter pinWriter = new PrintWriter(new FileWriter(Stat.EXP + "gpio" + this.pin + "/value")))
+			{
+				pinWriter.write(out ? "1" : "0");
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}	
 		}
 	}
 
@@ -159,9 +161,13 @@ public class GPIOLibrary
 	 */
 	private boolean validPin(int n)
 	{
-		for (int i = 0; i < pins.length; i++)
-			if (n == pins[i])
+		for (int i = 0; i < Stat.PINS.length; i++)
+		{
+			if (n == Stat.PINS[i])
+			{
 				return true;
+			}
+		}			
 		return false;
 	}
 	
@@ -172,9 +178,13 @@ public class GPIOLibrary
 	 */
 	private boolean inUse(int n)
 	{
-		for (int i = 0; i < pins.length; i++)
-			if (n == pins[i])
-				return used[i];
+		for (int i = 0; i < Stat.PINS.length; i++)
+		{
+			if (n == Stat.PINS[i])
+			{
+				return this.used[i];
+			}
+		}
 		return false;
 	}
 	
@@ -185,9 +195,13 @@ public class GPIOLibrary
 	 */
 	private void setUsed(int n, boolean p)
 	{
-		for (int i = 0; i < pins.length; i++)
-			if (n == pins[i])
-				used[i] = p;
+		for (int i = 0; i < Stat.PINS.length; i++)
+		{
+			if (n == Stat.PINS[i])
+			{
+				this.used[i] = p;
+			}
+		}
 	}
 
 	public ToneThread getToneThread() {

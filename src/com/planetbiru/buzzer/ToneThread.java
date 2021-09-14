@@ -4,7 +4,6 @@ public class ToneThread extends Thread {
 	private int frequency = 0;
 	private boolean running;
 	private GPIOLibrary gpioLibrary;
-	private int pin;
 	private long time;
 	
 	@Override
@@ -15,16 +14,16 @@ public class ToneThread extends Thread {
 			double itnv = 1000000000 / (double) (this.frequency * 2);
 			do
 			{
-				this.gpioLibrary.writePin(this.pin, true);
+				this.gpioLibrary.writePin(true);
 				this.waitUntil((long) itnv);
-				this.gpioLibrary.writePin(this.pin, false);
+				this.gpioLibrary.writePin(false);
 				this.waitUntil((long) itnv);
 			}
 			while(this.running);
 		}
 		else
 		{
-			this.gpioLibrary.writePin(this.pin, false);
+			this.gpioLibrary.writePin(false);
 			try 
 			{
 				Thread.sleep(this.time);
@@ -43,7 +42,6 @@ public class ToneThread extends Thread {
 
 	public void setFrequency(GPIOLibrary gpioLibrary, int pin, int frequency, long time) {
 		this.gpioLibrary = gpioLibrary;
-		this.pin = pin;
 		this.frequency = frequency;
 		this.time = time;
 		this.running = true;

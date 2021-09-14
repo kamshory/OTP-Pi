@@ -12,9 +12,9 @@ public class SoftTone {
 	public static void softToneCreate(int pin) {
 		if(!SoftTone.gpio.containsKey(pin))
 		{
-			SoftTone.gpio.put(pin, new GPIOLibrary());
+			SoftTone.gpio.put(pin, new GPIOLibrary(pin));
+			SoftTone.gpio.get(pin).exportPin(Stat.OUT);	
 		}	
-		SoftTone.gpio.get(pin).exportPin(false, pin);	
 	}
 	public static void softToneWrite(int pin, int frequency, long time) {
 		if(SoftTone.gpio.containsKey(pin))
