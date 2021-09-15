@@ -1269,10 +1269,16 @@ public class HandlerWebManager implements HttpHandler {
 		String baudRateS = queryPairs.getOrDefault("baud_rate", "0").trim();
 		int baudRate = Utility.atoi(baudRateS);
 
-		String imei = queryPairs.getOrDefault("imei", "").trim();
-		String msisdn = queryPairs.getOrDefault("msisdn", "").trim();
-		String imsi = queryPairs.getOrDefault("imsi", "").trim();
 		String name = queryPairs.getOrDefault("name", "").trim();
+
+		String manufacturer = queryPairs.getOrDefault("manufacturer", "").trim();
+		String model = queryPairs.getOrDefault("model", "").trim();
+		String revision = queryPairs.getOrDefault("revision", "").trim();
+		String iccid = queryPairs.getOrDefault("iccid", "").trim();
+
+		String imei = queryPairs.getOrDefault("imei", "").trim();
+		String imsi = queryPairs.getOrDefault("imsi", "").trim();
+		String msisdn = queryPairs.getOrDefault("msisdn", "").trim();
 		String recipientPrefix = queryPairs.getOrDefault("recipient_prefix", "").trim();
 		boolean deleteSentSMS = queryPairs.getOrDefault("delete_sent_sms", "").trim().equals("1");
 		if(!recipientPrefix.isEmpty())
@@ -1327,7 +1333,10 @@ public class HandlerWebManager implements HttpHandler {
 			id = Utility.md5(String.format("%d", System.nanoTime()));
 			modem.setId(id);
 		}
-		
+		modem.setManufacturer(manufacturer);
+		modem.setModel(model);
+		modem.setRevision(revision);
+		modem.setIccid(iccid);
 		modem.setName(name);
 		modem.setPort(port);
 		modem.setSmsCenter(smsCenter);

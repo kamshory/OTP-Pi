@@ -144,7 +144,7 @@ public class GSM {
         		}
  	            if(requireResult && (result.trim().equals("") || result.trim().equals("\n")))
 	            {
-	            	this.sleep(500);
+	            	this.sleep(50);
 	                i++;			        
 	            }
 	        }
@@ -396,7 +396,7 @@ public class GSM {
         this.executeAT("ATE0", 1);
         this.executeAT(this.selectProtocol("GSM"), 1);
         this.executeAT(this.selectOperator("1"), 1);
-		for (String storage : GSMConst.getSmsStorage()) 
+		for(String storage : GSMConst.getSmsStorage()) 
         {
 			this.executeAT(this.selectStorage(storage), 1);
 	    	this.executeAT(GSMConst.CREATE_DELETE_SMS_ALL, 1);
@@ -408,10 +408,16 @@ public class GSM {
     {
     	this.setReady(false);
     	String result = this.executeAT("AT+CGSN", 1, true);
-    	if(!result.isEmpty() && result.contains("AT+CGSN") && result.contains("OK"))
+    	if(!result.isEmpty())
     	{
-    		result = result.replace("AT+CGSN", "");
-    		result = result.replace("OK", "");
+    		if(result.contains("AT+CGSN"))
+    		{
+    			result = result.replace("AT+CGSN", "").trim();
+    		}
+    		if(result.contains("OK"))
+    		{
+    			result = result.replace("OK", "");
+    		}
     		result = result.trim();
     	}
     	this.setReady(true);
@@ -422,10 +428,16 @@ public class GSM {
     {
     	this.setReady(false);
     	String result = this.executeAT("AT+CIMI", 1, true);
-       	if(!result.isEmpty() && result.contains("AT+CIMI") && result.contains("OK"))
+       	if(!result.isEmpty())
     	{
-    		result = result.replace("AT+CIMI", "");
-    		result = result.replace("OK", "");
+       		if(result.contains("AT+CIMI"))
+    		{
+       			result = result.replace("AT+CIMI", "").trim();
+    		}
+       		if(result.contains("OK"))
+    		{
+       			result = result.replace("OK", "").trim();
+    		}
     		result = result.trim();
     	}
     	this.setReady(true);
@@ -436,10 +448,16 @@ public class GSM {
     {
     	this.setReady(false);
     	String result = this.executeAT("AT+CCID", 1, true);
-       	if(!result.isEmpty() && result.contains("AT+CCID") && result.contains("OK"))
+       	if(!result.isEmpty())
     	{
-    		result = result.replace("AT+CCID", "");
-    		result = result.replace("OK", "");
+       		if(result.contains("AT+CCID"))
+    		{
+       			result = result.replace("AT+CCID", "").trim();
+    		}
+       		if(result.contains("OK"))
+    		{
+       			result = result.replace("OK", "");
+    		}
     		result = result.trim();
     	}
     	this.setReady(true);    	
@@ -450,15 +468,97 @@ public class GSM {
     {
     	this.setReady(false);
     	String result = this.executeAT("AT+CNUM", 1, true);
-       	if(!result.isEmpty() && result.contains("AT+CNUM") && result.contains("OK"))
+       	if(!result.isEmpty())
     	{
-    		result = result.replace("AT+CNUM", "");
-    		result = result.replace("OK", "");
+       		if(result.contains("AT+CNUM"))
+    		{
+       			result = result.replace("AT+CNUM", "");
+    		}
+       		if(result.contains("OK"))
+    		{
+       			result = result.replace("OK", "");
+    		}
     		result = result.trim();
     	}
     	this.setReady(true);
         return result;
     }
+    
+    public String getManufacturer() throws GSMException {
+    	this.setReady(false);
+    	String result = this.executeAT("AT+CGMI", 1, true);
+       	if(!result.isEmpty())
+    	{
+       		if(result.contains("AT+CGMI"))
+    		{
+       			result = result.replace("AT+CGMI", "");
+    		}
+       		if(result.contains("OK"))
+    		{
+       			result = result.replace("OK", "");
+    		}
+    		result = result.trim();
+    	}
+    	this.setReady(true);
+        return result;
+	}
+
+	public String getModel() throws GSMException {
+	   	this.setReady(false);
+    	String result = this.executeAT("AT+CGMM", 1, true);
+       	if(!result.isEmpty())
+    	{
+       		if(result.contains("AT+CGMM"))
+    		{
+       			result = result.replace("AT+CGMM", "");
+    		}
+       		if(result.contains("OK"))
+    		{
+       			result = result.replace("OK", "");
+    		}
+    		result = result.trim();
+    	}
+    	this.setReady(true);
+        return result;
+	}
+
+	public String getRevision() throws GSMException {
+	   	this.setReady(false);
+    	String result = this.executeAT("AT+CGMR", 1, true);
+       	if(!result.isEmpty())
+    	{
+       		if(result.contains("AT+CGMR"))
+    		{
+       			result = result.replace("AT+CGMR", "");
+    		}
+       		if(result.contains("OK"))
+    		{
+       			result = result.replace("OK", "");
+    		}
+    		result = result.trim();
+    	}
+    	this.setReady(true);
+        return result;
+	}
+
+	public String getSMSCenter() throws GSMException {
+	   	this.setReady(false);
+    	String result = this.executeAT("AT+CSCA", 1, true);
+       	if(!result.isEmpty())
+    	{
+       		if(result.contains("AT+CSCA"))
+    		{
+       			result = result.replace("AT+CSCA", "");
+    		}
+       		if(result.contains("OK"))
+    		{
+       			result = result.replace("OK", "");
+    		}
+    		result = result.trim();
+    	}
+    	this.setReady(true);
+        return result;
+	}
 
     public String createDeleteSMS(int smsID)
     {
@@ -550,6 +650,8 @@ public class GSM {
 		this.gcRunning = gcRunning;
 	}
 
+	
+	
 	
 	
 }

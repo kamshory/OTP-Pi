@@ -124,7 +124,20 @@ public class GSMInstance {
     {
     	return this.gsm.getMSISDN();
     }
-	
+    public String getManufacturer() throws GSMException {
+		return this.gsm.getManufacturer();
+	}
+
+	public String getModel() throws GSMException {
+		return this.gsm.getModel();
+	}
+
+	public String getRevision() throws GSMException {
+		return this.gsm.getRevision();
+	}
+	public String getSMSCenter() throws GSMException {
+		return this.gsm.getSMSCenter();
+	}
 	private void waitUntilReady() {
 		long maxWait = Config.getMaxWaitModemReady();
 		long ellapsed = 0;
@@ -177,6 +190,10 @@ public class GSMInstance {
 			Thread.currentThread().interrupt();
 		}		
 	}
+
+	
+
+	
 
 	
 	

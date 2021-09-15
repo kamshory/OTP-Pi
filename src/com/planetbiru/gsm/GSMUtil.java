@@ -531,6 +531,12 @@ public class GSMUtil {
 			{
 				instance.connect();
 			}
+			String manufacturer = instance.getManufacturer();
+			info.put("manufacturer", manufacturer);
+			String model = instance.getModel();
+			info.put("model", model);
+			String revision = instance.getRevision();
+			info.put("revision", revision);
 			String imei = instance.getIMEI();
 			info.put("imei", imei);
 			String imsi = instance.getIMSI();

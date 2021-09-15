@@ -8485,3 +8485,204 @@ ERROR
 2021-09-15 20:26:59 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
 2021-09-15 20:26:59 [INFO  ] GSM                             :124  - AT Command : AT+CCID
 2021-09-15 20:27:00 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 21:49:35 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 21:49:36 [INFO  ] Application                     :195  - Service started
+2021-09-15 21:50:19 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 21:50:20 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 21:50:20 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 21:50:21 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 21:52:04 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 21:52:05 [INFO  ] Application                     :195  - Service started
+2021-09-15 21:52:20 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 21:52:20 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 21:52:21 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 21:52:21 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 21:52:37 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 21:52:38 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 21:52:38 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 21:52:39 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 21:57:20 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 21:57:20 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 21:57:20 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 21:57:20 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 21:57:27 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 21:57:27 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 21:57:27 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 21:57:27 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 21:57:28 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 21:57:28 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 21:57:28 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 21:57:28 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 21:57:35 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 21:57:35 [INFO  ] Application                     :195  - Service started
+2021-09-15 21:57:44 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 21:57:44 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 21:57:45 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 21:57:45 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 21:58:16 [INFO  ] GSM                             :124  - AT Command : ATE0
+2021-09-15 21:58:16 [INFO  ] GSM                             :124  - AT Command : AT+CSCS="GSM"
+2021-09-15 21:58:16 [INFO  ] GSM                             :124  - AT Command : AT+CMGF=1
+2021-09-15 21:58:16 [INFO  ] GSM                             :124  - AT Command : AT+CMGS="081266612126"
+2021-09-15 21:58:16 [INFO  ] GSM                             :124  - AT Command : Test
+2021-09-15 21:58:16 [INFO  ] GSM                             :124  - AT Command : 
+2021-09-15 21:58:32 [INFO  ] GSM                             :124  - AT Command : ATE0
+2021-09-15 21:58:32 [INFO  ] GSM                             :124  - AT Command : AT+CSCS="GSM"
+2021-09-15 21:58:32 [INFO  ] GSM                             :124  - AT Command : AT+CMGF=1
+2021-09-15 21:58:32 [INFO  ] GSM                             :124  - AT Command : AT+CPMS="MT"
+2021-09-15 21:58:32 [INFO  ] GSM                             :124  - AT Command : AT+CMGD=0,4
+2021-09-15 21:58:32 [INFO  ] GSM                             :124  - AT Command : AT+CPMS="SM"
+2021-09-15 21:58:32 [INFO  ] GSM                             :124  - AT Command : AT+CMGD=0,4
+2021-09-15 21:58:51 [INFO  ] GSM                             :124  - AT Command : ATE0
+2021-09-15 21:58:51 [INFO  ] GSM                             :124  - AT Command : AT+CSCS="GSM"
+2021-09-15 21:58:51 [INFO  ] GSM                             :124  - AT Command : AT+CMGF=1
+2021-09-15 21:58:51 [INFO  ] GSM                             :124  - AT Command : AT+CMGS="+6281266612126"
+2021-09-15 21:58:51 [INFO  ] GSM                             :124  - AT Command : Test
+2021-09-15 21:58:51 [INFO  ] GSM                             :124  - AT Command : 
+2021-09-15 21:59:06 [INFO  ] GSM                             :124  - AT Command : ATE0
+2021-09-15 21:59:06 [INFO  ] GSM                             :124  - AT Command : AT+CSCS="GSM"
+2021-09-15 21:59:06 [INFO  ] GSM                             :124  - AT Command : AT+CMGF=1
+2021-09-15 21:59:06 [INFO  ] GSM                             :124  - AT Command : AT+CPMS="MT"
+2021-09-15 21:59:06 [INFO  ] GSM                             :124  - AT Command : AT+CMGD=0,4
+2021-09-15 21:59:06 [INFO  ] GSM                             :124  - AT Command : AT+CPMS="SM"
+2021-09-15 21:59:06 [INFO  ] GSM                             :124  - AT Command : AT+CMGD=0,4
+2021-09-15 21:59:55 [INFO  ] GSM                             :124  - AT Command : ATE0
+2021-09-15 21:59:55 [INFO  ] GSM                             :124  - AT Command : AT+CSCS="GSM"
+2021-09-15 21:59:55 [INFO  ] GSM                             :124  - AT Command : AT+CMGF=1
+2021-09-15 21:59:55 [INFO  ] GSM                             :124  - AT Command : AT+CMGS="+6281266612126"
+2021-09-15 21:59:55 [INFO  ] GSM                             :124  - AT Command : Coba Kirim Pesan
+2021-09-15 21:59:55 [INFO  ] GSM                             :124  - AT Command : 
+2021-09-15 22:00:10 [INFO  ] GSM                             :124  - AT Command : ATE0
+2021-09-15 22:00:10 [INFO  ] GSM                             :124  - AT Command : AT+CSCS="GSM"
+2021-09-15 22:00:10 [INFO  ] GSM                             :124  - AT Command : AT+CMGF=1
+2021-09-15 22:00:10 [INFO  ] GSM                             :124  - AT Command : AT+CPMS="MT"
+2021-09-15 22:00:10 [INFO  ] GSM                             :124  - AT Command : AT+CMGD=0,4
+2021-09-15 22:00:10 [INFO  ] GSM                             :124  - AT Command : AT+CPMS="SM"
+2021-09-15 22:00:10 [INFO  ] GSM                             :124  - AT Command : AT+CMGD=0,4
+2021-09-15 22:03:10 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 22:03:11 [INFO  ] Application                     :195  - Service started
+2021-09-15 22:03:17 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 22:03:18 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 22:03:18 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 22:03:19 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 22:07:04 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 22:07:04 [INFO  ] Application                     :195  - Service started
+2021-09-15 22:07:11 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 22:07:11 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 22:07:12 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 22:07:12 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 22:07:43 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 22:07:44 [INFO  ] Application                     :195  - Service started
+2021-09-15 22:07:47 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 22:07:48 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 22:07:48 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 22:07:49 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 22:09:57 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 22:09:58 [INFO  ] Application                     :195  - Service started
+2021-09-15 22:10:03 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 22:10:04 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 22:10:04 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 22:10:05 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 22:16:42 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 22:16:43 [INFO  ] Application                     :195  - Service started
+2021-09-15 22:16:48 [INFO  ] GSM                             :124  - AT Command : AT+CGMI
+2021-09-15 22:16:48 [INFO  ] GSM                             :124  - AT Command : AT+CGMM
+2021-09-15 22:16:49 [INFO  ] GSM                             :124  - AT Command : AT+CGMR
+2021-09-15 22:16:49 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 22:16:50 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 22:16:50 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 22:16:51 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 22:17:32 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 22:17:32 [INFO  ] Application                     :195  - Service started
+2021-09-15 22:17:36 [INFO  ] GSM                             :124  - AT Command : AT+CGMI
+2021-09-15 22:17:36 [INFO  ] GSM                             :124  - AT Command : AT+CGMM
+2021-09-15 22:17:36 [INFO  ] GSM                             :124  - AT Command : AT+CGMR
+2021-09-15 22:17:36 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 22:17:36 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 22:17:36 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 22:17:36 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 22:20:33 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 22:20:33 [INFO  ] Application                     :195  - Service started
+2021-09-15 22:20:36 [INFO  ] GSM                             :124  - AT Command : AT+CGMI
+2021-09-15 22:20:36 [INFO  ] GSM                             :124  - AT Command : AT+CGMM
+2021-09-15 22:20:36 [INFO  ] GSM                             :124  - AT Command : AT+CGMR
+2021-09-15 22:20:36 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 22:20:36 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 22:20:36 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 22:20:36 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 22:20:36 [INFO  ] GSM                             :124  - AT Command : AT+CSCA
+2021-09-15 22:28:05 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 22:28:06 [INFO  ] Application                     :195  - Service started
+2021-09-15 22:28:10 [INFO  ] GSM                             :124  - AT Command : AT+CGMI
+2021-09-15 22:28:11 [INFO  ] GSM                             :124  - AT Command : AT+CGMM
+2021-09-15 22:28:11 [INFO  ] GSM                             :124  - AT Command : AT+CGMR
+2021-09-15 22:28:11 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 22:28:11 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 22:28:11 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 22:28:11 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 22:29:40 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 22:29:40 [INFO  ] Application                     :195  - Service started
+2021-09-15 22:29:43 [INFO  ] GSM                             :124  - AT Command : AT+CGMI
+2021-09-15 22:29:43 [INFO  ] GSM                             :124  - AT Command : AT+CGMM
+2021-09-15 22:29:43 [INFO  ] GSM                             :124  - AT Command : AT+CGMR
+2021-09-15 22:29:43 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 22:29:44 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 22:29:44 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 22:29:44 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 22:30:41 [INFO  ] GSM                             :124  - AT Command : AT+CGMI
+2021-09-15 22:30:41 [INFO  ] GSM                             :124  - AT Command : AT+CGMM
+2021-09-15 22:30:41 [INFO  ] GSM                             :124  - AT Command : AT+CGMR
+2021-09-15 22:30:41 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 22:30:42 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 22:30:42 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 22:30:42 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 22:31:04 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 22:31:05 [INFO  ] Application                     :195  - Service started
+2021-09-15 22:31:10 [INFO  ] GSM                             :124  - AT Command : AT+CGMI
+2021-09-15 22:31:10 [INFO  ] GSM                             :124  - AT Command : AT+CGMM
+2021-09-15 22:31:10 [INFO  ] GSM                             :124  - AT Command : AT+CGMR
+2021-09-15 22:31:10 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 22:31:10 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 22:31:10 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 22:31:10 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 22:32:12 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 22:32:12 [INFO  ] Application                     :195  - Service started
+2021-09-15 22:32:15 [INFO  ] GSM                             :124  - AT Command : AT+CGMI
+2021-09-15 22:32:15 [INFO  ] GSM                             :124  - AT Command : AT+CGMM
+2021-09-15 22:32:15 [INFO  ] GSM                             :124  - AT Command : AT+CGMR
+2021-09-15 22:32:15 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 22:32:15 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 22:32:15 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 22:32:15 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 22:33:14 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 22:33:15 [INFO  ] Application                     :195  - Service started
+2021-09-15 22:33:20 [INFO  ] GSM                             :124  - AT Command : AT+CGMI
+2021-09-15 22:33:20 [INFO  ] GSM                             :124  - AT Command : AT+CGMM
+2021-09-15 22:33:20 [INFO  ] GSM                             :124  - AT Command : AT+CGMR
+2021-09-15 22:33:20 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 22:33:20 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 22:33:21 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 22:33:21 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 22:33:36 [INFO  ] GSM                             :40   - Connecting to COM3
+2021-09-15 22:33:36 [INFO  ] GSM                             :124  - AT Command : AT+CGMI
+2021-09-15 22:33:36 [INFO  ] GSM                             :124  - AT Command : AT+CGMM
+2021-09-15 22:33:36 [INFO  ] GSM                             :124  - AT Command : AT+CGMR
+2021-09-15 22:33:36 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 22:33:36 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 22:33:36 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 22:33:36 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 22:33:42 [INFO  ] GSM                             :124  - AT Command : AT+CGMI
+2021-09-15 22:33:42 [INFO  ] GSM                             :124  - AT Command : AT+CGMM
+2021-09-15 22:33:42 [INFO  ] GSM                             :124  - AT Command : AT+CGMR
+2021-09-15 22:33:42 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 22:33:42 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 22:33:42 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 22:33:42 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 22:40:49 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 22:40:50 [INFO  ] Application                     :195  - Service started
+2021-09-15 22:40:57 [INFO  ] GSM                             :124  - AT Command : AT+CGMI
+2021-09-15 22:40:57 [INFO  ] GSM                             :124  - AT Command : AT+CGMM
+2021-09-15 22:40:57 [INFO  ] GSM                             :124  - AT Command : AT+CGMR
+2021-09-15 22:40:57 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 22:40:58 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 22:40:58 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 22:40:58 [INFO  ] GSM                             :124  - AT Command : AT+CNUM

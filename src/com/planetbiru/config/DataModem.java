@@ -40,6 +40,10 @@ public class DataModem {
 	private String initDial5 = "";
 	private String dialCommand = "";
 	private boolean autoreconnect = false;
+	private String manufacturer = "";
+	private String model = "";
+	private String revision = "";
+	private String iccid = "";
 
 	public DataModem() {
 		
@@ -49,6 +53,10 @@ public class DataModem {
 		this.id = jsonObject.optString("id", "");
 		this.name = jsonObject.optString("name", "");
 		this.port = jsonObject.optString("port", "");
+		this.manufacturer = jsonObject.optString("manufacturer", "");
+		this.model = jsonObject.optString("model", "");
+		this.revision = jsonObject.optString("revision", "");
+		this.iccid = jsonObject.optString("iccid", "");
 		this.smsCenter = jsonObject.optString("smsCenter", "");
 		this.incommingInterval = jsonObject.optInt("incommingInterval", 0);
 		this.timeRange = jsonObject.optInt("timeRange", 0);
@@ -86,6 +94,10 @@ public class DataModem {
 		jsonObject.put("id", this.id);
 		jsonObject.put("name", this.name);
 		jsonObject.put("port", this.port);
+		jsonObject.put("manufacturer", this.manufacturer);
+		jsonObject.put("model", this.model);
+		jsonObject.put("revision", this.revision);
+		jsonObject.put("iccid", this.iccid);
 		jsonObject.put("smsCenter", this.smsCenter);
 		jsonObject.put("incommingInterval", this.incommingInterval);
 		jsonObject.put("timeRange", this.timeRange);
@@ -179,6 +191,38 @@ public class DataModem {
 
 	public String getProvider() {
 		return provider;
+	}
+	
+	public String getManufacturer() {
+		return manufacturer;
+	}
+
+	public void setManufacturer(String manufacturer) {
+		this.manufacturer = manufacturer;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public String getRevision() {
+		return revision;
+	}
+
+	public void setRevision(String revision) {
+		this.revision = revision;
+	}
+
+	public String getIccid() {
+		return iccid;
+	}
+
+	public void setIccid(String iccid) {
+		this.iccid = iccid;
 	}
 
 	public void setProvider(String provider) {

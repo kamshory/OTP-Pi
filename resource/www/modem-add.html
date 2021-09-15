@@ -96,9 +96,21 @@
 							</td>
 						</tr>
 						<tr>
-							<td>SMS Center</td>
+							<td>Manufacturer</td>
 							<td>
-								<input type="text" class="form-control" name="sms_center" value="">
+								<input type="text" class="form-control" name="manufacturer" value="">
+							</td>
+						</tr>
+						<tr>
+							<td>Model</td>
+							<td>
+								<input type="text" class="form-control" name="model" value="">
+							</td>
+						</tr>
+						<tr>
+							<td>Revision</td>
+							<td>
+								<input type="text" class="form-control" name="revision" value="">
 							</td>
 						</tr>
 						<tr>
@@ -108,15 +120,27 @@
 							</td>
 						</tr>
 						<tr>
+							<td>IMSI</td>
+							<td>
+								<input type="text" class="form-control" name="imsi" value="">
+							</td>
+						</tr>
+						<tr>
+							<td>ICCID</td>
+							<td>
+								<input type="text" class="form-control" name="iccid" value="">
+							</td>
+						</tr>
+						<tr>
 							<td>MSISDN</td>
 							<td>
 								<input type="text" class="form-control" name="msisdn" value="">
 							</td>
 						</tr>
 						<tr>
-							<td>IMSI</td>
+							<td>SMS Center</td>
 							<td>
-								<input type="text" class="form-control" name="imsi" value="">
+								<input type="text" class="form-control" name="sms_center" value="">
 							</td>
 						</tr>
 						<tr>
@@ -297,10 +321,13 @@
 							url: "data/modem-info/get/" + encodeURIComponent(port),
 							dataType: "json",
 							success: function(data) {
-								console.log(data);
+								$('[name="manufacturer"]').val(data.manufacturer || '');
+								$('[name="model"]').val(data.model || '');
+								$('[name="revision"]').val(data.revision || '');
 								$('[name="imei"]').val(data.imei || '');
 								$('[name="msisdn"]').val(data.msisdn || '');
 								$('[name="imsi"]').val(data.imsi || '');
+								$('input[name="iccid"]').val(data.iccid || '');
 							}
 						});
 					}
