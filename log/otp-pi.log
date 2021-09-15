@@ -8686,3 +8686,69 @@ ERROR
 2021-09-15 22:40:58 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
 2021-09-15 22:40:58 [INFO  ] GSM                             :124  - AT Command : AT+CCID
 2021-09-15 22:40:58 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 22:43:09 [INFO  ] GSM                             :124  - AT Command : AT+CGMI
+2021-09-15 22:43:09 [INFO  ] GSM                             :124  - AT Command : AT+CGMM
+2021-09-15 22:43:09 [INFO  ] GSM                             :124  - AT Command : AT+CGMR
+2021-09-15 22:43:09 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 22:43:09 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 22:43:09 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 22:43:09 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 22:43:43 [INFO  ] GSM                             :124  - AT Command : ATE0
+2021-09-15 22:43:43 [INFO  ] GSM                             :124  - AT Command : AT+CSCS="GSM"
+2021-09-15 22:43:43 [INFO  ] GSM                             :124  - AT Command : AT+CMGF=1
+2021-09-15 22:43:43 [INFO  ] GSM                             :124  - AT Command : AT+CMGS="085271199991"
+2021-09-15 22:43:43 [INFO  ] GSM                             :124  - AT Command : test
+2021-09-15 22:43:43 [INFO  ] GSM                             :124  - AT Command : 
+2021-09-15 22:43:58 [INFO  ] GSM                             :124  - AT Command : ATE0
+2021-09-15 22:43:58 [INFO  ] GSM                             :124  - AT Command : AT+CSCS="GSM"
+2021-09-15 22:43:58 [INFO  ] GSM                             :124  - AT Command : AT+CMGF=1
+2021-09-15 22:43:58 [INFO  ] GSM                             :124  - AT Command : AT+CPMS="MT"
+2021-09-15 22:43:58 [INFO  ] GSM                             :124  - AT Command : AT+CMGD=0,4
+2021-09-15 22:43:58 [INFO  ] GSM                             :124  - AT Command : AT+CPMS="SM"
+2021-09-15 22:43:58 [INFO  ] GSM                             :124  - AT Command : AT+CMGD=0,4
+2021-09-15 22:44:57 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 22:44:57 [INFO  ] Application                     :195  - Service started
+2021-09-15 22:46:35 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 22:46:35 [INFO  ] Application                     :195  - Service started
+2021-09-15 22:47:46 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 22:47:47 [INFO  ] Application                     :195  - Service started
+2021-09-15 22:48:29 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 22:48:29 [INFO  ] Application                     :195  - Service started
+2021-09-15 22:48:39 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 22:51:47 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 22:51:48 [INFO  ] Application                     :195  - Service started
+2021-09-15 22:52:10 [INFO  ] GSM                             :124  - AT Command : AT+CGMI
+2021-09-15 22:52:10 [INFO  ] GSM                             :124  - AT Command : AT+CGMM
+2021-09-15 22:52:10 [INFO  ] GSM                             :124  - AT Command : AT+CGMR
+2021-09-15 22:52:10 [INFO  ] GSM                             :124  - AT Command : AT+CGSN
+2021-09-15 22:52:10 [INFO  ] GSM                             :124  - AT Command : AT+CIMI
+2021-09-15 22:52:10 [INFO  ] GSM                             :124  - AT Command : AT+CCID
+2021-09-15 22:52:10 [INFO  ] GSM                             :124  - AT Command : AT+CNUM
+2021-09-15 22:53:35 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 22:53:35 [INFO  ] Application                     :195  - Service started
+2021-09-15 22:54:42 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 22:54:43 [INFO  ] Application                     :195  - Service started
+2021-09-15 22:55:59 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 22:56:00 [INFO  ] Application                     :195  - Service started
+2021-09-15 23:00:03 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 23:00:04 [INFO  ] Application                     :195  - Service started
+2021-09-15 23:02:05 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 23:02:05 [INFO  ] Application                     :195  - Service started
+2021-09-15 23:02:13 [INFO  ] GSM                             :124  - AT Command : AT+CUSD=1,"*888#",15
+2021-09-15 23:02:28 [INFO  ] GSM                             :124  - AT Command : AT+CUSD=1,"*00#",15
+2021-09-15 23:02:40 [INFO  ] GSM                             :124  - AT Command : AT+CUSD=1,"*777#",15
+2021-09-15 23:03:31 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 23:03:32 [INFO  ] Application                     :195  - Service started
+2021-09-15 23:03:39 [INFO  ] GSM                             :124  - AT Command : AT+CUSD=1,"*888#",15
+2021-09-15 23:03:56 [INFO  ] GSM                             :124  - AT Command : AT+CUSD=1,"*116#",15
+2021-09-15 23:04:53 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 23:04:54 [INFO  ] Application                     :195  - Service started
+2021-09-15 23:04:58 [INFO  ] GSM                             :124  - AT Command : AT+CUSD=1,"777",15
+2021-09-15 23:05:18 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 23:05:19 [INFO  ] Application                     :195  - Service started
+2021-09-15 23:08:01 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 23:08:01 [INFO  ] Application                     :195  - Service started
+2021-09-15 23:09:24 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 23:09:24 [INFO  ] Application                     :195  - Service started
+2021-09-15 23:11:06 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-15 23:11:07 [INFO  ] Application                     :195  - Service started

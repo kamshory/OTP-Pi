@@ -1484,7 +1484,7 @@ public class HandlerWebManager implements HttpHandler {
 		{
 			String receiver = queryPairs.getOrDefault(JsonKey.RECEIVER, "").trim();			
 			String message = queryPairs.getOrDefault(JsonKey.MESSAGE, "").trim();	
-			String modemID = queryPairs.getOrDefault("modem", "").trim();	
+			String modemID = queryPairs.getOrDefault(JsonKey.MODEM_ID, "").trim();	
 			if(!receiver.isEmpty() && !message.isEmpty())
 			{
 				try 

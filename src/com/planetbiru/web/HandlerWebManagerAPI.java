@@ -837,6 +837,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		} 
 		catch (GSMException e) 
 		{
+			e.printStackTrace();
 			String message = e.getMessage();
 			response.put(JsonKey.MESSAGE, message);
 			response.put(JsonKey.SUCCESS, false);	

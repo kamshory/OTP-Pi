@@ -89,14 +89,14 @@
 			function processForm(obj) {
 				var receiver = $('#receiver').val();
 				var message = $('#message').val();
-				var modem = $('#modem').val();
+				var modem_id = $('#modem').val();
 				$.ajax({
 					'type': 'POST',
 					'url': 'sms.html',
 					'data': {
 						receiver: receiver,
 						message: message,
-						modem: modem,
+						modem_id: modem_id,
 						send: 'send'
 					},
 					success: function(data) {

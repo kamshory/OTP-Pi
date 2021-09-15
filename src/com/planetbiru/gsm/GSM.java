@@ -121,7 +121,6 @@ public class GSM {
     public String executeAT(String command, int waitingTime, boolean requireResult) throws GSMException 
     {
     	this.setReady(false);
-    	logger.info("AT Command : "+command);
     	if(getSerialPort() == null)
     	{
     		throw new GSMException("GSM is not initilized yet");
