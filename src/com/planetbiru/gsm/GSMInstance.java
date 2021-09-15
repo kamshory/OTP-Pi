@@ -15,27 +15,37 @@ public class GSMInstance {
 	private GSM gsm;
 	private String id = "";
 	private String port = "";
-	public GSMInstance(DataModem modem)
+	private boolean eventListener = true;
+	public GSMInstance(DataModem modem, boolean eventListener)
 	{
 		this.port = modem.getPort();
+		this.eventListener = eventListener;
 		this.id = modem.getId();
 		this.gsm = new GSM();
 	}
 	
-	public GSMInstance(String port) {
+	public GSMInstance(String port, boolean eventListener) {
 		this.port = port;
+		this.eventListener =eventListener;
 		this.gsm = new GSM();
 	}
 
 	public boolean connect() throws GSMException, InvalidPortException 
 	{
-		try
+		if(!this.gsm.isConnected())
 		{
-			return this.gsm.connect(this.port);
+			try
+			{
+				return this.gsm.connect(this.port, this.eventListener);
+			}
+			catch(SerialPortInvalidPortException e)
+			{
+				throw new GSMException(e);
+			}
 		}
-		catch(SerialPortInvalidPortException e)
+		else
 		{
-			throw new GSMException(e);
+			return true;
 		}
 	}
 	

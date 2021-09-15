@@ -41,7 +41,7 @@ public class GSMUtil {
 	private static boolean hasPrefix = false;
 	private static Map<String, ModemRouter> modemRouterList = new HashMap<>();
 	private static boolean hasDefaultModem = false;
-	
+	private static boolean eventListener = true;
 	private static Logger logger = Logger.getLogger(GSMUtil.class);
 	
 
@@ -62,7 +62,7 @@ public class GSMUtil {
 			DataModem modem = entry.getValue();
 			if(modem.isActive() && !modem.isInternetAccess())
 			{
-				GSMInstance instance = new GSMInstance(modem);
+				GSMInstance instance = new GSMInstance(modem, eventListener);
 				try 
 				{
 					instance.connect();
@@ -82,7 +82,7 @@ public class GSMUtil {
 	{
 		DataModem modem = ConfigModem.getModemData(modemID);
 		boolean found = false;
-		GSMInstance instance = new GSMInstance(modem);
+		GSMInstance instance = new GSMInstance(modem, eventListener);
 		for(int i = 0; i<GSMUtil.getGsmInstance().size(); i++)
 		{
 			instance =  GSMUtil.getGsmInstance().get(i);
@@ -521,21 +521,23 @@ public class GSMUtil {
 		} 
 		catch (ModemNotFoundException e) 
 		{
-			instance = new GSMInstance(port);
+			instance = new GSMInstance(port, eventListener);
 			addHock = true;
 		}
 		
 		try 
 		{
-			instance.connect();
+			if(!instance.isConnected())
+			{
+				instance.connect();
+			}
 			String imei = instance.getIMEI();
-			String imsi = instance.getIMSI();
-			String iccid = instance.getICCID();
-			String msisdn = instance.getMSISDN();
-			
 			info.put("imei", imei);
+			String imsi = instance.getIMSI();
 			info.put("imsi", imsi);
+			String iccid = instance.getICCID();
 			info.put("iccid", iccid);
+			String msisdn = instance.getMSISDN();			
 			info.put("msisdn", msisdn);
 			
 			if(addHock)

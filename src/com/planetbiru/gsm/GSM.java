@@ -16,7 +16,8 @@ public class GSM {
     private SerialPort serialPort;
     private boolean connected = false;
 	private boolean ready = false;
-	private boolean gcRunning = false; 
+	private boolean gcRunning = false;
+	private StringBuilder incommingMessage = new StringBuilder(); 
     
     private static Logger logger = Logger.getLogger(GSM.class);
     
@@ -34,14 +35,15 @@ public class GSM {
      * @return true if port was opened successfully
      * @throws GSMException 
      */
-    public boolean connect(String portName) throws InvalidPortException
+    public boolean connect(String portName, boolean eventListener) throws InvalidPortException
     {
+    	logger.info("Connecting to "+portName);
     	this.setReady(false);
     	boolean isOpen = false;
-    	
     	try
     	{
-	   		this.setSerialPort(SerialPort.getCommPort(portName));
+    		SerialPort port = SerialPort.getCommPort(portName);
+	   		this.setSerialPort(port);
 	    	isOpen = this.serialPort.openPort();
 	        if(isOpen)
 	    	{		
@@ -56,7 +58,8 @@ public class GSM {
 	                @Override
 	                public void serialEvent(SerialPortEvent event) 
 	                {
-	                	if(event.getEventType() == SerialPort.LISTENING_EVENT_DATA_AVAILABLE) {
+	                	if(eventListener && event.getEventType() == SerialPort.LISTENING_EVENT_DATA_AVAILABLE) 
+	                	{
 	                		byte[] msg = new byte[getSerialPort().bytesAvailable()];
 	                		getSerialPort().readBytes(msg, msg.length);
 	                		String result = new String(msg);
@@ -132,16 +135,24 @@ public class GSM {
         {
         	do 
         	{
-	        	byte[] msg = new byte[getSerialPort().bytesAvailable()];
-	            getSerialPort().readBytes(msg, msg.length);
-	            result = new String(msg);
-	            if(requireResult && (result.trim().equals("") || result.trim().equals("\n")))
+        		int bytesAvailable = getSerialPort().bytesAvailable();
+        		if(bytesAvailable > 0)
+        		{
+	            	byte[] msg = new byte[bytesAvailable];
+		            getSerialPort().readBytes(msg, msg.length);
+		            result = new String(msg);
+        		}
+ 	            if(requireResult && (result.trim().equals("") || result.trim().equals("\n")))
 	            {
 	            	this.sleep(500);
 	                i++;			        
 	            }
 	        }
         	while(requireResult && (result.trim().equals("") || result.trim().equals("\n")) && i < waitingTime);
+        }
+        if(result.isEmpty() && !this.incommingMessage.toString().isEmpty())
+        {
+        	result = this.incommingMessage.toString();
         }
         this.setReady(true);
         return result;
@@ -397,6 +408,12 @@ public class GSM {
     {
     	this.setReady(false);
     	String result = this.executeAT("AT+CGSN", 1, true);
+    	if(!result.isEmpty() && result.contains("AT+CGSN") && result.contains("OK"))
+    	{
+    		result = result.replace("AT+CGSN", "");
+    		result = result.replace("OK", "");
+    		result = result.trim();
+    	}
     	this.setReady(true);
         return result;
     }
@@ -405,6 +422,12 @@ public class GSM {
     {
     	this.setReady(false);
     	String result = this.executeAT("AT+CIMI", 1, true);
+       	if(!result.isEmpty() && result.contains("AT+CIMI") && result.contains("OK"))
+    	{
+    		result = result.replace("AT+CIMI", "");
+    		result = result.replace("OK", "");
+    		result = result.trim();
+    	}
     	this.setReady(true);
         return result;
     }
@@ -413,6 +436,12 @@ public class GSM {
     {
     	this.setReady(false);
     	String result = this.executeAT("AT+CCID", 1, true);
+       	if(!result.isEmpty() && result.contains("AT+CCID") && result.contains("OK"))
+    	{
+    		result = result.replace("AT+CCID", "");
+    		result = result.replace("OK", "");
+    		result = result.trim();
+    	}
     	this.setReady(true);    	
         return result;
     }
@@ -421,6 +450,12 @@ public class GSM {
     {
     	this.setReady(false);
     	String result = this.executeAT("AT+CNUM", 1, true);
+       	if(!result.isEmpty() && result.contains("AT+CNUM") && result.contains("OK"))
+    	{
+    		result = result.replace("AT+CNUM", "");
+    		result = result.replace("OK", "");
+    		result = result.trim();
+    	}
     	this.setReady(true);
         return result;
     }
@@ -446,7 +481,7 @@ public class GSM {
 	
 	public void onReceiveData(String message)
     {
-    	logger.info("Receive Message " + message);
+		this.incommingMessage.append(message);
     }
 
     /**
@@ -504,6 +539,7 @@ public class GSM {
 
 	public void setReady(boolean ready) {
 		this.ready = ready;
+		this.incommingMessage = new StringBuilder();
 	}
 
 	public boolean isGcRunning() {
