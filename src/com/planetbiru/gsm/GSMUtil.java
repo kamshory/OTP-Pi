@@ -523,8 +523,7 @@ public class GSMUtil {
 		{
 			instance = new GSMInstance(port, eventListener);
 			addHock = true;
-		}
-		
+		}		
 		try 
 		{
 			if(!instance.isConnected())
@@ -545,7 +544,10 @@ public class GSMUtil {
 			info.put("iccid", iccid);
 			String msisdn = instance.getMSISDN();			
 			info.put("msisdn", msisdn);
-			
+			String operatorSelect = instance.getOperatorSelect();			
+			info.put("operatorSelect", operatorSelect);
+			String smsCenter = instance.getSMSCenter();		
+			info.put("smsCenter", smsCenter);
 			if(addHock)
 			{
 				instance.disconnect();

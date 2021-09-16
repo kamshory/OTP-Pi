@@ -93,6 +93,7 @@
 							<td></td>
 							<td>
 								<input type="button" class="btn btn-success" id="detect" value="Detect">
+								<span class="detecting"></span>
 							</td>
 						</tr>
 						<tr>
@@ -129,6 +130,12 @@
 							<td>ICCID</td>
 							<td>
 								<input type="text" class="form-control" name="iccid" value="">
+							</td>
+						</tr>
+						<tr>
+							<td>Operator</td>
+							<td>
+								<input type="text" class="form-control" name="operator_select" value="">
 							</td>
 						</tr>
 						<tr>
@@ -324,38 +331,39 @@
 						url: "data/modem/detail/" + id,
 						dataType: "json",
 						success: function(data) {
-							$('input[name="id"]').val(data.id);
-							$('input[name="name"]').val(data.name);
-							$('input[name="port"]').val(data.port);
-							$('input[name="sms_center"]').val(data.smsCenter);
+							$('[name="id"]').val(data.id);
+							$('[name="name"]').val(data.name);
+							$('[name="port"]').val(data.port);
+							$('[name="sms_center"]').val(data.smsCenter);
 							$('[name="manufacturer"]').val(data.manufacturer || '');
 							$('[name="model"]').val(data.model || '');
 							$('[name="revision"]').val(data.revision || '');
-							$('input[name="imei"]').val(data.imei);
-							$('input[name="msisdn"]').val(data.msisdn);
-							$('input[name="imsi"]').val(data.imsi);
-							$('input[name="iccid"]').val(data.iccid);
+							$('[name="imei"]').val(data.imei);
+							$('[name="operator_select"]').val(data.operatorSelect);
+							$('[name="msisdn"]').val(data.msisdn);
+							$('[name="imsi"]').val(data.imsi);
+							$('[name="iccid"]').val(data.iccid);
 							$('[name="recipient_prefix"]').val(data.recipientPrefix);
-							$('input[name="baud_rate"]').val(data.baudRate);
+							$('[name="baud_rate"]').val(data.baudRate);
 							$('[name="parity_bit"]').val(data.parityBit);
-							$('input[name="start_bits"]').val(data.startBits);
-							$('input[name="stop_bits"]').val(data.stopBits);
-							$('input[name="internet_access"]').prop('checked', data.internetAccess);
-							$('input[name="apn"]').val(data.apn);
-							$('input[name="apn_username"]').val(data.apnUsername);
-							$('input[name="apn_password"]').val(data.apnPassword);
-							$('input[name="dial_number"]').val(data.dialNumner);
-							$('input[name="init_dial_1"]').val(data.initDial1);
-							$('input[name="init_dial_2"]').val(data.initDial2);
-							$('input[name="init_dial_3"]').val(data.initDial3);
-							$('input[name="init_dial_4"]').val(data.initDial4);
-							$('input[name="init_dial_5"]').val(data.initDial5);
-							$('input[name="dial_command"]').val(data.dialCommand);
-							$('input[name="autoreconnect"]').prop('checked', data.autoreconnect);
-							$('input[name="sms_api"]').prop('checked', data.smsAPI);
-							$('input[name="delete_sent_sms"]').prop('checked', data.deleteSentSMS);
-							$('input[name="default_modem"]').prop('checked', data.defaultModem);
-							$('input[name="active"]').prop('checked', data.active);
+							$('[name="start_bits"]').val(data.startBits);
+							$('[name="stop_bits"]').val(data.stopBits);
+							$('[name="internet_access"]').prop('checked', data.internetAccess);
+							$('[name="apn"]').val(data.apn);
+							$('[name="apn_username"]').val(data.apnUsername);
+							$('[name="apn_password"]').val(data.apnPassword);
+							$('[name="dial_number"]').val(data.dialNumner);
+							$('[name="init_dial_1"]').val(data.initDial1);
+							$('[name="init_dial_2"]').val(data.initDial2);
+							$('[name="init_dial_3"]').val(data.initDial3);
+							$('[name="init_dial_4"]').val(data.initDial4);
+							$('[name="init_dial_5"]').val(data.initDial5);
+							$('[name="dial_command"]').val(data.dialCommand);
+							$('[name="autoreconnect"]').prop('checked', data.autoreconnect);
+							$('[name="sms_api"]').prop('checked', data.smsAPI);
+							$('[name="delete_sent_sms"]').prop('checked', data.deleteSentSMS);
+							$('[name="default_modem"]').prop('checked', data.defaultModem);
+							$('[name="active"]').prop('checked', data.active);
 							if(data.internetAccess) {
 								$('.tr-dial').css('display', 'table-row');
 							}
@@ -374,9 +382,13 @@
 				});
 				$(document).on('click', '#detect', function(e2) {
 					var port = $(this).closest('form').find('[name="port"]').val().trim();
-					if(port == '') {
+					if(port == '') 
+					{
 						$(this).closest('form').find('[name="port"]').select();
-					} else {
+					} 
+					else 
+					{
+						$('.detecting').empty().append('<span class="animation-pressure"><span></span>');
 						$.ajax({
 							type: "GET",
 							url: "data/modem-info/get/" + encodeURIComponent(port),
@@ -386,9 +398,12 @@
 								$('[name="model"]').val(data.model || '');
 								$('[name="revision"]').val(data.revision || '');
 								$('[name="imei"]').val(data.imei || '');
+								$('[name="operator_select"]').val(data.operatorSelect);
 								$('[name="msisdn"]').val(data.msisdn || '');
 								$('[name="imsi"]').val(data.imsi || '');
-								$('input[name="iccid"]').val(data.iccid || '');
+								$('[name="iccid"]').val(data.iccid || '');
+								$('[name="sms_center"]').val(data.smsCenter || '');
+								$('.detecting').empty();
 							}
 						});
 					}

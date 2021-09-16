@@ -93,6 +93,7 @@
 							<td></td>
 							<td>
 								<input type="button" class="btn btn-success" id="detect" value="Detect">
+								<span class="detecting"></span>
 							</td>
 						</tr>
 						<tr>
@@ -129,6 +130,12 @@
 							<td>ICCID</td>
 							<td>
 								<input type="text" class="form-control" name="iccid" value="">
+							</td>
+						</tr>
+						<tr>
+							<td>Operator</td>
+							<td>
+								<input type="text" class="form-control" name="operator_select" value="">
 							</td>
 						</tr>
 						<tr>
@@ -313,9 +320,13 @@
 				});
 				$(document).on('click', '#detect', function(e2) {
 					var port = $(this).closest('form').find('[name="port"]').val().trim();
-					if(port == '') {
+					if(port == '') 
+					{
 						$(this).closest('form').find('[name="port"]').select();
-					} else {
+					} 
+					else 
+					{
+						$('.detecting').empty().append('<span class="animation-pressure"><span></span>');
 						$.ajax({
 							type: "GET",
 							url: "data/modem-info/get/" + encodeURIComponent(port),
@@ -325,9 +336,12 @@
 								$('[name="model"]').val(data.model || '');
 								$('[name="revision"]').val(data.revision || '');
 								$('[name="imei"]').val(data.imei || '');
+								$('[name="operator_select"]').val(data.operatorSelect);
 								$('[name="msisdn"]').val(data.msisdn || '');
 								$('[name="imsi"]').val(data.imsi || '');
-								$('input[name="iccid"]').val(data.iccid || '');
+								$('[name="iccid"]').val(data.iccid || '');
+								$('[name="sms_center"]').val(data.smsCenter || '');
+								$('.detecting').empty();
 							}
 						});
 					}

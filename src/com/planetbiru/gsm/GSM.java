@@ -125,6 +125,7 @@ public class GSM {
     	{
     		throw new GSMException("GSM is not initilized yet");
     	}
+    	logger.info("Execute AT Command : "+command);
         command = command + "\r\n";
         String result = "";
         int i = 0;
@@ -143,18 +144,42 @@ public class GSM {
         		}
  	            if(requireResult && (result.trim().equals("") || result.trim().equals("\n")))
 	            {
-	            	this.sleep(50);
+	            	this.sleep(120);
 	                i++;			        
 	            }
 	        }
         	while(requireResult && (result.trim().equals("") || result.trim().equals("\n")) && i < waitingTime);
         }
+        result = this.updateResult(result);
+        this.setReady(true);
+        return result;
+    }
+    
+    private String fixResultByOK(String result) 
+    {
+    	if(result.contains("\r\nOK"))
+		{
+			result = result.substring(0, result.indexOf("\r\nOK"));
+		}
+		return result;
+	}
+
+    private String removeError(String result) 
+    {
+    	if(result.contains(ATCommand.ERROR))
+		{
+			result = result.replace(ATCommand.ERROR, "");
+		}
+		return result;
+	}
+
+    private String updateResult(String result)
+    {
         if(result.isEmpty() && !this.incommingMessage.toString().isEmpty())
         {
         	result = this.incommingMessage.toString();
         }
-        this.setReady(true);
-        return result;
+		return result; 	
     }
     
     private void sleep(int sleep)
@@ -183,7 +208,7 @@ public class GSM {
         String result = "";
         result = this.executeAT(cmd, 2, true);
         USSDParser ussdParser;
-		if(result.startsWith("ERROR"))
+		if(result.startsWith(ATCommand.ERROR))
         {
         	ussdParser = new USSDParser();
             return ussdParser;
@@ -319,6 +344,37 @@ public class GSM {
 			allMatches.clear();
         }	
 	}
+    
+    public List<String> parseCSVResponse(String csvLine)
+    {
+    	List<String> record = new ArrayList<>();
+		List<String> allMatches = new ArrayList<>(); 
+    	Pattern pattern = Pattern.compile("\"([^\"]*)\"|(?<=,|^)([^,]*)(?=,|$)");
+		Matcher matcher = pattern.matcher(csvLine);
+        String match;
+        while (matcher.find()) 
+        {
+            match = matcher.group(1);
+            if (match!=null) 
+            {
+                allMatches.add(match);
+            }
+            else 
+            {
+                allMatches.add(matcher.group(2));
+            }
+        }
+        int size = allMatches.size();        
+        if(size > 0)
+        {
+        	String[] attrs = allMatches.toArray(new String[size]);
+        	for(int i = 0; i<attrs.length; i++)
+        	{
+        		record.add(attrs[i]);
+        	}
+        }	
+        return record;
+    }
 
 	private int getMax(String[] arr) {
     	int max = 0;
@@ -406,38 +462,32 @@ public class GSM {
     public String getIMEI() throws GSMException 
     {
     	this.setReady(false);
-    	String result = this.executeAT("AT+CGSN", 1, true);
+    	String result = this.executeAT(ATCommand.GET_IMEI, 1, true);
     	if(!result.isEmpty())
     	{
-    		if(result.contains("AT+CGSN"))
+    		if(result.contains(ATCommand.GET_IMEI))
     		{
-    			result = result.replace("AT+CGSN", "").trim();
+    			result = result.replace(ATCommand.GET_IMEI, "").trim();
     		}
-    		if(result.contains("OK"))
-    		{
-    			result = result.replace("OK", "");
-    		}
-    		result = result.trim();
+    		result = this.fixResultByOK(result).trim();
+    		result = this.removeError(result).trim();
     	}
     	this.setReady(true);
         return result;
     }
-    
-    public String getIMSI() throws GSMException 
+
+	public String getIMSI() throws GSMException 
     {
     	this.setReady(false);
-    	String result = this.executeAT("AT+CIMI", 1, true);
+    	String result = this.executeAT(ATCommand.GET_IMSI, 1, true);
        	if(!result.isEmpty())
     	{
-       		if(result.contains("AT+CIMI"))
+       		if(result.contains(ATCommand.GET_IMSI))
     		{
-       			result = result.replace("AT+CIMI", "").trim();
+       			result = result.replace(ATCommand.GET_IMSI, "").trim();
     		}
-       		if(result.contains("OK"))
-    		{
-       			result = result.replace("OK", "").trim();
-    		}
-    		result = result.trim();
+       		result = this.fixResultByOK(result).trim();
+       		result = this.removeError(result).trim();
     	}
     	this.setReady(true);
         return result;
@@ -446,18 +496,15 @@ public class GSM {
     public String getICCID() throws GSMException 
     {
     	this.setReady(false);
-    	String result = this.executeAT("AT+CCID", 1, true);
+    	String result = this.executeAT(ATCommand.GET_ICCID, 1, true);
        	if(!result.isEmpty())
     	{
-       		if(result.contains("AT+CCID"))
+       		if(result.contains(ATCommand.GET_ICCID))
     		{
-       			result = result.replace("AT+CCID", "").trim();
+       			result = result.replace(ATCommand.GET_ICCID, "").trim();
     		}
-       		if(result.contains("OK"))
-    		{
-       			result = result.replace("OK", "");
-    		}
-    		result = result.trim();
+       		result = this.fixResultByOK(result).trim();
+       		result = this.removeError(result).trim();
     	}
     	this.setReady(true);    	
         return result;
@@ -466,18 +513,15 @@ public class GSM {
     public String getMSISDN() throws GSMException 
     {
     	this.setReady(false);
-    	String result = this.executeAT("AT+CNUM", 1, true);
+    	String result = this.executeAT(ATCommand.GET_MSISDN, 1, true);
        	if(!result.isEmpty())
     	{
-       		if(result.contains("AT+CNUM"))
+       		if(result.contains(ATCommand.GET_MSISDN))
     		{
-       			result = result.replace("AT+CNUM", "");
+       			result = result.replace(ATCommand.GET_MSISDN, "");
     		}
-       		if(result.contains("OK"))
-    		{
-       			result = result.replace("OK", "");
-    		}
-    		result = result.trim();
+       		result = this.fixResultByOK(result).trim();
+       		result = this.removeError(result).trim();
     	}
     	this.setReady(true);
         return result;
@@ -485,18 +529,15 @@ public class GSM {
     
     public String getManufacturer() throws GSMException {
     	this.setReady(false);
-    	String result = this.executeAT("AT+CGMI", 1, true);
+    	String result = this.executeAT(ATCommand.GET_MANUFACTURER, 1, true);
        	if(!result.isEmpty())
     	{
-       		if(result.contains("AT+CGMI"))
+       		if(result.contains(ATCommand.GET_MANUFACTURER))
     		{
-       			result = result.replace("AT+CGMI", "");
+       			result = result.replace(ATCommand.GET_MANUFACTURER, "");
     		}
-       		if(result.contains("OK"))
-    		{
-       			result = result.replace("OK", "");
-    		}
-    		result = result.trim();
+       		result = this.fixResultByOK(result).trim();
+       		result = this.removeError(result).trim();
     	}
     	this.setReady(true);
         return result;
@@ -504,18 +545,15 @@ public class GSM {
 
 	public String getModel() throws GSMException {
 	   	this.setReady(false);
-    	String result = this.executeAT("AT+CGMM", 1, true);
+    	String result = this.executeAT(ATCommand.GET_MODEL, 1, true);
        	if(!result.isEmpty())
     	{
-       		if(result.contains("AT+CGMM"))
+       		if(result.contains(ATCommand.GET_MODEL))
     		{
-       			result = result.replace("AT+CGMM", "");
+       			result = result.replace(ATCommand.GET_MODEL, "");
     		}
-       		if(result.contains("OK"))
-    		{
-       			result = result.replace("OK", "");
-    		}
-    		result = result.trim();
+       		result = this.fixResultByOK(result).trim();
+       		result = this.removeError(result).trim();
     	}
     	this.setReady(true);
         return result;
@@ -523,18 +561,15 @@ public class GSM {
 
 	public String getRevision() throws GSMException {
 	   	this.setReady(false);
-    	String result = this.executeAT("AT+CGMR", 1, true);
+    	String result = this.executeAT(ATCommand.GET_REVISION, 1, true);
        	if(!result.isEmpty())
     	{
-       		if(result.contains("AT+CGMR"))
+       		if(result.contains(ATCommand.GET_REVISION))
     		{
-       			result = result.replace("AT+CGMR", "");
+       			result = result.replace(ATCommand.GET_REVISION, "");
     		}
-       		if(result.contains("OK"))
-    		{
-       			result = result.replace("OK", "");
-    		}
-    		result = result.trim();
+       		result = this.fixResultByOK(result).trim();
+       		result = this.removeError(result).trim();
     	}
     	this.setReady(true);
         return result;
@@ -542,23 +577,39 @@ public class GSM {
 
 	public String getSMSCenter() throws GSMException {
 	   	this.setReady(false);
-    	String result = this.executeAT("AT+CSCA", 1, true);
+    	String result = this.executeAT(ATCommand.GET_SMS_CENTER, 1, true);
        	if(!result.isEmpty())
     	{
-       		if(result.contains("AT+CSCA"))
+       		if(result.contains(ATCommand.GET_SMS_CENTER))
     		{
-       			result = result.replace("AT+CSCA", "");
+       			result = result.replace(ATCommand.GET_SMS_CENTER, "");
     		}
-       		if(result.contains("OK"))
-    		{
-       			result = result.replace("OK", "");
-    		}
-    		result = result.trim();
+       		result = this.fixResultByOK(result).trim();
+       		result = this.removeError(result).trim();
     	}
     	this.setReady(true);
         return result;
 	}
-
+	
+	public String getOperatorSelect() throws GSMException {
+		this.setReady(false);
+    	String result = this.executeAT("AT+COPS?", 2, true);
+       	if(!result.isEmpty() && result.contains("+COPS"))
+    	{
+      		result = result.replace("AT+COPS?", "");
+      		result = this.fixResultByOK(result).trim();
+       		result = this.fixingRawData(result);	
+       		result = result.replace("\r\n", "").trim();
+       		List<String> record = this.parseCSVResponse(result);
+       		if(record.size() > 2)
+       		{
+       			result = record.get(2);
+       		}
+    	}
+    	this.setReady(true);
+        return result;
+	}
+	
     public String createDeleteSMS(int smsID)
     {
     	return "AT+CMGD=" + smsID;
@@ -638,7 +689,10 @@ public class GSM {
 
 	public void setReady(boolean ready) {
 		this.ready = ready;
-		this.incommingMessage = new StringBuilder();
+		if(!ready)
+		{
+			this.incommingMessage = new StringBuilder();
+		}
 	}
 
 	public boolean isGcRunning() {
@@ -649,8 +703,4 @@ public class GSM {
 		this.gcRunning = gcRunning;
 	}
 
-	
-	
-	
-	
-}
+	}

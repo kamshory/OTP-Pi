@@ -138,6 +138,9 @@ public class GSMInstance {
 	public String getSMSCenter() throws GSMException {
 		return this.gsm.getSMSCenter();
 	}
+	public String getOperatorSelect() throws GSMException {
+		return this.gsm.getOperatorSelect();
+	}
 	private void waitUntilReady() {
 		long maxWait = Config.getMaxWaitModemReady();
 		long ellapsed = 0;
@@ -191,11 +194,4 @@ public class GSMInstance {
 		}		
 	}
 
-	
-
-	
-
-	
-	
-	
 }

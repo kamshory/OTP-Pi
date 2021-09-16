@@ -44,6 +44,7 @@ public class DataModem {
 	private String model = "";
 	private String revision = "";
 	private String iccid = "";
+	private String operatorSelect = "";
 
 	public DataModem() {
 		
@@ -63,6 +64,7 @@ public class DataModem {
 		this.maxPerTimeRange = jsonObject.optInt("maxPerTimeRange", 0);
 		this.provider = jsonObject.optString("provider", "");
 		this.imei = jsonObject.optString("imei", "");
+		this.operatorSelect = jsonObject.optString("operatorSelect", "");
 		this.msisdn = jsonObject.optString("msisdn", "");
 		this.imsi = jsonObject.optString("imsi", "");
 		this.recipientPrefix = jsonObject.optString("recipientPrefix", "");
@@ -104,6 +106,7 @@ public class DataModem {
 		jsonObject.put("maxPerTimeRange", this.maxPerTimeRange);
 		jsonObject.put("provider", this.provider);
 		jsonObject.put("imei", this.imei);
+		jsonObject.put("operatorSelect", this.operatorSelect);
 		jsonObject.put("msisdn", this.msisdn);
 		jsonObject.put("imsi", this.imsi);
 		jsonObject.put("recipientPrefix", this.getRecipientPrefix());
@@ -239,6 +242,14 @@ public class DataModem {
 
 	public String getMsisdn() {
 		return msisdn;
+	}
+
+	public String getOperatorSelect() {
+		return operatorSelect;
+	}
+
+	public void setOperatorSelect(String operatorSelect) {
+		this.operatorSelect = operatorSelect;
 	}
 
 	public void setMsisdn(String msisdn) {
