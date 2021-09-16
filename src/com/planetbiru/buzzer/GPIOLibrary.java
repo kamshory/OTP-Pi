@@ -64,7 +64,9 @@ public class GPIOLibrary
 			}
 			catch (IOException e)
 			{
-				e.printStackTrace();
+				/**
+				 * Do nothing
+				 */
 			}
 		}
 	}
@@ -97,7 +99,9 @@ public class GPIOLibrary
 			}
 			catch (IOException e)
 			{
-				e.printStackTrace();
+				/**
+				 * Do nothing
+				 */
 			}
 		}
 	}
@@ -122,7 +126,6 @@ public class GPIOLibrary
 			}
 			catch (IOException e)
 			{
-				e.printStackTrace();
 				return -1;
 			}
 		}
@@ -213,12 +216,10 @@ public class GPIOLibrary
 	}
 
 	public void removeThread() {
-		this.toneThread = null;
-		
+		this.toneThread = null;		
 	}
 
 	public void newThread() {
-		this.toneThread = new ToneThread();
-		
+		this.toneThread = new ToneThread();		
 	}
 }
