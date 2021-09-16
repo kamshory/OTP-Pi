@@ -131,6 +131,7 @@ public class GSM {
         int i = 0;
         byte[] bytes = command.getBytes();
         int written = this.serialPort.writeBytes(bytes, bytes.length);
+        
         if(written > 0)
         {
         	do 
@@ -281,6 +282,7 @@ public class GSM {
     	this.executeAT(this.selectStorage(storage), 1);
 		
     	String result = this.executeAT("AT+CMGL=\"ALL\"", 5, true);		
+    	System.out.println(result);
     	if(Config.isDebugReadSMS())
     	{
 			result = "+CMGL: 1,\"REC READ\",\"+85291234567\",,\"07/02/18,00:05:10+32\"\r\n"
@@ -405,12 +407,18 @@ public class GSM {
     	String result = "";
     	recipient = recipient.trim();
     	message = message.trim();
-    	this.executeAT("ATE0", 1);
-    	this.executeAT(this.selectProtocol("GSM"), 1);
-    	this.executeAT(this.selectOperator("1"), 1);
-    	this.executeAT("AT+CMGS=\"" + recipient + "\"", 2);
-    	this.executeAT(message, 2);
-    	this.executeAT(Character.toString((char) 26), 10);
+    	String msg1 = this.executeAT("ATE0", 1, true);
+    	logger.info("msg1 = "+msg1);
+    	String msg2 = this.executeAT(this.selectProtocol("GSM"), 1, true);
+    	logger.info("msg2 = "+msg2);
+    	String msg3 = this.executeAT(this.selectOperator("1"), 1, true);
+    	logger.info("msg3 = "+msg3);
+    	String msg4 = this.executeAT("AT+CMGW=\"" + recipient + "\"", 2, true);
+    	logger.info("msg4 = "+msg4);
+    	String msg5 = this.executeAT(message, 2, true);
+    	logger.info("msg5 = "+msg5);
+    	String msg6 = this.executeAT(Character.toString((char) 26), 2, true);
+    	logger.info("msg6 = "+msg6);
     	this.setReady(true);
     	
     	if(deleteSent)
@@ -590,7 +598,19 @@ public class GSM {
     	this.setReady(true);
         return result;
 	}
-	
+	public String getNetworkRegistration() throws GSMException {
+		this.setReady(false);
+    	String result = this.executeAT("AT+CREG?", 2, true);
+       	if(!result.isEmpty() && result.contains("+CREG"))
+    	{
+      		result = result.replace("AT+CREG?", "");
+      		result = this.fixResultByOK(result).trim();
+       		result = this.fixingRawData(result);	
+       		result = result.replace("+CREG:", "").trim();
+    	}
+    	this.setReady(true);
+        return result;
+	}
 	public String getOperatorSelect() throws GSMException {
 		this.setReady(false);
     	String result = this.executeAT("AT+COPS?", 2, true);
@@ -604,6 +624,10 @@ public class GSM {
        		if(record.size() > 2)
        		{
        			result = record.get(2);
+       		}
+       		else
+       		{
+       			result = "";
        		}
     	}
     	this.setReady(true);
@@ -703,4 +727,6 @@ public class GSM {
 		this.gcRunning = gcRunning;
 	}
 
-	}
+	
+
+}

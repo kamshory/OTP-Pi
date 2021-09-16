@@ -9503,3 +9503,1028 @@ OK
 2021-09-16 08:34:06 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
 2021-09-16 08:34:06 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
 2021-09-16 08:34:06 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 08:47:06 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 08:47:07 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 08:47:07 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 08:47:07 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 08:47:07 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 08:47:07 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 08:47:07 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 08:47:07 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 08:47:08 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 08:47:10 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 08:47:10 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 08:47:10 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 08:47:10 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 08:47:10 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 08:47:10 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 08:47:10 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 08:47:10 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 08:47:11 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 08:48:03 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 08:48:03 [INFO  ] Application                     :195  - Service started
+2021-09-16 08:48:12 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 08:48:12 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 08:48:12 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 08:48:12 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 08:48:12 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 08:48:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 08:48:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 08:48:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 08:48:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 08:48:52 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 08:48:53 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 08:48:53 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 08:48:53 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 08:48:53 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 08:48:53 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 08:48:53 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 08:48:53 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 08:48:54 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 08:48:58 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 08:48:58 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 08:48:58 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 08:48:58 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 08:48:58 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 08:48:58 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 08:48:58 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 08:48:59 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 08:48:59 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 08:49:00 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 08:49:01 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 08:49:01 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 08:49:01 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 08:49:01 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 08:49:01 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 08:49:01 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 08:49:01 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 08:49:02 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 08:49:04 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 08:49:04 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 08:49:04 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 08:49:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 08:49:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 08:49:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 08:49:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 08:49:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 08:49:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 08:49:09 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 08:49:09 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 08:49:10 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 08:49:10 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 08:49:10 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 08:49:10 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 08:49:10 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 08:49:10 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 08:49:10 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 08:49:12 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 08:49:12 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 08:49:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 08:49:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 08:49:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 08:49:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 08:49:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 08:49:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 08:49:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 08:49:17 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 08:49:17 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 08:49:17 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 08:49:17 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 08:49:18 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 08:49:18 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 08:49:18 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 08:49:18 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 08:49:18 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 08:49:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 08:49:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 08:49:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 08:49:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 08:49:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 08:49:22 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 08:49:22 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 08:49:22 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 08:49:22 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 08:49:25 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 08:49:25 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 08:49:25 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 08:49:25 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 08:49:25 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 08:49:26 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 08:49:26 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 08:49:26 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 08:49:26 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 08:50:35 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 08:50:36 [INFO  ] Application                     :195  - Service started
+2021-09-16 08:50:42 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 08:50:42 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 08:50:42 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 08:50:42 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 08:50:42 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 08:50:42 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 08:50:43 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 08:50:43 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 08:50:43 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 08:50:45 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 08:50:46 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 08:50:46 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 08:50:46 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 08:50:46 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 08:50:46 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 08:50:46 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 08:50:46 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 08:50:47 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 08:50:48 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 08:50:48 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 08:50:48 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 08:50:49 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 08:50:49 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 08:50:49 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 08:50:49 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 08:50:49 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 08:50:49 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 08:52:12 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 08:52:12 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 08:52:12 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 08:52:12 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGS="+6281266612126"
+2021-09-16 08:52:12 [INFO  ] GSM                             :128  - Execute AT Command : test
+2021-09-16 08:52:12 [INFO  ] GSM                             :128  - Execute AT Command : 
+2021-09-16 08:52:27 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 08:52:27 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 08:52:27 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 08:52:27 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="MT"
+2021-09-16 08:52:27 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGD=0,4
+2021-09-16 08:52:27 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 08:52:27 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGD=0,4
+2021-09-16 08:56:11 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 08:56:12 [INFO  ] Application                     :195  - Service started
+2021-09-16 08:56:28 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 08:56:28 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 08:56:28 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 08:56:28 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGW="+6281266612126"
+2021-09-16 08:56:28 [INFO  ] GSM                             :128  - Execute AT Command : test
+2021-09-16 08:56:28 [INFO  ] GSM                             :128  - Execute AT Command : 
+2021-09-16 08:56:43 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 08:56:43 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 08:56:43 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 08:56:43 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="MT"
+2021-09-16 08:56:43 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGD=0,4
+2021-09-16 08:56:43 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 08:56:43 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGD=0,4
+2021-09-16 09:01:52 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 09:01:53 [INFO  ] Application                     :195  - Service started
+2021-09-16 09:02:04 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:02:04 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:02:04 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:02:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGW="+6281266612126"
+2021-09-16 09:02:05 [INFO  ] GSM                             :128  - Execute AT Command : Coba kirim SMS
+2021-09-16 09:02:05 [INFO  ] GSM                             :128  - Execute AT Command : 
+2021-09-16 09:02:06 [INFO  ] GSM                             :414  - 
+OK
+
+2021-09-16 09:02:06 [INFO  ] GSM                             :415  - 
+OK
+
+2021-09-16 09:02:06 [INFO  ] GSM                             :416  - 
+OK
+
+2021-09-16 09:02:06 [INFO  ] GSM                             :417  - 
+> 
+2021-09-16 09:02:06 [INFO  ] GSM                             :418  - 
+> 
+2021-09-16 09:02:06 [INFO  ] GSM                             :419  - 
+> 
++CMGW: 6
+
+OK
+
+2021-09-16 09:02:22 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:02:22 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:02:22 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:02:22 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="MT"
+2021-09-16 09:02:22 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGD=0,4
+2021-09-16 09:02:22 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 09:02:22 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGD=0,4
+2021-09-16 09:02:51 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:02:51 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:02:51 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:02:51 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGW="085271199991"
+2021-09-16 09:02:51 [INFO  ] GSM                             :128  - Execute AT Command : tetsttts we ufhwei wehf iwef
+2021-09-16 09:02:51 [INFO  ] GSM                             :128  - Execute AT Command : 
+2021-09-16 09:02:53 [INFO  ] GSM                             :414  - 
+OK
+
+2021-09-16 09:02:53 [INFO  ] GSM                             :415  - 
+OK
+
+2021-09-16 09:02:53 [INFO  ] GSM                             :416  - 
+OK
+
+2021-09-16 09:02:53 [INFO  ] GSM                             :417  - 
+> 
+2021-09-16 09:02:53 [INFO  ] GSM                             :418  - 
+> 
+2021-09-16 09:02:53 [INFO  ] GSM                             :419  - 
+> 
++CMGW: 7
+
+OK
+
+2021-09-16 09:03:08 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:03:08 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:03:08 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:03:08 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="MT"
+2021-09-16 09:03:08 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGD=0,4
+2021-09-16 09:03:08 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 09:03:08 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGD=0,4
+2021-09-16 09:07:04 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 09:07:05 [INFO  ] Application                     :195  - Service started
+2021-09-16 09:07:11 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:07:11 [INFO  ] GSM                             :409  - msg1 = 
+OK
+
+2021-09-16 09:07:11 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:07:12 [INFO  ] GSM                             :411  - msg2 = 
+OK
+
+2021-09-16 09:07:12 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:07:12 [INFO  ] GSM                             :413  - msg3 = 
+OK
+
+2021-09-16 09:07:12 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGW="+6281266612126"
+2021-09-16 09:07:12 [INFO  ] GSM                             :415  - msg4 = 
+> 
+2021-09-16 09:07:12 [INFO  ] GSM                             :128  - Execute AT Command : Test pesan
+2021-09-16 09:07:12 [INFO  ] GSM                             :417  - msg5 = 
+> 
+2021-09-16 09:07:12 [INFO  ] GSM                             :128  - Execute AT Command : 
+2021-09-16 09:07:13 [INFO  ] GSM                             :419  - msg6 = 
+> 
++CMGW: 8
+
+OK
+
+2021-09-16 09:07:29 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:07:29 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:07:29 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:07:29 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="MT"
+2021-09-16 09:07:29 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGD=0,4
+2021-09-16 09:07:29 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 09:07:29 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGD=0,4
+2021-09-16 09:07:52 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 09:07:53 [INFO  ] Application                     :195  - Service started
+2021-09-16 09:08:01 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 09:08:02 [INFO  ] Application                     :195  - Service started
+2021-09-16 09:08:05 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:08:05 [INFO  ] GSM                             :409  - msg1 = 
+OK
+
+2021-09-16 09:08:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:08:05 [INFO  ] GSM                             :411  - msg2 = 
+OK
+
+2021-09-16 09:08:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:08:05 [INFO  ] GSM                             :413  - msg3 = 
+OK
+
+2021-09-16 09:08:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGW="+6281266612126"
+2021-09-16 09:08:06 [INFO  ] GSM                             :415  - msg4 = 
+> 
+2021-09-16 09:08:06 [INFO  ] GSM                             :128  - Execute AT Command : OK
+2021-09-16 09:08:06 [INFO  ] GSM                             :417  - msg5 = 
+> 
++CMGW: 9
+
+OK
+
+2021-09-16 09:08:21 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:08:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:08:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:08:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="MT"
+2021-09-16 09:08:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGD=0,4
+2021-09-16 09:08:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 09:08:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGD=0,4
+2021-09-16 09:09:14 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 09:09:14 [INFO  ] Application                     :195  - Service started
+2021-09-16 09:09:22 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:09:22 [INFO  ] GSM                             :409  - msg1 = 
+OK
+
+2021-09-16 09:09:22 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:09:22 [INFO  ] GSM                             :411  - msg2 = 
+OK
+
+2021-09-16 09:09:22 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:09:22 [INFO  ] GSM                             :413  - msg3 = 
+OK
+
+2021-09-16 09:09:22 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGS="+6281266612126"
+2021-09-16 09:09:22 [INFO  ] GSM                             :415  - msg4 = 
+> 
+2021-09-16 09:09:22 [INFO  ] GSM                             :128  - Execute AT Command : dqwvduqwff
+2021-09-16 09:09:22 [INFO  ] GSM                             :417  - msg5 = 
+> 
+2021-09-16 09:09:38 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:09:38 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:09:38 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:09:38 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="MT"
+2021-09-16 09:09:38 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGD=0,4
+2021-09-16 09:09:38 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 09:09:38 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGD=0,4
+2021-09-16 09:12:52 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 09:12:52 [INFO  ] Application                     :195  - Service started
+2021-09-16 09:13:08 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:13:08 [INFO  ] GSM                             :409  - msg1 = ATE0
+OK
+
+2021-09-16 09:13:08 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:13:08 [INFO  ] GSM                             :411  - msg2 = 
+OK
+
+2021-09-16 09:13:08 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:13:08 [INFO  ] GSM                             :413  - msg3 = 
+OK
+
+2021-09-16 09:13:08 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGW="081266612126"
+2021-09-16 09:13:09 [INFO  ] GSM                             :415  - msg4 = 
+> 
+2021-09-16 09:13:09 [INFO  ] GSM                             :128  - Execute AT Command : TEST
+2021-09-16 09:13:09 [INFO  ] GSM                             :417  - msg5 = 
+> 
+ERROR
+
+2021-09-16 09:13:24 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:13:24 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:13:24 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:13:24 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="MT"
+2021-09-16 09:13:24 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGD=0,4
+2021-09-16 09:13:24 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 09:13:24 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGD=0,4
+2021-09-16 09:14:02 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 09:14:02 [INFO  ] Application                     :195  - Service started
+2021-09-16 09:14:08 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:14:08 [INFO  ] GSM                             :409  - msg1 = ATE0
+OK
+
+2021-09-16 09:14:08 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:14:08 [INFO  ] GSM                             :411  - msg2 = 
+OK
+
+2021-09-16 09:14:08 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:14:08 [INFO  ] GSM                             :413  - msg3 = 
+OK
+
+2021-09-16 09:14:08 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGW="+6281266612126"
+2021-09-16 09:14:08 [INFO  ] GSM                             :415  - msg4 = 
+> 
+2021-09-16 09:14:08 [INFO  ] GSM                             :128  - Execute AT Command : fqejfqwfqwf
+2021-09-16 09:14:09 [INFO  ] GSM                             :417  - msg5 = 
+> 
+2021-09-16 09:14:24 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:14:24 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:14:24 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:14:24 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="MT"
+2021-09-16 09:14:24 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGD=0,4
+2021-09-16 09:14:24 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 09:14:24 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGD=0,4
+2021-09-16 09:14:41 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 09:14:42 [INFO  ] Application                     :195  - Service started
+2021-09-16 09:14:47 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:14:47 [INFO  ] GSM                             :409  - msg1 = 
+2021-09-16 09:14:47 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:14:47 [INFO  ] GSM                             :411  - msg2 = 
+2021-09-16 09:14:47 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:14:47 [INFO  ] GSM                             :413  - msg3 = }W«{mww½½íë
+2021-09-16 09:14:47 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGW="+6281266612126"
+2021-09-16 09:14:47 [INFO  ] GSM                             :415  - msg4 = }W«{mwW½»«·»¿½»···ÿ
+2021-09-16 09:14:47 [INFO  ] GSM                             :128  - Execute AT Command : kfiuqfqfqf
+2021-09-16 09:14:48 [INFO  ] GSM                             :417  - msg5 = 
+2021-09-16 09:14:48 [INFO  ] GSM                             :128  - Execute AT Command : 
+2021-09-16 09:14:49 [INFO  ] GSM                             :419  - msg6 = 
+2021-09-16 09:15:04 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:15:04 [INFO  ] GSM                             :409  - msg1 = ATE0
+OK
+
+2021-09-16 09:15:04 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:15:04 [INFO  ] GSM                             :411  - msg2 = 
+OK
+
+2021-09-16 09:15:04 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:15:04 [INFO  ] GSM                             :413  - msg3 = 
+OK
+
+2021-09-16 09:15:04 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGW="+6281266612126"
+2021-09-16 09:15:04 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:15:04 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:15:04 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:15:04 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="MT"
+2021-09-16 09:15:04 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGD=0,4
+2021-09-16 09:15:04 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 09:15:04 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGD=0,4
+2021-09-16 09:15:05 [INFO  ] GSM                             :415  - msg4 = 
+> 
+2021-09-16 09:15:05 [INFO  ] GSM                             :128  - Execute AT Command : feiqefhwefwefwef
+2021-09-16 09:15:05 [INFO  ] GSM                             :417  - msg5 = 
+> 
+2021-09-16 09:15:05 [INFO  ] GSM                             :128  - Execute AT Command : 
+2021-09-16 09:15:06 [INFO  ] GSM                             :419  - msg6 = 
+> 
++CMGW: 10
+
+OK
+
+2021-09-16 09:15:21 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:15:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:15:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:15:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="MT"
+2021-09-16 09:15:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGD=0,4
+2021-09-16 09:15:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 09:15:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGD=0,4
+2021-09-16 09:16:10 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 09:16:10 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:16:10 [INFO  ] Application                     :195  - Service started
+2021-09-16 09:16:10 [INFO  ] GSM                             :409  - msg1 = ATE0
+OK
+
+2021-09-16 09:16:10 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:16:11 [INFO  ] GSM                             :411  - msg2 = 
+OK
+
+2021-09-16 09:16:11 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:16:11 [INFO  ] GSM                             :413  - msg3 = 
+OK
+
+2021-09-16 09:16:11 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGW="+6281266612126"
+2021-09-16 09:16:11 [INFO  ] GSM                             :415  - msg4 = 
+> 
+2021-09-16 09:16:11 [INFO  ] GSM                             :128  - Execute AT Command : uggduqwqwf
+2021-09-16 09:16:11 [INFO  ] GSM                             :417  - msg5 = 
+> 
+2021-09-16 09:16:11 [INFO  ] GSM                             :128  - Execute AT Command : 
+2021-09-16 09:16:12 [INFO  ] GSM                             :419  - msg6 = 
+> 
+ERROR
+
+2021-09-16 09:16:21 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:16:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:16:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:16:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="MT"
+2021-09-16 09:16:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 09:16:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 09:16:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 09:17:15 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 09:17:15 [INFO  ] Application                     :195  - Service started
+2021-09-16 09:17:19 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:17:19 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:17:19 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:17:19 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="MT"
+2021-09-16 09:17:19 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 09:17:19 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 09:17:19 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 09:17:23 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:17:23 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:17:23 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:17:23 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="MT"
+2021-09-16 09:17:23 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 09:17:24 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 09:17:24 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 09:17:25 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:17:25 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:17:25 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:17:25 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="MT"
+2021-09-16 09:17:25 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 09:17:26 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 09:17:26 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 09:17:29 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:17:29 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:17:29 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:17:29 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="MT"
+2021-09-16 09:17:29 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 09:17:29 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 09:17:29 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 09:17:33 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:17:33 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:17:33 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:17:33 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="MT"
+2021-09-16 09:17:33 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 09:17:34 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 09:17:34 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 09:18:52 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 09:18:52 [INFO  ] Application                     :195  - Service started
+2021-09-16 09:18:55 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:18:55 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:18:55 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:18:55 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="MT"
+2021-09-16 09:18:55 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 09:18:55 [INFO  ] GSM                             :128  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 09:18:55 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 09:28:57 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 09:28:57 [INFO  ] Application                     :195  - Service started
+2021-09-16 09:29:23 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:29:24 [INFO  ] GSM                             :411  - msg1 = ATE0
+OK
+
+2021-09-16 09:29:24 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:29:24 [INFO  ] GSM                             :413  - msg2 = 
+OK
+
+2021-09-16 09:29:24 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:29:24 [INFO  ] GSM                             :415  - msg3 = 
+OK
+
+2021-09-16 09:29:24 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGW="081266612126"
+2021-09-16 09:29:24 [INFO  ] GSM                             :417  - msg4 = 
+> 
+2021-09-16 09:29:24 [INFO  ] GSM                             :128  - Execute AT Command : TEST
+2021-09-16 09:29:24 [INFO  ] GSM                             :419  - msg5 = 
+> 
+2021-09-16 09:29:24 [INFO  ] GSM                             :128  - Execute AT Command : 
+2021-09-16 09:29:25 [INFO  ] GSM                             :421  - msg6 = 
+> 
++CMGW: 11
+
+OK
+
+2021-09-16 09:29:25 [INFO  ] GSM                             :128  - Execute AT Command : 
+2021-09-16 09:29:25 [INFO  ] GSM                             :423  - msg7 = 
+2021-09-16 09:29:44 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
+2021-09-16 09:29:44 [INFO  ] GSM                             :411  - msg1 = 
+OK
+
+2021-09-16 09:29:44 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 09:29:44 [INFO  ] GSM                             :413  - msg2 = 
+OK
+
+2021-09-16 09:29:44 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
+2021-09-16 09:29:44 [INFO  ] GSM                             :415  - msg3 = 
+OK
+
+2021-09-16 09:29:44 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGW="+6281266612126"
+2021-09-16 09:29:45 [INFO  ] GSM                             :417  - msg4 = 
+> 
+2021-09-16 09:29:45 [INFO  ] GSM                             :128  - Execute AT Command : COBA
+2021-09-16 09:29:45 [INFO  ] GSM                             :419  - msg5 = 
+> 
+2021-09-16 09:29:45 [INFO  ] GSM                             :128  - Execute AT Command : 
+2021-09-16 09:29:45 [INFO  ] GSM                             :421  - msg6 = 
+> 
++CMGW: 12
+
+OK
+
+2021-09-16 09:29:45 [INFO  ] GSM                             :128  - Execute AT Command : 
+2021-09-16 09:29:45 [INFO  ] GSM                             :423  - msg7 = 
+2021-09-16 09:42:09 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 09:42:10 [INFO  ] Application                     :195  - Service started
+2021-09-16 09:42:20 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 09:42:20 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 09:42:20 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 09:42:20 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 09:42:20 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 09:42:20 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 09:42:20 [INFO  ] GSM                             :128  - Execute AT Command : AT+CREG?
+2021-09-16 09:42:21 [INFO  ] GSM                             :611  - [+CREG: 0, 1]
+2021-09-16 09:42:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 09:42:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 09:42:21 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 09:48:45 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 09:48:45 [INFO  ] Application                     :195  - Service started
+2021-09-16 09:48:49 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 09:48:49 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 09:48:49 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 09:48:49 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 09:48:50 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 09:48:50 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 09:48:50 [INFO  ] GSM                             :128  - Execute AT Command : AT+CREG?
+2021-09-16 09:48:50 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 09:48:50 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 09:48:50 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 09:48:51 [INFO  ] GSMUtil                         :553  - info = {
+    "iccid": "8962101069134011648f",
+    "networkRegistration": "0,1",
+    "imei": "864562030217396",
+    "model": "SIMCOM_SIM800L",
+    "imsi": "510106913401164",
+    "msisdn": "",
+    "smsCenter": "",
+    "operatorSelect": "TELKOMSEL",
+    "manufacturer": "SIMCOM_Ltd",
+    "revision": "Revision:1418B04SIM800L24"
+}
+2021-09-16 10:14:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 10:14:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 10:14:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 10:14:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 10:14:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 10:14:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 10:14:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CREG?
+2021-09-16 10:14:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 10:14:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 10:14:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 10:14:05 [INFO  ] GSMUtil                         :553  - info = {
+    "iccid": "",
+    "networkRegistration": "",
+    "imei": "",
+    "model": "",
+    "imsi": "",
+    "msisdn": "",
+    "smsCenter": "",
+    "operatorSelect": "",
+    "manufacturer": "",
+    "revision": ""
+}
+2021-09-16 10:14:55 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 10:14:55 [INFO  ] Application                     :195  - Service started
+2021-09-16 10:15:01 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 10:15:01 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 10:15:02 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 10:15:02 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 10:15:02 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 10:15:02 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 10:15:02 [INFO  ] GSM                             :128  - Execute AT Command : AT+CREG?
+2021-09-16 10:15:02 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 10:15:02 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 10:15:03 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 10:15:03 [INFO  ] GSMUtil                         :553  - info = {
+    "iccid": "8962101069134011648f",
+    "networkRegistration": "0,1",
+    "imei": "864562030217396",
+    "model": "SIMCOM_SIM800L",
+    "imsi": "510106913401164",
+    "msisdn": "",
+    "smsCenter": "",
+    "operatorSelect": "TELKOMSEL",
+    "manufacturer": "SIMCOM_Ltd",
+    "revision": "Revision:1418B04SIM800L24"
+}
+2021-09-16 10:17:20 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 10:17:21 [INFO  ] Application                     :195  - Service started
+2021-09-16 10:21:32 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 10:21:32 [INFO  ] Application                     :195  - Service started
+2021-09-16 10:21:36 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 10:21:36 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 10:21:36 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 10:21:36 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 10:21:36 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 10:21:36 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 10:21:36 [INFO  ] GSM                             :128  - Execute AT Command : AT+CREG?
+2021-09-16 10:21:37 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 10:21:37 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 10:21:37 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 10:21:37 [INFO  ] GSMUtil                         :553  - info = {
+    "iccid": "8962101069134011648f",
+    "networkRegistration": "0,1",
+    "imei": "864562030217396",
+    "model": "SIMCOM_SIM800L",
+    "imsi": "510106913401164",
+    "msisdn": "",
+    "smsCenter": "",
+    "operatorSelect": "TELKOMSEL",
+    "manufacturer": "SIMCOM_Ltd",
+    "revision": "Revision:1418B04SIM800L24"
+}
+2021-09-16 10:30:39 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 10:30:39 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 10:30:39 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 10:30:39 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 10:30:39 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 10:30:40 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 10:30:40 [INFO  ] GSM                             :128  - Execute AT Command : AT+CREG?
+2021-09-16 10:30:40 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 10:30:40 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 10:30:40 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 10:30:40 [INFO  ] GSMUtil                         :553  - info = {
+    "iccid": "8962101069134011648f",
+    "networkRegistration": "0,1",
+    "imei": "864562030217396",
+    "model": "SIMCOM_SIM800L",
+    "imsi": "510106913401164",
+    "msisdn": "",
+    "smsCenter": "",
+    "operatorSelect": "TELKOMSEL",
+    "manufacturer": "SIMCOM_Ltd",
+    "revision": "Revision:1418B04SIM800L24"
+}
+2021-09-16 10:31:12 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 10:31:12 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 10:31:12 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 10:31:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 10:31:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 10:31:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 10:31:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+CREG?
+2021-09-16 10:31:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 10:31:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 10:31:14 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 10:31:14 [INFO  ] GSMUtil                         :553  - info = {
+    "iccid": "8962101069134011648f",
+    "networkRegistration": "0,1",
+    "imei": "864562030217396",
+    "model": "SIMCOM_SIM800L",
+    "imsi": "510106913401164",
+    "msisdn": "",
+    "smsCenter": "",
+    "operatorSelect": "TELKOMSEL",
+    "manufacturer": "SIMCOM_Ltd",
+    "revision": "Revision:1418B04SIM800L24"
+}
+2021-09-16 10:32:06 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 10:32:07 [INFO  ] Application                     :195  - Service started
+2021-09-16 10:32:12 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 10:32:12 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 10:32:12 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 10:32:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 10:32:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 10:32:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 10:32:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+CREG?
+2021-09-16 10:32:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 10:32:13 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 10:32:14 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 10:32:14 [INFO  ] GSMUtil                         :553  - info = {
+    "iccid": "8962101069134011648f",
+    "networkRegistration": "0,1",
+    "imei": "864562030217396",
+    "model": "SIMCOM_SIM800L",
+    "imsi": "510106913401164",
+    "msisdn": "",
+    "smsCenter": "",
+    "operatorSelect": "TELKOMSEL",
+    "manufacturer": "SIMCOM_Ltd",
+    "revision": "Revision:1418B04SIM800L24"
+}
+2021-09-16 10:38:56 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 10:38:56 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 10:38:56 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 10:38:56 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 10:38:56 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 10:38:56 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 10:38:57 [INFO  ] GSM                             :128  - Execute AT Command : AT+CREG?
+2021-09-16 10:38:57 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 10:38:57 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 10:38:57 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 10:38:57 [INFO  ] GSMUtil                         :553  - info = {
+    "iccid": "8962101069134011648f",
+    "networkRegistration": "0,1",
+    "imei": "864562030217396",
+    "model": "SIMCOM_SIM800L",
+    "imsi": "510106913401164",
+    "msisdn": "",
+    "smsCenter": "",
+    "operatorSelect": "TELKOMSEL",
+    "manufacturer": "SIMCOM_Ltd",
+    "revision": "Revision:1418B04SIM800L24"
+}
+2021-09-16 10:39:45 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 10:39:45 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 10:39:46 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 10:39:46 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 10:39:46 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 10:39:46 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 10:39:46 [INFO  ] GSM                             :128  - Execute AT Command : AT+CREG?
+2021-09-16 10:39:46 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 10:39:46 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 10:39:47 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 10:39:47 [INFO  ] GSMUtil                         :553  - info = {
+    "iccid": "8962101069134011648f",
+    "networkRegistration": "0,1",
+    "imei": "864562030217396",
+    "model": "SIMCOM_SIM800L",
+    "imsi": "510106913401164",
+    "msisdn": "",
+    "smsCenter": "",
+    "operatorSelect": "TELKOMSEL",
+    "manufacturer": "SIMCOM_Ltd",
+    "revision": "Revision:1418B04SIM800L24"
+}
+2021-09-16 10:41:00 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 10:41:01 [INFO  ] Application                     :195  - Service started
+2021-09-16 10:43:08 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 10:43:08 [INFO  ] Application                     :195  - Service started
+2021-09-16 10:48:48 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 10:48:48 [INFO  ] Application                     :195  - Service started
+2021-09-16 10:49:01 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 10:49:01 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 10:49:01 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 10:49:01 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 10:49:01 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 10:49:01 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 10:49:01 [INFO  ] GSM                             :128  - Execute AT Command : AT+CREG?
+2021-09-16 10:49:02 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 10:49:02 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 10:49:02 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 10:49:02 [INFO  ] GSMUtil                         :553  - info = {
+    "iccid": "8962101069134011648f",
+    "networkRegistration": "0,1",
+    "imei": "864562030217396",
+    "model": "SIMCOM_SIM800L",
+    "imsi": "510106913401164",
+    "msisdn": "",
+    "smsCenter": "",
+    "operatorSelect": "TELKOMSEL",
+    "manufacturer": "SIMCOM_Ltd",
+    "revision": "Revision:1418B04SIM800L24"
+}
+2021-09-16 10:50:53 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 10:50:54 [INFO  ] Application                     :195  - Service started
+2021-09-16 10:51:04 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 10:51:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 10:51:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 10:51:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 10:51:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 10:51:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 10:51:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CREG?
+2021-09-16 10:51:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 10:51:05 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 10:51:06 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 10:51:06 [INFO  ] GSMUtil                         :553  - info = {
+    "iccid": "8962101069134011648f",
+    "networkRegistration": "0,1",
+    "imei": "864562030217396",
+    "model": "SIMCOM_SIM800L",
+    "imsi": "510106913401164",
+    "msisdn": "",
+    "smsCenter": "",
+    "operatorSelect": "TELKOMSEL",
+    "manufacturer": "SIMCOM_Ltd",
+    "revision": "Revision:1418B04SIM800L24"
+}
+2021-09-16 10:52:10 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 10:52:10 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 10:52:10 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 10:52:11 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 10:52:11 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 10:52:11 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 10:52:11 [INFO  ] GSM                             :128  - Execute AT Command : AT+CREG?
+2021-09-16 10:52:11 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 10:52:11 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 10:52:12 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 10:52:12 [INFO  ] GSMUtil                         :553  - info = {
+    "iccid": "8962101069134011648f",
+    "networkRegistration": "0,1",
+    "imei": "864562030217396",
+    "model": "SIMCOM_SIM800L",
+    "imsi": "510106913401164",
+    "msisdn": "",
+    "smsCenter": "",
+    "operatorSelect": "TELKOMSEL",
+    "manufacturer": "SIMCOM_Ltd",
+    "revision": "Revision:1418B04SIM800L24"
+}
+2021-09-16 10:52:27 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 10:52:27 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 10:52:27 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 10:52:27 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 10:52:28 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 10:52:28 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 10:52:28 [INFO  ] GSM                             :128  - Execute AT Command : AT+CREG?
+2021-09-16 10:52:28 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 10:52:28 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 10:52:28 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 10:52:29 [INFO  ] GSMUtil                         :553  - info = {
+    "iccid": "8962101069134011648f",
+    "networkRegistration": "0,1",
+    "imei": "864562030217396",
+    "model": "SIMCOM_SIM800L",
+    "imsi": "510106913401164",
+    "msisdn": "",
+    "smsCenter": "",
+    "operatorSelect": "TELKOMSEL",
+    "manufacturer": "SIMCOM_Ltd",
+    "revision": "Revision:1418B04SIM800L24"
+}
+2021-09-16 10:55:35 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 10:55:35 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 10:55:36 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 10:55:36 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 10:55:36 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 10:55:36 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 10:55:36 [INFO  ] GSM                             :128  - Execute AT Command : AT+CREG?
+2021-09-16 10:55:36 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 10:55:36 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 10:55:37 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 10:55:37 [INFO  ] GSMUtil                         :553  - info = {
+    "iccid": "8962101069134011648f",
+    "networkRegistration": "0,2",
+    "imei": "+CPIN: READY\r\n\r\r\n864562030217396",
+    "model": "SIMCOM_SIM800L",
+    "imsi": "510106913401164",
+    "msisdn": "",
+    "smsCenter": "",
+    "operatorSelect": "",
+    "manufacturer": "SIMCOM_Ltd",
+    "revision": "Revision:1418B04SIM800L24"
+}
+2021-09-16 10:55:58 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 10:55:58 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 10:55:58 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 10:55:58 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 10:55:58 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 10:55:59 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 10:55:59 [INFO  ] GSM                             :128  - Execute AT Command : AT+CREG?
+2021-09-16 10:55:59 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 10:55:59 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 10:55:59 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 10:55:59 [INFO  ] GSMUtil                         :553  - info = {
+    "iccid": "8962101069134011648f",
+    "networkRegistration": "SMS Ready\r\n\r\n\r\n 0,2",
+    "imei": "864562030217396",
+    "model": "SIMCOM_SIM800L",
+    "imsi": "510106913401164",
+    "msisdn": "",
+    "smsCenter": "",
+    "operatorSelect": "",
+    "manufacturer": "SIMCOM_Ltd",
+    "revision": "Revision:1418B04SIM800L24"
+}
+2021-09-16 10:56:30 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 10:56:30 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 10:56:30 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 10:56:30 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 10:56:30 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 10:56:30 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 10:56:31 [INFO  ] GSM                             :128  - Execute AT Command : AT+CREG?
+2021-09-16 10:56:31 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 10:56:31 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 10:56:31 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 10:56:31 [INFO  ] GSMUtil                         :553  - info = {
+    "iccid": "",
+    "networkRegistration": "",
+    "imei": "",
+    "model": "",
+    "imsi": "",
+    "msisdn": "",
+    "smsCenter": "",
+    "operatorSelect": "",
+    "manufacturer": "",
+    "revision": ""
+}
+2021-09-16 10:56:41 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 10:56:41 [INFO  ] Application                     :195  - Service started
+2021-09-16 10:56:48 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 10:56:48 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 10:56:48 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 10:56:48 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 10:56:48 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 10:56:48 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 10:56:49 [INFO  ] GSM                             :128  - Execute AT Command : AT+CREG?
+2021-09-16 10:56:49 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 10:56:49 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 10:56:49 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 10:56:49 [INFO  ] GSMUtil                         :553  - info = {
+    "iccid": "8962101069134011648f",
+    "networkRegistration": "0,2",
+    "imei": "864562030217396",
+    "model": "SIMCOM_SIM800L",
+    "imsi": "510106913401164",
+    "msisdn": "",
+    "smsCenter": "",
+    "operatorSelect": "\r\nOK\r\n\r\nSMS Ready\r\n",
+    "manufacturer": "SIMCOM_Ltd",
+    "revision": "Revision:1418B04SIM800L24"
+}
+2021-09-16 10:57:37 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 10:57:37 [INFO  ] Application                     :195  - Service started
+2021-09-16 11:00:26 [INFO  ] GSM                             :40   - Connecting to COM7
+2021-09-16 11:00:27 [INFO  ] Application                     :195  - Service started
+2021-09-16 11:00:33 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 11:00:33 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 11:00:33 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 11:00:33 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 11:00:33 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 11:00:33 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 11:00:33 [INFO  ] GSM                             :128  - Execute AT Command : AT+CREG?
+2021-09-16 11:00:34 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 11:00:34 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 11:00:34 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 11:00:34 [INFO  ] GSMUtil                         :553  - info = {
+    "iccid": "8962101069134011648f",
+    "networkRegistration": "0,1",
+    "imei": "864562030217396",
+    "model": "SIMCOM_SIM800L",
+    "imsi": "510106913401164",
+    "msisdn": "",
+    "smsCenter": "",
+    "operatorSelect": "TELKOMSEL",
+    "manufacturer": "SIMCOM_Ltd",
+    "revision": "Revision:1418B04SIM800L24"
+}
+2021-09-16 11:15:37 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
+2021-09-16 11:15:37 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
+2021-09-16 11:15:37 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMR
+2021-09-16 11:15:37 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGSN
+2021-09-16 11:15:37 [INFO  ] GSM                             :128  - Execute AT Command : AT+CIMI
+2021-09-16 11:15:38 [INFO  ] GSM                             :128  - Execute AT Command : AT+CCID
+2021-09-16 11:15:38 [INFO  ] GSM                             :128  - Execute AT Command : AT+CREG?
+2021-09-16 11:15:38 [INFO  ] GSM                             :128  - Execute AT Command : AT+CNUM
+2021-09-16 11:15:38 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
+2021-09-16 11:15:38 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
+2021-09-16 11:15:38 [INFO  ] GSMUtil                         :553  - info = {
+    "iccid": "8962101069134011648f",
+    "networkRegistration": "0,1",
+    "imei": "864562030217396",
+    "model": "SIMCOM_SIM800L",
+    "imsi": "510106913401164",
+    "msisdn": "",
+    "smsCenter": "",
+    "operatorSelect": "TELKOMSEL",
+    "manufacturer": "SIMCOM_Ltd",
+    "revision": "Revision:1418B04SIM800L24"
+}

@@ -542,12 +542,16 @@ public class GSMUtil {
 			info.put("imsi", imsi);
 			String iccid = instance.getICCID();
 			info.put("iccid", iccid);
+			String networkRegistration = instance.getNetworkRegistration();
+			info.put("networkRegistration", networkRegistration);
 			String msisdn = instance.getMSISDN();			
 			info.put("msisdn", msisdn);
 			String operatorSelect = instance.getOperatorSelect();			
 			info.put("operatorSelect", operatorSelect);
 			String smsCenter = instance.getSMSCenter();		
 			info.put("smsCenter", smsCenter);
+		   	logger.info("info = "+info.toString(4));
+		    
 			if(addHock)
 			{
 				instance.disconnect();
@@ -556,6 +560,7 @@ public class GSMUtil {
 		} 
 		catch (GSMException | InvalidPortException e) 
 		{
+			e.printStackTrace();
 			/**
 			 * Do nothing
 			 */

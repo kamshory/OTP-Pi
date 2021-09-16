@@ -93,6 +93,7 @@
 							<td></td>
 							<td>
 								<input type="button" class="btn btn-success" id="detect" value="Detect">
+								<input type="button" class="btn btn-primary" id="status" value="Network Status" disabled>
 								<span class="detecting"></span>
 							</td>
 						</tr>
@@ -307,70 +308,27 @@
 					</tbody>
 				</table>
 			</form>
-			<script type="text/javascript">
-			var setting = {};
-			$(document).ready(function(e) {
-				$.ajax({
-					type: "GET",
-					url: "data/sms-setting/get",
-					dataType: "json",
-					success: function(data) {
-						setting = data;
-					}
-				});
-				$(document).on('click', '#detect', function(e2) {
-					var port = $(this).closest('form').find('[name="port"]').val().trim();
-					if(port == '') 
-					{
-						$(this).closest('form').find('[name="port"]').select();
-					} 
-					else 
-					{
-						$('.detecting').empty().append('<span class="animation-pressure"><span></span>');
-						$.ajax({
-							type: "GET",
-							url: "data/modem-info/get/" + encodeURIComponent(port),
-							dataType: "json",
-							success: function(data) {
-								$('[name="manufacturer"]').val(data.manufacturer || '');
-								$('[name="model"]').val(data.model || '');
-								$('[name="revision"]').val(data.revision || '');
-								$('[name="imei"]').val(data.imei || '');
-								$('[name="operator_select"]').val(data.operatorSelect);
-								$('[name="msisdn"]').val(data.msisdn || '');
-								$('[name="imsi"]').val(data.imsi || '');
-								$('[name="iccid"]').val(data.iccid || '');
-								$('[name="sms_center"]').val(data.smsCenter || '');
-								$('.detecting').empty();
-							}
-						});
-					}
-				});
-				$(document).on('blur', '[name="recipient_prefix"]', function(e2) {
-					console.log('blur1')
-					if(setting.countryCode != '' && setting.recipientPrefixLength > 0) {
-						var value = $(this).val();
-						console.log('blur2', value)
-						var arr = value.split(',');
-						for(i in arr) {
-							arr[i] = arr[i].trim();
-							if(arr[i].indexOf('0') == 0 && arr[i].length > 1) {
-								arr[i] = setting.countryCode + arr[i].substring(1);
-							}
-						}
-						value = arr.join(', ');
-						$(this).val(value);
-					}
-				});
-				$(document).on('change', '[name="internet_access"]', function(e2) {
-					if($(this).prop('checked')) {
-						$('.tr-dial').css('display', 'table-row');
-					} else {
-						$('.tr-dial').css('display', 'none');
-					}
-				});
-			})
+			<script type="text/javascript" src="lib.assets/js/modem-detail.js">
+			
 			</script>
+			<div class="modal" tabindex="-1" role="dialog" id="network-resgistration-status">
+				<div class="modal-dialog" role="document">
+				  <div class="modal-content">
+					<div class="modal-header">
+					  <h5 class="modal-title">Network Status</h5>
+					  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					  </button>
+					</div>
+					<div class="modal-body">
+					  
+					</div>
+					<div class="modal-footer">
+					  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+				  </div>
+				</div>
+			</div>
 		</div>
 		<!-- /container -->
 	</div>

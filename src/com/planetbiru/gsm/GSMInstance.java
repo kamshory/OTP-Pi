@@ -141,6 +141,9 @@ public class GSMInstance {
 	public String getOperatorSelect() throws GSMException {
 		return this.gsm.getOperatorSelect();
 	}
+	public String getNetworkRegistration() throws GSMException {
+		return this.gsm.getNetworkRegistration();
+	}
 	private void waitUntilReady() {
 		long maxWait = Config.getMaxWaitModemReady();
 		long ellapsed = 0;
@@ -193,5 +196,7 @@ public class GSMInstance {
 			Thread.currentThread().interrupt();
 		}		
 	}
+
+	
 
 }
