@@ -1,10 +1,13 @@
 package com.planetbiru.buzzer;
 
+import org.apache.log4j.Logger;
+
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigBell;
 
 public class Buzzer {
 	
+	private static Logger logger = Logger.getLogger(Buzzer.class);
 	private Buzzer()
 	{
 		
@@ -13,7 +16,7 @@ public class Buzzer {
 	public static void toneDisconnectAmqp() {
 		if(ConfigBell.isAmqpDisconnected())
 		{
-			System.out.println("toneDisconnectAmqp");
+			// logger.info("toneDisconnectAmqp");
 			Music.play(Config.getSoundPIN(), Config.getSoundDisconnectTone(), Config.getSoundDisconnectOctave(), Config.getSoundDisconnectTempo());
 		}		
 	}
@@ -21,7 +24,7 @@ public class Buzzer {
 	public static void toneDisconnectMqtt() {
 		if(ConfigBell.isMqttDisconnected())
 		{
-			System.out.println("toneDisconnectMqtt");
+			// logger.info("toneDisconnectMqtt");
 			Music.play(Config.getSoundPIN(), Config.getSoundDisconnectTone(), Config.getSoundDisconnectOctave(), Config.getSoundDisconnectTempo());
 		}		
 	}
@@ -29,7 +32,7 @@ public class Buzzer {
 	public static void toneDisconnectWs() {
 		if(ConfigBell.isWsDisconnected())
 		{
-			System.out.println("toneDisconnectWs");
+			// logger.info("toneDisconnectWs");
 			Music.play(Config.getSoundPIN(), Config.getSoundDisconnectTone(), Config.getSoundDisconnectOctave(), Config.getSoundDisconnectTempo());
 		}		
 	}
@@ -37,7 +40,7 @@ public class Buzzer {
 	public static void toneSMSFailed() {
 		if(ConfigBell.isSmsFailure())
 		{
-			System.out.println("toneSMSFailed");
+			// logger.info("toneSMSFailed");
 			Music.play(Config.getSoundPIN(), Config.getSoundAlertTone(), Config.getSoundAlertOctave(), Config.getSoundAlertTempo());
 		}
 	}

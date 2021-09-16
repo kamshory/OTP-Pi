@@ -171,7 +171,6 @@ public class ConfigLoader {
 		String resetDeviceType = ConfigLoader.getConfig("otppi.reset.device.type");
 		String resetDeviceFile = ConfigLoader.getConfig("otppi.reset.device.file");
 		
-		boolean debugReadSMS = ConfigLoader.getConfigBoolean("otppi.debug.read.sms");
 		String bellSettingPath = ConfigLoader.getConfig("otppi.path.setting.bell");
 		
 		String soundTestTone = ConfigLoader.getConfig("otppi.sound.test.tone");
@@ -192,6 +191,11 @@ public class ConfigLoader {
 		int soundPIN = ConfigLoader.getConfigInt("otppi.sound.pin");
 		boolean soundEnable = ConfigLoader.getConfigBoolean("otppi.sound.enable");
 		
+		String smsInboxStorage = ConfigLoader.getConfig("otppi.sms.inbox.storage");	
+		String smsInboxStatus = ConfigLoader.getConfig("otppi.sms.inbox.status");	
+		
+		Config.setSmsInboxStorage(smsInboxStorage);
+		Config.setSmsInboxStatus(smsInboxStatus);
 		Config.setSoundTestTone(soundTestTone);
 		Config.setSoundTestOctave(soundTestOctave);
 		Config.setSoundTestTempo(soundTestTempo);
@@ -303,9 +307,7 @@ public class ConfigLoader {
 		ConfigBell.load(Config.getBellSettingPath());		
 
 		Config.setWaitLoopParent(waitLoopParent);
-		Config.setWaitLoopChild(waitLoopChild);
-		Config.setDebugReadSMS(debugReadSMS);
-		
+		Config.setWaitLoopChild(waitLoopChild);		
 		
 		ConfigSubscriberWS.load(Config.getSubscriberWSSettingPath());
 		ConfigSubscriberAMQP.load(Config.getSubscriberAMQPSettingPath());

@@ -152,7 +152,9 @@ public class GPIOLibrary
 			}
 			catch (IOException e)
 			{
-				e.printStackTrace();
+				/**
+				 * Do nothing
+				 */
 			}	
 		}
 	}

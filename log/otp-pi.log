@@ -13828,3 +13828,17 @@ Mau Sa
 2021-09-16 19:45:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
 2021-09-16 19:45:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
 2021-09-16 19:45:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-17 06:01:02 [INFO  ] GSM                             :44   - Connecting to COM7
+2021-09-17 06:01:03 [INFO  ] Application                     :195  - Service started
+2021-09-17 06:03:33 [INFO  ] GSM                             :44   - Connecting to COM7
+2021-09-17 06:03:33 [INFO  ] Application                     :195  - Service started
+2021-09-17 06:04:32 [INFO  ] GSM                             :44   - Connecting to COM7
+2021-09-17 06:04:32 [INFO  ] Application                     :195  - Service started
+2021-09-17 06:04:47 [INFO  ] GSM                             :44   - Connecting to COM7
+2021-09-17 06:04:48 [INFO  ] Application                     :195  - Service started
+2021-09-17 06:08:12 [INFO  ] Buzzer                          :19   - toneDisconnectAmqp
+2021-09-17 06:08:14 [INFO  ] Buzzer                          :19   - toneDisconnectAmqp
+2021-09-17 06:08:14 [INFO  ] GSM                             :44   - Connecting to COM7
+2021-09-17 06:08:15 [INFO  ] Application                     :195  - Service started
+2021-09-17 06:10:16 [INFO  ] GSM                             :44   - Connecting to COM7
+2021-09-17 06:10:17 [INFO  ] Application                     :195  - Service started

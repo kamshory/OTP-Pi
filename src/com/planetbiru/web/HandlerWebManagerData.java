@@ -1027,8 +1027,8 @@ public class HandlerWebManagerData implements HttpHandler {
 		byte[] responseBody = "[]".getBytes();
 		int statusCode = HttpStatus.OK;
 		JSONArray allSMS = new JSONArray();
-		String smsInboxStorage = "SM";
-		String smsInboxStatus = "REC READ";
+		String smsInboxStorage = Config.getSmsInboxStorage(); //"SM";
+		String smsInboxStatus = Config.getSmsInboxStatus(); //"REC READ";
 		try
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))

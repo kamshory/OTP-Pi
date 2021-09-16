@@ -92,7 +92,6 @@ public class Config {
 	private static String resetDeviceFile = "reset-config.ini";
 	private static String subscriberMQTTSettingPath = "";
 	private static boolean cacheHTMLFile = false;
-	private static boolean debugReadSMS = false;
 	private static boolean soundEnable = false;
 	private static int soundPIN = 26;
 	private static String soundTestTone = "";
@@ -107,6 +106,8 @@ public class Config {
 	private static String soundErrorTone = "";
 	private static int soundErrorOctave = 0;
 	private static int soundErrorTempo = 0;
+	private static String smsInboxStorage = "SM";
+	private static String smsInboxStatus = "REC UNREAD";
 	
 	private Config()
 	{
@@ -793,16 +794,6 @@ public class Config {
 		Config.cacheHTMLFile = cacheHTMLFile;
 	}
 
-	public static boolean isDebugReadSMS() {
-		return debugReadSMS;
-	}
-
-	public static void setDebugReadSMS(boolean debugReadSMS) {
-		Config.debugReadSMS = debugReadSMS;
-	}
-
-
-
 	public static String getBellSettingPath() {
 		return bellSettingPath;
 	}
@@ -931,6 +922,22 @@ public class Config {
 
 	public static void setSoundErrorTempo(int soundErrorTempo) {
 		Config.soundErrorTempo = soundErrorTempo;
+	}
+
+	public static String getSmsInboxStorage() {
+		return smsInboxStorage;
+	}
+
+	public static void setSmsInboxStorage(String smsInboxStorage) {
+		Config.smsInboxStorage = smsInboxStorage;
+	}
+
+	public static String getSmsInboxStatus() {
+		return smsInboxStatus;
+	}
+
+	public static void setSmsInboxStatus(String smsInboxStatus) {
+		Config.smsInboxStatus = smsInboxStatus;
 	}
 
 }
