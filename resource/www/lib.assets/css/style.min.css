@@ -88,7 +88,11 @@
           padding:3px 0;
           box-sizing:border-box;
       }
-      .config-table tr > td:nth-child(1), .modal-table tr > td:nth-child(1)
+      .config-table tr > td:nth-child(1)
+      {
+          width:200px;
+      }
+      .modal-table tr > td:nth-child(1)
       {
           width:100px;
       }

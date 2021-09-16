@@ -44,7 +44,7 @@ $(document).ready(function(e) {
         var v2 = technology[parseInt(arr[1])] || '';
         $('#resgistration-status .modal-body').empty();
 
-        var html = '<table class="config-table config-table-connection"><tbody><tr><td>Status</td><td>'+v1+'</td></tr><tr><td>Technology</td><td>'+v2+'</td></tr></tbody></table>'
+        var html = '<table class="modal-table modal-table-connection"><tbody><tr><td>Status</td><td>'+v1+'</td></tr><tr><td>Technology</td><td>'+v2+'</td></tr></tbody></table>'
         $('#resgistration-status .modal-body').append(html);
         /**
         $('#resgistration-status .modal-body').append('<h4>Status</h4>');
