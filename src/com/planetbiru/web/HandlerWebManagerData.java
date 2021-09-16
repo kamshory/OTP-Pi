@@ -1027,11 +1027,13 @@ public class HandlerWebManagerData implements HttpHandler {
 		byte[] responseBody = "[]".getBytes();
 		int statusCode = HttpStatus.OK;
 		JSONArray allSMS = new JSONArray();
+		String smsInboxStorage = "SM";
+		String smsInboxStatus = "REC READ";
 		try
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				allSMS = this.readSMS(modemID, "SM", "REC READ");			
+				allSMS = this.readSMS(modemID, smsInboxStorage, smsInboxStatus);			
 			}
 			else
 			{

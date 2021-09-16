@@ -6,6 +6,7 @@ import com.fazecast.jSerialComm.SerialPortEvent;
 import com.fazecast.jSerialComm.SerialPortInvalidPortException;
 import com.planetbiru.config.Config;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -153,33 +154,7 @@ public class GSM {
         return result;
     }
     
-    private String fixResultByOK(String result) 
-    {
-    	if(result.contains("\r\nOK"))
-		{
-			result = result.substring(0, result.indexOf("\r\nOK"));
-		}
-		return result;
-	}
-
-    private String removeError(String result) 
-    {
-    	if(result.contains(ATCommand.ERROR))
-		{
-			result = result.replace(ATCommand.ERROR, "");
-		}
-		return result;
-	}
-
-    private String updateResult(String result)
-    {
-        if(result.isEmpty() && !this.incommingMessage.toString().isEmpty())
-        {
-        	result = this.incommingMessage.toString();
-        }
-		return result; 	
-    }
-    
+   
     private void sleep(int sleep)
     {
     	try 
@@ -232,14 +207,6 @@ public class GSM {
         return ussdParser;
     }
     
-    public String fixingRawData(String result)
-	{
-		result = result.replace("\n", "\r\n");
-		result = result.replace("\r\r\n", "\r\n");
-		result = result.replace("\r", "\r\n");
-		result = result.replace("\r\n\n", "\r\n");
-		return result;
-	}
 
     /**
      * Read the SMS stored in the sim card
@@ -272,11 +239,11 @@ public class GSM {
         this.setReady(true);
         return smsList;
     }
-    
     private void loadSMS(String storage, String smsStatus, List<SMS> smsList) throws GSMException
     {
-    	this.executeAT(this.selectStorage(storage), 1);		
-    	String result = this.executeAT("AT+CMGL=\""+smsStatus+"\"", 20, true);	  	
+    	this.executeAT(this.selectStorage(storage), 1, true);
+    	smsStatus = this.fixArrayString(smsStatus);	
+    	String result = this.executeAT("AT+CMGL="+smsStatus+"", 20, true);	  	
 		result = this.fixingRawData(result);				
 		String[] arr = result.split("\r\n");	
 		int max = this.getMax(arr);				
@@ -368,7 +335,51 @@ public class GSM {
 		return max;
 	}
 
+    public String fixingRawData(String result)
+	{
+		result = result.replace("\n", "\r\n");
+		result = result.replace("\r\r\n", "\r\n");
+		result = result.replace("\r", "\r\n");
+		result = result.replace("\r\n\n", "\r\n");
+		return result;
+	}
+    private String fixArrayString(String input)
+    {
+    	String[] stts = input.split(",");
+    	for(int i = 0; i < stts.length; i++)
+    	{
+    		stts[i] = "\""+stts[i]+"\"";
+    	}
+    	List<String> lst = Arrays.asList(stts);
+    	return String.join(",", lst);    	
+    }
+    private String fixResultByOK(String result) 
+    {
+    	if(result.contains("\r\nOK"))
+		{
+			result = result.substring(0, result.indexOf("\r\nOK"));
+		}
+		return result;
+	}
 
+    private String removeError(String result) 
+    {
+    	if(result.contains(ATCommand.ERROR))
+		{
+			result = result.replace(ATCommand.ERROR, "");
+		}
+		return result;
+	}
+
+    private String updateResult(String result)
+    {
+        if(result.isEmpty() && !this.incommingMessage.toString().isEmpty())
+        {
+        	result = this.incommingMessage.toString();
+        }
+		return result; 	
+    }
+ 
 	/**
      * Send an SMS
      *
@@ -575,6 +586,7 @@ public class GSM {
     	this.setReady(true);
         return result;
 	}
+	
 	public String getNetworkRegistration() throws GSMException {
 		this.setReady(false);
     	String result = this.executeAT("AT+CREG?", 2, true);
@@ -588,6 +600,7 @@ public class GSM {
     	this.setReady(true);
         return result;
 	}
+	
 	public String getOperatorSelect() throws GSMException {
 		this.setReady(false);
     	String result = this.executeAT("AT+COPS?", 2, true);
