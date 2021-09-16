@@ -139,10 +139,14 @@ public class GSM {
         {
         	do 
         	{
- 	            this.sleep(120);
+ 	            this.sleep(100);
  	            i++;
 	        }
-        	while(requireResult && (result.trim().equals("") || result.trim().equals("\n")) && i < waitingTime);
+        	while(
+        			requireResult 
+        			&& !this.incommingMessage.toString().trim().endsWith("\r\n\r\nOK") 
+        			&& !this.incommingMessage.toString().trim().endsWith("\r\n\r\nERROR") 
+        			&& i < waitingTime);
         }
         result = this.updateResult(result);
         this.setReady(true);
@@ -268,77 +272,17 @@ public class GSM {
         this.setReady(true);
         return smsList;
     }
-	
-	@SuppressWarnings("unused")
-	private String executeSyncATCommand(String command, int waitingTime) throws GSMException
-	{
-		this.eventListener = false;
-		this.setReady(false);
-    	if(getSerialPort() == null)
-    	{
-    		throw new GSMException("GSM is not initilized yet");
-    	}
-        command = command + "\r\n";
-        String result = "";
-        int i = 0;
-        byte[] bytes = command.getBytes();
-        int written = this.serialPort.writeBytes(bytes, bytes.length);
-        StringBuilder bld = new StringBuilder();
-        if(written > 0)
-        {
-        	do 
-        	{
-        		result = "";
-        		int bytesAvailable = getSerialPort().bytesAvailable();
-        		System.out.println("bytesAvailable = "+bytesAvailable);
-        		if(bytesAvailable > 0)
-        		{
-	            	byte[] msg = new byte[bytesAvailable];
-		            getSerialPort().readBytes(msg, msg.length);
-		            result = new String(msg);
-		            System.out.println("result = "+result);
-		            bld.append(result);
-        		}
-            	this.sleep(120);
-                i++;			        
-	        }
-        	while(!bld.toString().trim().endsWith("OK") && i < waitingTime);
-        }
-
-        result = bld.toString();
-        this.setReady(true);
-        this.eventListener = true;
-        return result;
-	}
     
     private void loadSMS(String storage, String smsStatus, List<SMS> smsList) throws GSMException
     {
-    	this.executeAT(this.selectStorage(storage), 1);
-		
-    	String result = this.executeAT("AT+CMGL=\""+smsStatus+"\"", 20, true);	
-    	System.out.println("Final result = "+result);
-    	if(Config.isDebugReadSMS())
-    	{
-			result = "+CMGL: 1,\"REC READ\",\"+85291234567\",,\"07/02/18,00:05:10+32\"\r\n"
-					+ "Reading text messages \r\n"
-					+ "is easy.\r\n"
-					+ "+CMGL: 2,\"REC READ\",\"+85291234567\",,\"07/02/18,00:07:22+32\"\r\n"
-					+ "A simple demo of SMS text messaging.\r\n"
-					+ "+CMGL: 3,\"REC READ\",\"+85291234567\",,\"07/02/18,00:12:05+32\"\r\n"
-					+ "Hello, welcome to our SMS tutorial.\r\n"
-					+ "+CMGL: 4,\"REC READ\",\"+85291234567\",,\"07/02/18,00:12:11+32\"\r\n"
-					+ "OTP tidak dapat digunakan\r\n"
-					+ "\r\n"
-					+ "OK";
-    	}
-    	
+    	this.executeAT(this.selectStorage(storage), 1);		
+    	String result = this.executeAT("AT+CMGL=\""+smsStatus+"\"", 20, true);	  	
 		result = this.fixingRawData(result);				
 		String[] arr = result.split("\r\n");	
 		int max = this.getMax(arr);				
 		for(int i = 0; i<max; i++)
 		{
-			String csvLine = arr[i];
-			
+			String csvLine = arr[i];		
 			if(csvLine.startsWith("+CMGL: ")) 
 			{
 				this.parseSMSAttributes(csvLine, storage, smsList);	        
@@ -350,8 +294,7 @@ public class GSM {
 					smsList.get(smsList.size()-1).appendContent(csvLine);
 				}				
 			}
-		}
-		
+		}		
     }
 
     private void parseSMSAttributes(String csvLine, String storage, List<SMS> smsList) {

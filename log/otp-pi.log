@@ -13516,3 +13516,315 @@ Mau Sa
 2021-09-16 19:12:37 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
 2021-09-16 19:12:37 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
 2021-09-16 19:12:37 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:22:26 [INFO  ] GSM                             :43   - Connecting to COM7
+2021-09-16 19:22:27 [INFO  ] Application                     :195  - Service started
+2021-09-16 19:23:13 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:23:13 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:23:13 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:23:13 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:23:13 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:23:23 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:23:23 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:23:23 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:23:24 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:23:24 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:24:54 [INFO  ] GSM                             :43   - Connecting to COM7
+2021-09-16 19:24:54 [INFO  ] Application                     :195  - Service started
+2021-09-16 19:24:59 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:24:59 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:24:59 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:24:59 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:24:59 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:25:36 [INFO  ] GSM                             :43   - Connecting to COM7
+2021-09-16 19:25:37 [INFO  ] Application                     :195  - Service started
+2021-09-16 19:25:38 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:25:39 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:25:39 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:25:39 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:25:39 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:25:50 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:25:50 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:25:50 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:25:50 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:25:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:25:53 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:25:53 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:25:53 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:25:53 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:25:53 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:26:17 [INFO  ] GSM                             :43   - Connecting to COM7
+2021-09-16 19:26:18 [INFO  ] Application                     :195  - Service started
+2021-09-16 19:26:20 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:26:20 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:26:21 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:26:21 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:26:21 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:27:00 [INFO  ] GSM                             :43   - Connecting to COM7
+2021-09-16 19:27:00 [INFO  ] Application                     :195  - Service started
+2021-09-16 19:27:06 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:27:06 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:27:06 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:27:06 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:27:06 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:27:09 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:27:09 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:27:09 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:27:09 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:27:09 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:27:12 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:27:12 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:27:12 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:27:12 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:27:12 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:27:46 [INFO  ] GSM                             :43   - Connecting to COM7
+2021-09-16 19:27:47 [INFO  ] Application                     :195  - Service started
+2021-09-16 19:27:50 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:27:50 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:27:50 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:27:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:27:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:28:17 [INFO  ] GSM                             :43   - Connecting to COM7
+2021-09-16 19:28:17 [INFO  ] Application                     :195  - Service started
+2021-09-16 19:28:23 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:28:24 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:28:24 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:28:24 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:28:24 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:29:30 [INFO  ] GSM                             :43   - Connecting to COM7
+2021-09-16 19:29:30 [INFO  ] Application                     :195  - Service started
+2021-09-16 19:29:34 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:29:34 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:29:34 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:29:34 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:29:34 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:29:59 [INFO  ] GSM                             :43   - Connecting to COM7
+2021-09-16 19:29:59 [INFO  ] Application                     :195  - Service started
+2021-09-16 19:30:01 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:30:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:30:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:30:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:30:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:30:47 [INFO  ] GSM                             :43   - Connecting to COM7
+2021-09-16 19:30:47 [INFO  ] Application                     :195  - Service started
+2021-09-16 19:30:52 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:30:52 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:30:53 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:30:53 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:30:53 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:30:57 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:30:57 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:30:57 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:30:57 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:30:57 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:31:01 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:31:01 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:31:01 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:31:01 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:31:01 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:31:04 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:31:04 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:31:04 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:31:04 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:31:04 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:31:07 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:31:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:31:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:31:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:31:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:31:37 [INFO  ] GSM                             :43   - Connecting to COM7
+2021-09-16 19:31:38 [INFO  ] Application                     :195  - Service started
+2021-09-16 19:31:42 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:31:42 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:31:42 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:31:42 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:31:42 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:31:46 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:31:46 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:31:47 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:31:47 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:31:47 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:31:50 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:31:50 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:31:50 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:31:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:31:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:32:06 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:32:06 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:32:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:32:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:32:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:33:09 [INFO  ] GSM                             :43   - Connecting to COM7
+2021-09-16 19:33:09 [INFO  ] Application                     :195  - Service started
+2021-09-16 19:33:41 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:33:41 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:33:42 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:33:42 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:33:42 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:33:44 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:33:44 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:33:44 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:33:45 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:33:45 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:34:11 [INFO  ] GSM                             :43   - Connecting to COM7
+2021-09-16 19:34:12 [INFO  ] Application                     :195  - Service started
+2021-09-16 19:34:14 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMI
+2021-09-16 19:34:14 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMM
+2021-09-16 19:34:15 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMR
+2021-09-16 19:34:15 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGSN
+2021-09-16 19:34:15 [INFO  ] GSM                             :131  - Execute AT Command : AT+CIMI
+2021-09-16 19:34:15 [INFO  ] GSM                             :131  - Execute AT Command : AT+CCID
+2021-09-16 19:34:15 [INFO  ] GSM                             :131  - Execute AT Command : AT+CREG?
+2021-09-16 19:34:15 [INFO  ] GSM                             :131  - Execute AT Command : AT+CNUM
+2021-09-16 19:34:15 [INFO  ] GSM                             :131  - Execute AT Command : AT+COPS?
+2021-09-16 19:34:16 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCA
+2021-09-16 19:34:17 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMI
+2021-09-16 19:34:17 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMM
+2021-09-16 19:34:18 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMR
+2021-09-16 19:34:18 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGSN
+2021-09-16 19:34:18 [INFO  ] GSM                             :131  - Execute AT Command : AT+CIMI
+2021-09-16 19:34:18 [INFO  ] GSM                             :131  - Execute AT Command : AT+CCID
+2021-09-16 19:34:18 [INFO  ] GSM                             :131  - Execute AT Command : AT+CREG?
+2021-09-16 19:34:18 [INFO  ] GSM                             :131  - Execute AT Command : AT+CNUM
+2021-09-16 19:34:18 [INFO  ] GSM                             :131  - Execute AT Command : AT+COPS?
+2021-09-16 19:34:19 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCA
+2021-09-16 19:34:20 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMI
+2021-09-16 19:34:20 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMM
+2021-09-16 19:34:20 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMR
+2021-09-16 19:34:20 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGSN
+2021-09-16 19:34:20 [INFO  ] GSM                             :131  - Execute AT Command : AT+CIMI
+2021-09-16 19:34:21 [INFO  ] GSM                             :131  - Execute AT Command : AT+CCID
+2021-09-16 19:34:21 [INFO  ] GSM                             :131  - Execute AT Command : AT+CREG?
+2021-09-16 19:34:21 [INFO  ] GSM                             :131  - Execute AT Command : AT+CNUM
+2021-09-16 19:34:21 [INFO  ] GSM                             :131  - Execute AT Command : AT+COPS?
+2021-09-16 19:34:21 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCA
+2021-09-16 19:34:23 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMI
+2021-09-16 19:34:23 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMM
+2021-09-16 19:34:23 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMR
+2021-09-16 19:34:23 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGSN
+2021-09-16 19:34:23 [INFO  ] GSM                             :131  - Execute AT Command : AT+CIMI
+2021-09-16 19:34:23 [INFO  ] GSM                             :131  - Execute AT Command : AT+CCID
+2021-09-16 19:34:23 [INFO  ] GSM                             :131  - Execute AT Command : AT+CREG?
+2021-09-16 19:34:24 [INFO  ] GSM                             :131  - Execute AT Command : AT+CNUM
+2021-09-16 19:34:24 [INFO  ] GSM                             :131  - Execute AT Command : AT+COPS?
+2021-09-16 19:34:24 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCA
+2021-09-16 19:35:25 [INFO  ] GSM                             :43   - Connecting to COM7
+2021-09-16 19:35:26 [INFO  ] Application                     :195  - Service started
+2021-09-16 19:35:28 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMI
+2021-09-16 19:35:28 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMM
+2021-09-16 19:35:28 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMR
+2021-09-16 19:35:28 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGSN
+2021-09-16 19:35:28 [INFO  ] GSM                             :131  - Execute AT Command : AT+CIMI
+2021-09-16 19:35:28 [INFO  ] GSM                             :131  - Execute AT Command : AT+CCID
+2021-09-16 19:35:28 [INFO  ] GSM                             :131  - Execute AT Command : AT+CREG?
+2021-09-16 19:35:29 [INFO  ] GSM                             :131  - Execute AT Command : AT+CNUM
+2021-09-16 19:35:29 [INFO  ] GSM                             :131  - Execute AT Command : AT+COPS?
+2021-09-16 19:35:29 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCA
+2021-09-16 19:35:47 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:35:47 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:35:47 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:35:47 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:35:47 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:36:23 [INFO  ] GSM                             :43   - Connecting to COM7
+2021-09-16 19:36:23 [INFO  ] Application                     :195  - Service started
+2021-09-16 19:36:31 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:36:31 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:36:31 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:36:31 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:36:31 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:36:55 [INFO  ] GSM                             :43   - Connecting to COM7
+2021-09-16 19:36:55 [INFO  ] Application                     :195  - Service started
+2021-09-16 19:37:04 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:37:04 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:37:04 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:37:04 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:37:05 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:38:00 [INFO  ] GSM                             :43   - Connecting to COM7
+2021-09-16 19:38:00 [INFO  ] Application                     :195  - Service started
+2021-09-16 19:38:04 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:38:04 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:38:04 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:38:04 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:38:04 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:38:43 [INFO  ] GSM                             :43   - Connecting to COM7
+2021-09-16 19:38:44 [INFO  ] Application                     :195  - Service started
+2021-09-16 19:38:51 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:38:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:38:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:38:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:38:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:39:00 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:39:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:39:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:39:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:39:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:40:04 [INFO  ] GSM                             :43   - Connecting to COM7
+2021-09-16 19:40:04 [INFO  ] Application                     :195  - Service started
+2021-09-16 19:40:12 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:40:12 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:40:12 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:40:12 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:40:12 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:44:00 [INFO  ] GSM                             :43   - Connecting to COM7
+2021-09-16 19:44:01 [INFO  ] Application                     :195  - Service started
+2021-09-16 19:44:02 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:44:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:44:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:44:03 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:44:03 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 19:44:04 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:44:04 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:44:05 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:44:05 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:44:05 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 19:44:06 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:44:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:44:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:44:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:44:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 19:44:09 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:44:09 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:44:09 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:44:09 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:44:09 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 19:44:11 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:44:11 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:44:11 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:44:11 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:44:11 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 19:44:13 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:44:13 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:44:13 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:44:13 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:44:13 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 19:44:15 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:44:15 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:44:15 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:44:15 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:44:15 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 19:44:17 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:44:17 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:44:17 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:44:17 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:44:17 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 19:44:19 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:44:19 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:44:19 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:44:19 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:44:20 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 19:44:21 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:44:21 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:44:22 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:44:22 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:44:22 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="ALL"
+2021-09-16 19:44:47 [INFO  ] GSM                             :43   - Connecting to COM7
+2021-09-16 19:44:47 [INFO  ] Application                     :195  - Service started
+2021-09-16 19:44:51 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:44:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:44:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:44:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:44:52 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-16 19:45:02 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-16 19:45:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-16 19:45:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-16 19:45:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-16 19:45:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
