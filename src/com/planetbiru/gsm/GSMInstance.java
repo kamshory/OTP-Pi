@@ -93,7 +93,23 @@ public class GSMInstance {
 			throw new GSMException(ConstantString.SERIAL_PORT_NULL);
 		}
 		this.waitUntilReady();
-		return this.gsm.readSMS();
+		return this.gsm.readSMS(null, null);
+	}
+	public List<SMS> readSMS(String storage, String smsStatus) throws GSMException
+	{
+		if(storage == null)
+		{
+			return this.readSMS();
+		}
+		else
+		{
+			if(this.gsm.getSerialPort() == null)
+			{
+				throw new GSMException(ConstantString.SERIAL_PORT_NULL);
+			}
+			this.waitUntilReady();
+			return this.gsm.readSMS(storage, smsStatus);
+		}
 	}
 	
 	public void deleteSMS(int smsID, String storage) throws GSMException {

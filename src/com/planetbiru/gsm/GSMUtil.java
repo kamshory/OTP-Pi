@@ -27,10 +27,8 @@ public class GSMUtil {
 	private static final String MODEM_IMEI = "modemIMEI";
 	private static final String RECEIVER = "receiver";
 	private static final String MONITOR_PATH = "monitor.html";
-	private static final String SMS_TRAFFIC = "sms-traffic";
-	
+	private static final String SMS_TRAFFIC = "sms-traffic";	
 	private static long lastDelete = 0;
-
 	private static boolean initialized = false;
 	private static List<GSMInstance> gsmInstance = new ArrayList<>();
 	private static List<Integer> connectedDevices = new ArrayList<>();
@@ -44,7 +42,6 @@ public class GSMUtil {
 	private static boolean eventListener = true;
 	private static Logger logger = Logger.getLogger(GSMUtil.class);
 	
-
 	private GSMUtil()
 	{
 		/**
@@ -52,6 +49,9 @@ public class GSMUtil {
 		 */
 	}
 	
+	/**
+	 * Initialize GSMUtil
+	 */
 	public static void start()
 	{
 		ConfigModem.load(Config.getModemSettingPath());
@@ -78,6 +78,12 @@ public class GSMUtil {
 		GSMUtil.updateConnectedDevice();
 	}
 
+	/**
+	 * Connect specified modem
+	 * @param modemID Modem ID
+	 * @throws GSMException if any GSM errors
+	 * @throws InvalidPortException if serial port is invalid
+	 */
 	public static void connect(String modemID) throws GSMException, InvalidPortException
 	{
 		DataModem modem = ConfigModem.getModemData(modemID);
@@ -100,6 +106,11 @@ public class GSMUtil {
 		GSMUtil.updateConnectedDevice();
 	}
 	
+	/**
+	 * Disconnect specified modem
+	 * @param modemID Modem ID
+	 * @throws GSMException if any GSM errors
+	 */
 	public static void disconnect(String modemID) throws GSMException 
 	{
 		try 
@@ -109,17 +120,28 @@ public class GSMUtil {
 		} 
 		catch (GSMException e) 
 		{
-			logger.error(e.getMessage());
 			GSMUtil.updateConnectedDevice();		
 			throw new GSMException(e);
 		}
 	}
 	
+	/**
+	 * Read SMS from specified modem
+	 * @param modemID Modem ID
+	 * @return List of SMS
+	 * @throws GSMException if any GSM errors
+	 */
 	public static List<SMS> readSMS(String modemID) throws GSMException
 	{
 		return GSMUtil.get(modemID).readSMS();
 	}
 	
+	/**
+	 * Read SMS from specified modem
+	 * @param modemID Modem ID
+	 * @return JSONArray contains SMS
+	 * @throws GSMException if any GSM errors
+	 */
 	public static JSONArray readSMSJSON(String modemID) throws GSMException
 	{
 		JSONArray arr = new JSONArray();
@@ -132,12 +154,12 @@ public class GSMUtil {
 	}
 	
 	/**
-	 * Send SMS with modem ID
-	 * @param receiver
-	 * @param message
-	 * @param modemID
-	 * @return
-	 * @throws GSMException
+	 * Send SMS with from specified modem
+	 * @param receiver The SMS recipient
+	 * @param message The text message
+	 * @param modemID Modem ID
+	 * @return JSONObject contains sending SMS response
+	 * @throws GSMException if any GSM errors
 	 */
 	public static JSONObject sendSMS(String receiver, String message, String modemID) throws GSMException 
 	{
@@ -160,11 +182,11 @@ public class GSMUtil {
 	}
 	
 	/**
-	 * Send SMS without modem ID
-	 * @param receiver
-	 * @param message
-	 * @return
-	 * @throws GSMException
+	 * Send SMS without specified modem
+	 * @param receiver The SMS recipient
+	 * @param message The text message
+	 * @return JSONObject contains sending SMS response
+	 * @throws GSMException if any GSM errors
 	 */
 	public static JSONObject sendSMS(String receiver, String message, StackTraceElement ste) throws GSMException 
 	{
@@ -188,6 +210,11 @@ public class GSMUtil {
 		return response;
 	}
 	
+	/**
+	 * Send SMS traffic to administrator web
+	 * @param receiver The SMS recipient
+	 * @param ste
+	 */
 	public static void sendTraffic(String receiver, StackTraceElement ste)
 	{
 		String callerClass = ste.getClassName();
@@ -550,7 +577,6 @@ public class GSMUtil {
 			info.put("operatorSelect", operatorSelect);
 			String smsCenter = instance.getSMSCenter();		
 			info.put("smsCenter", smsCenter);
-		   	logger.info("info = "+info.toString(4));
 		    
 			if(addHock)
 			{

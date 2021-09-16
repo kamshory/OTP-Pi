@@ -18,6 +18,7 @@ public class GSM {
 	private boolean ready = false;
 	private boolean gcRunning = false;
 	private StringBuilder incommingMessage = new StringBuilder(); 
+	private boolean eventListener = true;
     
     private static Logger logger = Logger.getLogger(GSM.class);
     
@@ -32,11 +33,13 @@ public class GSM {
      * Initialize the connection
      *
      * @param portName the port name
+     * @param eventListener 
      * @return true if port was opened successfully
      * @throws GSMException 
      */
-    public boolean connect(String portName, boolean eventListener) throws InvalidPortException
+    public boolean connect(String portName, boolean evtListener) throws InvalidPortException
     {
+    	this.eventListener = evtListener;
     	logger.info("Connecting to "+portName);
     	this.setReady(false);
     	boolean isOpen = false;
@@ -136,18 +139,8 @@ public class GSM {
         {
         	do 
         	{
-        		int bytesAvailable = getSerialPort().bytesAvailable();
-        		if(bytesAvailable > 0)
-        		{
-	            	byte[] msg = new byte[bytesAvailable];
-		            getSerialPort().readBytes(msg, msg.length);
-		            result = new String(msg);
-        		}
- 	            if(requireResult && (result.trim().equals("") || result.trim().equals("\n")))
-	            {
-	            	this.sleep(120);
-	                i++;			        
-	            }
+ 	            this.sleep(120);
+ 	            i++;
 	        }
         	while(requireResult && (result.trim().equals("") || result.trim().equals("\n")) && i < waitingTime);
         }
@@ -250,39 +243,80 @@ public class GSM {
      * @return ArrayList contains the SMS
      * @throws GSMException 
      */
-    public List<SMS> readSMS() throws GSMException 
+    public List<SMS> readSMS(String storage, String smsStatus) throws GSMException 
     {
     	this.setReady(false);
-        this.executeAT("ATE0", 1);
-        this.executeAT(this.selectProtocol("GSM"), 1);
-        this.executeAT(this.selectOperator("1"), 1);
+        this.executeAT("ATE0", 1, true);
+        this.executeAT(this.selectProtocol("GSM"), 1, true);
+        this.executeAT(this.selectDataMode(ATCommand.DATA_MODE_TEXT), 1, true);
         List<SMS> smsList = new ArrayList<>();
-		for (String storage : GSMConst.getSmsStorage()) 
+        if(smsStatus == null)
         {
-        	this.loadSMS(storage, smsList);
+        	smsStatus = "ALL";
+        }
+        if(storage == null)
+        {
+			for (String strg : GSMConst.getSmsStorage()) 
+	        {
+	        	this.loadSMS(strg, "ALL", smsList);
+	        }
+        }
+        else
+        {
+        	this.loadSMS(storage, smsStatus, smsList);
         }
         this.setReady(true);
         return smsList;
     }
+	
+	@SuppressWarnings("unused")
+	private String executeSyncATCommand(String command, int waitingTime) throws GSMException
+	{
+		this.eventListener = false;
+		this.setReady(false);
+    	if(getSerialPort() == null)
+    	{
+    		throw new GSMException("GSM is not initilized yet");
+    	}
+        command = command + "\r\n";
+        String result = "";
+        int i = 0;
+        byte[] bytes = command.getBytes();
+        int written = this.serialPort.writeBytes(bytes, bytes.length);
+        StringBuilder bld = new StringBuilder();
+        if(written > 0)
+        {
+        	do 
+        	{
+        		result = "";
+        		int bytesAvailable = getSerialPort().bytesAvailable();
+        		System.out.println("bytesAvailable = "+bytesAvailable);
+        		if(bytesAvailable > 0)
+        		{
+	            	byte[] msg = new byte[bytesAvailable];
+		            getSerialPort().readBytes(msg, msg.length);
+		            result = new String(msg);
+		            System.out.println("result = "+result);
+		            bld.append(result);
+        		}
+            	this.sleep(120);
+                i++;			        
+	        }
+        	while(!bld.toString().trim().endsWith("OK") && i < waitingTime);
+        }
 
-	public List<SMS> readSMS(String storage) throws GSMException 
-    {
-    	this.setReady(false);
-        this.executeAT("ATE0", 1);
-        this.executeAT(this.selectProtocol("GSM"), 1);
-        this.executeAT(this.selectOperator("1"), 1);
-        List<SMS> smsList = new ArrayList<>();
-       	this.loadSMS(storage, smsList);
+        result = bld.toString();
         this.setReady(true);
-        return smsList;
-    }
+        this.eventListener = true;
+        return result;
+	}
     
-    private void loadSMS(String storage, List<SMS> smsList) throws GSMException
+    private void loadSMS(String storage, String smsStatus, List<SMS> smsList) throws GSMException
     {
     	this.executeAT(this.selectStorage(storage), 1);
 		
-    	String result = this.executeAT("AT+CMGL=\"ALL\"", 5, true);		
-    	System.out.println(result);
+    	String result = this.executeAT("AT+CMGL=\""+smsStatus+"\"", 20, true);	
+    	System.out.println("Final result = "+result);
     	if(Config.isDebugReadSMS())
     	{
 			result = "+CMGL: 1,\"REC READ\",\"+85291234567\",,\"07/02/18,00:05:10+32\"\r\n"
@@ -313,11 +347,11 @@ public class GSM {
 			{				
 				if(!smsList.isEmpty())
 				{
-					String content = smsList.get(smsList.size()-1).getContent();
-					smsList.get(smsList.size()-1).appendContent(content);
+					smsList.get(smsList.size()-1).appendContent(csvLine);
 				}				
 			}
 		}
+		
     }
 
     private void parseSMSAttributes(String csvLine, String storage, List<SMS> smsList) {
@@ -411,7 +445,7 @@ public class GSM {
     	logger.info("msg1 = "+msg1);
     	String msg2 = this.executeAT(this.selectProtocol("GSM"), 1, true);
     	logger.info("msg2 = "+msg2);
-    	String msg3 = this.executeAT(this.selectOperator("1"), 1, true);
+    	String msg3 = this.executeAT(this.selectDataMode(ATCommand.DATA_MODE_TEXT), 1, true);
     	logger.info("msg3 = "+msg3);
     	String msg4 = this.executeAT("AT+CMGW=\"" + recipient + "\"", 2, true);
     	logger.info("msg4 = "+msg4);
@@ -458,7 +492,7 @@ public class GSM {
     	this.setReady(false);
         this.executeAT("ATE0", 1);
         this.executeAT(this.selectProtocol("GSM"), 1);
-        this.executeAT(this.selectOperator("1"), 1);
+        this.executeAT(this.selectDataMode(ATCommand.DATA_MODE_TEXT), 1);
 		for(String storage : GSMConst.getSmsStorage()) 
         {
 			this.executeAT(this.selectStorage(storage), 1);
@@ -643,7 +677,7 @@ public class GSM {
 		return "AT+CPMS=\"" + storage + "\"";
 	}
 
-    private String selectOperator(String operator) 
+    private String selectDataMode(String operator) 
     {
 		return "AT+CMGF="+operator;
 	}

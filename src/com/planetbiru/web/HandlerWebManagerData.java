@@ -1031,7 +1031,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				allSMS = this.readSMS(modemID);			
+				allSMS = this.readSMS(modemID, "SM", "REC READ");			
 			}
 			else
 			{
@@ -1055,7 +1055,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		httpExchange.close();	
 	}
 	
-	private JSONArray readSMS(String modemID) throws GSMException {
+	private JSONArray readSMS(String modemID, String storage, String smsStatus) throws GSMException {
 		JSONArray allSMS = new JSONArray();
 		if(modemID.isEmpty())
 		{
@@ -1064,7 +1064,7 @@ public class HandlerWebManagerData implements HttpHandler {
 			{
 				GSMInstance instance =  GSMUtil.getGsmInstance().get(i);
 				DataModem modemData = ConfigModem.getModemData(instance.getId());
-				List<SMS> sms = instance.readSMS();
+				List<SMS> sms = instance.readSMS(storage, smsStatus);
 				for(int j = 0; j < sms.size(); j++)
 				{
 					allSMS.put(sms.get(j).toJSONObject(modemData.getId(), modemData.getName(), modemData.getPort()));
@@ -1074,7 +1074,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		else
 		{
 			DataModem modemData = ConfigModem.getModemData(modemID);
-			List<SMS> sms = GSMUtil.get(modemID).readSMS();
+			List<SMS> sms = GSMUtil.get(modemID).readSMS(storage, smsStatus);
 			for(int j = 0; j < sms.size(); j++)
 			{
 				allSMS.put(sms.get(j).toJSONObject(modemData.getId(), modemData.getName(), modemData.getPort()));

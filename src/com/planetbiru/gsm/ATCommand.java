@@ -11,6 +11,8 @@ public class ATCommand {
 	public static final String GET_REVISION     = "AT+CGMR";
 	public static final String GET_SMS_CENTER   = "AT+CSCA";
 	public static final String ERROR            = "ERROR";
+	public static final String DATA_MODE_TEXT   = "1";
+	public static final String DATA_MODE_PDU    = "0";
 	
 	private ATCommand()
 	{
