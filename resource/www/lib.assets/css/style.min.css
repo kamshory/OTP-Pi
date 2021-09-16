@@ -55,42 +55,42 @@
     border: none;
   }
   @media all and  (max-width: 600px) {
-      .config-table
+      .config-table, .modal-table
       {
           width:100%;
       }
-      .config-table tr
+      .config-table tr, .modal-table tr
       {
           
       }
-      .config-table tr td
+      .config-table tr td, .modal-table tr td
       {
           display:block;
           padding:3px 0;
           width:100%;
           box-sizing:border-box;
       }
-      .config-table tr td:empty{
+      .config-table tr td:empty, .modal-table tr td:empty{
           display:none;
       }
   }
   @media all and (min-width: 600px) {
-      .config-table
+      .config-table, .modal-table
       {
           width:100%;
       }
-      .config-table tr
+      .config-table tr, .modal-table tr
       {
           position:relative;
       }
-      .config-table tr td
+      .config-table tr td, .modal-table tr td
       {
           padding:3px 0;
           box-sizing:border-box;
       }
-      .config-table tr > td:nth-child(1)
+      .config-table tr > td:nth-child(1), .modal-table tr > td:nth-child(1)
       {
-          width:200px;
+          width:100px;
       }
   }
   .config-table tr td select,

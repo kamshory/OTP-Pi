@@ -38,16 +38,22 @@ $(document).ready(function(e) {
     });
 
     $(document).on('click', '#status', function(e2){
-        $('#network-resgistration-status').modal('show');
         var stausData =  ($('#status').attr('data-status') || '').trim();
         var arr = stausData.split(',');
         var v1 = registrationStatus[parseInt(arr[0])] || '';
         var v2 = technology[parseInt(arr[1])] || '';
-        $('#network-resgistration-status .modal-body').empty();
-        $('#network-resgistration-status .modal-body').append('<h4>Network Registration Status</h4>');
-        $('#network-resgistration-status .modal-body').append('<p>'+v1+'</p>');
-        $('#network-resgistration-status .modal-body').append('<h4>Technology</h4>');
-        $('#network-resgistration-status .modal-body').append('<p>'+v2+'</p>');
+        $('#resgistration-status .modal-body').empty();
+
+        var html = '<table class="config-table config-table-connection"><tbody><tr><td>Status</td><td>'+v1+'</td></tr><tr><td>Technology</td><td>'+v2+'</td></tr></tbody></table>'
+        $('#resgistration-status .modal-body').append(html);
+        /**
+        $('#resgistration-status .modal-body').append('<h4>Status</h4>');
+        $('#resgistration-status .modal-body').append('<p>'+v1+'</p>');
+        $('#resgistration-status .modal-body').append('<h4>Technology</h4>');
+        $('#resgistration-status .modal-body').append('<p>'+v2+'</p>');
+        */
+ 
+        $('#resgistration-status').modal('show');
     });
     
     $(document).on('change', '[name="internet_access"]', function(e2) {
