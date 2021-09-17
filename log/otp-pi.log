@@ -13935,3 +13935,7 @@ Caused by: java.io.FileNotFoundException: \etc\wvdial.conf (The system cannot fi
 2021-09-17 16:37:36 [INFO  ] GSM                             :132  - Execute AT Command : AT+CNUM
 2021-09-17 16:37:36 [INFO  ] GSM                             :132  - Execute AT Command : AT+COPS?
 2021-09-17 16:37:36 [INFO  ] GSM                             :132  - Execute AT Command : AT+CSCA
+2021-09-17 17:55:31 [INFO  ] Application                     :195  - Service started
+2021-09-17 17:55:51 [INFO  ] Application                     :195  - Service started
+2021-09-17 17:57:01 [INFO  ] GSM                             :44   - Connecting to COM7
+2021-09-17 17:57:02 [INFO  ] Application                     :195  - Service started
