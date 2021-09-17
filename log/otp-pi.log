@@ -13935,3 +13935,24 @@ Caused by: java.io.FileNotFoundException: \etc\wvdial.conf (The system cannot fi
 2021-09-17 16:37:36 [INFO  ] GSM                             :132  - Execute AT Command : AT+CNUM
 2021-09-17 16:37:36 [INFO  ] GSM                             :132  - Execute AT Command : AT+COPS?
 2021-09-17 16:37:36 [INFO  ] GSM                             :132  - Execute AT Command : AT+CSCA
+2021-09-18 06:45:59 [INFO  ] GSM                             :44   - Connecting to COM7
+2021-09-18 06:46:00 [ERROR ] InternetDialUtil                :72   - java.io.FileNotFoundException: \etc\wvdial.conf (The system cannot find the path specified)
+java.io.IOException: java.io.FileNotFoundException: \etc\wvdial.conf (The system cannot find the path specified)
+	at com.planetbiru.util.FileConfigUtil.write(FileConfigUtil.java:62)
+	at com.planetbiru.gsm.InternetDialUtil.apply(InternetDialUtil.java:163)
+	at com.planetbiru.gsm.InternetDialUtil.connect(InternetDialUtil.java:68)
+	at com.planetbiru.gsm.InternetDialUtil.start(InternetDialUtil.java:42)
+	at com.planetbiru.Application.modemInternetStart(Application.java:216)
+	at com.planetbiru.Application.startService(Application.java:182)
+	at com.planetbiru.Application.main(Application.java:78)
+Caused by: java.io.FileNotFoundException: \etc\wvdial.conf (The system cannot find the path specified)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at com.planetbiru.util.FileConfigUtil.write(FileConfigUtil.java:53)
+	... 6 more
+2021-09-18 06:46:00 [INFO  ] Application                     :195  - Service started
+2021-09-18 06:46:34 [INFO  ] GSM                             :44   - Connecting to COM7
+2021-09-18 06:46:34 [INFO  ] Application                     :195  - Service started
+2021-09-18 06:47:02 [INFO  ] Application                     :195  - Service started
