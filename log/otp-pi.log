@@ -13842,3 +13842,96 @@ Mau Sa
 2021-09-17 06:08:15 [INFO  ] Application                     :195  - Service started
 2021-09-17 06:10:16 [INFO  ] GSM                             :44   - Connecting to COM7
 2021-09-17 06:10:17 [INFO  ] Application                     :195  - Service started
+2021-09-17 16:28:00 [INFO  ] Application                     :195  - Service started
+2021-09-17 16:30:39 [INFO  ] GSM                             :44   - Connecting to COM7
+2021-09-17 16:30:39 [ERROR ] InternetDialUtil                :72   - java.io.FileNotFoundException: \etc\wvdial.conf (The system cannot find the path specified)
+java.io.IOException: java.io.FileNotFoundException: \etc\wvdial.conf (The system cannot find the path specified)
+	at com.planetbiru.util.FileConfigUtil.write(FileConfigUtil.java:62)
+	at com.planetbiru.gsm.InternetDialUtil.apply(InternetDialUtil.java:163)
+	at com.planetbiru.gsm.InternetDialUtil.connect(InternetDialUtil.java:68)
+	at com.planetbiru.gsm.InternetDialUtil.start(InternetDialUtil.java:42)
+	at com.planetbiru.Application.modemInternetStart(Application.java:216)
+	at com.planetbiru.Application.startService(Application.java:182)
+	at com.planetbiru.Application.main(Application.java:78)
+Caused by: java.io.FileNotFoundException: \etc\wvdial.conf (The system cannot find the path specified)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at com.planetbiru.util.FileConfigUtil.write(FileConfigUtil.java:53)
+	... 6 more
+2021-09-17 16:30:39 [INFO  ] Application                     :195  - Service started
+2021-09-17 16:30:51 [INFO  ] GSM                             :44   - Connecting to COM7
+2021-09-17 16:30:51 [ERROR ] InternetDialUtil                :72   - java.io.FileNotFoundException: \etc\wvdial.conf (The system cannot find the path specified)
+java.io.IOException: java.io.FileNotFoundException: \etc\wvdial.conf (The system cannot find the path specified)
+	at com.planetbiru.util.FileConfigUtil.write(FileConfigUtil.java:62)
+	at com.planetbiru.gsm.InternetDialUtil.apply(InternetDialUtil.java:163)
+	at com.planetbiru.gsm.InternetDialUtil.connect(InternetDialUtil.java:68)
+	at com.planetbiru.gsm.InternetDialUtil.start(InternetDialUtil.java:42)
+	at com.planetbiru.Application.modemInternetStart(Application.java:216)
+	at com.planetbiru.Application.startService(Application.java:182)
+	at com.planetbiru.Application.main(Application.java:78)
+Caused by: java.io.FileNotFoundException: \etc\wvdial.conf (The system cannot find the path specified)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at com.planetbiru.util.FileConfigUtil.write(FileConfigUtil.java:53)
+	... 6 more
+2021-09-17 16:30:51 [INFO  ] Application                     :195  - Service started
+2021-09-17 16:32:20 [INFO  ] GSM                             :44   - Connecting to COM7
+2021-09-17 16:32:21 [ERROR ] InternetDialUtil                :72   - java.io.FileNotFoundException: \etc\wvdial.conf (The system cannot find the path specified)
+java.io.IOException: java.io.FileNotFoundException: \etc\wvdial.conf (The system cannot find the path specified)
+	at com.planetbiru.util.FileConfigUtil.write(FileConfigUtil.java:62)
+	at com.planetbiru.gsm.InternetDialUtil.apply(InternetDialUtil.java:163)
+	at com.planetbiru.gsm.InternetDialUtil.connect(InternetDialUtil.java:68)
+	at com.planetbiru.gsm.InternetDialUtil.start(InternetDialUtil.java:42)
+	at com.planetbiru.Application.modemInternetStart(Application.java:216)
+	at com.planetbiru.Application.startService(Application.java:182)
+	at com.planetbiru.Application.main(Application.java:78)
+Caused by: java.io.FileNotFoundException: \etc\wvdial.conf (The system cannot find the path specified)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at com.planetbiru.util.FileConfigUtil.write(FileConfigUtil.java:53)
+	... 6 more
+2021-09-17 16:32:21 [INFO  ] Application                     :195  - Service started
+2021-09-17 16:34:21 [INFO  ] GSM                             :44   - Connecting to COM7
+2021-09-17 16:34:21 [ERROR ] InternetDialUtil                :72   - java.io.FileNotFoundException: \etc\wvdial.conf (The system cannot find the path specified)
+java.io.IOException: java.io.FileNotFoundException: \etc\wvdial.conf (The system cannot find the path specified)
+	at com.planetbiru.util.FileConfigUtil.write(FileConfigUtil.java:63)
+	at com.planetbiru.gsm.InternetDialUtil.apply(InternetDialUtil.java:163)
+	at com.planetbiru.gsm.InternetDialUtil.connect(InternetDialUtil.java:68)
+	at com.planetbiru.gsm.InternetDialUtil.start(InternetDialUtil.java:42)
+	at com.planetbiru.Application.modemInternetStart(Application.java:216)
+	at com.planetbiru.Application.startService(Application.java:182)
+	at com.planetbiru.Application.main(Application.java:78)
+Caused by: java.io.FileNotFoundException: \etc\wvdial.conf (The system cannot find the path specified)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at com.planetbiru.util.FileConfigUtil.write(FileConfigUtil.java:54)
+	... 6 more
+2021-09-17 16:34:21 [INFO  ] Application                     :195  - Service started
+2021-09-17 16:36:17 [INFO  ] GSM                             :44   - Connecting to COM7
+2021-09-17 16:36:17 [INFO  ] Application                     :195  - Service started
+2021-09-17 16:36:24 [INFO  ] GSM                             :44   - Connecting to COM7
+2021-09-17 16:36:24 [INFO  ] Application                     :195  - Service started
+2021-09-17 16:36:40 [INFO  ] GSM                             :44   - Connecting to COM7
+2021-09-17 16:36:40 [INFO  ] Application                     :195  - Service started
+2021-09-17 16:37:21 [INFO  ] GSM                             :44   - Connecting to COM7
+2021-09-17 16:37:31 [INFO  ] GSM                             :44   - Connecting to COM7
+2021-09-17 16:37:32 [INFO  ] Application                     :195  - Service started
+2021-09-17 16:37:36 [INFO  ] GSM                             :44   - Connecting to COM7
+2021-09-17 16:37:36 [INFO  ] GSM                             :132  - Execute AT Command : AT+CGMI
+2021-09-17 16:37:36 [INFO  ] GSM                             :132  - Execute AT Command : AT+CGMM
+2021-09-17 16:37:36 [INFO  ] GSM                             :132  - Execute AT Command : AT+CGMR
+2021-09-17 16:37:36 [INFO  ] GSM                             :132  - Execute AT Command : AT+CGSN
+2021-09-17 16:37:36 [INFO  ] GSM                             :132  - Execute AT Command : AT+CIMI
+2021-09-17 16:37:36 [INFO  ] GSM                             :132  - Execute AT Command : AT+CCID
+2021-09-17 16:37:36 [INFO  ] GSM                             :132  - Execute AT Command : AT+CREG?
+2021-09-17 16:37:36 [INFO  ] GSM                             :132  - Execute AT Command : AT+CNUM
+2021-09-17 16:37:36 [INFO  ] GSM                             :132  - Execute AT Command : AT+COPS?
+2021-09-17 16:37:36 [INFO  ] GSM                             :132  - Execute AT Command : AT+CSCA
