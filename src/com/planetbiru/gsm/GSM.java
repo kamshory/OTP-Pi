@@ -41,7 +41,6 @@ public class GSM {
     public boolean connect(String portName, boolean evtListener) throws InvalidPortException
     {
     	this.eventListener = evtListener;
-    	logger.info("Connecting to "+portName);
     	this.setReady(false);
     	boolean isOpen = false;
     	try
