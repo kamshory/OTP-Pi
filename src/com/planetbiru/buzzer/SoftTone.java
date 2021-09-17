@@ -28,7 +28,7 @@ public class SoftTone {
 		
 	}
 	public static void softToneStop(int pin) {
-		if(SoftTone.gpio.get(pin).getToneThread() != null)
+		if(SoftTone.gpio.containsKey(pin) && SoftTone.gpio.get(pin) != null && SoftTone.gpio.get(pin).getToneThread() != null)
 		{
 			SoftTone.gpio.get(pin).getToneThread().stopSound();
 		}		
