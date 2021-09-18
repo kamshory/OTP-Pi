@@ -77,8 +77,8 @@ public class MessageAPI {
 				}
 				else if(command.equals(ConstantString.VALIDATE_OTP))
 				{
-					logger.info("Create OTP");
-					responseJSON = this.validateOTP(command, data, ste);					
+					logger.info("Validate OTP");
+					responseJSON = this.validateOTP(command, data);					
 				}
 			}		
 		}
@@ -90,9 +90,9 @@ public class MessageAPI {
 	}
 	
 	private JSONObject createOTP(String command, JSONObject data, StackTraceElement ste) {
-		String dateTime = data.optString("date_time", "").trim();
-		String otpID = data.optString("reference", "").trim();
-		String receiver = data.optString("receiver", "").trim();
+		String dateTime = data.optString(JsonKey.DATE_TIME, "").trim();
+		String otpID = data.optString(JsonKey.REFERENCE, "").trim();
+		String receiver = data.optString(JsonKey.RECEIVER, "").trim();
 		String subject = data.optString("subject", "").trim();
 		String param1 = data.optString("param1", "").trim();
 		String param2 = data.optString("param2", "").trim();
@@ -122,9 +122,9 @@ public class MessageAPI {
 				{
 					GSMUtil.sendSMS(receiver, message, ste);
 				}
-				responseData.put("reference", otpID);
-				responseData.put("receiver", receiver);
-				responseData.put("date_time", dateTime);
+				responseData.put(JsonKey.REFERENCE, otpID);
+				responseData.put(JsonKey.RECEIVER, receiver);
+				responseData.put(JsonKey.DATE_TIME, dateTime);
 			}
 		}
 		catch(MessagingException | NoEmailAccountException | GSMException e)
@@ -137,38 +137,32 @@ public class MessageAPI {
 		return requestJSON;
 	}
 	
-	private JSONObject validateOTP(String command, JSONObject data, StackTraceElement ste) {
-		String dateTime = data.optString("date_time", "").trim();
-		String otpID = data.optString("reference", "").trim();
-		String receiver = data.optString("receiver", "").trim();
+	private JSONObject validateOTP(String command, JSONObject data) {
+		String dateTime = data.optString(JsonKey.DATE_TIME, "").trim();
+		String otpID = data.optString(JsonKey.REFERENCE, "").trim();
+		String receiver = data.optString(JsonKey.RECEIVER, "").trim();
 		String param1 = data.optString("param1", "").trim();
 		String param2 = data.optString("param2", "").trim();
 		String param3 = data.optString("param3", "").trim();
 		String param4 = data.optString("param4", "").trim();
 		String clearOTP = data.optString("otp", "");
-		long lifeTime = (data.optLong("expiration", 0) * 1000) - System.currentTimeMillis();
-		String responseCode = ResponseCode.SUCCESS;
+		String responseCode;
 		JSONObject requestJSON = new JSONObject();
 		JSONObject responseData = new JSONObject();
-		if(OTP.isExists(otpID))
+		
+		boolean valid = OTP.validateOTP(otpID, receiver, param1, param2, param3, param4, clearOTP);
+		responseData.put(JsonKey.REFERENCE, otpID);
+		responseData.put(JsonKey.RECEIVER, receiver);
+		responseData.put(JsonKey.DATE_TIME, dateTime);
+		if(valid)
 		{
-			responseCode = ResponseCode.FAILED;
+			responseCode = ResponseCode.SUCCESS;
 		}
 		else
 		{
-			boolean valid = OTP.validateOTP(otpID, receiver, lifeTime, param1, param2, param3, param4, clearOTP);
-			responseData.put("reference", otpID);
-			responseData.put("receiver", receiver);
-			responseData.put("date_time", dateTime);
-			if(valid)
-			{
-				responseCode = ResponseCode.SUCCESS;
-			}
-			else
-			{
-				responseCode = ResponseCode.FAILED;
-			}
+			responseCode = ResponseCode.FAILED;
 		}
+		
 		requestJSON.put(JsonKey.COMMAND, command);
 		requestJSON.put(JsonKey.DATA, responseData);
 		requestJSON.put(JsonKey.RESPONSE_CODE, responseCode);
