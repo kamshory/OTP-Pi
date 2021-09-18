@@ -13981,3 +13981,31 @@ Caused by: java.io.FileNotFoundException: \etc\wvdial.conf (The system cannot fi
 2021-09-18 07:43:34 [INFO  ] Application                     :195  - Service started
 2021-09-18 07:45:23 [INFO  ] Application                     :195  - Service started
 2021-09-18 07:46:21 [INFO  ] Application                     :195  - Service started
+2021-09-18 07:53:50 [INFO  ] Application                     :195  - Service started
+2021-09-18 07:54:10 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMI
+2021-09-18 07:54:10 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMM
+2021-09-18 07:54:10 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMR
+2021-09-18 07:54:10 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGSN
+2021-09-18 07:54:10 [INFO  ] GSM                             :131  - Execute AT Command : AT+CIMI
+2021-09-18 07:54:11 [INFO  ] GSM                             :131  - Execute AT Command : AT+CCID
+2021-09-18 07:54:11 [INFO  ] GSM                             :131  - Execute AT Command : AT+CREG?
+2021-09-18 07:54:11 [INFO  ] GSM                             :131  - Execute AT Command : AT+CNUM
+2021-09-18 07:54:11 [INFO  ] GSM                             :131  - Execute AT Command : AT+COPS?
+2021-09-18 07:54:11 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCA
+2021-09-18 07:54:51 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-18 07:54:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-18 07:54:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-18 07:54:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-18 07:54:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-18 07:54:51 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-18 07:54:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-18 07:54:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-18 07:54:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-18 07:54:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-18 07:55:33 [INFO  ] Application                     :195  - Service started
+2021-09-18 07:56:01 [INFO  ] Application                     :195  - Service started
+2021-09-18 07:57:05 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-18 07:57:05 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-18 07:57:05 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-18 07:57:05 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-18 07:57:05 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
