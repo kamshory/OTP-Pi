@@ -25,6 +25,8 @@ var technology = [
     'E-UTRAN'
 ];
 
+var to = setTimeout('', 1);
+
 $(document).ready(function(e) {
     $.ajax({
         type: "GET",
@@ -60,6 +62,17 @@ $(document).ready(function(e) {
             }
         });      
     });
+    $(document).on('mouseover', '.list-port-container', function(e2)
+    {
+        clearTimeout(to);
+    });
+    $(document).on('mouseout', '.list-port-container', function(e2)
+    {
+        var obj = $(this);
+        to = setTimeout(function(){
+            obj.fadeOut('fast');
+        }, 1200);
+    });
 
     $(document).on('change', '.list-port-container select', function(e2)
     {
@@ -81,7 +94,7 @@ $(document).ready(function(e) {
         var v1 = registrationStatus[parseInt(arr[0])] || '';
         var v2 = technology[parseInt(arr[1])] || '';
         $('#resgistration-status .modal-body').empty();
-        var html = '<table class="modal-table modal-table-connection"><tbody><tr><td>Status</td><td>'+v1+'</td></tr><tr><td>Technology</td><td>'+v2+'</td></tr></tbody></table>'
+        var html = '<table class="modal-table modal-table-connection"><tbody><tr><td>Status</td><td>'+v1+'</td></tr><tr><td>Technology</td><td>'+v2+'</td></tr></tbody></table>';
         $('#resgistration-status .modal-body').append(html);
         $('#resgistration-status').modal('show');
     });
