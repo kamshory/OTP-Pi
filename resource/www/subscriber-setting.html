@@ -17,7 +17,7 @@
 	<script src="lib.assets/js/ws.min.js"></script>
 	<script>
 	function handleIncommingMessage(message) {
-		console.log("handleIncommingMessage", message);
+		//console.log("handleIncommingMessage", message);
 	}
 	</script>
 </head>
@@ -284,6 +284,18 @@
 								<input type="number" min="0" name="subscriber_mqtt_timeout" id="subscriber_mqtt_timeout" value=""> </td>
 						</tr>
 						<tr>
+							<td>Reconnect Delay</td>
+							<td>
+								<select name="subscriber_recoonect_delay">
+									<option value="15000">15 Seconds</option>
+									<option value="30000">30 Seconds</option>
+									<option value="60000">1 Minute</option>
+									<option value="12000">2 Minutes</option>
+									<option value="300000">5 Minutes</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
 							<td>Refresh Connection</td>
 							<td>
 								<select name="subscriber_amqp_refresh">
@@ -314,17 +326,17 @@
 					url: "data/subscriber-ws-setting/get",
 					dataType: "json",
 					success: function(data) {
-						$('input[name="subscriber_ws_enable"]').prop("checked", data.subscriberWsEnable);
-						$('select[name="subscriber_ws_ssl"]').val(data.subscriberWsSSL ? "1" : "0");
-						$('input[name="subscriber_ws_address"]').val(data.subscriberWsAddress);
-						$('input[name="subscriber_ws_port"]').val(data.subscriberWsPort);
-						$('input[name="subscriber_ws_path"]').val(data.subscriberWsPath);
-						$('input[name="subscriber_ws_username"]').val(data.subscriberWsUsername);
-						$('input[name="subscriber_ws_password"]').val(data.subscriberWsPassword);
-						$('input[name="subscriber_ws_topic"]').val(data.subscriberWsTopic);
-						$('input[name="subscriber_ws_timeout"]').val(data.subscriberWsTimeout);
-						$('input[name="subscriber_ws_reconnect_delay"]').val(data.subscriberWsReconnectDelay);
-						$('select[name="subscriber_ws_refresh"]').val(data.subscriberWsRefresh + "");
+						$('[name="subscriber_ws_enable"]').prop("checked", data.subscriberWsEnable);
+						$('[name="subscriber_ws_ssl"]').val(data.subscriberWsSSL ? "1" : "0");
+						$('[name="subscriber_ws_address"]').val(data.subscriberWsAddress);
+						$('[name="subscriber_ws_port"]').val(data.subscriberWsPort);
+						$('[name="subscriber_ws_path"]').val(data.subscriberWsPath);
+						$('[name="subscriber_ws_username"]').val(data.subscriberWsUsername);
+						$('[name="subscriber_ws_password"]').val(data.subscriberWsPassword);
+						$('[name="subscriber_ws_topic"]').val(data.subscriberWsTopic);
+						$('[name="subscriber_ws_timeout"]').val(data.subscriberWsTimeout);
+						$('[name="subscriber_ws_reconnect_delay"]').val(data.subscriberWsReconnectDelay);
+						$('[name="subscriber_ws_refresh"]').val(data.subscriberWsRefresh + "");
 					}
 				});
 				$.ajax({
@@ -332,15 +344,15 @@
 					url: "data/subscriber-amqp-setting/get",
 					dataType: "json",
 					success: function(data) {
-						$('input[name="subscriber_amqp_enable"]').prop("checked", data.subscriberAmqpEnable);
-						$('select[name="subscriber_amqp_ssl"]').val(data.subscriberAmqpSSL ? "1" : "0");
-						$('input[name="subscriber_amqp_address"]').val(data.subscriberAmqpAddress);
-						$('input[name="subscriber_amqp_port"]').val(data.subscriberAmqpPort);
-						$('input[name="subscriber_amqp_username"]').val(data.subscriberAmqpUsername);
-						$('input[name="subscriber_amqp_password"]').val(data.subscriberAmqpPassword);
-						$('input[name="subscriber_amqp_topic"]').val(data.subscriberAmqpTopic);
-						$('input[name="subscriber_amqp_timeout"]').val(data.subscriberAmqpTimeout);
-						$('select[name="subscriber_amqp_refresh"]').val(data.subscriberAmqpRefresh + "");
+						$('[name="subscriber_amqp_enable"]').prop("checked", data.subscriberAmqpEnable);
+						$('[name="subscriber_amqp_ssl"]').val(data.subscriberAmqpSSL ? "1" : "0");
+						$('[name="subscriber_amqp_address"]').val(data.subscriberAmqpAddress);
+						$('[name="subscriber_amqp_port"]').val(data.subscriberAmqpPort);
+						$('[name="subscriber_amqp_username"]').val(data.subscriberAmqpUsername);
+						$('[name="subscriber_amqp_password"]').val(data.subscriberAmqpPassword);
+						$('[name="subscriber_amqp_topic"]').val(data.subscriberAmqpTopic);
+						$('[name="subscriber_amqp_timeout"]').val(data.subscriberAmqpTimeout);
+						$('[name="subscriber_amqp_refresh"]').val(data.subscriberAmqpRefresh + "");
 					}
 				});
 				$.ajax({
@@ -348,16 +360,17 @@
 					url: "data/subscriber-mqtt-setting/get",
 					dataType: "json",
 					success: function(data) {
-						$('input[name="subscriber_mqtt_enable"]').prop("checked", data.subscriberMqttEnable);
-						$('select[name="subscriber_mqtt_ssl"]').val(data.subscriberMqttSSL ? "1" : "0");
-						$('input[name="subscriber_mqtt_address"]').val(data.subscriberMqttAddress);
-						$('input[name="subscriber_mqtt_port"]').val(data.subscriberMqttPort);
-						$('input[name="subscriber_mqtt_client_id"]').val(data.subscriberMqttClientID);
-						$('input[name="subscriber_mqtt_username"]').val(data.subscriberMqttUsername);
-						$('input[name="subscriber_mqtt_password"]').val(data.subscriberMqttPassword);
-						$('input[name="subscriber_mqtt_topic"]').val(data.subscriberMqttTopic);
-						$('input[name="subscriber_mqtt_timeout"]').val(data.subscriberMqttTimeout);
-						$('select[name="subscriber_mqtt_refresh"]').val(data.subscriberAmqpRefresh + "");
+						$('[name="subscriber_mqtt_enable"]').prop("checked", data.subscriberMqttEnable);
+						$('[name="subscriber_mqtt_ssl"]').val(data.subscriberMqttSSL ? "1" : "0");
+						$('[name="subscriber_mqtt_address"]').val(data.subscriberMqttAddress);
+						$('[name="subscriber_mqtt_port"]').val(data.subscriberMqttPort);
+						$('[name="subscriber_mqtt_client_id"]').val(data.subscriberMqttClientID);
+						$('[name="subscriber_mqtt_username"]').val(data.subscriberMqttUsername);
+						$('[name="subscriber_mqtt_password"]').val(data.subscriberMqttPassword);
+						$('[name="subscriber_mqtt_topic"]').val(data.subscriberMqttTopic);
+						$('[name="subscriber_mqtt_timeout"]').val(data.subscriberMqttTimeout);
+						$('[name="subscriber_recoonect_delay"]').val(data.subscriberWsReconnectDelay);
+						$('[name="subscriber_mqtt_refresh"]').val(data.subscriberAmqpRefresh + "");
 					}
 				});
 			});

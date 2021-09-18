@@ -1464,6 +1464,8 @@ public class HandlerWebManager implements HttpHandler {
 			int subscriberMqttTimeout = Utility.atoi(timeout);	
 			String refresh = queryPairs.getOrDefault("subscriber_mqtt_refresh", "0");
 			int subscriberMqttRefresh = Utility.atoi(refresh);
+			String recoonectDelay = queryPairs.getOrDefault("subscriber_recoonect_delay", "0");
+			long subscriberWsReconnectDelay = Utility.atol(recoonectDelay);
 			
 			ConfigSubscriberMQTT.setSubscriberMqttEnable(subscriberMqttEnable);
 			ConfigSubscriberMQTT.setSubscriberMqttSSL(subscriberMqttSSL);
@@ -1474,6 +1476,7 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigSubscriberMQTT.setSubscriberMqttPassword(subscriberMqttPassword);
 			ConfigSubscriberMQTT.setSubscriberMqttTopic(subscriberMqttTopic);
 			ConfigSubscriberMQTT.setSubscriberMqttTimeout(subscriberMqttTimeout);
+			ConfigSubscriberMQTT.setSubscriberWsReconnectDelay(subscriberWsReconnectDelay);
 			ConfigSubscriberMQTT.setSubscriberMqttRefresh(subscriberMqttRefresh);		
 
 			ConfigSubscriberMQTT.save();			
