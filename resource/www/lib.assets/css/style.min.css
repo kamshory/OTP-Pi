@@ -1003,3 +1003,28 @@
   h5.modal-title{
     float: left;
   }
+
+  .tr-dial {
+    display: none;
+  }
+  .port-input td:nth-child(2)
+  {
+    position: relative;
+  }
+  .port-input td:nth-child(2) .list-port{
+    position: absolute;
+    right: 6px;
+    top: 8px;
+  }
+  .port-input td:nth-child(2) .list-port-container{
+    position: absolute;
+    display: none;
+    background-color: #FFFFFF;
+    height: 20px;
+    z-index: 10;
+    width: 100%;
+    height: 100px;
+  }
+  .port-input td:nth-child(2) .list-port-container select{
+    height: 100px;
+  }

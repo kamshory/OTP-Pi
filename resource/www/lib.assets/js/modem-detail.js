@@ -1,4 +1,5 @@
 var setting = {};
+
 var registrationStatus = [
     'Not registered, MT is not currently searching a new operator to register to',
     'Registered, home network',
@@ -23,6 +24,7 @@ var technology = [
     'UTRAN w/HSDPA and HSUPA',
     'E-UTRAN'
 ];
+
 $(document).ready(function(e) {
     $.ajax({
         type: "GET",
@@ -33,37 +35,71 @@ $(document).ready(function(e) {
             applyTag();
         }
     });
+
     $(document).on('blur', '[name="recipient_prefix"]', function(e2) {
         applyTag();
     });
 
-    $(document).on('click', '#status', function(e2){
-        var stausData =  ($('#status').attr('data-status') || '').trim();
+    $(document).on('click', '.list-port', function(e2){
+        var sel = $(this);
+        $.ajax({
+            type: "GET",
+            url: "data/serial-port/list",
+            dataType: "json",
+            success: function(data) {
+                if(data.length > 0)
+                {
+                    sel.closest('tr').find('.list-port-container').css({'display':'block'});
+                    sel.closest('tr').find('.list-port-container select').empty();
+                    for(var i = 0; i<data.length; i++)
+                    {
+                        sel.closest('tr').find('.list-port-container select').append(new Option(data[i].descriptivePortName, data[i].systemPortName));
+                    }
+                    sel.closest('tr').find('.list-port-container select').focus();
+                }
+            }
+        });      
+    });
+
+    $(document).on('change', '.list-port-container select', function(e2)
+    {
+        var values = $(this).val() || [];
+        if(values.length > 0)
+        {
+            var value = values[0];
+            console.log(value);
+            $(this).closest('tr').find('input[type="text"]').val(value);
+            $('#detect').click();
+        }
+        $(this).closest('tr').find('.list-port-container').css({'display':'none'});
+    });
+
+    $(document).on('click', '#status', function(e2)
+    {
+        var stausData = ($('#status').attr('data-status') || '').trim();
         var arr = stausData.split(',');
         var v1 = registrationStatus[parseInt(arr[0])] || '';
         var v2 = technology[parseInt(arr[1])] || '';
         $('#resgistration-status .modal-body').empty();
-
         var html = '<table class="modal-table modal-table-connection"><tbody><tr><td>Status</td><td>'+v1+'</td></tr><tr><td>Technology</td><td>'+v2+'</td></tr></tbody></table>'
         $('#resgistration-status .modal-body').append(html);
-        /**
-        $('#resgistration-status .modal-body').append('<h4>Status</h4>');
-        $('#resgistration-status .modal-body').append('<p>'+v1+'</p>');
-        $('#resgistration-status .modal-body').append('<h4>Technology</h4>');
-        $('#resgistration-status .modal-body').append('<p>'+v2+'</p>');
-        */
- 
         $('#resgistration-status').modal('show');
     });
     
-    $(document).on('change', '[name="internet_access"]', function(e2) {
-        if($(this).prop('checked')) {
+    $(document).on('change', '[name="internet_access"]', function(e2) 
+    {
+        if($(this).prop('checked')) 
+        {
             $('.tr-dial').css('display', 'table-row');
-        } else {
+        } 
+        else 
+        {
             $('.tr-dial').css('display', 'none');
         }
     });
-    $(document).on('click', '#detect', function(e2) {
+
+    $(document).on('click', '#detect', function(e2) 
+    {
         var port = $(this).closest('form').find('[name="port"]').val().trim();
         if(port == '') 
         {

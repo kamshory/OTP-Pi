@@ -240,8 +240,9 @@ public class GSM {
     }
     private void loadSMS(String storage, String smsStatus, List<SMS> smsList) throws GSMException
     {
-    	this.executeAT(this.selectStorage(storage), 1, true);
+    	storage = this.fixArrayString(storage);	
     	smsStatus = this.fixArrayString(smsStatus);	
+    	this.executeAT(this.selectStorage(storage), 1, true);
     	String result = this.executeAT("AT+CMGL="+smsStatus+"", 20, true);	  	
 		result = this.fixingRawData(result);				
 		String[] arr = result.split("\r\n");	
@@ -344,12 +345,12 @@ public class GSM {
 	}
     private String fixArrayString(String input)
     {
-    	String[] stts = input.split(",");
-    	for(int i = 0; i < stts.length; i++)
+    	String[] values = input.split(",");
+    	for(int i = 0; i < values.length; i++)
     	{
-    		stts[i] = "\""+stts[i]+"\"";
+    		values[i] = "\""+values[i]+"\"";
     	}
-    	List<String> lst = Arrays.asList(stts);
+    	List<String> lst = Arrays.asList(values);
     	return String.join(",", lst);    	
     }
     private String fixResultByOK(String result) 

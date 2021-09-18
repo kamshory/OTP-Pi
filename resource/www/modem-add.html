@@ -67,11 +67,6 @@
 			</div>
 			<!--/.container-fluid -->
 		</nav>
-		<style>
-		.tr-dial {
-			display: none;
-		}
-		</style>
 		<div class="phone-page">
 			<h3>Modem</h3>
 			<form action="modem.html" method="post">
@@ -83,10 +78,15 @@
 								<input type="text" class="form-control" name="name" value="">
 							</td>
 						</tr>
-						<tr>
+						<tr class="port-input">
 							<td>Port</td>
 							<td>
 								<input type="text" class="form-control" name="port" value="">
+								<input type="button" class="btn btn-sm btn-primary list-port" value="List">
+								<div class="list-port-container">
+									<select class="port-available" multiple>
+									</select>
+								</div>
 							</td>
 						</tr>
 						<tr>

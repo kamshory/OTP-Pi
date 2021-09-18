@@ -10,6 +10,7 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.fazecast.jSerialComm.SerialPort;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigAPIUser;
@@ -218,13 +219,61 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			this.handleOpenPort(httpExchange);
 		}
+		else if(path.startsWith("/data/serial-port/list"))
+		{
+			this.handleListPort(httpExchange);
+		}
 		else
 		{
 			httpExchange.sendResponseHeaders(404, 0);
 			httpExchange.close();
 		}
 	}
-	
+	public void handleListPort(HttpExchange httpExchange) throws IOException
+	{
+		Headers requestHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
+		CookieServer cookie = new CookieServer(requestHeaders, Config.getSessionName(), Config.getSessionLifetime());
+		byte[] responseBody = "".getBytes();
+		int statusCode = HttpStatus.OK;
+		try
+		{
+			if(WebUserAccount.checkUserAuth(requestHeaders))
+			{
+				SerialPort[] ports = SerialPort.getCommPorts();
+		        JSONArray listPort = new JSONArray();
+		        for (SerialPort port : ports) 
+		        {
+		        	JSONObject obj = new JSONObject();
+		        	obj.put("systemPortName", port.getSystemPortName());
+		        	obj.put("descriptivePortName", port.getDescriptivePortName());
+		        	obj.put("portDescription", port.getPortDescription());
+		        	listPort.put(obj);
+		        }
+		        responseBody = listPort.toString().getBytes();
+			}
+			else
+			{
+				statusCode = HttpStatus.UNAUTHORIZED;			
+			}
+		}
+		catch(NoUserRegisteredException e)
+		{
+			/**
+			 * Do nothing
+			 */
+			statusCode = HttpStatus.UNAUTHORIZED;
+		}		
+		cookie.saveSessionData();
+		cookie.putToHeaders(responseHeaders);
+		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
+		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
+
+		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+		httpExchange.getResponseBody().write(responseBody);
+		httpExchange.close();	
+		
+	}
 	public void handleOpenPort(HttpExchange httpExchange) throws IOException
 	{
 		Headers requestHeaders = httpExchange.getRequestHeaders();
