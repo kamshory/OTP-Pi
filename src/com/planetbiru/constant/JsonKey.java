@@ -72,6 +72,7 @@ public class JsonKey {
 	public static final String MODEM_ID                   = "modem_id";
 	public static final String HASH                       = "hash";
 	public static final String EXPIRATION                 = "expiration";
+	public static final String REFERENCE                  = "reference";
 	
 	private JsonKey()
 	{
