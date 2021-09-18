@@ -480,6 +480,12 @@ OTP-Pi can open and close ports of the operating system used by SMS Broker. Clos
 
 The monitor can be used to view the activity of the modem installed on the OTP-Pi. When the OTP-Pi sends an SMS, the OTP-Pi will show where the SMS request came from and which modem was used. In addition, the status of the modem will be shown so that it will be seen which modems are connected correctly.
 
+## SMS Inbox
+
+OTP-Pi provides a feature to read incoming SMS. The OTP-Pi will read all the SMS on the SIM card and move them to the storage on the device.
+
+![Screenshot](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/feature-inbox.png)
+
 ## Real Time Clock
 
 The Real Time Clock or RTC module is required to keep the device time when the device is turned off and not connected to the internet. The device must use the correct time so that the cookies sent by the device are not deleted by the browser due to expiration so that the administrator can manage the device including making settings. In addition, the device needs to record the time when an error occurred so that the error log can be read by the user for mitigation.
