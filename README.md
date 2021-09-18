@@ -51,7 +51,7 @@ OTP-Pi requires Raspberry Pi 3 Model B or higher. Minimum RAM is 1 GB and SD Car
 
 Modem is a list of modems installed on the OTP-Pi. Modems are named based on the make and model of the device and the connection used. The modem can be turned on and off at any time. An inactive modem will not be used to send SMS even if it is physically attached to the OTP-Pi and receiving power.
 
-OTP-Pi can use multiple modems at once. Sending SMS will use the Round-Robin algorithm where all active modems will be used in rotation.
+OTP-Pi can use multiple modems at once. By default, the OTP-Pi can use up to 4 modems at once without the need for additional devices. The use of a hub is possible so that users can use more than 4 modems in one OTP-Pi device. The modems are registered as usual. Sending SMS will use the Round-Robin algorithm where all active modems will be used in rotation.
 
 ## Prefix-Based Routing
 
