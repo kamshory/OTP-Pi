@@ -16,7 +16,7 @@ public class Buzzer {
 	public static void toneDisconnectAmqp() {
 		if(ConfigBell.isAmqpDisconnected())
 		{
-			// logger.info("toneDisconnectAmqp");
+			logger.info("toneDisconnectAmqp");
 			Music.play(Config.getSoundPIN(), Config.getSoundDisconnectTone(), Config.getSoundDisconnectOctave(), Config.getSoundDisconnectTempo());
 		}		
 	}
@@ -24,7 +24,7 @@ public class Buzzer {
 	public static void toneDisconnectMqtt() {
 		if(ConfigBell.isMqttDisconnected())
 		{
-			// logger.info("toneDisconnectMqtt");
+			logger.info("toneDisconnectMqtt");
 			Music.play(Config.getSoundPIN(), Config.getSoundDisconnectTone(), Config.getSoundDisconnectOctave(), Config.getSoundDisconnectTempo());
 		}		
 	}
@@ -32,7 +32,7 @@ public class Buzzer {
 	public static void toneDisconnectWs() {
 		if(ConfigBell.isWsDisconnected())
 		{
-			// logger.info("toneDisconnectWs");
+			logger.info("toneDisconnectWs");
 			Music.play(Config.getSoundPIN(), Config.getSoundDisconnectTone(), Config.getSoundDisconnectOctave(), Config.getSoundDisconnectTempo());
 		}		
 	}
@@ -40,7 +40,7 @@ public class Buzzer {
 	public static void toneSMSFailed() {
 		if(ConfigBell.isSmsFailure())
 		{
-			// logger.info("toneSMSFailed");
+			logger.info("toneSMSFailed");
 			Music.play(Config.getSoundPIN(), Config.getSoundAlertTone(), Config.getSoundAlertOctave(), Config.getSoundAlertTempo());
 		}
 	}
