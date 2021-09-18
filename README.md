@@ -599,6 +599,20 @@ In this scenario, the App Server can directly send the OTP to the OTP-Pi via HTT
 
 ![OTP-Pi Topology Scenario 1](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/resource/www/lib.assets/images/topology-1.svg)
 
+In this scenario, the application server can generate and validate the OTP sent for each transaction. OTP creation and validation requires the following parameters:
+
+**reference**
+
+Unique transaction reference number. This number must be different from one transaction to another. This number is the key to validate the OTP.
+
+**receiver**
+
+Receiver is the phone number or email address of the recipient.
+
+**param1, param2, param3, param4**
+
+These four parameters are additional information for validating the OTP. These four parameters must be the same between OTP creation and validation. Of course this parameter can be filled with empty strings. Information that can be used as this parameter is for example the sender's account number, the recipient's account number, the transaction amount (in string format), and so on.
+
 Users can use a cheap domain and use the Dynamic Domain Name System for free. With the use of port forwarding on the router, OTP-Pi can be accessed from anywhere using a domain or subdomain. In this scenario, the user needs:
 
 1. OTP-Pi
