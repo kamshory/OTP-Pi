@@ -599,6 +599,14 @@ In this scenario, the App Server can directly send the OTP to the OTP-Pi via HTT
 
 ![OTP-Pi Topology Scenario 1](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/resource/www/lib.assets/images/topology-1.svg)
 
+Users can use a cheap domain and use the Dynamic Domain Name System for free. With the use of port forwarding on the router, OTP-Pi can be accessed from anywhere using a domain or subdomain. In this scenario, the user needs:
+
+1. OTP-Pi
+2. Fixed internet connection with public IP (static or dynamic)
+3. Router that can do port forwarding
+4. Domains whose name servers can be set
+5. Dynamic DNS service (free or paid)
+
 In this scenario, the application server can generate and validate the OTP sent for each transaction. OTP creation and validation requires the following parameters:
 
 **reference**
@@ -613,13 +621,7 @@ In this scenario, the application server can generate and validate the OTP sent 
 
 These four parameters are additional information for validating the OTP. These four parameters must be the same between OTP creation and validation. Of course this parameter can be filled with empty strings. Information that can be used as this parameter is for example the sender's account number, the recipient's account number, the transaction amount (in string format), and so on.
 
-Users can use a cheap domain and use the Dynamic Domain Name System for free. With the use of port forwarding on the router, OTP-Pi can be accessed from anywhere using a domain or subdomain. In this scenario, the user needs:
-
-1. OTP-Pi
-2. Fixed internet connection with public IP (static or dynamic)
-3. Router that can do port forwarding
-4. Domains whose name servers can be set
-5. Dynamic DNS service (free or paid)
+OTP-Pi does not store the clear OTP but only stores the hash. In addition, the OTP-Pi immediately deletes the SMS sent immediately after. Thus, the OTP is very safe because it is only known by the recipient.
 
 **1. REST API**
 
