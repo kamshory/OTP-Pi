@@ -14009,3 +14009,19 @@ Caused by: java.io.FileNotFoundException: \etc\wvdial.conf (The system cannot fi
 2021-09-18 07:57:05 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
 2021-09-18 07:57:05 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
 2021-09-18 07:57:05 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-18 07:59:06 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-18 07:59:06 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-18 07:59:06 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-18 07:59:06 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-18 07:59:06 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-18 08:23:37 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-18 08:23:37 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-18 08:23:37 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-18 08:23:37 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS="SM"
+2021-09-18 08:23:37 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-18 08:25:09 [INFO  ] Application                     :195  - Service started
+2021-09-18 08:29:09 [INFO  ] Application                     :195  - Service started
+2021-09-18 08:31:19 [INFO  ] Application                     :195  - Service started
+2021-09-18 08:31:38 [INFO  ] Application                     :195  - Service started
+2021-09-18 08:42:12 [INFO  ] Application                     :195  - Service started
+2021-09-18 08:42:59 [INFO  ] Application                     :195  - Service started
