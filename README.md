@@ -603,11 +603,11 @@ In this scenario, the application server can generate and validate the OTP sent 
 
 **reference**
 
-Unique transaction reference number. This number must be different from one transaction to another. This number is the key to validate the OTP.
+`reference` is unique transaction reference number. This number must be different from one transaction to another. This number is the key to validate the OTP.
 
 **receiver**
 
-Receiver is the phone number or email address of the recipient.
+`receiver` is the phone number or email address of the recipient.
 
 **param1, param2, param3, param4**
 
