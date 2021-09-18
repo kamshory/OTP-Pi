@@ -593,7 +593,7 @@ To use Mosquitto, please open the link https://mosquitto.org/
 
 ![OTP-Pi Topology](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/resource/www/lib.assets/images/topology.svg)
 
-### Scenario 1 - OTP-Pi App Server Accessible
+### Scenario 1 - App Server Can Access OTP-Pi 
 
 In this scenario, the App Server can directly send the OTP to the OTP-Pi via HTTP.
 
@@ -608,6 +608,146 @@ Users can use a cheap domain and use the Dynamic Domain Name System for free. Wi
 5. Dynamic DNS service (free or paid)
 
 **1. REST API**
+
+**Create OTP Request**
+
+```http
+POST /api/otp HTTP/1.1
+Host: sub.domain.tld
+Connection: close
+User-agent: KSPS
+Content-type: application/json
+Content-length: 313
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+{
+	"command": "create-otp",
+	"data": {
+		"date_time": 1629685778,
+		"expiration": 1629685838,
+		"receiver": "08126666666",
+		"message": "Your OTP is %s",
+		"reference": "12345678901234567890",
+		"param1": "100000",
+		"param2": "1234567890",
+		"param3": "987654",
+		"param4": "674527846556468254"
+	}
+}
+```
+
+| Parameter | Type | Description |
+| --------- | ---- | ----------|
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
+| `data`.receiver | String | MSISDN of the receiver |
+| `data`.message | String | Content format of the SMS. Note that the format must be contains one %s |
+| `data`.reference | String | Reference ID of the transaction. This value must match between `Create OTP` and `Validate OTP` | 
+| `data`.param1 | String | Parameter 1. This value must match between `Create OTP` and `Validate OTP` | 
+| `data`.param2 | String | Parameter 2. This value must match between `Create OTP` and `Validate OTP` | 
+| `data`.param3 | String | Parameter 3. This value must match between `Create OTP` and `Validate OTP` | 
+| `data`.param4 | String | Parameter 4. This value must match between `Create OTP` and `Validate OTP` | 
+
+
+**Create OTP Response**
+
+```http
+HTTP/1.1 200 OK
+Host: sub.domain.tld
+Connection: close
+Content-type: application/json
+Content-length: 199
+
+{
+	"command": "create-otp",
+	"response_code": "000",
+	"data": {
+		"date_time": 1629685778,
+		"receiver": "08126666666",
+		"reference": "12345678901234567890"
+	}
+}
+```
+
+| Parameter | Type | Description |
+| --------- | ---- | ----------|
+| command | String | Command for OTP-Pi |
+| response_code | String | Response Code | 
+| data | Object | Data for OTP-Pi | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
+| `data`.receiver | String | MSISDN of the receiver |
+| `data`.reference | String | Reference ID of the transaction. This value must match between `Create OTP` and `Validate OTP` | 
+
+**Validate OTP Request**
+
+```http
+POST /api/otp HTTP/1.1
+Host: sub.domain.tld
+Connection: close
+User-agent: KSPS
+Content-type: application/json
+Content-length: 274
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+{
+	"command": "validate-otp",
+	"data": {
+		"date_time": 1629685778,
+		"receiver": "08126666666",
+		"otp": "123456",
+		"reference": "12345678901234567890",
+		"param1": "100000",
+		"param2": "1234567890",
+		"param3": "987654",
+		"param4": "674527846556468254"
+	}
+}
+```
+
+| Parameter | Type | Description |
+| --------- | ---- | ----------|
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
+| `data`.receiver | String | MSISDN of the receiver |
+| `data`.otp | String | Cleat OTP to be valieadted |
+| `data`.reference | String | Reference ID of the transaction. This value must match between `Create OTP` and `Validate OTP` | 
+| `data`.param1 | String | Parameter 1. This value must match between `Create OTP` and `Validate OTP` | 
+| `data`.param2 | String | Parameter 2. This value must match between `Create OTP` and `Validate OTP` | 
+| `data`.param3 | String | Parameter 3. This value must match between `Create OTP` and `Validate OTP` | 
+| `data`.param4 | String | Parameter 4. This value must match between `Create OTP` and `Validate OTP` | 
+
+
+**Validate OTP Response**
+
+```http
+HTTP/1.1 200 OK
+Host: sub.domain.tld
+Connection: close
+Content-type: application/json
+Content-length: 201
+
+{
+	"command": "validate-otp",
+	"response_code": "000",
+	"data": {
+		"date_time": 1629685778,
+		"receiver": "08126666666",
+		"reference": "12345678901234567890"
+	}
+}
+```
+
+| Parameter | Type | Description |
+| --------- | ---- | ----------|
+| command | String | Command for OTP-Pi |
+| response_code | String | Response Code | 
+| data | Object | Data for OTP-Pi | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
+| `data`.receiver | String | MSISDN of the receiver |
+| `data`.reference | String | Reference ID of the transaction. This value must match between `Create OTP` and `Validate OTP` | 
+
 
 **Send SMS Request**
 
@@ -638,6 +778,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 | data | Object | Data for OTP-Pi | 
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.id | String | SMS ID |
+| `data`.reference | String | Reference ID of the transaction. This value must match between `Create OTP` and `Validate OTP` | 
 | `data`.receiver | String | MSISDN of the receiver |
 | `data`.message | String | Content of the SMS |
 
@@ -728,7 +869,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.receiver | String | MSISDN number to be unblocked |
 
-### Scenario 2 - OTP-Pi Can't Access App Server
+### Scenario 2 - App Server Can't Access OTP-Pi
 
 In this scenario, the App Server may send the OTP to RabbitMQ Server, Mosquitto Server or WSMessageBroker. WSMessageBroker uses the WebSoket protocol and Basic Authentication. Both App Server and OTP-Pi act as clients of WSMessageBroker.
 
