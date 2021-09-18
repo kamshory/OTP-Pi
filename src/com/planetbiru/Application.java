@@ -201,23 +201,31 @@ public class Application {
 		
 	}
 	
-	private static void schedulerStart() {
+	public static void schedulerStart() {
 		Application.scheduller = new Scheduller();
 		Application.scheduller.start();		
 	}
 
-	private static void serverEmailStart() {
+	public static void serverEmailStart() {
 		Application.smtp = new ServerEmail();
 		Application.smtp.start();
 		
 	}
 
-	private static void modemInternetStart() {
+	public static void modemInternetStart() {
 		InternetDialUtil.start();
 	}
 
-	private static void modemSMSStart() {
+	public static void modemSMSStart() {
 		GSMUtil.start();	
+	}
+	
+	public static void modemInternetStop() {
+		InternetDialUtil.stop();
+	}
+
+	public static void modemSMSStop() {
+		GSMUtil.stop();	
 	}
 
 	private static void restAPIStart() {

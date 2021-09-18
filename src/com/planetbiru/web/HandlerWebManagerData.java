@@ -1061,10 +1061,10 @@ public class HandlerWebManagerData implements HttpHandler {
 		JSONArray allSMS = new JSONArray();
 		if(modemID.isEmpty())
 		{
-			List<GSMInstance> instances = GSMUtil.getGsmInstance();
+			List<GSMInstance> instances = GSMUtil.getGSMInstance();
 			for(int i = 0; i<instances.size(); i++)
 			{
-				GSMInstance instance =  GSMUtil.getGsmInstance().get(i);
+				GSMInstance instance =  GSMUtil.getGSMInstance().get(i);
 				DataModem modemData = ConfigModem.getModemData(instance.getId());
 				List<SMS> sms = instance.readSMS(storage, smsStatus);
 				for(int j = 0; j < sms.size(); j++)
