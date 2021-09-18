@@ -108,6 +108,8 @@ public class Config {
 	private static int soundErrorTempo = 0;
 	private static String smsInboxStorage = "SM";
 	private static String smsInboxStatus = "REC UNREAD";
+	private static String otpSalt = "gfiushciyw89erywe98r23r23rj2";
+	private static int otpLength = 6;
 	
 	private Config()
 	{
@@ -938,6 +940,22 @@ public class Config {
 
 	public static void setSmsInboxStatus(String smsInboxStatus) {
 		Config.smsInboxStatus = smsInboxStatus;
+	}
+
+	public static int getOtpLength() {
+		return otpLength;
+	}
+
+	public static void setOtpLength(int otpLength) {
+		Config.otpLength = otpLength;
+	}
+
+	public static String getOtpSalt() {
+		return otpSalt;
+	}
+
+	public static void setOtpSalt(String otpSalt) {
+		Config.otpSalt = otpSalt;
 	}
 
 }

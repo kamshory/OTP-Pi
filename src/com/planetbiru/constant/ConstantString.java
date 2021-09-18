@@ -40,6 +40,8 @@ public class ConstantString {
 	public static final String ACCEPT                          = "Accept";
 	public static final String BEARER                          = "Bearer ";
 	public static final String TEXT_PLAIN                      = "text/plain";
+	public static final String CREATE_OTP                      = "create-otp";
+	public static final String VALIDATE_OTP                    = "validate-otp";
 	
 	private ConstantString()
 	{
