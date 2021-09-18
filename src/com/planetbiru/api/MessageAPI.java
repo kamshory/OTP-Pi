@@ -77,7 +77,7 @@ public class MessageAPI {
 				}
 				else if(command.equals(ConstantString.VALIDATE_OTP))
 				{
-					logger.info("Create OTP");
+					logger.info("Validate OTP");
 					responseJSON = this.validateOTP(command, data, ste);					
 				}
 			}		
@@ -150,25 +150,20 @@ public class MessageAPI {
 		String responseCode = ResponseCode.SUCCESS;
 		JSONObject requestJSON = new JSONObject();
 		JSONObject responseData = new JSONObject();
-		if(OTP.isExists(otpID))
+		
+		boolean valid = OTP.validateOTP(otpID, receiver, lifeTime, param1, param2, param3, param4, clearOTP);
+		responseData.put("reference", otpID);
+		responseData.put("receiver", receiver);
+		responseData.put("date_time", dateTime);
+		if(valid)
 		{
-			responseCode = ResponseCode.FAILED;
+			responseCode = ResponseCode.SUCCESS;
 		}
 		else
 		{
-			boolean valid = OTP.validateOTP(otpID, receiver, lifeTime, param1, param2, param3, param4, clearOTP);
-			responseData.put("reference", otpID);
-			responseData.put("receiver", receiver);
-			responseData.put("date_time", dateTime);
-			if(valid)
-			{
-				responseCode = ResponseCode.SUCCESS;
-			}
-			else
-			{
-				responseCode = ResponseCode.FAILED;
-			}
+			responseCode = ResponseCode.FAILED;
 		}
+		
 		requestJSON.put(JsonKey.COMMAND, command);
 		requestJSON.put(JsonKey.DATA, responseData);
 		requestJSON.put(JsonKey.RESPONSE_CODE, responseCode);

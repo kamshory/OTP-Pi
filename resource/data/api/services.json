@@ -1,1 +1,1 @@
-{"emailPath":"/api/email","httpsEnable":true,"blockingPath":"/api/block","httpPort":8899,"smsPath":"/aps/sms","unblockingPath":"/api/unblock","httpsPort":10443,"httpEnable":true,"messagePath":"/api/message"}
+{"emailPath":"/api/email","httpsEnable":true,"blockingPath":"/api/block","httpPort":8899,"smsPath":"/api/sms","unblockingPath":"/api/unblock","httpsPort":10443,"httpEnable":true,"messagePath":"/api/message"}

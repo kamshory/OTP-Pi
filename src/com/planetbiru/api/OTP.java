@@ -47,10 +47,10 @@ public class OTP {
 	public static boolean validateOTP(String otpID, String receiver, long lifeTime, String param1, String param2,
 			String param3, String param4, String plainOTP) {
 		String hash = OTP.createHash(otpID, plainOTP, receiver, param1, param2, param3, param4);
-		if(OTP.data.has(otpID))
+		if(OTP.isExists(otpID))
 		{
 			JSONObject otp = OTP.data.optJSONObject(otpID);
-			if(otp != null && otp.optString(otpID, "").equals(hash))
+			if(otp != null && otp.optString("hash", "").equals(hash))
 			{
 				return true;
 			}
