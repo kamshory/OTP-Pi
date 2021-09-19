@@ -16502,3 +16502,176 @@ ERROR
 2021-09-19 11:23:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
 2021-09-19 11:23:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS=""SM""
 2021-09-19 11:23:01 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-19 11:32:46 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMI
+2021-09-19 11:32:46 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMM
+2021-09-19 11:32:46 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMR
+2021-09-19 11:32:46 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGSN
+2021-09-19 11:32:46 [INFO  ] GSM                             :131  - Execute AT Command : AT+CIMI
+2021-09-19 11:32:46 [INFO  ] GSM                             :131  - Execute AT Command : AT+CCID
+2021-09-19 11:32:46 [INFO  ] GSM                             :131  - Execute AT Command : AT+CREG?
+2021-09-19 11:32:47 [INFO  ] GSM                             :131  - Execute AT Command : AT+CNUM
+2021-09-19 11:32:47 [INFO  ] GSM                             :131  - Execute AT Command : AT+COPS?
+2021-09-19 11:32:47 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCA
+2021-09-19 11:57:26 [INFO  ] Application                     :195  - Service started
+2021-09-19 11:58:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMI
+2021-09-19 11:58:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMM
+2021-09-19 11:58:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMR
+2021-09-19 11:58:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGSN
+2021-09-19 11:58:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CIMI
+2021-09-19 11:58:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CCID
+2021-09-19 11:58:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CREG?
+2021-09-19 11:58:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CNUM
+2021-09-19 11:58:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+COPS?
+2021-09-19 11:58:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCA
+2021-09-19 11:58:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMI
+2021-09-19 11:58:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMM
+2021-09-19 11:58:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMR
+2021-09-19 11:58:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGSN
+2021-09-19 11:58:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+CIMI
+2021-09-19 11:58:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+CCID
+2021-09-19 11:58:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+CREG?
+2021-09-19 11:58:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+CNUM
+2021-09-19 11:58:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+COPS?
+2021-09-19 11:58:02 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCA
+2021-09-19 11:58:24 [INFO  ] Application                     :195  - Service started
+2021-09-19 11:58:30 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMI
+2021-09-19 11:58:30 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMM
+2021-09-19 11:58:30 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMR
+2021-09-19 11:58:30 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGSN
+2021-09-19 11:58:30 [INFO  ] GSM                             :131  - Execute AT Command : AT+CIMI
+2021-09-19 11:58:31 [INFO  ] GSM                             :131  - Execute AT Command : AT+CCID
+2021-09-19 11:58:31 [INFO  ] GSM                             :131  - Execute AT Command : AT+CREG?
+2021-09-19 11:58:31 [INFO  ] GSM                             :131  - Execute AT Command : AT+CNUM
+2021-09-19 11:58:31 [INFO  ] GSM                             :131  - Execute AT Command : AT+COPS?
+2021-09-19 11:58:31 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCA
+2021-09-19 11:58:42 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMI
+2021-09-19 11:58:42 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMM
+2021-09-19 11:58:42 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMR
+2021-09-19 11:58:42 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGSN
+2021-09-19 11:58:42 [INFO  ] GSM                             :131  - Execute AT Command : AT+CIMI
+2021-09-19 11:58:43 [INFO  ] GSM                             :131  - Execute AT Command : AT+CCID
+2021-09-19 11:58:43 [INFO  ] GSM                             :131  - Execute AT Command : AT+CREG?
+2021-09-19 11:58:43 [INFO  ] GSM                             :131  - Execute AT Command : AT+CNUM
+2021-09-19 11:58:43 [INFO  ] GSM                             :131  - Execute AT Command : AT+COPS?
+2021-09-19 11:58:43 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCA
+2021-09-19 12:00:46 [INFO  ] Application                     :195  - Service started
+2021-09-19 12:00:55 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMI
+2021-09-19 12:00:55 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMM
+2021-09-19 12:00:56 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMR
+2021-09-19 12:00:56 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGSN
+2021-09-19 12:00:56 [INFO  ] GSM                             :131  - Execute AT Command : AT+CIMI
+2021-09-19 12:00:56 [INFO  ] GSM                             :131  - Execute AT Command : AT+CCID
+2021-09-19 12:00:56 [INFO  ] GSM                             :131  - Execute AT Command : AT+CREG?
+2021-09-19 12:00:56 [INFO  ] GSM                             :131  - Execute AT Command : AT+CNUM
+2021-09-19 12:00:56 [INFO  ] GSM                             :131  - Execute AT Command : AT+COPS?
+2021-09-19 12:00:56 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCA
+2021-09-19 12:01:33 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-19 12:01:33 [INFO  ] GSM                             :431  - msg1 = ATE0
+OK
+
+2021-09-19 12:01:33 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-19 12:01:33 [INFO  ] GSM                             :433  - msg2 = 
+OK
+
+2021-09-19 12:01:33 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-19 12:01:33 [INFO  ] GSM                             :435  - msg3 = 
+OK
+
+2021-09-19 12:01:33 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGW="081266612126"
+2021-09-19 12:01:33 [INFO  ] GSM                             :437  - msg4 = 
+> 
+2021-09-19 12:01:33 [INFO  ] GSM                             :131  - Execute AT Command : TEST
+2021-09-19 12:01:34 [INFO  ] GSM                             :439  - msg5 = 
+> 
+2021-09-19 12:01:34 [INFO  ] GSM                             :131  - Execute AT Command : 
+2021-09-19 12:01:34 [INFO  ] GSM                             :441  - msg6 = 
+> 
+ERROR
+
+2021-09-19 12:37:51 [INFO  ] Application                     :195  - Service started
+2021-09-19 12:39:06 [INFO  ] Application                     :198  - Service started
+2021-09-19 12:39:59 [INFO  ] Application                     :198  - Service started
+2021-09-19 12:41:33 [INFO  ] Application                     :198  - Service started
+2021-09-19 12:41:45 [INFO  ] MessageAPI                      :44   - Topic     : 
+2021-09-19 12:41:45 [INFO  ] MessageAPI                      :45   - Message   : {
+    "data": {
+        "reference": "1632030105110",
+        "date_time": 1632030105,
+        "receiver": "08126666666",
+        "expiration": 1632030105170,
+        "message": "Your OTP is %s",
+        "param3": "987654",
+        "param4": "674527846556468254",
+        "param1": "100000",
+        "param2": "1234567890"
+    },
+    "command": "create-otp"
+}
+2021-09-19 12:41:45 [INFO  ] MessageAPI                      :46   - Command   : create-otp
+2021-09-19 12:41:45 [INFO  ] MessageAPI                      :47   - Date Time : 1632030105
+2021-09-19 12:41:45 [INFO  ] MessageAPI                      :75   - Create OTP
+2021-09-19 12:41:45 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-19 12:41:45 [INFO  ] GSM                             :431  - msg1 = 
+OK
+
+2021-09-19 12:41:45 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-19 12:41:45 [INFO  ] GSM                             :433  - msg2 = 
+OK
+
+2021-09-19 12:41:45 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-19 12:41:45 [INFO  ] GSM                             :435  - msg3 = 
+OK
+
+2021-09-19 12:41:45 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGW="08126666666"
+2021-09-19 12:41:45 [INFO  ] GSM                             :437  - msg4 = 
+> 
+2021-09-19 12:41:45 [INFO  ] GSM                             :131  - Execute AT Command : Your OTP is 561383
+2021-09-19 12:41:45 [INFO  ] GSM                             :439  - msg5 = 
+> 
+2021-09-19 12:41:45 [INFO  ] GSM                             :131  - Execute AT Command : 
+2021-09-19 12:41:46 [INFO  ] GSM                             :441  - msg6 = 
+> 
+ERROR
+
+2021-09-19 12:44:22 [INFO  ] Application                     :198  - Service started
+2021-09-19 12:44:34 [INFO  ] MessageAPI                      :44   - Topic     : 
+2021-09-19 12:44:34 [INFO  ] MessageAPI                      :45   - Message   : {
+    "data": {
+        "reference": "1632030274149",
+        "date_time": 1632030274,
+        "receiver": "08126666666",
+        "expiration": 1632030274209,
+        "message": "Your OTP is %s",
+        "param3": "987654",
+        "param4": "674527846556468254",
+        "param1": "100000",
+        "param2": "1234567890"
+    },
+    "command": "create-otp"
+}
+2021-09-19 12:44:34 [INFO  ] MessageAPI                      :46   - Command   : create-otp
+2021-09-19 12:44:34 [INFO  ] MessageAPI                      :47   - Date Time : 1632030274
+2021-09-19 12:44:34 [INFO  ] MessageAPI                      :75   - Create OTP
+2021-09-19 12:44:34 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-19 12:44:34 [INFO  ] GSM                             :431  - msg1 = 
+OK
+
+2021-09-19 12:44:34 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-19 12:44:34 [INFO  ] GSM                             :433  - msg2 = 
+OK
+
+2021-09-19 12:44:34 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-19 12:44:34 [INFO  ] GSM                             :435  - msg3 = 
+OK
+
+2021-09-19 12:44:34 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGW="08126666666"
+2021-09-19 12:44:34 [INFO  ] GSM                             :437  - msg4 = 
+> 
+2021-09-19 12:44:34 [INFO  ] GSM                             :131  - Execute AT Command : Your OTP is 646376
+2021-09-19 12:44:34 [INFO  ] GSM                             :439  - msg5 = 
+> 
+2021-09-19 12:44:34 [INFO  ] GSM                             :131  - Execute AT Command : 
+2021-09-19 12:44:35 [INFO  ] GSM                             :441  - msg6 = 
+> 
+ERROR
+
