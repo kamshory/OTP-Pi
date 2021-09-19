@@ -12,6 +12,11 @@ public class OTP {
 	private static Random rand = new Random(); 
 	private static JSONObject data = new JSONObject();
 	
+	private OTP()
+	{
+		
+	}
+	
 	public static boolean isExists(String otpID) {
 		return OTP.data.has(otpID);
 	}
@@ -25,12 +30,16 @@ public class OTP {
 		{
 			plainOTP = plainOTP.substring(0, length);
 		}
-		JSONObject record = new JSONObject();
-		long expiration = System.currentTimeMillis() + (lifeTime * 1000);		
+		JSONObject otpRecord = new JSONObject();
+		long expiration = System.currentTimeMillis() + (lifeTime * 1000);	
+		if(expiration < 0)
+		{
+			expiration = System.currentTimeMillis() + Config.getOtpLifetime();
+		}
 		String hash = OTP.createHash(otpID, plainOTP, receiver, param1, param2, param3, param4);
-		record.put(JsonKey.HASH, hash);
-		record.put(JsonKey.EXPIRATION, expiration);
-		OTP.data.put(otpID, record);		
+		otpRecord.put(JsonKey.HASH, hash);
+		otpRecord.put(JsonKey.EXPIRATION, expiration);
+		OTP.data.put(otpID, otpRecord);		
 		return plainOTP;
 	}
 

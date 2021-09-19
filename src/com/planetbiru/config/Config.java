@@ -110,6 +110,7 @@ public class Config {
 	private static String smsInboxStatus = "REC UNREAD";
 	private static String otpSalt = "gfiushciyw89erywe98r23r23rj2";
 	private static int otpLength = 6;
+	private static long otpLifetime = 30000;
 	
 	private Config()
 	{
@@ -956,6 +957,14 @@ public class Config {
 
 	public static void setOtpSalt(String otpSalt) {
 		Config.otpSalt = otpSalt;
+	}
+
+	public static long getOtpLifetime() {
+		return otpLifetime;
+	}
+
+	public static void setOtpLifetime(long otpLifetime) {
+		Config.otpLifetime = otpLifetime;
 	}
 
 }
