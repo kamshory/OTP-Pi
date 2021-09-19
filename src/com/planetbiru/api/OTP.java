@@ -20,7 +20,6 @@ public class OTP {
 	private static JSONObject data = new JSONObject();
 	private static String configPath = "";
 	private static OTPGC otpGC;
-
 	private static Logger logger = Logger.getLogger(OTP.class);
 
 	private OTP()
@@ -34,7 +33,10 @@ public class OTP {
 		OTP.load(fileName);
 		OTP.save();
 		OTP.otpGC = new OTPGC();
-		OTP.otpGC.start();
+	}
+	public static void start()
+	{
+		OTP.otpGC.start();		
 	}
 	public static void gc()
 	{
@@ -46,18 +48,9 @@ public class OTP {
 		    if (OTP.data.get(key) instanceof JSONObject) 
 		    {
 		        JSONObject obj = OTP.data.optJSONObject(key);
-		        System.out.println(obj.optLong(JsonKey.EXPIRATION, 0));
-		        System.out.println(currentTime);
 		        if(obj.optLong(JsonKey.EXPIRATION, 0) < currentTime)
 		        {
-		        	System.out.println(OTP.data);
-		        	System.out.println("REMOVE KEY "+key);
 		        	OTP.data.remove(key);
-		        	System.out.println(OTP.data);
-		        }
-		        else
-		        {
-		        	System.out.println("Not match");
 		        }
 		    }
 		}

@@ -143,7 +143,6 @@ public class Application {
 		{
 			ConfigLoader.init();
 			
-			OTP.initialize(Config.getOtpCacheFile());
 			
 			if(needToReset)
 			{
@@ -178,6 +177,8 @@ public class Application {
 			 * REST API HTTP
 			 */
 			Application.restAPIStart();
+			
+			Application.otpStart();
 					
 	
 			Application.modemSMSStart();
@@ -204,6 +205,11 @@ public class Application {
 		
 	}
 	
+	private static void otpStart() {
+		OTP.initialize(Config.getOtpCacheFile());
+		OTP.start();
+	}
+
 	public static void schedulerStart() {
 		Application.scheduller = new Scheduller();
 		Application.scheduller.start();		
