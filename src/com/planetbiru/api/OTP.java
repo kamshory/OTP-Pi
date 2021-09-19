@@ -46,6 +46,8 @@ public class OTP {
 		    if (OTP.data.get(key) instanceof JSONObject) 
 		    {
 		        JSONObject obj = OTP.data.optJSONObject(key);
+		        System.out.println(obj.optLong(JsonKey.EXPIRATION, 0));
+		        System.out.println(currentTime);
 		        if(obj.optLong(JsonKey.EXPIRATION, 0) < currentTime)
 		        {
 		        	OTP.data.remove(key);

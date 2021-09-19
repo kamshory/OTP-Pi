@@ -99,7 +99,11 @@ public class MessageAPI {
 		String param3 = data.optString("param3", "").trim();
 		String param4 = data.optString("param4", "").trim();
 		String messageFormat = data.optString("message", "").trim();
-		long lifeTime = (data.optLong("expiration", 0) * 1000) - System.currentTimeMillis();
+		long expiration = data.optLong("expiration", 0) * 1000; 
+		long lifeTime = expiration - System.currentTimeMillis();
+		System.out.println("currentTimeMillis = "+System.currentTimeMillis());
+		System.out.println("expiration        = "+expiration);
+		System.out.println("lifeTime          = "+lifeTime);
 		String responseCode = ResponseCode.SUCCESS;
 		JSONObject requestJSON = new JSONObject();
 		JSONObject responseData = new JSONObject();
@@ -111,6 +115,7 @@ public class MessageAPI {
 			}
 			else
 			{
+				System.out.println("lifeTime = "+lifeTime);
 				String clearOTP = OTP.createOTP(otpID, receiver, lifeTime, param1, param2, param3, param4);
 				String message = String.format(messageFormat, clearOTP);
 				

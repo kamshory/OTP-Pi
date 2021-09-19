@@ -16860,3 +16860,302 @@ OK
 ERROR
 
 2021-09-19 12:48:45 [INFO  ] Application                     :198  - Service started
+2021-09-19 12:51:04 [INFO  ] Application                     :198  - Service started
+2021-09-19 12:55:05 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-19 12:55:05 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-19 12:55:05 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-19 12:55:05 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS=""SM""
+2021-09-19 12:55:05 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-19 12:58:04 [INFO  ] Application                     :198  - Service started
+2021-09-19 13:00:06 [INFO  ] Application                     :198  - Service started
+2021-09-19 13:00:11 [INFO  ] MessageAPI                      :44   - Topic     : 
+2021-09-19 13:00:11 [INFO  ] MessageAPI                      :45   - Message   : {
+    "data": {
+        "reference": "1632031210972",
+        "date_time": 1632031210,
+        "receiver": "08126666666",
+        "expiration": 1632031211032,
+        "message": "Your OTP is %s",
+        "param3": "987654",
+        "param4": "674527846556468254",
+        "param1": "100000",
+        "param2": "1234567890"
+    },
+    "command": "create-otp"
+}
+2021-09-19 13:00:11 [INFO  ] MessageAPI                      :46   - Command   : create-otp
+2021-09-19 13:00:11 [INFO  ] MessageAPI                      :47   - Date Time : 1632031210
+2021-09-19 13:00:11 [INFO  ] MessageAPI                      :75   - Create OTP
+2021-09-19 13:00:11 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-19 13:00:11 [INFO  ] GSM                             :431  - msg1 = 
+OK
+
+2021-09-19 13:00:11 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-19 13:00:11 [INFO  ] GSM                             :433  - msg2 = 
+OK
+
+2021-09-19 13:00:11 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-19 13:00:11 [INFO  ] GSM                             :435  - msg3 = 
+OK
+
+2021-09-19 13:00:11 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGW="08126666666"
+2021-09-19 13:00:11 [INFO  ] GSM                             :437  - msg4 = 
+> 
+2021-09-19 13:00:11 [INFO  ] GSM                             :131  - Execute AT Command : Your OTP is 582218
+2021-09-19 13:00:11 [INFO  ] GSM                             :439  - msg5 = 
+> 
+2021-09-19 13:00:11 [INFO  ] GSM                             :131  - Execute AT Command : 
+2021-09-19 13:00:11 [INFO  ] GSM                             :441  - msg6 = 
+> 
+ERROR
+
+2021-09-19 13:00:29 [INFO  ] Application                     :198  - Service started
+2021-09-19 13:00:32 [INFO  ] MessageAPI                      :44   - Topic     : 
+2021-09-19 13:00:33 [INFO  ] MessageAPI                      :45   - Message   : {
+    "data": {
+        "reference": "1632031232942",
+        "date_time": 1632031232,
+        "receiver": "08126666666",
+        "expiration": 1632031233002,
+        "message": "Your OTP is %s",
+        "param3": "987654",
+        "param4": "674527846556468254",
+        "param1": "100000",
+        "param2": "1234567890"
+    },
+    "command": "create-otp"
+}
+2021-09-19 13:00:33 [INFO  ] MessageAPI                      :46   - Command   : create-otp
+2021-09-19 13:00:33 [INFO  ] MessageAPI                      :47   - Date Time : 1632031232
+2021-09-19 13:00:33 [INFO  ] MessageAPI                      :75   - Create OTP
+2021-09-19 13:00:33 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-19 13:00:33 [INFO  ] GSM                             :431  - msg1 = 
+OK
+
+2021-09-19 13:00:33 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-19 13:00:33 [INFO  ] GSM                             :433  - msg2 = 
+OK
+
+2021-09-19 13:00:33 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-19 13:00:33 [INFO  ] GSM                             :435  - msg3 = 
+OK
+
+2021-09-19 13:00:33 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGW="08126666666"
+2021-09-19 13:00:33 [INFO  ] GSM                             :437  - msg4 = 
+> 
+2021-09-19 13:00:33 [INFO  ] GSM                             :131  - Execute AT Command : Your OTP is 869705
+2021-09-19 13:00:33 [INFO  ] GSM                             :439  - msg5 = 
+> 
+2021-09-19 13:00:33 [INFO  ] GSM                             :131  - Execute AT Command : 
+2021-09-19 13:00:33 [INFO  ] GSM                             :441  - msg6 = 
+> 
+ERROR
+
+2021-09-19 13:02:22 [INFO  ] Application                     :198  - Service started
+2021-09-19 13:02:26 [INFO  ] MessageAPI                      :44   - Topic     : 
+2021-09-19 13:02:26 [INFO  ] MessageAPI                      :45   - Message   : {
+    "data": {
+        "reference": "1632031346140",
+        "date_time": 1632031346,
+        "receiver": "08126666666",
+        "expiration": 1632031346200,
+        "message": "Your OTP is %s",
+        "param3": "987654",
+        "param4": "674527846556468254",
+        "param1": "100000",
+        "param2": "1234567890"
+    },
+    "command": "create-otp"
+}
+2021-09-19 13:02:26 [INFO  ] MessageAPI                      :46   - Command   : create-otp
+2021-09-19 13:02:26 [INFO  ] MessageAPI                      :47   - Date Time : 1632031346
+2021-09-19 13:02:26 [INFO  ] MessageAPI                      :75   - Create OTP
+2021-09-19 13:02:26 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-19 13:02:26 [INFO  ] GSM                             :431  - msg1 = 
+OK
+
+2021-09-19 13:02:26 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-19 13:02:26 [INFO  ] GSM                             :433  - msg2 = 
+OK
+
+2021-09-19 13:02:26 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-19 13:02:26 [INFO  ] GSM                             :435  - msg3 = 
+OK
+
+2021-09-19 13:02:26 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGW="08126666666"
+2021-09-19 13:02:26 [INFO  ] GSM                             :437  - msg4 = 
+> 
+2021-09-19 13:02:26 [INFO  ] GSM                             :131  - Execute AT Command : Your OTP is 494951
+2021-09-19 13:02:26 [INFO  ] GSM                             :439  - msg5 = 
+> 
+2021-09-19 13:02:26 [INFO  ] GSM                             :131  - Execute AT Command : 
+2021-09-19 13:02:27 [INFO  ] GSM                             :441  - msg6 = 
+> 
+ERROR
+
+2021-09-19 13:03:54 [INFO  ] Application                     :198  - Service started
+2021-09-19 13:03:57 [INFO  ] MessageAPI                      :44   - Topic     : 
+2021-09-19 13:03:57 [INFO  ] MessageAPI                      :45   - Message   : {
+    "data": {
+        "reference": "1632031437273",
+        "date_time": 1632031437,
+        "receiver": "08126666666",
+        "expiration": 1632031437333,
+        "message": "Your OTP is %s",
+        "param3": "987654",
+        "param4": "674527846556468254",
+        "param1": "100000",
+        "param2": "1234567890"
+    },
+    "command": "create-otp"
+}
+2021-09-19 13:03:57 [INFO  ] MessageAPI                      :46   - Command   : create-otp
+2021-09-19 13:03:57 [INFO  ] MessageAPI                      :47   - Date Time : 1632031437
+2021-09-19 13:03:57 [INFO  ] MessageAPI                      :75   - Create OTP
+2021-09-19 13:03:57 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-19 13:03:57 [INFO  ] GSM                             :431  - msg1 = 
+OK
+
+2021-09-19 13:03:57 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-19 13:03:57 [INFO  ] GSM                             :433  - msg2 = 
+OK
+
+2021-09-19 13:03:57 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-19 13:03:57 [INFO  ] GSM                             :435  - msg3 = 
+OK
+
+2021-09-19 13:03:57 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGW="08126666666"
+2021-09-19 13:03:57 [INFO  ] GSM                             :437  - msg4 = 
+> 
+2021-09-19 13:03:57 [INFO  ] GSM                             :131  - Execute AT Command : Your OTP is 808884
+2021-09-19 13:03:58 [INFO  ] GSM                             :439  - msg5 = 
+> 
+2021-09-19 13:03:58 [INFO  ] GSM                             :131  - Execute AT Command : 
+2021-09-19 13:03:58 [INFO  ] GSM                             :441  - msg6 = 
+> 
+ERROR
+
+2021-09-19 13:04:55 [INFO  ] MessageAPI                      :44   - Topic     : 
+2021-09-19 13:04:55 [INFO  ] MessageAPI                      :45   - Message   : {
+    "data": {
+        "reference": "1632031495182",
+        "date_time": 1632031495,
+        "receiver": "08126666666",
+        "expiration": 1632031555,
+        "message": "Your OTP is %s",
+        "param3": "987654",
+        "param4": "674527846556468254",
+        "param1": "100000",
+        "param2": "1234567890"
+    },
+    "command": "create-otp"
+}
+2021-09-19 13:04:55 [INFO  ] MessageAPI                      :46   - Command   : create-otp
+2021-09-19 13:04:55 [INFO  ] MessageAPI                      :47   - Date Time : 1632031495
+2021-09-19 13:04:55 [INFO  ] MessageAPI                      :75   - Create OTP
+2021-09-19 13:04:55 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-19 13:04:55 [INFO  ] GSM                             :431  - msg1 = 
+OK
+
+2021-09-19 13:04:55 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-19 13:04:55 [INFO  ] GSM                             :433  - msg2 = 
+OK
+
+2021-09-19 13:04:55 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-19 13:04:55 [INFO  ] GSM                             :435  - msg3 = 
+OK
+
+2021-09-19 13:04:55 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGW="08126666666"
+2021-09-19 13:04:55 [INFO  ] GSM                             :437  - msg4 = 
+> 
+2021-09-19 13:04:55 [INFO  ] GSM                             :131  - Execute AT Command : Your OTP is 295127
+2021-09-19 13:04:55 [INFO  ] GSM                             :439  - msg5 = 
+> 
+2021-09-19 13:04:55 [INFO  ] GSM                             :131  - Execute AT Command : 
+2021-09-19 13:04:56 [INFO  ] GSM                             :441  - msg6 = 
+> 
+ERROR
+
+2021-09-19 13:05:08 [INFO  ] MessageAPI                      :44   - Topic     : 
+2021-09-19 13:05:08 [INFO  ] MessageAPI                      :45   - Message   : {
+    "data": {
+        "reference": "1632031508458",
+        "date_time": 1632031508,
+        "receiver": "08126666666",
+        "expiration": 1632031568,
+        "message": "Your OTP is %s",
+        "param3": "987654",
+        "param4": "674527846556468254",
+        "param1": "100000",
+        "param2": "1234567890"
+    },
+    "command": "create-otp"
+}
+2021-09-19 13:05:08 [INFO  ] MessageAPI                      :46   - Command   : create-otp
+2021-09-19 13:05:08 [INFO  ] MessageAPI                      :47   - Date Time : 1632031508
+2021-09-19 13:05:08 [INFO  ] MessageAPI                      :75   - Create OTP
+2021-09-19 13:05:08 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-19 13:05:08 [INFO  ] GSM                             :431  - msg1 = 
+OK
+
+2021-09-19 13:05:08 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-19 13:05:08 [INFO  ] GSM                             :433  - msg2 = 
+OK
+
+2021-09-19 13:05:08 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-19 13:05:08 [INFO  ] GSM                             :435  - msg3 = 
+OK
+
+2021-09-19 13:05:08 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGW="08126666666"
+2021-09-19 13:05:09 [INFO  ] GSM                             :437  - msg4 = 
+> 
+2021-09-19 13:05:09 [INFO  ] GSM                             :131  - Execute AT Command : Your OTP is 894377
+2021-09-19 13:05:09 [INFO  ] GSM                             :439  - msg5 = 
+> 
+2021-09-19 13:05:09 [INFO  ] GSM                             :131  - Execute AT Command : 
+2021-09-19 13:05:09 [INFO  ] GSM                             :441  - msg6 = 
+> 
+ERROR
+
+2021-09-19 13:06:16 [INFO  ] Application                     :198  - Service started
+2021-09-19 13:06:35 [INFO  ] MessageAPI                      :44   - Topic     : 
+2021-09-19 13:06:35 [INFO  ] MessageAPI                      :45   - Message   : {
+    "data": {
+        "reference": "1632031595363",
+        "date_time": 1632031595,
+        "receiver": "08126666666",
+        "expiration": 1632031655,
+        "message": "Your OTP is %s",
+        "param3": "987654",
+        "param4": "674527846556468254",
+        "param1": "100000",
+        "param2": "1234567890"
+    },
+    "command": "create-otp"
+}
+2021-09-19 13:06:35 [INFO  ] MessageAPI                      :46   - Command   : create-otp
+2021-09-19 13:06:35 [INFO  ] MessageAPI                      :47   - Date Time : 1632031595
+2021-09-19 13:06:35 [INFO  ] MessageAPI                      :75   - Create OTP
+2021-09-19 13:06:35 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-19 13:06:35 [INFO  ] GSM                             :431  - msg1 = 
+OK
+
+2021-09-19 13:06:35 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-19 13:06:35 [INFO  ] GSM                             :433  - msg2 = 
+OK
+
+2021-09-19 13:06:35 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-19 13:06:35 [INFO  ] GSM                             :435  - msg3 = 
+OK
+
+2021-09-19 13:06:35 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGW="08126666666"
+2021-09-19 13:06:35 [INFO  ] GSM                             :437  - msg4 = 
+> 
+2021-09-19 13:06:35 [INFO  ] GSM                             :131  - Execute AT Command : Your OTP is 330629
+2021-09-19 13:06:36 [INFO  ] GSM                             :439  - msg5 = 
+> 
+2021-09-19 13:06:36 [INFO  ] GSM                             :131  - Execute AT Command : 
+2021-09-19 13:06:36 [INFO  ] GSM                             :441  - msg6 = 
+> 
+ERROR
+
