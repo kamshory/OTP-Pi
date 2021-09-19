@@ -46,9 +46,18 @@ public class OTP {
 		    if (OTP.data.get(key) instanceof JSONObject) 
 		    {
 		        JSONObject obj = OTP.data.optJSONObject(key);
+		        System.out.println(obj.optLong(JsonKey.EXPIRATION, 0));
+		        System.out.println(currentTime);
 		        if(obj.optLong(JsonKey.EXPIRATION, 0) < currentTime)
 		        {
+		        	System.out.println(OTP.data);
+		        	System.out.println("REMOVE KEY "+key);
 		        	OTP.data.remove(key);
+		        	System.out.println(OTP.data);
+		        }
+		        else
+		        {
+		        	System.out.println("Not match");
 		        }
 		    }
 		}
@@ -68,7 +77,7 @@ public class OTP {
 			plainOTP = plainOTP.substring(0, length);
 		}
 		JSONObject otpRecord = new JSONObject();
-		long expiration = System.currentTimeMillis() + (lifeTime * 1000);	
+		long expiration = System.currentTimeMillis() + lifeTime;	
 		if(expiration < 0)
 		{
 			expiration = System.currentTimeMillis() + Config.getOtpLifetime();
