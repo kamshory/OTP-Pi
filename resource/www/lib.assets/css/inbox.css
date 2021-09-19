@@ -18,6 +18,7 @@
 .message-sim-card{
     font-weight: bold;
     position: relative;
+    margin-right: 60px;
 }
 .message-reply{
     float: right;

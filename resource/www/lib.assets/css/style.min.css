@@ -872,6 +872,12 @@
   .chip .tile-icon{
     background-image: url(../images/icon/chip.png);
   }
+  .ussd-code .tile-icon{
+    background-image: url(../images/icon/ussd.png);
+  }
+  .message .tile-icon{
+    background-image: url(../images/icon/message.png);
+  }
   .tile-icon > a{
     width: 64px;
     height: 64px;
