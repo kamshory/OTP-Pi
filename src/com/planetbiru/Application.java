@@ -14,6 +14,7 @@ import java.util.Properties;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.planetbiru.api.OTP;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigAPIUser;
@@ -141,6 +142,8 @@ public class Application {
 		if(needToStart)
 		{
 			ConfigLoader.init();
+			
+			OTP.initialize(Config.getOtpCacheFile());
 			
 			if(needToReset)
 			{

@@ -992,6 +992,24 @@ public class Utility {
 			return "";
 		}
 	}
+	public static String sha512(String input) {
+		String output = "";
+		if(input == null)
+		{
+			input = "";
+		}
+		try
+		{
+			MessageDigest digest = MessageDigest.getInstance(ConstantString.HASH_SHA512);
+			byte[] encodedhash = digest.digest(input.getBytes(StandardCharsets.UTF_8));
+			output = Utility.bytesToHex(encodedhash);
+			return output;
+		}
+		catch(Exception e)
+		{
+			return "";
+		}
+	}
 	/**
 	 * Generate SHA-1 hash code from a string
 	 * @param input Input string
@@ -1410,4 +1428,5 @@ public class Utility {
         }
 		return headers;
 	}
+	
 }

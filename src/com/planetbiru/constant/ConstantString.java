@@ -6,6 +6,7 @@ public class ConstantString {
 	public static final String UTC                             = "UTC";
 	public static final String UTF8                            = "UTF-8";
 	public static final String HASH_SHA256                     = "SHA-256";
+	public static final String HASH_SHA512                     = "SHA-512";
 	public static final String BASE_64                         = "base64";
 	public static final String INVALID_ENCODING                = "Invalid encoding";
 	public static final String CACHE_CONTROL                   = "Cache-Control";
