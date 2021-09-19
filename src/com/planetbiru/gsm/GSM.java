@@ -153,6 +153,38 @@ public class GSM {
         return result;
     }
     
+    public String executeATCommand(String command) throws GSMException {
+    	int waitingTime = 2;
+    	this.setReady(false);
+    	if(getSerialPort() == null)
+    	{
+    		throw new GSMException("GSM is not initilized yet");
+    	}
+        command = command + "\r\n";
+        String result = "";
+        int i = 0;
+        byte[] bytes = command.getBytes();
+        int written = this.serialPort.writeBytes(bytes, bytes.length);
+        
+        if(written > 0)
+        {
+        	do 
+        	{
+ 	            this.sleep(100);
+ 	           i++;
+	        }
+        	while(
+        			!this.incommingMessage.toString().trim().endsWith("\r\n\r\nOK") 
+        			&& !this.incommingMessage.toString().trim().endsWith("\r\n\r\nERROR") 
+        			&& i < waitingTime
+        			);
+        }
+        result = this.updateResult(result);
+        this.setReady(true);
+        return result;
+		
+	}
+    
    
     private void sleep(int sleep)
     {
@@ -293,7 +325,7 @@ public class GSM {
     
     public List<String> parseCSVResponse(String csvLine)
     {
-    	List<String> record = new ArrayList<>();
+    	List<String> csvRecord = new ArrayList<>();
 		List<String> allMatches = new ArrayList<>(); 
     	Pattern pattern = Pattern.compile("\"([^\"]*)\"|(?<=,|^)([^,]*)(?=,|$)");
 		Matcher matcher = pattern.matcher(csvLine);
@@ -316,10 +348,10 @@ public class GSM {
         	String[] attrs = allMatches.toArray(new String[size]);
         	for(int i = 0; i<attrs.length; i++)
         	{
-        		record.add(attrs[i]);
+        		csvRecord.add(attrs[i]);
         	}
         }	
-        return record;
+        return csvRecord;
     }
 
 	private int getMax(String[] arr) {
@@ -610,10 +642,10 @@ public class GSM {
       		result = this.fixResultByOK(result).trim();
        		result = this.fixingRawData(result);	
        		result = result.replace("\r\n", "").trim();
-       		List<String> record = this.parseCSVResponse(result);
-       		if(record.size() > 2)
+       		List<String> csvRecord = this.parseCSVResponse(result);
+       		if(csvRecord.size() > 2)
        		{
-       			result = record.get(2);
+       			result = csvRecord.get(2);
        		}
        		else
        		{
@@ -716,6 +748,8 @@ public class GSM {
 	public void setGcRunning(boolean gcRunning) {
 		this.gcRunning = gcRunning;
 	}
+
+	
 
 	
 

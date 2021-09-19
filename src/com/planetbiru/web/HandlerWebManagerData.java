@@ -321,7 +321,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				String loggedUsername = (String) cookie.getSessionValue(JsonKey.USERNAME, "");
+				String loggedUsername = cookie.getSessionValue(JsonKey.USERNAME, "");
 				String list = WebUserAccount.getUser(loggedUsername).toString();
 				responseBody = list.getBytes();
 			}
@@ -954,7 +954,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		Headers responseHeaders = httpExchange.getResponseHeaders();
 		CookieServer cookie = new CookieServer(requestHeaders, Config.getSessionName(), Config.getSessionLifetime());
 		byte[] responseBody = "".getBytes();
-		int statusCode = HttpStatus.OK;
+		int statusCode = HttpStatus.UNAUTHORIZED;
 		boolean download = false;
 		File file = null;
 		String fullname = "";
@@ -971,15 +971,14 @@ public class HandlerWebManagerData implements HttpHandler {
 				String baseName = HttpUtil.getBaseName(path);
 				responseHeaders.add(ConstantString.CONTENT_TYPE, contentType);
 				responseHeaders.add("Content-disposition", "attachment; filename=\""+baseName+"\"");
-			}
-			else
-			{
-				statusCode = HttpStatus.UNAUTHORIZED;			
+				statusCode = HttpStatus.OK;
 			}
 		}
 		catch(NoUserRegisteredException e)
 		{
-			statusCode = HttpStatus.UNAUTHORIZED;	
+			/**
+			 * Do nothing
+			 */
 		}
 		cookie.saveSessionData();
 		cookie.putToHeaders(responseHeaders);
@@ -1076,8 +1075,8 @@ public class HandlerWebManagerData implements HttpHandler {
 		byte[] responseBody = "[]".getBytes();
 		int statusCode = HttpStatus.OK;
 		JSONArray allSMS = new JSONArray();
-		String smsInboxStorage = Config.getSmsInboxStorage(); //"SM";
-		String smsInboxStatus = Config.getSmsInboxStatus(); //"REC READ";
+		String smsInboxStorage = Config.getSmsInboxStorage(); 
+		String smsInboxStatus = Config.getSmsInboxStatus();
 		try
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
