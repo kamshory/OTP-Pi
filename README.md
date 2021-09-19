@@ -490,6 +490,10 @@ OTP-Pi provides a feature to read incoming SMS. The OTP-Pi will read all the SMS
 
 Users can delete the SMS when it is no longer needed. Users can also reply to the SMS manually from the OTP-Pi.
 
+## IMEI Changer
+
+OTP-Pi provides a tool to change the IMEI of the modem. This tool is very useful for users who want to change IMEI for some reason. Users can directly enter the new IMEI and save it. The new IMEI will be written on the modem chip. Restarting the device may be required to implement the new IMEI on the GSM network.
+
 ## Real Time Clock
 
 The Real Time Clock or RTC module is required to keep the device time when the device is turned off and not connected to the internet. The device must use the correct time so that the cookies sent by the device are not deleted by the browser due to expiration so that the administrator can manage the device including making settings. In addition, the device needs to record the time when an error occurred so that the error log can be read by the user for mitigation.
