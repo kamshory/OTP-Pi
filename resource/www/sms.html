@@ -15,12 +15,7 @@
 	<script src="lib.assets/js/jquery.min.js"></script>
 	<script src="lib.assets/js/bootstrap.js"></script>
 	<script src="lib.assets/js/ws.min.js"></script>
-	<script>
-	function handleIncommingMessage(message) {
-		var modemData = getModemData();
-		buildModemMenu(modemData, '#modem');
-	}
-	</script>
+	
 </head>
 
 <body>
@@ -86,27 +81,44 @@
 					<input type="submit" class="btn btn-success" value="Send" name="send"> </div>
 			</form>
 			<script>
-			function processForm(obj) {
-				var receiver = $('#receiver').val();
-				var message = $('#message').val();
-				var modem_id = $('#modem').val();
-				$.ajax({
-					'type': 'POST',
-					'url': 'sms.html',
-					'data': {
-						receiver: receiver,
-						message: message,
-						modem_id: modem_id,
-						send: 'send'
-					},
-					success: function(data) {
-						$('#receiver').val('');
-						$('#message').val('');
-					}
+				function updateForm()
+				{
+					var urlParams = new URLSearchParams(window.location.search);
+					var receiver = urlParams.get('receiver') || '';
+					var modemID = urlParams.get('modem_id') || '';
+					$('#receiver').val(receiver);
+					$('#modem').val(modemID);
+				}
+				$(document).ready(function(e){
+					
 				});
-				return false;
-			}
-			</script>
+				function processForm(obj) {
+					var receiver = $('#receiver').val();
+					var message = $('#message').val();
+					var modemID = $('#modem').val();
+					$.ajax({
+						'type': 'POST',
+						'url': 'sms.html',
+						'data': {
+							receiver: receiver,
+							message: message,
+							modem_id: modemID,
+							send: 'send'
+						},
+						success: function(data) {
+							$('#receiver').val('');
+							$('#message').val('');
+						}
+					});
+					return false;
+				}
+			
+				function handleIncommingMessage(message) {
+					var modemData = getModemData();
+					buildModemMenu(modemData, '#modem');
+					updateForm();
+				}
+				</script>
 		</div>
 		<!-- /container -->
 	</div>

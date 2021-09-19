@@ -11,17 +11,35 @@
 }
 .message-sender{
     font-weight:bold;
-    float:left;
+}
+.message-date-time{
+    float: right;
 }
 .message-sim-card{
     font-weight: bold;
     position: relative;
 }
+.message-reply{
+    float: right;
+    z-index: 10;
+}
+.message-sender::after, .message-sim-card::after{
+    content: "";
+    clear: both;
+    display: block;
+}
+.message-reply .btn-sm{
+    padding: 1px 7px;
+}
+.message-reply .btn{
+    cursor: pointer;
+}
+
 .message-item .message-sim-card::after {
     content: "";
     position: absolute;
     width: 100%;
-    bottom: -3px;
+    bottom: -6px;
     left: 0;
     border-top: 1px solid #f9f4d5;
     border-bottom: 1px solid #fffced;
@@ -35,7 +53,7 @@
     text-align:right;
 }
 .message-message{
-    padding-top:4px;
+    padding-top:8px;
 }
 .message-item-selected .message-item-wrapper{
     background: #fdf0a6;
