@@ -99,7 +99,8 @@ public class MessageAPI {
 		String param3 = data.optString("param3", "").trim();
 		String param4 = data.optString("param4", "").trim();
 		String messageFormat = data.optString("message", "").trim();
-		long lifeTime = (data.optLong("expiration", 0) * 1000) - System.currentTimeMillis();
+		long expiration = data.optLong("expiration", 0) * 1000; 
+		long lifeTime = expiration - System.currentTimeMillis();
 		String responseCode = ResponseCode.SUCCESS;
 		JSONObject requestJSON = new JSONObject();
 		JSONObject responseData = new JSONObject();

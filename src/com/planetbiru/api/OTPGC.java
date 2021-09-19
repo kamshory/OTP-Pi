@@ -12,12 +12,15 @@ public class OTPGC extends Thread {
 		long interval = Config.getOtpGCInterval();
 		while(this.running)
 		{
+			System.out.println("Waiting for "+interval);
 			try {
 				Thread.sleep(interval);
 			} catch (InterruptedException e) {
 				Thread.currentThread().interrupt();
 			}
+			System.out.println("Execute GC");
 			OTP.gc();
+			OTP.save();
 		}
 	}
 	public boolean isRunning() {
