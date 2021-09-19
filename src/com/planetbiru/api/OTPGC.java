@@ -18,6 +18,7 @@ public class OTPGC extends Thread {
 				Thread.currentThread().interrupt();
 			}
 			OTP.gc();
+			OTP.save();
 		}
 	}
 	public boolean isRunning() {
