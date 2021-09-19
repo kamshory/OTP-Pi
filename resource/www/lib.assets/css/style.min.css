@@ -869,6 +869,9 @@
   .expand .tile-icon{
     background-image: url(../images/icon/sd-card.png);
   }
+  .chip .tile-icon{
+    background-image: url(../images/icon/chip.png);
+  }
   .tile-icon > a{
     width: 64px;
     height: 64px;

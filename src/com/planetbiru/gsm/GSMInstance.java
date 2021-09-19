@@ -213,6 +213,10 @@ public class GSMInstance {
 		}		
 	}
 
+	public String executeATCommand(String command) throws GSMException {
+		return this.gsm.executeATCommand(command);		
+	}
+
 	
 
 }

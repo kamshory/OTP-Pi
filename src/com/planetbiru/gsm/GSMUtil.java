@@ -654,6 +654,50 @@ public class GSMUtil {
 		}
 		return info;
 	}
+	
+	public static JSONObject changeIMEI(String port, String currentValue, String newValue) {
+		GSMInstance instance;
+		boolean addHock = false;
+		JSONObject info = new JSONObject();
+		try 
+		{
+			instance = GSMUtil.getGSMInstanceByPort(port);	
+		} 
+		catch (ModemNotFoundException e) 
+		{
+			instance = new GSMInstance(port, eventListener);
+			addHock = true;
+		}		
+		try 
+		{
+			if(!instance.isConnected())
+			{
+				instance.connect();
+			}
+			if(currentValue != null && newValue != null && !currentValue.equals(newValue))
+			{
+				newValue = newValue.trim();
+				String command = "AT+EGMR=1,7,\""+newValue+"\"";
+				String response = instance.executeATCommand(command);
+				info.put("response", response);
+				info.put("command", command);
+			}
+		    
+			if(addHock)
+			{
+				instance.disconnect();
+			}
+			
+		} 
+		catch (GSMException | InvalidPortException e) 
+		{
+			e.printStackTrace();
+			/**
+			 * Do nothing
+			 */
+		}
+		return info;
+	}
 
 	private static GSMInstance getGSMInstanceByPort(String port) throws ModemNotFoundException {
 		for(int i = 0; i < GSMUtil.getGSMInstance().size(); i++)
