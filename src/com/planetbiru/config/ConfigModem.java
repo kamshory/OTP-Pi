@@ -40,6 +40,30 @@ public class ConfigModem {
 		return ConfigModem.modemData;
 	}
 	
+	public static boolean isDuuplicated(String port, String modemID)
+	{
+		for (Map.Entry<String, DataModem> entry : ConfigModem.modemData.entrySet())
+		{
+			DataModem value = entry.getValue();
+			
+			if(modemID == null)
+			{
+				if(port.equals(value.getPort()))
+				{
+					return true;
+				}
+			}
+			else
+			{
+				if(!modemID.equals(value.getId()) && port.equals(value.getPort()))
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
 	public static void load(String path)
 	{
 		ConfigModem.configPath = path;

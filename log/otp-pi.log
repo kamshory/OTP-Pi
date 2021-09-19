@@ -17498,3 +17498,93 @@ OK
 ERROR
 
 2021-09-19 17:11:37 [INFO  ] Application                     :198  - Service started
+2021-09-19 17:16:59 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMI
+2021-09-19 17:16:59 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMM
+2021-09-19 17:17:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMR
+2021-09-19 17:17:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGSN
+2021-09-19 17:17:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CIMI
+2021-09-19 17:17:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CCID
+2021-09-19 17:17:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CREG?
+2021-09-19 17:17:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CNUM
+2021-09-19 17:17:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+COPS?
+2021-09-19 17:17:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCA
+2021-09-19 17:17:10 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMI
+2021-09-19 17:17:10 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMM
+2021-09-19 17:17:10 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMR
+2021-09-19 17:17:10 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGSN
+2021-09-19 17:17:10 [INFO  ] GSM                             :131  - Execute AT Command : AT+CIMI
+2021-09-19 17:17:10 [INFO  ] GSM                             :131  - Execute AT Command : AT+CCID
+2021-09-19 17:17:10 [INFO  ] GSM                             :131  - Execute AT Command : AT+CREG?
+2021-09-19 17:17:11 [INFO  ] GSM                             :131  - Execute AT Command : AT+CNUM
+2021-09-19 17:17:11 [INFO  ] GSM                             :131  - Execute AT Command : AT+COPS?
+2021-09-19 17:17:11 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCA
+2021-09-19 17:25:11 [INFO  ] Application                     :199  - Service started
+2021-09-19 17:25:31 [INFO  ] Application                     :199  - Service started
+2021-09-19 17:26:12 [INFO  ] Application                     :199  - Service started
+2021-09-19 17:27:22 [INFO  ] Application                     :199  - Service started
+2021-09-19 17:28:07 [INFO  ] Application                     :199  - Service started
+2021-09-19 17:29:31 [INFO  ] Application                     :199  - Service started
+2021-09-19 17:32:30 [INFO  ] Application                     :199  - Service started
+2021-09-19 17:50:07 [INFO  ] Application                     :199  - Service started
+2021-09-19 17:50:24 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-19 17:50:24 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-19 17:50:24 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-19 17:50:24 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS=""SM""
+2021-09-19 17:50:24 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-19 17:51:51 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
+2021-09-19 17:51:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
+2021-09-19 17:51:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGF=1
+2021-09-19 17:51:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CPMS=""SM""
+2021-09-19 17:51:51 [INFO  ] GSM                             :131  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-19 17:54:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMI
+2021-09-19 17:54:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMM
+2021-09-19 17:54:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMR
+2021-09-19 17:54:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGSN
+2021-09-19 17:54:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CIMI
+2021-09-19 17:54:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CCID
+2021-09-19 17:54:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CREG?
+2021-09-19 17:54:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CNUM
+2021-09-19 17:54:08 [INFO  ] GSM                             :131  - Execute AT Command : AT+COPS?
+2021-09-19 17:54:08 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCA
+2021-09-19 17:59:54 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMI
+2021-09-19 17:59:54 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMM
+2021-09-19 17:59:54 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMR
+2021-09-19 17:59:54 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGSN
+2021-09-19 17:59:54 [INFO  ] GSM                             :131  - Execute AT Command : AT+CIMI
+2021-09-19 17:59:54 [INFO  ] GSM                             :131  - Execute AT Command : AT+CCID
+2021-09-19 17:59:54 [INFO  ] GSM                             :131  - Execute AT Command : AT+CREG?
+2021-09-19 17:59:54 [INFO  ] GSM                             :131  - Execute AT Command : AT+CNUM
+2021-09-19 17:59:54 [INFO  ] GSM                             :131  - Execute AT Command : AT+COPS?
+2021-09-19 17:59:54 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCA
+2021-09-19 18:00:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMI
+2021-09-19 18:00:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMM
+2021-09-19 18:00:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMR
+2021-09-19 18:00:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGSN
+2021-09-19 18:00:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CIMI
+2021-09-19 18:00:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CCID
+2021-09-19 18:00:07 [INFO  ] GSM                             :131  - Execute AT Command : AT+CREG?
+2021-09-19 18:00:08 [INFO  ] GSM                             :131  - Execute AT Command : AT+CNUM
+2021-09-19 18:00:08 [INFO  ] GSM                             :131  - Execute AT Command : AT+COPS?
+2021-09-19 18:00:08 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCA
+2021-09-19 18:28:59 [INFO  ] Application                     :199  - Service started
+2021-09-19 18:29:37 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMI
+2021-09-19 18:29:37 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMM
+2021-09-19 18:29:37 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMR
+2021-09-19 18:29:37 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGSN
+2021-09-19 18:29:37 [INFO  ] GSM                             :131  - Execute AT Command : AT+CIMI
+2021-09-19 18:29:38 [INFO  ] GSM                             :131  - Execute AT Command : AT+CCID
+2021-09-19 18:29:38 [INFO  ] GSM                             :131  - Execute AT Command : AT+CREG?
+2021-09-19 18:29:38 [INFO  ] GSM                             :131  - Execute AT Command : AT+CNUM
+2021-09-19 18:29:38 [INFO  ] GSM                             :131  - Execute AT Command : AT+COPS?
+2021-09-19 18:29:38 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCA
+2021-09-19 18:29:54 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMI
+2021-09-19 18:29:54 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMM
+2021-09-19 18:29:54 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGMR
+2021-09-19 18:29:54 [INFO  ] GSM                             :131  - Execute AT Command : AT+CGSN
+2021-09-19 18:29:55 [INFO  ] GSM                             :131  - Execute AT Command : AT+CIMI
+2021-09-19 18:29:55 [INFO  ] GSM                             :131  - Execute AT Command : AT+CCID
+2021-09-19 18:29:55 [INFO  ] GSM                             :131  - Execute AT Command : AT+CREG?
+2021-09-19 18:29:55 [INFO  ] GSM                             :131  - Execute AT Command : AT+CNUM
+2021-09-19 18:29:55 [INFO  ] GSM                             :131  - Execute AT Command : AT+COPS?
+2021-09-19 18:29:55 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCA
+2021-09-19 18:32:37 [INFO  ] GSM                             :131  - Execute AT Command : AT+CUSD=1,"444",15
