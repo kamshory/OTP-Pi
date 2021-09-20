@@ -69,8 +69,12 @@ public class GSMInstance {
 		this.gsm.closePort();
 	}
 	
-	public String sendSMS(String receiver, String message, boolean deleteSent) throws GSMException
+	public String sendSMS(String receiver, String message, boolean deleteSent) throws GSMException, InvalidSIMPinException
 	{
+		if(!this.pinValid)
+		{
+			throw new InvalidSIMPinException("Invalid PIN");
+		}
 		if(this.gsm.getSerialPort() == null)
 		{
 			throw new GSMException(ConstantString.SERIAL_PORT_NULL);
@@ -79,12 +83,12 @@ public class GSMInstance {
 		return this.gsm.sendSMS(receiver, message, deleteSent);
 	}
 
-	public String sendSMS(String receiver, String message) throws GSMException {
+	public String sendSMS(String receiver, String message) throws GSMException, InvalidSIMPinException {
 		return this.sendSMS(receiver, message, true);
 	}
 
 	
-	public String sendSMS(String receiver, String message, DataModem modemData) throws GSMException {
+	public String sendSMS(String receiver, String message, DataModem modemData) throws GSMException, InvalidSIMPinException {
 		Date date = new Date();
 		String sender = modemData.getMsisdn();
 		this.logSendSMS(sender, Utility.maskMSISDN(receiver), date, message.length());
@@ -98,8 +102,12 @@ public class GSMInstance {
 		}
 	}
 	
-	public List<SMS> readSMS() throws GSMException
+	public List<SMS> readSMS() throws GSMException, InvalidSIMPinException
 	{
+		if(!this.pinValid)
+		{
+			throw new InvalidSIMPinException("Invalid PIN");
+		}
 		if(this.gsm.getSerialPort() == null)
 		{
 			throw new GSMException(ConstantString.SERIAL_PORT_NULL);
@@ -107,7 +115,7 @@ public class GSMInstance {
 		this.waitUntilReady();
 		return this.gsm.readSMS(null, null);
 	}
-	public List<SMS> readSMS(String storage, String smsStatus) throws GSMException
+	public List<SMS> readSMS(String storage, String smsStatus) throws GSMException, InvalidSIMPinException
 	{
 		if(storage == null)
 		{
@@ -124,13 +132,21 @@ public class GSMInstance {
 		}
 	}
 	
-	public void deleteSMS(int smsID, String storage) throws GSMException {
+	public void deleteSMS(int smsID, String storage) throws GSMException, InvalidSIMPinException {
+		if(!this.pinValid)
+		{
+			throw new InvalidSIMPinException("Invalid PIN");
+		}
 		this.gsm.deleteSMS(smsID, storage);		
 	}
     
-    public void deleteAllSentSMS() throws GSMException 
+    public void deleteAllSentSMS() throws GSMException, InvalidSIMPinException 
     { 	
-    	this.gsm.deleteAllSentSMS();
+		if(!this.pinValid)
+		{
+			throw new InvalidSIMPinException("Invalid PIN");
+		}
+		this.gsm.deleteAllSentSMS();
  	}
     
     public String getIMEI() throws GSMException 

@@ -16,6 +16,7 @@ import com.planetbiru.constant.JsonKey;
 import com.planetbiru.constant.ResponseCode;
 import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMUtil;
+import com.planetbiru.gsm.InvalidSIMPinException;
 import com.planetbiru.mail.MailUtil;
 import com.planetbiru.mail.NoEmailAccountException;
 
@@ -131,7 +132,7 @@ public class MessageAPI {
 				responseData.put(JsonKey.DATE_TIME, dateTime);
 			}
 		}
-		catch(MessagingException | NoEmailAccountException | GSMException e)
+		catch(MessagingException | NoEmailAccountException | GSMException | InvalidSIMPinException e)
 		{
 			responseCode = ResponseCode.FAILED;
 		}
@@ -277,7 +278,7 @@ public class MessageAPI {
 					jsonData = GSMUtil.sendSMS(receiver, textMessage, ste);
 					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);			
 				} 
-				catch (GSMException e) 
+				catch (GSMException | InvalidSIMPinException e) 
 				{
 					Buzzer.toneSMSFailed();
 					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.NO_DEVICE_CONNECTED);

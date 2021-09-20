@@ -191,8 +191,9 @@ public class GSMUtil {
 	 * @param modemID Modem ID
 	 * @return List of SMS
 	 * @throws GSMException if any GSM errors
+	 * @throws InvalidSIMPinException 
 	 */
-	public static List<SMS> readSMS(String modemID) throws GSMException
+	public static List<SMS> readSMS(String modemID) throws GSMException, InvalidSIMPinException
 	{
 		return GSMUtil.get(modemID).readSMS();
 	}
@@ -202,8 +203,9 @@ public class GSMUtil {
 	 * @param modemID Modem ID
 	 * @return JSONArray contains SMS
 	 * @throws GSMException if any GSM errors
+	 * @throws InvalidSIMPinException 
 	 */
-	public static JSONArray readSMSJSON(String modemID) throws GSMException
+	public static JSONArray readSMSJSON(String modemID) throws GSMException, InvalidSIMPinException
 	{
 		JSONArray arr = new JSONArray();
 		List<SMS> sms = GSMUtil.get(modemID).readSMS();
@@ -221,8 +223,9 @@ public class GSMUtil {
 	 * @param modemID Modem ID
 	 * @return JSONObject contains sending SMS response
 	 * @throws GSMException if any GSM errors
+	 * @throws InvalidSIMPinException 
 	 */
-	public static JSONObject sendSMS(String receiver, String message, String modemID) throws GSMException 
+	public static JSONObject sendSMS(String receiver, String message, String modemID) throws GSMException, InvalidSIMPinException 
 	{
 		StackTraceElement ste = Thread.currentThread().getStackTrace()[3];
 		if(GSMUtil.getGSMInstance().isEmpty())
@@ -248,8 +251,9 @@ public class GSMUtil {
 	 * @param message The text message
 	 * @return JSONObject contains sending SMS response
 	 * @throws GSMException if any GSM errors
+	 * @throws InvalidSIMPinException 
 	 */
-	public static JSONObject sendSMS(String receiver, String message, StackTraceElement ste) throws GSMException 
+	public static JSONObject sendSMS(String receiver, String message, StackTraceElement ste) throws GSMException, InvalidSIMPinException 
 	{
 		if(GSMUtil.getGSMInstance().isEmpty())
 		{
