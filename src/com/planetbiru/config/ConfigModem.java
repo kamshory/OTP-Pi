@@ -210,7 +210,10 @@ public class ConfigModem {
 			modem.put("internetAccess", value.isInternetAccess());
 			modem.put("internetConnected", InternetDialUtil.isConnected(id));
 			modem.put("name", value.getName());
+			modem.put("operatorSelect", value.getOperatorSelect());
 			modem.put("imei", value.getImei());
+			modem.put("iccid", value.getIccid());
+			modem.put("imsi", value.getImsi());
 			modem.put("active", value.isActive());
 			modem.put("port", value.getPort());
 			modem.put("smsCenter", value.getSmsCenter());

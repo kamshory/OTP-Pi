@@ -872,6 +872,9 @@
   .chip .tile-icon{
     background-image: url(../images/icon/chip.png);
   }
+  .sim .tile-icon{
+    background-image: url(../images/icon/sim.png);
+  }
   .ussd-code .tile-icon{
     background-image: url(../images/icon/ussd.png);
   }
