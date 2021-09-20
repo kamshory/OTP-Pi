@@ -490,9 +490,13 @@ OTP-Pi provides a feature to read incoming SMS. The OTP-Pi will read all the SMS
 
 Users can delete the SMS when it is no longer needed. Users can also reply to the SMS manually from the OTP-Pi.
 
-## IMEI Changer
+## IMEI Tool
 
 OTP-Pi provides a tool to change the IMEI of the modem. This tool is very useful for users who want to change IMEI for some reason. Users can directly enter the new IMEI and save it. The new IMEI will be written on the modem chip. Restarting the device may be required to implement the new IMEI on the GSM network.
+
+## SIM Tool
+
+OTP-Pi provides tools to create or delete sim card PIN. This tool is very useful when the user chooses to use or not to use the PIN on the sim card.
 
 ## Real Time Clock
 
