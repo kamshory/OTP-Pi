@@ -70,6 +70,11 @@ public class JsonKey {
 	public static final String ACTION                     = "action";
 	public static final String START                      = "start";
 	public static final String MODEM_ID                   = "modem_id";
+	public static final String HASH                       = "hash";
+	public static final String EXPIRATION                 = "expiration";
+	public static final String REFERENCE                  = "reference";
+	public static final Object ENDPOINT                   = "endpoint";
+	public static final Object COMPANY                    = "company";
 	
 	private JsonKey()
 	{

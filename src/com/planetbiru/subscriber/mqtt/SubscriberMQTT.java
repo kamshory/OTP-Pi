@@ -27,13 +27,18 @@ public class SubscriberMQTT extends Thread{
 	{
 		if(ConfigSubscriberMQTT.isSubscriberMqttEnable())
 		{
+			long sleep = ConfigSubscriberMQTT.getSubscriberWsReconnectDelay();
+			if(sleep == 0)
+			{
+				sleep = 10000;
+			}
 			ConfigSubscriberMQTT.setConnected(true);
 			this.connect();
 			do 
 			{
 				try 
 				{
-					Thread.sleep(ConfigSubscriberMQTT.getSubscriberWsReconnectDelay());
+					Thread.sleep(sleep);
 				} 
 				catch (InterruptedException e) 
 				{

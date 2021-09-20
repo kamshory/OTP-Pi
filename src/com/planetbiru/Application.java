@@ -14,6 +14,7 @@ import java.util.Properties;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.planetbiru.api.OTP;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigAPIUser;
@@ -142,6 +143,7 @@ public class Application {
 		{
 			ConfigLoader.init();
 			
+			
 			if(needToReset)
 			{
 				Application.resetConfig();
@@ -175,6 +177,8 @@ public class Application {
 			 * REST API HTTP
 			 */
 			Application.restAPIStart();
+			
+			Application.otpStart();
 					
 	
 			Application.modemSMSStart();
@@ -201,23 +205,36 @@ public class Application {
 		
 	}
 	
-	private static void schedulerStart() {
+	private static void otpStart() {
+		OTP.initialize(Config.getOtpCacheFile());
+		OTP.start();
+	}
+
+	public static void schedulerStart() {
 		Application.scheduller = new Scheduller();
 		Application.scheduller.start();		
 	}
 
-	private static void serverEmailStart() {
+	public static void serverEmailStart() {
 		Application.smtp = new ServerEmail();
 		Application.smtp.start();
 		
 	}
 
-	private static void modemInternetStart() {
+	public static void modemInternetStart() {
 		InternetDialUtil.start();
 	}
 
-	private static void modemSMSStart() {
+	public static void modemSMSStart() {
 		GSMUtil.start();	
+	}
+	
+	public static void modemInternetStop() {
+		InternetDialUtil.stop();
+	}
+
+	public static void modemSMSStop() {
+		GSMUtil.stop();	
 	}
 
 	private static void restAPIStart() {

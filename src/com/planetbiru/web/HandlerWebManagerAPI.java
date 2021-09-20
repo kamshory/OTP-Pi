@@ -51,6 +51,10 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			{
 				this.internetConnect(httpExchange);
 			}
+			else if(path.startsWith("/api/modem"))
+			{
+				this.modemChangeState(httpExchange);
+			}
 			else if(path.startsWith("/api/email"))
 			{
 				this.sendEmail(httpExchange);
@@ -110,8 +114,58 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			else if(path.startsWith("/api/tone"))
 			{
 				this.testTone(httpExchange);
-			}
+			}			
+			
 		}
+	}
+	private void modemChangeState(HttpExchange httpExchange) throws IOException {
+		byte[] req = HttpUtil.getRequestBody(httpExchange);
+		String requestBody = "";
+		if(req != null)
+		{
+			requestBody = new String(req);
+		}
+		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
+		Headers requestHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
+		int statusCode;
+		JSONObject responseJSON = new JSONObject();
+		statusCode = HttpStatus.OK;
+		try 
+		{
+			if(WebUserAccount.checkUserAuth(requestHeaders))
+			{
+				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
+				if(action.equals("connect"))
+				{
+					Application.modemSMSStart();
+					Application.modemInternetStart();
+				}
+				else
+				{
+					Application.modemSMSStop();
+					Application.modemInternetStop();
+				} 
+				ServerInfo.sendModemStatus();			
+			} 
+			else 
+			{
+				statusCode = HttpStatus.UNAUTHORIZED;
+			}
+		} 
+		catch (NoUserRegisteredException e) 
+		{
+			statusCode = HttpStatus.UNAUTHORIZED;
+		}
+		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
+		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
+		byte[] responseBody = responseJSON.toString(0).getBytes();
+
+
+		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+		httpExchange.getResponseBody().write(responseBody);
+		httpExchange.close();
+		
 	}
 	//@PostMapping(path="/api/tone")
 	public void testTone(HttpExchange httpExchange) throws IOException

@@ -88,7 +88,7 @@ public class HandlerWebManager implements HttpHandler {
 	}
 
 	private WebResponse handleGet(HttpExchange httpExchange, String path) {
-		if(!Config.isValidDevice() && (path.contains(".html") || path.equals("/")))
+		if(!Config.isValidDevice() && (path.contains(".html") || path.equals(ConstantString.DOCUMENT_PATH_SEPARATOR)))
 		{
 			return this.invalidDevice();
 		}
@@ -127,7 +127,7 @@ public class HandlerWebManager implements HttpHandler {
 	}
 
 	private WebResponse serveDocumentRoot(HttpExchange httpExchange, String path) {
-		if(path.equals("/"))
+		if(path.equals(ConstantString.DOCUMENT_PATH_SEPARATOR))
 		{
 			path = "/index.html";
 		}
@@ -444,7 +444,7 @@ public class HandlerWebManager implements HttpHandler {
 			String serverAddress = queryPairs.getOrDefault("server_address", "").trim();
 			String port = queryPairs.getOrDefault("server_port", "0").trim();
 			int serverPort = Utility.atoi(port);
-			boolean active = queryPairs.getOrDefault("active", "").trim().equals("1");
+			boolean active = queryPairs.getOrDefault(JsonKey.ACTIVE, "").trim().equals("1");
 			ConfigSMTP.setSoftwareName(softwareName);
 			ConfigSMTP.setServerName(serverName);
 			ConfigSMTP.setServerAddress(serverAddress);
@@ -464,7 +464,7 @@ public class HandlerWebManager implements HttpHandler {
 				String value = entry.getValue();
 				if(key.startsWith("id["))
 				{
-					String path = FileConfigUtil.removeParentWithDot("/"+value);
+					String path = FileConfigUtil.removeParentWithDot(ConstantString.DOCUMENT_PATH_SEPARATOR+value);
 					String dir = Config.getLogDir();
 					String fileName = FileConfigUtil.fixFileName(dir+path);
 					File file = new File(fileName);
@@ -491,7 +491,7 @@ public class HandlerWebManager implements HttpHandler {
 				String value = entry.getValue();
 				if(key.startsWith("id["))
 				{
-					String path = FileConfigUtil.removeParentWithDot("/"+value);
+					String path = FileConfigUtil.removeParentWithDot(ConstantString.DOCUMENT_PATH_SEPARATOR+value);
 					String dir = Config.getSmsLogPath();
 					String fileName = FileConfigUtil.fixFileName(dir+path);
 					File file = new File(fileName);
@@ -976,12 +976,12 @@ public class HandlerWebManager implements HttpHandler {
 
 	private void processCloudflareSetting(String requestBody) {
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
-		String endpoint = queryPairs.getOrDefault("endpoint", "").trim();
+		String endpoint = queryPairs.getOrDefault(JsonKey.ENDPOINT, "").trim();
 		String accountId = queryPairs.getOrDefault("account_id", "").trim();
 		String authEmail = queryPairs.getOrDefault("auth_email", "").trim();
 		String authApiKey = queryPairs.getOrDefault("auth_api_key", "").trim();
 		String authToken = queryPairs.getOrDefault("auth_token", "").trim();
-		boolean active = queryPairs.getOrDefault("active", "").trim().equals("1");
+		boolean active = queryPairs.getOrDefault(JsonKey.ACTIVE, "").trim().equals("1");
 		
 		if(!endpoint.isEmpty())
 		{
@@ -998,12 +998,12 @@ public class HandlerWebManager implements HttpHandler {
 	
 	private void processNoIPSetting(String requestBody) {
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
-		String endpoint = queryPairs.getOrDefault("endpoint", "").trim();
-		String username = queryPairs.getOrDefault("username", "").trim();
-		String email = queryPairs.getOrDefault("email", "").trim();
-		String password = queryPairs.getOrDefault("password", "").trim();
-		String company = queryPairs.getOrDefault("company", "").trim();
-		boolean active = queryPairs.getOrDefault("active", "").trim().equals("1");
+		String endpoint = queryPairs.getOrDefault(JsonKey.ENDPOINT, "").trim();
+		String username = queryPairs.getOrDefault(JsonKey.USERNAME, "").trim();
+		String email = queryPairs.getOrDefault(JsonKey.EMAIL, "").trim();
+		String password = queryPairs.getOrDefault(JsonKey.PASSWORD, "").trim();
+		String company = queryPairs.getOrDefault(JsonKey.COMPANY, "").trim();
+		boolean active = queryPairs.getOrDefault(JsonKey.ACTIVE, "").trim().equals("1");
 		
 		if(!endpoint.isEmpty())
 		{
@@ -1023,12 +1023,12 @@ public class HandlerWebManager implements HttpHandler {
 	
 	private void processAfraidSetting(String requestBody) {
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
-		String endpoint = queryPairs.getOrDefault("endpoint", "").trim();
-		String username = queryPairs.getOrDefault("username", "").trim();
-		String email = queryPairs.getOrDefault("email", "").trim();
-		String password = queryPairs.getOrDefault("password", "").trim();
-		String company = queryPairs.getOrDefault("company", "").trim();
-		boolean active = queryPairs.getOrDefault("active", "").trim().equals("1");
+		String endpoint = queryPairs.getOrDefault(JsonKey.ENDPOINT, "").trim();
+		String username = queryPairs.getOrDefault(JsonKey.USERNAME, "").trim();
+		String email = queryPairs.getOrDefault(JsonKey.EMAIL, "").trim();
+		String password = queryPairs.getOrDefault(JsonKey.PASSWORD, "").trim();
+		String company = queryPairs.getOrDefault(JsonKey.COMPANY, "").trim();
+		boolean active = queryPairs.getOrDefault(JsonKey.ACTIVE, "").trim().equals("1");
 		
 		if(!endpoint.isEmpty())
 		{
@@ -1050,12 +1050,12 @@ public class HandlerWebManager implements HttpHandler {
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
 		String apiVersion = queryPairs.getOrDefault("api_version", "").trim();
 		String apiKey = queryPairs.getOrDefault("api_key", "").trim();
-		String endpoint = queryPairs.getOrDefault("endpoint", "").trim();
-		String username = queryPairs.getOrDefault("username", "").trim();
-		String email = queryPairs.getOrDefault("email", "").trim();
-		String password = queryPairs.getOrDefault("password", "").trim();
-		String company = queryPairs.getOrDefault("company", "").trim();
-		boolean active = queryPairs.getOrDefault("active", "").trim().equals("1");
+		String endpoint = queryPairs.getOrDefault(JsonKey.ENDPOINT, "").trim();
+		String username = queryPairs.getOrDefault(JsonKey.USERNAME, "").trim();
+		String email = queryPairs.getOrDefault(JsonKey.EMAIL, "").trim();
+		String password = queryPairs.getOrDefault(JsonKey.PASSWORD, "").trim();
+		String company = queryPairs.getOrDefault(JsonKey.COMPANY, "").trim();
+		boolean active = queryPairs.getOrDefault(JsonKey.ACTIVE, "").trim().equals("1");
 		
 		if(!endpoint.isEmpty())
 		{
@@ -1248,6 +1248,10 @@ public class HandlerWebManager implements HttpHandler {
 	private void processModemUpdate(Map<String, String> queryPairs, String action) {		
 		
 		String id = queryPairs.getOrDefault("id", "").trim();		
+		if(action.equals(JsonKey.ADD) || id.isEmpty())
+		{
+			id = Utility.md5(String.format("%d", System.nanoTime()));
+		}
 		String port = queryPairs.getOrDefault("port", "").trim();
 		boolean active = queryPairs.getOrDefault(JsonKey.ACTIVE, "").trim().equals("1");	
 		boolean defaultModem = queryPairs.getOrDefault("default_modem", "").trim().equals("1");
@@ -1329,11 +1333,7 @@ public class HandlerWebManager implements HttpHandler {
 		String dialCommand = queryPairs.getOrDefault("dial_command", "").trim();		
 
 		DataModem modem = ConfigModem.getModemData(id);
-		if(action.equals(JsonKey.ADD) || id.isEmpty())
-		{
-			id = Utility.md5(String.format("%d", System.nanoTime()));
-			modem.setId(id);
-		}
+		modem.setId(id);
 		modem.setManufacturer(manufacturer);
 		modem.setModel(model);
 		modem.setRevision(revision);
@@ -1374,8 +1374,21 @@ public class HandlerWebManager implements HttpHandler {
 		modem.setDialCommand(dialCommand);
 		modem.setAutoreconnect(autoreconnect);
 		modem.setDeleteSentSMS(deleteSentSMS);
-		ConfigModem.update(id, modem);
-		ConfigModem.save();	
+		
+		boolean duplicated = false;
+		if(action.equals(JsonKey.ADD))
+		{
+			duplicated = ConfigModem.isDuuplicated(port, null);
+		}
+		else
+		{
+			duplicated = ConfigModem.isDuuplicated(port, id);
+		}	
+		if(!duplicated)
+		{
+			ConfigModem.update(id, modem);
+			ConfigModem.save();	
+		}
 	}
 
 	private void processSubscriberSetting(String requestBody) {
@@ -1464,6 +1477,8 @@ public class HandlerWebManager implements HttpHandler {
 			int subscriberMqttTimeout = Utility.atoi(timeout);	
 			String refresh = queryPairs.getOrDefault("subscriber_mqtt_refresh", "0");
 			int subscriberMqttRefresh = Utility.atoi(refresh);
+			String recoonectDelay = queryPairs.getOrDefault("subscriber_recoonect_delay", "0");
+			long subscriberWsReconnectDelay = Utility.atol(recoonectDelay);
 			
 			ConfigSubscriberMQTT.setSubscriberMqttEnable(subscriberMqttEnable);
 			ConfigSubscriberMQTT.setSubscriberMqttSSL(subscriberMqttSSL);
@@ -1474,6 +1489,7 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigSubscriberMQTT.setSubscriberMqttPassword(subscriberMqttPassword);
 			ConfigSubscriberMQTT.setSubscriberMqttTopic(subscriberMqttTopic);
 			ConfigSubscriberMQTT.setSubscriberMqttTimeout(subscriberMqttTimeout);
+			ConfigSubscriberMQTT.setSubscriberWsReconnectDelay(subscriberWsReconnectDelay);
 			ConfigSubscriberMQTT.setSubscriberMqttRefresh(subscriberMqttRefresh);		
 
 			ConfigSubscriberMQTT.save();			
@@ -1505,7 +1521,7 @@ public class HandlerWebManager implements HttpHandler {
 	
 	private void processAccount(String requestBody, CookieServer cookie) {
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
-		String loggedUsername = (String) cookie.getSessionValue(JsonKey.USERNAME, "");
+		String loggedUsername = cookie.getSessionValue(JsonKey.USERNAME, "");
 		String phone = queryPairs.getOrDefault(JsonKey.PHONE, "");
 		String password = queryPairs.getOrDefault(JsonKey.PASSWORD, "");
 		String email = queryPairs.getOrDefault(JsonKey.EMAIL, "");
@@ -1537,7 +1553,7 @@ public class HandlerWebManager implements HttpHandler {
 	
 	private void processAdmin(String requestBody, CookieServer cookie) {
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
-		String loggedUsername = (String) cookie.getSessionValue(JsonKey.USERNAME, "");
+		String loggedUsername = cookie.getSessionValue(JsonKey.USERNAME, "");
 		if(queryPairs.containsKey(JsonKey.DELETE))
 		{
 			/**
@@ -1998,27 +2014,27 @@ public class HandlerWebManager implements HttpHandler {
 			
 			if(!id.isEmpty())
 			{
-				DDNSRecord record = ConfigDDNS.getRecords().getOrDefault(id, new DDNSRecord());
+				DDNSRecord ddnsRecord = ConfigDDNS.getRecords().getOrDefault(id, new DDNSRecord());
 				if(!id.isEmpty())
 				{
-					record.setId(id);
+					ddnsRecord.setId(id);
 				}
 				if(!zone.isEmpty())
 				{
-					record.setZone(zone);
+					ddnsRecord.setZone(zone);
 				}
 				if(!recordName.isEmpty())
 				{
-					record.setRecordName(recordName);
+					ddnsRecord.setRecordName(recordName);
 				}
-				record.setProvider(provider);
-				record.setProxied(proxied);
-				record.setForceCreateZone(forceCreateZone);
-				record.setCronExpression(cronExpression);
-				record.setTtl(ttl);
-				record.setActive(active);		
-				record.setType(type);
-				ConfigDDNS.updateRecord(record);
+				ddnsRecord.setProvider(provider);
+				ddnsRecord.setProxied(proxied);
+				ddnsRecord.setForceCreateZone(forceCreateZone);
+				ddnsRecord.setCronExpression(cronExpression);
+				ddnsRecord.setTtl(ttl);
+				ddnsRecord.setActive(active);		
+				ddnsRecord.setType(type);
+				ConfigDDNS.updateRecord(ddnsRecord);
 				ConfigDDNS.save();
 			}
 		}
@@ -2036,22 +2052,22 @@ public class HandlerWebManager implements HttpHandler {
 			int ttl = Utility.atoi(ttls);
 			String type = queryPairs.getOrDefault(JsonKey.TYPE, "0");
 			String id = Utility.md5(zone+":"+recordName);
-			DDNSRecord record = new DDNSRecord();
+			DDNSRecord ddnsRecord = new DDNSRecord();
 			
-			record.setId(id);
-			record.setZone(zone);
-			record.setRecordName(recordName);
-			record.setType(type);
-			record.setProxied(proxied);
-			record.setTtl(ttl);
-			record.setForceCreateZone(forceCreateZone);
-			record.setProvider(provider);
-			record.setActive(active);
-			record.setCronExpression(cronExpression);
+			ddnsRecord.setId(id);
+			ddnsRecord.setZone(zone);
+			ddnsRecord.setRecordName(recordName);
+			ddnsRecord.setType(type);
+			ddnsRecord.setProxied(proxied);
+			ddnsRecord.setTtl(ttl);
+			ddnsRecord.setForceCreateZone(forceCreateZone);
+			ddnsRecord.setProvider(provider);
+			ddnsRecord.setActive(active);
+			ddnsRecord.setCronExpression(cronExpression);
 			
 			if(!zone.isEmpty() && !recordName.isEmpty())
 			{
-				ConfigDDNS.getRecords().put(id, record);	
+				ConfigDDNS.getRecords().put(id, ddnsRecord);	
 				ConfigDDNS.save();
 			}
 		}

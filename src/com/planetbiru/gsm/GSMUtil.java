@@ -62,11 +62,26 @@ public class GSMUtil {
 			DataModem modem = entry.getValue();
 			if(modem.isActive() && !modem.isInternetAccess())
 			{
-				GSMInstance instance = new GSMInstance(modem, eventListener);
+				GSMInstance instance;
+				boolean exists = false;
+				if(!GSMUtil.hasGSMInstanceID(modem.getId()))
+				{
+					instance = new GSMInstance(modem, eventListener);
+				}
+				else
+				{
+					instance = GSMUtil.getGSMIntance(modem.getId());
+					exists = true;
+				}
+				
 				try 
 				{
+					System.out.println("Connect");
 					instance.connect();
-					GSMUtil.getGsmInstance().add(instance);
+					if(!exists)
+					{
+						GSMUtil.getGSMInstance().add(instance);
+					}
 				} 
 				catch (GSMException | InvalidPortException e) 
 				{
@@ -76,6 +91,30 @@ public class GSMUtil {
 		}
 		GSMUtil.initialized = true;
 		GSMUtil.updateConnectedDevice();
+	}
+
+	public static void stop() {
+		Map<String, DataModem> modemData = ConfigModem.getModemData();		
+		for (Map.Entry<String, DataModem> entry : modemData.entrySet())
+		{
+			DataModem modem = entry.getValue();
+			if(modem.isActive() && !modem.isInternetAccess())
+			{
+				GSMInstance instance = GSMUtil.getGSMIntance(modem.getId());
+				if(instance.isConnected())
+				{
+					try 
+					{
+						instance.disconnect();
+					} 
+					catch (GSMException e) 
+					{
+						logger.error(e.getMessage());
+					}
+				}
+			}
+		}
+		GSMUtil.updateConnectedDevice();	
 	}
 
 	/**
@@ -89,9 +128,9 @@ public class GSMUtil {
 		DataModem modem = ConfigModem.getModemData(modemID);
 		boolean found = false;
 		GSMInstance instance = new GSMInstance(modem, eventListener);
-		for(int i = 0; i<GSMUtil.getGsmInstance().size(); i++)
+		for(int i = 0; i<GSMUtil.getGSMInstance().size(); i++)
 		{
-			instance =  GSMUtil.getGsmInstance().get(i);
+			instance =  GSMUtil.getGSMInstance().get(i);
 			if(instance.getId().equals(modemID))
 			{
 				found = true;
@@ -100,7 +139,7 @@ public class GSMUtil {
 		}
 		if(!found)
 		{
-			GSMUtil.getGsmInstance().add(instance);
+			GSMUtil.getGSMInstance().add(instance);
 		}
 		instance.connect();	
 		GSMUtil.updateConnectedDevice();
@@ -164,7 +203,7 @@ public class GSMUtil {
 	public static JSONObject sendSMS(String receiver, String message, String modemID) throws GSMException 
 	{
 		StackTraceElement ste = Thread.currentThread().getStackTrace()[3];
-		if(GSMUtil.getGsmInstance().isEmpty())
+		if(GSMUtil.getGSMInstance().isEmpty())
 		{
 			GSMUtil.sendTraffic(receiver, ste);
 			throw new GSMException(GSMUtil.NO_DEVICE_CONNECTED);
@@ -190,13 +229,13 @@ public class GSMUtil {
 	 */
 	public static JSONObject sendSMS(String receiver, String message, StackTraceElement ste) throws GSMException 
 	{
-		if(GSMUtil.getGsmInstance().isEmpty())
+		if(GSMUtil.getGSMInstance().isEmpty())
 		{
 			GSMUtil.sendTraffic(receiver, ste);
 			throw new GSMException(GSMUtil.NO_DEVICE_CONNECTED);
 		}
 		int index = GSMUtil.getModemIndex(receiver);
-		GSMInstance instance = GSMUtil.getGsmInstance().get(index);	
+		GSMInstance instance = GSMUtil.getGSMInstance().get(index);	
 		
 		DataModem modemData = ConfigModem.getModemData(instance.getId());      
 		String result = instance.sendSMS(receiver, message, modemData);
@@ -255,7 +294,7 @@ public class GSMUtil {
 
 	public static USSDParser executeUSSD(String ussd, String modemID) throws GSMException 
 	{
-		if(GSMUtil.getGsmInstance().isEmpty())
+		if(GSMUtil.getGSMInstance().isEmpty())
 		{
 			throw new GSMException(GSMUtil.NO_DEVICE_CONNECTED);
 		}
@@ -272,9 +311,9 @@ public class GSMUtil {
 
 	public static GSMInstance get(String modemID) throws GSMException 
 	{
-		for(int i = 0; i<GSMUtil.getGsmInstance().size(); i++)
+		for(int i = 0; i<GSMUtil.getGSMInstance().size(); i++)
 		{
-			GSMInstance instance =  GSMUtil.getGsmInstance().get(i);
+			GSMInstance instance =  GSMUtil.getGSMInstance().get(i);
 			if(instance.getId().equals(modemID))
 			{
 				return instance;
@@ -286,7 +325,7 @@ public class GSMUtil {
 
 	public static boolean isConnected() 
 	{
-		if(GSMUtil.getGsmInstance().isEmpty())
+		if(GSMUtil.getGSMInstance().isEmpty())
 		{
 			return false;
 		}
@@ -296,9 +335,9 @@ public class GSMUtil {
 	public static int countConnected()
 	{
 		int connected = 0;
-		for(int i = 0; i < GSMUtil.getGsmInstance().size(); i++)
+		for(int i = 0; i < GSMUtil.getGSMInstance().size(); i++)
 		{
-			if(GSMUtil.getGsmInstance().get(i).isConnected())
+			if(GSMUtil.getGSMInstance().get(i).isConnected())
 			{
 				connected++;
 			}
@@ -308,9 +347,9 @@ public class GSMUtil {
 	
 	public static boolean isConnected(String modemID)
 	{
-		for(int i = 0; i < GSMUtil.getGsmInstance().size(); i++)
+		for(int i = 0; i < GSMUtil.getGSMInstance().size(); i++)
 		{
-			if(GSMUtil.getGsmInstance().get(i).getId().equals(modemID) && GSMUtil.getGsmInstance().get(i).isConnected())
+			if(GSMUtil.getGSMInstance().get(i).getId().equals(modemID) && GSMUtil.getGSMInstance().get(i).isConnected())
 			{
 				return true;
 			}
@@ -320,20 +359,20 @@ public class GSMUtil {
 	
 	public static boolean isConnected(int index)
 	{
-		if(GSMUtil.getGsmInstance().isEmpty())
+		if(GSMUtil.getGSMInstance().isEmpty())
 		{
 			return false;
 		}
-		return GSMUtil.getGsmInstance().get(index).isConnected();
+		return GSMUtil.getGSMInstance().get(index).isConnected();
 	}
 	
 	public static boolean isHasPrefix(int index)
 	{
-		if(GSMUtil.getGsmInstance().isEmpty())
+		if(GSMUtil.getGSMInstance().isEmpty())
 		{
 			return false;
 		}
-		String modemID = GSMUtil.getGsmInstance().get(index).getId();
+		String modemID = GSMUtil.getGSMInstance().get(index).getId();
 		return ConfigModem.getModemData(modemID).getRecipientPrefix().length() > 0;
 	}
 	
@@ -346,12 +385,12 @@ public class GSMUtil {
 		List<Integer> connectedDev = new ArrayList<>();
 		List<Integer> connectedDefaultDev = new ArrayList<>();
 		GSMUtil.modemRouterList = new HashMap<>();
-		for(int i = 0; i<GSMUtil.getGsmInstance().size(); i++)
+		for(int i = 0; i<GSMUtil.getGSMInstance().size(); i++)
 		{
 			if(GSMUtil.isConnected(i))
 			{
 				
-				String modemID = GSMUtil.getGsmInstance().get(i).getId();
+				String modemID = GSMUtil.getGSMInstance().get(i).getId();
 				DataModem modemData = ConfigModem.getModemData(modemID);
 				
 				if(modemData.isSmsAPI())
@@ -507,13 +546,13 @@ public class GSMUtil {
 	}
 
 	private static void reindexInstantce() {
-		for(int i = 0; i < GSMUtil.getGsmInstance().size(); i++)
+		for(int i = 0; i < GSMUtil.getGSMInstance().size(); i++)
 		{
-			if(GSMUtil.getGsmInstance().get(i).isConnected() && !ConfigModem.getModemData(GSMUtil.getGsmInstance().get(i).getId()).isActive())
+			if(GSMUtil.getGSMInstance().get(i).isConnected() && !ConfigModem.getModemData(GSMUtil.getGSMInstance().get(i).getId()).isActive())
 			{
 				try 
 				{
-					GSMUtil.getGsmInstance().get(i).disconnect();
+					GSMUtil.getGSMInstance().get(i).disconnect();
 				} 
 				catch (GSMException e) 
 				{
@@ -526,8 +565,30 @@ public class GSMUtil {
 		}		
 	}
 
-	public static List<GSMInstance> getGsmInstance() {
+	public static List<GSMInstance> getGSMInstance() {
 		return gsmInstance;
+	}
+	
+	private static GSMInstance getGSMIntance(String id) {
+		for(int i = 0; i < GSMUtil.getGSMInstance().size(); i++)
+		{
+			if(GSMUtil.getGSMInstance().get(i).getId().equals(id))
+			{
+				return GSMUtil.getGSMInstance().get(i);
+			}
+		}
+		return null;
+	}
+
+	private static boolean hasGSMInstanceID(String id) {
+		for(int i = 0; i < GSMUtil.getGSMInstance().size(); i++)
+		{
+			if(GSMUtil.getGSMInstance().get(i).getId().equals(id))
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public static long getLastDelete() {
@@ -593,17 +654,63 @@ public class GSMUtil {
 		}
 		return info;
 	}
+	
+	public static JSONObject changeIMEI(String port, String currentValue, String newValue) {
+		GSMInstance instance;
+		boolean addHock = false;
+		JSONObject info = new JSONObject();
+		try 
+		{
+			instance = GSMUtil.getGSMInstanceByPort(port);	
+		} 
+		catch (ModemNotFoundException e) 
+		{
+			instance = new GSMInstance(port, eventListener);
+			addHock = true;
+		}		
+		try 
+		{
+			if(!instance.isConnected())
+			{
+				instance.connect();
+			}
+			if(currentValue != null && newValue != null && !currentValue.equals(newValue))
+			{
+				newValue = newValue.trim();
+				String command = "AT+EGMR=1,7,\""+newValue+"\"";
+				String response = instance.executeATCommand(command);
+				info.put("response", response);
+				info.put("command", command);
+			}
+		    
+			if(addHock)
+			{
+				instance.disconnect();
+			}
+			
+		} 
+		catch (GSMException | InvalidPortException e) 
+		{
+			e.printStackTrace();
+			/**
+			 * Do nothing
+			 */
+		}
+		return info;
+	}
 
 	private static GSMInstance getGSMInstanceByPort(String port) throws ModemNotFoundException {
-		for(int i = 0; i < GSMUtil.getGsmInstance().size(); i++)
+		for(int i = 0; i < GSMUtil.getGSMInstance().size(); i++)
 		{
-			if(GSMUtil.getGsmInstance().get(i).getPort().equals(port))
+			if(GSMUtil.getGSMInstance().get(i).getPort().equals(port))
 			{
-				return GSMUtil.getGsmInstance().get(i);
+				return GSMUtil.getGSMInstance().get(i);
 			}
 		}
 		throw new ModemNotFoundException("No modem use port "+port);
 	}
+
+	
 
 }
 

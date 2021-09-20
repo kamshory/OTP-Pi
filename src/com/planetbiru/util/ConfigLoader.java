@@ -194,6 +194,18 @@ public class ConfigLoader {
 		String smsInboxStorage = ConfigLoader.getConfig("otppi.sms.inbox.storage");	
 		String smsInboxStatus = ConfigLoader.getConfig("otppi.sms.inbox.status");	
 		
+		String otpCacheFile = ConfigLoader.getConfig("otppi.otp.cache.file");	
+		String otpSalt = ConfigLoader.getConfig("otppi.otp.salt");	
+		int otpLength = ConfigLoader.getConfigInt("otppi.otp.length");
+		long otpLifetime = ConfigLoader.getConfigInt("otppi.otp.lifetime");
+		int otpGCInterval = ConfigLoader.getConfigInt("otppi.otp.gc.ingterval");
+
+		Config.setOtpCacheFile(otpCacheFile);
+		Config.setOtpLength(otpLength);
+		Config.setOtpLifetime(otpLifetime);
+		Config.setOtpGCInterval(otpGCInterval);
+		Config.setOtpSalt(otpSalt);
+		
 		Config.setSmsInboxStorage(smsInboxStorage);
 		Config.setSmsInboxStatus(smsInboxStatus);
 		Config.setSoundTestTone(soundTestTone);

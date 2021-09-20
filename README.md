@@ -2,11 +2,16 @@
 
 ![OTP-Pi](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/otp-pi.png)
 
+![OTP-Pi](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/usb-hub-20-port.png)
+
 ![Screenshot](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/ss-desktop.png)
 
 ![Screenshot](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/ss-desktop2.png)
 
 OTP or `One Time Password` is a one-time use password that has a certain validity period. Generally the validity period is made very short and only gives the chance to the recipient to enter it into the application and send it to the application server that requires it. OTP is strictly confidential so the `clear text` of the OTP should not be stored by any party. In fact, the application server only stores the `hash` or `token` that matches the OTP. `Clear text` is only generated and then sent to the recipient. In other words, `clear text` is only known to the OTP recipient.
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DMHFJ6LR7FGQS)
+
 
 The most popular OTPs are sent via SMS or Short Message Service. The use of SMS has the following advantages:
 
@@ -49,7 +54,7 @@ OTP-Pi requires Raspberry Pi 3 Model B or higher. Minimum RAM is 1 GB and SD Car
 
 Modem is a list of modems installed on the OTP-Pi. Modems are named based on the make and model of the device and the connection used. The modem can be turned on and off at any time. An inactive modem will not be used to send SMS even if it is physically attached to the OTP-Pi and receiving power.
 
-OTP-Pi can use multiple modems at once. Sending SMS will use the Round-Robin algorithm where all active modems will be used in rotation.
+OTP-Pi can use multiple modems at once. By default, the OTP-Pi can use up to 4 modems at once without the need for additional devices. The use of a hub is possible so that users can use more than 4 modems in one OTP-Pi device. The modems are registered as usual. Sending SMS will use the Round-Robin algorithm where all active modems will be used in rotation.
 
 ## Prefix-Based Routing
 
@@ -480,6 +485,18 @@ OTP-Pi can open and close ports of the operating system used by SMS Broker. Clos
 
 The monitor can be used to view the activity of the modem installed on the OTP-Pi. When the OTP-Pi sends an SMS, the OTP-Pi will show where the SMS request came from and which modem was used. In addition, the status of the modem will be shown so that it will be seen which modems are connected correctly.
 
+## SMS Inbox
+
+OTP-Pi provides a feature to read incoming SMS. The OTP-Pi will read all the SMS on the SIM card and move them to the storage on the device.
+
+![Screenshot](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/feature-inbox.png)
+
+Users can delete the SMS when it is no longer needed. Users can also reply to the SMS manually from the OTP-Pi.
+
+## IMEI Changer
+
+OTP-Pi provides a tool to change the IMEI of the modem. This tool is very useful for users who want to change IMEI for some reason. Users can directly enter the new IMEI and save it. The new IMEI will be written on the modem chip. Restarting the device may be required to implement the new IMEI on the GSM network.
+
 ## Real Time Clock
 
 The Real Time Clock or RTC module is required to keep the device time when the device is turned off and not connected to the internet. The device must use the correct time so that the cookies sent by the device are not deleted by the browser due to expiration so that the administrator can manage the device including making settings. In addition, the device needs to record the time when an error occurred so that the error log can be read by the user for mitigation.
@@ -509,6 +526,7 @@ RESET_BLOCKING = false
 RESET_DDNS = false
 RESET_EMAIL = false
 RESET_FEEDER_AMQP = false
+RESET_FEEDER_MQTT = false
 RESET_FEEDER_WS = false
 RESET_FIREWALL = false
 RESET_KEYSTORE = false
@@ -541,12 +559,13 @@ Reset device will do the following things:
 4. RESET_DDNS 
 5. RESET_EMAIL 
 6. RESET_FEEDER_AMQP 
-7. RESET_FEEDER_WS 
-8. RESET_FIREWALL 
-9. RESET_KEYSTORE 
-10. RESET_MODEM 
-11. RESET_SMS 
-12. RESET_SMTP 
+7. RESET_FEEDER_MQTT
+8. RESET_FEEDER_WS 
+9. RESET_FIREWALL 
+10. RESET_KEYSTORE 
+11. RESET_MODEM 
+12. RESET_SMS 
+13. RESET_SMTP 
 
 **C. Vendor Configuration**
 
@@ -583,7 +602,7 @@ To use Mosquitto, please open the link https://mosquitto.org/
 
 ![OTP-Pi Topology](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/resource/www/lib.assets/images/topology.svg)
 
-### Scenario 1 - OTP-Pi App Server Accessible
+### Scenario 1 - App Server Can Access OTP-Pi 
 
 In this scenario, the App Server can directly send the OTP to the OTP-Pi via HTTP.
 
@@ -597,7 +616,163 @@ Users can use a cheap domain and use the Dynamic Domain Name System for free. Wi
 4. Domains whose name servers can be set
 5. Dynamic DNS service (free or paid)
 
+In this scenario, the application server can generate and validate the OTP sent for each transaction. OTP creation and validation requires the following parameters:
+
+**reference**
+
+`reference` is unique transaction reference number. This number must be different from one transaction to another. This number is the key to validate the OTP.
+
+**receiver**
+
+`receiver` is the phone number or email address of the recipient.
+
+**param1, param2, param3, param4**
+
+These four parameters are additional information for validating the OTP. These four parameters must be the same between OTP creation and validation. Of course this parameter can be filled with empty strings. Information that can be used as this parameter is for example the sender's account number, the recipient's account number, the transaction amount (in string format), and so on.
+
+OTP-Pi does not store the clear OTP but only stores the hash. In addition, the OTP-Pi immediately deletes the SMS sent immediately after. Thus, the OTP is very safe because it is only known by the recipient.
+
 **1. REST API**
+
+**Create OTP Request**
+
+```http
+POST /api/otp HTTP/1.1
+Host: sub.domain.tld
+Connection: close
+User-agent: KSPS
+Content-type: application/json
+Content-length: 313
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+{
+	"command": "create-otp",
+	"data": {
+		"date_time": 1629685778,
+		"expiration": 1629685838,
+		"receiver": "08126666666",
+		"message": "Your OTP is %s",
+		"reference": "12345678901234567890",
+		"param1": "100000",
+		"param2": "1234567890",
+		"param3": "987654",
+		"param4": "674527846556468254"
+	}
+}
+```
+
+| Parameter | Type | Description |
+| --------- | ---- | ----------|
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
+| `data`.receiver | String | MSISDN of the receiver |
+| `data`.message | String | Content format of the SMS. Note that the format must be contains one %s |
+| `data`.reference | String | Reference ID of the transaction. This value must match between `Create OTP` and `Validate OTP` | 
+| `data`.param1 | String | Parameter 1. This value must match between `Create OTP` and `Validate OTP` | 
+| `data`.param2 | String | Parameter 2. This value must match between `Create OTP` and `Validate OTP` | 
+| `data`.param3 | String | Parameter 3. This value must match between `Create OTP` and `Validate OTP` | 
+| `data`.param4 | String | Parameter 4. This value must match between `Create OTP` and `Validate OTP` | 
+
+
+**Create OTP Response**
+
+```http
+HTTP/1.1 200 OK
+Host: sub.domain.tld
+Connection: close
+Content-type: application/json
+Content-length: 199
+
+{
+	"command": "create-otp",
+	"response_code": "000",
+	"data": {
+		"date_time": 1629685778,
+		"receiver": "08126666666",
+		"reference": "12345678901234567890"
+	}
+}
+```
+
+| Parameter | Type | Description |
+| --------- | ---- | ----------|
+| command | String | Command for OTP-Pi |
+| response_code | String | Response Code | 
+| data | Object | Data for OTP-Pi | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
+| `data`.receiver | String | MSISDN of the receiver |
+| `data`.reference | String | Reference ID of the transaction. This value must match between `Create OTP` and `Validate OTP` | 
+
+**Validate OTP Request**
+
+```http
+POST /api/otp HTTP/1.1
+Host: sub.domain.tld
+Connection: close
+User-agent: KSPS
+Content-type: application/json
+Content-length: 274
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+{
+	"command": "validate-otp",
+	"data": {
+		"date_time": 1629685778,
+		"receiver": "08126666666",
+		"otp": "123456",
+		"reference": "12345678901234567890",
+		"param1": "100000",
+		"param2": "1234567890",
+		"param3": "987654",
+		"param4": "674527846556468254"
+	}
+}
+```
+
+| Parameter | Type | Description |
+| --------- | ---- | ----------|
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
+| `data`.receiver | String | MSISDN of the receiver |
+| `data`.otp | String | Cleat OTP to be valieadted |
+| `data`.reference | String | Reference ID of the transaction. This value must match between `Create OTP` and `Validate OTP` | 
+| `data`.param1 | String | Parameter 1. This value must match between `Create OTP` and `Validate OTP` | 
+| `data`.param2 | String | Parameter 2. This value must match between `Create OTP` and `Validate OTP` | 
+| `data`.param3 | String | Parameter 3. This value must match between `Create OTP` and `Validate OTP` | 
+| `data`.param4 | String | Parameter 4. This value must match between `Create OTP` and `Validate OTP` | 
+
+
+**Validate OTP Response**
+
+```http
+HTTP/1.1 200 OK
+Host: sub.domain.tld
+Connection: close
+Content-type: application/json
+Content-length: 201
+
+{
+	"command": "validate-otp",
+	"response_code": "000",
+	"data": {
+		"date_time": 1629685778,
+		"receiver": "08126666666",
+		"reference": "12345678901234567890"
+	}
+}
+```
+
+| Parameter | Type | Description |
+| --------- | ---- | ----------|
+| command | String | Command for OTP-Pi |
+| response_code | String | Response Code | 
+| data | Object | Data for OTP-Pi | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
+| `data`.receiver | String | MSISDN of the receiver |
+| `data`.reference | String | Reference ID of the transaction. This value must match between `Create OTP` and `Validate OTP` | 
+
 
 **Send SMS Request**
 
@@ -628,6 +803,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 | data | Object | Data for OTP-Pi | 
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.id | String | SMS ID |
+| `data`.reference | String | Reference ID of the transaction. This value must match between `Create OTP` and `Validate OTP` | 
 | `data`.receiver | String | MSISDN of the receiver |
 | `data`.message | String | Content of the SMS |
 
@@ -718,7 +894,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.receiver | String | MSISDN number to be unblocked |
 
-### Scenario 2 - OTP-Pi Can't Access App Server
+### Scenario 2 - App Server Can't Access OTP-Pi
 
 In this scenario, the App Server may send the OTP to RabbitMQ Server, Mosquitto Server or WSMessageBroker. WSMessageBroker uses the WebSoket protocol and Basic Authentication. Both App Server and OTP-Pi act as clients of WSMessageBroker.
 

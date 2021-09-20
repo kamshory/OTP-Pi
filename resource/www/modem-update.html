@@ -16,7 +16,7 @@
 	<script src="lib.assets/js/ws.min.js"></script>
 	<script>
 	function handleIncommingMessage(message) {
-		console.log("handleIncommingMessage", message);
+		//console.log("handleIncommingMessage", message);
 	}
 	</script>
 </head>
@@ -69,11 +69,6 @@
 		</nav>
 		<div class="phone-page">
 			<h3>Modem</h3>
-			<style>
-			.tr-dial {
-				display: none;
-			}
-			</style>
 			<form action="modem.html" method="post">
 				<table class="config-table config-table-connection">
 					<tbody>
@@ -83,17 +78,22 @@
 								<input type="text" class="form-control" name="name" value="">
 							</td>
 						</tr>
-						<tr>
+						<tr class="port-input">
 							<td>Port</td>
 							<td>
 								<input type="text" class="form-control" name="port" value="">
+								<input type="button" class="btn btn-sm btn-primary list-port" value="List">
+								<div class="list-port-container">
+									<select class="port-available" multiple>
+									</select>
+								</div>
 							</td>
 						</tr>
 						<tr>
 							<td></td>
 							<td>
 								<input type="button" class="btn btn-success" id="detect" value="Detect">
-								<input type="button" class="btn btn-primary" id="status" value="Registration Status" disabled>
+								<input type="button" class="btn btn-primary" id="status" value="Registration Status" disabled> 
 								<span class="detecting"></span>
 							</td>
 						</tr>

@@ -70,6 +70,16 @@ public class MessageAPI {
 					logger.info("Unblock Number");
 					responseJSON = this.unblockMSISDN(command, data);					
 				}
+				else if(command.equals(ConstantString.CREATE_OTP))
+				{
+					logger.info("Create OTP");
+					responseJSON = this.createOTP(command, data, ste);					
+				}
+				else if(command.equals(ConstantString.VALIDATE_OTP))
+				{
+					logger.info("Validate OTP");
+					responseJSON = this.validateOTP(command, data);					
+				}
 			}		
 		}
 		catch(JSONException | GSMException e)
@@ -77,6 +87,90 @@ public class MessageAPI {
 			logger.error(e.getMessage(), e);
 		}
 		return responseJSON;
+	}
+	
+	private JSONObject createOTP(String command, JSONObject data, StackTraceElement ste) {
+		String dateTime = data.optString(JsonKey.DATE_TIME, "").trim();
+		String otpID = data.optString(JsonKey.REFERENCE, "").trim();
+		String receiver = data.optString(JsonKey.RECEIVER, "").trim();
+		String subject = data.optString("subject", "").trim();
+		String param1 = data.optString("param1", "").trim();
+		String param2 = data.optString("param2", "").trim();
+		String param3 = data.optString("param3", "").trim();
+		String param4 = data.optString("param4", "").trim();
+		String messageFormat = data.optString("message", "").trim();
+		long expiration = data.optLong("expiration", 0) * 1000; 
+		System.out.println("======================================== "+expiration);
+		long lifeTime = expiration - System.currentTimeMillis();
+		System.out.println("======================================== "+System.currentTimeMillis());
+		System.out.println("======================================== "+lifeTime);
+		String responseCode = ResponseCode.SUCCESS;
+		JSONObject requestJSON = new JSONObject();
+		JSONObject responseData = new JSONObject();
+		try
+		{
+			if(OTP.isExists(otpID))
+			{
+				responseCode = ResponseCode.FAILED;
+			}
+			else
+			{
+				String clearOTP = OTP.createOTP(otpID, receiver, lifeTime, param1, param2, param3, param4);
+				String message = String.format(messageFormat, clearOTP);
+				
+				if(receiver.contains("@"))
+				{
+					this.sendMail(receiver, subject, message, ste);
+				}
+				else
+				{
+					GSMUtil.sendSMS(receiver, message, ste);
+				}
+				responseData.put(JsonKey.REFERENCE, otpID);
+				responseData.put(JsonKey.RECEIVER, receiver);
+				responseData.put(JsonKey.DATE_TIME, dateTime);
+			}
+		}
+		catch(MessagingException | NoEmailAccountException | GSMException e)
+		{
+			responseCode = ResponseCode.FAILED;
+		}
+		requestJSON.put(JsonKey.COMMAND, command);
+		requestJSON.put(JsonKey.DATA, responseData);
+		requestJSON.put(JsonKey.RESPONSE_CODE, responseCode);
+		return requestJSON;
+	}
+	
+	private JSONObject validateOTP(String command, JSONObject data) {
+		String dateTime = data.optString(JsonKey.DATE_TIME, "").trim();
+		String otpID = data.optString(JsonKey.REFERENCE, "").trim();
+		String receiver = data.optString(JsonKey.RECEIVER, "").trim();
+		String param1 = data.optString("param1", "").trim();
+		String param2 = data.optString("param2", "").trim();
+		String param3 = data.optString("param3", "").trim();
+		String param4 = data.optString("param4", "").trim();
+		String clearOTP = data.optString("otp", "");
+		String responseCode;
+		JSONObject requestJSON = new JSONObject();
+		JSONObject responseData = new JSONObject();
+		
+		boolean valid = OTP.validateOTP(otpID, receiver, param1, param2, param3, param4, clearOTP);
+		responseData.put(JsonKey.REFERENCE, otpID);
+		responseData.put(JsonKey.RECEIVER, receiver);
+		responseData.put(JsonKey.DATE_TIME, dateTime);
+		if(valid)
+		{
+			responseCode = ResponseCode.SUCCESS;
+		}
+		else
+		{
+			responseCode = ResponseCode.FAILED;
+		}
+		
+		requestJSON.put(JsonKey.COMMAND, command);
+		requestJSON.put(JsonKey.DATA, responseData);
+		requestJSON.put(JsonKey.RESPONSE_CODE, responseCode);
+		return requestJSON;
 	}
 	
 	public JSONObject processEmailRequest(String requestBody, StackTraceElement ste) 
@@ -141,7 +235,7 @@ public class MessageAPI {
 			String subject = data.optString(JsonKey.SUBJECT, "");
 			try 
 			{
-				MailUtil.send(receiver, subject, textMessage, null);
+				this.sendMail(receiver, subject, textMessage, null);
 			} 
 			catch (MessagingException | NoEmailAccountException e) 
 			{
@@ -220,7 +314,7 @@ public class MessageAPI {
 		{
 			try 
 			{
-				MailUtil.send(to, subject, message, null);
+				this.sendMail(to, subject, message, null);
 				result = "The message was sent successfuly";
 				responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
 				responseJSON.put(JsonKey.MESSAGE, result);
@@ -236,6 +330,10 @@ public class MessageAPI {
 		return responseJSON;	
 	}
 	
+	private void sendMail(String to, String subject, String message, StackTraceElement ste) throws MessagingException, NoEmailAccountException {
+		MailUtil.send(to, subject, message, ste);
+		
+	}
 	public JSONObject blockMSISDN(String command, JSONObject data) throws GSMException {
 		return this.blockMSISDN(command, data.optString(JsonKey.RECEIVER, ""));	
 	}

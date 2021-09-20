@@ -49,6 +49,24 @@ public class InternetDialUtil {
 		ServerInfo.sendModemStatus();
 	}
 	
+	public static void stop()
+	{
+		InternetDialUtil.configPath = Config.getWvdialSettingPath();
+		InternetDialUtil.wvdialCommandConnect = Config.getWvdialCommandConnect();
+		InternetDialUtil.wvdialCommandDisconnect = Config.getWvdialCommandDisconnect();
+		for (Map.Entry<String, DataModem> entry : ConfigModem.getModemData().entrySet())
+		{
+			String modemID = entry.getKey();
+			DataModem modemData = entry.getValue();
+			if(modemData.isInternetAccess() && modemData.isActive())
+			{
+				InternetDialUtil.disconnect(modemID);
+				break;
+			}
+		}
+		ServerInfo.sendModemStatus();
+	}
+	
 	public static boolean connect(String modemID)
 	{
 		DataModem modemData = ConfigModem.getModemData(modemID);

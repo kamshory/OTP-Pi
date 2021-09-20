@@ -10,6 +10,7 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.fazecast.jSerialComm.SerialPort;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigAPIUser;
@@ -218,13 +219,61 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			this.handleOpenPort(httpExchange);
 		}
+		else if(path.startsWith("/data/serial-port/list"))
+		{
+			this.handleListPort(httpExchange);
+		}
 		else
 		{
 			httpExchange.sendResponseHeaders(404, 0);
 			httpExchange.close();
 		}
 	}
-	
+	public void handleListPort(HttpExchange httpExchange) throws IOException
+	{
+		Headers requestHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
+		CookieServer cookie = new CookieServer(requestHeaders, Config.getSessionName(), Config.getSessionLifetime());
+		byte[] responseBody = "".getBytes();
+		int statusCode = HttpStatus.OK;
+		try
+		{
+			if(WebUserAccount.checkUserAuth(requestHeaders))
+			{
+				SerialPort[] ports = SerialPort.getCommPorts();
+		        JSONArray listPort = new JSONArray();
+		        for (SerialPort port : ports) 
+		        {
+		        	JSONObject obj = new JSONObject();
+		        	obj.put("systemPortName", port.getSystemPortName());
+		        	obj.put("descriptivePortName", port.getDescriptivePortName());
+		        	obj.put("portDescription", port.getPortDescription());
+		        	listPort.put(obj);
+		        }
+		        responseBody = listPort.toString().getBytes();
+			}
+			else
+			{
+				statusCode = HttpStatus.UNAUTHORIZED;			
+			}
+		}
+		catch(NoUserRegisteredException e)
+		{
+			/**
+			 * Do nothing
+			 */
+			statusCode = HttpStatus.UNAUTHORIZED;
+		}		
+		cookie.saveSessionData();
+		cookie.putToHeaders(responseHeaders);
+		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
+		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
+
+		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+		httpExchange.getResponseBody().write(responseBody);
+		httpExchange.close();	
+		
+	}
 	public void handleOpenPort(HttpExchange httpExchange) throws IOException
 	{
 		Headers requestHeaders = httpExchange.getRequestHeaders();
@@ -272,7 +321,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				String loggedUsername = (String) cookie.getSessionValue(JsonKey.USERNAME, "");
+				String loggedUsername = cookie.getSessionValue(JsonKey.USERNAME, "");
 				String list = WebUserAccount.getUser(loggedUsername).toString();
 				responseBody = list.getBytes();
 			}
@@ -905,7 +954,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		Headers responseHeaders = httpExchange.getResponseHeaders();
 		CookieServer cookie = new CookieServer(requestHeaders, Config.getSessionName(), Config.getSessionLifetime());
 		byte[] responseBody = "".getBytes();
-		int statusCode = HttpStatus.OK;
+		int statusCode = HttpStatus.UNAUTHORIZED;
 		boolean download = false;
 		File file = null;
 		String fullname = "";
@@ -922,15 +971,14 @@ public class HandlerWebManagerData implements HttpHandler {
 				String baseName = HttpUtil.getBaseName(path);
 				responseHeaders.add(ConstantString.CONTENT_TYPE, contentType);
 				responseHeaders.add("Content-disposition", "attachment; filename=\""+baseName+"\"");
-			}
-			else
-			{
-				statusCode = HttpStatus.UNAUTHORIZED;			
+				statusCode = HttpStatus.OK;
 			}
 		}
 		catch(NoUserRegisteredException e)
 		{
-			statusCode = HttpStatus.UNAUTHORIZED;	
+			/**
+			 * Do nothing
+			 */
 		}
 		cookie.saveSessionData();
 		cookie.putToHeaders(responseHeaders);
@@ -1027,8 +1075,8 @@ public class HandlerWebManagerData implements HttpHandler {
 		byte[] responseBody = "[]".getBytes();
 		int statusCode = HttpStatus.OK;
 		JSONArray allSMS = new JSONArray();
-		String smsInboxStorage = Config.getSmsInboxStorage(); //"SM";
-		String smsInboxStatus = Config.getSmsInboxStatus(); //"REC READ";
+		String smsInboxStorage = Config.getSmsInboxStorage(); 
+		String smsInboxStatus = Config.getSmsInboxStatus();
 		try
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
@@ -1061,10 +1109,10 @@ public class HandlerWebManagerData implements HttpHandler {
 		JSONArray allSMS = new JSONArray();
 		if(modemID.isEmpty())
 		{
-			List<GSMInstance> instances = GSMUtil.getGsmInstance();
+			List<GSMInstance> instances = GSMUtil.getGSMInstance();
 			for(int i = 0; i<instances.size(); i++)
 			{
-				GSMInstance instance =  GSMUtil.getGsmInstance().get(i);
+				GSMInstance instance =  GSMUtil.getGSMInstance().get(i);
 				DataModem modemData = ConfigModem.getModemData(instance.getId());
 				List<SMS> sms = instance.readSMS(storage, smsStatus);
 				for(int j = 0; j < sms.size(); j++)

@@ -6,6 +6,7 @@ public class ConstantString {
 	public static final String UTC                             = "UTC";
 	public static final String UTF8                            = "UTF-8";
 	public static final String HASH_SHA256                     = "SHA-256";
+	public static final String HASH_SHA512                     = "SHA-512";
 	public static final String BASE_64                         = "base64";
 	public static final String INVALID_ENCODING                = "Invalid encoding";
 	public static final String CACHE_CONTROL                   = "Cache-Control";
@@ -40,6 +41,9 @@ public class ConstantString {
 	public static final String ACCEPT                          = "Accept";
 	public static final String BEARER                          = "Bearer ";
 	public static final String TEXT_PLAIN                      = "text/plain";
+	public static final String CREATE_OTP                      = "create-otp";
+	public static final String VALIDATE_OTP                    = "validate-otp";
+	public static final String DOCUMENT_PATH_SEPARATOR         = "/";
 	
 	private ConstantString()
 	{

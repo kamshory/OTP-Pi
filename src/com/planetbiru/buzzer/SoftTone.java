@@ -19,7 +19,7 @@ public class SoftTone {
 	public static void softToneWrite(int pin, int frequency, long time) {
 		if(SoftTone.gpio.containsKey(pin))
 		{
-			SoftTone.gpio.get(pin).getToneThread().stopSound();
+			SoftTone.softToneStop(pin);
 			SoftTone.gpio.get(pin).removeThread();
 			SoftTone.gpio.get(pin).newThread();
 			SoftTone.gpio.get(pin).getToneThread().setFrequency(SoftTone.gpio.get(pin), pin, frequency, time);
@@ -28,9 +28,13 @@ public class SoftTone {
 		
 	}
 	public static void softToneStop(int pin) {
-		if(SoftTone.gpio.containsKey(pin) && SoftTone.gpio.get(pin) != null && SoftTone.gpio.get(pin).getToneThread() != null)
+		if(SoftTone.gpio.containsKey(pin))
 		{
-			SoftTone.gpio.get(pin).getToneThread().stopSound();
+			ToneThread obj = SoftTone.gpio.get(pin).getToneThread();
+			if(obj != null)
+			{
+				obj.stopSound();
+			}
 		}		
 	}
 

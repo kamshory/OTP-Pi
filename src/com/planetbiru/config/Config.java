@@ -109,6 +109,12 @@ public class Config {
 	private static String smsInboxStorage = "SM";
 	private static String smsInboxStatus = "REC UNREAD";
 	
+	private static String otpSalt = "gfiushciyw89erywe98r23r23rj2";
+	private static int otpLength = 6;
+	private static long otpLifetime = 30000;
+	private static long otpGCInterval = 60000;
+	private static String otpCacheFile = "";
+	
 	private Config()
 	{
 		
@@ -938,6 +944,46 @@ public class Config {
 
 	public static void setSmsInboxStatus(String smsInboxStatus) {
 		Config.smsInboxStatus = smsInboxStatus;
+	}
+
+	public static int getOtpLength() {
+		return otpLength;
+	}
+
+	public static void setOtpLength(int otpLength) {
+		Config.otpLength = otpLength;
+	}
+
+	public static String getOtpSalt() {
+		return otpSalt;
+	}
+
+	public static void setOtpSalt(String otpSalt) {
+		Config.otpSalt = otpSalt;
+	}
+
+	public static long getOtpLifetime() {
+		return otpLifetime;
+	}
+
+	public static void setOtpLifetime(long otpLifetime) {
+		Config.otpLifetime = otpLifetime;
+	}
+
+	public static long getOtpGCInterval() {
+		return otpGCInterval;
+	}
+
+	public static void setOtpGCInterval(long otpGCInterval) {
+		Config.otpGCInterval = otpGCInterval;
+	}
+
+	public static String getOtpCacheFile() {
+		return otpCacheFile;
+	}
+
+	public static void setOtpCacheFile(String otpCacheFile) {
+		Config.otpCacheFile = otpCacheFile;
 	}
 
 }
