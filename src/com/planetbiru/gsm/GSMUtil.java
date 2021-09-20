@@ -68,14 +68,19 @@ public class GSMUtil {
 				{
 					if(instance != null)
 					{
-						instance.connect();
+						String pin = modem.getSimCardPIN();
+						if(pin.isEmpty())
+						{
+							pin = null;
+						}
+						instance.connect(pin);
 					}
 					if(!exists)
 					{
 						GSMUtil.getGSMInstance().add(instance);
 					}
 				} 
-				catch (GSMException | InvalidPortException e) 
+				catch (GSMException | InvalidPortException | InvalidSIMPinException e) 
 				{
 					logger.error(e.getMessage());
 				}
@@ -128,8 +133,9 @@ public class GSMUtil {
 	 * @param modemID Modem ID
 	 * @throws GSMException if any GSM errors
 	 * @throws InvalidPortException if serial port is invalid
+	 * @throws InvalidSIMPinException 
 	 */
-	public static void connect(String modemID) throws GSMException, InvalidPortException
+	public static void connect(String modemID) throws GSMException, InvalidPortException, InvalidSIMPinException
 	{
 		DataModem modem = ConfigModem.getModemData(modemID);
 		boolean found = false;
@@ -147,7 +153,12 @@ public class GSMUtil {
 		{
 			GSMUtil.getGSMInstance().add(instance);
 		}
-		instance.connect();	
+		String pin = modem.getSimCardPIN();
+		if(pin.isEmpty())
+		{
+			pin = null;
+		}
+		instance.connect(pin);	
 		GSMUtil.updateConnectedDevice();
 	}
 	
@@ -622,7 +633,7 @@ public class GSMUtil {
 		{
 			if(!instance.isConnected())
 			{
-				instance.connect();
+				instance.connect(null);
 			}
 			String manufacturer = instance.getManufacturer();
 			info.put("manufacturer", manufacturer);
@@ -651,7 +662,7 @@ public class GSMUtil {
 			}
 			
 		} 
-		catch (GSMException | InvalidPortException e) 
+		catch (GSMException | InvalidPortException | InvalidSIMPinException e) 
 		{
 			e.printStackTrace();
 			/**
@@ -678,7 +689,7 @@ public class GSMUtil {
 		{
 			if(!instance.isConnected())
 			{
-				instance.connect();
+				instance.connect(null);
 			}
 			if(currentValue != null && newValue != null && !currentValue.equals(newValue))
 			{
@@ -695,7 +706,7 @@ public class GSMUtil {
 			}
 			
 		} 
-		catch (GSMException | InvalidPortException e) 
+		catch (GSMException | InvalidPortException | InvalidSIMPinException e) 
 		{
 			/**
 			 * Do nothing
@@ -704,7 +715,7 @@ public class GSMUtil {
 		return info;
 	}
 	
-	public static JSONObject addPIN(String port, String pin1) {
+	public static JSONObject addPIN(String port, String currentPIN, String pin1) {
 		GSMInstance instance;
 		boolean addHock = false;
 		JSONObject info = new JSONObject();
@@ -721,7 +732,11 @@ public class GSMUtil {
 		{
 			if(!instance.isConnected())
 			{
-				instance.connect();
+				if(currentPIN.isEmpty())
+				{
+					currentPIN = null;
+				}
+				instance.connect(currentPIN);
 			}
 			if(pin1 != null && !pin1.isEmpty())
 			{
@@ -738,7 +753,7 @@ public class GSMUtil {
 			}
 			
 		} 
-		catch (GSMException | InvalidPortException e) 
+		catch (GSMException | InvalidPortException | InvalidSIMPinException e) 
 		{
 			/**
 			 * Do nothing
@@ -747,7 +762,7 @@ public class GSMUtil {
 		return info;
 	}
 	
-	public static JSONObject removePIN(String port) {
+	public static JSONObject removePIN(String port, String currentPIN) {
 		GSMInstance instance;
 		boolean addHock = false;
 		JSONObject info = new JSONObject();
@@ -764,7 +779,11 @@ public class GSMUtil {
 		{
 			if(!instance.isConnected())
 			{
-				instance.connect();
+				if(currentPIN.isEmpty())
+				{
+					currentPIN = null;
+				}
+				instance.connect(currentPIN);
 			}
 			String command = "AT+CLCK=\"SC\",0";;
 			String response = instance.executeATCommand(command);
@@ -777,7 +796,7 @@ public class GSMUtil {
 			}
 			
 		} 
-		catch (GSMException | InvalidPortException e) 
+		catch (GSMException | InvalidPortException | InvalidSIMPinException e) 
 		{
 			/**
 			 * Do nothing

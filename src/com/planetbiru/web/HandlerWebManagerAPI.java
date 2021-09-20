@@ -20,6 +20,7 @@ import com.planetbiru.gsm.InternetDialUtil;
 import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.gsm.InvalidPortException;
+import com.planetbiru.gsm.InvalidSIMPinException;
 import com.planetbiru.gsm.USSDParser;
 import com.planetbiru.mail.MailUtil;
 import com.planetbiru.mail.NoEmailAccountException;
@@ -650,7 +651,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				statusCode = HttpStatus.UNAUTHORIZED;
 			}
 		} 
-		catch (GSMException | InvalidPortException e) 
+		catch (GSMException | InvalidPortException | InvalidSIMPinException e) 
 		{
 			ServerWebSocketAdmin.broadcastMessage(e.getMessage());
 		}

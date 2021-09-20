@@ -88,12 +88,13 @@ public class HandlerWebManagerTool implements HttpHandler {
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
 		String action = queryPairs.getOrDefault("action", "");
 		String port = queryPairs.getOrDefault("port", "");
+		String currentPIN = queryPairs.getOrDefault("currentPIN", "");
 		String pin1 = queryPairs.getOrDefault("pin1", "");
 		String pin2 = queryPairs.getOrDefault("pin2", "");
 		JSONObject result = new JSONObject();
 		if(action.equals("add-pin") && pin1 != null && pin2 != null && !pin1.isEmpty() && pin1.equals(pin2))
 		{
-			JSONObject response = GSMUtil.addPIN(port, pin1);
+			JSONObject response = GSMUtil.addPIN(port, currentPIN, pin1);
 			if(response != null && response.has("response") && response.optString("response", "").contains("\r\nOK"))
 			{
 				result.put("response", "OK");

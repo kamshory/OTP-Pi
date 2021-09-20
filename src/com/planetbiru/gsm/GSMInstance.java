@@ -30,13 +30,24 @@ public class GSMInstance {
 		this.gsm = new GSM();
 	}
 
-	public boolean connect() throws GSMException, InvalidPortException 
+	public boolean connect(String pin) throws GSMException, InvalidPortException, InvalidSIMPinException 
 	{
 		if(!this.gsm.isConnected())
 		{
 			try
 			{
-				return this.gsm.connect(this.port, this.eventListener);
+				boolean isConnected = this.gsm.connect(this.port, this.eventListener);
+				if(pin != null && !pin.trim().isEmpty())
+				{
+					pin = pin.trim();
+					String atCommand = "AT+CPIN=\""+pin+"\"";
+					String response = this.executeATCommand(atCommand);
+					if(response.contains("ERROR"))
+					{
+						throw new InvalidSIMPinException("Invalid PIN");
+					}
+				}
+				return isConnected;
 			}
 			catch(SerialPortInvalidPortException e)
 			{
@@ -48,7 +59,7 @@ public class GSMInstance {
 			return true;
 		}
 	}
-	
+
 	public void disconnect() throws GSMException {
 		if(this.gsm.getSerialPort() == null)
 		{
