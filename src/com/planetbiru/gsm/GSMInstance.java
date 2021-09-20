@@ -16,6 +16,7 @@ public class GSMInstance {
 	private String id = "";
 	private String port = "";
 	private boolean eventListener = true;
+	private boolean pinValid = true;
 	public GSMInstance(DataModem modem, boolean eventListener)
 	{
 		this.port = modem.getPort();
@@ -30,7 +31,7 @@ public class GSMInstance {
 		this.gsm = new GSM();
 	}
 
-	public boolean connect(String pin) throws GSMException, InvalidPortException, InvalidSIMPinException 
+	public boolean connect(String pin) throws GSMException, InvalidPortException 
 	{
 		if(!this.gsm.isConnected())
 		{
@@ -44,7 +45,7 @@ public class GSMInstance {
 					String response = this.executeATCommand(atCommand);
 					if(response.contains("ERROR"))
 					{
-						throw new InvalidSIMPinException("Invalid PIN");
+						this.pinValid = false;
 					}
 				}
 				return isConnected;
@@ -210,6 +211,14 @@ public class GSMInstance {
 
 	public String getPort() {
 		return port;
+	}
+
+	public boolean isPinValid() {
+		return pinValid;
+	}
+
+	public void setPinValid(boolean pinValid) {
+		this.pinValid = pinValid;
 	}
 
 	private void sleep(long sleep) 

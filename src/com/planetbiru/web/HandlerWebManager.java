@@ -1349,10 +1349,7 @@ public class HandlerWebManager implements HttpHandler {
 		modem.setMsisdn(msisdn);
 		modem.setImsi(imsi);
 		modem.setRecipientPrefix(recipientPrefix);
-		if(!simCardPIN.isEmpty())
-		{
-			modem.setSimCardPIN(simCardPIN);
-		}
+		modem.setSimCardPIN(simCardPIN);
 		modem.setBaudRate(baudRate);
 		modem.setParityBit(parityBit);
 		modem.setStartBits(startBits);

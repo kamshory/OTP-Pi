@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.json.JSONObject;
 
+import com.planetbiru.constant.JsonKey;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.user.NoUserRegisteredException;
 import com.planetbiru.user.WebUserAccount;
@@ -66,18 +67,18 @@ public class HandlerWebManagerTool implements HttpHandler {
 		if(action.equals("update"))
 		{
 			JSONObject response = GSMUtil.changeIMEI(port, currentIMEI, newIMEI);
-			if(response != null && response.has("response") && response.optString("response", "").contains("\r\nOK"))
+			if(response != null && response.has(JsonKey.RESPONSE) && response.optString(JsonKey.RESPONSE, "").contains("\r\nOK"))
 			{
 				result.put("last_imei", currentIMEI);
 				result.put("imei", newIMEI);
-				result.put("response", "OK");
+				result.put(JsonKey.RESPONSE, "OK");
 				
 			}
 			else
 			{
 				result.put("last_imei", currentIMEI);
 				result.put("imei", currentIMEI);
-				result.put("response", "ERROR");
+				result.put(JsonKey.RESPONSE, "ERROR");
 			}
 		}
 		
@@ -88,21 +89,21 @@ public class HandlerWebManagerTool implements HttpHandler {
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
 		String action = queryPairs.getOrDefault("action", "");
 		String port = queryPairs.getOrDefault("port", "");
-		String currentPIN = queryPairs.getOrDefault("currentPIN", "");
+		String currentPIN = queryPairs.getOrDefault("current_pin", "");
 		String pin1 = queryPairs.getOrDefault("pin1", "");
 		String pin2 = queryPairs.getOrDefault("pin2", "");
 		JSONObject result = new JSONObject();
 		if(action.equals("add-pin") && pin1 != null && pin2 != null && !pin1.isEmpty() && pin1.equals(pin2))
 		{
 			JSONObject response = GSMUtil.addPIN(port, currentPIN, pin1);
-			if(response != null && response.has("response") && response.optString("response", "").contains("\r\nOK"))
+			if(response != null && response.has(JsonKey.RESPONSE) && response.optString(JsonKey.RESPONSE, "").contains("\r\nOK"))
 			{
-				result.put("response", "OK");
+				result.put(JsonKey.RESPONSE, "OK");
 				
 			}
 			else
 			{
-				result.put("response", "ERROR");
+				result.put(JsonKey.RESPONSE, "ERROR");
 			}
 		}
 		
