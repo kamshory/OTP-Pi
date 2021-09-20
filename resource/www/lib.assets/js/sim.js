@@ -72,7 +72,7 @@ $(document).ready(function (e1) {
                 type: "POST",
                 url: "tool/sim",
                 dataType: "json",
-                data: {action:'update', port:port, pin1:pin1, pin2:pin2},
+                data: {action:'add-pin', port:port, pin1:pin1, pin2:pin2},
                 success: function(data) {
                 }
             });

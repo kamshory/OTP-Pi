@@ -76,8 +76,10 @@ public class GSMUtil {
 				
 				try 
 				{
-					System.out.println("Connect");
-					instance.connect();
+					if(instance != null)
+					{
+						instance.connect();
+					}
 					if(!exists)
 					{
 						GSMUtil.getGSMInstance().add(instance);
@@ -101,7 +103,7 @@ public class GSMUtil {
 			if(modem.isActive() && !modem.isInternetAccess())
 			{
 				GSMInstance instance = GSMUtil.getGSMIntance(modem.getId());
-				if(instance.isConnected())
+				if(instance != null && instance.isConnected())
 				{
 					try 
 					{
@@ -679,8 +681,8 @@ public class GSMUtil {
 				newValue = newValue.trim();
 				String command = "AT+EGMR=1,7,\""+newValue+"\"";
 				String response = instance.executeATCommand(command);
-				info.put("response", response);
-				info.put("command", command);
+				info.put(JsonKey.RESPONSE, response);
+				info.put(JsonKey.COMMAND, command);
 			}
 		    
 			if(addHock)
@@ -691,7 +693,88 @@ public class GSMUtil {
 		} 
 		catch (GSMException | InvalidPortException e) 
 		{
-			e.printStackTrace();
+			/**
+			 * Do nothing
+			 */
+		}
+		return info;
+	}
+	
+	public static JSONObject addPIN(String port, String pin1) {
+		GSMInstance instance;
+		boolean addHock = false;
+		JSONObject info = new JSONObject();
+		try 
+		{
+			instance = GSMUtil.getGSMInstanceByPort(port);	
+		} 
+		catch (ModemNotFoundException e) 
+		{
+			instance = new GSMInstance(port, eventListener);
+			addHock = true;
+		}		
+		try 
+		{
+			if(!instance.isConnected())
+			{
+				instance.connect();
+			}
+			if(pin1 != null && !pin1.isEmpty())
+			{
+				pin1 = pin1.trim();
+				String command = "AT+CLCK=\"SC\",1,\""+pin1+"\"";;
+				String response = instance.executeATCommand(command);
+				info.put(JsonKey.RESPONSE, response);
+				info.put(JsonKey.COMMAND, command);
+			}
+		    
+			if(addHock)
+			{
+				instance.disconnect();
+			}
+			
+		} 
+		catch (GSMException | InvalidPortException e) 
+		{
+			/**
+			 * Do nothing
+			 */
+		}
+		return info;
+	}
+	
+	public static JSONObject removePIN(String port) {
+		GSMInstance instance;
+		boolean addHock = false;
+		JSONObject info = new JSONObject();
+		try 
+		{
+			instance = GSMUtil.getGSMInstanceByPort(port);	
+		} 
+		catch (ModemNotFoundException e) 
+		{
+			instance = new GSMInstance(port, eventListener);
+			addHock = true;
+		}		
+		try 
+		{
+			if(!instance.isConnected())
+			{
+				instance.connect();
+			}
+			String command = "AT+CLCK=\"SC\",0";;
+			String response = instance.executeATCommand(command);
+			info.put(JsonKey.RESPONSE, response);
+			info.put(JsonKey.COMMAND, command);
+		    
+			if(addHock)
+			{
+				instance.disconnect();
+			}
+			
+		} 
+		catch (GSMException | InvalidPortException e) 
+		{
 			/**
 			 * Do nothing
 			 */
@@ -709,6 +792,8 @@ public class GSMUtil {
 		}
 		throw new ModemNotFoundException("No modem use port "+port);
 	}
+
+	
 
 	
 
