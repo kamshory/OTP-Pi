@@ -66,14 +66,7 @@ public class GSMUtil {
 				GSMInstance instance = GSMUtil.getOrCreate(modem, GSMUtil.eventListener, exists);				
 				try 
 				{
-					if(instance != null)
-					{
-						instance.connect();
-					}
-					if(!exists)
-					{
-						GSMUtil.getGSMInstance().add(instance);
-					}
+					GSMUtil.connectIfRequired(modem, instance, exists);
 				} 
 				catch (GSMException | InvalidPortException e) 
 				{
@@ -83,6 +76,23 @@ public class GSMUtil {
 		}
 		GSMUtil.initialized = true;
 		GSMUtil.updateConnectedDevice();
+	}
+	
+	private static void connectIfRequired(DataModem modem, GSMInstance instance, boolean exists) throws GSMException, InvalidPortException
+	{
+		if(instance != null)
+		{
+			String pin = modem.getSimCardPIN();
+			if(pin.isEmpty())
+			{
+				pin = null;
+			}
+			instance.connect(pin);
+		}
+		if(!exists)
+		{
+			GSMUtil.getGSMInstance().add(instance);
+		}
 	}
 
 	private static GSMInstance getOrCreate(DataModem modem, boolean eventListener, boolean exists) {
@@ -128,6 +138,7 @@ public class GSMUtil {
 	 * @param modemID Modem ID
 	 * @throws GSMException if any GSM errors
 	 * @throws InvalidPortException if serial port is invalid
+	 * @throws InvalidSIMPinException 
 	 */
 	public static void connect(String modemID) throws GSMException, InvalidPortException
 	{
@@ -147,7 +158,12 @@ public class GSMUtil {
 		{
 			GSMUtil.getGSMInstance().add(instance);
 		}
-		instance.connect();	
+		String pin = modem.getSimCardPIN();
+		if(pin.isEmpty())
+		{
+			pin = null;
+		}
+		instance.connect(pin);	
 		GSMUtil.updateConnectedDevice();
 	}
 	
@@ -175,8 +191,9 @@ public class GSMUtil {
 	 * @param modemID Modem ID
 	 * @return List of SMS
 	 * @throws GSMException if any GSM errors
+	 * @throws InvalidSIMPinException 
 	 */
-	public static List<SMS> readSMS(String modemID) throws GSMException
+	public static List<SMS> readSMS(String modemID) throws GSMException, InvalidSIMPinException
 	{
 		return GSMUtil.get(modemID).readSMS();
 	}
@@ -186,8 +203,9 @@ public class GSMUtil {
 	 * @param modemID Modem ID
 	 * @return JSONArray contains SMS
 	 * @throws GSMException if any GSM errors
+	 * @throws InvalidSIMPinException 
 	 */
-	public static JSONArray readSMSJSON(String modemID) throws GSMException
+	public static JSONArray readSMSJSON(String modemID) throws GSMException, InvalidSIMPinException
 	{
 		JSONArray arr = new JSONArray();
 		List<SMS> sms = GSMUtil.get(modemID).readSMS();
@@ -205,8 +223,9 @@ public class GSMUtil {
 	 * @param modemID Modem ID
 	 * @return JSONObject contains sending SMS response
 	 * @throws GSMException if any GSM errors
+	 * @throws InvalidSIMPinException 
 	 */
-	public static JSONObject sendSMS(String receiver, String message, String modemID) throws GSMException 
+	public static JSONObject sendSMS(String receiver, String message, String modemID) throws GSMException, InvalidSIMPinException 
 	{
 		StackTraceElement ste = Thread.currentThread().getStackTrace()[3];
 		if(GSMUtil.getGSMInstance().isEmpty())
@@ -232,8 +251,9 @@ public class GSMUtil {
 	 * @param message The text message
 	 * @return JSONObject contains sending SMS response
 	 * @throws GSMException if any GSM errors
+	 * @throws InvalidSIMPinException 
 	 */
-	public static JSONObject sendSMS(String receiver, String message, StackTraceElement ste) throws GSMException 
+	public static JSONObject sendSMS(String receiver, String message, StackTraceElement ste) throws GSMException, InvalidSIMPinException 
 	{
 		if(GSMUtil.getGSMInstance().isEmpty())
 		{
@@ -622,7 +642,7 @@ public class GSMUtil {
 		{
 			if(!instance.isConnected())
 			{
-				instance.connect();
+				instance.connect(null);
 			}
 			String manufacturer = instance.getManufacturer();
 			info.put("manufacturer", manufacturer);
@@ -678,7 +698,7 @@ public class GSMUtil {
 		{
 			if(!instance.isConnected())
 			{
-				instance.connect();
+				instance.connect(null);
 			}
 			if(currentValue != null && newValue != null && !currentValue.equals(newValue))
 			{
@@ -704,7 +724,7 @@ public class GSMUtil {
 		return info;
 	}
 	
-	public static JSONObject addPIN(String port, String pin1) {
+	public static JSONObject addPIN(String port, String currentPIN, String pin1) {
 		GSMInstance instance;
 		boolean addHock = false;
 		JSONObject info = new JSONObject();
@@ -721,12 +741,16 @@ public class GSMUtil {
 		{
 			if(!instance.isConnected())
 			{
-				instance.connect();
+				if(currentPIN.isEmpty())
+				{
+					currentPIN = null;
+				}
+				instance.connect(currentPIN);
 			}
 			if(pin1 != null && !pin1.isEmpty())
 			{
 				pin1 = pin1.trim();
-				String command = "AT+CLCK=\"SC\",1,\""+pin1+"\"";;
+				String command = "AT+CLCK=\"SC\",1,\""+pin1+"\"";
 				String response = instance.executeATCommand(command);
 				info.put(JsonKey.RESPONSE, response);
 				info.put(JsonKey.COMMAND, command);
@@ -747,7 +771,7 @@ public class GSMUtil {
 		return info;
 	}
 	
-	public static JSONObject removePIN(String port) {
+	public static JSONObject removePIN(String port, String currentPIN) {
 		GSMInstance instance;
 		boolean addHock = false;
 		JSONObject info = new JSONObject();
@@ -764,9 +788,13 @@ public class GSMUtil {
 		{
 			if(!instance.isConnected())
 			{
-				instance.connect();
+				if(currentPIN.isEmpty())
+				{
+					currentPIN = null;
+				}
+				instance.connect(currentPIN);
 			}
-			String command = "AT+CLCK=\"SC\",0";;
+			String command = "AT+CLCK=\"SC\",0";
 			String response = instance.executeATCommand(command);
 			info.put(JsonKey.RESPONSE, response);
 			info.put(JsonKey.COMMAND, command);

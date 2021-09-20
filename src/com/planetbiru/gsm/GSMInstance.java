@@ -16,6 +16,7 @@ public class GSMInstance {
 	private String id = "";
 	private String port = "";
 	private boolean eventListener = true;
+	private boolean pinValid = true;
 	public GSMInstance(DataModem modem, boolean eventListener)
 	{
 		this.port = modem.getPort();
@@ -30,13 +31,24 @@ public class GSMInstance {
 		this.gsm = new GSM();
 	}
 
-	public boolean connect() throws GSMException, InvalidPortException 
+	public boolean connect(String pin) throws GSMException, InvalidPortException 
 	{
 		if(!this.gsm.isConnected())
 		{
 			try
 			{
-				return this.gsm.connect(this.port, this.eventListener);
+				boolean isConnected = this.gsm.connect(this.port, this.eventListener);
+				if(pin != null && !pin.trim().isEmpty())
+				{
+					pin = pin.trim();
+					String atCommand = "AT+CPIN=\""+pin+"\"";
+					String response = this.executeATCommand(atCommand);
+					if(response.contains("ERROR"))
+					{
+						this.pinValid = false;
+					}
+				}
+				return isConnected;
 			}
 			catch(SerialPortInvalidPortException e)
 			{
@@ -48,7 +60,7 @@ public class GSMInstance {
 			return true;
 		}
 	}
-	
+
 	public void disconnect() throws GSMException {
 		if(this.gsm.getSerialPort() == null)
 		{
@@ -57,8 +69,12 @@ public class GSMInstance {
 		this.gsm.closePort();
 	}
 	
-	public String sendSMS(String receiver, String message, boolean deleteSent) throws GSMException
+	public String sendSMS(String receiver, String message, boolean deleteSent) throws GSMException, InvalidSIMPinException
 	{
+		if(!this.pinValid)
+		{
+			throw new InvalidSIMPinException("Invalid PIN");
+		}
 		if(this.gsm.getSerialPort() == null)
 		{
 			throw new GSMException(ConstantString.SERIAL_PORT_NULL);
@@ -67,12 +83,12 @@ public class GSMInstance {
 		return this.gsm.sendSMS(receiver, message, deleteSent);
 	}
 
-	public String sendSMS(String receiver, String message) throws GSMException {
+	public String sendSMS(String receiver, String message) throws GSMException, InvalidSIMPinException {
 		return this.sendSMS(receiver, message, true);
 	}
 
 	
-	public String sendSMS(String receiver, String message, DataModem modemData) throws GSMException {
+	public String sendSMS(String receiver, String message, DataModem modemData) throws GSMException, InvalidSIMPinException {
 		Date date = new Date();
 		String sender = modemData.getMsisdn();
 		this.logSendSMS(sender, Utility.maskMSISDN(receiver), date, message.length());
@@ -86,8 +102,12 @@ public class GSMInstance {
 		}
 	}
 	
-	public List<SMS> readSMS() throws GSMException
+	public List<SMS> readSMS() throws GSMException, InvalidSIMPinException
 	{
+		if(!this.pinValid)
+		{
+			throw new InvalidSIMPinException("Invalid PIN");
+		}
 		if(this.gsm.getSerialPort() == null)
 		{
 			throw new GSMException(ConstantString.SERIAL_PORT_NULL);
@@ -95,7 +115,7 @@ public class GSMInstance {
 		this.waitUntilReady();
 		return this.gsm.readSMS(null, null);
 	}
-	public List<SMS> readSMS(String storage, String smsStatus) throws GSMException
+	public List<SMS> readSMS(String storage, String smsStatus) throws GSMException, InvalidSIMPinException
 	{
 		if(storage == null)
 		{
@@ -112,13 +132,21 @@ public class GSMInstance {
 		}
 	}
 	
-	public void deleteSMS(int smsID, String storage) throws GSMException {
+	public void deleteSMS(int smsID, String storage) throws GSMException, InvalidSIMPinException {
+		if(!this.pinValid)
+		{
+			throw new InvalidSIMPinException("Invalid PIN");
+		}
 		this.gsm.deleteSMS(smsID, storage);		
 	}
     
-    public void deleteAllSentSMS() throws GSMException 
+    public void deleteAllSentSMS() throws GSMException, InvalidSIMPinException 
     { 	
-    	this.gsm.deleteAllSentSMS();
+		if(!this.pinValid)
+		{
+			throw new InvalidSIMPinException("Invalid PIN");
+		}
+		this.gsm.deleteAllSentSMS();
  	}
     
     public String getIMEI() throws GSMException 
@@ -199,6 +227,14 @@ public class GSMInstance {
 
 	public String getPort() {
 		return port;
+	}
+
+	public boolean isPinValid() {
+		return pinValid;
+	}
+
+	public void setPinValid(boolean pinValid) {
+		this.pinValid = pinValid;
 	}
 
 	private void sleep(long sleep) 

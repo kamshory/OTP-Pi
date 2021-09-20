@@ -17925,3 +17925,44 @@ ERROR
 2021-09-20 22:59:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+COPS?
 2021-09-20 22:59:00 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCA
 2021-09-20 23:10:42 [INFO  ] Application                     :199  - Service started
+2021-09-21 06:17:22 [ERROR ] GSMUtil                         :85   - Invalid PIN
+2021-09-21 06:17:22 [INFO  ] Application                     :199  - Service started
+2021-09-21 06:21:53 [ERROR ] GSMUtil                         :85   - Invalid PIN
+2021-09-21 06:21:53 [INFO  ] Application                     :199  - Service started
+2021-09-21 06:23:04 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMI
+2021-09-21 06:23:04 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMM
+2021-09-21 06:23:04 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMR
+2021-09-21 06:23:04 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGSN
+2021-09-21 06:23:04 [INFO  ] GSM                             :122  - Execute AT Command : AT+CIMI
+2021-09-21 06:23:04 [INFO  ] GSM                             :122  - Execute AT Command : AT+CCID
+2021-09-21 06:23:04 [INFO  ] GSM                             :122  - Execute AT Command : AT+CREG?
+2021-09-21 06:23:04 [INFO  ] GSM                             :122  - Execute AT Command : AT+CNUM
+2021-09-21 06:23:04 [INFO  ] GSM                             :122  - Execute AT Command : AT+COPS?
+2021-09-21 06:23:04 [INFO  ] GSM                             :122  - Execute AT Command : AT+CSCA
+2021-09-21 06:25:15 [ERROR ] GSMUtil                         :85   - Invalid PIN
+2021-09-21 06:25:15 [INFO  ] Application                     :199  - Service started
+2021-09-21 06:25:43 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMI
+2021-09-21 06:25:43 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMM
+2021-09-21 06:25:43 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMR
+2021-09-21 06:25:43 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGSN
+2021-09-21 06:25:43 [INFO  ] GSM                             :122  - Execute AT Command : AT+CIMI
+2021-09-21 06:25:43 [INFO  ] GSM                             :122  - Execute AT Command : AT+CCID
+2021-09-21 06:25:43 [INFO  ] GSM                             :122  - Execute AT Command : AT+CREG?
+2021-09-21 06:25:43 [INFO  ] GSM                             :122  - Execute AT Command : AT+CNUM
+2021-09-21 06:25:43 [INFO  ] GSM                             :122  - Execute AT Command : AT+COPS?
+2021-09-21 06:25:43 [INFO  ] GSM                             :122  - Execute AT Command : AT+CSCA
+2021-09-21 06:26:09 [ERROR ] GSMUtil                         :85   - Invalid PIN
+2021-09-21 06:26:09 [INFO  ] Application                     :199  - Service started
+2021-09-21 06:28:19 [ERROR ] GSMUtil                         :85   - Invalid PIN
+2021-09-21 06:28:19 [INFO  ] Application                     :199  - Service started
+2021-09-21 06:28:36 [INFO  ] Application                     :199  - Service started
+2021-09-21 06:28:42 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMI
+2021-09-21 06:28:42 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMM
+2021-09-21 06:28:42 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMR
+2021-09-21 06:28:43 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGSN
+2021-09-21 06:28:43 [INFO  ] GSM                             :122  - Execute AT Command : AT+CIMI
+2021-09-21 06:28:43 [INFO  ] GSM                             :122  - Execute AT Command : AT+CCID
+2021-09-21 06:28:43 [INFO  ] GSM                             :122  - Execute AT Command : AT+CREG?
+2021-09-21 06:28:43 [INFO  ] GSM                             :122  - Execute AT Command : AT+CNUM
+2021-09-21 06:28:43 [INFO  ] GSM                             :122  - Execute AT Command : AT+COPS?
+2021-09-21 06:28:43 [INFO  ] GSM                             :122  - Execute AT Command : AT+CSCA

@@ -20,6 +20,7 @@ import com.planetbiru.gsm.InternetDialUtil;
 import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.gsm.InvalidPortException;
+import com.planetbiru.gsm.InvalidSIMPinException;
 import com.planetbiru.gsm.USSDParser;
 import com.planetbiru.mail.MailUtil;
 import com.planetbiru.mail.NoEmailAccountException;
@@ -293,7 +294,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		{
 			statusCode = HttpStatus.UNAUTHORIZED;
 		} 
-		catch (GSMException e) 
+		catch (GSMException | InvalidSIMPinException e) 
 		{
 			logger.error(e.getMessage(), e);
 		}
@@ -836,6 +837,12 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			statusCode = HttpStatus.UNAUTHORIZED;
 			response.put(JsonKey.SUCCESS, false);
 			response.put(JsonKey.MESSAGE, ConstantString.UNAUTHORIZED);
+		} 
+		catch (InvalidSIMPinException e) 
+		{
+			statusCode = HttpStatus.UNAUTHORIZED;
+			response.put(JsonKey.SUCCESS, false);
+			response.put(JsonKey.MESSAGE, ConstantString.SIM_CARD_NOT_READY);
 		}
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);

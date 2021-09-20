@@ -94,7 +94,7 @@
       }
       .modal-table tr > td:nth-child(1)
       {
-          width:100px;
+          width:120px;
       }
   }
   .config-table tr td select,

@@ -46,6 +46,7 @@ import com.planetbiru.cookie.CookieServer;
 import com.planetbiru.ddns.DDNSRecord;
 import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMUtil;
+import com.planetbiru.gsm.InvalidSIMPinException;
 import com.planetbiru.mail.MailUtil;
 import com.planetbiru.mail.NoEmailAccountException;
 import com.planetbiru.user.NoUserRegisteredException;
@@ -419,7 +420,7 @@ public class HandlerWebManager implements HttpHandler {
 					{
 						GSMUtil.sendSMS(phone, message, ste);
 					} 
-					catch (GSMException e) 
+					catch (GSMException | InvalidSIMPinException e) 
 					{
 						/**
 						 * Do nothing
@@ -1349,10 +1350,7 @@ public class HandlerWebManager implements HttpHandler {
 		modem.setMsisdn(msisdn);
 		modem.setImsi(imsi);
 		modem.setRecipientPrefix(recipientPrefix);
-		if(!simCardPIN.isEmpty())
-		{
-			modem.setSimCardPIN(simCardPIN);
-		}
+		modem.setSimCardPIN(simCardPIN);
 		modem.setBaudRate(baudRate);
 		modem.setParityBit(parityBit);
 		modem.setStartBits(startBits);
@@ -1511,7 +1509,7 @@ public class HandlerWebManager implements HttpHandler {
 					String modemName = GSMUtil.getModemName(modemID);
 					HttpUtil.broardcastWebSocket("Sending a message to "+receiver+" via "+modemName);
 				} 
-				catch (GSMException e) 
+				catch (GSMException | InvalidSIMPinException e) 
 				{
 					HttpUtil.broardcastWebSocket(e.getMessage());
 				}
