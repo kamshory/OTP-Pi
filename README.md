@@ -10,9 +10,6 @@
 
 OTP or `One Time Password` is a one-time use password that has a certain validity period. Generally the validity period is made very short and only gives the chance to the recipient to enter it into the application and send it to the application server that requires it. OTP is strictly confidential so the `clear text` of the OTP should not be stored by any party. In fact, the application server only stores the `hash` or `token` that matches the OTP. `Clear text` is only generated and then sent to the recipient. In other words, `clear text` is only known to the OTP recipient.
 
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DMHFJ6LR7FGQS)
-
-
 The most popular OTPs are sent via SMS or Short Message Service. The use of SMS has the following advantages:
 
 1. Can only be received by the device where the SIM card is installed. This of course comply `What you have` role in `multifactor authentication`
@@ -1211,6 +1208,10 @@ The server will verify whether the username and password are correct. If true, t
 When a client sends a message, the message will be sent to all clients by topic except the sender. Thus, the handshake between the sender and the recipient of the message is the same.
 
 The OTP-Pi never sends messages to the WSMessageBroker server. OTP-Pi only accepts messages according to the desired topic.
+
+## Donate to Our Developer
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DMHFJ6LR7FGQS)
 
 
 ## Bonus! AT Command Documentation
