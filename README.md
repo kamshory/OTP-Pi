@@ -1213,6 +1213,10 @@ When a client sends a message, the message will be sent to all clients by topic 
 
 The OTP-Pi never sends messages to the WSMessageBroker server. OTP-Pi only accepts messages according to the desired topic.
 
+## Subscribe to Our YouTube Channel
+
+https://www.youtube.com/channel/UCY-qziSbBmJ7iZj-cXqmcMg
+
 ## Donate to Our Developer
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DMHFJ6LR7FGQS)
