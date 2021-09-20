@@ -37,6 +37,11 @@ public class HandlerWebManagerTool implements HttpHandler {
 					JSONObject response = this.processIMEI(requestBody);
 					responseBody = response.toString().getBytes();
 				}
+				else if(path.startsWith("/tool/sim") && method.equals("POST"))
+				{
+					JSONObject response = this.processSIM(requestBody);
+					responseBody = response.toString().getBytes();
+				}
 			}
 		} 
 		catch (NoUserRegisteredException e) 
@@ -57,12 +62,11 @@ public class HandlerWebManagerTool implements HttpHandler {
 		String port = queryPairs.getOrDefault("port", "");
 		String currentIMEI = queryPairs.getOrDefault("current_imei", "");
 		String newIMEI = queryPairs.getOrDefault("new_imei", "");
-		JSONObject response = new JSONObject();
 		JSONObject result = new JSONObject();
 		if(action.equals("update"))
 		{
-			response = GSMUtil.changeIMEI(port, currentIMEI, newIMEI);
-			if(response.has("response") && response.optString("response", "").contains("\r\nOK"))
+			JSONObject response = GSMUtil.changeIMEI(port, currentIMEI, newIMEI);
+			if(response != null && response.has("response") && response.optString("response", "").contains("\r\nOK"))
 			{
 				result.put("last_imei", currentIMEI);
 				result.put("imei", newIMEI);
@@ -79,4 +83,29 @@ public class HandlerWebManagerTool implements HttpHandler {
 		
 		return result;
 	}
+	
+	private JSONObject processSIM(String requestBody) {
+		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
+		String action = queryPairs.getOrDefault("action", "");
+		String port = queryPairs.getOrDefault("port", "");
+		String pin1 = queryPairs.getOrDefault("pin1", "");
+		String pin2 = queryPairs.getOrDefault("pin2", "");
+		JSONObject result = new JSONObject();
+		if(action.equals("add-pin") && pin1 != null && pin2 != null && !pin1.isEmpty() && pin1.equals(pin2))
+		{
+			JSONObject response = GSMUtil.addPIN(port, pin1);
+			if(response != null && response.has("response") && response.optString("response", "").contains("\r\nOK"))
+			{
+				result.put("response", "OK");
+				
+			}
+			else
+			{
+				result.put("response", "ERROR");
+			}
+		}
+		
+		return result;
+	}
+	
 }

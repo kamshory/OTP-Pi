@@ -651,7 +651,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		httpExchange.close();		
 	}
 	
-	//@GetMapping(path="/data/modem/detail/{port}")
+	//@GetMapping(path="/data/modem-info/get/{port}")
 	public void handleModemInfo(HttpExchange httpExchange) throws IOException
 	{
 		String path = httpExchange.getRequestURI().getPath();
