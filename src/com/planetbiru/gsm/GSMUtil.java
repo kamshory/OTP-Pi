@@ -62,22 +62,14 @@ public class GSMUtil {
 			DataModem modem = entry.getValue();
 			if(modem.isActive() && !modem.isInternetAccess())
 			{
-				GSMInstance instance;
-				boolean exists = false;
-				if(!GSMUtil.hasGSMInstanceID(modem.getId()))
-				{
-					instance = new GSMInstance(modem, eventListener);
-				}
-				else
-				{
-					instance = GSMUtil.getGSMIntance(modem.getId());
-					exists = true;
-				}
-				
+				boolean exists = GSMUtil.hasGSMInstanceID(modem.getId());				
+				GSMInstance instance = GSMUtil.getOrCreate(modem, GSMUtil.eventListener, exists);				
 				try 
 				{
-					System.out.println("Connect");
-					instance.connect();
+					if(instance != null)
+					{
+						instance.connect();
+					}
 					if(!exists)
 					{
 						GSMUtil.getGSMInstance().add(instance);
@@ -93,6 +85,20 @@ public class GSMUtil {
 		GSMUtil.updateConnectedDevice();
 	}
 
+	private static GSMInstance getOrCreate(DataModem modem, boolean eventListener, boolean exists) {
+		GSMInstance instance;
+		if(exists)
+		{
+			instance = GSMUtil.getGSMIntance(modem.getId());
+			
+		}
+		else
+		{
+			instance = new GSMInstance(modem, eventListener);
+		}
+		return instance;
+	}
+
 	public static void stop() {
 		Map<String, DataModem> modemData = ConfigModem.getModemData();		
 		for (Map.Entry<String, DataModem> entry : modemData.entrySet())
@@ -101,7 +107,7 @@ public class GSMUtil {
 			if(modem.isActive() && !modem.isInternetAccess())
 			{
 				GSMInstance instance = GSMUtil.getGSMIntance(modem.getId());
-				if(instance.isConnected())
+				if(instance != null && instance.isConnected())
 				{
 					try 
 					{
@@ -127,7 +133,7 @@ public class GSMUtil {
 	{
 		DataModem modem = ConfigModem.getModemData(modemID);
 		boolean found = false;
-		GSMInstance instance = new GSMInstance(modem, eventListener);
+		GSMInstance instance = new GSMInstance(modem, GSMUtil.eventListener);
 		for(int i = 0; i<GSMUtil.getGSMInstance().size(); i++)
 		{
 			instance =  GSMUtil.getGSMInstance().get(i);
