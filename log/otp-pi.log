@@ -17966,3 +17966,243 @@ ERROR
 2021-09-21 06:28:43 [INFO  ] GSM                             :122  - Execute AT Command : AT+CNUM
 2021-09-21 06:28:43 [INFO  ] GSM                             :122  - Execute AT Command : AT+COPS?
 2021-09-21 06:28:43 [INFO  ] GSM                             :122  - Execute AT Command : AT+CSCA
+2021-09-21 06:50:58 [INFO  ] Application                     :199  - Service started
+2021-09-21 08:05:40 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMI
+2021-09-21 08:05:40 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMM
+2021-09-21 08:05:40 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMR
+2021-09-21 08:05:40 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGSN
+2021-09-21 08:05:40 [INFO  ] GSM                             :122  - Execute AT Command : AT+CIMI
+2021-09-21 08:05:40 [INFO  ] GSM                             :122  - Execute AT Command : AT+CCID
+2021-09-21 08:05:40 [INFO  ] GSM                             :122  - Execute AT Command : AT+CREG?
+2021-09-21 08:05:40 [INFO  ] GSM                             :122  - Execute AT Command : AT+CNUM
+2021-09-21 08:05:40 [INFO  ] GSM                             :122  - Execute AT Command : AT+COPS?
+2021-09-21 08:05:40 [INFO  ] GSM                             :122  - Execute AT Command : AT+CSCA
+2021-09-21 08:05:56 [INFO  ] Application                     :199  - Service started
+2021-09-21 08:05:58 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMI
+2021-09-21 08:05:58 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMM
+2021-09-21 08:05:58 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMR
+2021-09-21 08:05:58 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGSN
+2021-09-21 08:05:58 [INFO  ] GSM                             :122  - Execute AT Command : AT+CIMI
+2021-09-21 08:05:58 [INFO  ] GSM                             :122  - Execute AT Command : AT+CCID
+2021-09-21 08:05:58 [INFO  ] GSM                             :122  - Execute AT Command : AT+CREG?
+2021-09-21 08:05:58 [INFO  ] GSM                             :122  - Execute AT Command : AT+CNUM
+2021-09-21 08:05:59 [INFO  ] GSM                             :122  - Execute AT Command : AT+COPS?
+2021-09-21 08:05:59 [INFO  ] GSM                             :122  - Execute AT Command : AT+CSCA
+2021-09-21 08:06:01 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMI
+2021-09-21 08:06:01 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMM
+2021-09-21 08:06:01 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMR
+2021-09-21 08:06:01 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGSN
+2021-09-21 08:06:01 [INFO  ] GSM                             :122  - Execute AT Command : AT+CIMI
+2021-09-21 08:06:01 [INFO  ] GSM                             :122  - Execute AT Command : AT+CCID
+2021-09-21 08:06:02 [INFO  ] GSM                             :122  - Execute AT Command : AT+CREG?
+2021-09-21 08:06:02 [INFO  ] GSM                             :122  - Execute AT Command : AT+CNUM
+2021-09-21 08:06:02 [INFO  ] GSM                             :122  - Execute AT Command : AT+COPS?
+2021-09-21 08:06:02 [INFO  ] GSM                             :122  - Execute AT Command : AT+CSCA
+2021-09-21 08:06:20 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMI
+2021-09-21 08:06:20 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMM
+2021-09-21 08:06:20 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMR
+2021-09-21 08:06:20 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGSN
+2021-09-21 08:06:20 [INFO  ] GSM                             :122  - Execute AT Command : AT+CIMI
+2021-09-21 08:06:21 [INFO  ] GSM                             :122  - Execute AT Command : AT+CCID
+2021-09-21 08:06:21 [INFO  ] GSM                             :122  - Execute AT Command : AT+CREG?
+2021-09-21 08:06:21 [INFO  ] GSM                             :122  - Execute AT Command : AT+CNUM
+2021-09-21 08:06:21 [INFO  ] GSM                             :122  - Execute AT Command : AT+COPS?
+2021-09-21 08:06:21 [INFO  ] GSM                             :122  - Execute AT Command : AT+CSCA
+2021-09-21 08:07:05 [INFO  ] MessageAPI                      :45   - Topic     : 
+2021-09-21 08:07:05 [INFO  ] MessageAPI                      :46   - Message   : {
+    "data": {
+        "reference": "1632186425618",
+        "date_time": 1632186425,
+        "receiver": "08126666666",
+        "expiration": 1632186485,
+        "message": "Your OTP is %s",
+        "param3": "987654",
+        "param4": "674527846556468254",
+        "param1": "100000",
+        "param2": "1234567890"
+    },
+    "command": "create-otp"
+}
+2021-09-21 08:07:05 [INFO  ] MessageAPI                      :47   - Command   : create-otp
+2021-09-21 08:07:05 [INFO  ] MessageAPI                      :48   - Date Time : 1632186425
+2021-09-21 08:07:05 [INFO  ] MessageAPI                      :76   - Create OTP
+2021-09-21 08:07:05 [INFO  ] GSM                             :122  - Execute AT Command : ATE0
+2021-09-21 08:07:05 [INFO  ] GSM                             :422  - msg1 = ATE0
+OK
+
+2021-09-21 08:07:05 [INFO  ] GSM                             :122  - Execute AT Command : AT+CSCS="GSM"
+2021-09-21 08:07:05 [INFO  ] GSM                             :424  - msg2 = 
+OK
+
+2021-09-21 08:07:05 [INFO  ] GSM                             :122  - Execute AT Command : AT+CMGF=1
+2021-09-21 08:07:05 [INFO  ] GSM                             :426  - msg3 = 
+OK
+
+2021-09-21 08:07:05 [INFO  ] GSM                             :122  - Execute AT Command : AT+CMGW="08126666666"
+2021-09-21 08:07:06 [INFO  ] GSM                             :428  - msg4 = 
+> 
+2021-09-21 08:07:06 [INFO  ] GSM                             :122  - Execute AT Command : Your OTP is 054861
+2021-09-21 08:07:06 [INFO  ] GSM                             :430  - msg5 = 
+> 
+2021-09-21 08:07:06 [INFO  ] GSM                             :122  - Execute AT Command : 
+2021-09-21 08:07:06 [INFO  ] GSM                             :432  - msg6 = 
+> 
+ERROR
+
+2021-09-21 08:07:17 [INFO  ] MessageAPI                      :45   - Topic     : 
+2021-09-21 08:07:17 [INFO  ] MessageAPI                      :46   - Message   : {
+    "data": {
+        "reference": "1632186437389",
+        "date_time": 1632186437,
+        "receiver": "08126666666",
+        "expiration": 1632186497,
+        "message": "Your OTP is %s",
+        "param3": "987654",
+        "param4": "674527846556468254",
+        "param1": "100000",
+        "param2": "1234567890"
+    },
+    "command": "create-otp"
+}
+2021-09-21 08:07:17 [INFO  ] MessageAPI                      :47   - Command   : create-otp
+2021-09-21 08:07:17 [INFO  ] MessageAPI                      :48   - Date Time : 1632186437
+2021-09-21 08:07:17 [INFO  ] MessageAPI                      :76   - Create OTP
+2021-09-21 08:07:17 [INFO  ] GSM                             :122  - Execute AT Command : ATE0
+2021-09-21 08:07:17 [INFO  ] GSM                             :422  - msg1 = ATE0
+OK
+
+2021-09-21 08:07:17 [INFO  ] GSM                             :122  - Execute AT Command : AT+CSCS="GSM"
+2021-09-21 08:07:17 [INFO  ] GSM                             :424  - msg2 = 
+OK
+
+2021-09-21 08:07:17 [INFO  ] GSM                             :122  - Execute AT Command : AT+CMGF=1
+2021-09-21 08:07:17 [INFO  ] GSM                             :426  - msg3 = 
+OK
+
+2021-09-21 08:07:17 [INFO  ] GSM                             :122  - Execute AT Command : AT+CMGW="08126666666"
+2021-09-21 08:07:17 [INFO  ] GSM                             :428  - msg4 = 
+> 
+2021-09-21 08:07:17 [INFO  ] GSM                             :122  - Execute AT Command : Your OTP is 011497
+2021-09-21 08:07:18 [INFO  ] GSM                             :430  - msg5 = 
+> 
+2021-09-21 08:07:18 [INFO  ] GSM                             :122  - Execute AT Command : 
+2021-09-21 08:07:18 [INFO  ] GSM                             :432  - msg6 = 
+> 
+ERROR
+
+SMS Ready
+
+2021-09-21 08:07:45 [INFO  ] MessageAPI                      :45   - Topic     : 
+2021-09-21 08:07:45 [INFO  ] MessageAPI                      :46   - Message   : {
+    "data": {
+        "reference": "1632186465228",
+        "date_time": 1632186465,
+        "receiver": "08126666666",
+        "expiration": 1632186525,
+        "message": "Your OTP is %s",
+        "param3": "987654",
+        "param4": "674527846556468254",
+        "param1": "100000",
+        "param2": "1234567890"
+    },
+    "command": "create-otp"
+}
+2021-09-21 08:07:45 [INFO  ] MessageAPI                      :47   - Command   : create-otp
+2021-09-21 08:07:45 [INFO  ] MessageAPI                      :48   - Date Time : 1632186465
+2021-09-21 08:07:45 [INFO  ] MessageAPI                      :76   - Create OTP
+2021-09-21 08:07:45 [INFO  ] GSM                             :122  - Execute AT Command : ATE0
+2021-09-21 08:07:45 [INFO  ] GSM                             :422  - msg1 = ATE0
+OK
+
+2021-09-21 08:07:45 [INFO  ] GSM                             :122  - Execute AT Command : AT+CSCS="GSM"
+2021-09-21 08:07:45 [INFO  ] GSM                             :424  - msg2 = 
+OK
+
+2021-09-21 08:07:45 [INFO  ] GSM                             :122  - Execute AT Command : AT+CMGF=1
+2021-09-21 08:07:45 [INFO  ] GSM                             :426  - msg3 = 
+OK
+
+2021-09-21 08:07:45 [INFO  ] GSM                             :122  - Execute AT Command : AT+CMGW="08126666666"
+2021-09-21 08:07:45 [INFO  ] GSM                             :428  - msg4 = 
+> 
+2021-09-21 08:07:45 [INFO  ] GSM                             :122  - Execute AT Command : Your OTP is 083811
+2021-09-21 08:07:46 [INFO  ] GSM                             :430  - msg5 = 
+> 
+SMS Ready
+
+2021-09-21 08:07:46 [INFO  ] GSM                             :122  - Execute AT Command : 
+2021-09-21 08:07:46 [INFO  ] GSM                             :432  - msg6 = 
+> 
+ERROR
+
+2021-09-21 08:07:57 [INFO  ] MessageAPI                      :45   - Topic     : 
+2021-09-21 08:07:57 [INFO  ] MessageAPI                      :46   - Message   : {
+    "data": {
+        "reference": "1632186477092",
+        "date_time": 1632186477,
+        "receiver": "08126666666",
+        "expiration": 1632186537,
+        "message": "Your OTP is %s",
+        "param3": "987654",
+        "param4": "674527846556468254",
+        "param1": "100000",
+        "param2": "1234567890"
+    },
+    "command": "create-otp"
+}
+2021-09-21 08:07:57 [INFO  ] MessageAPI                      :47   - Command   : create-otp
+2021-09-21 08:07:57 [INFO  ] MessageAPI                      :48   - Date Time : 1632186477
+2021-09-21 08:07:57 [INFO  ] MessageAPI                      :76   - Create OTP
+2021-09-21 08:07:57 [INFO  ] GSM                             :122  - Execute AT Command : ATE0
+2021-09-21 08:07:57 [INFO  ] GSM                             :422  - msg1 = 
+2021-09-21 08:07:57 [INFO  ] GSM                             :122  - Execute AT Command : AT+CSCS="GSM"
+2021-09-21 08:07:57 [INFO  ] GSM                             :424  - msg2 = 
+2021-09-21 08:07:57 [INFO  ] GSM                             :122  - Execute AT Command : AT+CMGF=1
+2021-09-21 08:07:57 [INFO  ] GSM                             :426  - msg3 = }W«{mww½½íë
+2021-09-21 08:07:57 [INFO  ] GSM                             :122  - Execute AT Command : AT+CMGW="08126666666"
+2021-09-21 08:07:57 [INFO  ] GSM                             :428  - msg4 = }W«{mwW½»¿¿½»·······»íë
+2021-09-21 08:07:57 [INFO  ] GSM                             :122  - Execute AT Command : Your OTP is 063962
+2021-09-21 08:07:57 [INFO  ] GSM                             :430  - msg5 = 
+2021-09-21 08:07:57 [INFO  ] GSM                             :122  - Execute AT Command : 
+2021-09-21 08:07:58 [INFO  ] GSM                             :432  - msg6 = 
+2021-09-21 08:08:11 [INFO  ] MessageAPI                      :45   - Topic     : 
+2021-09-21 08:08:11 [INFO  ] MessageAPI                      :46   - Message   : {
+    "data": {
+        "reference": "1632186491233",
+        "date_time": 1632186491,
+        "receiver": "08126666666",
+        "expiration": 1632186551,
+        "message": "Your OTP is %s",
+        "param3": "987654",
+        "param4": "674527846556468254",
+        "param1": "100000",
+        "param2": "1234567890"
+    },
+    "command": "create-otp"
+}
+2021-09-21 08:08:11 [INFO  ] MessageAPI                      :47   - Command   : create-otp
+2021-09-21 08:08:11 [INFO  ] MessageAPI                      :48   - Date Time : 1632186491
+2021-09-21 08:08:11 [INFO  ] MessageAPI                      :76   - Create OTP
+2021-09-21 08:08:11 [INFO  ] GSM                             :122  - Execute AT Command : ATE0
+2021-09-21 08:08:11 [INFO  ] GSM                             :422  - msg1 = ATE0
+OK
+
+2021-09-21 08:08:11 [INFO  ] GSM                             :122  - Execute AT Command : AT+CSCS="GSM"
+2021-09-21 08:08:11 [INFO  ] GSM                             :424  - msg2 = 
+OK
+
+2021-09-21 08:08:11 [INFO  ] GSM                             :122  - Execute AT Command : AT+CMGF=1
+2021-09-21 08:08:11 [INFO  ] GSM                             :426  - msg3 = 
+OK
+
+2021-09-21 08:08:11 [INFO  ] GSM                             :122  - Execute AT Command : AT+CMGW="08126666666"
+2021-09-21 08:08:11 [INFO  ] GSM                             :428  - msg4 = 
+> 
+2021-09-21 08:08:11 [INFO  ] GSM                             :122  - Execute AT Command : Your OTP is 530570
+2021-09-21 08:08:12 [INFO  ] GSM                             :430  - msg5 = 
+> 
+2021-09-21 08:08:12 [INFO  ] GSM                             :122  - Execute AT Command : 
+2021-09-21 08:08:12 [INFO  ] GSM                             :432  - msg6 = 
+> 
+ERROR
+
