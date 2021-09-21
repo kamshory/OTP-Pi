@@ -30,7 +30,37 @@ public class GSMInstance {
 		this.eventListener =eventListener;
 		this.gsm = new GSM();
 	}
-
+	private void processPIN(String pin)
+	{
+		if(pin != null && !pin.trim().isEmpty())
+		{
+			pin = pin.trim();
+			String atCommand1 = "AT+CPIN?";
+			String response1;
+			String atCommand2 = "AT+CPIN=\""+pin+"\"";
+			String response2;
+			try 
+			{
+				response1 = this.executeATCommand(atCommand1);
+				if(response1.contains("READY"))
+				{
+					this.pinValid = true;
+				}
+				else
+				{
+					response2 = this.executeATCommand(atCommand2);
+					if(response2.contains("ERROR"))
+					{
+						this.pinValid = false;
+					}
+				}
+			} 
+			catch (GSMException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+	}
 	public boolean connect(String pin) throws GSMException, InvalidPortException 
 	{
 		if(!this.gsm.isConnected())
@@ -38,16 +68,7 @@ public class GSMInstance {
 			try
 			{
 				boolean isConnected = this.gsm.connect(this.port, this.eventListener);
-				if(pin != null && !pin.trim().isEmpty())
-				{
-					pin = pin.trim();
-					String atCommand = "AT+CPIN=\""+pin+"\"";
-					String response = this.executeATCommand(atCommand);
-					if(response.contains("ERROR"))
-					{
-						this.pinValid = false;
-					}
-				}
+				this.processPIN(pin);
 				return isConnected;
 			}
 			catch(SerialPortInvalidPortException e)
@@ -73,7 +94,7 @@ public class GSMInstance {
 	{
 		if(!this.pinValid)
 		{
-			throw new InvalidSIMPinException("Invalid PIN");
+			throw new InvalidSIMPinException(ConstantString.INVALID_SIM_CARD_PIN);
 		}
 		if(this.gsm.getSerialPort() == null)
 		{
@@ -106,7 +127,7 @@ public class GSMInstance {
 	{
 		if(!this.pinValid)
 		{
-			throw new InvalidSIMPinException("Invalid PIN");
+			throw new InvalidSIMPinException(ConstantString.INVALID_SIM_CARD_PIN);
 		}
 		if(this.gsm.getSerialPort() == null)
 		{
@@ -135,7 +156,7 @@ public class GSMInstance {
 	public void deleteSMS(int smsID, String storage) throws GSMException, InvalidSIMPinException {
 		if(!this.pinValid)
 		{
-			throw new InvalidSIMPinException("Invalid PIN");
+			throw new InvalidSIMPinException(ConstantString.INVALID_SIM_CARD_PIN);
 		}
 		this.gsm.deleteSMS(smsID, storage);		
 	}
@@ -144,7 +165,7 @@ public class GSMInstance {
     { 	
 		if(!this.pinValid)
 		{
-			throw new InvalidSIMPinException("Invalid PIN");
+			throw new InvalidSIMPinException(ConstantString.INVALID_SIM_CARD_PIN);
 		}
 		this.gsm.deleteAllSentSMS();
  	}
