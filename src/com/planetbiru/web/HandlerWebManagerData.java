@@ -41,6 +41,7 @@ import com.planetbiru.cookie.CookieServer;
 import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMInstance;
 import com.planetbiru.gsm.GSMUtil;
+import com.planetbiru.gsm.InvalidSIMPinException;
 import com.planetbiru.gsm.SMS;
 import com.planetbiru.user.NoUserRegisteredException;
 import com.planetbiru.user.WebUserAccount;
@@ -651,7 +652,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		httpExchange.close();		
 	}
 	
-	//@GetMapping(path="/data/modem/detail/{port}")
+	//@GetMapping(path="/data/modem-info/get/{port}")
 	public void handleModemInfo(HttpExchange httpExchange) throws IOException
 	{
 		String path = httpExchange.getRequestURI().getPath();
@@ -1089,7 +1090,7 @@ public class HandlerWebManagerData implements HttpHandler {
 			}
 			responseBody = allSMS.toString().getBytes();
 		}
-		catch(NoUserRegisteredException | GSMException e)
+		catch(NoUserRegisteredException | GSMException | InvalidSIMPinException e)
 		{
 			/**
 			 * Do nothing
@@ -1105,7 +1106,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		httpExchange.close();	
 	}
 	
-	private JSONArray readSMS(String modemID, String storage, String smsStatus) throws GSMException {
+	private JSONArray readSMS(String modemID, String storage, String smsStatus) throws GSMException, InvalidSIMPinException {
 		JSONArray allSMS = new JSONArray();
 		if(modemID.isEmpty())
 		{

@@ -45,7 +45,7 @@ public class OTP {
 		while(keys.hasNext()) 
 		{
 		    String key = keys.next();
-		    if (OTP.data.get(key) instanceof JSONObject) 
+		    if(OTP.data.has(key) && OTP.data.get(key) instanceof JSONObject) 
 		    {
 		        JSONObject obj = OTP.data.optJSONObject(key);
 		        if(obj.optLong(JsonKey.EXPIRATION, 0) < currentTime)

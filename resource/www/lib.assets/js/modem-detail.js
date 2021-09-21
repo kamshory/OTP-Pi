@@ -52,12 +52,16 @@ $(document).ready(function(e) {
                 if(data.length > 0)
                 {
                     sel.closest('tr').find('.list-port-container').css({'display':'block'});
-                    sel.closest('tr').find('.list-port-container select').empty();
+                    sel.closest('tr').find('.list-port-container > ul').empty();
                     for(var i = 0; i<data.length; i++)
                     {
-                        sel.closest('tr').find('.list-port-container select').append(new Option(data[i].descriptivePortName, data[i].systemPortName));
+                        var li = $('<li />');
+                        var a = $('<a />');
+                        a.attr({'data-port': data[i].systemPortName, 'href':'#'});
+                        a.text(data[i].descriptivePortName);
+                        li.append(a);
+                        sel.closest('tr').find('.list-port-container ul').append(li);
                     }
-                    sel.closest('tr').find('.list-port-container select').focus();
                 }
             }
         });      
@@ -74,17 +78,16 @@ $(document).ready(function(e) {
         }, 1200);
     });
 
-    $(document).on('change', '.list-port-container select', function(e2)
+    $(document).on('click', '.list-port-container ul li a', function(e2)
     {
-        var values = $(this).val() || [];
-        if(values.length > 0)
+        var value = $(this).attr('data-port') || '';
+        if(value != '')
         {
-            var value = values[0];
-            console.log(value);
             $(this).closest('tr').find('input[type="text"]').val(value);
-            $('#detect').click();
+            detect();
         }
         $(this).closest('tr').find('.list-port-container').css({'display':'none'});
+        
     });
 
     $(document).on('click', '#status', function(e2)
@@ -113,40 +116,45 @@ $(document).ready(function(e) {
 
     $(document).on('click', '#detect', function(e2) 
     {
-        var port = $(this).closest('form').find('[name="port"]').val().trim();
-        if(port == '') 
-        {
-            $(this).closest('form').find('[name="port"]').select();
-        } 
-        else 
-        {
-            $('.detecting').empty().append('<span class="animation-pressure"><span></span>');
-            $.ajax({
-                type: "GET",
-                url: "data/modem-info/get/" + encodeURIComponent(port),
-                dataType: "json",
-                success: function(data) {
-                    $('[name="manufacturer"]').val(data.manufacturer || '');
-                    $('[name="model"]').val(data.model || '');
-                    $('[name="revision"]').val(data.revision || '');
-                    $('[name="imei"]').val(data.imei || '');
-                    $('[name="operator_select"]').val(data.operatorSelect);
-                    $('[name="msisdn"]').val(data.msisdn || '');
-                    $('[name="imsi"]').val(data.imsi || '');
-                    $('[name="iccid"]').val(data.iccid || '');
-                    $('[name="sms_center"]').val(data.smsCenter || '');
-                    $('.detecting').empty();
-                    var networkRegistration = data.networkRegistration || '';
-                    if(networkRegistration.indexOf(',') > 0)
-                    {
-                        $('#status').attr('data-status', networkRegistration);
-                        $('#status').removeAttr('disabled');
-                    }
-                }
-            });
-        }
+        detect();
     });
 });
+
+function detect()
+{
+    var port = $('[name="port"]').val().trim();
+    if(port == '') 
+    {
+        $('[name="port"]').select();
+    } 
+    else 
+    {
+        $('.detecting').empty().append('<span class="animation-pressure"><span></span>');
+        $.ajax({
+            type: "GET",
+            url: "data/modem-info/get/" + encodeURIComponent(port),
+            dataType: "json",
+            success: function(data) {
+                $('[name="manufacturer"]').val(data.manufacturer || '');
+                $('[name="model"]').val(data.model || '');
+                $('[name="revision"]').val(data.revision || '');
+                $('[name="imei"]').val(data.imei || '');
+                $('[name="operator_select"]').val(data.operatorSelect);
+                $('[name="msisdn"]').val(data.msisdn || '');
+                $('[name="imsi"]').val(data.imsi || '');
+                $('[name="iccid"]').val(data.iccid || '');
+                $('[name="sms_center"]').val(data.smsCenter || '');
+                $('.detecting').empty();
+                var networkRegistration = data.networkRegistration || '';
+                if(networkRegistration.indexOf(',') > 0)
+                {
+                    $('#status').attr('data-status', networkRegistration);
+                    $('#status').removeAttr('disabled');
+                }
+            }
+        });
+    }
+}
 
 function applyTag() {
     if(setting.countryCode != '' && setting.recipientPrefixLength > 0) {
@@ -174,7 +182,7 @@ function loadDetail()
             url: "data/modem/detail/" + id,
             dataType: "json",
             success: function(data) {
-                $('[name="id"]').val(data.id);
+               $('[name="id"]').val(data.id);
                 $('[name="name"]').val(data.name);
                 $('[name="port"]').val(data.port);
                 $('[name="sms_center"]').val(data.smsCenter);

@@ -44,6 +44,8 @@ public class ConstantString {
 	public static final String CREATE_OTP                      = "create-otp";
 	public static final String VALIDATE_OTP                    = "validate-otp";
 	public static final String DOCUMENT_PATH_SEPARATOR         = "/";
+	public static final String SIM_CARD_NOT_READY              = "SIM card is not ready";
+	public static final String INVALID_SIM_CARD_PIN            = "Invalid SIM card PIN";
 	
 	private ConstantString()
 	{

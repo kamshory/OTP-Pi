@@ -94,7 +94,7 @@
       }
       .modal-table tr > td:nth-child(1)
       {
-          width:100px;
+          width:120px;
       }
   }
   .config-table tr td select,
@@ -872,6 +872,9 @@
   .chip .tile-icon{
     background-image: url(../images/icon/chip.png);
   }
+  .sim .tile-icon{
+    background-image: url(../images/icon/sim.png);
+  }
   .ussd-code .tile-icon{
     background-image: url(../images/icon/ussd.png);
   }
@@ -1032,8 +1035,28 @@
     height: 20px;
     z-index: 10;
     width: 100%;
-    height: 100px;
   }
-  .port-input td:nth-child(2) .list-port-container select{
-    height: 100px;
+  
+  .list-port-container{
+    height: auto;
+  }
+  .list-port-container > ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    border: 1px solid #DDDDDD;
+    height: 120px;
+    background-color: #FFFFFF;
+  }
+  .list-port-container > ul > li:nth-child(even){
+    background-color: #F5F5F5;
+  }
+  .list-port-container > ul > li > a{
+    padding: 5px 10px;
+    display: block;
+    text-decoration: none;
+  }
+  .list-port-container > ul > li > a:hover{
+    background-color: rgb(73, 111, 214);
+    color: #FFFFFF;
   }

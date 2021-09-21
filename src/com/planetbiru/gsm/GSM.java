@@ -75,19 +75,10 @@ public class GSM {
 	    		isOpen = true;
 	        } 
 	        else 
-	        {       	
-	        	if(Config.isDebugModem())
-	        	{
-		        	this.connected = true;
-		        	this.ready = true;
-		            isOpen = true;
-	        	}
-	        	else
-	        	{
-	        		this.connected = false;
-		        	this.ready = false;
-		            isOpen = false;
-	        	}
+	        {       		        	
+        		this.connected = false;
+	        	this.ready = false;
+	            isOpen = false;
 	        }
     	}
     	catch(SerialPortInvalidPortException e)

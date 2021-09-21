@@ -73,8 +73,9 @@ public class JsonKey {
 	public static final String HASH                       = "hash";
 	public static final String EXPIRATION                 = "expiration";
 	public static final String REFERENCE                  = "reference";
-	public static final Object ENDPOINT                   = "endpoint";
-	public static final Object COMPANY                    = "company";
+	public static final String ENDPOINT                   = "endpoint";
+	public static final String COMPANY                    = "company";
+	public static final String RESPONSE = "response";
 	
 	private JsonKey()
 	{
