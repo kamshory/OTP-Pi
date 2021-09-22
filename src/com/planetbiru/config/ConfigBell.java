@@ -47,8 +47,8 @@ public class ConfigBell {
 					boolean lsmsFailure = json.optBoolean("smsFailure", false);	
 					boolean lamqpDisconnected = json.optBoolean("amqpDisconnected", false);	
 					boolean lmqttDisconnected = json.optBoolean("mqttDisconnected", false);	
-					boolean lwsDisconnected = json.optBoolean("wsDisconnected", false);	
 					boolean lredisDisconnected = json.optBoolean("redisDisconnected", false);	
+					boolean lwsDisconnected = json.optBoolean("wsDisconnected", false);	
 					
 					ConfigBell.smsFailure = lsmsFailure;
 					ConfigBell.amqpDisconnected = lamqpDisconnected;
