@@ -13,21 +13,17 @@ import com.planetbiru.util.Utility;
 
 public class ConfigBell {
 	private static String configPath = "";
-	
 	private static Logger logger = Logger.getLogger(ConfigBell.class);
-
 	private static boolean smsFailure;
-
 	private static boolean amqpDisconnected;
-
 	private static boolean mqttDisconnected;
-
+	private static boolean redisDisconnected;
 	private static boolean wsDisconnected;
+	
 	private ConfigBell()
 	{
 		
 	}
-
 	
 	public static void load(String path) {
 		ConfigBell.configPath = path;
@@ -52,10 +48,12 @@ public class ConfigBell {
 					boolean lamqpDisconnected = json.optBoolean("amqpDisconnected", false);	
 					boolean lmqttDisconnected = json.optBoolean("mqttDisconnected", false);	
 					boolean lwsDisconnected = json.optBoolean("wsDisconnected", false);	
+					boolean lredisDisconnected = json.optBoolean("redisDisconnected", false);	
 					
 					ConfigBell.smsFailure = lsmsFailure;
 					ConfigBell.amqpDisconnected = lamqpDisconnected;
 					ConfigBell.mqttDisconnected = lmqttDisconnected;
+					ConfigBell.redisDisconnected = lredisDisconnected;
 					ConfigBell.wsDisconnected = lwsDisconnected;
 				}
 			}
@@ -66,13 +64,13 @@ public class ConfigBell {
 			{
 				logger.error(e.getMessage(), e);
 			}
-		}
-		
+		}	
 	}	
 
 	public static void save() {
 		ConfigBell.save(ConfigBell.configPath);
 	}
+	
 	public static void save(String path) {
 		JSONObject config = getJSONObject();
 		ConfigBell.save(path, config);
@@ -85,8 +83,7 @@ public class ConfigBell {
 			dir = dir.substring(0, dir.length() - 1);
 		}
 		String fileName = FileConfigUtil.fixFileName(dir + path);
-		ConfigBell.prepareDir(fileName);
-		
+		ConfigBell.prepareDir(fileName);		
 		try 
 		{
 			FileConfigUtil.write(fileName, config.toString().getBytes());
@@ -117,11 +114,12 @@ public class ConfigBell {
 	}
 	
 	public static JSONObject getJSONObject() {
-		JSONObject config = new JSONObject();
+		JSONObject config = new JSONObject();	
 		config.put("smsFailure", ConfigBell.smsFailure);
 		config.put("amqpDisconnected", ConfigBell.amqpDisconnected);
 		config.put("mqttDisconnected", ConfigBell.mqttDisconnected);
-		config.put("wsDisconnected", ConfigBell.wsDisconnected);
+		config.put("redisDisconnected", ConfigBell.redisDisconnected);
+		config.put("wsDisconnected", ConfigBell.wsDisconnected);	
 		return config;
 	}
 
@@ -129,31 +127,25 @@ public class ConfigBell {
 		return getJSONObject();
 	}
 
-	
-
 	public static void reset() {
 		ConfigBell.smsFailure = false;
 		ConfigBell.amqpDisconnected = false;					
-		ConfigBell.mqttDisconnected = false;					
-		ConfigBell.wsDisconnected = false;					
-		
+		ConfigBell.mqttDisconnected = false;	
+		ConfigBell.redisDisconnected = false;
+		ConfigBell.wsDisconnected = false;	
 	}
-
 
 	public static String getConfigPath() {
 		return configPath;
 	}
 
-
 	public static void setConfigPath(String configPath) {
 		ConfigBell.configPath = configPath;
 	}
 
-
 	public static boolean isSmsFailure() {
 		return smsFailure;
 	}
-
 
 	public static void setSmsFailure(boolean smsFailure) {
 		ConfigBell.smsFailure = smsFailure;
@@ -164,34 +156,32 @@ public class ConfigBell {
 		return amqpDisconnected;
 	}
 
-
 	public static void setAmqpDisconnected(boolean amqpDisconnected) {
 		ConfigBell.amqpDisconnected = amqpDisconnected;
 	}
 
+	public static boolean isRedisDisconnected() {
+		return redisDisconnected;
+	}
+
+	public static void setRedisDisconnected(boolean redisDisconnected) {
+		ConfigBell.redisDisconnected = redisDisconnected;
+	}
 
 	public static boolean isMqttDisconnected() {
 		return mqttDisconnected;
 	}
 
-
 	public static void setMqttDisconnected(boolean mqttDisconnected) {
 		ConfigBell.mqttDisconnected = mqttDisconnected;
 	}
-
 
 	public static boolean isWsDisconnected() {
 		return wsDisconnected;
 	}
 
-
 	public static void setWsDisconnected(boolean wsDisconnected) {
 		ConfigBell.wsDisconnected = wsDisconnected;
 	}
-
-
-	
-	
-	
 	
 }

@@ -840,11 +840,13 @@ public class HandlerWebManager implements HttpHandler {
 			boolean smsFailure = queryPairs.getOrDefault("sms_failure", "").trim().equals("1");
 			boolean amqpDisconnected = queryPairs.getOrDefault("amqp_disconnected", "").trim().equals("1");
 			boolean mqttDisconnected = queryPairs.getOrDefault("mqtt_disconnected", "").trim().equals("1");
+			boolean redisDisconnected = queryPairs.getOrDefault("redis_disconnected", "").trim().equals("1");
 			boolean wsDisconnected = queryPairs.getOrDefault("ws_disconnected", "").trim().equals("1");
 			
 			ConfigBell.setSmsFailure(smsFailure);
 			ConfigBell.setAmqpDisconnected(amqpDisconnected);
 			ConfigBell.setMqttDisconnected(mqttDisconnected);
+			ConfigBell.setRedisDisconnected(redisDisconnected);
 			ConfigBell.setWsDisconnected(wsDisconnected);
 			
 			ConfigBell.save();

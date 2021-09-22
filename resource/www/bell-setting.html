@@ -95,6 +95,13 @@
 							</td>
 						</tr>
 						<tr>
+							<td>Redis Disconnected</td>
+							<td>
+								<label>
+									<input type="checkbox" name="redis_disconnected" id="redis_disconnected" value="1"> Bell Active</label>
+							</td>
+						</tr>
+						<tr>
 							<td>WS Disconnected</td>
 							<td>
 								<label>
@@ -121,6 +128,7 @@
 						$('input[name="sms_failure"]').prop("checked", data.smsFailure);
 						$('input[name="amqp_disconnected"]').prop("checked", data.amqpDisconnected);
 						$('input[name="mqtt_disconnected"]').prop("checked", data.mqttDisconnected);
+						$('input[name="redis_disconnected"]').prop("checked", data.redisDisconnected);
 						$('input[name="ws_disconnected"]').prop("checked", data.wsDisconnected);
 					}
 				});

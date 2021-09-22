@@ -695,6 +695,7 @@
       margin-left: 0;
     }
   }
+  /*
   @media screen and (max-width: 1200px)  and (min-width: 992px) {
     .tile-area .tile { 
       width: 10.1%; 
@@ -706,7 +707,8 @@
     }
     
   }
-  @media screen and (max-width: 992px)  and (min-width: 768px) {
+  */
+  @media screen and (max-width: 1200px)  and (min-width: 768px) {
     .tile-area .tile { 
       width: 14%; 
       margin-left: 1%;    

@@ -29,5 +29,6 @@
 	<classpathentry kind="lib" path="jar/cactoos-0.16.jar"/>
 	<classpathentry kind="lib" path="jar/javax.activation-1.2.0.jar" sourcepath="jar/src/javax.activation-1.2.0-sources.jar"/>
 	<classpathentry kind="lib" path="jar/org.openjdk.dio-1.1.0.jar" sourcepath="jar/src/org.openjdk.dio-1.1.0-sources.jar"/>
+	<classpathentry kind="lib" path="jar/jedis-2.9.0.jar" sourcepath="jar/src/jedis-2.9.0-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

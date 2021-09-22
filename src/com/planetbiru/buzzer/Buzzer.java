@@ -45,4 +45,12 @@ public class Buzzer {
 		}
 	}
 
+	public static void toneDisconnectRedis() {
+		if(ConfigBell.isMqttDisconnected())
+		{
+			logger.info("toneDisconnectRedis");
+			Music.play(Config.getSoundPIN(), Config.getSoundDisconnectTone(), Config.getSoundDisconnectOctave(), Config.getSoundDisconnectTempo());
+		}				
+	}
+
 }
