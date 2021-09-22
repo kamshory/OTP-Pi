@@ -26,6 +26,8 @@ yum install -y dnsmasq
 
 echo -e "dtparam=i2c_arm=on" >> /boot/config.txt
 echo -e "dtoverlay=i2c-rtc,ds3231" >> /boot/config.txt
+echo -e "enable_uart=1" >> /boot/config.txt
+echo -e "dtoverlay=uart0,txd0_pin=14,rxd0_pin=15" >> /boot/config.txt
 echo -e "i2c-dev" >> /etc/modules-load.d/i2c.conf
 echo -e '[Unit]' > /usr/lib/systemd/system/rtc.service
 echo -e 'Description=rtc' >> /usr/lib/systemd/system/rtc.service
