@@ -43,6 +43,7 @@ $(document).ready(function(e) {
     });
 
     $(document).on('click', '.list-port', function(e2){
+        e2.preventDefault();
         var sel = $(this);
         $.ajax({
             type: "GET",
@@ -69,6 +70,7 @@ $(document).ready(function(e) {
     $(document).on('mouseover', '.list-port-container', function(e2)
     {
         clearTimeout(to);
+        e2.preventDefault();
     });
     $(document).on('mouseout', '.list-port-container', function(e2)
     {
@@ -80,6 +82,7 @@ $(document).ready(function(e) {
 
     $(document).on('click', '.list-port-container ul li a', function(e2)
     {
+        e2.preventDefault();
         var value = $(this).attr('data-port') || '';
         if(value != '')
         {
