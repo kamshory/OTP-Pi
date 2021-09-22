@@ -2,7 +2,9 @@ package com.planetbiru.subscriber.redis;
 
 import java.util.concurrent.CountDownLatch;
 
+import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLParameters;
+import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 
 import com.planetbiru.ServerWebSocketAdmin;
@@ -67,7 +69,12 @@ public class SubscriberRedis extends Thread {
 		{
 			SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
 		    SSLParameters sslParameters = new SSLParameters();		    
-			this.subscriber = new Jedis(host, port, ssl, sslSocketFactory, sslParameters, null); 	
+		    final HostnameVerifier allHostsValid = new HostnameVerifier() {   
+		           public boolean verify(String hostname, SSLSession session) {   
+		               return true;   
+		           }   
+		       };
+			this.subscriber = new Jedis(host, port, ssl, sslSocketFactory, sslParameters, allHostsValid); 	
 		}
 		
 		this.subscriber.clientSetname(username);

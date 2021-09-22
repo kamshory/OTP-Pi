@@ -2,6 +2,7 @@ package com.planetbiru.api;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.Random;
 
@@ -42,17 +43,26 @@ public class OTP {
 	{
 		Iterator<String> keys = OTP.data.keys();
 		long currentTime = System.currentTimeMillis();
-		while(keys.hasNext()) 
+		try
 		{
-		    String key = keys.next();
-		    if(OTP.data.has(key) && OTP.data.get(key) instanceof JSONObject) 
-		    {
-		        JSONObject obj = OTP.data.optJSONObject(key);
-		        if(obj.optLong(JsonKey.EXPIRATION, 0) < currentTime)
-		        {
-		        	OTP.data.remove(key);
-		        }
-		    }
+			while(keys.hasNext()) 
+			{
+			    String key = keys.next();
+			    if(OTP.data.has(key) && OTP.data.get(key) instanceof JSONObject) 
+			    {
+			        JSONObject obj = OTP.data.optJSONObject(key);
+			        if(obj.optLong(JsonKey.EXPIRATION, 0) < currentTime)
+			        {
+			        	OTP.data.remove(key);
+			        }
+			    }
+			}
+		}
+		catch(ConcurrentModificationException e)
+		{
+			/**
+			 * Do nothing
+			 */
 		}
 	}
 	
