@@ -1,11 +1,5 @@
 # OTP-Pi
 
-![OTP-Pi](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/otp-pi.png)
-
-![OTP-Pi](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/usb-hub-20-port.png)
-
-![Support](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/support.png)
-
 ![Screenshot](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/ss-desktop.png)
 
 ![Screenshot](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/ss-desktop2.png)
@@ -41,6 +35,8 @@ Applications that run on desktops and laptops of course require high investment 
 
 OTP-Pi answers all of the above challenges. With a very cheap device, users can have an SMS gateway that provides many features and can be operated at a very low cost.
 
+![Support](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/support.png)
+
 OTP-Pi is a server for sending SMS via HTTP, WebSocket and Message Broker protocols. Users can install OTP-Pi on the server with a static IP address that can be accessed by clients who will send SMS. In addition, users can also install OTP-Pi on servers with dynamic IP addresses. This server then accesses a websocket server, RabbitMQ server or Mosquitto server. OTP-Pi acts as a consumer that will send all SMS it receives.
 
 # System Requirement
@@ -52,6 +48,10 @@ OTP-Pi requires Raspberry Pi 3 Model B or higher. Minimum RAM is 1 GB and SD Car
 ## Multiple Device
 
 Modem is a list of modems installed on the OTP-Pi. Modems are named based on the make and model of the device and the connection used. The modem can be turned on and off at any time. An inactive modem will not be used to send SMS even if it is physically attached to the OTP-Pi and receiving power.
+
+![OTP-Pi](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/otp-pi.png)
+
+![OTP-Pi](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/usb-hub-20-port.png)
 
 OTP-Pi can use multiple modems at once. By default, the OTP-Pi can use up to 4 modems at once without the need for additional devices. The use of a hub is possible so that users can use more than 4 modems in one OTP-Pi device. The modems are registered as usual. Sending SMS will use the Round-Robin algorithm where all active modems will be used in rotation.
 
