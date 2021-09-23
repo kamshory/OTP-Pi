@@ -35,8 +35,6 @@ Applications that run on desktops and laptops of course require high investment 
 
 OTP-Pi answers all of the above challenges. With a very cheap device, users can have an SMS gateway that provides many features and can be operated at a very low cost.
 
-![Support](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/support.png)
-
 OTP-Pi is a server for sending SMS via HTTP, WebSocket and Message Broker protocols. Users can install OTP-Pi on the server with a static IP address that can be accessed by clients who will send SMS. In addition, users can also install OTP-Pi on servers with dynamic IP addresses. This server then accesses a websocket server, RabbitMQ server or Mosquitto server. OTP-Pi acts as a consumer that will send all SMS it receives.
 
 # System Requirement
@@ -47,7 +45,9 @@ OTP-Pi requires Raspberry Pi 3 Model B or higher. Minimum RAM is 1 GB and SD Car
 
 ## Multiple Method
 
-User can send OTP with several methods
+User can send OTP with several methods. OTP-Pi allow user to create and validate OTP via REST API or just send SMS or email contains OTP code via RabbitMQ,Redis, Mosquitto and WebSocket.
+
+![Support](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/support.png)
 
 | Method | Send SMS | Send Email | Block MSISDN | Unblock MSISDN | Create OTP | Validate OTP |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | 
