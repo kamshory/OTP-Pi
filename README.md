@@ -1020,7 +1020,95 @@ In this scenario, the user does not need a public IP. Users only need:
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.receiver | String | MSISDN number to be unblocked |
 
-**2. Mosquitto**
+**2. Redis**
+
+**Send SMS Request**
+
+```json
+{
+	"command": "send-sms",
+	"data": {
+		"date_time": 1629685778,
+		"expiration": 1629685838,
+		"id": 123456,
+		"receiver": "08126666666",
+		"message": "Your OTP is 1234"
+	}
+}
+```
+
+| Parameter | Type | Description |
+| --------- | ---- | ----------|
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
+| `data`.id | String | SMS ID |
+| `data`.receiver | String | MSISDN of the receiver |
+| `data`.message | String | Content of the SMS |
+
+**Send Email Request**
+
+```json
+{
+	"command": "send-email",
+	"data": {
+		"date_time": 1629685778,
+		"expiration": 1629685838,
+		"id": 123456,
+		"receiver": "someone@domain.tld",
+		"message": "Your OTP is 1234"
+	}
+}
+```
+
+| Parameter | Type | Description |
+| --------- | ---- | ----------|
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
+| `data`.id | String | SMS ID |
+| `data`.receiver | String | Recipient's email address |
+| `data`.message | String | Content of the SMS |
+
+**Block Number Request**
+
+```json
+{
+	"command": "block-msisdn",
+	"data": {
+		"date_time": 1629685778,
+		"receiver": "08126666666",
+	}
+}
+```
+
+| Parameter | Type | Description |
+| --------- | ---- | ----------|
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
+| `data`.receiver | String | MSISDN number to block |
+
+**Unblock Number Request**
+
+```json
+{
+	"command": "unblock-msisdn",
+	"data":{
+		"date_time": 1629685778,
+		"receiver": "08126666666",
+	}
+}
+```
+
+| Parameter | Type | Description |
+| --------- | ---- | ----------|
+| command | String | Command for OTP-Pi |
+| data | Object | Data for OTP-Pi | 
+| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
+| `data`.receiver | String | MSISDN number to be unblocked |
+
+**3. Mosquitto**
 
 **Send SMS Request**
 
@@ -1108,7 +1196,7 @@ In this scenario, the user does not need a public IP. Users only need:
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.receiver | String | MSISDN number to be unblocked |
 
-**3. WSMessageBroker**
+**4. WSMessageBroker**
 
 **Send SMS Request**
 
