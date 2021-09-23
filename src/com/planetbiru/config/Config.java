@@ -16,6 +16,8 @@ public class Config {
 	private static long sessionLifetime = 1440000;
 	private static String emailSettingPath = "";
 	private static String subscriberAMQPSettingPath = "";
+	private static String subscriberRedisSettingPath = "";
+	private static String subscriberMQTTSettingPath = "";
 	private static String subscriberWSSettingPath = "";
 	private static String wlanSettingPath = "";
 	private static String ddnsSettingPath = "";
@@ -90,7 +92,6 @@ public class Config {
 	private static long waitLoopChild = 30000;
 	private static String resetDeviceType = "RPi";
 	private static String resetDeviceFile = "reset-config.ini";
-	private static String subscriberMQTTSettingPath = "";
 	private static boolean cacheHTMLFile = false;
 	private static boolean soundEnable = false;
 	private static int soundPIN = 26;
@@ -198,6 +199,14 @@ public class Config {
 
 	public static void setSubscriberAMQPSettingPath(String subscriberAMQPSettingPath) {
 		Config.subscriberAMQPSettingPath = subscriberAMQPSettingPath;
+	}
+	
+	public static String getSubscriberRedisSettingPath() {
+		return subscriberRedisSettingPath;
+	}
+
+	public static void setSubscriberRedisSettingPath(String subscriberRedisSettingPath) {
+		Config.subscriberRedisSettingPath = subscriberRedisSettingPath;
 	}
 
 	public static String getSubscriberMQTTSettingPath() {

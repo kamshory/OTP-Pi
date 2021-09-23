@@ -286,7 +286,7 @@
 						<tr>
 							<td>Reconnect Delay</td>
 							<td>
-								<select name="subscriber_recoonect_delay">
+								<select name="subscriber_mqtt_recoonect_delay">
 									<option value="15000">15 Seconds</option>
 									<option value="30000">30 Seconds</option>
 									<option value="60000">1 Minute</option>
@@ -298,7 +298,7 @@
 						<tr>
 							<td>Refresh Connection</td>
 							<td>
-								<select name="subscriber_amqp_refresh">
+								<select name="subscriber_mqtt_refresh">
 									<option value="0">Never</option>
 									<option value="600">10 Minutes</option>
 									<option value="1800">30 Minutes</option>
@@ -319,6 +319,87 @@
 					</tbody>
 				</table>
 			</form>
+
+			<h4>Redis</h4>
+			<form action="subscriber-setting.html" method="post">
+				<table class="config-table config-table-feeder">
+					<tbody>
+						<tr>
+							<td>Enable</td>
+							<td>
+								<label>
+									<input type="checkbox" name="subscriber_redis_enable" value="1"> Enable</label>
+							</td>
+						</tr>
+						<tr>
+							<td>SSL</td>
+							<td>
+								<select name="subscriber_redis_ssl">
+									<option value="0">No</option>
+									<option value="1">Yes</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Host</td>
+							<td>
+								<input type="text" name="subscriber_redis_address" id="subscriber_redis_address" value=""> </td>
+						</tr>
+						<tr>
+							<td>Port</td>
+							<td>
+								<input type="number" max="65535" name="subscriber_redis_port" id="subscriber_redis_port" value=""> </td>
+						</tr>
+						<tr>
+							<td>Username</td>
+							<td>
+								<input type="text" name="subscriber_redis_username" id="subscriber_redis_username" value=""> </td>
+						</tr>
+						<tr>
+							<td>Password</td>
+							<td>
+								<input type="text" name="subscriber_redis_password" id="subscriber_redis_password" value=""> </td>
+						</tr>
+						<tr>
+							<td>Topic</td>
+							<td>
+								<input type="text" name="subscriber_redis_topic" id="subscriber_redis_topic" value=""> </td>
+						</tr>
+						<tr>
+							<td>Timeout</td>
+							<td>
+								<input type="number" min="0" name="subscriber_redis_timeout" id="subscriber_redis_timeout" value=""> </td>
+						</tr>
+						<tr>
+							<td>Reconnect Delay</td>
+							<td>
+								<input type="number" min="0" name="subscriber_redis_reconnect_delay" id="subscriber_redis_reconnect_delay" value=""> </td>
+						</tr>
+						<tr>
+							<td>Refresh Connection</td>
+							<td>
+								<select name="subscriber_redis_refresh">
+									<option value="0">Never</option>
+									<option value="600">10 Minutes</option>
+									<option value="1800">30 Minutes</option>
+									<option value="3600">1 Hour</option>
+									<option value="7200">2 Hours</option>
+									<option value="21600">6 Hours</option>
+									<option value="43200">12 Hours</option>
+									<option value="86400">24 Hours</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<input type="submit" class="btn btn-success" name="save_subscriber_redis_setting" id="save_subscriber_redis_setting" value="Save">
+								<input type="reset" class="btn btn-default" value="Reset"> </td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+
 			<script type="text/javascript">
 			$(document).ready(function(e) {
 				$.ajax({
@@ -357,6 +438,23 @@
 				});
 				$.ajax({
 					type: "GET",
+					url: "data/subscriber-redis-setting/get",
+					dataType: "json",
+					success: function(data) {
+						$('[name="subscriber_redis_enable"]').prop("checked", data.subscriberRedisEnable);
+						$('[name="subscriber_redis_ssl"]').val(data.subscriberRedisSSL ? "1" : "0");
+						$('[name="subscriber_redis_address"]').val(data.subscriberRedisAddress);
+						$('[name="subscriber_redis_port"]').val(data.subscriberRedisPort);
+						$('[name="subscriber_redis_username"]').val(data.subscriberRedisUsername);
+						$('[name="subscriber_redis_password"]').val(data.subscriberRedisPassword);
+						$('[name="subscriber_redis_topic"]').val(data.subscriberRedisTopic);
+						$('[name="subscriber_redis_reconnect_delay"]').val(data.subscriberRedisReconnectDelay);
+						$('[name="subscriber_redis_timeout"]').val(data.subscriberRedisTimeout);
+						$('[name="subscriber_redis_refresh"]').val(data.subscriberRedisRefresh + "");
+					}
+				});
+				$.ajax({
+					type: "GET",
 					url: "data/subscriber-mqtt-setting/get",
 					dataType: "json",
 					success: function(data) {
@@ -369,8 +467,8 @@
 						$('[name="subscriber_mqtt_password"]').val(data.subscriberMqttPassword);
 						$('[name="subscriber_mqtt_topic"]').val(data.subscriberMqttTopic);
 						$('[name="subscriber_mqtt_timeout"]').val(data.subscriberMqttTimeout);
-						$('[name="subscriber_recoonect_delay"]').val(data.subscriberWsReconnectDelay);
-						$('[name="subscriber_mqtt_refresh"]').val(data.subscriberAmqpRefresh + "");
+						$('[name="subscriber_mqtt_recoonect_delay"]').val(data.subscriberMqttReconnectDelay);
+						$('[name="subscriber_mqtt_refresh"]').val(data.subscriberMqttRefresh + "");
 					}
 				});
 			});

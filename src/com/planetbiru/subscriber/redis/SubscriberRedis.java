@@ -7,6 +7,8 @@ import javax.net.ssl.SSLParameters;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 
+import org.apache.log4j.Logger;
+
 import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.api.MessageAPI;
 import com.planetbiru.buzzer.Buzzer;
@@ -17,14 +19,18 @@ import redis.clients.jedis.JedisPubSub;
 
 public class SubscriberRedis extends Thread {
 	
+	private static Logger logger = Logger.getLogger(SubscriberRedis.class);
+	
 	private boolean connected = false;
 	private boolean running = true;
 	private Jedis subscriber = null;
 
+	private boolean pong = false;
+
 	@Override
 	public void run()
-	{		
-		if(ConfigSubscriberRedis.isSubscriberMqttEnable())
+	{
+		if(ConfigSubscriberRedis.isSubscriberRedisEnable())
 		{
 			long sleep = ConfigSubscriberRedis.getSubscriberWsReconnectDelay();
 			if(sleep == 0)
@@ -53,13 +59,12 @@ public class SubscriberRedis extends Thread {
 	}
 
 	private void connect() {
-		
-		String channel = ConfigSubscriberRedis.topic;
-		String host = ConfigSubscriberRedis.address;
-		int port = ConfigSubscriberRedis.port;
-		boolean ssl = ConfigSubscriberRedis.ssl;
-		String username = ConfigSubscriberRedis.username;
-		String password = ConfigSubscriberRedis.password;
+		String channel = ConfigSubscriberRedis.getSubscriberRedisTopic();
+		String host = ConfigSubscriberRedis.getSubscriberRedisAddress();
+		int port = ConfigSubscriberRedis.getSubscriberRedisPort();
+		boolean ssl = ConfigSubscriberRedis.isSubscriberRedisSSL();
+		String username = ConfigSubscriberRedis.getSubscriberRedisUsername();
+		String password = ConfigSubscriberRedis.getSubscriberRedisPassword();
 		
 		if(ssl)
 		{
@@ -77,8 +82,14 @@ public class SubscriberRedis extends Thread {
 			this.subscriber = new Jedis(host, port, ssl, sslSocketFactory, sslParameters, allHostsValid); 	
 		}
 		
-		this.subscriber.clientSetname(username);
-		this.subscriber.auth(password);
+		if(!username.isEmpty())
+		{
+			this.subscriber.clientSetname(username);
+		}
+		if(!password.isEmpty())
+		{
+			this.subscriber.auth(password);
+		}
 		this.subscriber.connect();
 	
 		CountDownLatch latch = new CountDownLatch(10);
@@ -102,16 +113,45 @@ public class SubscriberRedis extends Thread {
 		        flagDisconnected();
 		    }
 			
+			@Override
+			public void onPong(String pattern) {
+				evtOnPong(pattern);
+			}
+			
 		}, channel);
 	}
-	
-	private void evtOnUnsubscribe(String channel, int subscribedChannels) {
+	public boolean ping(long timeout)
+	{
+		this.pong = false;
+		this.subscriber.ping();
+		try 
+		{
+			Thread.sleep(timeout);
+		} 
+		catch (InterruptedException e) 
+		{
+			Thread.currentThread().interrupt();
+		}
+		return this.pong;
+	}
+	private void evtOnPong(String pattern)
+	{
+		this.pong = true;
+	}
+	private void evtOnUnsubscribe(String topic, int subscribedChannels) {
+		logger.info("evtOnUnsubscribe : ");
+		logger.info("Topic            : "+topic);
 	}
 	
-	private void evtOnSubscribe(String channel, int subscribedChannels) {
+	private void evtOnSubscribe(String topic, int subscribedChannels) {
+		logger.info("evtOnSubscribe   : ");
+		logger.info("Topic            : "+topic);
 	}
 	
 	private void evtOnMessage(String topic, String message) {
+		logger.info("Receiver Message : ");
+		logger.info("Topic            : "+topic);
+		logger.info("Message          : "+message);
         MessageAPI api = new MessageAPI();
         api.processRequest(message, topic);
 	}
@@ -129,6 +169,10 @@ public class SubscriberRedis extends Thread {
 		this.subscriber = null;
 		ConfigSubscriberRedis.setConnected(false);
 		ServerWebSocketAdmin.broadcastServerInfo();
+	}
+
+	public boolean isRunning() {
+		return this.running;
 	}
 	
 }

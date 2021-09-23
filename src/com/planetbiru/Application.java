@@ -23,6 +23,7 @@ import com.planetbiru.config.ConfigDDNS;
 import com.planetbiru.config.ConfigEmail;
 import com.planetbiru.config.ConfigSubscriberAMQP;
 import com.planetbiru.config.ConfigSubscriberMQTT;
+import com.planetbiru.config.ConfigSubscriberRedis;
 import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.config.ConfigFirewall;
 import com.planetbiru.config.ConfigKeystore;
@@ -41,6 +42,7 @@ import com.planetbiru.gsm.InternetDialUtil;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.subscriber.amqp.SubscriberAMQP;
 import com.planetbiru.subscriber.mqtt.SubscriberMQTT;
+import com.planetbiru.subscriber.redis.SubscriberRedis;
 import com.planetbiru.subscriber.ws.SubscriberWebSocket;
 import com.planetbiru.user.WebUserAccount;
 import com.planetbiru.util.CommandLineExecutor;
@@ -62,6 +64,7 @@ public class Application {
 	
 	private static SubscriberWebSocket webSocketSubscriber;	
 	private static SubscriberMQTT mqttSubscriber;
+	private static SubscriberRedis redisSubscriber;
 	private static SubscriberAMQP amqpSubscriber;
 	
 	private static Logger logger = Logger.getLogger(Application.class);
@@ -167,7 +170,12 @@ public class Application {
 			 * RabbitMQ Client for subscriber
 			 */
 			Application.subscriberAMQPStart();
-			
+
+			/**
+			 * Redis Client for subscriber
+			 */
+			Application.subscriberRedisStart();
+
 			/**
 			 * Mosquitto Client for subscriber
 			 */
@@ -308,6 +316,13 @@ public class Application {
 		{
 			Application.amqpSubscriber = new SubscriberAMQP();
 			Application.amqpSubscriber.start();
+		}		
+	}
+	public static void subscriberRedisStart() {
+		if(ConfigSubscriberRedis.isSubscriberRedisEnable() && (Application.redisSubscriber == null || !Application.redisSubscriber.isRunning()))
+		{
+			Application.redisSubscriber = new SubscriberRedis();
+			Application.redisSubscriber.start();
 		}		
 	}
 	public static void subscriberAMQPStop() {

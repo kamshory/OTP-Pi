@@ -20,6 +20,7 @@ import com.planetbiru.config.ConfigDDNS;
 import com.planetbiru.config.ConfigEmail;
 import com.planetbiru.config.ConfigSubscriberAMQP;
 import com.planetbiru.config.ConfigSubscriberMQTT;
+import com.planetbiru.config.ConfigSubscriberRedis;
 import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.config.ConfigFirewall;
 import com.planetbiru.config.ConfigGeneral;
@@ -107,6 +108,10 @@ public class HandlerWebManagerData implements HttpHandler {
 		else if(path.startsWith("/data/subscriber-amqp-setting/get"))
 		{
 			this.handleSubscriberAMQPSetting(httpExchange);
+		}
+		else if(path.startsWith("/data/subscriber-redis-setting/get"))
+		{
+			this.handleSubscriberRedisSetting(httpExchange);
 		}
 		else if(path.startsWith("/data/subscriber-mqtt-setting/get"))
 		{
@@ -1231,6 +1236,43 @@ public class HandlerWebManagerData implements HttpHandler {
 			{
 				ConfigSubscriberAMQP.load(Config.getSubscriberAMQPSettingPath());
 				String list = ConfigSubscriberAMQP.toJSONObject().toString();
+				responseBody = list.getBytes();
+			}
+			else
+			{
+				statusCode = HttpStatus.UNAUTHORIZED;			
+			}
+		}
+		catch(NoUserRegisteredException e)
+		{
+			/**
+			 * Do nothing
+			 */
+		}
+		cookie.saveSessionData();
+		cookie.putToHeaders(responseHeaders);
+		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
+		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
+
+		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+		httpExchange.getResponseBody().write(responseBody);
+		httpExchange.close();	
+	}
+	
+	//@GetMapping(path="/data/subscriber-redis-setting/get")
+	public void handleSubscriberRedisSetting(HttpExchange httpExchange) throws IOException
+	{
+		Headers requestHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
+		CookieServer cookie = new CookieServer(requestHeaders, Config.getSessionName(), Config.getSessionLifetime());
+		byte[] responseBody = "".getBytes();
+		int statusCode = HttpStatus.OK;
+		try
+		{
+			if(WebUserAccount.checkUserAuth(requestHeaders))
+			{
+				ConfigSubscriberRedis.load(Config.getSubscriberRedisSettingPath());
+				String list = ConfigSubscriberRedis.toJSONObject().toString();
 				responseBody = list.getBytes();
 			}
 			else

@@ -20,6 +20,7 @@ import com.planetbiru.config.ConfigSMS;
 import com.planetbiru.config.ConfigSMTP;
 import com.planetbiru.config.ConfigSubscriberAMQP;
 import com.planetbiru.config.ConfigSubscriberMQTT;
+import com.planetbiru.config.ConfigSubscriberRedis;
 import com.planetbiru.config.ConfigVendorAfraid;
 import com.planetbiru.config.ConfigVendorCloudflare;
 import com.planetbiru.config.ConfigVendorDynu;
@@ -137,6 +138,7 @@ public class ConfigLoader {
 		String documentRoot = ConfigLoader.getConfig("otppi.web.document.root");
 		String subscriberWSSettingPath = ConfigLoader.getConfig("otppi.path.setting.subscriber.ws");
 		String subscriberAMQPSettingPath = ConfigLoader.getConfig("otppi.path.setting.subscriber.amqp");
+		String subscriberRedisSettingPath = ConfigLoader.getConfig("otppi.path.setting.subscriber.redis");
 		String subscriberMQTTSettingPath = ConfigLoader.getConfig("otppi.path.setting.subscriber.mqtt");
 		String mimeSettingPath = ConfigLoader.getConfig("otppi.path.setting.all");
 		String userSettingPath = ConfigLoader.getConfig("otppi.path.setting.user");
@@ -270,6 +272,7 @@ public class ConfigLoader {
 		Config.setModemSettingPath(modemSettingPath);
 		Config.setSubscriberWSSettingPath(subscriberWSSettingPath);
 		Config.setSubscriberAMQPSettingPath(subscriberAMQPSettingPath);
+		Config.setSubscriberRedisSettingPath(subscriberRedisSettingPath);
 		Config.setSubscriberMQTTSettingPath(subscriberMQTTSettingPath);
 		Config.setSessionFilePath(sessionFilePath);
 		Config.setSessionName(sessionName);
@@ -323,6 +326,7 @@ public class ConfigLoader {
 		
 		ConfigSubscriberWS.load(Config.getSubscriberWSSettingPath());
 		ConfigSubscriberAMQP.load(Config.getSubscriberAMQPSettingPath());
+		ConfigSubscriberRedis.load(Config.getSubscriberRedisSettingPath());
 		ConfigSubscriberMQTT.load(Config.getSubscriberMQTTSettingPath());
 		ConfigSMS.load(Config.getSmsSettingPath());
 		ConfigBlocking.setCountryCode(ConfigSMS.getCountryCode());

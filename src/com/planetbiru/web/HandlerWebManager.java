@@ -24,6 +24,7 @@ import com.planetbiru.config.ConfigDDNS;
 import com.planetbiru.config.ConfigEmail;
 import com.planetbiru.config.ConfigSubscriberAMQP;
 import com.planetbiru.config.ConfigSubscriberMQTT;
+import com.planetbiru.config.ConfigSubscriberRedis;
 import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.config.ConfigFirewall;
 import com.planetbiru.config.ConfigGeneral;
@@ -1458,6 +1459,42 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigSubscriberAMQP.setSubscriberAmqpRefresh(subscriberAmqpRefresh);		
 
 			ConfigSubscriberAMQP.save();			
+		}	
+		
+		
+		if(queryPairs.containsKey("save_subscriber_redis_setting"))
+		{
+			ConfigSubscriberRedis.load(Config.getSubscriberRedisSettingPath());
+			boolean subscriberRedisEnable = queryPairs.getOrDefault("subscriber_redis_enable", "").equals("1");		
+			boolean subscriberRedisSSL = queryPairs.getOrDefault("subscriber_redis_ssl", "").equals("1");		
+			String subscriberRedisAddress = queryPairs.getOrDefault("subscriber_redis_address", "");		
+			String port = queryPairs.getOrDefault("subscriber_redis_port", "0");
+			int subscriberRedisPort = Utility.atoi(port);
+			String subscriberRedisPath = queryPairs.getOrDefault("subscriber_redis_path", "");		
+			String subscriberRedisUsername = queryPairs.getOrDefault("subscriber_redis_username", "");		
+			String subscriberRedisPassword = queryPairs.getOrDefault("subscriber_redis_password", "");		
+			String subscriberRedisTopic = queryPairs.getOrDefault("subscriber_redis_topic", "");
+			
+			String timeout = queryPairs.getOrDefault("subscriber_redis_timeout", "0");
+			int subscriberRedisTimeout = Utility.atoi(timeout);	
+			String reconnect = queryPairs.getOrDefault("subscriber_redis_reconnect_delay", "0");
+			int subscriberWsReconnectDelay = Utility.atoi(reconnect);	
+			String refresh = queryPairs.getOrDefault("subscriber_redis_refresh", "0");
+			int subscriberRedisRefresh = Utility.atoi(refresh);
+			
+			ConfigSubscriberRedis.setSubscriberRedisEnable(subscriberRedisEnable);
+			ConfigSubscriberRedis.setSubscriberRedisSSL(subscriberRedisSSL);
+			ConfigSubscriberRedis.setSubscriberRedisAddress(subscriberRedisAddress);
+			ConfigSubscriberRedis.setSubscriberRedisPort(subscriberRedisPort);
+			ConfigSubscriberRedis.setSubscriberRedisPath(subscriberRedisPath);
+			ConfigSubscriberRedis.setSubscriberRedisUsername(subscriberRedisUsername);
+			ConfigSubscriberRedis.setSubscriberRedisPassword(subscriberRedisPassword);
+			ConfigSubscriberRedis.setSubscriberRedisTopic(subscriberRedisTopic);
+			ConfigSubscriberRedis.setSubscriberWsReconnectDelay(subscriberWsReconnectDelay);
+			ConfigSubscriberRedis.setSubscriberRedisTimeout(subscriberRedisTimeout);
+			ConfigSubscriberRedis.setSubscriberRedisRefresh(subscriberRedisRefresh);		
+
+			ConfigSubscriberRedis.save();			
 		}	
 		
 		if(queryPairs.containsKey("save_subscriber_mqtt_setting"))
