@@ -49,7 +49,7 @@ OTP-Pi requires Raspberry Pi 3 Model B or higher. Minimum RAM is 1 GB and SD Car
 
 Modem is a list of modems installed on the OTP-Pi. Modems are named based on the make and model of the device and the connection used. The modem can be turned on and off at any time. An inactive modem will not be used to send SMS even if it is physically attached to the OTP-Pi and receiving power.
 
-![OTP-Pi](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/otp-pi.png)
+![Prefix-Based Routing](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/prefix-based-routing.png)
 
 ![OTP-Pi](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/usb-hub-20-port.png)
 
