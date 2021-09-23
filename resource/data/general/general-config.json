@@ -1,1 +1,1 @@
-{"ntpUpdateInterval":"0 0 */6 * * ?","restartService":"","deviceTimeZone":"Asia/Jakarta","ntpServer":"pool.ntp.org","restartDevice":"","deviceName":"OTP Broker","dropExpireOTP":true,"otpExpiration":60000}
+{"ntpUpdateInterval":"","restartService":"","deviceTimeZone":"Asia/Jakarta","ntpServer":"pool.ntp.org","restartDevice":"","deviceName":"OTP Broker","dropExpireOTP":true,"otpExpiration":60000}
