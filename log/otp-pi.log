@@ -18316,3 +18316,154 @@ ERROR
 2021-09-21 08:20:21 [INFO  ] GSM                             :122  - Execute AT Command : AT+CNUM
 2021-09-21 08:20:21 [INFO  ] GSM                             :122  - Execute AT Command : AT+COPS?
 2021-09-21 08:20:21 [INFO  ] GSM                             :122  - Execute AT Command : AT+CSCA
+2021-09-22 20:43:43 [INFO  ] Application                     :199  - Service started
+2021-09-22 20:45:34 [ERROR ] ServerWebAdmin                  :48   - Address already in use: bind
+java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:552)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:336)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:294)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:88)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:101)
+	at jdk.httpserver/sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
+	at jdk.httpserver/sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.HttpServer.create(HttpServer.java:150)
+	at com.planetbiru.ServerWebAdmin.start(ServerWebAdmin.java:34)
+	at com.planetbiru.Application.webAdminServerStart(Application.java:256)
+	at com.planetbiru.Application.startService(Application.java:158)
+	at com.planetbiru.Application.main(Application.java:79)
+2021-09-22 20:45:34 [ERROR ] ServerRESTAPI                   :124  - Address already in use: bind
+2021-09-22 20:45:34 [ERROR ] ServerRESTAPI                   :99   - Address already in use: bind
+2021-09-22 20:45:34 [INFO  ] Application                     :199  - Service started
+2021-09-22 20:45:45 [ERROR ] ServerWebAdmin                  :48   - Address already in use: bind
+java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:552)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:336)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:294)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:88)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:101)
+	at jdk.httpserver/sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
+	at jdk.httpserver/sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.HttpServer.create(HttpServer.java:150)
+	at com.planetbiru.ServerWebAdmin.start(ServerWebAdmin.java:34)
+	at com.planetbiru.Application.webAdminServerStart(Application.java:256)
+	at com.planetbiru.Application.startService(Application.java:158)
+	at com.planetbiru.Application.main(Application.java:79)
+2021-09-22 20:45:45 [ERROR ] ServerRESTAPI                   :124  - Address already in use: bind
+2021-09-22 20:45:46 [ERROR ] ServerRESTAPI                   :99   - Address already in use: bind
+2021-09-22 20:45:46 [INFO  ] Application                     :199  - Service started
+2021-09-22 20:46:25 [INFO  ] Application                     :199  - Service started
+2021-09-22 20:47:04 [INFO  ] Application                     :199  - Service started
+2021-09-22 20:49:02 [INFO  ] Application                     :199  - Service started
+2021-09-22 22:50:55 [INFO  ] Application                     :199  - Service started
+2021-09-22 22:52:49 [INFO  ] Application                     :199  - Service started
+2021-09-22 22:59:57 [INFO  ] Application                     :199  - Service started
+2021-09-22 23:08:53 [INFO  ] Application                     :199  - Service started
+2021-09-22 23:17:23 [INFO  ] Application                     :199  - Service started
+2021-09-22 23:24:13 [INFO  ] Application                     :199  - Service started
+2021-09-22 23:25:12 [INFO  ] Application                     :199  - Service started
+2021-09-22 23:26:37 [INFO  ] Application                     :199  - Service started
+2021-09-22 23:27:44 [INFO  ] Application                     :199  - Service started
+2021-09-22 23:31:36 [INFO  ] Application                     :199  - Service started
+2021-09-23 06:25:03 [INFO  ] Application                     :199  - Service started
+2021-09-23 06:30:17 [INFO  ] Application                     :199  - Service started
+2021-09-23 06:31:48 [INFO  ] Application                     :199  - Service started
+2021-09-23 06:32:30 [ERROR ] ConfigSubscriberRedis           :76   - java.io.FileNotFoundException: C:\github\OTP-Pi (Access is denied)
+java.io.IOException: java.io.FileNotFoundException: C:\github\OTP-Pi (Access is denied)
+	at com.planetbiru.util.FileUtil.write(FileUtil.java:79)
+	at com.planetbiru.config.ConfigSubscriberRedis.save(ConfigSubscriberRedis.java:72)
+	at com.planetbiru.config.ConfigSubscriberRedis.save(ConfigSubscriberRedis.java:81)
+	at com.planetbiru.web.HandlerWebManager.processSubscriberSetting(HandlerWebManager.java:1497)
+	at com.planetbiru.web.HandlerWebManager.handlePost(HandlerWebManager.java:291)
+	at com.planetbiru.web.HandlerWebManager.handle(HandlerWebManager.java:76)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:93)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:96)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:717)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:93)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:689)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$DefaultExecutor.execute(ServerImpl.java:159)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Dispatcher.handle(ServerImpl.java:442)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Dispatcher.run(ServerImpl.java:408)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+Caused by: java.io.FileNotFoundException: C:\github\OTP-Pi (Access is denied)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at com.planetbiru.util.FileUtil.write(FileUtil.java:70)
+	... 15 more
+2021-09-23 06:37:46 [INFO  ] Application                     :207  - Service started
+2021-09-23 06:38:05 [ERROR ] ConfigSubscriberRedis           :76   - java.io.FileNotFoundException: C:\github\OTP-Pi (Access is denied)
+java.io.IOException: java.io.FileNotFoundException: C:\github\OTP-Pi (Access is denied)
+	at com.planetbiru.util.FileUtil.write(FileUtil.java:79)
+	at com.planetbiru.config.ConfigSubscriberRedis.save(ConfigSubscriberRedis.java:72)
+	at com.planetbiru.config.ConfigSubscriberRedis.save(ConfigSubscriberRedis.java:81)
+	at com.planetbiru.web.HandlerWebManager.processSubscriberSetting(HandlerWebManager.java:1497)
+	at com.planetbiru.web.HandlerWebManager.handlePost(HandlerWebManager.java:291)
+	at com.planetbiru.web.HandlerWebManager.handle(HandlerWebManager.java:76)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:93)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:96)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:717)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:93)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:689)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$DefaultExecutor.execute(ServerImpl.java:159)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Dispatcher.handle(ServerImpl.java:442)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Dispatcher.run(ServerImpl.java:408)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+Caused by: java.io.FileNotFoundException: C:\github\OTP-Pi (Access is denied)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at com.planetbiru.util.FileUtil.write(FileUtil.java:70)
+	... 15 more
+2021-09-23 06:40:08 [INFO  ] Application                     :207  - Service started
+2021-09-23 06:53:24 [INFO  ] Application                     :207  - Service started
+2021-09-23 06:56:24 [INFO  ] Application                     :207  - Service started
+2021-09-23 06:56:47 [INFO  ] Application                     :207  - Service started
+2021-09-23 06:58:32 [INFO  ] Application                     :207  - Service started
+2021-09-23 07:00:48 [INFO  ] Application                     :207  - Service started
+2021-09-23 07:01:56 [INFO  ] Application                     :207  - Service started
+2021-09-23 07:03:08 [INFO  ] Application                     :207  - Service started
+2021-09-23 07:03:37 [INFO  ] Application                     :207  - Service started
+2021-09-23 07:04:21 [INFO  ] Application                     :207  - Service started
+2021-09-23 07:04:56 [INFO  ] Application                     :207  - Service started
+2021-09-23 07:06:23 [INFO  ] Application                     :207  - Service started
+2021-09-23 07:07:49 [INFO  ] SubscriberRedis                 :125  - evtOnSubscribe   : 
+2021-09-23 07:07:49 [INFO  ] SubscriberRedis                 :126  - Topic            : sms
+2021-09-23 07:07:50 [INFO  ] Application                     :207  - Service started
+2021-09-23 07:08:36 [INFO  ] SubscriberRedis                 :123  - evtOnSubscribe   : 
+2021-09-23 07:08:36 [INFO  ] SubscriberRedis                 :124  - Topic            : sms
+2021-09-23 07:08:36 [INFO  ] Application                     :207  - Service started
+2021-09-23 07:34:25 [INFO  ] SubscriberRedis                 :128  - Receiver Message : 
+2021-09-23 07:34:25 [INFO  ] SubscriberRedis                 :129  - Topic            : sms
+2021-09-23 07:34:25 [INFO  ] SubscriberRedis                 :130  - Message          : OK
+2021-09-23 07:34:25 [ERROR ] MessageAPI                      :88   - A JSONObject text must begin with '{' at 1 [character 2 line 1]
+org.json.JSONException: A JSONObject text must begin with '{' at 1 [character 2 line 1]
+	at org.json.JSONTokener.syntaxError(JSONTokener.java:507)
+	at org.json.JSONObject.<init>(JSONObject.java:222)
+	at org.json.JSONObject.<init>(JSONObject.java:406)
+	at com.planetbiru.api.MessageAPI.processRequest(MessageAPI.java:40)
+	at com.planetbiru.api.MessageAPI.processRequest(MessageAPI.java:33)
+	at com.planetbiru.subscriber.redis.SubscriberRedis.evtOnMessage(SubscriberRedis.java:132)
+	at com.planetbiru.subscriber.redis.SubscriberRedis.access$0(SubscriberRedis.java:127)
+	at com.planetbiru.subscriber.redis.SubscriberRedis$2.onMessage(SubscriberRedis.java:99)
+	at redis.clients.jedis.JedisPubSub.process(JedisPubSub.java:142)
+	at redis.clients.jedis.JedisPubSub.proceed(JedisPubSub.java:115)
+	at redis.clients.jedis.Jedis.subscribe(Jedis.java:2680)
+	at com.planetbiru.subscriber.redis.SubscriberRedis.connect(SubscriberRedis.java:95)
+	at com.planetbiru.subscriber.redis.SubscriberRedis.run(SubscriberRedis.java:39)
+2021-09-23 07:38:51 [INFO  ] SubscriberRedis                 :128  - Receiver Message : 
+2021-09-23 07:38:51 [INFO  ] SubscriberRedis                 :129  - Topic            : sms
+2021-09-23 07:38:51 [INFO  ] SubscriberRedis                 :130  - Message          : {"command":"send-sms", "data":{}}
+2021-09-23 07:38:51 [INFO  ] MessageAPI                      :45   - Topic     : sms
+2021-09-23 07:38:51 [INFO  ] MessageAPI                      :46   - Message   : {
+    "data": {},
+    "command": "send-sms"
+}
+2021-09-23 07:38:51 [INFO  ] MessageAPI                      :47   - Command   : send-sms
+2021-09-23 07:38:51 [INFO  ] MessageAPI                      :48   - Date Time : 0
+2021-09-23 07:38:51 [INFO  ] MessageAPI                      :51   - Send SMS
