@@ -171,7 +171,7 @@ OTP-Pi provides an option if this device is installed on a mobile internet netwo
 | Path | Context path |
 | Username | Username on basic authorzation |
 | Password | Password on basic authorzation |
-| Topic | Topic of subscribsion | 
+| Topic | Topic or channel of subscribsion | 
 | Timeout | Request time out |
 | Reconnect Delay | Delay to reconnect |
 | Refresh Connection | Refresh WebSocket connection |
@@ -184,9 +184,23 @@ OTP-Pi provides an option if this device is installed on a mobile internet netwo
 | SSL | SSL connection |
 | Host | RabbitMQ host name or IP address |
 | Port | Port number |
-| Username | Username on basic authorzation |
-| Password | Password on basic authorzation |
-| Queue | Topic of subscribsion | 
+| Username | RabbitMQ username |
+| Password | RabbitMQ password |
+| Topic | Topic or channel of subscribsion | 
+| Timeout | Request time out |
+| Refresh Connection | Refresh RabbitMQ connection |
+
+**Redis**
+
+| Field | Description |
+| ----- | ----------- |
+| Enable | Enable or disable RabbitMQ |
+| SSL | SSL connection |
+| Host | RabbitMQ host name or IP address |
+| Port | Port number |
+| Username | Client ID |
+| Password | Redis password (if present) |
+| Topic | Topic or channel of subscribsion | 
 | Timeout | Request time out |
 | Refresh Connection | Refresh RabbitMQ connection |
 
@@ -201,7 +215,7 @@ OTP-Pi provides an option if this device is installed on a mobile internet netwo
 | Client ID | Client ID |
 | Username | Username on basic authorzation |
 | Password | Password on basic authorzation |
-| Topic | Topic of subscribsion | 
+| Topic | Topic or channel of subscribsion | 
 | Timeout | Request time out |
 | Refresh Connection | Refresh Mosquitto connection |
 
@@ -596,7 +610,9 @@ Both WebSocket and Message Broker use a topic that can be configured from both s
 
 To use WebSocket, please use the WSMessageBrocker library with the link https://github.com/kamshory/Messenger or you can create your own.
 
-To use RabbitMQ, please go to the link https://www.rabbitmq.com/
+To use RabbitMQ, please open the link https://www.rabbitmq.com/
+
+To use Redis, please open the link https://redis.io/
 
 To use Mosquitto, please open the link https://mosquitto.org/
 
@@ -897,9 +913,9 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 ### Scenario 2 - App Server Can't Access OTP-Pi
 
-In this scenario, the App Server may send the OTP to RabbitMQ Server, Mosquitto Server or WSMessageBroker. WSMessageBroker uses the WebSoket protocol and Basic Authentication. Both App Server and OTP-Pi act as clients of WSMessageBroker.
+In this scenario, the App Server may send the OTP to RabbitMQ Server, Redis Server, Mosquitto Server or WSMessageBroker. WSMessageBroker uses the WebSoket protocol and Basic Authentication. Both App Server and OTP-Pi act as clients of WSMessageBroker.
 
-App Server acts as publisher and OTP-Pi becomes consumer of RabbitMQ Server, Mosquitto Server and WSMessageBroker. Both must use the same topic so that all OTPs sent by the App Server can be received by the OTP-Pi.
+App Server acts as publisher and OTP-Pi becomes consumer of RabbitMQ Server, Redis Server, Mosquitto Server and WSMessageBroker. Both must use the same topic so that all OTPs sent by the App Server can be received by the OTP-Pi.
 
 ![OTP-Pi Topology Scenario 2](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/resource/www/lib.assets/images/topology-2.svg)
 
