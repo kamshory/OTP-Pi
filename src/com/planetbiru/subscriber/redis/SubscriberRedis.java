@@ -7,8 +7,6 @@ import javax.net.ssl.SSLParameters;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 
-import org.apache.log4j.Logger;
-
 import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.api.MessageAPI;
 import com.planetbiru.buzzer.Buzzer;
@@ -18,8 +16,6 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;
 
 public class SubscriberRedis extends Thread {
-	
-	private static Logger logger = Logger.getLogger(SubscriberRedis.class);
 	
 	private boolean connected = false;
 	private boolean running = true;
@@ -125,7 +121,7 @@ public class SubscriberRedis extends Thread {
 		this.pong = false;
 		this.subscriber.ping();
 		long start = System.currentTimeMillis();
-		long end = start;
+		long end = 0;
 		do {
 			try 
 			{
@@ -138,26 +134,33 @@ public class SubscriberRedis extends Thread {
 			end = System.currentTimeMillis();
 		}
 		while(!this.pong && timeout > (end - start));
+		if(!this.pong)
+		{
+			this.connected = false;
+		}
 		return this.pong;
 	}
 	private void evtOnPong(String pattern)
 	{
 		this.pong = true;
+		this.connected = true;
 	}
+	
 	private void evtOnUnsubscribe(String topic, int subscribedChannels) {
-		logger.info("evtOnUnsubscribe : ");
-		logger.info("Topic            : "+topic);
+		/**
+		 * Do nothing
+		 */
+		this.connected = false;
 	}
 	
 	private void evtOnSubscribe(String topic, int subscribedChannels) {
-		logger.info("evtOnSubscribe   : ");
-		logger.info("Topic            : "+topic);
+		/**
+		 * Do nothing
+		 */
+		this.connected = true;
 	}
 	
 	private void evtOnMessage(String topic, String message) {
-		logger.info("Receiver Message : ");
-		logger.info("Topic            : "+topic);
-		logger.info("Message          : "+message);
         MessageAPI api = new MessageAPI();
         api.processRequest(message, topic);
 	}

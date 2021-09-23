@@ -30,15 +30,17 @@ public class Scheduller extends Thread{
 
 	private boolean running = true;
 
-	private String cronExpressionDDNSUpdate = "0 * * * * ?";
+	private String cronExpressionDDNSUpdate = ConstantString.CRON_EVERY_MINUTE;
 	
-	private String cronExpressionDeviceCheck = "0 * * * * ?";
+	private String cronExpressionDeviceCheck = ConstantString.CRON_EVERY_MINUTE;
 
-	private String cronExpressionAMQPCheck = "0 * * * * ?";
+	private String cronExpressionAMQPCheck = ConstantString.CRON_EVERY_MINUTE;
+
+	private String cronExpressionRedisCheck = ConstantString.CRON_EVERY_MINUTE;
+
+	private String cronExpressionStatusServer = ConstantString.CRON_EVERY_MINUTE;
 
 	private long cronInterval = 2000;
-
-	private String cronExpressionStatusServer = "0 * * * * ?";
 
 	private boolean cronUpdateServerStatus = false;
 
@@ -46,7 +48,12 @@ public class Scheduller extends Thread{
 
 	private boolean cronUpdateAMQP = false;
 
+	private boolean cronUpdateRedis = false;
+	
 	private boolean cronCeviceCheck = false;
+
+
+
 	
 	private static Logger logger = Logger.getLogger(Scheduller.class);
 	
@@ -92,34 +99,32 @@ public class Scheduller extends Thread{
 			/**
 			 * Update DDNS
 			 */
-			if(this.cronUpdateDDNS)
-			{
-				this.updateDDNS(currentTime);
-			}			
+			this.updateDDNS(currentTime);
 
 			/**
 			 * Check modem
 			 */
-			if(this.cronCeviceCheck)
-			{
-				this.modemCheck(currentTime);
-			}
+			this.modemCheck(currentTime);
 			
 			/**
 			 * Check AMQP
 			 */
-			if(this.cronUpdateAMQP)
-			{
-				this.amqpCheck(currentTime);
-			}			
 			
+			this.amqpCheck(currentTime);			
+	
+			/**
+			 * Check Redis
+			 */
+			
+			this.redisCheck(currentTime);				
+
 			/**
 			 * Status server
 			 */
-			if(this.cronUpdateServerStatus)
-			{
-				this.updateServerStatus(currentTime);
-			}
+			
+			this.updateServerStatus(currentTime);
+			
+			
 			this.delay(this.cronInterval);
 		}
 		while(this.running);
@@ -216,23 +221,26 @@ public class Scheduller extends Thread{
 	}
 
 	private void updateDDNS(Date currentTime) {
-		CronExpression exp;
-		try
+		if(this.cronUpdateDDNS)
 		{
-			exp = new CronExpression(this.cronExpressionDDNSUpdate);
-			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
-			if(currentTime.getTime() > DDNSUpdater.getLastUpdate())
+			CronExpression exp;
+			try
 			{
-				this.updateDDNSRecord();
-				DDNSUpdater.setLastUpdate(nextValidTimeAfter.getTime());
+				exp = new CronExpression(this.cronExpressionDDNSUpdate);
+				Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
+				if(currentTime.getTime() > DDNSUpdater.getLastUpdate())
+				{
+					this.updateDDNSRecord();
+					DDNSUpdater.setLastUpdate(nextValidTimeAfter.getTime());
+				}
 			}
-		}
-		catch(JSONException | ParseException e)
-		{
-			/**
-			 * Do nothing
-			 */
-		}		
+			catch(JSONException | ParseException e)
+			{
+				/**
+				 * Do nothing
+				 */
+			}	
+		}			
 	}
 
 	private void updateDDNSRecord() {
@@ -290,82 +298,94 @@ public class Scheduller extends Thread{
 	}
 
 	private void modemCheck(Date currentTime) {
-		CronExpression exp;
-		try
+		if(this.cronCeviceCheck)
 		{
-			exp = new CronExpression(this.cronExpressionDeviceCheck);
-			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
-			if(currentTime.getTime() > DeviceAPI.getLastCheckModem())
+			CronExpression exp;
+			try
 			{
-				this.modemCheck();
-				DeviceAPI.setLastCheckModem(nextValidTimeAfter.getTime());
+				exp = new CronExpression(this.cronExpressionDeviceCheck);
+				Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
+				if(currentTime.getTime() > DeviceAPI.getLastCheckModem())
+				{
+					this.modemCheck();
+					DeviceAPI.setLastCheckModem(nextValidTimeAfter.getTime());
+				}
 			}
+			catch(JSONException | ParseException e)
+			{
+				/**
+				 * Do nothing
+				 */
+			}	
 		}
-		catch(JSONException | ParseException e)
-		{
-			/**
-			 * Do nothing
-			 */
-		}	
 	}
 
 	private void amqpCheck(Date currentTime) {
-		CronExpression exp;		
-		try
+		if(this.cronUpdateAMQP)
 		{
-			exp = new CronExpression(this.cronExpressionAMQPCheck);
-			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
-			if(currentTime.getTime() > DeviceAPI.getLastCheckAMQP())
+			CronExpression exp;		
+			try
 			{
-				this.amqpCheck();
-				DeviceAPI.setLastCheckAMQP(nextValidTimeAfter.getTime());
+				exp = new CronExpression(this.cronExpressionAMQPCheck);
+				Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
+				if(currentTime.getTime() > DeviceAPI.getLastCheckAMQP())
+				{
+					this.amqpCheck();
+					DeviceAPI.setLastCheckAMQP(nextValidTimeAfter.getTime());
+				}
 			}
-		}
-		catch(JSONException | ParseException e)
-		{
-			/**
-			 * Do nothing
-			 */
+			catch(JSONException | ParseException e)
+			{
+				/**
+				 * Do nothing
+				 */
+			}	
 		}		
 	}
 	
 	private void redisCheck(Date currentTime) {
-		CronExpression exp;		
-		try
+		if(this.cronUpdateRedis)
 		{
-			exp = new CronExpression(this.cronExpressionAMQPCheck);
-			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
-			if(currentTime.getTime() > DeviceAPI.getLastCheckAMQP())
+			CronExpression exp;		
+			try
 			{
-				this.redisCheck();
-				DeviceAPI.setLastCheckRedis(nextValidTimeAfter.getTime());
+				exp = new CronExpression(this.cronExpressionRedisCheck);
+				Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
+				if(currentTime.getTime() > DeviceAPI.getLastCheckAMQP())
+				{
+					this.redisCheck();
+					DeviceAPI.setLastCheckRedis(nextValidTimeAfter.getTime());
+				}
 			}
-		}
-		catch(JSONException | ParseException e)
-		{
-			/**
-			 * Do nothing
-			 */
-		}		
+			catch(JSONException | ParseException e)
+			{
+				/**
+				 * Do nothing
+				 */
+			}
+		}			
 	}
 
 	private void updateServerStatus(Date currentTime) {
-		CronExpression exp;		
-		try
+		if(this.cronUpdateServerStatus)
 		{
-			exp = new CronExpression(this.cronExpressionStatusServer);
-			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
-			if(currentTime.getTime() > DeviceAPI.getLastCheckStatus())
+			CronExpression exp;		
+			try
 			{
-				this.updateServerStatus();
-				DeviceAPI.setLastCheckStatus(nextValidTimeAfter.getTime());
+				exp = new CronExpression(this.cronExpressionStatusServer);
+				Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
+				if(currentTime.getTime() > DeviceAPI.getLastCheckStatus())
+				{
+					this.updateServerStatus();
+					DeviceAPI.setLastCheckStatus(nextValidTimeAfter.getTime());
+				}
 			}
-		}
-		catch(JSONException | ParseException e)
-		{
-			/**
-			 * Do nothing
-			 */
+			catch(JSONException | ParseException e)
+			{
+				/**
+				 * Do nothing
+				 */
+			}	
 		}		
 	}
 

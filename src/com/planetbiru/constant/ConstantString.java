@@ -46,6 +46,7 @@ public class ConstantString {
 	public static final String DOCUMENT_PATH_SEPARATOR         = "/";
 	public static final String SIM_CARD_NOT_READY              = "SIM card is not ready";
 	public static final String INVALID_SIM_CARD_PIN            = "Invalid SIM card PIN";
+	public static final String CRON_EVERY_MINUTE               = "0 * * * * ?";
 	
 	private ConstantString()
 	{

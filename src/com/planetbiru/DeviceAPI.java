@@ -20,6 +20,7 @@ public class DeviceAPI {
 	private static long lastCheckModem = 0;
 	private static long lastCheckStatus = 0;
 	private static long lastCheckAMQP = 0;
+	private static long lastCheckRedis = 0;
 
 	private DeviceAPI()
 	{
@@ -184,6 +185,14 @@ public class DeviceAPI {
 
 	public static void setLastCheckAMQP(long lastCheckAMQP) {
 		DeviceAPI.lastCheckAMQP = lastCheckAMQP;
+	}
+
+	public static long getLastCheckRedis() {
+		return lastCheckRedis;
+	}
+
+	public static void setLastCheckRedis(long lastCheckRedis) {
+		DeviceAPI.lastCheckRedis = lastCheckRedis;
 	}
 	
 }
