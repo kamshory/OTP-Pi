@@ -166,7 +166,7 @@ OTP-Pi provides an option if this device is installed on a mobile internet netwo
 
 | Field | Description |
 | ----- | ----------- |
-| Enable | Enable or disable WSMessageBroker |
+| Enable | Enable or disable WSMessageBroker subscribsion |
 | SSL | SSL connection |
 | Host | WSMessageBroker host name or IP address |
 | Port | Port number |
@@ -182,7 +182,7 @@ OTP-Pi provides an option if this device is installed on a mobile internet netwo
 
 | Field | Description |
 | ----- | ----------- |
-| Enable | Enable or disable RabbitMQ |
+| Enable | Enable or disable RabbitMQ subscribsion |
 | SSL | SSL connection |
 | Host | RabbitMQ host name or IP address |
 | Port | Port number |
@@ -196,7 +196,7 @@ OTP-Pi provides an option if this device is installed on a mobile internet netwo
 
 | Field | Description |
 | ----- | ----------- |
-| Enable | Enable or disable RabbitMQ |
+| Enable | Enable or disable Redis subscribsion |
 | SSL | SSL connection |
 | Host | RabbitMQ host name or IP address |
 | Port | Port number |
@@ -210,7 +210,7 @@ OTP-Pi provides an option if this device is installed on a mobile internet netwo
 
 | Field | Description |
 | ----- | ----------- |
-| Enable | Enable or disable Mosquitto |
+| Enable | Enable or disable Mosquitto subscribsion |
 | SSL | SSL connection |
 | Host | Mosquitto host name or IP address |
 | Port | Port number |
