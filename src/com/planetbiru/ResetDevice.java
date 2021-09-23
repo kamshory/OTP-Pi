@@ -81,7 +81,7 @@ public class ResetDevice {
 		
 	}
 	
-	static void resetConfig() 
+	public static void resetConfig() 
 	{
 		logger.info("Reset Config");
 		Properties props = loadResetProfile();
