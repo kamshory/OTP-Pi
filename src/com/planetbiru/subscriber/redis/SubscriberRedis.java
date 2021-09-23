@@ -124,14 +124,20 @@ public class SubscriberRedis extends Thread {
 	{
 		this.pong = false;
 		this.subscriber.ping();
-		try 
-		{
-			Thread.sleep(timeout);
-		} 
-		catch (InterruptedException e) 
-		{
-			Thread.currentThread().interrupt();
+		long start = System.currentTimeMillis();
+		long end = start;
+		do {
+			try 
+			{
+				Thread.sleep(50);
+			} 
+			catch (InterruptedException e) 
+			{
+				Thread.currentThread().interrupt();
+			}
+			end = System.currentTimeMillis();
 		}
+		while(!this.pong && timeout > (end - start));
 		return this.pong;
 	}
 	private void evtOnPong(String pattern)

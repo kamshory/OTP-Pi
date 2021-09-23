@@ -328,6 +328,26 @@ public class Scheduller extends Thread{
 			 */
 		}		
 	}
+	
+	private void redisCheck(Date currentTime) {
+		CronExpression exp;		
+		try
+		{
+			exp = new CronExpression(this.cronExpressionAMQPCheck);
+			Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
+			if(currentTime.getTime() > DeviceAPI.getLastCheckAMQP())
+			{
+				this.redisCheck();
+				DeviceAPI.setLastCheckRedis(nextValidTimeAfter.getTime());
+			}
+		}
+		catch(JSONException | ParseException e)
+		{
+			/**
+			 * Do nothing
+			 */
+		}		
+	}
 
 	private void updateServerStatus(Date currentTime) {
 		CronExpression exp;		
@@ -377,9 +397,17 @@ public class Scheduller extends Thread{
 
 	private void amqpCheck()
 	{
-		ServerInfo.sendAMQPStatus(ConfigSubscriberAMQP.isConnected());
+		boolean connected = ConfigSubscriberAMQP.isConnected();
+		ServerInfo.sendAMQPStatus(connected);
 	}
 	
+
+	private void redisCheck()
+	{
+		boolean connected = Application.getRedisSubscriber().ping(5000);
+		ServerInfo.sendRedisStatus(connected);
+	}
+
 	public void updateServerStatus()
 	{
 		JSONObject data = new JSONObject();

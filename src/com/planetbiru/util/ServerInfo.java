@@ -64,6 +64,23 @@ public class ServerInfo {
 	
 		ServerWebSocketAdmin.broadcastMessage(info.toString(4));
 	}
+	
+	public static void sendRedisStatus(boolean connected) {
+
+		JSONArray data = new JSONArray();
+		JSONObject info = new JSONObject();
+		
+		JSONObject redis = new JSONObject();
+		redis.put(JsonKey.NAME, "otp-redis-connected");
+		redis.put(JsonKey.VALUE, connected);
+		data.put(redis);
+		
+		info.put(JsonKey.COMMAND, "server-info");
+		info.put(JsonKey.DATA, data);
+	
+		ServerWebSocketAdmin.broadcastMessage(info.toString(4));
+		
+	}
 
 	public static void sendModemStatus()
 	{
@@ -547,6 +564,8 @@ public class ServerInfo {
 	public static void setCacheLifetime(long cacheLifetime) {
 		ServerInfo.cacheLifetime = cacheLifetime;
 	}
+
+	
 }
 
 

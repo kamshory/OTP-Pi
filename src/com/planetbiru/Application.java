@@ -312,23 +312,23 @@ public class Application {
 	}
 
 	public static void subscriberAMQPStart() {
-		if(ConfigSubscriberAMQP.isSubscriberAmqpEnable() && (Application.amqpSubscriber == null || !Application.amqpSubscriber.isRunning()))
+		if(ConfigSubscriberAMQP.isSubscriberAmqpEnable() && (Application.getAmqpSubscriber() == null || !Application.getAmqpSubscriber().isRunning()))
 		{
-			Application.amqpSubscriber = new SubscriberAMQP();
-			Application.amqpSubscriber.start();
+			Application.setAmqpSubscriber(new SubscriberAMQP());
+			Application.getAmqpSubscriber().start();
 		}		
 	}
 	public static void subscriberRedisStart() {
-		if(ConfigSubscriberRedis.isSubscriberRedisEnable() && (Application.redisSubscriber == null || !Application.redisSubscriber.isRunning()))
+		if(ConfigSubscriberRedis.isSubscriberRedisEnable() && (Application.getRedisSubscriber() == null || !Application.getRedisSubscriber().isRunning()))
 		{
-			Application.redisSubscriber = new SubscriberRedis();
-			Application.redisSubscriber.start();
+			Application.setRedisSubscriber(new SubscriberRedis());
+			Application.getRedisSubscriber().start();
 		}		
 	}
 	public static void subscriberAMQPStop() {
-		if(Application.amqpSubscriber != null && Application.amqpSubscriber.isRunning())
+		if(Application.getAmqpSubscriber() != null && Application.getAmqpSubscriber().isRunning())
 		{
-			Application.amqpSubscriber.stopService();
+			Application.getAmqpSubscriber().stopService();
 		}		
 	}
 
@@ -382,7 +382,7 @@ public class Application {
 		}
 		Application.scheduller.stopService();
 		Application.webSocketSubscriber.stopService();
-		Application.amqpSubscriber.stopService();
+		Application.getAmqpSubscriber().stopService();
 		Application.mqttSubscriber.stopService();
 	}	
 	
@@ -591,6 +591,22 @@ public class Application {
 			}
 		}
 		return props;
+	}
+
+	public static SubscriberAMQP getAmqpSubscriber() {
+		return amqpSubscriber;
+	}
+
+	public static void setAmqpSubscriber(SubscriberAMQP amqpSubscriber) {
+		Application.amqpSubscriber = amqpSubscriber;
+	}
+
+	public static SubscriberRedis getRedisSubscriber() {
+		return redisSubscriber;
+	}
+
+	public static void setRedisSubscriber(SubscriberRedis redisSubscriber) {
+		Application.redisSubscriber = redisSubscriber;
 	}
 
 
