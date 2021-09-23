@@ -62,8 +62,8 @@ In reality, cost efficiency becomes very important for users. The cost of sendin
 OTP-Pi allows users to set up SMS sending. For example: a user uses 4 modems with 4 different SIM cards from different telecommunication operators.
 
 1. Modem 1 with SIM Card from Telecommunications Operator 1
-2. Modem 2 with SIM Card from Telecommunication Operator 2
-3. Modem 3 with SIM Card from Telecommunication Operator 3
+2. Modem 2 with SIM Card from Telecommunications Operator 2
+3. Modem 3 with SIM Card from Telecommunications Operator 3
 4. Modem 4 with SIM Card from Telecommunications Operator 4
 
 Telecommunications Operator 1 applies a fee of IDR 50 for numbers with prefixes `62871` and `62872` and applies a fee of IDR 350 for numbers other than that.
