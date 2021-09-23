@@ -7,6 +7,7 @@ import com.planetbiru.config.ConfigSubscriberAMQP;
 public class SubscriberAMQP {
 	RabbitMQSubscriber amqp = new RabbitMQSubscriber();
 	private boolean running = false;
+	
 	public void start()
 	{
 		Config.setSubscriberAMQPSettingPath(Config.getSubscriberAMQPSettingPath());

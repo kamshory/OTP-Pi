@@ -87,16 +87,10 @@ public class SubscriberRedis extends Thread {
 	}
 	
 	public void evtOnUnsubscribe(String topic, int subscribedChannels) {
-		/**
-		 * Do nothing
-		 */
 		this.connected = false;
 	}
 	
 	public void evtOnSubscribe(String topic, int subscribedChannels) {
-		/**
-		 * Do nothing
-		 */
 		this.connected = true;
 	}
 	
@@ -112,7 +106,6 @@ public class SubscriberRedis extends Thread {
 	
 	public void flagDisconnected()
 	{
-		System.out.println("flagDisconnected()");
 		Buzzer.toneDisconnectRedis();
 		this.clientThread.getSubscriber().disconnect();
 		this.connected = false;
