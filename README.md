@@ -4,6 +4,8 @@
 
 ![OTP-Pi](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/usb-hub-20-port.png)
 
+![Support](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/support.png)
+
 ![Screenshot](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/ss-desktop.png)
 
 ![Screenshot](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/ss-desktop2.png)
