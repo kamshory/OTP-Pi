@@ -28,6 +28,7 @@ import com.planetbiru.config.ConfigSMS;
 import com.planetbiru.config.ConfigSMTP;
 import com.planetbiru.config.ConfigSubscriberAMQP;
 import com.planetbiru.config.ConfigSubscriberMQTT;
+import com.planetbiru.config.ConfigSubscriberRedis;
 import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.config.ConfigVendorAfraid;
 import com.planetbiru.config.ConfigVendorCloudflare;
@@ -128,6 +129,11 @@ public class ResetDevice {
 		{
 			ConfigSubscriberAMQP.reset();
 			ConfigSubscriberAMQP.save();
+		}
+		if(props.getOrDefault("RESET_FEEDER_REDIS", "").toString().equalsIgnoreCase("true"))
+		{
+			ConfigSubscriberRedis.reset();
+			ConfigSubscriberRedis.save();
 		}
 		if(props.getOrDefault("RESET_FEEDER_MQTT", "").toString().equalsIgnoreCase("true"))
 		{
