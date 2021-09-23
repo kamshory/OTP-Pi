@@ -45,6 +45,18 @@ OTP-Pi requires Raspberry Pi 3 Model B or higher. Minimum RAM is 1 GB and SD Car
 
 # Features
 
+## Multiple Method
+
+User can send OTP with several methods
+
+| Method | Send SMS | Send Email | Block MSISDN | Unblock MSISDN | Create OTP | Validate OTP |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | 
+| REST API | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| RabbitMQ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ |
+| Redis | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ |
+| Mosquitto | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ |
+| WebSocket | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ |
+
 ## Multiple Device
 
 Modem is a list of modems installed on the OTP-Pi. Modems are named based on the make and model of the device and the connection used. The modem can be turned on and off at any time. An inactive modem will not be used to send SMS even if it is physically attached to the OTP-Pi and receiving power.
