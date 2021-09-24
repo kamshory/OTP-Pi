@@ -85,7 +85,7 @@ Telecommunications Operator 4 applies a fee of IDR 90 for numbers with prefixes 
 
 From the case above, the lowest cost for other operators is IDR 200. Users can set modem 4 as the default modem. All SMS other than the prefixes `62871`, `62872`, `62835`, `62856`, `62837` and `62845` will use this modem and are sent via Telecommunications Operator 4. All SMS for numbers with prefixes `62871` and ` 62872` uses modem 1 and is sent via Telecommunication Operator 1. All SMS for numbers with prefix `62835`, `62856`, and `62837` use modem 2 and are sent via Telecommunication Operator 2. All SMS for numbers with prefix `62845` use modem 3 and sent via Telecommunication Operator 3. Thus, the cost of sending SMS will be reduced.
 
-![Prefix-Based Routing](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/prefix-based-routing.png)
+![Prefix-Based Routing](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/full-diagram.png)
 
 Users can use 2 or more SIM cards from the same operator. The modem will be used interchangeably with the Round-Robin algorithm when OTP-Pi sends SMS to numbers with the same prefix.
 
