@@ -75,7 +75,17 @@ public class JsonKey {
 	public static final String REFERENCE                  = "reference";
 	public static final String ENDPOINT                   = "endpoint";
 	public static final String COMPANY                    = "company";
-	public static final String RESPONSE = "response";
+	public static final String RESPONSE                   = "response";
+	public static final String PERCENT_USED               = "percentUsed";
+	public static final String RAM                        = "ram";
+	public static final String STORAGE                    = "storage";
+	public static final String CPU                        = "cpu";
+	public static final String SWAP                       = "swap";
+	public static final String MODEM                      = "modem";
+	public static final String WS                         = "ws";
+	public static final String AMQP                       = "amqp";
+	public static final String REDIS                      = "redis";
+	public static final String DATETIME                   = "datetime";
 	
 	private JsonKey()
 	{
