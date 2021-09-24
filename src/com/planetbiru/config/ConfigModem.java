@@ -82,7 +82,8 @@ public class ConfigModem {
 				String text = new String(data);
 				JSONObject jsonObject = new JSONObject(text);
 				Iterator<String> keys = jsonObject.keys();
-				while(keys.hasNext()) {
+				while(keys.hasNext()) 
+				{
 				    String id = keys.next();
 				    JSONObject modem = jsonObject.optJSONObject(id);
 				    DataModem modemData = new DataModem(modem);
@@ -92,9 +93,6 @@ public class ConfigModem {
 		} 
 		catch (FileNotFoundException | JSONException e) 
 		{
-			if(Config.isLogConfigNotFound())
-			{
-			}
 			/**
 			 * Do nothing
 			 */
@@ -192,7 +190,7 @@ public class ConfigModem {
 		for (Map.Entry<String, DataModem> entry : ConfigModem.modemData.entrySet())
 		{
 			String id = entry.getKey();
-			JSONObject modem = ((DataModem) entry.getValue()).toJSONObject();
+			JSONObject modem = entry.getValue().toJSONObject();
 			json.put(id, modem);
 		}
 		return json;

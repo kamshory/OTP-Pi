@@ -185,7 +185,7 @@ public class CookieServer {
 			String key = entry.getKey();
 			if(key.equals(name))
 			{
-				((CookieItem) entry.getValue()).setValue(value);
+				entry.getValue().setValue(value);
 			}
 		}
 	}
@@ -251,7 +251,7 @@ public class CookieServer {
 				Date expirationDate = new Date(System.currentTimeMillis() + this.sessionLifetime);
 				entry.getValue().setExpires(expirationDate);
 			}
-			responseHeaders.add("Set-Cookie", ((CookieItem) entry.getValue()).toString());
+			responseHeaders.add("Set-Cookie", entry.getValue().toString());
 		}
 	}
 	

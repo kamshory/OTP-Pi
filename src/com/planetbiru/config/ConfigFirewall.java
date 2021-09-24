@@ -17,7 +17,7 @@ import com.planetbiru.util.FileNotFoundException;
 import com.planetbiru.util.Utility;
 
 public class ConfigFirewall {
-	private static JSONArray records = new JSONArray();
+	private static JSONArray fwRecords = new JSONArray();
 	private static String configPath = "";
 	
 	private static Logger logger = Logger.getLogger(ConfigFirewall.class);
@@ -60,14 +60,14 @@ public class ConfigFirewall {
 	}	
 	public static void add(int port, String protocol) {
 		String id = String.format("%s%d", protocol, port);
-		JSONObject record = new JSONObject();
-		record.put("id", id);
-		record.put("port", port);
-		record.put(JsonKey.PROTOCOL, protocol);
-		record.put(JsonKey.ACTIVE, true);
-		record.put(JsonKey.LAST_UPDATE, System.currentTimeMillis());
-		ConfigFirewall.records.put(record);		
-		ConfigFirewall.activate(record);
+		JSONObject fwRecord = new JSONObject();
+		fwRecord.put("id", id);
+		fwRecord.put("port", port);
+		fwRecord.put(JsonKey.PROTOCOL, protocol);
+		fwRecord.put(JsonKey.ACTIVE, true);
+		fwRecord.put(JsonKey.LAST_UPDATE, System.currentTimeMillis());
+		ConfigFirewall.fwRecords.put(fwRecord);		
+		ConfigFirewall.activate(fwRecord);
 	}
 	
 	public static void save()
@@ -100,40 +100,40 @@ public class ConfigFirewall {
 				list.put(ConfigFirewall.getRecords().optJSONObject(i));
 			}
 		}	
-		ConfigFirewall.records = list;
+		ConfigFirewall.fwRecords = list;
 	}
 	
 	public static void activate(String id)
 	{
-		JSONObject record = ConfigFirewall.get(id);
-		ConfigFirewall.activate(record);
+		JSONObject fwRecord = ConfigFirewall.get(id);
+		ConfigFirewall.activate(fwRecord);
 		ConfigFirewall.get(id).put(JsonKey.ACTIVE, true);
 		ConfigFirewall.get(id).put(JsonKey.LAST_UPDATE, System.currentTimeMillis());
 	}
 	
 	public static void deactivate(String id)
 	{
-		JSONObject record = ConfigFirewall.get(id);
+		JSONObject fwRecord = ConfigFirewall.get(id);
 		List<Integer> servicePorts = ConfigFirewall.getServicePorts();
-		if(!servicePorts.contains(record.optInt("port")))
+		if(!servicePorts.contains(fwRecord.optInt("port")))
 		{
-			ConfigFirewall.deactivate(record);
+			ConfigFirewall.deactivate(fwRecord);
 			ConfigFirewall.get(id).put(JsonKey.ACTIVE, false);
 			ConfigFirewall.get(id).put(JsonKey.LAST_UPDATE, System.currentTimeMillis());
 		}
 	}
 	
-	private static void activate(JSONObject record) 
+	private static void activate(JSONObject fwRecord) 
 	{
-		String command1 = String.format("firewall-cmd --permanent --add-port=%d/%s", record.optInt("port", 0), record.optString(JsonKey.PROTOCOL, ""));
+		String command1 = String.format("firewall-cmd --permanent --add-port=%d/%s", fwRecord.optInt("port", 0), fwRecord.optString(JsonKey.PROTOCOL, ""));
 		String command2 = "firewall-cmd --reload"; 
 		CommandLineExecutor.exec(command1);
 		CommandLineExecutor.exec(command2);
 	}
 
-	private static void deactivate(JSONObject record) 
+	private static void deactivate(JSONObject fwRecord) 
 	{
-		String command1 = String.format("firewall-cmd --permanent --remove-port=%d/%s", record.optInt("port", 0), record.optString(JsonKey.PROTOCOL, ""));
+		String command1 = String.format("firewall-cmd --permanent --remove-port=%d/%s", fwRecord.optInt("port", 0), fwRecord.optString(JsonKey.PROTOCOL, ""));
 		String command2 = "firewall-cmd --reload"; 
 		CommandLineExecutor.exec(command1);
 		CommandLineExecutor.exec(command2);
@@ -191,15 +191,15 @@ public class ConfigFirewall {
 	}
 
 	public static JSONArray getRecords() {
-		return records;
+		return fwRecords;
 	}
 
 	public static void setRecords(JSONArray records) {
-		ConfigFirewall.records = records;
+		ConfigFirewall.fwRecords = records;
 	}
 
 	public static void reset() {
-		ConfigFirewall.records = new JSONArray();		
+		ConfigFirewall.fwRecords = new JSONArray();		
 	}
 
 }

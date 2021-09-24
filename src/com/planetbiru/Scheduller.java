@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 import com.planetbiru.config.ConfigDDNS;
 import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberRedis;
 import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.config.ConfigGeneral;
 import com.planetbiru.config.ConfigModem;
@@ -431,19 +432,20 @@ public class Scheduller extends Thread{
 	public void updateServerStatus()
 	{
 		JSONObject data = new JSONObject();
-		data.put("datetime", System.currentTimeMillis());
+		data.put(JsonKey.DATETIME, System.currentTimeMillis());
 		
 		JSONObject memory = ServerInfo.memoryInfo();
 		JSONObject cpu = ServerInfo.cpuUsage();
 		JSONObject storage = ServerInfo.storageInfo();
 
-		data.put("storage", storage.optDouble("percentUsed", 0));
-		data.put("cpu", cpu.optDouble("percentUsed", 0));
-		data.put("ram", (memory.optJSONObject("ram") != null)?memory.optJSONObject("ram").optDouble("percentUsed", 0):0);
-		data.put("swap", (memory.optJSONObject("swap") != null)?memory.optJSONObject("swap").optDouble("percentUsed", 0):0);
-		data.put("modem", GSMUtil.isConnected());
-		data.put("ws", ConfigSubscriberWS.isConnected());
-		data.put("amqp", ConfigSubscriberAMQP.isConnected());
+		data.put(JsonKey.STORAGE, storage.optDouble(JsonKey.PERCENT_USED, 0));
+		data.put(JsonKey.CPU, cpu.optDouble(JsonKey.PERCENT_USED, 0));
+		data.put(JsonKey.RAM, (memory.optJSONObject(JsonKey.RAM) != null)?memory.optJSONObject(JsonKey.RAM).optDouble(JsonKey.PERCENT_USED, 0):0);
+		data.put(JsonKey.SWAP, (memory.optJSONObject(JsonKey.SWAP) != null)?memory.optJSONObject(JsonKey.SWAP).optDouble(JsonKey.PERCENT_USED, 0):0);
+		data.put(JsonKey.MODEM, GSMUtil.isConnected());
+		data.put(JsonKey.WS, ConfigSubscriberWS.isConnected());
+		data.put(JsonKey.AMQP, ConfigSubscriberAMQP.isConnected());
+		data.put(JsonKey.REDIS, ConfigSubscriberRedis.isConnected());
 
 		ServerStatus.append(data);
 		ServerStatus.save();

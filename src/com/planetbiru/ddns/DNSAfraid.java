@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import com.planetbiru.config.Config;
 import com.planetbiru.util.ResponseEntityCustom;
 import com.planetbiru.util.Utility;
+import com.planetbiru.web.HttpMethod;
 import com.sun.net.httpserver.Headers;
 
 public class DNSAfraid extends DNS{
@@ -24,7 +25,7 @@ public class DNSAfraid extends DNS{
 	public JSONObject update(DDNSRecord ddnsRecord) throws IOException  
 	{
 		JSONObject res = new JSONObject();
-		String method = "GET";
+		String method = HttpMethod.GET;
 		Map<String, String> params = new HashMap<>();
 		
 		String ip = this.getIP();

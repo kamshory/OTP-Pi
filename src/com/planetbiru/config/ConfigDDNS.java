@@ -67,22 +67,22 @@ public class ConfigDDNS {
 							Date lastUpdate = DDNSRecord.longToDate(json.optLong("lastUpdate", 0));
 							Date nextValid = DDNSRecord.longToDate(json.optLong("nextValid", 0));
 							String type = "A";
-							DDNSRecord record = new DDNSRecord();
-							record.setId(lID);
-							record.setZone(lZone);
-							record.setRecordName(lRecordName);
-							record.setType(type);
-							record.setProxied(lProxied);
-							record.setTtl(lTTL);
-							record.setForceCreateZone(lForceCreateZone);
-							record.setProvider(lProvider);
-							record.setActive(lActive);
-							record.setCronExpression(lcronExpression);
+							DDNSRecord ddnsRecord = new DDNSRecord();
+							ddnsRecord.setId(lID);
+							ddnsRecord.setZone(lZone);
+							ddnsRecord.setRecordName(lRecordName);
+							ddnsRecord.setType(type);
+							ddnsRecord.setProxied(lProxied);
+							ddnsRecord.setTtl(lTTL);
+							ddnsRecord.setForceCreateZone(lForceCreateZone);
+							ddnsRecord.setProvider(lProvider);
+							ddnsRecord.setActive(lActive);
+							ddnsRecord.setCronExpression(lcronExpression);
 							
-							record.setNextValid(nextValid);
-							record.setLastUpdate(lastUpdate);
+							ddnsRecord.setNextValid(nextValid);
+							ddnsRecord.setLastUpdate(lastUpdate);
 							
-							ConfigDDNS.getRecords().put(lID, record);
+							ConfigDDNS.getRecords().put(lID, ddnsRecord);
 					    }
 					}				
 				}
@@ -186,24 +186,24 @@ public class ConfigDDNS {
 	}
 
 	public static void deactivate(String value) {
-		((DDNSRecord) ConfigDDNS.records.getOrDefault(value, new DDNSRecord())).setActive(false);	
+		ConfigDDNS.records.getOrDefault(value, new DDNSRecord()).setActive(false);	
 	}
 
 	public static void activate(String value) {
-		((DDNSRecord) ConfigDDNS.records.getOrDefault(value, new DDNSRecord())).setActive(true);	
+		ConfigDDNS.records.getOrDefault(value, new DDNSRecord()).setActive(true);	
 	}
 
-	public static void updateRecord(DDNSRecord record) {
-		String id = record.getId();
-		ConfigDDNS.records.put(id, record);		
+	public static void updateRecord(DDNSRecord ddnsRecord) {
+		String id = ddnsRecord.getId();
+		ConfigDDNS.records.put(id, ddnsRecord);		
 	}
 
 	public static void proxied(String value) {
-		((DDNSRecord) ConfigDDNS.records.getOrDefault(value, new DDNSRecord())).setProxied(true);
+		ConfigDDNS.records.getOrDefault(value, new DDNSRecord()).setProxied(true);
 		
 	}
 	public static void unproxied(String value) {
-		((DDNSRecord) ConfigDDNS.records.getOrDefault(value, new DDNSRecord())).setProxied(false);		
+		ConfigDDNS.records.getOrDefault(value, new DDNSRecord()).setProxied(false);		
 	}
 
 	public static JSONObject toJSONObject()
