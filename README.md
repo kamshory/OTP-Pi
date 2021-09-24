@@ -219,7 +219,7 @@ OTP-Pi provides an option if this device is installed on a mobile internet netwo
 | Topic | Topic or channel of subscribsion | 
 | Timeout | Request time out |
 | Reconnect Delay | Delay to reconnect |
-| Refresh Connection | Refresh RabbitMQ connection |
+| Refresh Connection | Refresh Redis connection |
 
 **Mosquitto**
 
