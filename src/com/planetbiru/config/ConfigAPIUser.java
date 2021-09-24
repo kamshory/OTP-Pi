@@ -221,7 +221,7 @@ public class ConfigAPIUser {
 		for (Map.Entry<String, User> entry : ConfigAPIUser.users.entrySet())
 		{
 			String username = entry.getKey();
-			JSONObject user = ((User) entry.getValue()).toJSONObject();
+			JSONObject user = entry.getValue().toJSONObject();
 			json.put(username, user);
 		}
 		return json;

@@ -139,7 +139,7 @@ public class ConfigKeystore {
 		JSONObject config = new JSONObject();
 		for (Map.Entry<String, DataKeystore> set : ConfigKeystore.keystores.entrySet()) 
 		{
-			 config.put(set.getKey(), ((DataKeystore) set.getValue()).toJSONObject());
+			 config.put(set.getKey(), set.getValue().toJSONObject());
         }
 		return config;
 	}
@@ -209,9 +209,12 @@ public class ConfigKeystore {
 			String filePath = set.getValue().getFullPath();
 			File file = new File(filePath);
 			Path path = file.toPath();
-			try {
+			try 
+			{
 				Files.delete(path);
-			} catch (IOException e) {
+			} 
+			catch (IOException e) 
+			{
 				logger.error(e.getMessage());
 			} 	
 		}

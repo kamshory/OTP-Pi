@@ -14,6 +14,7 @@ import com.planetbiru.config.Config;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.util.ResponseEntityCustom;
 import com.planetbiru.util.Utility;
+import com.planetbiru.web.HttpMethod;
 import com.sun.net.httpserver.Headers;
 
 public class DNSCloudflare extends DNS{
@@ -52,11 +53,11 @@ public class DNSCloudflare extends DNS{
 		Headers headers = this.createRequestHeader(contentType);
 		headers.add(DDNSKey.HEADER_CONTENT_TYPE, contentType);
 		String body = "";
-		if(contentType.contains("urlencode") && (method.equals("POST") || method.equals("PUT") || method.equals("PATCH")  || method.equals("DELETE")))
+		if(contentType.contains("urlencode") && (method.equals(HttpMethod.POST) || method.equals(HttpMethod.PUT) || method.equals(HttpMethod.PATCH)  || method.equals(HttpMethod.DELETE)))
 		{
 			body = this.buildQuery(params);
 		}
-		else if(contentType.contains("json") && (method.equals("POST") || method.equals("PUT") || method.equals("PATCH")  || method.equals("DELETE")))
+		else if(contentType.contains("json") && (method.equals(HttpMethod.POST) || method.equals(HttpMethod.PUT) || method.equals(HttpMethod.PATCH)  || method.equals(HttpMethod.DELETE)))
 		{
 			JSONObject obj = new JSONObject(params);
 			body = obj.toString();
@@ -106,24 +107,15 @@ public class DNSCloudflare extends DNS{
 		int timeout = 1000;
 		Headers requestHeaders = this.createRequestHeader();
 		requestHeaders.add(DDNSKey.HEADER_CONTENT_TYPE, ConstantString.APPLICATION_JSON);
-		ResponseEntityCustom response = httpExchange("POST", url, null, requestHeaders, body, timeout);
+		ResponseEntityCustom response = httpExchange(HttpMethod.POST, url, null, requestHeaders, body, timeout);
 		JSONObject resp = new JSONObject();
 		try
 		{
-			try
-			{
-				resp = new JSONObject(response.getBody());
-			}
-			catch(JSONException e)
-			{
-				return resp;
-			}
+			resp = new JSONObject(response.getBody());
 		}
 		catch(JSONException e)
 		{
-			/**
-			 * Do nothing
-			 */
+			return resp;
 		}
 		return resp;
 	}
@@ -146,7 +138,7 @@ public class DNSCloudflare extends DNS{
 		String url = this.endpoint + "/zones";
 		Headers requestHeaders = this.createRequestHeader();
 		int timeout = Config.getDdnsTimeout();
-		ResponseEntityCustom response = httpExchange("GET", url, params, requestHeaders, null, timeout);
+		ResponseEntityCustom response = httpExchange(HttpMethod.GET, url, params, requestHeaders, null, timeout);
 		if(response.getBody().length() > 20)
 		{
 			try
@@ -197,7 +189,7 @@ public class DNSCloudflare extends DNS{
 		String url = this.endpoint + DDNSKey.ZONES+zoneId;
 		Headers requestHeaders = this.createRequestHeader();
 		int timeout = Config.getDdnsTimeout();
-		ResponseEntityCustom response = httpExchange("DELETE", url, null, requestHeaders, null, timeout);
+		ResponseEntityCustom response = httpExchange(HttpMethod.DELETE, url, null, requestHeaders, null, timeout);
 		
 		JSONObject resp = new JSONObject();
 		
@@ -226,7 +218,7 @@ public class DNSCloudflare extends DNS{
 		Headers requestHeaders = this.createRequestHeader();
 		
 		int timeout = Config.getDdnsTimeout();
-		ResponseEntityCustom response = httpExchange("DELETE", url, null, requestHeaders, null, timeout);
+		ResponseEntityCustom response = httpExchange(HttpMethod.DELETE, url, null, requestHeaders, null, timeout);
 		
 		JSONObject resp = new JSONObject();
 		
@@ -276,7 +268,7 @@ public class DNSCloudflare extends DNS{
 		Headers requestHeaders = this.createRequestHeader(ConstantString.APPLICATION_JSON);
 		String body = json.toString();
 		int timeout = 1000;
-		ResponseEntityCustom response = httpExchange("POST", url, null, requestHeaders, body, timeout);
+		ResponseEntityCustom response = httpExchange(HttpMethod.POST, url, null, requestHeaders, body, timeout);
 		try
 		{
 			JSONObject resp = new JSONObject(response.getBody());
@@ -370,33 +362,33 @@ public class DNSCloudflare extends DNS{
 	public ResponseEntityCustom get(String path, Map<String, List<String>> params, String contentType) throws IOException
 	{
 		String url = this.endpoint + path;
-		return this.request("GET", url, params, contentType);
+		return this.request(HttpMethod.GET, url, params, contentType);
 	}
 	public ResponseEntityCustom post(String path, Map<String, List<String>> params, String contentType) throws IOException
 	{
 		String url = this.endpoint + path;
-		return this.request("POST", url, params, contentType);
+		return this.request(HttpMethod.POST, url, params, contentType);
 	}
 	public ResponseEntityCustom put(String path, Map<String, List<String>> params, String contentType) throws IOException
 	{
 		String url = this.endpoint + path;
-		return this.request("PUT", url, params, contentType);
+		return this.request(HttpMethod.PUT, url, params, contentType);
 	}
 	public ResponseEntityCustom patch(String path, Map<String, List<String>> params, String contentType) throws IOException
 	{
 		String url = this.endpoint + path;
-		return this.request("PATCH", url, params, contentType);
+		return this.request(HttpMethod.PATCH, url, params, contentType);
 	}
 	public ResponseEntityCustom delete(String path, Map<String, List<String>> params, String contentType) throws IOException
 	{
 		String url = this.endpoint + path;
-		return this.request("DELETE", url, params, contentType);
+		return this.request(HttpMethod.DELETE, url, params, contentType);
 	}
 	public ResponseEntityCustom delete(String path, String contentType) throws IOException
 	{
 		String url = this.endpoint + path;
 		Map<String, List<String>> params = new HashMap<>();
-		return this.request("DELETE", url, params, contentType);
+		return this.request(HttpMethod.DELETE, url, params, contentType);
 	}
 	
 	public Headers createRequestHeader(String contentType)
@@ -500,7 +492,7 @@ public class DNSCloudflare extends DNS{
 		Headers requestHeaders = this.createRequestHeader(ConstantString.APPLICATION_JSON);
 		String body = json.toString();
 		int timeout = 1000;
-		ResponseEntityCustom response = httpExchange("PUT", url, null, requestHeaders, body, timeout);		
+		ResponseEntityCustom response = httpExchange(HttpMethod.PUT, url, null, requestHeaders, body, timeout);		
 		try
 		{
 			JSONObject resp = new JSONObject(response.getBody());

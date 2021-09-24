@@ -230,11 +230,4 @@ public class ConfigEmail {
 	public static void reset() {
 		ConfigEmail.accounts = new ArrayList<>();	
 	}
-
-
-	
-
-	
-	
-	
 }

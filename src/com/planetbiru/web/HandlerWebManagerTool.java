@@ -33,12 +33,12 @@ public class HandlerWebManagerTool implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(headers))
 			{
-				if(path.startsWith("/tool/imei") && method.equals("POST"))
+				if(path.startsWith("/tool/imei") && method.equals(HttpMethod.POST))
 				{
 					JSONObject response = this.processIMEI(requestBody);
 					responseBody = response.toString().getBytes();
 				}
-				else if(path.startsWith("/tool/sim") && method.equals("POST"))
+				else if(path.startsWith("/tool/sim") && method.equals(HttpMethod.POST))
 				{
 					JSONObject response = this.processSIM(requestBody);
 					responseBody = response.toString().getBytes();

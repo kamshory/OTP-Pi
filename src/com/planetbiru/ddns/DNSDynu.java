@@ -14,6 +14,7 @@ import com.planetbiru.config.ConfigVendorDynu;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.util.ResponseEntityCustom;
 import com.planetbiru.util.Utility;
+import com.planetbiru.web.HttpMethod;
 import com.sun.net.httpserver.Headers;
 
 public class DNSDynu extends DNS {
@@ -43,7 +44,7 @@ public class DNSDynu extends DNS {
 	private JSONObject updateNIC(DDNSRecord ddnsRecord, String ipAddress) throws IOException
 	{
 		JSONObject res = new JSONObject();
-		String method = "GET";
+		String method = HttpMethod.GET;
 		Map<String, List<String>> params = new HashMap<>();		
 		params.put("hostname", Utility.asList(ddnsRecord.getRecordName()));
 		params.put("username", Utility.asList(this.username));
@@ -119,7 +120,7 @@ public class DNSDynu extends DNS {
 	{
 		String base = this.getBase();
 		String url = String.format("%s/dns", base); 
-		String method = "GET";		
+		String method = HttpMethod.GET;		
 		Headers headers = new Headers();
 		headers.add(ConstantString.ACCEPT, ConstantString.APPLICATION_JSON);
 		headers.add(ConstantString.AUTHORIZATION, ConstantString.BEARER+token);
@@ -165,17 +166,6 @@ public class DNSDynu extends DNS {
 		
 		JSONObject requestJSON = new JSONObject();
 		String nodeName = this.getNodeName(domain, subdomain);
-		
-		/**
-		 * {
-			  "nodeName": "mail",
-			  "recordType": "A",
-			  "ttl": 300,
-			  "state": true,
-			  "group": "",
-			  "ipv4Address": "204.25.79.214"
-			}
-		 */
 		
 		String recordType = ddnsRecord.getType();
 		int ttl = ddnsRecord.getTtl();
@@ -236,7 +226,7 @@ public class DNSDynu extends DNS {
 			String ipAddress) throws IOException {
 		String base = this.getBase();
 		String url = String.format("%s/dns/%s/record/%s", base, domainID, dnsRecordID); 
-		String method = "GET";		
+		String method = HttpMethod.GET;		
 		Headers headers = new Headers();
 		headers.add(ConstantString.ACCEPT, ConstantString.APPLICATION_JSON);
 		headers.add(ConstantString.AUTHORIZATION, ConstantString.BEARER+token);
@@ -325,7 +315,7 @@ public class DNSDynu extends DNS {
 		String base = this.getBase();
 		String url = String.format("%s/oauth2/token", base); 
 		String basicAuth = Utility.base64Encode(this.username+":"+this.password);
-		String method = "GET";		
+		String method = HttpMethod.GET;		
 		Headers headers = new Headers();
 		headers.add(ConstantString.ACCEPT, ConstantString.APPLICATION_JSON);
 		headers.add(ConstantString.AUTHORIZATION, "Basic "+basicAuth);
@@ -367,7 +357,7 @@ public class DNSDynu extends DNS {
 		String recordType = ddnsRecord.getType();	
 		String base = this.getBase();
 		String url = String.format("%s/dns/record/%s?recordType=%s", base, hostName, recordType); 
-		String method = "GET";		
+		String method = HttpMethod.GET;		
 		Headers headers = new Headers();
 		headers.add(ConstantString.ACCEPT, ConstantString.APPLICATION_JSON);
 		headers.add(ConstantString.AUTHORIZATION, ConstantString.BEARER+token);

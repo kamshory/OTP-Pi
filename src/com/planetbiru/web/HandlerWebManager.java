@@ -71,7 +71,7 @@ public class HandlerWebManager implements HttpHandler {
 	public void handle(HttpExchange httpExchange) throws IOException {
 		String path = httpExchange.getRequestURI().getPath();
 		String method = httpExchange.getRequestMethod();
-		if(path.endsWith(".html") && method.equals("POST"))
+		if(path.endsWith(".html") && method.equals(HttpMethod.POST))
 		{
 			this.handlePost(httpExchange, path);
 		}

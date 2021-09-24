@@ -29,6 +29,9 @@ public class DDNSRecord {
 	
 
 	public DDNSRecord() {
+		/**
+		 * Default constructor
+		 */
 	}
 
 	public JSONObject toJSONObject() {

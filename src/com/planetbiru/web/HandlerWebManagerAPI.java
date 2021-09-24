@@ -42,7 +42,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 	public void handle(HttpExchange httpExchange) throws IOException {
 		String path = httpExchange.getRequestURI().getPath();
 		String method = httpExchange.getRequestMethod();
-		if(method.equals("POST"))
+		if(method.equals(HttpMethod.POST))
 		{
 			if(path.startsWith("/api/device"))
 			{
