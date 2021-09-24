@@ -125,22 +125,22 @@ public class ResetDevice {
 			ConfigEmail.reset();
 			ConfigEmail.save();
 		}
-		if(props.getOrDefault("RESET_FEEDER_AMQP", "").toString().equalsIgnoreCase("true"))
+		if(props.getOrDefault("RESET_SUBSCRIBER_AMQP", "").toString().equalsIgnoreCase("true"))
 		{
 			ConfigSubscriberAMQP.reset();
 			ConfigSubscriberAMQP.save();
 		}
-		if(props.getOrDefault("RESET_FEEDER_REDIS", "").toString().equalsIgnoreCase("true"))
+		if(props.getOrDefault("RESET_SUBSCRIBER_REDIS", "").toString().equalsIgnoreCase("true"))
 		{
 			ConfigSubscriberRedis.reset();
 			ConfigSubscriberRedis.save();
 		}
-		if(props.getOrDefault("RESET_FEEDER_MQTT", "").toString().equalsIgnoreCase("true"))
+		if(props.getOrDefault("RESET_SUBSCRIBER_MQTT", "").toString().equalsIgnoreCase("true"))
 		{
 			ConfigSubscriberMQTT.reset();
 			ConfigSubscriberMQTT.save();
 		}
-		if(props.getOrDefault("RESET_FEEDER_WS", "").toString().equalsIgnoreCase("true"))
+		if(props.getOrDefault("RESET_SUBSCRIBER_WS", "").toString().equalsIgnoreCase("true"))
 		{
 			ConfigSubscriberWS.reset();
 			ConfigSubscriberWS.save();
