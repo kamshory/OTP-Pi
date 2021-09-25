@@ -85,7 +85,7 @@ public class MessageAPI {
 		}
 		catch(JSONException | GSMException e)
 		{
-			logger.error(e.getMessage(), e);
+			logger.error(e.getMessage());
 		}
 		return responseJSON;
 	}
@@ -94,12 +94,12 @@ public class MessageAPI {
 		String dateTime = data.optString(JsonKey.DATE_TIME, "").trim();
 		String otpID = data.optString(JsonKey.REFERENCE, "").trim();
 		String receiver = data.optString(JsonKey.RECEIVER, "").trim();
-		String subject = data.optString("subject", "").trim();
+		String subject = data.optString(JsonKey.SUBJECT, "").trim();
 		String param1 = data.optString("param1", "").trim();
 		String param2 = data.optString("param2", "").trim();
 		String param3 = data.optString("param3", "").trim();
 		String param4 = data.optString("param4", "").trim();
-		String messageFormat = data.optString("message", "").trim();
+		String messageFormat = data.optString(JsonKey.MESSAGE, "").trim();
 		long expiration = data.optLong("expiration", 0) * 1000; 
 		long lifeTime = expiration - System.currentTimeMillis();
 		String responseCode = ResponseCode.SUCCESS;
@@ -290,8 +290,8 @@ public class MessageAPI {
 	private JSONObject sendEmail(String command, JSONObject data, StackTraceElement ste) {
 		JSONObject responseJSON = new JSONObject();
 		String to = data.optString(JsonKey.RECEIVER, "");
-		String subject = data.optString("subject", "");
-		String message = data.optString("message", "");
+		String subject = data.optString(JsonKey.SUBJECT, "");
+		String message = data.optString(JsonKey.MESSAGE, "");
 		String result = "";
 		boolean dropOTPExpire = ConfigGeneral.isDropExpireOTP();
 		boolean sendOTP = false;

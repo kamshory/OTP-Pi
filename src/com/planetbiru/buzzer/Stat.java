@@ -15,7 +15,7 @@ public class Stat {
 	public static final int MODE_OUTPUT_OPEN_DRAIN = 8;
 
 	public static final String EXP = "/sys/class/gpio/";
-	public static final int[] PINS = { 0, 1, 4, 7, 8, 9, 10, 11, 14, 15, 17, 18, 21, 22, 23, 24, 25, 26, 27 };
+	protected static final int[] PINS = { 0, 1, 4, 7, 8, 9, 10, 11, 14, 15, 17, 18, 21, 22, 23, 24, 25, 26, 27 };
 	private static boolean[] used;
 
 	private Stat()
