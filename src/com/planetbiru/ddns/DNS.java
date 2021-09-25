@@ -258,18 +258,6 @@ public class DNS {
 		return result;
 	}
 
-	/**
-	* Create customer rest template
-	* @param timeout Request timeout
-	* @return RestTemplate
-	*/
-	public RestTemplate customRestTemplate(int timeout)
-	{
-		
-		RestTemplate restTemplate = null;
-		return restTemplate;
-	}
-
 	public String buildQuery(Map<String, List<String>> params) 
 	{
 		return Utility.buildQuery(params);
@@ -279,7 +267,4 @@ public class DNS {
 	public JSONObject update(DDNSRecord ddnsRecord) throws IOException {
 		return ddnsRecord.toJSONObject();
 	}
-
-	
-
 }
