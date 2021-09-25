@@ -18642,3 +18642,148 @@ org.json.JSONException: A JSONObject text must begin with '{' at 1 [character 2 
 2021-09-25 10:53:04 [INFO  ] Application                     :184  - Service started
 2021-09-25 16:27:33 [INFO  ] Application                     :184  - Service started
 2021-09-25 16:28:05 [ERROR ] MessageAPI                      :88   - A JSONObject text must begin with '{' at 1 [character 2 line 1]
+2021-09-25 18:43:32 [INFO  ] Application                     :185  - Service started
+2021-09-25 18:52:40 [INFO  ] MessageAPI                      :45   - Topic     : sms
+2021-09-25 18:52:40 [INFO  ] MessageAPI                      :46   - Message   : {
+    "data": {
+        "recipient": "6281111111111",
+        "message": "test pesan"
+    },
+    "command": "send-sms"
+}
+2021-09-25 18:52:40 [INFO  ] MessageAPI                      :47   - Command   : send-sms
+2021-09-25 18:52:40 [INFO  ] MessageAPI                      :48   - Date Time : 0
+2021-09-25 18:52:40 [INFO  ] MessageAPI                      :51   - Send SMS
+2021-09-25 18:52:49 [INFO  ] MessageAPI                      :45   - Topic     : sms
+2021-09-25 18:52:49 [INFO  ] MessageAPI                      :46   - Message   : {
+    "data": {
+        "recipient": "6281111111111",
+        "message": "test pesan"
+    },
+    "command": "send-sms"
+}
+2021-09-25 18:52:49 [INFO  ] MessageAPI                      :47   - Command   : send-sms
+2021-09-25 18:52:49 [INFO  ] MessageAPI                      :48   - Date Time : 0
+2021-09-25 18:52:49 [INFO  ] MessageAPI                      :51   - Send SMS
+2021-09-25 18:52:52 [INFO  ] MessageAPI                      :45   - Topic     : sms
+2021-09-25 18:52:52 [INFO  ] MessageAPI                      :46   - Message   : {
+    "data": {
+        "recipient": "6281111111111",
+        "message": "test pesan"
+    },
+    "command": "send-sms"
+}
+2021-09-25 18:52:52 [INFO  ] MessageAPI                      :47   - Command   : send-sms
+2021-09-25 18:52:52 [INFO  ] MessageAPI                      :48   - Date Time : 0
+2021-09-25 18:52:52 [INFO  ] MessageAPI                      :51   - Send SMS
+2021-09-25 18:53:18 [INFO  ] MessageAPI                      :45   - Topic     : sms
+2021-09-25 18:53:18 [INFO  ] MessageAPI                      :46   - Message   : {
+    "data": {
+        "recipient": "6281111111111",
+        "message": "OTP Anda adalah 123456"
+    },
+    "command": "send-sms"
+}
+2021-09-25 18:53:18 [INFO  ] MessageAPI                      :47   - Command   : send-sms
+2021-09-25 18:53:18 [INFO  ] MessageAPI                      :48   - Date Time : 0
+2021-09-25 18:53:18 [INFO  ] MessageAPI                      :51   - Send SMS
+2021-09-25 22:39:47 [INFO  ] Application                     :185  - Service started
+2021-09-25 22:40:08 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMI
+2021-09-25 22:40:08 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMM
+2021-09-25 22:40:08 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMR
+2021-09-25 22:40:08 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGSN
+2021-09-25 22:40:08 [INFO  ] GSM                             :123  - Execute AT Command : AT+CIMI
+2021-09-25 22:40:08 [INFO  ] GSM                             :123  - Execute AT Command : AT+CCID
+2021-09-25 22:40:08 [INFO  ] GSM                             :123  - Execute AT Command : AT+CREG?
+2021-09-25 22:40:08 [INFO  ] GSM                             :123  - Execute AT Command : AT+CNUM
+2021-09-25 22:40:08 [INFO  ] GSM                             :123  - Execute AT Command : AT+COPS?
+2021-09-25 22:40:08 [INFO  ] GSM                             :123  - Execute AT Command : AT+CSCA
+2021-09-25 22:40:11 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMI
+2021-09-25 22:40:11 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMM
+2021-09-25 22:40:11 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMR
+2021-09-25 22:40:11 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGSN
+2021-09-25 22:40:11 [INFO  ] GSM                             :123  - Execute AT Command : AT+CIMI
+2021-09-25 22:40:11 [INFO  ] GSM                             :123  - Execute AT Command : AT+CCID
+2021-09-25 22:40:11 [INFO  ] GSM                             :123  - Execute AT Command : AT+CREG?
+2021-09-25 22:40:11 [INFO  ] GSM                             :123  - Execute AT Command : AT+CNUM
+2021-09-25 22:40:11 [INFO  ] GSM                             :123  - Execute AT Command : AT+COPS?
+2021-09-25 22:40:11 [INFO  ] GSM                             :123  - Execute AT Command : AT+CSCA
+2021-09-25 22:40:12 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMI
+2021-09-25 22:40:12 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMM
+2021-09-25 22:40:12 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMR
+2021-09-25 22:40:12 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGSN
+2021-09-25 22:40:12 [INFO  ] GSM                             :123  - Execute AT Command : AT+CIMI
+2021-09-25 22:40:12 [INFO  ] GSM                             :123  - Execute AT Command : AT+CCID
+2021-09-25 22:40:12 [INFO  ] GSM                             :123  - Execute AT Command : AT+CREG?
+2021-09-25 22:40:12 [INFO  ] GSM                             :123  - Execute AT Command : AT+CNUM
+2021-09-25 22:40:12 [INFO  ] GSM                             :123  - Execute AT Command : AT+COPS?
+2021-09-25 22:40:12 [INFO  ] GSM                             :123  - Execute AT Command : AT+CSCA
+2021-09-25 22:40:13 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMI
+2021-09-25 22:40:13 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMM
+2021-09-25 22:40:13 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMR
+2021-09-25 22:40:13 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGSN
+2021-09-25 22:40:13 [INFO  ] GSM                             :123  - Execute AT Command : AT+CIMI
+2021-09-25 22:40:13 [INFO  ] GSM                             :123  - Execute AT Command : AT+CCID
+2021-09-25 22:40:13 [INFO  ] GSM                             :123  - Execute AT Command : AT+CREG?
+2021-09-25 22:40:13 [INFO  ] GSM                             :123  - Execute AT Command : AT+CNUM
+2021-09-25 22:40:13 [INFO  ] GSM                             :123  - Execute AT Command : AT+COPS?
+2021-09-25 22:40:13 [INFO  ] GSM                             :123  - Execute AT Command : AT+CSCA
+2021-09-25 22:40:19 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMI
+2021-09-25 22:42:49 [INFO  ] Application                     :185  - Service started
+2021-09-25 22:43:01 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMI
+2021-09-25 22:43:01 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMM
+2021-09-25 22:43:01 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMR
+2021-09-25 22:43:01 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGSN
+2021-09-25 22:43:01 [INFO  ] GSM                             :123  - Execute AT Command : AT+CIMI
+2021-09-25 22:43:01 [INFO  ] GSM                             :123  - Execute AT Command : AT+CCID
+2021-09-25 22:43:01 [INFO  ] GSM                             :123  - Execute AT Command : AT+CREG?
+2021-09-25 22:43:01 [INFO  ] GSM                             :123  - Execute AT Command : AT+CNUM
+2021-09-25 22:43:02 [INFO  ] GSM                             :123  - Execute AT Command : AT+COPS?
+2021-09-25 22:43:02 [INFO  ] GSM                             :123  - Execute AT Command : AT+CSCA
+2021-09-25 22:43:03 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMI
+2021-09-25 22:43:03 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMM
+2021-09-25 22:43:03 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMR
+2021-09-25 22:43:03 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGSN
+2021-09-25 22:43:03 [INFO  ] GSM                             :123  - Execute AT Command : AT+CIMI
+2021-09-25 22:43:03 [INFO  ] GSM                             :123  - Execute AT Command : AT+CCID
+2021-09-25 22:43:04 [INFO  ] GSM                             :123  - Execute AT Command : AT+CREG?
+2021-09-25 22:43:04 [INFO  ] GSM                             :123  - Execute AT Command : AT+CNUM
+2021-09-25 22:43:04 [INFO  ] GSM                             :123  - Execute AT Command : AT+COPS?
+2021-09-25 22:43:04 [INFO  ] GSM                             :123  - Execute AT Command : AT+CSCA
+2021-09-25 22:50:22 [INFO  ] Application                     :185  - Service started
+2021-09-25 22:50:36 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMI
+2021-09-25 22:50:36 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMM
+2021-09-25 22:50:37 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMR
+2021-09-25 22:50:37 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGSN
+2021-09-25 22:50:37 [INFO  ] GSM                             :123  - Execute AT Command : AT+CIMI
+2021-09-25 22:50:37 [INFO  ] GSM                             :123  - Execute AT Command : AT+CCID
+2021-09-25 22:50:37 [INFO  ] GSM                             :123  - Execute AT Command : AT+CREG?
+2021-09-25 22:50:37 [INFO  ] GSM                             :123  - Execute AT Command : AT+CNUM
+2021-09-25 22:50:37 [INFO  ] GSM                             :123  - Execute AT Command : AT+COPS?
+2021-09-25 22:50:38 [INFO  ] GSM                             :123  - Execute AT Command : AT+CSCA
+2021-09-25 22:50:40 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMI
+2021-09-25 22:50:40 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMM
+2021-09-25 22:50:40 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMR
+2021-09-25 22:50:40 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGSN
+2021-09-25 22:50:40 [INFO  ] GSM                             :123  - Execute AT Command : AT+CIMI
+2021-09-25 22:50:41 [INFO  ] GSM                             :123  - Execute AT Command : AT+CCID
+2021-09-25 22:50:41 [INFO  ] GSM                             :123  - Execute AT Command : AT+CREG?
+2021-09-25 22:50:41 [INFO  ] GSM                             :123  - Execute AT Command : AT+CNUM
+2021-09-25 22:50:41 [INFO  ] GSM                             :123  - Execute AT Command : AT+COPS?
+2021-09-25 22:50:41 [INFO  ] GSM                             :123  - Execute AT Command : AT+CSCA
+2021-09-25 22:52:27 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMI
+2021-09-25 22:52:27 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMM
+2021-09-25 22:52:27 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMR
+2021-09-25 22:52:27 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGSN
+2021-09-25 22:52:27 [INFO  ] GSM                             :123  - Execute AT Command : AT+CIMI
+2021-09-25 22:52:27 [INFO  ] GSM                             :123  - Execute AT Command : AT+CCID
+2021-09-25 22:52:27 [INFO  ] GSM                             :123  - Execute AT Command : AT+CREG?
+2021-09-25 22:52:28 [INFO  ] GSM                             :123  - Execute AT Command : AT+CNUM
+2021-09-25 22:52:28 [INFO  ] GSM                             :123  - Execute AT Command : AT+COPS?
+2021-09-25 22:52:28 [INFO  ] GSM                             :123  - Execute AT Command : AT+CSCA
+2021-09-25 22:56:38 [INFO  ] Application                     :185  - Service started
+2021-09-25 22:57:01 [INFO  ] GSM                             :123  - Execute AT Command : ATE0
+2021-09-25 22:57:01 [INFO  ] GSM                             :123  - Execute AT Command : AT+CSCS="GSM"
+2021-09-25 22:57:01 [INFO  ] GSM                             :123  - Execute AT Command : AT+CMGF=1
+2021-09-25 22:57:01 [INFO  ] GSM                             :123  - Execute AT Command : AT+CPMS=""SM""
+2021-09-25 22:57:01 [INFO  ] GSM                             :123  - Execute AT Command : AT+CMGL="REC READ"
