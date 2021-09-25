@@ -18787,3 +18787,25 @@ org.json.JSONException: A JSONObject text must begin with '{' at 1 [character 2 
 2021-09-25 22:57:01 [INFO  ] GSM                             :123  - Execute AT Command : AT+CMGF=1
 2021-09-25 22:57:01 [INFO  ] GSM                             :123  - Execute AT Command : AT+CPMS=""SM""
 2021-09-25 22:57:01 [INFO  ] GSM                             :123  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-25 22:59:41 [INFO  ] Application                     :185  - Service started
+2021-09-25 22:59:49 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMI
+2021-09-25 22:59:49 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMM
+2021-09-25 22:59:49 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMR
+2021-09-25 22:59:49 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGSN
+2021-09-25 22:59:49 [INFO  ] GSM                             :122  - Execute AT Command : AT+CIMI
+2021-09-25 22:59:49 [INFO  ] GSM                             :122  - Execute AT Command : AT+CCID
+2021-09-25 22:59:50 [INFO  ] GSM                             :122  - Execute AT Command : AT+CREG?
+2021-09-25 22:59:50 [INFO  ] GSM                             :122  - Execute AT Command : AT+CNUM
+2021-09-25 22:59:50 [INFO  ] GSM                             :122  - Execute AT Command : AT+COPS?
+2021-09-25 22:59:50 [INFO  ] GSM                             :122  - Execute AT Command : AT+CSCA
+2021-09-25 22:59:54 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMI
+2021-09-25 22:59:55 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMM
+2021-09-25 22:59:55 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGMR
+2021-09-25 22:59:55 [INFO  ] GSM                             :122  - Execute AT Command : AT+CGSN
+2021-09-25 22:59:55 [INFO  ] GSM                             :122  - Execute AT Command : AT+CIMI
+2021-09-25 22:59:55 [INFO  ] GSM                             :122  - Execute AT Command : AT+CCID
+2021-09-25 22:59:55 [INFO  ] GSM                             :122  - Execute AT Command : AT+CREG?
+2021-09-25 22:59:55 [INFO  ] GSM                             :122  - Execute AT Command : AT+CNUM
+2021-09-25 22:59:55 [INFO  ] GSM                             :122  - Execute AT Command : AT+COPS?
+2021-09-25 22:59:55 [INFO  ] GSM                             :122  - Execute AT Command : AT+CSCA
+2021-09-25 23:00:21 [INFO  ] Application                     :185  - Service started
