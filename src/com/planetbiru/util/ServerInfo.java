@@ -8,20 +8,45 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.planetbiru.Application;
 import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.config.Config;
+import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigModem;
+import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberMQTT;
+import com.planetbiru.config.ConfigSubscriberRedis;
+import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.gsm.GSMUtil;
 
 public class ServerInfo {
 	
-	private static final String TOTAL = "total";
-	private static final String USED = "used";
-	private static final String FREE = "free";
-	private static final String RAM = "ram";
-	private static final String SWAP = "swap";
-	private static final String PERCENT_USED = "percentUsed";
+	private static final String TOTAL                = "total";
+	private static final String USED                 = "used";
+	private static final String FREE                 = "free";
+	private static final String RAM                  = "ram";
+	private static final String SWAP                 = "swap";
+	private static final String PERCENT_USED         = "percentUsed";
+	private static final String CURRENT_TEMPERATURE  = "currentTemperature";
+	private static final String HIGH_TEMPERATURE     = "highTemperature";
+	private static final String CRITICAL_TEMPERATURE = "criticalTemperature";
+	private static final String CPU                  = "cpu";
+	private static final String SERVER_INFO          = "server-info";
+	private static final String STORAGE              = "storage";
+	private static final String MEMORY               = "memory";
+	private static final String AVAILABLE            = "available";
+	private static final String RAW                  = "raw";
+	private static final String LABEL                = "label";
+	private static final String VALUE                = "value";
+	private static final String TEMPERATURE          = "temperature";
+	private static final String ADAPTER              = "adapter";
+	private static final String PORT                 = "port";
+	private static final String USAGE                = "usage";
+
+	private static String cacheServerInfo = "";
+	private static long cacheServerInfoExpire = 0;
+	private static long cacheLifetime = 5000;
 
 	private ServerInfo()
 	{
@@ -39,7 +64,7 @@ public class ServerInfo {
 		ws.put(JsonKey.MESSAGE, message);
 		data.put(ws);
 		
-		info.put(JsonKey.COMMAND, "server-info");
+		info.put(JsonKey.COMMAND, ServerInfo.SERVER_INFO);
 		info.put(JsonKey.DATA, data);
 	
 		ServerWebSocketAdmin.broadcastMessage(info.toString(4));				
@@ -59,7 +84,7 @@ public class ServerInfo {
 		ws.put(JsonKey.VALUE, connected);
 		data.put(ws);
 		
-		info.put(JsonKey.COMMAND, "server-info");
+		info.put(JsonKey.COMMAND, ServerInfo.SERVER_INFO);
 		info.put(JsonKey.DATA, data);
 	
 		ServerWebSocketAdmin.broadcastMessage(info.toString(4));
@@ -75,7 +100,7 @@ public class ServerInfo {
 		redis.put(JsonKey.VALUE, connected);
 		data.put(redis);
 		
-		info.put(JsonKey.COMMAND, "server-info");
+		info.put(JsonKey.COMMAND, ServerInfo.SERVER_INFO);
 		info.put(JsonKey.DATA, data);
 	
 		ServerWebSocketAdmin.broadcastMessage(info.toString(4));
@@ -92,18 +117,15 @@ public class ServerInfo {
 		data.put(modem);
 		JSONObject serverInfo = new JSONObject();
 		serverInfo.put(JsonKey.DATA, data);
-		serverInfo.put(JsonKey.COMMAND, "server-info");
+		serverInfo.put(JsonKey.COMMAND, ServerInfo.SERVER_INFO);
 		ServerWebSocketAdmin.broadcastMessage(serverInfo.toString());
 	}
 
-	private static String cacheServerInfo = "";
-	private static long cacheServerInfoExpire = 0;
-	private static long cacheLifetime = 5000;
 	public static String getInfo() {
 		JSONObject info = new JSONObject();
-		info.put("cpu", ServerInfo.cpuTemperatureInfo());
-		info.put("storage", ServerInfo.storageInfo());
-		info.put("memory", ServerInfo.memoryInfo());
+		info.put(ServerInfo.CPU, ServerInfo.cpuTemperatureInfo());
+		info.put(ServerInfo.STORAGE, ServerInfo.storageInfo());
+		info.put(ServerInfo.MEMORY, ServerInfo.memoryInfo());
 		return info.toString();
 	}
 	
@@ -170,11 +192,8 @@ public class ServerInfo {
 	public static String cpuSerialNumber()
 	{
 		String serialNumber = "";
-		String result =   "Serial Number : 00000000f069215d";
-
-		
 		String command = "more /proc/cpuinfo | grep Serial";
-		result = CommandLineExecutor.exec(command).toString();
+		String result = CommandLineExecutor.exec(command).toString();
 		
 		
 		result = fixingRawData(result);
@@ -234,7 +253,7 @@ public class ServerInfo {
 					
 					info.put(ServerInfo.TOTAL, Utility.atof(total) * factorTotal);
 					info.put(ServerInfo.USED, Utility.atof(used) * factorUsed);
-					info.put("available", Utility.atof(avail) * factorAvail);
+					info.put(ServerInfo.AVAILABLE, Utility.atof(avail) * factorAvail);
 					info.put(ServerInfo.PERCENT_USED, Utility.atof(percent));
 				}
 			}
@@ -281,9 +300,9 @@ public class ServerInfo {
 		JSONArray cores = getCPUTemperatureCore(result);
 		
 		JSONObject info = new JSONObject();
-		info.put("adapter", adapter);
-		info.put("temperature", cores);
-		info.put("usage", cpuUsage());
+		info.put(ServerInfo.ADAPTER, adapter);
+		info.put(ServerInfo.TEMPERATURE, cores);
+		info.put(ServerInfo.USAGE, cpuUsage());
 		return info;
 	}
 	
@@ -301,9 +320,9 @@ public class ServerInfo {
 		JSONArray cores = getCPUTemperatureCore(result);
 		
 		JSONObject info = new JSONObject();
-		info.put("adapter", adapter);
-		info.put("temperature", cores);
-		info.put("usage", cpuUsage());
+		info.put(ServerInfo.ADAPTER, adapter);
+		info.put(ServerInfo.TEMPERATURE, cores);
+		info.put(ServerInfo.USAGE, cpuUsage());
 		return info;
 	}
 	
@@ -340,11 +359,11 @@ public class ServerInfo {
 			{
 				pairs.put(keys[i].replace("%", ""), values[i]);
 			}
-			iddle = pairs.getOrDefault("idle", "0");
+			iddle = pairs.getOrDefault(JsonKey.IDLE, "0");
 		}
 		double idle = Utility.atof(iddle);
 		double used = 100 - idle;
-		info.put("idle", idle);
+		info.put(JsonKey.IDLE, idle);
 		info.put(ServerInfo.USED, used);
 		info.put(ServerInfo.PERCENT_USED, used);
 		return info;	
@@ -405,12 +424,12 @@ public class ServerInfo {
 					JSONObject raw = new JSONObject();
 					JSONObject value = new JSONObject();
 					String currentTemperatureentTemp = arr4[1];
-					raw.put("currentTemperature", currentTemperatureentTemp.replace("+", ""));				
-					value.put("currentTemperature", Utility.atof(currentTemperatureentTemp));
+					raw.put(ServerInfo.CURRENT_TEMPERATURE, currentTemperatureentTemp.replace("+", ""));				
+					value.put(ServerInfo.CURRENT_TEMPERATURE, Utility.atof(currentTemperatureentTemp));
 					
-					core.put("label", "Core 0");
-					core.put("raw", raw);
-					core.put("value", value);
+					core.put(ServerInfo.LABEL, "Core 0");
+					core.put(ServerInfo.RAW, raw);
+					core.put(ServerInfo.VALUE, value);
 					temp.put(core);
 				}
 			}
@@ -458,7 +477,7 @@ public class ServerInfo {
 			}
 			if(item.optString("name", "").toUpperCase().contains("(LISTEN)"))
 			{
-				item.put("port", extractPort(item.optString("name", "")));
+				item.put(ServerInfo.PORT, extractPort(item.optString("name", "")));
 				String sizeOff = item.optString("size_off", "");
 				if(sizeOff.contains("t"))
 				{
@@ -526,21 +545,96 @@ public class ServerInfo {
 			JSONObject raw = new JSONObject();
 			JSONObject value = new JSONObject();
 			
-			raw.put("currentTemperature", currentTemperatureentTemp.replace("+", ""));
-			raw.put("hightTemperature", high.replace("+", ""));
-			raw.put("criticalTemperature", crit.replace("+", ""));
+			raw.put(ServerInfo.CURRENT_TEMPERATURE, currentTemperatureentTemp.replace("+", ""));
+			raw.put(ServerInfo.HIGH_TEMPERATURE, high.replace("+", ""));
+			raw.put(ServerInfo.CRITICAL_TEMPERATURE, crit.replace("+", ""));
 			
-			value.put("currentTemperature", Utility.atof(currentTemperatureentTemp));
-			value.put("hightTemperature", Utility.atof(high));
-			value.put("criticalTemperature", Utility.atof(crit));
+			value.put(ServerInfo.CURRENT_TEMPERATURE, Utility.atof(currentTemperatureentTemp));
+			value.put(ServerInfo.HIGH_TEMPERATURE, Utility.atof(high));
+			value.put(ServerInfo.CRITICAL_TEMPERATURE, Utility.atof(crit));
 			
-			core.put("label", cpuLabel);
-			core.put("raw", raw);
-			core.put("value", value);
+			core.put(ServerInfo.LABEL, cpuLabel);
+			core.put(ServerInfo.RAW, raw);
+			core.put(ServerInfo.VALUE, value);
 		}
 		return core;
 	}
 
+	public static JSONObject buildServerInfo()
+	{
+		JSONArray data = new JSONArray();
+		JSONObject info = new JSONObject();
+		
+		JSONObject modem = new JSONObject();
+		modem.put(JsonKey.NAME, "otp-modem-connected");
+		modem.put(JsonKey.VALUE, GSMUtil.isConnected());
+		modem.put(JsonKey.DATA, ConfigModem.getStatus());
+		data.put(modem);
+		JSONObject wsEnable = new JSONObject();
+		wsEnable.put(JsonKey.NAME, "otp-ws-enable");
+		wsEnable.put(JsonKey.VALUE, ConfigSubscriberWS.isSubscriberWsEnable());
+		data.put(wsEnable);
+		
+		JSONObject wsConnected = new JSONObject();
+		wsConnected.put(JsonKey.NAME, "otp-ws-connected");
+		wsConnected.put(JsonKey.VALUE, ConfigSubscriberWS.isConnected());
+		data.put(wsConnected);
+		
+		JSONObject amqpEnable = new JSONObject();
+		amqpEnable.put(JsonKey.NAME, "otp-amqp-enable");
+		amqpEnable.put(JsonKey.VALUE, ConfigSubscriberAMQP.isSubscriberAmqpEnable());
+		data.put(amqpEnable);
+		
+		JSONObject amqpConnected = new JSONObject();
+		amqpConnected.put(JsonKey.NAME, "otp-amqp-connected");
+		amqpConnected.put(JsonKey.VALUE, ConfigSubscriberAMQP.isConnected());
+		data.put(amqpConnected);
+		
+		JSONObject redisEnable = new JSONObject();
+		redisEnable.put(JsonKey.NAME, "otp-redis-enable");
+		redisEnable.put(JsonKey.VALUE, ConfigSubscriberRedis.isSubscriberRedisEnable());
+		data.put(redisEnable);
+		
+		JSONObject redisConnected = new JSONObject();
+		redisConnected.put(JsonKey.NAME, "otp-redis-connected");
+		redisConnected.put(JsonKey.VALUE, ConfigSubscriberRedis.isConnected());
+		data.put(redisConnected);
+		
+		JSONObject mqttEnable = new JSONObject();
+		mqttEnable.put(JsonKey.NAME, "otp-mqtt-enable");
+		mqttEnable.put(JsonKey.VALUE, ConfigSubscriberMQTT.isSubscriberMqttEnable());
+		data.put(mqttEnable);
+		
+		JSONObject mqttConnected = new JSONObject();
+		mqttConnected.put(JsonKey.NAME, "otp-mqtt-connected");
+		mqttConnected.put(JsonKey.VALUE, ConfigSubscriberMQTT.isConnected());
+		data.put(mqttConnected);
+		
+		JSONObject httpEnable = new JSONObject();
+		httpEnable.put(JsonKey.NAME, "otp-http-enable");
+		httpEnable.put(JsonKey.VALUE, ConfigAPI.isHttpEnable());
+		data.put(httpEnable);
+		
+		JSONObject httpsEnable = new JSONObject();
+		httpsEnable.put(JsonKey.NAME, "otp-https-enable");
+		httpsEnable.put(JsonKey.VALUE, ConfigAPI.isHttpsEnable());
+		data.put(httpsEnable);
+		
+		JSONObject httpConneted = new JSONObject();
+		httpConneted.put(JsonKey.NAME, "otp-http-connected");
+		httpConneted.put(JsonKey.VALUE, Application.getRest().isHttpStarted());
+		data.put(httpConneted);
+		
+		JSONObject httpsConneted = new JSONObject();
+		httpsConneted.put(JsonKey.NAME, "otp-https-connected");
+		httpsConneted.put(JsonKey.VALUE, Application.getRest().isHttpsStarted());
+		data.put(httpsConneted);
+		
+		info.put(JsonKey.COMMAND, ServerInfo.SERVER_INFO);
+		info.put(JsonKey.DATA, data);
+		return info;
+	}
+	
 	public static String getCacheServerInfo() {
 		return cacheServerInfo;
 	}

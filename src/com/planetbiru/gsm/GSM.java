@@ -7,6 +7,7 @@ import com.fazecast.jSerialComm.SerialPortInvalidPortException;
 import com.planetbiru.config.Config;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -336,11 +337,7 @@ public class GSM {
         int size = allMatches.size();        
         if(size > 0)
         {
-        	String[] attrs = allMatches.toArray(new String[size]);
-        	for(int i = 0; i<attrs.length; i++)
-        	{
-        		csvRecord.add(attrs[i]);
-        	}
+        	Collections.addAll(csvRecord, allMatches.toArray(new String[size]));
         }	
         return csvRecord;
     }

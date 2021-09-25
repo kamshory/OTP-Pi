@@ -13,21 +13,14 @@ import java.util.Map;
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.planetbiru.config.ConfigAPI;
-import com.planetbiru.config.ConfigSubscriberAMQP;
-import com.planetbiru.config.ConfigSubscriberMQTT;
-import com.planetbiru.config.ConfigSubscriberRedis;
-import com.planetbiru.config.ConfigSubscriberWS;
-import com.planetbiru.config.ConfigModem;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.cookie.CookieServer;
-import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.user.NoUserRegisteredException;
 import com.planetbiru.user.WebUserAccount;
+import com.planetbiru.util.ServerInfo;
 import com.planetbiru.util.Utility;
 
 public class ServerWebSocketAdmin extends WebSocketServer{
@@ -169,84 +162,9 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 		return query;
 	}
 	
-	private static JSONObject buildServerInvo()
-	{
-		JSONArray data = new JSONArray();
-		JSONObject info = new JSONObject();
-		
-		JSONObject modem = new JSONObject();
-		modem.put(JsonKey.NAME, "otp-modem-connected");
-		modem.put(JsonKey.VALUE, GSMUtil.isConnected());
-		modem.put(JsonKey.DATA, ConfigModem.getStatus());
-		data.put(modem);
-		JSONObject wsEnable = new JSONObject();
-		wsEnable.put(JsonKey.NAME, "otp-ws-enable");
-		wsEnable.put(JsonKey.VALUE, ConfigSubscriberWS.isSubscriberWsEnable());
-		data.put(wsEnable);
-		
-		JSONObject wsConnected = new JSONObject();
-		wsConnected.put(JsonKey.NAME, "otp-ws-connected");
-		wsConnected.put(JsonKey.VALUE, ConfigSubscriberWS.isConnected());
-		data.put(wsConnected);
-		
-		JSONObject amqpEnable = new JSONObject();
-		amqpEnable.put(JsonKey.NAME, "otp-amqp-enable");
-		amqpEnable.put(JsonKey.VALUE, ConfigSubscriberAMQP.isSubscriberAmqpEnable());
-		data.put(amqpEnable);
-		
-		JSONObject amqpConnected = new JSONObject();
-		amqpConnected.put(JsonKey.NAME, "otp-amqp-connected");
-		amqpConnected.put(JsonKey.VALUE, ConfigSubscriberAMQP.isConnected());
-		data.put(amqpConnected);
-		
-		JSONObject redisEnable = new JSONObject();
-		redisEnable.put(JsonKey.NAME, "otp-redis-enable");
-		redisEnable.put(JsonKey.VALUE, ConfigSubscriberRedis.isSubscriberRedisEnable());
-		data.put(redisEnable);
-		
-		JSONObject redisConnected = new JSONObject();
-		redisConnected.put(JsonKey.NAME, "otp-redis-connected");
-		redisConnected.put(JsonKey.VALUE, ConfigSubscriberRedis.isConnected());
-		data.put(redisConnected);
-		
-		JSONObject mqttEnable = new JSONObject();
-		mqttEnable.put(JsonKey.NAME, "otp-mqtt-enable");
-		mqttEnable.put(JsonKey.VALUE, ConfigSubscriberMQTT.isSubscriberMqttEnable());
-		data.put(mqttEnable);
-		
-		JSONObject mqttConnected = new JSONObject();
-		mqttConnected.put(JsonKey.NAME, "otp-mqtt-connected");
-		mqttConnected.put(JsonKey.VALUE, ConfigSubscriberMQTT.isConnected());
-		data.put(mqttConnected);
-		
-		JSONObject httpEnable = new JSONObject();
-		httpEnable.put(JsonKey.NAME, "otp-http-enable");
-		httpEnable.put(JsonKey.VALUE, ConfigAPI.isHttpEnable());
-		data.put(httpEnable);
-		
-		JSONObject httpsEnable = new JSONObject();
-		httpsEnable.put(JsonKey.NAME, "otp-https-enable");
-		httpsEnable.put(JsonKey.VALUE, ConfigAPI.isHttpsEnable());
-		data.put(httpsEnable);
-		
-		JSONObject httpConneted = new JSONObject();
-		httpConneted.put(JsonKey.NAME, "otp-http-connected");
-		httpConneted.put(JsonKey.VALUE, Application.getRest().isHttpStarted());
-		data.put(httpConneted);
-		
-		JSONObject httpsConneted = new JSONObject();
-		httpsConneted.put(JsonKey.NAME, "otp-https-connected");
-		httpsConneted.put(JsonKey.VALUE, Application.getRest().isHttpsStarted());
-		data.put(httpsConneted);
-		
-		info.put("command", "server-info");
-		info.put("data", data);
-		return info;
-	}
-	
 	private void sendServerStatus(WebSocket conn) {
 		
-		JSONObject info = buildServerInvo();
+		JSONObject info = ServerInfo.buildServerInfo();
 		try 
 		{
 			conn.send(info.toString());
@@ -261,7 +179,7 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 	
 	public static void broadcastServerInfo()
 	{
-		JSONObject info = buildServerInvo();
+		JSONObject info = ServerInfo.buildServerInfo();
 		broadcastMessage(info.toString());
 	}
 

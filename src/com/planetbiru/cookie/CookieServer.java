@@ -157,8 +157,7 @@ public class CookieServer {
 						 * Do nothing
 						 */
 			        }
-			        CookieItem cookie = new CookieItem(cookieName, cookieValue);
-			        list.put(cookieName, cookie);
+			        list.put(cookieName, new CookieItem(cookieName, cookieValue));
 				}
 			}
 		}
@@ -264,7 +263,7 @@ public class CookieServer {
 	        {
 	            if(file.isDirectory())
 	            {
-	            	clearFile(file);
+	            	this.clearFile(file);
 	            }
 	            else 
 	            {
