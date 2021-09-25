@@ -853,7 +853,7 @@ Host: sub.domain.tld
 Connection: close
 User-agent: KSPS
 Content-type: application/json
-Content-length: 191
+Content-length: 222
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 {
@@ -863,6 +863,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 		"expiration": 1629685838,
 		"id": 123456,
 		"receiver": "someone@domain.tld",
+		"subject": "Your OTP Code",
 		"message": "Your OTP is 1234"
 	}
 }
@@ -984,6 +985,7 @@ In this scenario, the user does not need a public IP. Users only need:
 		"expiration": 1629685838,
 		"id": 123456,
 		"receiver": "someone@domain.tld",
+		"subject": "Your OTP Code",
 		"message": "Your OTP is 1234"
 	}
 }
@@ -1072,6 +1074,7 @@ In this scenario, the user does not need a public IP. Users only need:
 		"expiration": 1629685838,
 		"id": 123456,
 		"receiver": "someone@domain.tld",
+		"subject": "Your OTP Code",
 		"message": "Your OTP is 1234"
 	}
 }
@@ -1160,6 +1163,7 @@ In this scenario, the user does not need a public IP. Users only need:
 		"expiration": 1629685838,
 		"id": 123456,
 		"receiver": "someone@domain.tld",
+		"subject": "Your OTP Code",
 		"message": "Your OTP is 1234"
 	}
 }
@@ -1248,6 +1252,7 @@ In this scenario, the user does not need a public IP. Users only need:
 		"expiration": 1629685838,
 		"id": 123456,
 		"receiver": "someone@domain.tld",
+		"subject": "Your OTP Code",
 		"message": "Your OTP is 1234"
 	}
 }

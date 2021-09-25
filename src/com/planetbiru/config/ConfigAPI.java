@@ -24,6 +24,7 @@ public class ConfigAPI {
 	private static int httpsPort = 443;
 	private static boolean httpEnable = true;	
 	private static boolean httpsEnable = false;	
+	private static String otpPath = "/";
 	private static String messagePath = "/";
 	private static String smsPath = "/";
 	private static String emailPath = "/";
@@ -54,6 +55,7 @@ public class ConfigAPI {
 					boolean lHttpEnable = json.optBoolean("httpEnable", false);	
 					boolean lHttpsEnable = json.optBoolean("httpsEnable", false);	
 					String lMessagePath = json.optString("messagePath", "");
+					String lOTPPath = json.optString("otpPath", "");
 					String lSMSPath = json.optString("smsPath", "");
 					String lEmailPath = json.optString("emailPath", "");
 					String lBlockingPath = json.optString("blockingPath", "");
@@ -63,6 +65,7 @@ public class ConfigAPI {
 					ConfigAPI.httpsPort = lHttpsPort;
 					ConfigAPI.httpEnable = lHttpEnable;
 					ConfigAPI.httpsEnable = lHttpsEnable;					
+					ConfigAPI.otpPath = lOTPPath;
 					ConfigAPI.messagePath = lMessagePath;
 					ConfigAPI.smsPath = lSMSPath;
 					ConfigAPI.emailPath = lEmailPath;
@@ -133,6 +136,7 @@ public class ConfigAPI {
 		config.put("httpsPort", ConfigAPI.httpsPort);
 		config.put("httpEnable", ConfigAPI.httpEnable);
 		config.put("httpsEnable", ConfigAPI.httpsEnable);
+		config.put("otpPath", ConfigAPI.otpPath);
 		config.put("messagePath", ConfigAPI.messagePath);
 		config.put("smsPath", ConfigAPI.smsPath);
 		config.put("emailPath", ConfigAPI.emailPath);
@@ -143,6 +147,14 @@ public class ConfigAPI {
 
 	public static JSONObject toJSONObject() {
 		return getJSONObject();
+	}
+
+	public static String getConfigPath() {
+		return configPath;
+	}
+
+	public static void setConfigPath(String configPath) {
+		ConfigAPI.configPath = configPath;
 	}
 
 	public static int getHttpPort() {
@@ -175,6 +187,14 @@ public class ConfigAPI {
 
 	public static void setHttpsEnable(boolean httpsEnable) {
 		ConfigAPI.httpsEnable = httpsEnable;
+	}
+
+	public static String getOtpPath() {
+		return otpPath;
+	}
+
+	public static void setOtpPath(String otpPath) {
+		ConfigAPI.otpPath = otpPath;
 	}
 
 	public static String getMessagePath() {
@@ -222,6 +242,7 @@ public class ConfigAPI {
 		ConfigAPI.httpsPort = 443;
 		ConfigAPI.httpEnable = false;
 		ConfigAPI.httpsEnable = false;					
+		ConfigAPI.otpPath = "/api/otp";
 		ConfigAPI.messagePath = "/api/message";
 		ConfigAPI.smsPath = "/api/sms";
 		ConfigAPI.emailPath = "/api/email";

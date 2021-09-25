@@ -83,6 +83,7 @@ public class ServerRESTAPI {
 			
 			httpsServer = HttpsServer.create(new InetSocketAddress(ConfigAPI.getHttpsPort()), 0);
 			httpsServer.setHttpsConfigurator(httpsConfigurator);
+	        httpsServer.createContext(ConfigAPI.getOtpPath(), new HandlerAPIMessage());
 	        httpsServer.createContext(ConfigAPI.getMessagePath(), new HandlerAPIMessage());
 	        httpsServer.createContext(ConfigAPI.getSmsPath(), new HandlerAPIMessage());
 	        httpsServer.createContext(ConfigAPI.getEmailPath(), new HandlerAPIMessage());
@@ -109,6 +110,7 @@ public class ServerRESTAPI {
 			try 
 			{
 				ServiceHTTP.setHttpServer(HttpServer.create(new InetSocketAddress(ConfigAPI.getHttpPort()), 0));
+		        ServiceHTTP.getHttpServer().createContext(ConfigAPI.getOtpPath(), new HandlerAPIMessage());
 		        ServiceHTTP.getHttpServer().createContext(ConfigAPI.getMessagePath(), new HandlerAPIMessage());
 		        ServiceHTTP.getHttpServer().createContext(ConfigAPI.getSmsPath(), new HandlerAPIMessage());
 		        ServiceHTTP.getHttpServer().createContext(ConfigAPI.getEmailPath(), new HandlerAPIMessage());
