@@ -18540,3 +18540,105 @@ java.net.BindException: Address already in use: bind
 2021-09-23 20:55:04 [INFO  ] MessageAPI                      :51   - Send SMS
 2021-09-23 20:58:05 [INFO  ] Application                     :184  - Service started
 2021-09-23 21:59:35 [INFO  ] Application                     :184  - Service started
+2021-09-24 23:19:33 [INFO  ] Application                     :184  - Service started
+2021-09-24 23:21:25 [ERROR ] MessageAPI                      :88   - A JSONObject text must begin with '{' at 1 [character 2 line 1]
+org.json.JSONException: A JSONObject text must begin with '{' at 1 [character 2 line 1]
+	at org.json.JSONTokener.syntaxError(JSONTokener.java:507)
+	at org.json.JSONObject.<init>(JSONObject.java:222)
+	at org.json.JSONObject.<init>(JSONObject.java:406)
+	at com.planetbiru.api.MessageAPI.processRequest(MessageAPI.java:40)
+	at com.planetbiru.api.MessageAPI.processRequest(MessageAPI.java:33)
+	at com.planetbiru.subscriber.redis.SubscriberRedis.evtOnMessage(SubscriberRedis.java:99)
+	at com.planetbiru.subscriber.redis.ClientThread$2.onMessage(ClientThread.java:70)
+	at redis.clients.jedis.JedisPubSub.process(JedisPubSub.java:142)
+	at redis.clients.jedis.JedisPubSub.proceed(JedisPubSub.java:115)
+	at redis.clients.jedis.Jedis.subscribe(Jedis.java:2680)
+	at com.planetbiru.subscriber.redis.ClientThread.run(ClientThread.java:66)
+2021-09-24 23:22:53 [INFO  ] Application                     :184  - Service started
+2021-09-24 23:23:21 [ERROR ] MessageAPI                      :88   - A JSONObject text must begin with '{' at 1 [character 2 line 1]
+org.json.JSONException: A JSONObject text must begin with '{' at 1 [character 2 line 1]
+	at org.json.JSONTokener.syntaxError(JSONTokener.java:507)
+	at org.json.JSONObject.<init>(JSONObject.java:222)
+	at org.json.JSONObject.<init>(JSONObject.java:406)
+	at com.planetbiru.api.MessageAPI.processRequest(MessageAPI.java:40)
+	at com.planetbiru.api.MessageAPI.processRequest(MessageAPI.java:33)
+	at com.planetbiru.subscriber.redis.SubscriberRedis.evtOnMessage(SubscriberRedis.java:99)
+	at com.planetbiru.subscriber.redis.ClientThread$2.onMessage(ClientThread.java:70)
+	at redis.clients.jedis.JedisPubSub.process(JedisPubSub.java:142)
+	at redis.clients.jedis.JedisPubSub.proceed(JedisPubSub.java:115)
+	at redis.clients.jedis.Jedis.subscribe(Jedis.java:2680)
+	at com.planetbiru.subscriber.redis.ClientThread.run(ClientThread.java:66)
+2021-09-24 23:24:13 [ERROR ] MessageAPI                      :88   - A JSONObject text must begin with '{' at 1 [character 2 line 1]
+org.json.JSONException: A JSONObject text must begin with '{' at 1 [character 2 line 1]
+	at org.json.JSONTokener.syntaxError(JSONTokener.java:507)
+	at org.json.JSONObject.<init>(JSONObject.java:222)
+	at org.json.JSONObject.<init>(JSONObject.java:406)
+	at com.planetbiru.api.MessageAPI.processRequest(MessageAPI.java:40)
+	at com.planetbiru.api.MessageAPI.processRequest(MessageAPI.java:33)
+	at com.planetbiru.subscriber.redis.SubscriberRedis.evtOnMessage(SubscriberRedis.java:99)
+	at com.planetbiru.subscriber.redis.ClientThread$2.onMessage(ClientThread.java:70)
+	at redis.clients.jedis.JedisPubSub.process(JedisPubSub.java:142)
+	at redis.clients.jedis.JedisPubSub.proceed(JedisPubSub.java:115)
+	at redis.clients.jedis.Jedis.subscribe(Jedis.java:2680)
+	at com.planetbiru.subscriber.redis.ClientThread.run(ClientThread.java:66)
+2021-09-24 23:24:55 [ERROR ] MessageAPI                      :88   - A JSONObject text must begin with '{' at 1 [character 2 line 1]
+org.json.JSONException: A JSONObject text must begin with '{' at 1 [character 2 line 1]
+	at org.json.JSONTokener.syntaxError(JSONTokener.java:507)
+	at org.json.JSONObject.<init>(JSONObject.java:222)
+	at org.json.JSONObject.<init>(JSONObject.java:406)
+	at com.planetbiru.api.MessageAPI.processRequest(MessageAPI.java:40)
+	at com.planetbiru.api.MessageAPI.processRequest(MessageAPI.java:33)
+	at com.planetbiru.subscriber.redis.SubscriberRedis.evtOnMessage(SubscriberRedis.java:99)
+	at com.planetbiru.subscriber.redis.ClientThread$2.onMessage(ClientThread.java:70)
+	at redis.clients.jedis.JedisPubSub.process(JedisPubSub.java:142)
+	at redis.clients.jedis.JedisPubSub.proceed(JedisPubSub.java:115)
+	at redis.clients.jedis.Jedis.subscribe(Jedis.java:2680)
+	at com.planetbiru.subscriber.redis.ClientThread.run(ClientThread.java:66)
+2021-09-24 23:26:24 [ERROR ] MessageAPI                      :88   - A JSONObject text must begin with '{' at 1 [character 2 line 1]
+org.json.JSONException: A JSONObject text must begin with '{' at 1 [character 2 line 1]
+	at org.json.JSONTokener.syntaxError(JSONTokener.java:507)
+	at org.json.JSONObject.<init>(JSONObject.java:222)
+	at org.json.JSONObject.<init>(JSONObject.java:406)
+	at com.planetbiru.api.MessageAPI.processRequest(MessageAPI.java:40)
+	at com.planetbiru.api.MessageAPI.processRequest(MessageAPI.java:33)
+	at com.planetbiru.subscriber.redis.SubscriberRedis.evtOnMessage(SubscriberRedis.java:99)
+	at com.planetbiru.subscriber.redis.ClientThread$2.onMessage(ClientThread.java:70)
+	at redis.clients.jedis.JedisPubSub.process(JedisPubSub.java:142)
+	at redis.clients.jedis.JedisPubSub.proceed(JedisPubSub.java:115)
+	at redis.clients.jedis.Jedis.subscribe(Jedis.java:2680)
+	at com.planetbiru.subscriber.redis.ClientThread.run(ClientThread.java:66)
+2021-09-24 23:27:21 [INFO  ] Application                     :184  - Service started
+2021-09-24 23:28:00 [ERROR ] MessageAPI                      :88   - A JSONObject text must begin with '{' at 1 [character 2 line 1]
+org.json.JSONException: A JSONObject text must begin with '{' at 1 [character 2 line 1]
+	at org.json.JSONTokener.syntaxError(JSONTokener.java:507)
+	at org.json.JSONObject.<init>(JSONObject.java:222)
+	at org.json.JSONObject.<init>(JSONObject.java:406)
+	at com.planetbiru.api.MessageAPI.processRequest(MessageAPI.java:40)
+	at com.planetbiru.api.MessageAPI.processRequest(MessageAPI.java:33)
+	at com.planetbiru.subscriber.redis.SubscriberRedis.evtOnMessage(SubscriberRedis.java:99)
+	at com.planetbiru.subscriber.redis.ClientThread$2.onMessage(ClientThread.java:70)
+	at redis.clients.jedis.JedisPubSub.process(JedisPubSub.java:142)
+	at redis.clients.jedis.JedisPubSub.proceed(JedisPubSub.java:115)
+	at redis.clients.jedis.Jedis.subscribe(Jedis.java:2680)
+	at com.planetbiru.subscriber.redis.ClientThread.run(ClientThread.java:66)
+2021-09-24 23:28:00 [ERROR ] MessageAPI                      :89   - Can not parse : OK
+2021-09-24 23:29:20 [ERROR ] MessageAPI                      :88   - A JSONObject text must begin with '{' at 1 [character 2 line 1]
+org.json.JSONException: A JSONObject text must begin with '{' at 1 [character 2 line 1]
+	at org.json.JSONTokener.syntaxError(JSONTokener.java:507)
+	at org.json.JSONObject.<init>(JSONObject.java:222)
+	at org.json.JSONObject.<init>(JSONObject.java:406)
+	at com.planetbiru.api.MessageAPI.processRequest(MessageAPI.java:40)
+	at com.planetbiru.api.MessageAPI.processRequest(MessageAPI.java:33)
+	at com.planetbiru.subscriber.redis.SubscriberRedis.evtOnMessage(SubscriberRedis.java:99)
+	at com.planetbiru.subscriber.redis.ClientThread$2.onMessage(ClientThread.java:70)
+	at redis.clients.jedis.JedisPubSub.process(JedisPubSub.java:142)
+	at redis.clients.jedis.JedisPubSub.proceed(JedisPubSub.java:115)
+	at redis.clients.jedis.Jedis.subscribe(Jedis.java:2680)
+	at com.planetbiru.subscriber.redis.ClientThread.run(ClientThread.java:66)
+2021-09-24 23:29:20 [ERROR ] MessageAPI                      :89   - Can not parse : TEST
+2021-09-25 08:56:30 [INFO  ] Application                     :184  - Service started
+2021-09-25 08:57:31 [ERROR ] MessageAPI                      :88   - A JSONObject text must begin with '{' at 1 [character 2 line 1]
+2021-09-25 08:58:31 [ERROR ] MessageAPI                      :88   - A JSONObject text must begin with '{' at 1 [character 2 line 1]
+2021-09-25 10:53:04 [INFO  ] Application                     :184  - Service started
+2021-09-25 16:27:33 [INFO  ] Application                     :184  - Service started
+2021-09-25 16:28:05 [ERROR ] MessageAPI                      :88   - A JSONObject text must begin with '{' at 1 [character 2 line 1]
