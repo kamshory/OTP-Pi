@@ -93,6 +93,7 @@ public class ClientThread extends Thread {
 		{
 			subscriberRedis.connected = false;
 		}
+		subscriberRedis.connected = false;
 	}
 
 	public void ping() {

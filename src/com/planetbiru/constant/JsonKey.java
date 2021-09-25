@@ -86,6 +86,10 @@ public class JsonKey {
 	public static final String AMQP                       = "amqp";
 	public static final String REDIS                      = "redis";
 	public static final String DATETIME                   = "datetime";
+	public static final String PARAM1                     = "param1";
+	public static final String PARAM2                     = "param2";
+	public static final String PARAM3                     = "param3";
+	public static final String PARAM4                     = "param4";
 	
 	private JsonKey()
 	{

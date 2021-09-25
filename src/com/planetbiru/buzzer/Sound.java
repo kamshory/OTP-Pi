@@ -95,7 +95,7 @@ public class Sound extends Thread {
 			return 0;
 		}
 		tone = tone.toUpperCase();		
-		double idx = (double) Stat.getList().indexOf(tone);
+		double idx = Stat.getList().indexOf(tone);
 		idx-=9;		
 		idx += (octav * 12);
 		return (440 * Math.pow(2, idx/12));
