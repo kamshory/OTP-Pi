@@ -13,13 +13,13 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;
 import redis.clients.jedis.exceptions.JedisConnectionException;
 
-public class ClientThread extends Thread {
+public class RedisClientThread extends Thread {
 	
 	private Jedis subscriber;
 	private SubscriberRedis subscriberRedis;
 	private boolean running = false;
 
-	public ClientThread(SubscriberRedis subscriberRedis) {
+	public RedisClientThread(SubscriberRedis subscriberRedis) {
 		this.setSubscriberRedis(subscriberRedis);
 	}
 
@@ -43,10 +43,10 @@ public class ClientThread extends Thread {
 			SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
 		    SSLParameters sslParameters = new SSLParameters();		    
 		    final HostnameVerifier allHostsValid = new HostnameVerifier() {   
-		           public boolean verify(String hostname, SSLSession session) {   
-		               return true;   
-		           }   
-		       };
+				public boolean verify(String hostname, SSLSession session) {   
+					return true;   
+				}   
+		    };
 			this.setSubscriber(new Jedis(host, port, ssl, sslSocketFactory, sslParameters, allHostsValid)); 	
 		}
 		
@@ -91,9 +91,9 @@ public class ClientThread extends Thread {
 		}
 		catch(JedisConnectionException e)
 		{
-			subscriberRedis.connected = false;
+			this.subscriberRedis.connected = false;
 		}
-		subscriberRedis.connected = false;
+		this.subscriberRedis.connected = false;
 	}
 
 	public void ping() {

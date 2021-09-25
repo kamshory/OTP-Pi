@@ -11,7 +11,7 @@ public class SubscriberRedis extends Thread {
 	private boolean running = true;
 
 	private boolean pong = false;
-	private ClientThread clientThread;
+	private RedisClientThread clientThread;
 
 	@Override
 	public void run()
@@ -53,7 +53,7 @@ public class SubscriberRedis extends Thread {
 	}
 
 	private void connect() {
-		this.clientThread = new ClientThread(this);
+		this.clientThread = new RedisClientThread(this);
 		this.clientThread.start();
 	}
 	public boolean ping(long timeout)
