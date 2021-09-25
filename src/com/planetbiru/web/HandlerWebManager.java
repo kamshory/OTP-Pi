@@ -869,6 +869,7 @@ public class HandlerWebManager implements HttpHandler {
 			boolean lHttpEnable = queryPairs.getOrDefault("http_enable", "").trim().equals("1");
 			boolean lHttpsEnable = queryPairs.getOrDefault("https_enable", "").trim().equals("1");
 			
+			String lOTPPath = queryPairs.getOrDefault("otp_path", "").trim();
 			String lMessagePath = queryPairs.getOrDefault("message_path", "").trim();
 			String lSMSPath = queryPairs.getOrDefault("sms_path", "").trim();
 			String lEmailPath = queryPairs.getOrDefault("email_path", "").trim();
@@ -881,6 +882,7 @@ public class HandlerWebManager implements HttpHandler {
 			config.put("httpEnable", lHttpEnable);
 			config.put("httpsEnable", lHttpsEnable);
 			config.put("messagePath", lMessagePath);
+			config.put("otpPath", lOTPPath);
 			config.put("smsPath", lSMSPath);
 			config.put("emailPath", lEmailPath);
 			config.put("blockingPath", lBlockingPath);

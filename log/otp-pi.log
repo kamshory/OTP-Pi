@@ -18810,3 +18810,5 @@ org.json.JSONException: A JSONObject text must begin with '{' at 1 [character 2 
 2021-09-25 22:59:55 [INFO  ] GSM                             :122  - Execute AT Command : AT+CSCA
 2021-09-25 23:00:21 [INFO  ] Application                     :185  - Service started
 2021-09-26 05:37:26 [INFO  ] Application                     :185  - Service started
+2021-09-26 06:27:55 [INFO  ] Application                     :185  - Service started
+2021-09-26 06:33:30 [INFO  ] Application                     :185  - Service started

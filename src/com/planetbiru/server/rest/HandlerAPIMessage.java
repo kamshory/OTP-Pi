@@ -16,6 +16,7 @@ import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.constant.ResponseCode;
 import com.planetbiru.util.Utility;
+import com.planetbiru.web.HttpMethod;
 import com.planetbiru.web.HttpUtil;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
@@ -31,7 +32,7 @@ public class HandlerAPIMessage implements HttpHandler {
         {
         	if(HandlerAPIMessage.isValidRequest(requestHeaders))
            	{
-           		if(httpExchange.getRequestMethod().equalsIgnoreCase("POST") || httpExchange.getRequestMethod().equalsIgnoreCase("PUT"))
+           		if(httpExchange.getRequestMethod().equalsIgnoreCase(HttpMethod.POST) || httpExchange.getRequestMethod().equalsIgnoreCase(HttpMethod.PUT))
     	        {
     	            byte[] requestBody = HttpUtil.getRequestBody(httpExchange);
     	            String requestBodyStr = new String(requestBody);     
