@@ -35,15 +35,29 @@ Applications that run on desktops and laptops of course require high investment 
 
 OTP-Pi answers all of the above challenges. With a very cheap device, users can have an SMS gateway that provides many features and can be operated at a very low cost.
 
-![Support](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/support.png)
-
 OTP-Pi is a server for sending SMS via HTTP, WebSocket and Message Broker protocols. Users can install OTP-Pi on the server with a static IP address that can be accessed by clients who will send SMS. In addition, users can also install OTP-Pi on servers with dynamic IP addresses. This server then accesses a websocket server, RabbitMQ server or Mosquitto server. OTP-Pi acts as a consumer that will send all SMS it receives.
+
+To publish message using PHP to RabbitMQ, Mosquitto and Redis, see example on https://github.com/kamshory/OTP-Publisher 
 
 # System Requirement
 
 OTP-Pi requires Raspberry Pi 3 Model B or higher. Minimum RAM is 1 GB and SD Card minimum is 16 GB. 32GB SD Card is recommended. Power supply 5 Volt 3 Ampre to prevent the Raspberry Pi from operating with under voltage. RTC DS3231 installed on Raspberry Pi.
 
 # Features
+
+## Multiple Method
+
+User can send OTP with several methods. OTP-Pi allow user to create and validate OTP via REST API or just send SMS or email contains OTP code via RabbitMQ,Redis, Mosquitto and WebSocket.
+
+![Support](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/support.png)
+
+| Method | Send SMS | Send Email | Block MSISDN | Unblock MSISDN | Create OTP | Validate OTP |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | 
+| REST API | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| RabbitMQ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ |
+| Redis | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ |
+| Mosquitto | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ |
+| WebSocket | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ |
 
 ## Multiple Device
 
@@ -73,7 +87,7 @@ Telecommunications Operator 4 applies a fee of IDR 90 for numbers with prefixes 
 
 From the case above, the lowest cost for other operators is IDR 200. Users can set modem 4 as the default modem. All SMS other than the prefixes `62871`, `62872`, `62835`, `62856`, `62837` and `62845` will use this modem and are sent via Telecommunications Operator 4. All SMS for numbers with prefixes `62871` and ` 62872` uses modem 1 and is sent via Telecommunication Operator 1. All SMS for numbers with prefix `62835`, `62856`, and `62837` use modem 2 and are sent via Telecommunication Operator 2. All SMS for numbers with prefix `62845` use modem 3 and sent via Telecommunication Operator 3. Thus, the cost of sending SMS will be reduced.
 
-![Prefix-Based Routing](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/prefix-based-routing.png)
+![Prefix-Based Routing](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/full-diagram.png)
 
 Users can use 2 or more SIM cards from the same operator. The modem will be used interchangeably with the Round-Robin algorithm when OTP-Pi sends SMS to numbers with the same prefix.
 
@@ -207,7 +221,7 @@ OTP-Pi provides an option if this device is installed on a mobile internet netwo
 | Topic | Topic or channel of subscribsion | 
 | Timeout | Request time out |
 | Reconnect Delay | Delay to reconnect |
-| Refresh Connection | Refresh RabbitMQ connection |
+| Refresh Connection | Refresh Redis connection |
 
 **Mosquitto**
 
@@ -545,10 +559,10 @@ RESET_API_USER = false
 RESET_BLOCKING = false
 RESET_DDNS = false
 RESET_EMAIL = false
-RESET_FEEDER_AMQP = false
-RESET_FEEDER_REDIS = false
-RESET_FEEDER_MQTT = false
-RESET_FEEDER_WS = false
+RESET_SUBSCRIBER_AMQP = false
+RESET_SUBSCRIBER_MQTT = false
+RESET_SUBSCRIBER_REDIS = false
+RESET_SUBSCRIBER_WS = false
 RESET_FIREWALL = false
 RESET_KEYSTORE = false
 RESET_MODEM = false
@@ -579,14 +593,15 @@ Reset device will do the following things:
 3. RESET_BLOCKING 
 4. RESET_DDNS 
 5. RESET_EMAIL 
-6. RESET_FEEDER_AMQP 
-7. RESET_FEEDER_MQTT
-8. RESET_FEEDER_WS 
-9. RESET_FIREWALL 
-10. RESET_KEYSTORE 
-11. RESET_MODEM 
-12. RESET_SMS 
-13. RESET_SMTP 
+6. RESET_SUBSCRIBER_AMQP 
+7. RESET_SUBSCRIBER_MQTT
+8. RESET_SUBSCRIBER_REDIS
+9. RESET_SUBSCRIBER_WS 
+10. RESET_FIREWALL 
+11. RESET_KEYSTORE 
+12. RESET_MODEM 
+13. RESET_SMS 
+14. RESET_SMTP 
 
 **C. Vendor Configuration**
 

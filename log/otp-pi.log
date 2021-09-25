@@ -7500,8 +7500,10 @@ java.net.BindException: Address already in use: bind
 2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message AT+CG
 2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message S
 2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message N
-2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message 
-2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message 
+2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message 
+
+2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message 
+
 2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message 
 
 2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message 8
@@ -7519,15 +7521,18 @@ java.net.BindException: Address already in use: bind
 2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message 0
 2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message 4
 2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message 3
-2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message 
 2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message 
 
-2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message 
+2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message 
+
+2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message 
+
 2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message 
 
 2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message O
 2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message K
-2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message 
+2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message 
+
 2021-09-15 19:28:53 [INFO  ] GSM                             :461  - Receive Message 
 
 2021-09-15 19:28:54 [INFO  ] GSM                             :156  - Result : 
@@ -7542,8 +7547,10 @@ java.net.BindException: Address already in use: bind
 2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message I
 2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message M
 2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message I
-2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message 
-2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message 
+2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message 
+
+2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message 
+
 2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message 
 
 2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message E
@@ -7551,7 +7558,8 @@ java.net.BindException: Address already in use: bind
 2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message R
 2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message O
 2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message R
-2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message 
+2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message 
+
 2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message 
 
 2021-09-15 19:28:54 [INFO  ] GSM                             :156  - Result : 
@@ -7565,8 +7573,10 @@ java.net.BindException: Address already in use: bind
 2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message C
 2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message I
 2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message D
-2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message 
-2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message 
+2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message 
+
+2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message 
+
 2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message 
 
 2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message E
@@ -7574,7 +7584,8 @@ java.net.BindException: Address already in use: bind
 2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message R
 2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message O
 2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message R
-2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message 
+2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message 
+
 2021-09-15 19:28:54 [INFO  ] GSM                             :461  - Receive Message 
 
 2021-09-15 19:28:55 [INFO  ] GSM                             :156  - Result : 
@@ -7588,8 +7599,10 @@ java.net.BindException: Address already in use: bind
 2021-09-15 19:28:55 [INFO  ] GSM                             :461  - Receive Message N
 2021-09-15 19:28:55 [INFO  ] GSM                             :461  - Receive Message U
 2021-09-15 19:28:55 [INFO  ] GSM                             :461  - Receive Message M
-2021-09-15 19:28:55 [INFO  ] GSM                             :461  - Receive Message 
-2021-09-15 19:28:55 [INFO  ] GSM                             :461  - Receive Message 
+2021-09-15 19:28:55 [INFO  ] GSM                             :461  - Receive Message 
+
+2021-09-15 19:28:55 [INFO  ] GSM                             :461  - Receive Message 
+
 2021-09-15 19:28:55 [INFO  ] GSM                             :461  - Receive Message 
 
 2021-09-15 19:28:55 [INFO  ] GSM                             :461  - Receive Message E
@@ -7597,7 +7610,8 @@ java.net.BindException: Address already in use: bind
 2021-09-15 19:28:55 [INFO  ] GSM                             :461  - Receive Message R
 2021-09-15 19:28:55 [INFO  ] GSM                             :461  - Receive Message O
 2021-09-15 19:28:55 [INFO  ] GSM                             :461  - Receive Message R
-2021-09-15 19:28:55 [INFO  ] GSM                             :461  - Receive Message 
+2021-09-15 19:28:55 [INFO  ] GSM                             :461  - Receive Message 
+
 2021-09-15 19:28:55 [INFO  ] GSM                             :461  - Receive Message 
 
 2021-09-15 19:28:55 [INFO  ] GSM                             :156  - Result : 
@@ -7613,8 +7627,10 @@ java.net.BindException: Address already in use: bind
 2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message G
 2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message S
 2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message N
-2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message 
-2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message 
+2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message 
+
+2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message 
+
 2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message 
 
 2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message 8
@@ -7629,15 +7645,18 @@ java.net.BindException: Address already in use: bind
 2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message 0
 2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message 4
 2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message 3
-2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message 
 2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message 
 
-2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message 
+2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message 
+
+2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message 
+
 2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message 
 
 2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message O
 2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message K
-2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message 
+2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message 
+
 2021-09-15 19:30:27 [INFO  ] GSM                             :461  - Receive Message 
 
 2021-09-15 19:30:28 [INFO  ] GSM                             :156  - Result : 
@@ -7654,8 +7673,10 @@ java.net.BindException: Address already in use: bind
 2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message G
 2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message S
 2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message N
-2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message 
-2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message 
+2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message 
+
+2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message 
+
 2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message 
 
 2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message 8
@@ -7670,15 +7691,18 @@ java.net.BindException: Address already in use: bind
 2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message 0
 2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message 4
 2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message 3
-2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message 
 2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message 
 
-2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message 
+2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message 
+
+2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message 
+
 2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message 
 
 2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message O
 2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message K
-2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message 
+2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message 
+
 2021-09-15 19:31:51 [INFO  ] GSM                             :462  - Receive Message 
 
 2021-09-15 19:31:51 [INFO  ] GSM                             :157  - Result : 
@@ -7740,8 +7764,10 @@ java.net.BindException: Address already in use: bind
 2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message G
 2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message S
 2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message N
-2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message 
-2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message 
+2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message 
+
+2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message 
+
 2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message 
 
 2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message 8
@@ -7759,15 +7785,18 @@ java.net.BindException: Address already in use: bind
 2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message 0
 2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message 4
 2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message 3
-2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message 
 2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message 
 
-2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message 
+2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message 
+
+2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message 
+
 2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message 
 
 2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message O
 2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message K
-2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message 
+2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message 
+
 2021-09-15 19:42:36 [INFO  ] GSM                             :464  - Receive Message 
 
 2021-09-15 19:42:36 [INFO  ] GSM                             :139  - Waiting...
@@ -7805,8 +7834,10 @@ java.net.BindException: Address already in use: bind
 2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message G
 2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message S
 2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message N
-2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message 
-2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message 
+2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message 
+
+2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message 
+
 2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message 
 
 2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message 8
@@ -7824,15 +7855,18 @@ java.net.BindException: Address already in use: bind
 2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message 0
 2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message 4
 2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message 3
-2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message 
 2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message 
 
-2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message 
+2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message 
+
+2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message 
+
 2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message 
 
 2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message O
 2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message K
-2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message 
+2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message 
+
 2021-09-15 19:46:01 [INFO  ] GSM                             :465  - Receive Message 
 
 2021-09-15 19:46:02 [INFO  ] GSM                             :140  - Waiting...
@@ -7878,8 +7912,10 @@ java.net.BindException: Address already in use: bind
 2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message C
 2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message G
 2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message S
-2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message N
-2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message 
+2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message N
+
+2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message 
+
 2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message 
 
 2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message 8
@@ -7897,15 +7933,18 @@ java.net.BindException: Address already in use: bind
 2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message 0
 2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message 4
 2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message 3
-2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message 
 2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message 
 
-2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message 
+2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message 
+
+2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message 
+
 2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message 
 
 2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message O
 2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message K
-2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message 
+2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message 
+
 2021-09-15 19:50:49 [INFO  ] GSM                             :470  - Receive Message 
 
 2021-09-15 19:50:50 [INFO  ] GSM                             :140  - Waiting...
@@ -7927,12 +7966,14 @@ java.net.BindException: Address already in use: bind
 2021-09-15 19:50:58 [INFO  ] GSM                             :140  - Waiting...
 2021-09-15 19:50:58 [INFO  ] GSM                             :140  - Waiting...
 2021-09-15 19:50:59 [INFO  ] GSM                             :140  - Waiting...
-2021-09-15 19:50:59 [INFO  ] GSM                             :164  - Result : AT+CGSN
+2021-09-15 19:50:59 [INFO  ] GSM                             :164  - Result : AT+CGSN
+
 865691033340043
 
 OK
 
-2021-09-15 19:50:59 [INFO  ] GSM                             :419  - result = AT+CGSN
+2021-09-15 19:50:59 [INFO  ] GSM                             :419  - result = AT+CGSN
+
 865691033340043
 
 OK
@@ -7953,8 +7994,10 @@ OK
 2021-09-15 19:55:16 [INFO  ] GSM                             :476  - Receive Message C
 2021-09-15 19:55:16 [INFO  ] GSM                             :476  - Receive Message G
 2021-09-15 19:55:16 [INFO  ] GSM                             :476  - Receive Message S
-2021-09-15 19:55:17 [INFO  ] GSM                             :476  - Receive Message N
-2021-09-15 19:55:17 [INFO  ] GSM                             :476  - Receive Message 
+2021-09-15 19:55:17 [INFO  ] GSM                             :476  - Receive Message N
+
+2021-09-15 19:55:17 [INFO  ] GSM                             :476  - Receive Message 
+
 2021-09-15 19:55:17 [INFO  ] GSM                             :476  - Receive Message 
 
 2021-09-15 19:55:17 [INFO  ] GSM                             :476  - Receive Message 8
@@ -7972,15 +8015,18 @@ OK
 2021-09-15 19:55:17 [INFO  ] GSM                             :476  - Receive Message 0
 2021-09-15 19:55:17 [INFO  ] GSM                             :476  - Receive Message 4
 2021-09-15 19:55:17 [INFO  ] GSM                             :476  - Receive Message 3
-2021-09-15 19:55:17 [INFO  ] GSM                             :476  - Receive Message 
 2021-09-15 19:55:17 [INFO  ] GSM                             :476  - Receive Message 
 
-2021-09-15 19:55:17 [INFO  ] GSM                             :476  - Receive Message 
+2021-09-15 19:55:17 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 19:55:17 [INFO  ] GSM                             :476  - Receive Message 
+
 2021-09-15 19:55:17 [INFO  ] GSM                             :476  - Receive Message 
 
 2021-09-15 19:55:17 [INFO  ] GSM                             :476  - Receive Message O
 2021-09-15 19:55:17 [INFO  ] GSM                             :476  - Receive Message K
-2021-09-15 19:55:17 [INFO  ] GSM                             :476  - Receive Message 
+2021-09-15 19:55:17 [INFO  ] GSM                             :476  - Receive Message 
+
 2021-09-15 19:55:17 [INFO  ] GSM                             :476  - Receive Message 
 
 2021-09-15 19:55:17 [INFO  ] GSM                             :140  - Waiting...
@@ -8002,7 +8048,8 @@ OK
 2021-09-15 19:55:25 [INFO  ] GSM                             :140  - Waiting...
 2021-09-15 19:55:26 [INFO  ] GSM                             :140  - Waiting...
 2021-09-15 19:55:26 [INFO  ] GSM                             :140  - Waiting...
-2021-09-15 19:55:27 [INFO  ] GSM                             :164  - Result : AT+CGSN
+2021-09-15 19:55:27 [INFO  ] GSM                             :164  - Result : AT+CGSN
+
 865691033340043
 
 OK
@@ -8019,8 +8066,10 @@ OK
 2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message G
 2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message S
 2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message N
-2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message 
-2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message 
+2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message 
+
 2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message 
 
 2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message 8
@@ -8038,15 +8087,18 @@ OK
 2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message 0
 2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message 4
 2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message 3
-2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message 
 2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message 
 
-2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message 
+2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message 
+
 2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message 
 
 2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message O
 2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message K
-2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message 
+2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message 
+
 2021-09-15 19:56:55 [INFO  ] GSM                             :476  - Receive Message 
 
 2021-09-15 19:56:55 [INFO  ] GSM                             :140  - Waiting...
@@ -8068,7 +8120,8 @@ OK
 2021-09-15 19:57:03 [INFO  ] GSM                             :140  - Waiting...
 2021-09-15 19:57:04 [INFO  ] GSM                             :140  - Waiting...
 2021-09-15 19:57:04 [INFO  ] GSM                             :140  - Waiting...
-2021-09-15 19:57:05 [INFO  ] GSM                             :164  - Result : AT+CGSN
+2021-09-15 19:57:05 [INFO  ] GSM                             :164  - Result : AT+CGSN
+
 865691033340043
 
 OK
@@ -8090,8 +8143,10 @@ OK
 2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message C
 2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message G
 2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message S
-2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message N
-2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message 
+2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message N
+
+2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message 
+
 2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message 
 
 2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message 8
@@ -8109,18 +8164,22 @@ OK
 2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message 0
 2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message 4
 2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message 3
-2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message 
 2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message 
 
-2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message 
+2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message 
+
 2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message 
 
 2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message O
 2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message K
-2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message 
 2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message 
 
-2021-09-15 19:58:18 [INFO  ] GSM                             :164  - Result : AT+CGSN
+2021-09-15 19:58:17 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 19:58:18 [INFO  ] GSM                             :164  - Result : AT+CGSN
+
 865691033340043
 
 OK
@@ -8162,8 +8221,10 @@ OK
 2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message G
 2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message S
 2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message N
-2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message 
-2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message 
+2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message 
+
 2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message 
 
 2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message 8
@@ -8181,18 +8242,22 @@ OK
 2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message 0
 2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message 4
 2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message 3
-2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message 
 2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message 
 
-2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message 
+2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message 
+
 2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message 
 
 2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message O
 2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message K
-2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message 
 2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message 
 
-2021-09-15 19:59:33 [INFO  ] GSM                             :164  - Result : AT+CGSN
+2021-09-15 19:59:32 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 19:59:33 [INFO  ] GSM                             :164  - Result : AT+CGSN
+
 865691033340043
 
 OK
@@ -8214,8 +8279,10 @@ OK
 2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message G
 2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message S
 2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message N
-2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message 
-2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message 
+2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message 
+
 2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message 
 
 2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message 8
@@ -8230,18 +8297,22 @@ OK
 2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message 0
 2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message 4
 2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message 3
-2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message 
 2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message 
 
-2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message 
+2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message 
+
 2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message 
 
 2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message O
 2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message K
-2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message 
 2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message 
 
-2021-09-15 20:03:26 [INFO  ] GSM                             :164  - Result : AT+CGSN
+2021-09-15 20:03:25 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 20:03:26 [INFO  ] GSM                             :164  - Result : AT+CGSN
+
 865691033340043
 
 OK
@@ -8257,8 +8328,10 @@ OK
 2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message G
 2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message S
 2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message N
-2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message 
-2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message 
+2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message 
+
 2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message 
 
 2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message 8
@@ -8276,18 +8349,22 @@ OK
 2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message 0
 2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message 4
 2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message 3
-2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message 
 2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message 
 
-2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message 
+2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message 
+
 2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message 
 
 2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message O
 2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message K
-2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message 
 2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message 
 
-2021-09-15 20:03:34 [INFO  ] GSM                             :164  - Result : AT+CGSN
+2021-09-15 20:03:33 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 20:03:34 [INFO  ] GSM                             :164  - Result : AT+CGSN
+
 865691033340043
 
 OK
@@ -8318,8 +8395,10 @@ OK
 2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message G
 2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message S
 2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message N
-2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message 
-2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message 
+2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message 
+
 2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message 
 
 2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message 8
@@ -8335,18 +8414,22 @@ OK
 2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message 0
 2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message 4
 2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message 3
-2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message 
 2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message 
 
-2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message 
+2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message 
+
 2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message 
 
 2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message O
 2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message K
-2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message 
 2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message 
 
-2021-09-15 20:06:20 [INFO  ] GSM                             :164  - Result : AT+CGSN
+2021-09-15 20:06:20 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 20:06:20 [INFO  ] GSM                             :164  - Result : AT+CGSN
+
 865691033340043
 
 OK
@@ -8365,8 +8448,10 @@ OK
 2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message G
 2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message S
 2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message N
-2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 
-2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 
+2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 
+
 2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 
 
 2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 8
@@ -8381,18 +8466,22 @@ OK
 2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 0
 2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 4
 2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 3
-2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 
 2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 
 
-2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 
+2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 
+
 2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 
 
 2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message O
 2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message K
-2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 
 2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 
 
-2021-09-15 20:08:33 [INFO  ] GSM                             :164  - Result : AT+CGSN
+2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 20:08:33 [INFO  ] GSM                             :164  - Result : AT+CGSN
+
 865691033340043
 
 OK
@@ -8408,8 +8497,10 @@ OK
 2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message I
 2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message M
 2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message I
-2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 
-2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 
+2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 
+
 2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 
 
 2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message E
@@ -8417,10 +8508,12 @@ OK
 2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message R
 2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message O
 2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message R
-2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 
 2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 
 
-2021-09-15 20:08:34 [INFO  ] GSM                             :164  - Result : AT+CIMI
+2021-09-15 20:08:33 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 20:08:34 [INFO  ] GSM                             :164  - Result : AT+CIMI
+
 ERROR
 
 2021-09-15 20:08:34 [INFO  ] GSM                             :125  - AT Command : AT+CCID
@@ -8433,8 +8526,10 @@ ERROR
 2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message C
 2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message I
 2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message D
-2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message 
-2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message 
+2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message 
+
 2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message 
 
 2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message E
@@ -8442,10 +8537,12 @@ ERROR
 2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message R
 2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message O
 2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message R
-2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message 
 2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message 
 
-2021-09-15 20:08:34 [INFO  ] GSM                             :164  - Result : AT+CCID
+2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 20:08:34 [INFO  ] GSM                             :164  - Result : AT+CCID
+
 ERROR
 
 2021-09-15 20:08:34 [INFO  ] GSM                             :125  - AT Command : AT+CNUM
@@ -8458,8 +8555,10 @@ ERROR
 2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message N
 2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message U
 2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message M
-2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message 
-2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message 
+2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message 
+
 2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message 
 
 2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message E
@@ -8467,10 +8566,12 @@ ERROR
 2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message R
 2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message O
 2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message R
-2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message 
 2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message 
 
-2021-09-15 20:08:35 [INFO  ] GSM                             :164  - Result : AT+CNUM
+2021-09-15 20:08:34 [INFO  ] GSM                             :476  - Receive Message 
+
+2021-09-15 20:08:35 [INFO  ] GSM                             :164  - Result : AT+CNUM
+
 ERROR
 
 2021-09-15 20:12:05 [INFO  ] GSM                             :40   - Connecting to COM7
@@ -8896,7 +8997,8 @@ ERROR
 2021-09-16 06:48:28 [INFO  ] Application                     :195  - Service started
 2021-09-16 06:48:34 [INFO  ] GSM                             :695  - BUFFER : 
 2021-09-16 06:48:34 [INFO  ] GSM                             :695  - BUFFER : 
-2021-09-16 06:48:34 [INFO  ] GSM                             :695  - BUFFER : AT+CGMI
+2021-09-16 06:48:34 [INFO  ] GSM                             :695  - BUFFER : AT+CGMI
+
 SIMCOM_Ltd
 
 OK
@@ -8904,7 +9006,8 @@ OK
 2021-09-16 06:48:34 [INFO  ] GSM                             :695  - BUFFER : 
 2021-09-16 06:48:34 [INFO  ] GSM                             :695  - BUFFER : 
 2021-09-16 06:48:34 [INFO  ] GSM                             :695  - BUFFER : 
-2021-09-16 06:48:34 [INFO  ] GSM                             :695  - BUFFER : AT+CGMM
+2021-09-16 06:48:34 [INFO  ] GSM                             :695  - BUFFER : AT+CGMM
+
 SIMCOM_SIM800L
 
 OK
@@ -8912,7 +9015,8 @@ OK
 2021-09-16 06:48:34 [INFO  ] GSM                             :695  - BUFFER : 
 2021-09-16 06:48:34 [INFO  ] GSM                             :695  - BUFFER : 
 2021-09-16 06:48:34 [INFO  ] GSM                             :695  - BUFFER : 
-2021-09-16 06:48:34 [INFO  ] GSM                             :695  - BUFFER : AT+CGMR
+2021-09-16 06:48:34 [INFO  ] GSM                             :695  - BUFFER : AT+CGMR
+
 Revision:1418B04SIM800L24
 
 OK
@@ -8920,7 +9024,8 @@ OK
 2021-09-16 06:48:34 [INFO  ] GSM                             :695  - BUFFER : 
 2021-09-16 06:48:34 [INFO  ] GSM                             :695  - BUFFER : 
 2021-09-16 06:48:34 [INFO  ] GSM                             :695  - BUFFER : 
-2021-09-16 06:48:35 [INFO  ] GSM                             :695  - BUFFER : AT+CGSN
+2021-09-16 06:48:35 [INFO  ] GSM                             :695  - BUFFER : AT+CGSN
+
 864562030217396
 
 OK
@@ -8928,7 +9033,8 @@ OK
 2021-09-16 06:48:35 [INFO  ] GSM                             :695  - BUFFER : 
 2021-09-16 06:48:35 [INFO  ] GSM                             :695  - BUFFER : 
 2021-09-16 06:48:35 [INFO  ] GSM                             :695  - BUFFER : 
-2021-09-16 06:48:35 [INFO  ] GSM                             :695  - BUFFER : AT+CIMI
+2021-09-16 06:48:35 [INFO  ] GSM                             :695  - BUFFER : AT+CIMI
+
 510106913401164
 
 OK
@@ -8936,7 +9042,8 @@ OK
 2021-09-16 06:48:35 [INFO  ] GSM                             :695  - BUFFER : 
 2021-09-16 06:48:35 [INFO  ] GSM                             :695  - BUFFER : 
 2021-09-16 06:48:35 [INFO  ] GSM                             :695  - BUFFER : 
-2021-09-16 06:48:35 [INFO  ] GSM                             :695  - BUFFER : AT+CCID
+2021-09-16 06:48:35 [INFO  ] GSM                             :695  - BUFFER : AT+CCID
+
 8962101069134011648f
 
 OK
@@ -8944,13 +9051,15 @@ OK
 2021-09-16 06:48:35 [INFO  ] GSM                             :695  - BUFFER : 
 2021-09-16 06:48:35 [INFO  ] GSM                             :695  - BUFFER : 
 2021-09-16 06:48:35 [INFO  ] GSM                             :695  - BUFFER : 
-2021-09-16 06:48:35 [INFO  ] GSM                             :695  - BUFFER : AT+CNUM
+2021-09-16 06:48:35 [INFO  ] GSM                             :695  - BUFFER : AT+CNUM
+
 OK
 
 2021-09-16 06:48:35 [INFO  ] GSM                             :695  - BUFFER : 
 2021-09-16 06:48:35 [INFO  ] GSM                             :695  - BUFFER : 
 2021-09-16 06:48:35 [INFO  ] GSM                             :695  - BUFFER : 
-2021-09-16 06:48:35 [INFO  ] GSM                             :695  - BUFFER : AT+COPS?
+2021-09-16 06:48:35 [INFO  ] GSM                             :695  - BUFFER : AT+COPS?
+
 +COPS: 0,0,"TELKOMSEL"
 
 OK
@@ -9833,7 +9942,8 @@ OK
 2021-09-16 09:12:52 [INFO  ] GSM                             :40   - Connecting to COM7
 2021-09-16 09:12:52 [INFO  ] Application                     :195  - Service started
 2021-09-16 09:13:08 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
-2021-09-16 09:13:08 [INFO  ] GSM                             :409  - msg1 = ATE0
+2021-09-16 09:13:08 [INFO  ] GSM                             :409  - msg1 = ATE0
+
 OK
 
 2021-09-16 09:13:08 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
@@ -9862,7 +9972,8 @@ ERROR
 2021-09-16 09:14:02 [INFO  ] GSM                             :40   - Connecting to COM7
 2021-09-16 09:14:02 [INFO  ] Application                     :195  - Service started
 2021-09-16 09:14:08 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
-2021-09-16 09:14:08 [INFO  ] GSM                             :409  - msg1 = ATE0
+2021-09-16 09:14:08 [INFO  ] GSM                             :409  - msg1 = ATE0
+
 OK
 
 2021-09-16 09:14:08 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
@@ -9893,15 +10004,16 @@ OK
 2021-09-16 09:14:47 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
 2021-09-16 09:14:47 [INFO  ] GSM                             :411  - msg2 = 
 2021-09-16 09:14:47 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGF=1
-2021-09-16 09:14:47 [INFO  ] GSM                             :413  - msg3 = }W«{mww½½íë
+2021-09-16 09:14:47 [INFO  ] GSM                             :413  - msg3 = }Wï¿½{mwwï¿½ï¿½ï¿½ï¿½
 2021-09-16 09:14:47 [INFO  ] GSM                             :128  - Execute AT Command : AT+CMGW="+6281266612126"
-2021-09-16 09:14:47 [INFO  ] GSM                             :415  - msg4 = }W«{mwW½»«·»¿½»···ÿ
+2021-09-16 09:14:47 [INFO  ] GSM                             :415  - msg4 = }Wï¿½{mwWï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 2021-09-16 09:14:47 [INFO  ] GSM                             :128  - Execute AT Command : kfiuqfqfqf
 2021-09-16 09:14:48 [INFO  ] GSM                             :417  - msg5 = 
 2021-09-16 09:14:48 [INFO  ] GSM                             :128  - Execute AT Command : 
 2021-09-16 09:14:49 [INFO  ] GSM                             :419  - msg6 = 
 2021-09-16 09:15:04 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
-2021-09-16 09:15:04 [INFO  ] GSM                             :409  - msg1 = ATE0
+2021-09-16 09:15:04 [INFO  ] GSM                             :409  - msg1 = ATE0
+
 OK
 
 2021-09-16 09:15:04 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
@@ -9942,7 +10054,8 @@ OK
 2021-09-16 09:16:10 [INFO  ] GSM                             :40   - Connecting to COM7
 2021-09-16 09:16:10 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
 2021-09-16 09:16:10 [INFO  ] Application                     :195  - Service started
-2021-09-16 09:16:10 [INFO  ] GSM                             :409  - msg1 = ATE0
+2021-09-16 09:16:10 [INFO  ] GSM                             :409  - msg1 = ATE0
+
 OK
 
 2021-09-16 09:16:10 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
@@ -10020,7 +10133,8 @@ ERROR
 2021-09-16 09:28:57 [INFO  ] GSM                             :40   - Connecting to COM7
 2021-09-16 09:28:57 [INFO  ] Application                     :195  - Service started
 2021-09-16 09:29:23 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
-2021-09-16 09:29:24 [INFO  ] GSM                             :411  - msg1 = ATE0
+2021-09-16 09:29:24 [INFO  ] GSM                             :411  - msg1 = ATE0
+
 OK
 
 2021-09-16 09:29:24 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
@@ -10864,7 +10978,7 @@ OK
     "imsi": "510106913401164",
     "msisdn": "",
     "smsCenter": "",
-    "operatorSelect": "}W«{o_[¿íë",
+    "operatorSelect": "}Wï¿½{o_[ï¿½ï¿½ï¿½",
     "manufacturer": "SIMCOM_Ltd",
     "revision": "Revision:1418B04SIM800L24"
 }
@@ -10903,7 +11017,7 @@ OK
 2021-09-16 13:02:29 [INFO  ] GSMUtil                         :553  - info = {
     "iccid": "",
     "networkRegistration": "",
-    "imei": "}W«{w[oíë",
+    "imei": "}Wï¿½{w[oï¿½ï¿½",
     "model": "",
     "imsi": "",
     "msisdn": "",
@@ -11269,10 +11383,10 @@ OK
     "model": "",
     "imsi": "",
     "msisdn": "",
-    "smsCenter": "ÿ",
+    "smsCenter": "ï¿½",
     "operatorSelect": "",
     "manufacturer": "",
-    "revision": "}W«{wm[íë"
+    "revision": "}Wï¿½{wm[ï¿½ï¿½"
 }
 2021-09-16 15:27:40 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMI
 2021-09-16 15:27:40 [INFO  ] GSM                             :128  - Execute AT Command : AT+CGMM
@@ -11485,7 +11599,7 @@ OK
 2021-09-16 15:28:10 [INFO  ] GSMUtil                         :553  - info = {
     "iccid": "",
     "networkRegistration": "",
-    "imei": "}W«{w[oíë",
+    "imei": "}Wï¿½{w[oï¿½ï¿½",
     "model": "",
     "imsi": "",
     "msisdn": "",
@@ -11624,7 +11738,7 @@ OK
     "imei": "864562030217396",
     "model": "SIMCOM_SIM800L",
     "imsi": "510106913401164",
-    "msisdn": "}W«{oUmíë",
+    "msisdn": "}Wï¿½{oUmï¿½ï¿½",
     "smsCenter": "",
     "operatorSelect": "",
     "manufacturer": "SIMCOM_Ltd",
@@ -12091,7 +12205,8 @@ OK
 2021-09-16 15:53:39 [INFO  ] GSM                             :128  - Execute AT Command : AT+COPS?
 2021-09-16 15:53:39 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCA
 2021-09-16 15:54:32 [INFO  ] GSM                             :128  - Execute AT Command : ATE0
-2021-09-16 15:54:32 [INFO  ] GSM                             :411  - msg1 = ATE0
+2021-09-16 15:54:32 [INFO  ] GSM                             :411  - msg1 = ATE0
+
 OK
 
 2021-09-16 15:54:32 [INFO  ] GSM                             :128  - Execute AT Command : AT+CSCS="GSM"
@@ -16566,7 +16681,8 @@ ERROR
 2021-09-19 12:00:56 [INFO  ] GSM                             :131  - Execute AT Command : AT+COPS?
 2021-09-19 12:00:56 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCA
 2021-09-19 12:01:33 [INFO  ] GSM                             :131  - Execute AT Command : ATE0
-2021-09-19 12:01:33 [INFO  ] GSM                             :431  - msg1 = ATE0
+2021-09-19 12:01:33 [INFO  ] GSM                             :431  - msg1 = ATE0
+
 OK
 
 2021-09-19 12:01:33 [INFO  ] GSM                             :131  - Execute AT Command : AT+CSCS="GSM"
@@ -18027,7 +18143,8 @@ ERROR
 2021-09-21 08:07:05 [INFO  ] MessageAPI                      :48   - Date Time : 1632186425
 2021-09-21 08:07:05 [INFO  ] MessageAPI                      :76   - Create OTP
 2021-09-21 08:07:05 [INFO  ] GSM                             :122  - Execute AT Command : ATE0
-2021-09-21 08:07:05 [INFO  ] GSM                             :422  - msg1 = ATE0
+2021-09-21 08:07:05 [INFO  ] GSM                             :422  - msg1 = ATE0
+
 OK
 
 2021-09-21 08:07:05 [INFO  ] GSM                             :122  - Execute AT Command : AT+CSCS="GSM"
@@ -18068,7 +18185,8 @@ ERROR
 2021-09-21 08:07:17 [INFO  ] MessageAPI                      :48   - Date Time : 1632186437
 2021-09-21 08:07:17 [INFO  ] MessageAPI                      :76   - Create OTP
 2021-09-21 08:07:17 [INFO  ] GSM                             :122  - Execute AT Command : ATE0
-2021-09-21 08:07:17 [INFO  ] GSM                             :422  - msg1 = ATE0
+2021-09-21 08:07:17 [INFO  ] GSM                             :422  - msg1 = ATE0
+
 OK
 
 2021-09-21 08:07:17 [INFO  ] GSM                             :122  - Execute AT Command : AT+CSCS="GSM"
@@ -18111,7 +18229,8 @@ SMS Ready
 2021-09-21 08:07:45 [INFO  ] MessageAPI                      :48   - Date Time : 1632186465
 2021-09-21 08:07:45 [INFO  ] MessageAPI                      :76   - Create OTP
 2021-09-21 08:07:45 [INFO  ] GSM                             :122  - Execute AT Command : ATE0
-2021-09-21 08:07:45 [INFO  ] GSM                             :422  - msg1 = ATE0
+2021-09-21 08:07:45 [INFO  ] GSM                             :422  - msg1 = ATE0
+
 OK
 
 2021-09-21 08:07:45 [INFO  ] GSM                             :122  - Execute AT Command : AT+CSCS="GSM"
@@ -18158,9 +18277,9 @@ ERROR
 2021-09-21 08:07:57 [INFO  ] GSM                             :122  - Execute AT Command : AT+CSCS="GSM"
 2021-09-21 08:07:57 [INFO  ] GSM                             :424  - msg2 = 
 2021-09-21 08:07:57 [INFO  ] GSM                             :122  - Execute AT Command : AT+CMGF=1
-2021-09-21 08:07:57 [INFO  ] GSM                             :426  - msg3 = }W«{mww½½íë
+2021-09-21 08:07:57 [INFO  ] GSM                             :426  - msg3 = }Wï¿½{mwwï¿½ï¿½ï¿½ï¿½
 2021-09-21 08:07:57 [INFO  ] GSM                             :122  - Execute AT Command : AT+CMGW="08126666666"
-2021-09-21 08:07:57 [INFO  ] GSM                             :428  - msg4 = }W«{mwW½»¿¿½»·······»íë
+2021-09-21 08:07:57 [INFO  ] GSM                             :428  - msg4 = }Wï¿½{mwWï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 2021-09-21 08:07:57 [INFO  ] GSM                             :122  - Execute AT Command : Your OTP is 063962
 2021-09-21 08:07:57 [INFO  ] GSM                             :430  - msg5 = 
 2021-09-21 08:07:57 [INFO  ] GSM                             :122  - Execute AT Command : 
@@ -18184,7 +18303,8 @@ ERROR
 2021-09-21 08:08:11 [INFO  ] MessageAPI                      :48   - Date Time : 1632186491
 2021-09-21 08:08:11 [INFO  ] MessageAPI                      :76   - Create OTP
 2021-09-21 08:08:11 [INFO  ] GSM                             :122  - Execute AT Command : ATE0
-2021-09-21 08:08:11 [INFO  ] GSM                             :422  - msg1 = ATE0
+2021-09-21 08:08:11 [INFO  ] GSM                             :422  - msg1 = ATE0
+
 OK
 
 2021-09-21 08:08:11 [INFO  ] GSM                             :122  - Execute AT Command : AT+CSCS="GSM"
@@ -18781,3 +18901,9 @@ org.json.JSONException: A JSONObject text must begin with '{' at 1 [character 2 
 2021-09-25 22:52:28 [INFO  ] GSM                             :123  - Execute AT Command : AT+CNUM
 2021-09-25 22:52:28 [INFO  ] GSM                             :123  - Execute AT Command : AT+COPS?
 2021-09-25 22:52:28 [INFO  ] GSM                             :123  - Execute AT Command : AT+CSCA
+2021-09-25 22:56:38 [INFO  ] Application                     :185  - Service started
+2021-09-25 22:57:01 [INFO  ] GSM                             :123  - Execute AT Command : ATE0
+2021-09-25 22:57:01 [INFO  ] GSM                             :123  - Execute AT Command : AT+CSCS="GSM"
+2021-09-25 22:57:01 [INFO  ] GSM                             :123  - Execute AT Command : AT+CMGF=1
+2021-09-25 22:57:01 [INFO  ] GSM                             :123  - Execute AT Command : AT+CPMS=""SM""
+2021-09-25 22:57:01 [INFO  ] GSM                             :123  - Execute AT Command : AT+CMGL="REC READ"
