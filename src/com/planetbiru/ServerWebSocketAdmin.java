@@ -20,6 +20,7 @@ import org.json.JSONObject;
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigSubscriberAMQP;
 import com.planetbiru.config.ConfigSubscriberMQTT;
+import com.planetbiru.config.ConfigSubscriberRedis;
 import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.config.ConfigModem;
 import com.planetbiru.constant.JsonKey;
@@ -197,6 +198,16 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 		amqpConnected.put(JsonKey.NAME, "otp-amqp-connected");
 		amqpConnected.put(JsonKey.VALUE, ConfigSubscriberAMQP.isConnected());
 		data.put(amqpConnected);
+		
+		JSONObject redisEnable = new JSONObject();
+		redisEnable.put(JsonKey.NAME, "otp-redis-enable");
+		redisEnable.put(JsonKey.VALUE, ConfigSubscriberRedis.isSubscriberRedisEnable());
+		data.put(redisEnable);
+		
+		JSONObject redisConnected = new JSONObject();
+		redisConnected.put(JsonKey.NAME, "otp-redis-connected");
+		redisConnected.put(JsonKey.VALUE, ConfigSubscriberRedis.isConnected());
+		data.put(redisConnected);
 		
 		JSONObject mqttEnable = new JSONObject();
 		mqttEnable.put(JsonKey.NAME, "otp-mqtt-enable");
