@@ -37,6 +37,8 @@ OTP-Pi answers all of the above challenges. With a very cheap device, users can 
 
 OTP-Pi is a server for sending SMS via HTTP, WebSocket and Message Broker protocols. Users can install OTP-Pi on the server with a static IP address that can be accessed by clients who will send SMS. In addition, users can also install OTP-Pi on servers with dynamic IP addresses. This server then accesses a websocket server, RabbitMQ server or Mosquitto server. OTP-Pi acts as a consumer that will send all SMS it receives.
 
+To publish message using PHP to RabbitMQ, Mosquitto and Redis, see example on https://github.com/kamshory/OTP-Publisher 
+
 # System Requirement
 
 OTP-Pi requires Raspberry Pi 3 Model B or higher. Minimum RAM is 1 GB and SD Card minimum is 16 GB. 32GB SD Card is recommended. Power supply 5 Volt 3 Ampre to prevent the Raspberry Pi from operating with under voltage. RTC DS3231 installed on Raspberry Pi.
