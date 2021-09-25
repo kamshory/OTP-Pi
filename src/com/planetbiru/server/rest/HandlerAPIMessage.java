@@ -1,4 +1,4 @@
-package com.planetbiru.subscriber.rest;
+package com.planetbiru.server.rest;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;

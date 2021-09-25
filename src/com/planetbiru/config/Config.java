@@ -4,10 +4,8 @@ public class Config {
 	private static String bellSettingPath = "";
 	private static String smsLogPath = "";
 	private static String generalSettingPath = "";
-	private static String secretKey = "planetsecret";
-	
+	private static String secretKey = "planetsecret";	
 	private static String defaultFile = "/index.html";
-	
 	private static boolean proxyEnable = false;
 	private static String proxyHost = "127.0.0.1";
 	private static int proxyPort = 8080;
@@ -35,12 +33,10 @@ public class Config {
 	private static String keystoreSettingPath = "";
 	private static String keystoreDataSettingPath = "";
 	private static String blockingSettingPath = "";
-
 	private static String userAPISettingPath = "";
 	private static String dhcpSettingPathDefault = "";
 	private static String wlanSettingPathDefault = "";
-	private static String ethernetSettingPathDefault = "";
-	
+	private static String ethernetSettingPathDefault = "";	
 	private static String osWLANConfigPath = "";
 	private static String osSSIDKey = "";
 	private static String osEthernetConfigPath = "";
@@ -53,8 +49,7 @@ public class Config {
 	private static long maxWaitModemReady = 10000;
 	private static String logDir = "";
 	private static long reconnectDelay = 10000;
-	private static String sessionFilePath = "";
-	
+	private static String sessionFilePath = "";	
 	private static boolean sshEnable = false;
 	private static String sshUsername = "";
 	private static String sshPassword = "";
@@ -87,9 +82,9 @@ public class Config {
 	private static String imageName = "otp.jar";
 	private static boolean logConfigNotFound = true;
 	private static int ddnsTimeout = 10000;
-	private static String resetConfigPath = "/otp-pi/reset-config.ini";
 	private static long waitLoopParent = 1000;
 	private static long waitLoopChild = 30000;
+	private static String resetConfigPath = "/otp-pi/reset-config.ini";
 	private static String resetDeviceType = "RPi";
 	private static String resetDeviceFile = "reset-config.ini";
 	private static boolean cacheHTMLFile = false;
@@ -108,8 +103,7 @@ public class Config {
 	private static int soundErrorOctave = 0;
 	private static int soundErrorTempo = 0;
 	private static String smsInboxStorage = "SM";
-	private static String smsInboxStatus = "REC UNREAD";
-	
+	private static String smsInboxStatus = "REC UNREAD";	
 	private static String otpSalt = "gfiushciyw89erywe98r23r23rj2";
 	private static int otpLength = 6;
 	private static long otpLifetime = 30000;
@@ -119,7 +113,31 @@ public class Config {
 	private Config()
 	{
 		
-	}	
+	}
+
+	public static String getBellSettingPath() {
+		return bellSettingPath;
+	}
+
+	public static void setBellSettingPath(String bellSettingPath) {
+		Config.bellSettingPath = bellSettingPath;
+	}
+
+	public static String getSmsLogPath() {
+		return smsLogPath;
+	}
+
+	public static void setSmsLogPath(String smsLogPath) {
+		Config.smsLogPath = smsLogPath;
+	}
+
+	public static String getGeneralSettingPath() {
+		return generalSettingPath;
+	}
+
+	public static void setGeneralSettingPath(String generalSettingPath) {
+		Config.generalSettingPath = generalSettingPath;
+	}
 
 	public static String getSecretKey() {
 		return secretKey;
@@ -200,7 +218,7 @@ public class Config {
 	public static void setSubscriberAMQPSettingPath(String subscriberAMQPSettingPath) {
 		Config.subscriberAMQPSettingPath = subscriberAMQPSettingPath;
 	}
-	
+
 	public static String getSubscriberRedisSettingPath() {
 		return subscriberRedisSettingPath;
 	}
@@ -213,8 +231,8 @@ public class Config {
 		return subscriberMQTTSettingPath;
 	}
 
-	public static void setSubscriberMQTTSettingPath(String subscriberMqttSettingPath) {
-		Config.subscriberMQTTSettingPath = subscriberMqttSettingPath;
+	public static void setSubscriberMQTTSettingPath(String subscriberMQTTSettingPath) {
+		Config.subscriberMQTTSettingPath = subscriberMQTTSettingPath;
 	}
 
 	public static String getSubscriberWSSettingPath() {
@@ -553,14 +571,6 @@ public class Config {
 		Config.mimeSettingPath = mimeSettingPath;
 	}
 
-	public static boolean isValidDevice() {
-		return validDevice;
-	}
-
-	public static void setValidDevice(boolean validDevice) {
-		Config.validDevice = validDevice;
-	}
-
 	public static String getCpuSecret() {
 		return cpuSecret;
 	}
@@ -569,12 +579,12 @@ public class Config {
 		Config.cpuSecret = cpuSecret;
 	}
 
-	public static String getGeneralSettingPath() {
-		return generalSettingPath;
+	public static boolean isValidDevice() {
+		return validDevice;
 	}
 
-	public static void setGeneralSettingPath(String generalSettingPath) {
-		Config.generalSettingPath = generalSettingPath;
+	public static void setValidDevice(boolean validDevice) {
+		Config.validDevice = validDevice;
 	}
 
 	public static String getRestartCommand() {
@@ -625,28 +635,20 @@ public class Config {
 		Config.storageDir = storageDir;
 	}
 
-	public static String getSmtpSettingPath() {
-		return smtpSettingPath;
-	}
-
-	public static void setSmtpSettingPath(String smtpSettingPath) {
-		Config.smtpSettingPath = smtpSettingPath;
-	}
-
-	public static String getSmsLogPath() {
-		return smsLogPath;
-	}
-
-	public static void setSmsLogPath(String smsLogPath) {
-		Config.smsLogPath = smsLogPath;
-	}
-
 	public static boolean isPrintMailConsole() {
 		return printMailConsole;
 	}
 
 	public static void setPrintMailConsole(boolean printMailConsole) {
 		Config.printMailConsole = printMailConsole;
+	}
+
+	public static String getSmtpSettingPath() {
+		return smtpSettingPath;
+	}
+
+	public static void setSmtpSettingPath(String smtpSettingPath) {
+		Config.smtpSettingPath = smtpSettingPath;
 	}
 
 	public static boolean isDdnsUpdate() {
@@ -761,6 +763,22 @@ public class Config {
 		Config.ddnsTimeout = ddnsTimeout;
 	}
 
+	public static long getWaitLoopParent() {
+		return waitLoopParent;
+	}
+
+	public static void setWaitLoopParent(long waitLoopParent) {
+		Config.waitLoopParent = waitLoopParent;
+	}
+
+	public static long getWaitLoopChild() {
+		return waitLoopChild;
+	}
+
+	public static void setWaitLoopChild(long waitLoopChild) {
+		Config.waitLoopChild = waitLoopChild;
+	}
+
 	public static String getResetConfigPath() {
 		return resetConfigPath;
 	}
@@ -785,22 +803,6 @@ public class Config {
 		Config.resetDeviceFile = resetDeviceFile;
 	}
 
-	public static long getWaitLoopParent() {
-		return waitLoopParent;
-	}
-
-	public static void setWaitLoopParent(long waitLoopParent) {
-		Config.waitLoopParent = waitLoopParent;
-	}
-
-	public static long getWaitLoopChild() {
-		return waitLoopChild;
-	}
-
-	public static void setWaitLoopChild(long waitLoopChild) {
-		Config.waitLoopChild = waitLoopChild;
-	}
-
 	public static boolean isCacheHTMLFile() {
 		return cacheHTMLFile;
 	}
@@ -809,38 +811,20 @@ public class Config {
 		Config.cacheHTMLFile = cacheHTMLFile;
 	}
 
-	public static String getBellSettingPath() {
-		return bellSettingPath;
+	public static boolean isSoundEnable() {
+		return soundEnable;
 	}
 
-
-
-	public static void setBellSettingPath(String bellSettingPath) {
-		Config.bellSettingPath = bellSettingPath;
+	public static void setSoundEnable(boolean soundEnable) {
+		Config.soundEnable = soundEnable;
 	}
-
-
 
 	public static int getSoundPIN() {
 		return soundPIN;
 	}
 
-
-
 	public static void setSoundPIN(int soundPIN) {
 		Config.soundPIN = soundPIN;
-	}
-
-
-
-	public static boolean isSoundEnable() {
-		return soundEnable;
-	}
-
-
-
-	public static void setSoundEnable(boolean soundEnable) {
-		Config.soundEnable = soundEnable;
 	}
 
 	public static String getSoundTestTone() {
@@ -955,20 +939,20 @@ public class Config {
 		Config.smsInboxStatus = smsInboxStatus;
 	}
 
-	public static int getOtpLength() {
-		return otpLength;
-	}
-
-	public static void setOtpLength(int otpLength) {
-		Config.otpLength = otpLength;
-	}
-
 	public static String getOtpSalt() {
 		return otpSalt;
 	}
 
 	public static void setOtpSalt(String otpSalt) {
 		Config.otpSalt = otpSalt;
+	}
+
+	public static int getOtpLength() {
+		return otpLength;
+	}
+
+	public static void setOtpLength(int otpLength) {
+		Config.otpLength = otpLength;
 	}
 
 	public static long getOtpLifetime() {
@@ -993,6 +977,8 @@ public class Config {
 
 	public static void setOtpCacheFile(String otpCacheFile) {
 		Config.otpCacheFile = otpCacheFile;
-	}
+	}	
+
+	
 
 }

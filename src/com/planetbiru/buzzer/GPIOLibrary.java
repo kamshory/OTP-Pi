@@ -72,7 +72,7 @@ public class GPIOLibrary
 	}
 	
 	/**
-	 * Lets the user unlock the gpio pins for later use
+	 * Lets the user unlock the GPIO pins for later use
 	 * @param n pin number. If invalid the function does nothing
 	 */
 	public void unExport()
@@ -107,19 +107,19 @@ public class GPIOLibrary
 	}
 	
 	/**
-	 * Returns the value of pin n
-	 * @param n pin number. 
+	 * Returns the value of pin
+	 * @param pin pin number. 
 	 * @return pin value(0, 1). If invalid the function returns -1
 	 */
-	public int readPin(int n)
+	public int readPin(int pin)
 	{
-		if (!validPin(n))
+		if (!validPin(pin))
 		{
 			return -1;
 		}
 		else
 		{
-			try(FileInputStream in = new FileInputStream(new File(Stat.EXP + "/gpio" + n + "/value")))
+			try(FileInputStream in = new FileInputStream(new File(Stat.EXP + "/gpio" + pin + "/value")))
 			{				
 				int i = in.read();
 				return i==30 ? 0 : 1;
@@ -161,14 +161,14 @@ public class GPIOLibrary
 
 	/**
 	 * Help function to check if the pin number is valid
-	 * @param n pin number
+	 * @param pin pin number
 	 * @return valid
 	 */
-	private boolean validPin(int n)
+	private boolean validPin(int pin)
 	{
 		for (int i = 0; i < Stat.PINS.length; i++)
 		{
-			if (n == Stat.PINS[i])
+			if (pin == Stat.PINS[i])
 			{
 				return true;
 			}
@@ -178,14 +178,14 @@ public class GPIOLibrary
 	
 	/**
 	 * Help function to check if the pin is in use
-	 * @param n pin number
+	 * @param pin pin number
 	 * @return in use
 	 */
-	private boolean inUse(int n)
+	private boolean inUse(int pin)
 	{
 		for (int i = 0; i < Stat.PINS.length; i++)
 		{
-			if (n == Stat.PINS[i])
+			if (pin == Stat.PINS[i])
 			{
 				return this.used[i];
 			}
@@ -195,16 +195,16 @@ public class GPIOLibrary
 	
 	/**
 	 * Help function to set the pin as used or unused
-	 * @param n pin number
-	 * @param p used or unused
+	 * @param pin pin number
+	 * @param used used or unused
 	 */
-	private void setUsed(int n, boolean p)
+	private void setUsed(int pin, boolean used)
 	{
 		for (int i = 0; i < Stat.PINS.length; i++)
 		{
-			if (n == Stat.PINS[i])
+			if (pin == Stat.PINS[i])
 			{
-				this.used[i] = p;
+				this.used[i] = used;
 			}
 		}
 	}

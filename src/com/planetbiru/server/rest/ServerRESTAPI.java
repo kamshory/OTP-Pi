@@ -1,4 +1,4 @@
-package com.planetbiru;
+package com.planetbiru.server.rest;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -19,8 +19,6 @@ import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigKeystore;
 import com.planetbiru.config.DataKeystore;
-import com.planetbiru.subscriber.rest.HandlerAPIMessage;
-import com.planetbiru.subscriber.rest.NoKeyStoreException;
 import com.planetbiru.util.ServiceHTTP;
 import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.HttpsConfigurator;
@@ -38,7 +36,7 @@ public class ServerRESTAPI {
 		this.startHTTPS();
 	}
 	
-	void startHTTPS() {
+	public void startHTTPS() {
 		if(ConfigAPI.isHttpsEnable())
 		{
 			ConfigKeystore.load(Config.getKeystoreSettingPath());		
@@ -103,7 +101,7 @@ public class ServerRESTAPI {
 		
 	}
 
-	void startHTTP() 
+	public void startHTTP() 
 	{
 		
 		if(ConfigAPI.isHttpsEnable())
