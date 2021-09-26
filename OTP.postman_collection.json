@@ -1,0 +1,150 @@
+{
+	"info": {
+		"_postman_id": "4018262d-5ed7-4266-82b5-3a1d706a5ffa",
+		"name": "OTP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create OTP",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let timestamp = parseInt((new Date()).getTime());\r",
+							"let datetime = parseInt(timestamp/1000);\r",
+							"pm.globals.set(\"timestamp\", timestamp);\r",
+							"pm.environment.set(\"timestamp\", timestamp);\r",
+							"\r",
+							"let expiration = datetime + 60;\r",
+							"pm.globals.set(\"expiration\", expiration);\r",
+							"pm.environment.set(\"expiration\", expiration);\r",
+							"\r",
+							"pm.globals.set(\"datetime\", datetime);\r",
+							"pm.environment.set(\"datetime\", datetime);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "kamshory",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "kamshory",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"command\": \"create-otp\",\r\n    \"data\": {\r\n        \"id\": {{datetime}},\r\n        \"date_time\": {{datetime}},\r\n        \"expiration\": {{expiration}},\r\n        \"receiver\": \"08126666666\",\r\n        \"message\": \"Your OTP is %s\",\r\n        \"reference\": \"{{timestamp}}\",\r\n        \"param1\": \"100000\",\r\n        \"param2\": \"1234567890\",\r\n        \"param3\": \"987654\",\r\n        \"param4\": \"674527846556468254\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8899/api/sms",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8899",
+					"path": [
+						"api",
+						"sms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate OTP",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let timestamp = parseInt((new Date()).getTime());\r",
+							"let datetime = parseInt(timestamp/1000);\r",
+							"\r",
+							"\r",
+							"let expiration = timestamp + 60;\r",
+							"pm.globals.set(\"expiration\", expiration);\r",
+							"pm.environment.set(\"expiration\", expiration);\r",
+							"\r",
+							"pm.globals.set(\"datetime\", datetime);\r",
+							"pm.environment.set(\"datetime\", datetime);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "kamshory",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "kamshory",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"command\": \"validate-otp\",\r\n    \"data\": {\r\n        \"date_time\": {{datetime}},\r\n        \"receiver\": \"08126666666\",\r\n        \"otp\": \"139506\",\r\n        \"reference\": \"{{timestamp}}\",\r\n        \"param1\": \"100000\",\r\n        \"param2\": \"1234567890\",\r\n        \"param3\": \"987654\",\r\n        \"param4\": \"674527846556468254\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8899/api/sms",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8899",
+					"path": [
+						"api",
+						"sms"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
