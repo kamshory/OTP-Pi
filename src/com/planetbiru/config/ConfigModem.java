@@ -35,6 +35,19 @@ public class ConfigModem {
 		return ConfigModem.modemData.getOrDefault(modemID, new DataModem());
 	}
 	
+	public static DataModem getModemDataByPort(String port) {
+		for (Map.Entry<String, DataModem> entry : ConfigModem.modemData.entrySet())
+		{
+			DataModem value = entry.getValue();		
+			if(port != null && port.equals(value.getPort()))
+			{
+				return value;
+			}
+		}
+		return null;
+	}
+	
+	
 	public static Map<String, DataModem> getModemData()
 	{
 		return ConfigModem.modemData;

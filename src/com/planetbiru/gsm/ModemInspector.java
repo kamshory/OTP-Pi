@@ -6,10 +6,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import com.fazecast.jSerialComm.SerialPort;
+import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.config.ConfigGeneral;
 import com.planetbiru.config.ConfigModem;
 import com.planetbiru.config.DataModem;
+import com.planetbiru.util.ServerInfo;
 
 public class ModemInspector extends Thread {
 
@@ -24,6 +29,7 @@ public class ModemInspector extends Thread {
 	@Override
 	public void run()
 	{
+		this.initPort();
 		if(this.delay > 0)
 		{
 			try 
@@ -48,30 +54,46 @@ public class ModemInspector extends Thread {
 				{
 					Thread.currentThread().interrupt();
 				}
-				this.inspectSerialPort();			
+				this.inspectSerialPort(true);			
 			}
 		}
 	}
 	
+	private void initPort() {
+		this.inspectSerialPort(false);	
+		String[] arr = this.lastList.split(",");
+		for(int i = 0; i<arr.length; i++)
+		{
+			try 
+			{
+				String port = arr[i];				
+				GSMInstance instance = GSMUtil.getGSMInstanceByPort(port);				
+				this.lastConnection.put(port, instance.isConnected());
+			} 
+			catch (ModemNotFoundException e) 
+			{
+				/**
+				 * Do nothing
+				 */
+			}
+		}	
+	}
+
 	public void stopService()
 	{
 		this.running = false;
 	}
 
-	private void inspectSerialPort() {
+	private void inspectSerialPort(boolean addToList) {
 		SerialPort[] ports = SerialPort.getCommPorts();
         List<String> portList = new ArrayList<>();
         for (SerialPort port : ports) 
         {
         	portList.add(port.getSystemPortName());
-        }
-        
-        Collections.sort(portList);
-        
-        String currentList = String.join(",", portList);
-        
-        
-        if(!this.lastList.equals(currentList))
+        }       
+        Collections.sort(portList);       
+        String currentList = String.join(",", portList);      
+        if(addToList && !this.lastList.equals(currentList))
         {
         	this.processUpdate(currentList);
         }
@@ -92,8 +114,10 @@ public class ModemInspector extends Thread {
 
 	private void processUpdate(String currentList) {
 		String[] arr = currentList.split(",");
-		this.removeInactivePort(arr);
+		this.removeInactivePort(arr);	
 		this.addNewPort(arr);
+		GSMUtil.updateConnectedDevice();
+		ServerInfo.sendModemStatus();
 	}
 
 	private void addNewPort(String[] arr) {
@@ -104,17 +128,27 @@ public class ModemInspector extends Thread {
 		}
 		this.lastConnection = new HashMap<>();
 		Map<String, DataModem> modemData = ConfigModem.getModemData();	
+		boolean connecting = false;
 		for(int i = 0; i<arr.length; i++)
 		{
+			connecting = false;
+			
 			try 
 			{
 				String port = arr[i];				
 				if(!newList.contains(port) && this.isUsed(modemData, port))
 				{
 					this.reconnectModem(modemData, port);
+					connecting = true;
+					
 				}
 				
 				GSMInstance instance = GSMUtil.getGSMInstanceByPort(port);
+				if(connecting)
+				{
+					this.sendNotification(port, true);
+				}
+				
 				this.lastConnection.put(port, instance.isConnected());
 			} 
 			catch (ModemNotFoundException e) 
@@ -134,11 +168,69 @@ public class ModemInspector extends Thread {
 		{
 			String port = entry.getKey();
 			boolean connected = entry.getValue().booleanValue();
-			if(connected && this.indexOf(arr, port) == -1)
+			try {
+				GSMInstance instance = GSMUtil.getGSMInstanceByPort(port);
+				if(connected && this.indexOf(arr, port) == -1 && instance != null && instance.getModem() != null && instance.getModem().isActive() && !instance.getModem().isInternetAccess())
+				{
+					this.disconnectModem(port);
+					this.sendNotification(port, false);
+				}
+			} 
+			catch (ModemNotFoundException e) 
 			{
-				this.lastConnection.remove(port);
+				e.printStackTrace();
 			}
+			this.lastConnection.remove(port);
+			
 		}	
+	}
+	
+	private void disconnectModem(String port) {
+		try {
+			GSMInstance instance = GSMUtil.getGSMInstanceByPort(port);
+			instance.disconnect();
+			ServerInfo.sendModemStatus();
+		} catch (ModemNotFoundException | GSMException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	private void sendNotification(String port, boolean connect) {
+		String message = "";
+		DataModem modemData = ConfigModem.getModemDataByPort(port);
+		if(modemData == null)
+		{
+			if(connect)
+			{
+				message = "Connecting "+port;
+			}
+			else
+			{
+				message = "Disconnecting "+port;
+			}
+		}
+		else
+		{
+			String fmt = "%s %s (%s)";
+			if(connect)
+			{
+				message = String.format(fmt, "Connecting", modemData.getPort(), modemData.getName());
+			}
+			else
+			{
+				message = String.format(fmt, "Disconnecting", modemData.getPort(), modemData.getName());
+			}
+		}
+		JSONObject jsonMessage = new JSONObject();
+		JSONObject item = new JSONObject();
+		item.put("message", message);
+		jsonMessage.put("command", "broadcast-message");
+		JSONArray data = new JSONArray();
+		data.put(item);
+		jsonMessage.put("data", data);
+		ServerWebSocketAdmin.broadcastMessage(jsonMessage.toString());
+		
 	}
 
 	private void reconnectModem(Map<String, DataModem> modemData, String port) {
@@ -166,7 +258,7 @@ public class ModemInspector extends Thread {
 		for (Map.Entry<String, DataModem> entry : modemData.entrySet())
 		{
 			DataModem modem = entry.getValue();
-			if(modem.getPort().equals(port))
+			if(modem.getPort().equals(port) && modem.isActive() && !modem.isInternetAccess())
 			{
 				return true;
 			}
