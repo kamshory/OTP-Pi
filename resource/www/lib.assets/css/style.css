@@ -25,7 +25,12 @@ body {
 
 .navbar {
   margin-bottom: 20px;
+  border-top: none;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
 }
+
+
 .all{
     position:relative;
     padding:20px;
@@ -50,35 +55,35 @@ legend{
   border: none;
 }
 @media all and  (max-width: 600px) {
-    .config-table
+    .config-table, .modal-table
     {
         width:100%;
     }
-    .config-table tr
+    .config-table tr, .modal-table tr
     {
         
     }
-    .config-table tr td
+    .config-table tr td, .modal-table tr td
     {
         display:block;
         padding:3px 0;
         width:100%;
         box-sizing:border-box;
     }
-    .config-table tr td:empty{
+    .config-table tr td:empty, .modal-table tr td:empty{
         display:none;
     }
 }
 @media all and (min-width: 600px) {
-    .config-table
+    .config-table, .modal-table
     {
         width:100%;
     }
-    .config-table tr
+    .config-table tr, .modal-table tr
     {
         position:relative;
     }
-    .config-table tr td
+    .config-table tr td, .modal-table tr td
     {
         padding:3px 0;
         box-sizing:border-box;
@@ -86,6 +91,10 @@ legend{
     .config-table tr > td:nth-child(1)
     {
         width:200px;
+    }
+    .modal-table tr > td:nth-child(1)
+    {
+        width:120px;
     }
 }
 .config-table tr td select,
@@ -560,6 +569,12 @@ display: inline-block; padding-top: 14px; padding-right: 10px; width: 62px;
 .service-item.disable.connected, .service-item.disable.disconnected{
   background-color: #F9F3F3;
 }
+.service-item .test-at{
+  display: none;
+}
+.service-item.connected .test-at{
+  display: inline;
+}
 
 .service-wrapper {  
   display: flex;
@@ -661,7 +676,7 @@ display: inline-block; padding-top: 14px; padding-right: 10px; width: 62px;
 }
 
 .btn-group-sm > .btn, .btn-sm {
-  padding: 2px 7px;
+  padding: 2px 10px;
 }
 .select-device{
   padding-bottom: 10px;
@@ -686,10 +701,11 @@ display: inline-block; padding-top: 14px; padding-right: 10px; width: 62px;
     margin-left: 0;
   }
 }
+/*
 @media screen and (max-width: 1200px)  and (min-width: 992px) {
   .tile-area .tile { 
-    width: 9.5%; 
-    margin-left: 1%;    
+    width: 10.1%; 
+    margin-left: 0.6%;    
   }
   
   .tile-area > .tile:nth-child(9n + 1) {
@@ -697,7 +713,8 @@ display: inline-block; padding-top: 14px; padding-right: 10px; width: 62px;
   }
   
 }
-@media screen and (max-width: 992px)  and (min-width: 768px) {
+*/
+@media screen and (max-width: 1200px)  and (min-width: 768px) {
   .tile-area .tile { 
     width: 14%; 
     margin-left: 1%;    
@@ -756,234 +773,302 @@ display: inline-block; padding-top: 14px; padding-right: 10px; width: 62px;
 .tile-wrapper{
   border: 1px solid #DDDDDD;
   border-radius: 4px;
-  padding-top: 5px;
+  padding-top: 10px;
   position: relative;
   overflow: hidden;
   background-color: #FFFFFF;
 }
 
 .tile-icon{
-    width: 64px;
-    height: 64px;
-    box-sizing: border-box;
-    border-radius: 5px;
-    display: block;
-    margin: auto;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-.phone-page form:last-child{
-  margin-bottom: 20px !important;
-}
-.setting .tile-icon{
-  background-image: url(../images/icon/setting.png);
-}
-.network .tile-icon{
-  background-image: url(../images/icon/network.png);
-}
-.reboot .tile-icon{
-  background-image: url(../images/icon/reboot.png);
-}
-.restart .tile-icon{
-  background-image: url(../images/icon/reboot.png);
-}
-.admin .tile-icon{
-  background-image: url(../images/icon/admin.png);
-}
-.api-user .tile-icon{
-  background-image: url(../images/icon/user.png);
-}
-.sms-setting .tile-icon{
-  background-image: url(../images/icon/sms.png);
-}
-.feeder .tile-icon{
-  background-image: url(../images/icon/subscribe.png);
-}
-.api .tile-icon{
-  background-image: url(../images/icon/api-setting.png);
-}
-.modem .tile-icon{
-  background-image: url(../images/icon/modem.png);
-}
-.block-list .tile-icon{
-  background-image: url(../images/icon/block-list.png);
-}
-.time .tile-icon{
-  background-image: url(../images/icon/time.png);
-}
-.log-file .tile-icon{
-  background-image: url(../images/icon/log-file.png);
-}
-.server-status .tile-icon{
-  background-image: url(../images/icon/server-status.png);
-}
-.cleaner .tile-icon{
-  background-image: url(../images/icon/brush.png);
-}
-.monitor .tile-icon{
-  background-image: url(../images/icon/monitor.png);
-}
-.dns .tile-icon{
-  background-image: url(../images/icon/dns.png);
-}
-.email .tile-icon{
-  background-image: url(../images/icon/email.png);
-}
-.firewall .tile-icon{
-  background-image: url(../images/icon/firewall.png);
-}
-.inbox .tile-icon{
-  background-image: url(../images/icon/inbox.png);
-}
-.smtp .tile-icon{
-  background-image: url(../images/icon/smtp-server.png);
-}
-.report .tile-icon{
-  background-image: url(../images/icon/report.png);
-}
-.keystore .tile-icon{
-  background-image: url(../images/icon/keystore.png);
-}
-.user-account .tile-icon{
-  background-image: url(../images/icon/user-account.png);
-}
-.internet .tile-icon{
-  background-image: url(../images/icon/internet.png);
-}
-.open-port .tile-icon{
-  background-image: url(../images/icon/port.png);
-}
-.expand .tile-icon{
-  background-image: url(../images/icon/sd-card.png);
-}
-.tile-icon > a{
   width: 64px;
   height: 64px;
+  box-sizing: border-box;
+  border-radius: 5px;
   display: block;
-  color: #555555;
-  text-decoration: none;
+  margin: auto;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.phone-page form:last-child{
+margin-bottom: 20px !important;
+}
+.setting .tile-icon{
+background-image: url(../images/icon/setting.png);
+}
+.network .tile-icon{
+background-image: url(../images/icon/network.png);
+}
+.reboot .tile-icon{
+background-image: url(../images/icon/reboot.png);
+}
+.restart .tile-icon{
+background-image: url(../images/icon/reboot.png);
+}
+.admin .tile-icon{
+background-image: url(../images/icon/admin.png);
+}
+.api-user .tile-icon{
+background-image: url(../images/icon/user.png);
+}
+.sms-setting .tile-icon{
+background-image: url(../images/icon/sms.png);
+}
+.subscriber .tile-icon{
+background-image: url(../images/icon/subscribe.png);
+}
+.bell .tile-icon{
+background-image: url(../images/icon/bell.png);
+}
+.api .tile-icon{
+background-image: url(../images/icon/api-setting.png);
+}
+.modem .tile-icon{
+background-image: url(../images/icon/modem.png);
+}
+.block-list .tile-icon{
+background-image: url(../images/icon/block-list.png);
+}
+.time .tile-icon{
+background-image: url(../images/icon/time.png);
+}
+.log-file .tile-icon{
+background-image: url(../images/icon/log-file.png);
+}
+.server-status .tile-icon{
+background-image: url(../images/icon/server-status.png);
+}
+.cleaner .tile-icon{
+background-image: url(../images/icon/brush.png);
+}
+.monitor .tile-icon{
+background-image: url(../images/icon/monitor.png);
+}
+.dns .tile-icon{
+background-image: url(../images/icon/dns.png);
+}
+.email .tile-icon{
+background-image: url(../images/icon/email.png);
+}
+.firewall .tile-icon{
+background-image: url(../images/icon/firewall.png);
+}
+.inbox .tile-icon{
+background-image: url(../images/icon/inbox.png);
+}
+.smtp .tile-icon{
+background-image: url(../images/icon/smtp-server.png);
+}
+.report .tile-icon{
+background-image: url(../images/icon/report.png);
+}
+.keystore .tile-icon{
+background-image: url(../images/icon/keystore.png);
+}
+.user-account .tile-icon{
+background-image: url(../images/icon/user-account.png);
+}
+.internet .tile-icon{
+background-image: url(../images/icon/internet.png);
+}
+.open-port .tile-icon{
+background-image: url(../images/icon/port.png);
+}
+.expand .tile-icon{
+background-image: url(../images/icon/sd-card.png);
+}
+.chip .tile-icon{
+background-image: url(../images/icon/chip.png);
+}
+.sim .tile-icon{
+background-image: url(../images/icon/sim.png);
+}
+.ussd-code .tile-icon{
+background-image: url(../images/icon/ussd.png);
+}
+.message .tile-icon{
+background-image: url(../images/icon/message.png);
+}
+.tile-icon > a{
+width: 64px;
+height: 64px;
+display: block;
+color: #555555;
+text-decoration: none;
 }
 .tile-title{
-  text-align: center;
-  width: 80px;
-  margin: auto;
-  padding: 4px 0;
-  font-size: 11px;
+text-align: center;
+width: 80px;
+margin: auto;
+padding: 4px 0;
+font-size: 11px;
 }
 .tile-title a{
-  color: #555555;
-  text-decoration: none;
-  display: block;
-  white-space: nowrap;
-  overflow-x: hidden;
-  text-overflow: ellipsis;
+color: #555555;
+text-decoration: none;
+display: block;
+white-space: nowrap;
+overflow-x: hidden;
+text-overflow: ellipsis;
 }
 .service-modem-internet{
-  background-image: url(../images/icon/modem-internet-32.png);
-  background-repeat: no-repeat;
-  background-position-x: calc(100% - 10px);
-  background-position-y: 10px;
+background-image: url(../images/icon/modem-internet-32.png);
+background-repeat: no-repeat;
+background-position-x: calc(100% - 10px);
+background-position-y: 10px;
 }
 .service-modem-sms{
-  background-image: url(../images/icon/modem-sms-32.png);
-  background-repeat: no-repeat;
-  background-position-x: calc(100% - 10px);
-  background-position-y: 10px;
+background-image: url(../images/icon/modem-sms-32.png);
+background-repeat: no-repeat;
+background-position-x: calc(100% - 10px);
+background-position-y: 10px;
 }
 
 .waiting-server-up {
-  display: none;
-  position: absolute;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100vh;
-  top: 0;
-  bottom: 0;
-  background-color: rgba(50, 50, 50, 0.3);
+display: none;
+position: absolute;
+left: 0;
+right: 0;
+width: 100%;
+height: 100vh;
+top: 0;
+bottom: 0;
+background-color: rgba(50, 50, 50, 0.3);
 }
 .loading-icon {
-  width: 60px;
-  position: fixed;
-  left: calc(50% - 30px);
-  top: calc(20px);
-  background-color: white;
-  text-align: center;
-  height: 22px;
-  border-radius: 3px;
-  border: 1px solid #AEAEAE;
-  }
+width: 60px;
+position: fixed;
+left: calc(50% - 30px);
+top: calc(20px);
+background-color: white;
+text-align: center;
+height: 22px;
+border-radius: 3px;
+border: 1px solid #AEAEAE;
+}
 
 .animation-pressure, .animation-pressure > span{
-  position:relative;
-  display:inline-block;
-  height:12px;
-  line-height:1;
+position:relative;
+display:inline-block;
+height:12px;
+line-height:1;
 }
 .animation-pressure > span{
-  vertical-align:top;
+vertical-align:top;
 }
 .animation-pressure{
-  padding:0px 10px;
-  vertical-align:middle;
+padding:0px 10px;
+vertical-align:middle;
 }
 .animation-pressure > span{
-  padding:0px 8px;
+padding:0px 8px;
 }
 .animation-pressure::before, 
 .animation-pressure::after, 
 .animation-pressure > span::before, 
 .animation-pressure > span::after{
-  content:"";
-  width:6px;
-  height:4px;
-  position:absolute;
-  top:4px;
-  animation-name:anim;
-  animation-duration:1.0s;
-  animation-iteration-count:infinite;
-  animation-timing-function: cubic-bezier(.45,.05,.55,.95);
+content:"";
+width:6px;
+height:4px;
+position:absolute;
+top:4px;
+animation-name:anim;
+animation-duration:1.0s;
+animation-iteration-count:infinite;
+animation-timing-function: cubic-bezier(.45,.05,.55,.95);
 }
 .animation-pressure::before, .animation-pressure > span::before{
-  left:0;
+left:0;
 }
 .animation-pressure::after, .animation-pressure > span::after{
-  right:0;
+right:0;
 }
 
 .animation-pressure::before{
-  animation-delay:0;
-  background-color: green;
+animation-delay:0;
+background-color: green;
 }
 .animation-pressure > span::before{
-  animation-delay:0.12s;
-  background-color: green;
+animation-delay:0.12s;
+background-color: green;
 }
 .animation-pressure > span::after{
-  animation-delay:0.24s;
-  background-color: green;
+animation-delay:0.24s;
+background-color: green;
 }
 .animation-pressure::after{
-  animation-delay:0.36s;
-  background-color: green;
+animation-delay:0.36s;
+background-color: green;
 }
 
 @keyframes anim{
-  0%{
-    top:4px;
-    height:4px;
-  }
-  22%{
-    top:0px;
-    height:12px;
-  }
-  44%{
-    top:4px;
-    height:4px;
-  }
-  100%{
-    top:4px;
-    height:4px;
-  }
+0%{
+  top:4px;
+  height:4px;
+}
+22%{
+  top:0px;
+  height:12px;
+}
+44%{
+  top:4px;
+  height:4px;
+}
+100%{
+  top:4px;
+  height:4px;
+}
+}
+
+h5.modal-title{
+float: left;
+}
+
+.tr-dial {
+display: none;
+}
+.port-input td:nth-child(2)
+{
+position: relative;
+}
+.port-input td:nth-child(2) .list-port{
+position: absolute;
+right: 6px;
+top: 8px;
+}
+.port-input td:nth-child(2) .list-port-container{
+position: absolute;
+display: none;
+background-color: #FFFFFF;
+height: 20px;
+z-index: 10;
+width: 100%;
+}
+
+.list-port-container{
+height: auto;
+}
+.list-port-container > ul{
+margin: 0;
+padding: 0;
+list-style-type: none;
+border: 1px solid #DDDDDD;
+height: 120px;
+background-color: #FFFFFF;
+}
+.list-port-container > ul > li:nth-child(even){
+background-color: #F5F5F5;
+}
+.list-port-container > ul > li > a{
+padding: 5px 10px;
+display: block;
+text-decoration: none;
+}
+.list-port-container > ul > li > a:hover{
+background-color: rgb(73, 111, 214);
+color: #FFFFFF;
+}
+.animation-loading-sms{
+text-align: center;
+display: none;
 }

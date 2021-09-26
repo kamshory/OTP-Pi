@@ -1,0 +1,122 @@
+@keyframes scene1 {
+    0%{
+        background-color: red;
+    }
+    25%{
+        background-color: transparent;
+    }
+    50%{
+        background-color: transparent;
+    }
+    75%{
+        background-color: transparent;
+    }
+}
+@keyframes scene2 {
+    0%{
+        background-color: transparent;
+    }
+    25%{
+        background-color: red;
+    }
+    50%{
+        background-color: transparent;
+    }
+    75%{
+        background-color: transparent;
+    }
+}
+@keyframes scene3 {
+    0%{
+        background-color: transparent;
+    }
+    25%{
+        background-color: transparent;
+    }
+    50%{
+        background-color: red;
+    }
+    75%{
+        background-color: transparent;
+    }
+}
+@keyframes scene4 {
+    0%{
+        background-color: transparent;
+    }
+    25%{
+        background-color: transparent;
+    }
+    50%{
+        background-color: transparent;
+    }
+    75%{
+        background-color: red;
+    }
+}
+.loading-dot{
+    position: relative;
+    width: 55px;
+    display: inline-block;
+    height: 10px;
+    vertical-align: text-top;
+}
+.loading-dot::before, .loading-dot::after,
+.loading-dot > span::before, .loading-dot > span::after{
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+.loading-dot::before{
+    animation-name: scene1;
+}
+.loading-dot::after{
+    animation-name: scene4;
+}
+.loading-dot > span::before{
+    animation-name: scene2;
+}
+.loading-dot > span::after{
+    animation-name: scene3;
+}
+.loading-dot::before{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    left: 0;
+    top: 0;
+}
+.loading-dot::after{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    right: 0;
+    top: 0;
+}
+.loading-dot > span{
+    position: absolute;
+    width: 25px;
+    display: inline-block;
+    left: 15px;
+}
+.loading-dot > span::before{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    left: 0;
+    top: 0;
+}
+.loading-dot > span::after{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    right: 0;
+    top: 0;
+}
