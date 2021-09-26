@@ -61,7 +61,8 @@ public class RedisClientThread extends Thread {
 		
 		try
 		{
-			this.subscriber.connect();		
+			this.subscriber.connect();	
+			subscriberRedis.flagConnected(true);
 			CountDownLatch latch = new CountDownLatch(10);			
 			this.subscriber.subscribe(new JedisPubSub() {
 				
@@ -73,6 +74,7 @@ public class RedisClientThread extends Thread {
 			    @Override
 			    public void onSubscribe(String channel, int subscribedChannels) {
 			    	subscriberRedis.evtOnSubscribe(channel, subscribedChannels);
+			    	
 			    }	    
 	
 				@Override
@@ -91,9 +93,15 @@ public class RedisClientThread extends Thread {
 		}
 		catch(JedisConnectionException e)
 		{
-			this.subscriberRedis.connected = false;
+			if(this.subscriberRedis != null)
+			{
+				this.subscriberRedis.setConnected(false);
+			}
 		}
-		this.subscriberRedis.connected = false;
+		if(this.subscriberRedis != null)
+		{
+			this.subscriberRedis.setConnected(false);
+		}
 	}
 
 	public void ping() {
