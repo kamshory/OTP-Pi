@@ -937,6 +937,10 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 In this scenario, the App Server may send the OTP to RabbitMQ Server, Redis Server, Mosquitto Server or WSMessageBroker. WSMessageBroker uses the WebSoket protocol and Basic Authentication. Both App Server and OTP-Pi act as clients of WSMessageBroker.
 
+In this scenario, the application cannot request the OTP-Pi to validate the previously sent OTP. Thus, the application must have its own OTP system. The application simply sends a message containing the OTP. The application must have a mechanism to validate the previously submitted OTP.
+
+Another way is to use a separate OTP system from the application. It is this system that issues the OTP code so that it can validate the code if the application so desires.
+
 App Server acts as publisher and OTP-Pi becomes consumer of RabbitMQ Server, Redis Server, Mosquitto Server and WSMessageBroker. Both must use the same topic so that all OTPs sent by the App Server can be received by the OTP-Pi.
 
 ![OTP-Pi Topology Scenario 2](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/resource/www/lib.assets/images/topology-2.svg)
