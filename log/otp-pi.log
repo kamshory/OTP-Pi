@@ -21256,3 +21256,5 @@ java.net.BindException: Address already in use: bind
 2021-09-26 16:32:06 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
 2021-09-26 16:32:06 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS="SM"
 2021-09-26 16:32:06 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 16:34:32 [INFO  ] Application                     :187  - Service started
+2021-09-26 16:37:17 [INFO  ] Application                     :187  - Service started

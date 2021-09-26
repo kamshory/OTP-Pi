@@ -1,10 +1,9 @@
-package com.planetbiru;
+package com.planetbiru.mail;
 
 import org.apache.log4j.Logger;
 import org.subethamail.smtp.server.SMTPServer;
 
 import com.planetbiru.config.ConfigSMTP;
-import com.planetbiru.mail.PlanetMessageHandlerFactory;
 
 public class ServerEmail {
 	private static Logger logger = Logger.getLogger(ServerEmail.class);

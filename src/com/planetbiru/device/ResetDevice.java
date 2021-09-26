@@ -1,4 +1,4 @@
-package com.planetbiru;
+package com.planetbiru.device;
 
 import java.io.File;
 import java.io.FileInputStream;

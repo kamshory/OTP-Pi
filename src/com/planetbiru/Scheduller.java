@@ -21,6 +21,7 @@ import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.ddns.DDNSRecord;
 import com.planetbiru.ddns.DDNSUpdater;
+import com.planetbiru.device.DeviceAPI;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.util.ConfigLoader;
 import com.planetbiru.util.ServerInfo;
