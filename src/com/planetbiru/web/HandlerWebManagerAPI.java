@@ -888,8 +888,15 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				String receiver = queryPairs.getOrDefault("receiver", "");
 				String message = queryPairs.getOrDefault(JsonKey.MESSAGE, "");
 				String result = "";
-				GSMUtil.sendSMS(receiver, message, modemID);
-				result = "The message was sent via device "+modemID;
+				response = GSMUtil.sendSMS(receiver, message, modemID);
+				if(response.optString("result", "").contains("SUCCESS"))
+				{
+					result = "The message was sent via device "+modemID;
+				}
+				else
+				{
+					result = "The message was not sent via device "+modemID;
+				}
 				response.put(JsonKey.SUCCESS, false);
 				response.put(JsonKey.MESSAGE, result);
 			}

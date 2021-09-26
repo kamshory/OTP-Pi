@@ -99,15 +99,17 @@
 					var message = $('#message').val();
 					var modemID = $('#modem').val();
 					$.ajax({
-						'type': 'POST',
-						'url': 'sms.html',
-						'data': {
+						type: 'POST',
+						url: 'sms.html',
+						data: {
 							receiver: receiver,
 							message: message,
 							modem_id: modemID,
 							send: 'send'
 						},
+						dataType:'json',
 						success: function(data) {
+							showNotif(data.data[0].message);
 							$('#receiver').val('');
 							$('#message').val('');
 						}

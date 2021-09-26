@@ -304,9 +304,12 @@ public class GSMUtil {
 			GSMUtil.sendTraffic(receiver, ste, modemData);
 		}		
 		String result = "";
-		try {
+		try 
+		{
 			result = GSMUtil.get(modemID).sendSMS(receiver, message, modemData);
-		} catch (SerialPortConnectionException e) {
+		} 
+		catch (SerialPortConnectionException e) 
+		{
 			reconnectModem(modemID);
 		}
 		
