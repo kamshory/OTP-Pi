@@ -21,6 +21,7 @@ import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.gsm.InvalidPortException;
 import com.planetbiru.gsm.InvalidSIMPinException;
+import com.planetbiru.gsm.SerialPortConnectionException;
 import com.planetbiru.gsm.USSDParser;
 import com.planetbiru.mail.MailUtil;
 import com.planetbiru.mail.NoEmailAccountException;
@@ -295,6 +296,10 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			statusCode = HttpStatus.UNAUTHORIZED;
 		} 
 		catch (GSMException | InvalidSIMPinException e) 
+		{
+			logger.error(e.getMessage(), e);
+		} 
+		catch (SerialPortConnectionException e) 
 		{
 			logger.error(e.getMessage(), e);
 		}
@@ -896,7 +901,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				response.put(JsonKey.REPLYABLE, replyable);				
 			}
 		} 
-		catch (GSMException e) 
+		catch (GSMException | InvalidPortException e) 
 		{
 			e.printStackTrace();
 			String message = e.getMessage();

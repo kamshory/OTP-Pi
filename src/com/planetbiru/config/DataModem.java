@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.json.JSONObject;
 
-public class DataModem {
+public class DataModem implements Cloneable {
 	private String id = "";
 	private String name = "";
 	private String port = "";
@@ -459,6 +459,10 @@ public class DataModem {
 		}
 		return perfixes;
 	}
+	
+	public Object clone() throws CloneNotSupportedException {  
+		return super.clone();  
+	}  
 	
 	
 }

@@ -17,8 +17,10 @@ public class GSMInstance {
 	private String port = "";
 	private boolean eventListener = true;
 	private boolean pinValid = true;
+	private DataModem modem = new DataModem();
 	public GSMInstance(DataModem modem, boolean eventListener)
 	{
+		this.modem = modem;
 		this.port = modem.getPort();
 		this.eventListener = eventListener;
 		this.id = modem.getId();
@@ -90,7 +92,7 @@ public class GSMInstance {
 		this.gsm.closePort();
 	}
 	
-	public String sendSMS(String receiver, String message, boolean deleteSent) throws GSMException, InvalidSIMPinException
+	public String sendSMS(String receiver, String message, boolean deleteSent) throws GSMException, InvalidSIMPinException, SerialPortConnectionException
 	{
 		if(!this.pinValid)
 		{
@@ -104,12 +106,12 @@ public class GSMInstance {
 		return this.gsm.sendSMS(receiver, message, deleteSent);
 	}
 
-	public String sendSMS(String receiver, String message) throws GSMException, InvalidSIMPinException {
+	public String sendSMS(String receiver, String message) throws GSMException, InvalidSIMPinException, SerialPortConnectionException {
 		return this.sendSMS(receiver, message, true);
 	}
 
 	
-	public String sendSMS(String receiver, String message, DataModem modemData) throws GSMException, InvalidSIMPinException {
+	public String sendSMS(String receiver, String message, DataModem modemData) throws GSMException, InvalidSIMPinException, SerialPortConnectionException {
 		Date date = new Date();
 		String sender = modemData.getMsisdn();
 		this.logSendSMS(sender, Utility.maskMSISDN(receiver), date, message.length());
@@ -123,7 +125,7 @@ public class GSMInstance {
 		}
 	}
 	
-	public List<SMS> readSMS() throws GSMException, InvalidSIMPinException
+	public List<SMS> readSMS() throws GSMException, InvalidSIMPinException, SerialPortConnectionException
 	{
 		if(!this.pinValid)
 		{
@@ -136,7 +138,7 @@ public class GSMInstance {
 		this.waitUntilReady();
 		return this.gsm.readSMS(null, null);
 	}
-	public List<SMS> readSMS(String storage, String smsStatus) throws GSMException, InvalidSIMPinException
+	public List<SMS> readSMS(String storage, String smsStatus) throws GSMException, InvalidSIMPinException, SerialPortConnectionException
 	{
 		if(storage == null)
 		{
@@ -153,7 +155,7 @@ public class GSMInstance {
 		}
 	}
 	
-	public void deleteSMS(int smsID, String storage) throws GSMException, InvalidSIMPinException {
+	public void deleteSMS(int smsID, String storage) throws GSMException, InvalidSIMPinException, SerialPortConnectionException {
 		if(!this.pinValid)
 		{
 			throw new InvalidSIMPinException(ConstantString.INVALID_SIM_CARD_PIN);
@@ -161,7 +163,7 @@ public class GSMInstance {
 		this.gsm.deleteSMS(smsID, storage);		
 	}
     
-    public void deleteAllSentSMS() throws GSMException, InvalidSIMPinException 
+    public void deleteAllSentSMS() throws GSMException, InvalidSIMPinException, SerialPortConnectionException 
     { 	
 		if(!this.pinValid)
 		{
@@ -170,43 +172,43 @@ public class GSMInstance {
 		this.gsm.deleteAllSentSMS();
  	}
     
-    public String getIMEI() throws GSMException 
+    public String getIMEI() throws GSMException, SerialPortConnectionException 
     {
         return this.gsm.getIMEI();
     }
     
-    public String getIMSI() throws GSMException 
+    public String getIMSI() throws GSMException, SerialPortConnectionException 
     {
     	return this.gsm.getIMSI();
     }
     
-    public String getICCID() throws GSMException 
+    public String getICCID() throws GSMException, SerialPortConnectionException 
     {
     	return this.gsm.getICCID();
     }
 
-    public String getMSISDN() throws GSMException 
+    public String getMSISDN() throws GSMException, SerialPortConnectionException 
     {
     	return this.gsm.getMSISDN();
     }
-    public String getManufacturer() throws GSMException {
+    public String getManufacturer() throws GSMException, SerialPortConnectionException {
 		return this.gsm.getManufacturer();
 	}
 
-	public String getModel() throws GSMException {
+	public String getModel() throws GSMException, SerialPortConnectionException {
 		return this.gsm.getModel();
 	}
 
-	public String getRevision() throws GSMException {
+	public String getRevision() throws GSMException, SerialPortConnectionException {
 		return this.gsm.getRevision();
 	}
-	public String getSMSCenter() throws GSMException {
+	public String getSMSCenter() throws GSMException, SerialPortConnectionException {
 		return this.gsm.getSMSCenter();
 	}
-	public String getOperatorSelect() throws GSMException {
+	public String getOperatorSelect() throws GSMException, SerialPortConnectionException {
 		return this.gsm.getOperatorSelect();
 	}
-	public String getNetworkRegistration() throws GSMException {
+	public String getNetworkRegistration() throws GSMException, SerialPortConnectionException {
 		return this.gsm.getNetworkRegistration();
 	}
 	private void waitUntilReady() {
@@ -220,7 +222,7 @@ public class GSMInstance {
 		}
 	}
 	
-	public USSDParser executeUSSD(String ussd) throws GSMException {
+	public USSDParser executeUSSD(String ussd) throws GSMException, SerialPortConnectionException {
 		if(this.gsm.getSerialPort() == null)
 		{
 			throw new GSMException(ConstantString.SERIAL_PORT_NULL);
@@ -256,6 +258,14 @@ public class GSMInstance {
 
 	public void setPinValid(boolean pinValid) {
 		this.pinValid = pinValid;
+	}
+
+	public DataModem getModem() {
+		return modem;
+	}
+
+	public void setModem(DataModem modem) {
+		this.modem = modem;
 	}
 
 	private void sleep(long sleep) 

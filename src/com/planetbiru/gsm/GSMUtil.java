@@ -109,6 +109,49 @@ public class GSMUtil {
 		return instance;
 	}
 
+	public static void reconnectModem(GSMInstance instance) throws GSMException {
+		if(instance != null)
+		{
+			DataModem modem;
+			try {
+				modem = (DataModem) instance.getModem().clone();
+				instance.disconnect();
+				String pin = modem.getSimCardPIN();				
+				if(pin.isEmpty())
+				{
+					pin = null;
+				}
+				GSMUtil.gsmInstance.remove(instance);
+				boolean connected = false;
+				try 
+				{
+					instance = new GSMInstance(modem, eventListener);				
+					connected = instance.connect(pin);
+					if(connected)
+					{
+						GSMUtil.gsmInstance.add(instance);
+					}
+				} 
+				catch (GSMException | InvalidPortException e) 
+				{
+					e.printStackTrace();
+				}
+				GSMUtil.updateConnectedDevice();
+				
+			} 
+			catch (CloneNotSupportedException e) 
+			{
+				e.printStackTrace();
+			}
+			
+		}	
+	}
+	
+	private static void reconnectModem(String modemID) throws GSMException {
+		GSMInstance instance = GSMUtil.getGSMIntance(modemID);
+		GSMUtil.reconnectModem(instance);
+	}
+	
 	public static void stop() {
 		Map<String, DataModem> modemData = ConfigModem.getModemData();		
 		for (Map.Entry<String, DataModem> entry : modemData.entrySet())
@@ -192,8 +235,9 @@ public class GSMUtil {
 	 * @return List of SMS
 	 * @throws GSMException if any GSM errors
 	 * @throws InvalidSIMPinException 
+	 * @throws SerialPortConnectionException 
 	 */
-	public static List<SMS> readSMS(String modemID) throws GSMException, InvalidSIMPinException
+	public static List<SMS> readSMS(String modemID) throws GSMException, InvalidSIMPinException, SerialPortConnectionException
 	{
 		return GSMUtil.get(modemID).readSMS();
 	}
@@ -204,8 +248,9 @@ public class GSMUtil {
 	 * @return JSONArray contains SMS
 	 * @throws GSMException if any GSM errors
 	 * @throws InvalidSIMPinException 
+	 * @throws SerialPortConnectionException 
 	 */
-	public static JSONArray readSMSJSON(String modemID) throws GSMException, InvalidSIMPinException
+	public static JSONArray readSMSJSON(String modemID) throws GSMException, InvalidSIMPinException, SerialPortConnectionException
 	{
 		JSONArray arr = new JSONArray();
 		List<SMS> sms = GSMUtil.get(modemID).readSMS();
@@ -224,8 +269,9 @@ public class GSMUtil {
 	 * @return JSONObject contains sending SMS response
 	 * @throws GSMException if any GSM errors
 	 * @throws InvalidSIMPinException 
+	 * @throws SerialPortConnectionException 
 	 */
-	public static JSONObject sendSMS(String receiver, String message, String modemID) throws GSMException, InvalidSIMPinException 
+	public static JSONObject sendSMS(String receiver, String message, String modemID) throws GSMException, InvalidSIMPinException
 	{
 		StackTraceElement ste = Thread.currentThread().getStackTrace()[3];
 		if(GSMUtil.getGSMInstance().isEmpty())
@@ -238,13 +284,19 @@ public class GSMUtil {
 		{
 			GSMUtil.sendTraffic(receiver, ste, modemData);
 		}		
-		String result = GSMUtil.get(modemID).sendSMS(receiver, message, modemData);			
+		String result = "";
+		try {
+			result = GSMUtil.get(modemID).sendSMS(receiver, message, modemData);
+		} catch (SerialPortConnectionException e) {
+			reconnectModem(modemID);
+		}
+		
 		JSONObject response = new JSONObject();
 		response.put(GSMUtil.MODEM_ID, modemData.getId());
 		response.put(GSMUtil.RESULT, result);
 		return response;
 	}
-	
+
 	/**
 	 * Send SMS without specified modem
 	 * @param receiver The SMS recipient
@@ -252,8 +304,10 @@ public class GSMUtil {
 	 * @return JSONObject contains sending SMS response
 	 * @throws GSMException if any GSM errors
 	 * @throws InvalidSIMPinException 
+	 * @throws SerialPortConnectionException 
+	 * @throws InvalidPortException 
 	 */
-	public static JSONObject sendSMS(String receiver, String message, StackTraceElement ste) throws GSMException, InvalidSIMPinException 
+	public static JSONObject sendSMS(String receiver, String message, StackTraceElement ste) throws GSMException, InvalidSIMPinException, SerialPortConnectionException, InvalidPortException
 	{
 		if(GSMUtil.getGSMInstance().isEmpty())
 		{
@@ -264,7 +318,17 @@ public class GSMUtil {
 		GSMInstance instance = GSMUtil.getGSMInstance().get(index);	
 		
 		DataModem modemData = ConfigModem.getModemData(instance.getId());      
-		String result = instance.sendSMS(receiver, message, modemData);
+		String result = "";
+		try 
+		{
+			result = instance.sendSMS(receiver, message, modemData);
+		} 
+		catch (SerialPortConnectionException e) 
+		{
+			GSMUtil.reconnectModem(instance);
+			throw new SerialPortConnectionException(e);
+		}
+		
 		if(ConfigSMS.isMonitorSMS())
 		{
 			GSMUtil.sendTraffic(receiver, ste, modemData);
@@ -318,20 +382,28 @@ public class GSMUtil {
 		return GSMUtil.getCallerType().getOrDefault(key, "");
 	}
 
-	public static USSDParser executeUSSD(String ussd, String modemID) throws GSMException 
+	public static USSDParser executeUSSD(String ussd, String modemID) throws GSMException, InvalidPortException 
 	{
 		if(GSMUtil.getGSMInstance().isEmpty())
 		{
 			throw new GSMException(GSMUtil.NO_DEVICE_CONNECTED);
 		}
-		GSMInstance instance = GSMUtil.get(modemID);		
-		if(instance.isConnected())
+		GSMInstance instance = GSMUtil.get(modemID);
+		try
 		{
-			return instance.executeUSSD(ussd);
+			if(instance.isConnected())
+			{
+				return instance.executeUSSD(ussd);
+			}
+			else
+			{
+				throw new GSMException("The selected device is not connected");
+			}
 		}
-		else
+		catch(SerialPortConnectionException e)
 		{
-			throw new GSMException("The selected device is not connected");
+			GSMUtil.reconnectModem(instance);
+			return new USSDParser();
 		}
 	}
 
@@ -625,7 +697,34 @@ public class GSMUtil {
 		GSMUtil.lastDelete = lastDelete;
 	}
 
-	public static JSONObject getInstalledModemInfo(String port) {
+	public static JSONObject getInstalledModemInfo(String port) throws SerialPortConnectionException {
+		JSONObject info = new JSONObject();
+		try 
+		{
+			info = getModemInfo(port);
+		} 
+		catch (SerialPortConnectionException e) 
+		{
+			e.printStackTrace();
+			
+			GSMInstance instance;
+			try 
+			{
+				instance = GSMUtil.getGSMInstanceByPort(port);
+				
+				GSMUtil.reconnectModem(instance);
+			} 
+			catch (ModemNotFoundException | GSMException e2) 
+			{
+				
+			}	
+			
+			throw new SerialPortConnectionException(e);
+		}
+		return info;
+	}
+	
+	private static JSONObject getModemInfo(String port) throws SerialPortConnectionException {
 		GSMInstance instance;
 		boolean addHock = false;
 		JSONObject info = new JSONObject();
@@ -680,7 +779,7 @@ public class GSMUtil {
 		}
 		return info;
 	}
-	
+
 	public static JSONObject changeIMEI(String port, String currentValue, String newValue) {
 		GSMInstance instance;
 		boolean addHock = false;
