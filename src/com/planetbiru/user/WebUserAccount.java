@@ -103,20 +103,20 @@ public class WebUserAccount {
 	
 	public static boolean checkUserAuth(Map<String, List<String>> headers) throws NoUserRegisteredException 
 	{
-		CookieServer cookie = new CookieServer(headers);
-		String username = cookie.getSessionValue(JsonKey.USERNAME, "");
-		String password = cookie.getSessionValue(JsonKey.PASSWORD, "");
-		return WebUserAccount.checkUserAuth(username, password);
+		return WebUserAccount.checkUserAuth(new CookieServer(headers));
 	}
 	
 	public static boolean checkUserAuth(Headers headers) throws NoUserRegisteredException
 	{
-		CookieServer cookie = new CookieServer(headers);
+		return WebUserAccount.checkUserAuth(new CookieServer(headers));
+	}
+	
+	public static boolean checkUserAuth(CookieServer cookie) throws NoUserRegisteredException {
 		String username = cookie.getSessionValue(JsonKey.USERNAME, "");
 		String password = cookie.getSessionValue(JsonKey.PASSWORD, "");
 		return WebUserAccount.checkUserAuth(username, password);
 	}
-	
+
 	public static boolean checkUserAuth(String username, String password) throws NoUserRegisteredException 
 	{
 		if(username.isEmpty())
@@ -221,7 +221,7 @@ public class WebUserAccount {
 		for (Map.Entry<String, User> entry : WebUserAccount.users.entrySet())
 		{
 			String username = entry.getKey();
-			JSONObject user = ((User) entry.getValue()).toJSONObject();
+			JSONObject user = entry.getValue().toJSONObject();
 			json.put(username, user);
 		}
 		return json;
