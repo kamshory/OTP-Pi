@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.planetbiru.Application;
 import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.FileNotFoundException;
 import com.planetbiru.util.Utility;
@@ -24,6 +25,7 @@ public class ConfigGeneral {
 	private static String restartDevice = "";
 	private static boolean dropExpireOTP = false;
 	private static long otpExpirationOffset = 30000;
+	private static long inspectModemInterval = 0;
 	private static Logger logger = Logger.getLogger(ConfigGeneral.class);
 
 	private ConfigGeneral()
@@ -58,6 +60,9 @@ public class ConfigGeneral {
 					ConfigGeneral.restartDevice = json.optString("restartDevice", "").trim();
 					ConfigGeneral.dropExpireOTP = json.optBoolean("dropExpireOTP", false);
 					ConfigGeneral.otpExpirationOffset = json.optLong("otpExpiration", 0);
+					ConfigGeneral.inspectModemInterval = json.optLong("inspectModemInterval", 0);
+					
+					Application.modemInspectorStart(0);
 				}
 			}
 		} 
@@ -126,6 +131,7 @@ public class ConfigGeneral {
 		config.put("restartDevice", ConfigGeneral.restartDevice);
 		config.put("dropExpireOTP", ConfigGeneral.dropExpireOTP);
 		config.put("otpExpiration", ConfigGeneral.otpExpirationOffset);
+		config.put("inspectModemInterval", ConfigGeneral.inspectModemInterval);
 		return config;
 	}
 
@@ -203,6 +209,14 @@ public class ConfigGeneral {
 
 	public static void setOtpExpirationOffset(long otpExpirationOffset) {
 		ConfigGeneral.otpExpirationOffset = otpExpirationOffset;
+	}
+
+	public static long getInspectModemInterval() {
+		return inspectModemInterval;
+	}
+
+	public static void setInspectModemInterval(long inspectModemInterval) {
+		ConfigGeneral.inspectModemInterval = inspectModemInterval;
 	}
 	
 }

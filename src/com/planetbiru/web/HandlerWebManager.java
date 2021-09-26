@@ -816,7 +816,9 @@ public class HandlerWebManager implements HttpHandler {
 			String restartService = queryPairs.getOrDefault("restart_service", "").trim();
 			String restartDevice = queryPairs.getOrDefault("restart_device", "").trim();
 			String exp = queryPairs.getOrDefault("otp_expiration_offset", "0").trim();
+			String insp = queryPairs.getOrDefault("inspect_modem_interval", "0").trim();
 			long otpExpirationOffset = Utility.atol(exp);
+			long inspectModemInterval = Utility.atol(insp);
 			boolean dropExpireOTP = queryPairs.getOrDefault("drop_expire_otp", "").trim().equals("1");
 			
 			ConfigGeneral.setDeviceName(deviceName2);
@@ -827,6 +829,7 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigGeneral.setRestartDevice(restartDevice);
 			ConfigGeneral.setOtpExpirationOffset(otpExpirationOffset);
 			ConfigGeneral.setDropExpireOTP(dropExpireOTP);
+			ConfigGeneral.setInspectModemInterval(inspectModemInterval);
 			
 			ConfigGeneral.save();
 			DeviceAPI.setTimeZone(deviceTimeZone);

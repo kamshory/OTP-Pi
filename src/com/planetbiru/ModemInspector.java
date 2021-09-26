@@ -6,8 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 import com.fazecast.jSerialComm.SerialPort;
-import com.planetbiru.config.Config;
+import com.planetbiru.config.ConfigGeneral;
 import com.planetbiru.config.ConfigModem;
 import com.planetbiru.config.DataModem;
 import com.planetbiru.gsm.GSMException;
@@ -20,23 +22,51 @@ public class ModemInspector extends Thread {
 	private boolean running = true;
 	private String lastList = "";
 	private Map<String, Boolean> lastConnection = new HashMap<>();
+	private long delay;
+	private static Logger logger = Logger.getLogger(ModemInspector.class);
+
+	public ModemInspector(long delay) {
+		this.delay = delay;
+	}
+
+	public ModemInspector() {
+	}
 
 	@Override
 	public void run()
 	{
-		long interval = Config.getInspectModemInterval();
-		while(this.running)
+		if(this.delay > 0)
 		{
 			try 
 			{
-				Thread.sleep(interval);
+				Thread.sleep(this.delay);
 			} 
 			catch (InterruptedException e) 
 			{
 				Thread.currentThread().interrupt();
 			}
-			this.inspectSerialPort();			
 		}
+		long interval = ConfigGeneral.getInspectModemInterval();
+		if(interval >= 1000)
+		{		
+			while(this.running)
+			{
+				try 
+				{
+					Thread.sleep(interval);
+				} 
+				catch (InterruptedException e) 
+				{
+					Thread.currentThread().interrupt();
+				}
+				this.inspectSerialPort();			
+			}
+		}
+	}
+	
+	public void stopService()
+	{
+		this.running = false;
 	}
 
 	private void inspectSerialPort() {
@@ -72,39 +102,24 @@ public class ModemInspector extends Thread {
 	}
 
 	private void processUpdate(String currentList) {
-		
-
 		String[] arr = currentList.split(",");
-		/**
-		 * Remove current list
-		 */
-		for (Map.Entry<String, Boolean> entry : this.lastConnection.entrySet())
-		{
-			String port = entry.getKey();
-			boolean connected = entry.getValue().booleanValue();
-			if(connected && this.indexOf(arr, port) == -1)
-			{
-				this.lastConnection.remove(port);
-			}
-		}
-		
+		this.removeInactivePort(arr);
+		this.addNewPort(arr);
+	}
+
+	private void addNewPort(String[] arr) {
 		List<String> newList = new ArrayList<>();
 		for (Map.Entry<String, Boolean> entry : this.lastConnection.entrySet())
 		{
 			newList.add(entry.getKey());
 		}
-		
-		
 		this.lastConnection = new HashMap<>();
-		
-		Map<String, DataModem> modemData = ConfigModem.getModemData();		
-		
+		Map<String, DataModem> modemData = ConfigModem.getModemData();	
 		for(int i = 0; i<arr.length; i++)
 		{
 			try 
 			{
-				String port = arr[i];
-				
+				String port = arr[i];				
 				if(!newList.contains(port) && this.isUsed(modemData, port))
 				{
 					this.reconnectModem(modemData, port);
@@ -119,7 +134,23 @@ public class ModemInspector extends Thread {
 				 * Do nothing
 				 */
 			}
+		}		
+	}
+
+	private void removeInactivePort(String[] arr) {
+		/**
+		 * Remove current list
+		 */
+		for (Map.Entry<String, Boolean> entry : this.lastConnection.entrySet())
+		{
+			String port = entry.getKey();
+			boolean connected = entry.getValue().booleanValue();
+			if(connected && this.indexOf(arr, port) == -1)
+			{
+				this.lastConnection.remove(port);
+			}
 		}
+		
 	}
 
 	private void reconnectModem(Map<String, DataModem> modemData, String port) {

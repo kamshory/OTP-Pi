@@ -20994,3 +20994,265 @@ java.net.BindException: Address already in use: bind
 2021-09-26 13:49:53 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
 2021-09-26 13:49:53 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
 2021-09-26 13:49:53 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 13:56:14 [INFO  ] Application                     :186  - Service started
+2021-09-26 13:56:20 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 13:56:20 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 13:56:20 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 13:56:20 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 13:56:20 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 13:56:20 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 13:56:20 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 13:56:20 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 13:56:21 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 13:56:21 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 15:53:29 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 15:53:45 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 15:53:45 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 15:53:46 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 15:53:46 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 15:53:46 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 15:53:46 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 15:53:46 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 15:53:46 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 15:53:46 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 15:53:46 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 15:54:04 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 15:54:08 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 15:54:08 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 15:54:08 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 15:54:08 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 15:54:08 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 15:54:08 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 15:54:08 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 15:54:08 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 15:54:09 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 15:54:09 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 15:55:10 [INFO  ] Application                     :186  - Service started
+2021-09-26 15:55:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 15:55:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 15:55:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 15:55:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 15:55:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 15:55:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 15:55:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 15:55:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 15:55:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 15:55:31 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 15:56:16 [INFO  ] Application                     :186  - Service started
+2021-09-26 15:56:29 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 15:56:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 15:56:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 15:56:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 15:56:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 15:56:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 15:56:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 15:56:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 15:56:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 15:56:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 15:56:42 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 15:56:51 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 15:56:51 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 15:56:51 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 15:56:51 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 15:56:51 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 15:56:52 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 15:56:52 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 15:56:52 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 15:56:52 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 15:56:52 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 16:04:02 [INFO  ] Application                     :186  - Service started
+2021-09-26 16:04:07 [INFO  ] ModemInspector                  :138  - Reconnect Modem d740eb1f5e9799c2b50452ea5acf6054
+2021-09-26 16:04:49 [INFO  ] Application                     :186  - Service started
+2021-09-26 16:04:59 [INFO  ] ModemInspector                  :146  - Reconnect Modem d740eb1f5e9799c2b50452ea5acf6054
+2021-09-26 16:05:07 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 16:05:07 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 16:05:07 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 16:05:07 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 16:05:07 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 16:05:07 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 16:05:08 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 16:05:08 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 16:05:08 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 16:05:08 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 16:05:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 16:05:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 16:05:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 16:05:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 16:05:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 16:05:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 16:05:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 16:05:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 16:05:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 16:05:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 16:05:22 [INFO  ] ModemInspector                  :131  - Remove Port COM4
+2021-09-26 16:05:27 [INFO  ] ModemInspector                  :146  - Reconnect Modem d740eb1f5e9799c2b50452ea5acf6054
+2021-09-26 16:05:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 16:05:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 16:05:31 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 16:05:31 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 16:05:31 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 16:05:31 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 16:05:31 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 16:05:31 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 16:05:31 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 16:05:31 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 16:05:49 [INFO  ] ModemInspector                  :131  - Remove Port COM4
+2021-09-26 16:05:54 [INFO  ] ModemInspector                  :146  - Reconnect Modem d740eb1f5e9799c2b50452ea5acf6054
+2021-09-26 16:05:57 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 16:05:57 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 16:05:57 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 16:05:57 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 16:05:57 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 16:05:57 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 16:05:57 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 16:05:57 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 16:05:58 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 16:05:58 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 16:05:59 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 16:05:59 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 16:05:59 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 16:05:59 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 16:05:59 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 16:05:59 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 16:06:00 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 16:06:00 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 16:06:00 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 16:06:00 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 16:06:02 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 16:06:02 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 16:06:02 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 16:06:02 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 16:06:02 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 16:06:02 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 16:06:02 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 16:06:02 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 16:06:02 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 16:06:03 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 16:06:04 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 16:06:04 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 16:06:04 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 16:06:04 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 16:06:04 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 16:06:05 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 16:06:05 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 16:06:05 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 16:06:05 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 16:06:05 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 16:06:07 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 16:06:07 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 16:06:07 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 16:06:07 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 16:06:07 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 16:06:07 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 16:06:07 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 16:06:08 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 16:06:08 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 16:06:08 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 16:06:16 [INFO  ] ModemInspector                  :131  - Remove Port COM4
+2021-09-26 16:06:21 [INFO  ] ModemInspector                  :146  - Reconnect Modem d740eb1f5e9799c2b50452ea5acf6054
+2021-09-26 16:06:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 16:06:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 16:06:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 16:06:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 16:06:31 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 16:06:31 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 16:06:31 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 16:06:31 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 16:06:31 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 16:06:31 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 16:06:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 16:06:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 16:06:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 16:06:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 16:06:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 16:06:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 16:06:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 16:06:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 16:06:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 16:06:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 16:06:35 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 16:06:35 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 16:06:35 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 16:06:35 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 16:06:35 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 16:06:35 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 16:06:35 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 16:06:36 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 16:06:36 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 16:06:36 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 16:09:00 [INFO  ] Application                     :186  - Service started
+2021-09-26 16:09:10 [INFO  ] ModemInspector                  :146  - Reconnect Modem d740eb1f5e9799c2b50452ea5acf6054
+2021-09-26 16:09:39 [INFO  ] Application                     :186  - Service started
+2021-09-26 16:09:49 [INFO  ] ModemInspector                  :146  - Reconnect Modem d740eb1f5e9799c2b50452ea5acf6054
+2021-09-26 16:10:02 [INFO  ] Application                     :186  - Service started
+2021-09-26 16:10:12 [INFO  ] ModemInspector                  :146  - Reconnect Modem d740eb1f5e9799c2b50452ea5acf6054
+2021-09-26 16:12:03 [INFO  ] Application                     :186  - Service started
+2021-09-26 16:12:13 [INFO  ] ModemInspector                  :146  - Reconnect Modem d740eb1f5e9799c2b50452ea5acf6054
+2021-09-26 16:12:56 [INFO  ] Application                     :186  - Service started
+2021-09-26 16:13:06 [INFO  ] ModemInspector                  :146  - Reconnect Modem d740eb1f5e9799c2b50452ea5acf6054
+2021-09-26 16:26:14 [INFO  ] Application                     :187  - Service started
+2021-09-26 16:28:51 [INFO  ] Application                     :187  - Service started
+2021-09-26 16:29:02 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:29:03 [INFO  ] ModemInspector                  :166  - Reconnect Modem d740eb1f5e9799c2b50452ea5acf6054
+2021-09-26 16:29:03 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:29:04 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:29:05 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:29:06 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:29:07 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:29:08 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:29:09 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:29:10 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:29:11 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:29:12 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:29:13 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:29:18 [INFO  ] ModemInspector                  :166  - Reconnect Modem d740eb1f5e9799c2b50452ea5acf6054
+2021-09-26 16:29:18 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:29:23 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:29:28 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:29:33 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:29:38 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:30:03 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:30:05 [INFO  ] ModemInspector                  :166  - Reconnect Modem d740eb1f5e9799c2b50452ea5acf6054
+2021-09-26 16:30:05 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:30:07 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:30:09 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:30:11 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:30:13 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:30:15 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:30:17 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:30:19 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:30:21 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:30:23 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:30:24 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 16:30:24 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 16:30:25 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 16:30:25 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 16:30:25 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 16:30:25 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 16:30:25 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 16:30:25 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 16:30:25 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 16:30:25 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:30:25 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 16:30:27 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:30:29 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:30:31 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:30:33 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:30:35 [INFO  ] ModemInspector                  :54   - run...
+2021-09-26 16:30:38 [INFO  ] Application                     :187  - Service started
+2021-09-26 16:30:40 [INFO  ] ModemInspector                  :165  - Reconnect Modem d740eb1f5e9799c2b50452ea5acf6054
+2021-09-26 16:30:40 [INFO  ] ModemInspector                  :165  - Reconnect Modem d740eb1f5e9799c2b50452ea5acf6054
+2021-09-26 16:30:45 [INFO  ] ModemInspector                  :165  - Reconnect Modem d740eb1f5e9799c2b50452ea5acf6054
+2021-09-26 16:31:01 [INFO  ] Application                     :187  - Service started
+2021-09-26 16:31:03 [INFO  ] ModemInspector                  :165  - Reconnect Modem d740eb1f5e9799c2b50452ea5acf6054
+2021-09-26 16:31:03 [INFO  ] ModemInspector                  :165  - Reconnect Modem d740eb1f5e9799c2b50452ea5acf6054
+2021-09-26 16:31:08 [INFO  ] ModemInspector                  :165  - Reconnect Modem d740eb1f5e9799c2b50452ea5acf6054
+2021-09-26 16:31:31 [INFO  ] ModemInspector                  :150  - Remove Port COM4
+2021-09-26 16:31:35 [INFO  ] ModemInspector                  :165  - Reconnect Modem d740eb1f5e9799c2b50452ea5acf6054
+2021-09-26 16:31:45 [INFO  ] ModemInspector                  :150  - Remove Port COM4
+2021-09-26 16:31:53 [INFO  ] ModemInspector                  :165  - Reconnect Modem d740eb1f5e9799c2b50452ea5acf6054
+2021-09-26 16:32:06 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 16:32:06 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 16:32:06 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 16:32:06 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS="SM"
+2021-09-26 16:32:06 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
