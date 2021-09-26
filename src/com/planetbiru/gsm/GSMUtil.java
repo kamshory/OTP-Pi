@@ -109,6 +109,27 @@ public class GSMUtil {
 		return instance;
 	}
 
+	public static void removeInstanceByPort(String port) {
+		try 
+		{
+			GSMInstance instance = GSMUtil.getGSMInstanceByPort(port);
+			GSMUtil.removeModem(instance);
+		}
+		catch (ModemNotFoundException e) 
+		{
+			e.printStackTrace();
+		}
+		
+	}
+
+	private static void removeModem(GSMInstance instance) {
+		if(instance != null)
+		{
+			GSMUtil.gsmInstance.remove(instance);
+			GSMUtil.updateConnectedDevice();
+		}
+	}
+
 	public static void reconnectModem(GSMInstance instance) throws GSMException {
 		if(instance != null)
 		{
@@ -135,19 +156,17 @@ public class GSMUtil {
 				catch (GSMException | InvalidPortException e) 
 				{
 					e.printStackTrace();
-				}
-				GSMUtil.updateConnectedDevice();
-				
+				}			
 			} 
 			catch (CloneNotSupportedException e) 
 			{
 				e.printStackTrace();
-			}
-			
+			}		
 		}	
+		GSMUtil.updateConnectedDevice();
 	}
 	
-	private static void reconnectModem(String modemID) throws GSMException {
+	public static void reconnectModem(String modemID) throws GSMException {
 		GSMInstance instance = GSMUtil.getGSMIntance(modemID);
 		GSMUtil.reconnectModem(instance);
 	}
@@ -913,7 +932,7 @@ public class GSMUtil {
 		return info;
 	}
 
-	private static GSMInstance getGSMInstanceByPort(String port) throws ModemNotFoundException {
+	public static GSMInstance getGSMInstanceByPort(String port) throws ModemNotFoundException {
 		for(int i = 0; i < GSMUtil.getGSMInstance().size(); i++)
 		{
 			if(GSMUtil.getGSMInstance().get(i).getPort().equals(port))
@@ -924,6 +943,23 @@ public class GSMUtil {
 		throw new ModemNotFoundException("No modem use port "+port);
 	}
 
+	public static JSONObject testAT(String modemID) throws GSMException, SerialPortConnectionException {
+		GSMInstance instance = GSMUtil.getGSMIntance(modemID);
+		String atResult = instance.testAT();
+		JSONObject result = new JSONObject();
+		result.put("atResponse", atResult);
+		if(atResult.contains("\r\nOK"))
+		{
+			result.put("status", "OK");
+		}
+		else
+		{
+			result.put("status", "ERROR");
+		}
+		return result;
+	}
+
+	
 	
 
 	

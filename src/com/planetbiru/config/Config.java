@@ -109,6 +109,7 @@ public class Config {
 	private static long otpLifetime = 30000;
 	private static long otpGCInterval = 60000;
 	private static String otpCacheFile = "";
+	private static long inspectModemInterval = 5000;
 	
 	private Config()
 	{
@@ -977,6 +978,14 @@ public class Config {
 
 	public static void setOtpCacheFile(String otpCacheFile) {
 		Config.otpCacheFile = otpCacheFile;
+	}
+
+	public static long getInspectModemInterval() {
+		return inspectModemInterval;
+	}
+
+	public static void setInspectModemInterval(long inspectModemInterval) {
+		Config.inspectModemInterval = inspectModemInterval;
 	}	
 
 	

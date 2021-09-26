@@ -284,6 +284,10 @@ public class GSMInstance {
 		return this.gsm.executeATCommand(command);		
 	}
 
+	public String testAT() throws GSMException, SerialPortConnectionException {
+		return this.gsm.executeAT("AT", 1, eventListener);
+	}
+
 	
 
 }
