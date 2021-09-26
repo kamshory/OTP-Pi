@@ -3,6 +3,9 @@ package com.planetbiru.util;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
@@ -52,19 +55,8 @@ public class ConfigLoader {
 		{
 			try 
 			{
-				ConfigLoader.properties.load(inputStream);		
-				for (Entry<Object, Object> entry : ConfigLoader.properties.entrySet()) 
-				{
-				    String key = (String) entry.getKey();
-				    String keyEnv = key.toUpperCase().replace(".", "_");
-				    String value = (String) entry.getValue();		    
-				    String valueEnv = System.getenv(keyEnv);
-				    if(valueEnv != null)
-				    {
-				    	value = valueEnv;
-				    }
-				    ConfigLoader.properties.setProperty(key, value);			    
-				}
+				ConfigLoader.properties.load(inputStream);					
+				ConfigLoader.overwriteConfig();
 			} 
 			catch (IOException e) 
 			{
@@ -72,6 +64,35 @@ public class ConfigLoader {
 			}
 		} 
 	}
+	private static void overwriteConfig() {
+		List<String> builder = new ArrayList<>();
+		for (Entry<Object, Object> entry : ConfigLoader.properties.entrySet()) 
+		{
+		    String key = (String) entry.getKey();
+		    String keyEnv = key.toUpperCase().replace(".", "_");
+		    String value = (String) entry.getValue();	
+		    
+		    
+		    builder.add("echo 'export "+keyEnv+"=\""+value.replace("'", "\\'")+"\"' >> $HOME/.bashrc");
+		    
+		    String valueEnv = System.getenv(keyEnv);
+		    if(valueEnv != null)
+		    {
+		    	value = valueEnv;
+		    }
+		    ConfigLoader.properties.setProperty(key, value);			    
+		}
+		boolean printConfig = ConfigLoader.properties.getOrDefault("otppi.print.config", "").toString().equalsIgnoreCase("true");
+		if(printConfig)
+		{
+			Collections.sort(builder);
+			for(int i = 0; i<builder.size(); i++)
+			{
+				logger.info(builder.get(i));
+			}
+		}
+	}
+
 	public static void load(String configPath) throws FileNotFoundException
 	{
 		configPath = FileConfigUtil.fixFileName(configPath);
@@ -80,18 +101,7 @@ public class ConfigLoader {
 		) 
 		{
 			ConfigLoader.properties.load(inputStream);			
-			for (Entry<Object, Object> entry : ConfigLoader.properties.entrySet()) 
-			{
-			    String key = (String) entry.getKey();
-			    String keyEnv = key.toUpperCase().replace(".", "_");
-			    String value = (String) entry.getValue();		    
-			    String valueEnv = System.getenv(keyEnv);
-			    if(valueEnv != null)
-			    {
-			    	value = valueEnv;
-			    }
-			    ConfigLoader.properties.setProperty(key, value);			    
-			}
+			ConfigLoader.overwriteConfig();
 		} 
 		catch (IOException e) 
 		{
