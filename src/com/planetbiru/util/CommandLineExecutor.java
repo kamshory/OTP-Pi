@@ -36,6 +36,7 @@ public class CommandLineExecutor {
         catch (Exception e) {
         	result.setError(true);
         	result.setErrorMessage(e.getMessage());
+        	Thread.currentThread().interrupt();
         }
         return result;
 	}
@@ -60,6 +61,7 @@ public class CommandLineExecutor {
         catch (Exception e) {
         	result.setError(true);
         	result.setErrorMessage(e.getMessage());
+        	Thread.currentThread().interrupt();
         }
         return result;
 	}
