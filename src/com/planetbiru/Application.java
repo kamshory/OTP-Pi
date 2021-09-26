@@ -323,9 +323,17 @@ public class Application {
 		if(ConfigSubscriberRedis.isSubscriberRedisEnable() && (Application.getRedisSubscriber() == null || !Application.getRedisSubscriber().isRunning()))
 		{
 			Application.setRedisSubscriber(new SubscriberRedis());
+			Application.getRedisSubscriber().setRunning(true);
 			Application.getRedisSubscriber().start();
 		}		
 	}
+	public static void subscriberRedisStop() {
+		if(Application.getRedisSubscriber() != null && Application.getRedisSubscriber().isRunning())
+		{
+			Application.getRedisSubscriber().stopService();
+		}		
+	}
+
 	public static void subscriberAMQPStop() {
 		if(Application.getAmqpSubscriber() != null && Application.getAmqpSubscriber().isRunning())
 		{

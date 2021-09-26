@@ -7,7 +7,7 @@ import com.planetbiru.config.ConfigSubscriberRedis;
 
 public class SubscriberRedis extends Thread {
 	
-	boolean connected = false;
+	private boolean connected = false;
 	private boolean running = true;
 
 	private boolean pong = false;
@@ -23,7 +23,6 @@ public class SubscriberRedis extends Thread {
 			{
 				sleep = 10000;
 			}
-			ConfigSubscriberRedis.setConnected(true);
 			this.connect();
 			do 
 			{
@@ -35,13 +34,13 @@ public class SubscriberRedis extends Thread {
 				{
 					Thread.currentThread().interrupt();
 				}
-				if(!this.connected)
+				if(!this.isConnected())
 				{
 					this.disconnect();
 					this.connect();
 				}
 			}
-			while(this.running);
+			while(this.isRunning());
 		}
 	}
 
@@ -76,22 +75,22 @@ public class SubscriberRedis extends Thread {
 		while(!this.pong && timeout > (end - start));
 		if(!this.pong)
 		{
-			this.connected = false;
+			this.setConnected(false);
 		}
 		return this.pong;
 	}
 	public void evtOnPong(String pattern)
 	{
 		this.pong = true;
-		this.connected = true;
+		this.setConnected(true);
 	}
 	
 	public void evtOnUnsubscribe(String topic, int subscribedChannels) {
-		this.connected = false;
+		this.setConnected(false);
 	}
 	
 	public void evtOnSubscribe(String topic, int subscribedChannels) {
-		this.connected = true;
+		this.setConnected(true);
 	}
 	
 	public void evtOnMessage(String topic, String message) {
@@ -100,7 +99,7 @@ public class SubscriberRedis extends Thread {
 	}
 	
 	public void stopService() {
-		this.running = false;	
+		this.setRunning(false);	
 		this.flagDisconnected();
 	}
 	
@@ -108,14 +107,33 @@ public class SubscriberRedis extends Thread {
 	{
 		Buzzer.toneDisconnectRedis();
 		this.clientThread.getSubscriber().disconnect();
-		this.connected = false;
+		this.setConnected(false);
 		this.clientThread.setSubscriberRedis(null);
 		ConfigSubscriberRedis.setConnected(false);
+		ServerWebSocketAdmin.broadcastServerInfo();
+	}
+	
+	public void flagConnected(boolean connected) {
+		ConfigSubscriberRedis.setConnected(connected);
 		ServerWebSocketAdmin.broadcastServerInfo();
 	}
 
 	public boolean isRunning() {
 		return this.running;
 	}
+
+	public void setRunning(boolean running) {
+		this.running = running;
+	}
+
+	public boolean isConnected() {
+		return connected;
+	}
+
+	public void setConnected(boolean connected) {
+		this.connected = connected;
+	}
+
+	
 	
 }
