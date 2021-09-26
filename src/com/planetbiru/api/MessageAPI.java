@@ -277,14 +277,7 @@ public class MessageAPI {
 					jsonData = GSMUtil.sendSMS(receiver, textMessage, ste);
 					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);			
 				} 
-				catch (SerialPortConnectionException e)
-				{
-					Buzzer.toneSMSFailed();
-					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.NO_DEVICE_CONNECTED);
-					responseJSON.put(JsonKey.ERROR, e.getMessage());
-					
-				}
-				catch (GSMException | InvalidSIMPinException | InvalidPortException e) 
+				catch (GSMException | InvalidSIMPinException | InvalidPortException | SerialPortConnectionException e) 
 				{
 					Buzzer.toneSMSFailed();
 					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.NO_DEVICE_CONNECTED);
@@ -341,6 +334,7 @@ public class MessageAPI {
 		MailUtil.send(to, subject, message, ste);
 		
 	}
+	
 	public JSONObject blockMSISDN(String command, JSONObject data) throws GSMException {
 		return this.blockMSISDN(command, data.optString(JsonKey.RECEIVER, ""));	
 	}

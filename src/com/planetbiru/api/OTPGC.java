@@ -5,6 +5,7 @@ import com.planetbiru.config.Config;
 public class OTPGC extends Thread {
 
 	private boolean running = false;
+	
 	@Override
 	public void run()
 	{
