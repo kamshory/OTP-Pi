@@ -40,6 +40,7 @@ public class MessageAPI {
 			requestJSON = new JSONObject(requestBody);
 			String command = requestJSON.optString(JsonKey.COMMAND, "");
 			JSONObject data = requestJSON.optJSONObject(JsonKey.DATA);
+			System.out.println(requestBody);
 			if(data != null)
 			{
 				logger.info("Topic     : " + topic);
@@ -100,7 +101,7 @@ public class MessageAPI {
 		String param3 = data.optString(JsonKey.PARAM3, "").trim();
 		String param4 = data.optString(JsonKey.PARAM4, "").trim();
 		String messageFormat = data.optString(JsonKey.MESSAGE, "").trim();
-		long expiration = data.optLong("expiration", 0) * 1000; 
+		long expiration = data.optLong(JsonKey.EXPIRATION, 0) * 1000; 
 		long lifeTime = expiration - System.currentTimeMillis();
 		String responseCode = ResponseCode.SUCCESS;
 		JSONObject requestJSON = new JSONObject();
