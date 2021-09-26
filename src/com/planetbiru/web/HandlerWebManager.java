@@ -1553,15 +1553,15 @@ public class HandlerWebManager implements HttpHandler {
 				{
 					String modemName = GSMUtil.getModemName(modemID);
 					message = "Sending a message to "+receiver+" via "+modemName;
-					JSONObject response = GSMUtil.sendSMS(receiver, message, modemID);
 					HttpUtil.broardcastWebSocket(message);
-					if(response.optString("result", "").contains("ERROR"))
+					JSONObject response = GSMUtil.sendSMS(receiver, message, modemID);
+					if(response.optString("result", "").contains("OK"))
 					{
-						message = "Error occured while sending a message to "+receiver+" via "+modemName;
+						message = "Waiting for the operator to send the message to the recipient";
 					}
 					else
 					{
-						message = "Waiting for the operator to send the message to the recipient";
+						message = "Error occured while sending a message to "+receiver+" via "+modemName;
 					}
 					HttpUtil.broardcastWebSocket(message);
 				} 

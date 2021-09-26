@@ -437,6 +437,8 @@ public class GSM {
     	logger.info("msg6 = "+msg6);
     	this.setReady(true);
     	
+    	result = msg6;
+    	
     	if(deleteSent)
     	{
     		this.gcDeleteSent();
