@@ -20420,3 +20420,87 @@ OK
 > 
 ERROR
 
+2021-09-26 08:37:25 [INFO  ] MessageAPI                      :46   - Topic     : 
+2021-09-26 08:37:25 [INFO  ] MessageAPI                      :47   - Message   : {
+    "data": {
+        "reference": "b97cb6784c7e84e8007c2804d4f9c817",
+        "date_time": 1632620245,
+        "receiver": "0812661111",
+        "expiration": 1632620275,
+        "id": 1632620245,
+        "message": "Kode OTP Anda adalah %s",
+        "param3": "98765",
+        "param4": "64875384",
+        "param1": "123456",
+        "param2": "7890"
+    },
+    "command": "create-otp"
+}
+2021-09-26 08:37:25 [INFO  ] MessageAPI                      :48   - Command   : create-otp
+2021-09-26 08:37:25 [INFO  ] MessageAPI                      :49   - Date Time : 1632620245
+2021-09-26 08:37:25 [INFO  ] MessageAPI                      :77   - Create OTP
+2021-09-26 08:37:25 [INFO  ] GSM                             :123  - Execute AT Command : ATE0
+2021-09-26 08:37:25 [INFO  ] GSM                             :419  - msg1 = 
+OK
+
+2021-09-26 08:37:25 [INFO  ] GSM                             :123  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 08:37:25 [INFO  ] GSM                             :421  - msg2 = 
+OK
+
+2021-09-26 08:37:25 [INFO  ] GSM                             :123  - Execute AT Command : AT+CMGF=1
+2021-09-26 08:37:25 [INFO  ] GSM                             :423  - msg3 = 
+OK
+
+2021-09-26 08:37:25 [INFO  ] GSM                             :123  - Execute AT Command : AT+CMGW="0812661111"
+2021-09-26 08:37:25 [INFO  ] GSM                             :425  - msg4 = 
+> 
+2021-09-26 08:37:25 [INFO  ] GSM                             :123  - Execute AT Command : Kode OTP Anda adalah 428886
+2021-09-26 08:37:26 [INFO  ] GSM                             :427  - msg5 = 
+> 
+2021-09-26 08:37:26 [INFO  ] GSM                             :123  - Execute AT Command : 
+2021-09-26 08:37:26 [INFO  ] GSM                             :429  - msg6 = 
+> 
+ERROR
+
+2021-09-26 08:37:27 [INFO  ] MessageAPI                      :46   - Topic     : 
+2021-09-26 08:37:27 [INFO  ] MessageAPI                      :47   - Message   : {
+    "data": {
+        "reference": "67656a4d439d93ebead0b9ce5f9cf271",
+        "date_time": 1632620247,
+        "receiver": "0812661111",
+        "expiration": 1632620277,
+        "id": 1632620247,
+        "message": "Kode OTP Anda adalah %s",
+        "param3": "98765",
+        "param4": "64875384",
+        "param1": "123456",
+        "param2": "7890"
+    },
+    "command": "create-otp"
+}
+2021-09-26 08:37:27 [INFO  ] MessageAPI                      :48   - Command   : create-otp
+2021-09-26 08:37:27 [INFO  ] MessageAPI                      :49   - Date Time : 1632620247
+2021-09-26 08:37:27 [INFO  ] MessageAPI                      :77   - Create OTP
+2021-09-26 08:37:27 [INFO  ] GSM                             :123  - Execute AT Command : ATE0
+2021-09-26 08:37:27 [INFO  ] GSM                             :419  - msg1 = 
+OK
+
+2021-09-26 08:37:27 [INFO  ] GSM                             :123  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 08:37:27 [INFO  ] GSM                             :421  - msg2 = 
+OK
+
+2021-09-26 08:37:27 [INFO  ] GSM                             :123  - Execute AT Command : AT+CMGF=1
+2021-09-26 08:37:27 [INFO  ] GSM                             :423  - msg3 = 
+OK
+
+2021-09-26 08:37:27 [INFO  ] GSM                             :123  - Execute AT Command : AT+CMGW="0812661111"
+2021-09-26 08:37:27 [INFO  ] GSM                             :425  - msg4 = 
+> 
+2021-09-26 08:37:27 [INFO  ] GSM                             :123  - Execute AT Command : Kode OTP Anda adalah 681812
+2021-09-26 08:37:27 [INFO  ] GSM                             :427  - msg5 = 
+> 
+2021-09-26 08:37:27 [INFO  ] GSM                             :123  - Execute AT Command : 
+2021-09-26 08:37:28 [INFO  ] GSM                             :429  - msg6 = 
+> 
+ERROR
+
