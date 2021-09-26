@@ -101,7 +101,7 @@ public class RedisClientThread extends Thread {
 	}
 
 	public boolean isRunning() {
-		return running;
+		return this.running;
 	}
 
 	public void setRunning(boolean running) {
@@ -109,7 +109,7 @@ public class RedisClientThread extends Thread {
 	}
 
 	public Jedis getSubscriber() {
-		return subscriber;
+		return this.subscriber;
 	}
 
 	public void setSubscriber(Jedis subscriber) {
@@ -117,7 +117,7 @@ public class RedisClientThread extends Thread {
 	}
 
 	public SubscriberRedis getSubscriberRedis() {
-		return subscriberRedis;
+		return this.subscriberRedis;
 	}
 
 	public void setSubscriberRedis(SubscriberRedis subscriberRedis) {

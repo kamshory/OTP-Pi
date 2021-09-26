@@ -4,20 +4,17 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.planetbiru.constant.JsonKey;
-import com.planetbiru.cookie.CookieServer;
 import com.planetbiru.user.User;
 import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.FileNotFoundException;
 import com.planetbiru.util.FileUtil;
 import com.planetbiru.util.Utility;
-import com.sun.net.httpserver.Headers;
 
 public class ConfigAPIUser {
 
@@ -182,22 +179,6 @@ public class ConfigAPIUser {
 	{
 		User user = new User(jsonObject);
 		ConfigAPIUser.users.put(jsonObject.optString(JsonKey.USERNAME, ""), user);
-	}
-	
-	public static boolean checkUserAuth(Map<String, List<String>> headers) 
-	{
-		CookieServer cookie = new CookieServer(headers);
-		String username = cookie.getSessionData().optString(JsonKey.USERNAME, "");
-		String password = cookie.getSessionData().optString(JsonKey.PASSWORD, "");
-		return ConfigAPIUser.checkUserAuth(username, password);
-	}
-	
-	public boolean checkUserAuth(Headers headers)
-	{
-		CookieServer cookie = new CookieServer(headers);
-		String username = cookie.getSessionValue(JsonKey.USERNAME, "");
-		String password = cookie.getSessionValue(JsonKey.PASSWORD, "");
-		return ConfigAPIUser.checkUserAuth(username, password);
 	}
 	
 	public static boolean checkUserAuth(String username, String password) 
