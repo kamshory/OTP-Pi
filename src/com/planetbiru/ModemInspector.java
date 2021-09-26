@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
-
 import com.fazecast.jSerialComm.SerialPort;
 import com.planetbiru.config.ConfigGeneral;
 import com.planetbiru.config.ConfigModem;
@@ -23,13 +21,8 @@ public class ModemInspector extends Thread {
 	private String lastList = "";
 	private Map<String, Boolean> lastConnection = new HashMap<>();
 	private long delay;
-	private static Logger logger = Logger.getLogger(ModemInspector.class);
-
 	public ModemInspector(long delay) {
 		this.delay = delay;
-	}
-
-	public ModemInspector() {
 	}
 
 	@Override
@@ -149,8 +142,7 @@ public class ModemInspector extends Thread {
 			{
 				this.lastConnection.remove(port);
 			}
-		}
-		
+		}	
 	}
 
 	private void reconnectModem(Map<String, DataModem> modemData, String port) {
@@ -165,7 +157,9 @@ public class ModemInspector extends Thread {
 				} 
 				catch (GSMException e) 
 				{
-					e.printStackTrace();
+					/**
+					 * Do nothing
+					 */
 				}
 			}
 		}
