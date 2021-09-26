@@ -25,12 +25,14 @@ $(document).ready(function(e){
     });
     $(document).on('click', '.load-sms', function(e2){
         var modemID = $('#modem').val();
+        $('.animation-loading-sms').css({'display':'block'});
         $.ajax({
             type:"GET",
             url:"data/sms/inbox/"+modemID,
             dataType:"json",
             success:function(data){
                 $('.message-list').empty();
+                $('.animation-loading-sms').css({'display':'none'});
                 for(var i in data)
                 {
                     var sms = data[i];
