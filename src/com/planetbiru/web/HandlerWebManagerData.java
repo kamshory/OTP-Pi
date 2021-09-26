@@ -1105,7 +1105,6 @@ public class HandlerWebManagerData implements HttpHandler {
 		}
 		catch(NoUserRegisteredException | GSMException | InvalidSIMPinException | SerialPortConnectionException | InvalidPortException e)
 		{
-			e.printStackTrace();
 			/**
 			 * Do nothing
 			 */
