@@ -4,6 +4,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map.Entry;
+
+import org.apache.log4j.Logger;
+
 import java.util.Properties;
 
 import com.planetbiru.config.Config;
@@ -36,7 +39,7 @@ import com.planetbiru.web.HandlerWebManagerAPI;
 
 public class ConfigLoader {
 	private static Properties properties = new Properties();
-	
+	private static Logger logger = Logger.getLogger(ConfigLoader.class);
 	private ConfigLoader()
 	{
 		
@@ -65,7 +68,7 @@ public class ConfigLoader {
 			} 
 			catch (IOException e) 
 			{
-				e.printStackTrace();
+				logger.error(e.getMessage(), e);
 			}
 		} 
 	}
