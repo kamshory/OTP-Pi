@@ -40,7 +40,6 @@ public class MessageAPI {
 			requestJSON = new JSONObject(requestBody);
 			String command = requestJSON.optString(JsonKey.COMMAND, "");
 			JSONObject data = requestJSON.optJSONObject(JsonKey.DATA);
-			System.out.println(requestBody);
 			if(data != null)
 			{
 				logger.info("Topic     : " + topic);

@@ -52,9 +52,6 @@ public class Scheduller extends Thread{
 	private boolean cronUpdateRedis = false;
 	
 	private boolean cronCeviceCheck = false;
-
-
-
 	
 	private static Logger logger = Logger.getLogger(Scheduller.class);
 	
@@ -450,9 +447,4 @@ public class Scheduller extends Thread{
 		ServerStatus.append(data);
 		ServerStatus.save();
 	}
-	
-	
-	
-
-	
 }
