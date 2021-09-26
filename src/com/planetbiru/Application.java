@@ -46,6 +46,7 @@ public class Application {
 	private static SubscriberAMQP amqpSubscriber;
 	
 	private static Logger logger = Logger.getLogger(Application.class);
+	private static ModemInspector modemInspector = null;
 	
 
 	public static void main(String[] args) {
@@ -170,7 +171,7 @@ public class Application {
 			
 			Application.modemInternetStart();
 			
-			Application.modemInspectorStart();
+			Application.modemInspectorStart(5000);
 
 			/**
 			 * WebSocket Server for Admin
@@ -224,9 +225,22 @@ public class Application {
 		GSMUtil.stop();	
 	}
 	
-	private static void modemInspectorStart() {
-		ModemInspector modemInspector = new ModemInspector();
-		modemInspector.start();
+	public static void modemInspectorStart(long delay) {
+		if(Application.modemInspector != null)
+		{
+			try
+			{
+				Application.modemInspector.stopService();				
+			}
+			catch(Exception e)
+			{
+				/**
+				 * Do nothing
+				 */
+			}
+		}
+		Application.modemInspector = new ModemInspector(delay);
+		Application.modemInspector.start();
 	}
 
 	private static void restAPIStart() {

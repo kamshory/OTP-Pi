@@ -119,6 +119,19 @@
 							</td>
 						</tr>
 						<tr>
+							<td>Inspect Modem Connection</td>
+							<td>
+								<select name="inspect_modem_interval" id="inspect_modem_interval" class="form-control">
+									<option value="0">Never</option>
+									<option value="1000">1 Second</option>
+									<option value="2000">2 Seconds</option>
+									<option value="5000">5 Seconds</option>
+									<option value="10000">10 Seconds</option>
+									<option value="30000">30 Seconds</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
 							<td>Restart Service</td>
 							<td>
 								<select name="restart_service" id="restart_service" class="form-control">
@@ -188,6 +201,7 @@
 						$('[name="restart_device"]').val(data.restartDevice);
 						$('[name="otp_expiration_offset"]').val(data.otpExpirationOffset);
 						$('[name="drop_expire_otp"]').prop('checked', data.dropExpireOTP);
+						$('[name="inspect_modem_interval"]').val(data.inspectModemInterval);
 					}
 				});
 			});
