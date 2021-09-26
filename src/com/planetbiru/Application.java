@@ -82,7 +82,6 @@ public class Application {
 			} 
 			catch (FileNotFoundException e1) 
 			{
-				e1.printStackTrace();
 				logger.error(e1.getMessage(), e1);
 			}
 		}
@@ -170,6 +169,8 @@ public class Application {
 			Application.modemSMSStart();
 			
 			Application.modemInternetStart();
+			
+			Application.modemInspectorStart();
 
 			/**
 			 * WebSocket Server for Admin
@@ -190,7 +191,7 @@ public class Application {
 		}
 		
 	}
-	
+
 	private static void otpStart() {
 		OTP.initialize(Config.getOtpCacheFile());
 		OTP.start();
@@ -221,6 +222,11 @@ public class Application {
 
 	public static void modemSMSStop() {
 		GSMUtil.stop();	
+	}
+	
+	private static void modemInspectorStart() {
+		ModemInspector modemInspector = new ModemInspector();
+		modemInspector.start();
 	}
 
 	private static void restAPIStart() {

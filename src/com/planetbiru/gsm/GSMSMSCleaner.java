@@ -25,7 +25,7 @@ public class GSMSMSCleaner extends Thread {
 			{
 				this.gsm.deleteAllSentSMS();
 			} 
-			catch (GSMException e) 
+			catch (GSMException | SerialPortConnectionException e) 
 			{
 				logger.error(e.getMessage());
 			}

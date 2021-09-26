@@ -42,8 +42,10 @@ import com.planetbiru.cookie.CookieServer;
 import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMInstance;
 import com.planetbiru.gsm.GSMUtil;
+import com.planetbiru.gsm.InvalidPortException;
 import com.planetbiru.gsm.InvalidSIMPinException;
 import com.planetbiru.gsm.SMS;
+import com.planetbiru.gsm.SerialPortConnectionException;
 import com.planetbiru.user.NoUserRegisteredException;
 import com.planetbiru.user.WebUserAccount;
 import com.planetbiru.util.FileConfigUtil;
@@ -684,6 +686,12 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			statusCode = HttpStatus.UNAUTHORIZED;
 		}
+		catch(SerialPortConnectionException e)
+		{
+			/**
+			 * Do nothing
+			 */
+		}
 		cookie.saveSessionData();
 		cookie.putToHeaders(responseHeaders);
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
@@ -1095,8 +1103,9 @@ public class HandlerWebManagerData implements HttpHandler {
 			}
 			responseBody = allSMS.toString().getBytes();
 		}
-		catch(NoUserRegisteredException | GSMException | InvalidSIMPinException e)
+		catch(NoUserRegisteredException | GSMException | InvalidSIMPinException | SerialPortConnectionException | InvalidPortException e)
 		{
+			e.printStackTrace();
 			/**
 			 * Do nothing
 			 */
@@ -1111,7 +1120,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		httpExchange.close();	
 	}
 	
-	private JSONArray readSMS(String modemID, String storage, String smsStatus) throws GSMException, InvalidSIMPinException {
+	private JSONArray readSMS(String modemID, String storage, String smsStatus) throws GSMException, InvalidSIMPinException, SerialPortConnectionException, InvalidPortException {
 		JSONArray allSMS = new JSONArray();
 		if(modemID.isEmpty())
 		{
@@ -1120,20 +1129,38 @@ public class HandlerWebManagerData implements HttpHandler {
 			{
 				GSMInstance instance =  GSMUtil.getGSMInstance().get(i);
 				DataModem modemData = ConfigModem.getModemData(instance.getId());
+				try
+				{
+					List<SMS> sms = instance.readSMS(storage, smsStatus);
+					for(int j = 0; j < sms.size(); j++)
+					{
+						allSMS.put(sms.get(j).toJSONObject(modemData.getId(), modemData.getName(), modemData.getPort()));
+					}
+				}
+				catch(SerialPortConnectionException e)
+				{
+					GSMUtil.reconnectModem(instance);
+					throw new SerialPortConnectionException(e);
+				}
+				
+			}
+		}
+		else
+		{
+			DataModem modemData = ConfigModem.getModemData(modemID);
+			GSMInstance instance = GSMUtil.get(modemID);
+			try
+			{
 				List<SMS> sms = instance.readSMS(storage, smsStatus);
 				for(int j = 0; j < sms.size(); j++)
 				{
 					allSMS.put(sms.get(j).toJSONObject(modemData.getId(), modemData.getName(), modemData.getPort()));
 				}
 			}
-		}
-		else
-		{
-			DataModem modemData = ConfigModem.getModemData(modemID);
-			List<SMS> sms = GSMUtil.get(modemID).readSMS(storage, smsStatus);
-			for(int j = 0; j < sms.size(); j++)
+			catch(SerialPortConnectionException e)
 			{
-				allSMS.put(sms.get(j).toJSONObject(modemData.getId(), modemData.getName(), modemData.getPort()));
+				GSMUtil.reconnectModem(instance);
+				throw new SerialPortConnectionException(e);
 			}
 		}
 		return allSMS;

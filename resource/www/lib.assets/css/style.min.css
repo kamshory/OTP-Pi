@@ -569,6 +569,12 @@
   .service-item.disable.connected, .service-item.disable.disconnected{
     background-color: #F9F3F3;
   }
+  .service-item .test-at{
+    display: none;
+  }
+  .service-item.connected .test-at{
+    display: inline;
+  }
   
   .service-wrapper {  
     display: flex;

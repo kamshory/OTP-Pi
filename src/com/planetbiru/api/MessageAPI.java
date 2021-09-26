@@ -16,7 +16,9 @@ import com.planetbiru.constant.JsonKey;
 import com.planetbiru.constant.ResponseCode;
 import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMUtil;
+import com.planetbiru.gsm.InvalidPortException;
 import com.planetbiru.gsm.InvalidSIMPinException;
+import com.planetbiru.gsm.SerialPortConnectionException;
 import com.planetbiru.mail.MailUtil;
 import com.planetbiru.mail.NoEmailAccountException;
 
@@ -83,14 +85,14 @@ public class MessageAPI {
 				}
 			}		
 		}
-		catch(JSONException | GSMException e)
+		catch(JSONException | GSMException | SerialPortConnectionException e)
 		{
 			logger.error(e.getMessage());
 		}
 		return responseJSON;
 	}
 	
-	private JSONObject createOTP(String command, JSONObject data, StackTraceElement ste) {
+	private JSONObject createOTP(String command, JSONObject data, StackTraceElement ste) throws SerialPortConnectionException {
 		String dateTime = data.optString(JsonKey.DATE_TIME, "").trim();
 		String otpID = data.optString(JsonKey.REFERENCE, "").trim();
 		String receiver = data.optString(JsonKey.RECEIVER, "").trim();
@@ -129,7 +131,7 @@ public class MessageAPI {
 				responseData.put(JsonKey.DATE_TIME, dateTime);
 			}
 		}
-		catch(MessagingException | NoEmailAccountException | GSMException | InvalidSIMPinException e)
+		catch(MessagingException | NoEmailAccountException | GSMException | InvalidSIMPinException | InvalidPortException e)
 		{
 			responseCode = ResponseCode.FAILED;
 		}
@@ -275,7 +277,14 @@ public class MessageAPI {
 					jsonData = GSMUtil.sendSMS(receiver, textMessage, ste);
 					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);			
 				} 
-				catch (GSMException | InvalidSIMPinException e) 
+				catch (SerialPortConnectionException e)
+				{
+					Buzzer.toneSMSFailed();
+					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.NO_DEVICE_CONNECTED);
+					responseJSON.put(JsonKey.ERROR, e.getMessage());
+					
+				}
+				catch (GSMException | InvalidSIMPinException | InvalidPortException e) 
 				{
 					Buzzer.toneSMSFailed();
 					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.NO_DEVICE_CONNECTED);

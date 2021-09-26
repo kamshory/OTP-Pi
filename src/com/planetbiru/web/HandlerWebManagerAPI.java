@@ -21,6 +21,7 @@ import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.gsm.InvalidPortException;
 import com.planetbiru.gsm.InvalidSIMPinException;
+import com.planetbiru.gsm.SerialPortConnectionException;
 import com.planetbiru.gsm.USSDParser;
 import com.planetbiru.mail.MailUtil;
 import com.planetbiru.mail.NoEmailAccountException;
@@ -46,7 +47,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		{
 			if(path.startsWith("/api/device"))
 			{
-				this.modemConnect(httpExchange);
+				this.modemTool(httpExchange);
 			}
 			else if(path.startsWith("/api/internet-dial"))
 			{
@@ -295,6 +296,10 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			statusCode = HttpStatus.UNAUTHORIZED;
 		} 
 		catch (GSMException | InvalidSIMPinException e) 
+		{
+			logger.error(e.getMessage(), e);
+		} 
+		catch (SerialPortConnectionException e) 
 		{
 			logger.error(e.getMessage(), e);
 		}
@@ -613,7 +618,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 	
 	
 	//@PostMapping(path="/api/device/**")
-	public void modemConnect(HttpExchange httpExchange) throws IOException
+	public void modemTool(HttpExchange httpExchange) throws IOException
 	{
 		byte[] req = HttpUtil.getRequestBody(httpExchange);
 		String requestBody = "";
@@ -624,6 +629,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
 		Headers requestHeaders = httpExchange.getRequestHeaders();
 		Headers responseHeaders = httpExchange.getResponseHeaders();
+		String modemID = queryPairs.getOrDefault("id", "");
 		int statusCode;
 		JSONObject responseJSON = new JSONObject();
 		statusCode = HttpStatus.OK;
@@ -632,18 +638,22 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
 				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
-				String modemID = queryPairs.getOrDefault("id", "");
 				if(!modemID.isEmpty())
 				{
 					if(action.equals("connect"))
 					{
 						GSMUtil.connect(modemID);						
+						ServerInfo.sendModemStatus();
 					}
-					else
+					else if(action.equals("disconnect"))
 					{
 						GSMUtil.disconnect(modemID);
+						ServerInfo.sendModemStatus();
 					} 
-					ServerInfo.sendModemStatus();
+					else if(action.equals("test-at"))
+					{
+						responseJSON = GSMUtil.testAT(modemID);
+					} 
 				}
 			} 
 			else 
@@ -654,6 +664,19 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		catch (GSMException | InvalidPortException e) 
 		{
 			ServerWebSocketAdmin.broadcastMessage(e.getMessage());
+		}
+		catch (SerialPortConnectionException e) 
+		{
+			try 
+			{
+				GSMUtil.reconnectModem(modemID);
+				responseJSON.put("errorMessage", e.getMessage());
+			} 
+			catch (GSMException e1) 
+			{
+				responseJSON.put("errorMessage", e1.getMessage());
+			}
+			responseJSON.put("status", "ERROR");
 		}
 		catch (NoUserRegisteredException e) 
 		{
@@ -896,7 +919,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				response.put(JsonKey.REPLYABLE, replyable);				
 			}
 		} 
-		catch (GSMException e) 
+		catch (GSMException | InvalidPortException e) 
 		{
 			e.printStackTrace();
 			String message = e.getMessage();

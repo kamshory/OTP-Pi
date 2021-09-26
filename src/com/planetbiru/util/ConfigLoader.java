@@ -202,6 +202,10 @@ public class ConfigLoader {
 		long otpLifetime = ConfigLoader.getConfigInt("otppi.otp.lifetime");
 		int otpGCInterval = ConfigLoader.getConfigInt("otppi.otp.gc.ingterval");
 
+		long inspectModemInterval = ConfigLoader.getConfigLong("otppi.inspect.modem.interval");
+		
+		Config.setInspectModemInterval(inspectModemInterval);
+		
 		Config.setOtpCacheFile(otpCacheFile);
 		Config.setOtpLength(otpLength);
 		Config.setOtpLifetime(otpLifetime);

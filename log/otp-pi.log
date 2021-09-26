@@ -20504,3 +20504,493 @@ OK
 > 
 ERROR
 
+2021-09-26 09:41:04 [INFO  ] MessageAPI                      :46   - Topic     : 
+2021-09-26 09:41:04 [INFO  ] MessageAPI                      :47   - Message   : {
+    "data": {
+        "reference": "1632617387242",
+        "date_time": 1632624064,
+        "receiver": "08126666666",
+        "otp": "139506",
+        "param3": "987654",
+        "param4": "674527846556468254",
+        "param1": "100000",
+        "param2": "1234567890"
+    },
+    "command": "validate-otp"
+}
+2021-09-26 09:41:04 [INFO  ] MessageAPI                      :48   - Command   : validate-otp
+2021-09-26 09:41:04 [INFO  ] MessageAPI                      :49   - Date Time : 1632624064
+2021-09-26 09:41:04 [INFO  ] MessageAPI                      :82   - Validate OTP
+2021-09-26 09:41:07 [INFO  ] MessageAPI                      :46   - Topic     : 
+2021-09-26 09:41:07 [INFO  ] MessageAPI                      :47   - Message   : {
+    "data": {
+        "reference": "1632617387242",
+        "date_time": 1632624067,
+        "receiver": "08126666666",
+        "otp": "139506",
+        "param3": "987654",
+        "param4": "674527846556468254",
+        "param1": "100000",
+        "param2": "1234567890"
+    },
+    "command": "validate-otp"
+}
+2021-09-26 09:41:07 [INFO  ] MessageAPI                      :48   - Command   : validate-otp
+2021-09-26 09:41:07 [INFO  ] MessageAPI                      :49   - Date Time : 1632624067
+2021-09-26 09:41:07 [INFO  ] MessageAPI                      :82   - Validate OTP
+2021-09-26 09:41:13 [INFO  ] MessageAPI                      :46   - Topic     : 
+2021-09-26 09:41:13 [INFO  ] MessageAPI                      :47   - Message   : {
+    "data": {
+        "reference": "1632624073181",
+        "date_time": 1632624073,
+        "receiver": "08126666666",
+        "expiration": 1632624133,
+        "id": 1632624073,
+        "message": "Your OTP is %s",
+        "param3": "987654",
+        "param4": "674527846556468254",
+        "param1": "100000",
+        "param2": "1234567890"
+    },
+    "command": "create-otp"
+}
+2021-09-26 09:41:13 [INFO  ] MessageAPI                      :48   - Command   : create-otp
+2021-09-26 09:41:13 [INFO  ] MessageAPI                      :49   - Date Time : 1632624073
+2021-09-26 09:41:13 [INFO  ] MessageAPI                      :77   - Create OTP
+2021-09-26 09:41:13 [INFO  ] GSM                             :123  - Execute AT Command : ATE0
+2021-09-26 09:41:13 [INFO  ] GSM                             :419  - msg1 = ATE0
+OK
+
+2021-09-26 09:41:13 [INFO  ] GSM                             :123  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 09:41:13 [INFO  ] GSM                             :421  - msg2 = 
+OK
+
+2021-09-26 09:41:13 [INFO  ] GSM                             :123  - Execute AT Command : AT+CMGF=1
+2021-09-26 09:41:13 [INFO  ] GSM                             :423  - msg3 = 
+OK
+
+2021-09-26 09:41:13 [INFO  ] GSM                             :123  - Execute AT Command : AT+CMGW="08126666666"
+2021-09-26 09:41:13 [INFO  ] GSM                             :425  - msg4 = 
+> 
+2021-09-26 09:41:13 [INFO  ] GSM                             :123  - Execute AT Command : Your OTP is 759631
+2021-09-26 09:41:13 [INFO  ] GSM                             :427  - msg5 = 
+> 
+2021-09-26 09:41:13 [INFO  ] GSM                             :123  - Execute AT Command : 
+2021-09-26 09:41:14 [INFO  ] GSM                             :429  - msg6 = 
+> 
+ERROR
+
+2021-09-26 10:08:51 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMI
+2021-09-26 10:08:51 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMM
+2021-09-26 10:08:51 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMR
+2021-09-26 10:08:51 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGSN
+2021-09-26 10:08:51 [INFO  ] GSM                             :123  - Execute AT Command : AT+CIMI
+2021-09-26 10:08:51 [INFO  ] GSM                             :123  - Execute AT Command : AT+CCID
+2021-09-26 10:08:51 [INFO  ] GSM                             :123  - Execute AT Command : AT+CREG?
+2021-09-26 10:08:51 [INFO  ] GSM                             :123  - Execute AT Command : AT+CNUM
+2021-09-26 10:08:51 [INFO  ] GSM                             :123  - Execute AT Command : AT+COPS?
+2021-09-26 10:08:51 [INFO  ] GSM                             :123  - Execute AT Command : AT+CSCA
+2021-09-26 10:08:53 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMI
+2021-09-26 10:08:53 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMM
+2021-09-26 10:08:53 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMR
+2021-09-26 10:08:53 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGSN
+2021-09-26 10:08:53 [INFO  ] GSM                             :123  - Execute AT Command : AT+CIMI
+2021-09-26 10:08:53 [INFO  ] GSM                             :123  - Execute AT Command : AT+CCID
+2021-09-26 10:08:53 [INFO  ] GSM                             :123  - Execute AT Command : AT+CREG?
+2021-09-26 10:08:53 [INFO  ] GSM                             :123  - Execute AT Command : AT+CNUM
+2021-09-26 10:08:53 [INFO  ] GSM                             :123  - Execute AT Command : AT+COPS?
+2021-09-26 10:08:53 [INFO  ] GSM                             :123  - Execute AT Command : AT+CSCA
+2021-09-26 10:21:39 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMI
+2021-09-26 10:21:39 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMM
+2021-09-26 10:21:39 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMR
+2021-09-26 10:21:39 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGSN
+2021-09-26 10:21:39 [INFO  ] GSM                             :123  - Execute AT Command : AT+CIMI
+2021-09-26 10:21:39 [INFO  ] GSM                             :123  - Execute AT Command : AT+CCID
+2021-09-26 10:21:39 [INFO  ] GSM                             :123  - Execute AT Command : AT+CREG?
+2021-09-26 10:21:39 [INFO  ] GSM                             :123  - Execute AT Command : AT+CNUM
+2021-09-26 10:21:39 [INFO  ] GSM                             :123  - Execute AT Command : AT+COPS?
+2021-09-26 10:21:39 [INFO  ] GSM                             :123  - Execute AT Command : AT+CSCA
+2021-09-26 10:24:09 [INFO  ] Application                     :185  - Service started
+2021-09-26 10:24:23 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMI
+2021-09-26 10:24:23 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMM
+2021-09-26 10:24:23 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMR
+2021-09-26 10:24:23 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGSN
+2021-09-26 10:24:23 [INFO  ] GSM                             :123  - Execute AT Command : AT+CIMI
+2021-09-26 10:24:23 [INFO  ] GSM                             :123  - Execute AT Command : AT+CCID
+2021-09-26 10:24:24 [INFO  ] GSM                             :123  - Execute AT Command : AT+CREG?
+2021-09-26 10:24:24 [INFO  ] GSM                             :123  - Execute AT Command : AT+CNUM
+2021-09-26 10:24:24 [INFO  ] GSM                             :123  - Execute AT Command : AT+COPS?
+2021-09-26 10:24:24 [INFO  ] GSM                             :123  - Execute AT Command : AT+CSCA
+2021-09-26 10:24:29 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMI
+2021-09-26 10:24:29 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMM
+2021-09-26 10:24:29 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGMR
+2021-09-26 10:24:29 [INFO  ] GSM                             :123  - Execute AT Command : AT+CGSN
+2021-09-26 10:24:29 [INFO  ] GSM                             :123  - Execute AT Command : AT+CIMI
+2021-09-26 10:24:29 [INFO  ] GSM                             :123  - Execute AT Command : AT+CCID
+2021-09-26 10:24:29 [INFO  ] GSM                             :123  - Execute AT Command : AT+CREG?
+2021-09-26 10:24:29 [INFO  ] GSM                             :123  - Execute AT Command : AT+CNUM
+2021-09-26 10:24:29 [INFO  ] GSM                             :123  - Execute AT Command : AT+COPS?
+2021-09-26 10:24:29 [INFO  ] GSM                             :123  - Execute AT Command : AT+CSCA
+2021-09-26 11:17:26 [INFO  ] Application                     :185  - Service started
+2021-09-26 11:17:29 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 11:17:29 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 11:17:29 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 11:17:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 11:17:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 11:17:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 11:17:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 11:17:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 11:17:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 11:17:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 11:17:44 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 11:19:21 [INFO  ] Application                     :185  - Service started
+2021-09-26 11:19:26 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 11:19:27 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 11:19:27 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 11:19:27 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 11:19:27 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 11:19:27 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 11:19:27 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 11:19:27 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 11:19:27 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 11:19:27 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 11:19:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 11:21:55 [INFO  ] Application                     :185  - Service started
+2021-09-26 11:22:07 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 11:22:09 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 11:22:09 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 11:22:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 11:22:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 11:22:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 11:22:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 11:22:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 11:22:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 11:22:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 11:22:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 11:22:16 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 11:22:16 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 11:22:16 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 11:22:16 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 11:22:16 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 11:22:16 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 11:22:16 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 11:22:17 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 11:22:17 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 11:22:17 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 11:22:19 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 11:22:19 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 11:22:19 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 11:22:19 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 11:22:19 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 11:22:19 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 11:22:19 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 11:22:20 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 11:22:20 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 11:22:20 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 11:22:30 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 11:22:32 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 11:22:32 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 11:22:32 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 11:22:32 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 11:22:32 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 11:22:32 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 11:22:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 11:22:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 11:22:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 11:22:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 11:22:35 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 11:22:35 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 11:22:35 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 11:22:35 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 11:22:35 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 11:22:35 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 11:22:35 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 11:22:35 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 11:22:36 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 11:22:36 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 11:24:46 [INFO  ] Application                     :185  - Service started
+2021-09-26 11:24:50 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 11:24:50 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 11:24:50 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 11:24:50 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 11:24:51 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 11:24:51 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 11:24:51 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 11:24:51 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 11:24:51 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 11:24:51 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 11:24:53 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 11:24:53 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 11:24:53 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 11:24:53 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 11:24:53 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 11:24:53 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 11:24:53 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 11:24:53 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 11:24:53 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 11:24:54 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 11:25:05 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 11:25:09 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 11:25:09 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 11:25:09 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 11:25:09 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 11:25:09 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 11:25:09 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 11:25:09 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 11:25:09 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 11:25:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 11:25:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 11:25:11 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 11:25:11 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 11:25:11 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 11:25:12 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 11:25:12 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 11:25:12 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 11:25:12 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 11:25:12 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 11:25:12 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 11:25:12 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 11:25:33 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:25:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:25:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:25:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS=""SM""
+2021-09-26 11:25:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:25:37 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:25:37 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:25:37 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:25:37 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS=""SM""
+2021-09-26 11:25:38 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:26:23 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:26:23 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:26:24 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:26:24 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS=""SM""
+2021-09-26 11:26:24 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:26:29 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:26:29 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:26:29 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:26:29 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS=""SM""
+2021-09-26 11:26:29 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:27:13 [INFO  ] Application                     :185  - Service started
+2021-09-26 11:27:14 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:27:14 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:27:14 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:27:14 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS=""SM""
+2021-09-26 11:27:15 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:28:59 [INFO  ] Application                     :185  - Service started
+2021-09-26 11:29:00 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:29:00 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:29:00 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:29:00 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS=""SM""
+2021-09-26 11:29:00 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:30:05 [ERROR ] ServerWebAdmin                  :48   - Address already in use: bind
+java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:552)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:336)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:294)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:88)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:101)
+	at jdk.httpserver/sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
+	at jdk.httpserver/sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
+	at jdk.httpserver/com.sun.net.httpserver.HttpServer.create(HttpServer.java:150)
+	at com.planetbiru.ServerWebAdmin.start(ServerWebAdmin.java:34)
+	at com.planetbiru.Application.webAdminServerStart(Application.java:242)
+	at com.planetbiru.Application.startService(Application.java:139)
+	at com.planetbiru.Application.main(Application.java:60)
+2021-09-26 11:30:05 [ERROR ] ServerRESTAPI                   :124  - Address already in use: bind
+2021-09-26 11:30:05 [ERROR ] ServerRESTAPI                   :98   - Address already in use: bind
+2021-09-26 11:30:05 [INFO  ] Application                     :185  - Service started
+2021-09-26 11:30:08 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:30:08 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:30:08 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:30:08 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS=""SM""
+2021-09-26 11:30:08 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:30:10 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:30:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:30:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:30:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS=""SM""
+2021-09-26 11:30:11 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:30:16 [INFO  ] Application                     :185  - Service started
+2021-09-26 11:30:17 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:30:17 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:30:17 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:30:18 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS="SM"
+2021-09-26 11:30:18 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:31:05 [INFO  ] Application                     :185  - Service started
+2021-09-26 11:31:07 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:31:07 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:31:07 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:31:07 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS="SM"
+2021-09-26 11:31:07 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:31:13 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:31:13 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:31:14 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:31:14 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS="SM"
+2021-09-26 11:31:14 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:31:26 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:31:46 [INFO  ] Application                     :185  - Service started
+2021-09-26 11:31:49 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:31:49 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:31:49 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:31:49 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS="SM"
+2021-09-26 11:31:49 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:31:51 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:31:51 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:31:51 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:31:51 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS="SM"
+2021-09-26 11:31:51 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:31:56 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:31:56 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:31:56 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:31:56 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS="SM"
+2021-09-26 11:31:56 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:31:59 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:31:59 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:31:59 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:31:59 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS="SM"
+2021-09-26 11:31:59 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:32:10 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:32:30 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:32:40 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:32:50 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:33:00 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:44:48 [INFO  ] Application                     :185  - Service started
+2021-09-26 11:45:05 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:45:05 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:45:06 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:45:06 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS="SM"
+2021-09-26 11:45:06 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:45:20 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:45:37 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:45:47 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:45:57 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:46:07 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:46:18 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:46:28 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:46:31 [INFO  ] Application                     :185  - Service started
+2021-09-26 11:46:33 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:46:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:46:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:46:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS="SM"
+2021-09-26 11:46:33 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:46:38 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:46:38 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:46:38 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:46:38 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS="SM"
+2021-09-26 11:46:38 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:46:48 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:47:16 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:47:26 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:47:36 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:47:59 [INFO  ] Application                     :185  - Service started
+2021-09-26 11:48:01 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:48:01 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:48:01 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:48:02 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS="SM"
+2021-09-26 11:48:02 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:48:11 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:49:43 [INFO  ] Application                     :185  - Service started
+2021-09-26 11:49:46 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:49:46 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:49:46 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:49:46 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS="SM"
+2021-09-26 11:49:46 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:49:51 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:49:51 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:49:51 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:49:51 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS="SM"
+2021-09-26 11:49:51 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:49:59 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:52:03 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:52:13 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:52:24 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:52:34 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:53:47 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:54:48 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:54:58 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:55:08 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:55:18 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:55:28 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:55:39 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:57:07 [INFO  ] Application                     :185  - Service started
+2021-09-26 11:57:10 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:57:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:57:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:57:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS="SM"
+2021-09-26 11:57:10 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:57:24 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:57:34 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:57:56 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:58:06 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:58:16 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:58:26 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:58:36 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:58:46 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:58:56 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:59:00 [INFO  ] Application                     :185  - Service started
+2021-09-26 11:59:20 [INFO  ] Application                     :185  - Service started
+2021-09-26 11:59:23 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:59:23 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:59:23 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:59:23 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS="SM"
+2021-09-26 11:59:23 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:59:27 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:59:27 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:59:28 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:59:28 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS="SM"
+2021-09-26 11:59:28 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:59:31 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:59:31 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:59:31 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:59:31 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS="SM"
+2021-09-26 11:59:32 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 11:59:40 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:59:47 [INFO  ] GSM                             :124  - Execute AT Command : ATE0
+2021-09-26 11:59:47 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCS="GSM"
+2021-09-26 11:59:47 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGF=1
+2021-09-26 11:59:47 [INFO  ] GSM                             :124  - Execute AT Command : AT+CPMS="SM"
+2021-09-26 11:59:47 [INFO  ] GSM                             :124  - Execute AT Command : AT+CMGL="REC READ"
+2021-09-26 12:30:17 [INFO  ] Application                     :185  - Service started
+2021-09-26 12:30:26 [INFO  ] GSM                             :124  - Execute AT Command : AT
+2021-09-26 12:31:05 [INFO  ] GSM                             :124  - Execute AT Command : AT
+2021-09-26 12:31:28 [INFO  ] GSM                             :124  - Execute AT Command : AT
+2021-09-26 12:33:08 [INFO  ] Application                     :185  - Service started
+2021-09-26 12:33:14 [INFO  ] GSM                             :124  - Execute AT Command : AT
+2021-09-26 12:33:24 [INFO  ] GSM                             :124  - Execute AT Command : AT
+2021-09-26 12:34:36 [INFO  ] Application                     :185  - Service started
+2021-09-26 12:34:39 [INFO  ] GSM                             :124  - Execute AT Command : AT
+2021-09-26 12:34:46 [INFO  ] GSM                             :124  - Execute AT Command : AT
+2021-09-26 12:34:51 [INFO  ] GSM                             :124  - Execute AT Command : AT
+2021-09-26 12:34:58 [INFO  ] GSM                             :124  - Execute AT Command : AT
+2021-09-26 12:35:05 [INFO  ] GSM                             :124  - Execute AT Command : AT
+2021-09-26 13:06:07 [INFO  ] Application                     :186  - Service started
+2021-09-26 13:06:57 [INFO  ] Application                     :186  - Service started
+2021-09-26 13:07:58 [INFO  ] Application                     :186  - Service started
+2021-09-26 13:27:30 [INFO  ] Application                     :186  - Service started
+2021-09-26 13:29:10 [INFO  ] Application                     :186  - Service started
+2021-09-26 13:30:20 [INFO  ] Application                     :186  - Service started
+2021-09-26 13:31:33 [INFO  ] Application                     :186  - Service started
+2021-09-26 13:36:36 [INFO  ] Application                     :186  - Service started
+2021-09-26 13:38:30 [INFO  ] Application                     :186  - Service started
+2021-09-26 13:41:33 [INFO  ] Application                     :186  - Service started
+2021-09-26 13:49:10 [INFO  ] Application                     :186  - Service started
+2021-09-26 13:49:36 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 13:49:36 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 13:49:36 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 13:49:36 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 13:49:37 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 13:49:37 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 13:49:37 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 13:49:37 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 13:49:37 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 13:49:37 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA
+2021-09-26 13:49:52 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMI
+2021-09-26 13:49:52 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMM
+2021-09-26 13:49:52 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGMR
+2021-09-26 13:49:52 [INFO  ] GSM                             :124  - Execute AT Command : AT+CGSN
+2021-09-26 13:49:52 [INFO  ] GSM                             :124  - Execute AT Command : AT+CIMI
+2021-09-26 13:49:52 [INFO  ] GSM                             :124  - Execute AT Command : AT+CCID
+2021-09-26 13:49:52 [INFO  ] GSM                             :124  - Execute AT Command : AT+CREG?
+2021-09-26 13:49:53 [INFO  ] GSM                             :124  - Execute AT Command : AT+CNUM
+2021-09-26 13:49:53 [INFO  ] GSM                             :124  - Execute AT Command : AT+COPS?
+2021-09-26 13:49:53 [INFO  ] GSM                             :124  - Execute AT Command : AT+CSCA

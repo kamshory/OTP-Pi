@@ -47,7 +47,9 @@ import com.planetbiru.cookie.CookieServer;
 import com.planetbiru.ddns.DDNSRecord;
 import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMUtil;
+import com.planetbiru.gsm.InvalidPortException;
 import com.planetbiru.gsm.InvalidSIMPinException;
+import com.planetbiru.gsm.SerialPortConnectionException;
 import com.planetbiru.mail.MailUtil;
 import com.planetbiru.mail.NoEmailAccountException;
 import com.planetbiru.user.NoUserRegisteredException;
@@ -421,7 +423,7 @@ public class HandlerWebManager implements HttpHandler {
 					{
 						GSMUtil.sendSMS(phone, message, ste);
 					} 
-					catch (GSMException | InvalidSIMPinException e) 
+					catch (GSMException | InvalidSIMPinException | SerialPortConnectionException | InvalidPortException e) 
 					{
 						/**
 						 * Do nothing

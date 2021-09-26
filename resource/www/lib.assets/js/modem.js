@@ -6,13 +6,16 @@ var connected = item.connected || item.internetConnected;
 cls += (item.active?' enable':' disable');
 cls += (connected?' connected':' disconnected');
 cls += (item.internetAccess?' service-modem-internet':' service-modem-sms');
-var service = $('<div class="service-item service-modem'+cls+'">\r\n'+
-'<div class="service-label"></div>\r\n'+
-'<div class="service-button">\r\n'+
-'<button class="btn btn-sm btn-success connect">Connect</button>\r\n'+
-'<button class="btn btn-sm btn-danger disconnect">Disonnect</button>\r\n'+
-'</div>\r\n'+
-'</div>');
+var service = $(
+'<div class="service-item service-modem'+cls+'">\r\n'+
+    '<div class="service-label"></div>\r\n'+
+    '<div class="service-button">\r\n'+
+    '<button class="btn btn-sm btn-success connect">Connect</button>\r\n'+
+    '<button class="btn btn-sm btn-danger disconnect">Disonnect</button>\r\n'+
+    '<button class="btn btn-sm btn-primary test-at">Test</button>\r\n'+
+    '</div>\r\n'+
+'</div>'
+);
 service.attr('data-id', item.id);
 service.find('.service-label').text(item.name+ ' via '+item.port);
 $('.service-wrapper').append(service);
@@ -27,79 +30,92 @@ $('.row-table tbody').append(
 );    
 }
 $(document).ready(function (e1) {
-$.ajax({
-    type: "GET",
-    url: "data/modem/list",
-    dataType: "json",
-    success: function (data) {
-        for (const key in data) {
-        if (data.hasOwnProperty(key)) {
-            addItem(data[key])
+    $.ajax({
+        type: "GET",
+        url: "data/modem/list",
+        dataType: "json",
+        success: function (data) {
+            for (const key in data) {
+            if (data.hasOwnProperty(key)) {
+                addItem(data[key])
+            }
+            }
         }
-        }
-    }
-});
+    });
 
-$(document).on('click', '.service-modem-sms .connect', function(e2){
-    var modemID = $(this).closest('.service-item').attr('data-id');
-    $.ajax({
-        url:'api/device',
-        type:'POST',
-        dataType: 'json',
-        data:{action:'connect', id:modemID},
-        success:function(data){
-        }
+    $(document).on('click', '.service-modem-sms .connect', function(e2){
+        var modemID = $(this).closest('.service-item').attr('data-id');
+        $.ajax({
+            url:'api/device',
+            type:'POST',
+            dataType: 'json',
+            data:{action:'connect', id:modemID},
+            success:function(data){
+            }
+        });
     });
-});
-$(document).on('click', '.service-modem-internet .connect', function(e2){
-    var modemID = $(this).closest('.service-item').attr('data-id');
-    $.ajax({
-        url:'api/internet-dial',
-        type:'POST',
-        dataType: 'json',
-        data:{action:'connect', id:modemID},
-        success:function(data){
-        }
+    $(document).on('click', '.service-item .test-at', function(e2){
+        var modemID = $(this).closest('.service-item').attr('data-id');
+        $.ajax({
+            url:'api/device',
+            type:'POST',
+            dataType: 'json',
+            data:{action:'test-at', id:modemID},
+            success:function(data){
+                console.log(data);
+            }
+        });
     });
-});
-$(document).on('click', '.service-modem-sms .disconnect', function(e2){
-    var modemID = $(this).closest('.service-item').attr('data-id');
-    $.ajax({
-        url:'api/device/',
-        type:'POST',
-        dataType: 'json',
-        data:{action:'disconnect', id:modemID},
-        success:function(data){
-        }
+    $(document).on('click', '.service-modem-internet .connect', function(e2){
+        var modemID = $(this).closest('.service-item').attr('data-id');
+        $.ajax({
+            url:'api/internet-dial',
+            type:'POST',
+            dataType: 'json',
+            data:{action:'connect', id:modemID},
+            success:function(data){
+            }
+        });
     });
-});
-$(document).on('click', '.service-modem-internet .disconnect', function(e2){
-    var modemID = $(this).closest('.service-item').attr('data-id');
-    $.ajax({
-        url:'api/internet-dial/',
-        type:'POST',
-        dataType: 'json',
-        data:{action:'disconnect', id:modemID},
-        success:function(data){
-        }
+    $(document).on('click', '.service-modem-sms .disconnect', function(e2){
+        var modemID = $(this).closest('.service-item').attr('data-id');
+        $.ajax({
+            url:'api/device/',
+            type:'POST',
+            dataType: 'json',
+            data:{action:'disconnect', id:modemID},
+            success:function(data){
+                
+            }
+        });
     });
-});
-});
+    $(document).on('click', '.service-modem-internet .disconnect', function(e2){
+        var modemID = $(this).closest('.service-item').attr('data-id');
+        $.ajax({
+            url:'api/internet-dial/',
+            type:'POST',
+            dataType: 'json',
+            data:{action:'disconnect', id:modemID},
+            success:function(data){
+            }
+        });
+    });
+    });
 
-function updateModemUI(modemData){
-for(var i in modemData){
-    if(modemData.hasOwnProperty(i)){
-    var id = i;
-    $('.service-modem').filter('[data-id="'+id+'"]').removeClass('disconnected');
-    $('.service-modem').filter('[data-id="'+id+'"]').removeClass('connected')
-    if(modemData[i].connected || modemData[i].internetConnected){
-        $('.service-modem').filter('[data-id="'+id+'"]').addClass('connected');
-    }else
-    {
-        $('.service-modem').filter('[data-id="'+id+'"]').addClass('disconnected');
-    }
-    }
-}   
+    function updateModemUI(modemData){
+    for(var i in modemData){
+        if(modemData.hasOwnProperty(i)){
+        var id = i;
+        $('.service-modem').filter('[data-id="'+id+'"]').removeClass('disconnected');
+        $('.service-modem').filter('[data-id="'+id+'"]').removeClass('connected')
+        if(modemData[i].connected || modemData[i].internetConnected){
+            $('.service-modem').filter('[data-id="'+id+'"]').addClass('connected');
+        }else
+        {
+            $('.service-modem').filter('[data-id="'+id+'"]').addClass('disconnected');
+        }
+        }
+    }   
 }
 
 function handleIncommingMessage(message) {

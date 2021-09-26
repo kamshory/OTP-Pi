@@ -101,7 +101,7 @@ public class GSM {
     	return isOpen;
     }
     
-    private void executeAT(String command, int waitingTime) throws GSMException {
+    private void executeAT(String command, int waitingTime) throws GSMException, SerialPortConnectionException {
 		this.executeAT(command, waitingTime, false);	
 	}
     
@@ -112,8 +112,9 @@ public class GSM {
      * @param waitingTime
      * @return String contains the response
      * @throws GSMException 
+     * @throws SerialPortConnectionException 
      */
-    public String executeAT(String command, int waitingTime, boolean requireResult) throws GSMException 
+    public String executeAT(String command, int waitingTime, boolean requireResult) throws GSMException, SerialPortConnectionException 
     {
     	this.setReady(false);
     	if(getSerialPort() == null)
@@ -140,12 +141,16 @@ public class GSM {
         			&& !this.incommingMessage.toString().trim().endsWith("\r\n\r\nERROR") 
         			&& i < waitingTime);
         }
+        else
+        {
+        	throw new SerialPortConnectionException("Can not write to serial port");
+        }
         result = this.updateResult(result);
         this.setReady(true);
         return result;
     }
     
-    public String executeATCommand(String command) throws GSMException {
+	public String executeATCommand(String command) throws GSMException {
     	int waitingTime = 2;
     	this.setReady(false);
     	if(getSerialPort() == null)
@@ -196,8 +201,9 @@ public class GSM {
      * @param ussd The USSD command
      * @return String contains the response
      * @throws GSMException 
+     * @throws SerialPortConnectionException 
      */
-    public USSDParser executeUSSD(String ussd) throws GSMException 
+    public USSDParser executeUSSD(String ussd) throws GSMException, SerialPortConnectionException 
     {
     	this.setReady(false);
         String cmd = "AT+CUSD=1,\"" + ussd + "\",15";
@@ -236,8 +242,9 @@ public class GSM {
      *
      * @return ArrayList contains the SMS
      * @throws GSMException 
+     * @throws SerialPortConnectionException 
      */
-    public List<SMS> readSMS(String storage, String smsStatus) throws GSMException 
+    public List<SMS> readSMS(String storage, String smsStatus) throws GSMException, SerialPortConnectionException 
     {
     	this.setReady(false);
         this.executeAT("ATE0", 1, true);
@@ -262,7 +269,7 @@ public class GSM {
         this.setReady(true);
         return smsList;
     }
-    private void loadSMS(String storage, String smsStatus, List<SMS> smsList) throws GSMException
+    private void loadSMS(String storage, String smsStatus, List<SMS> smsList) throws GSMException, SerialPortConnectionException
     {
     	storage = this.fixArrayString(storage);	
     	smsStatus = this.fixArrayString(smsStatus);	
@@ -408,8 +415,9 @@ public class GSM {
 	 * @param deleteSent 
      * @return ?
      * @throws GSMException 
+	 * @throws SerialPortConnectionException 
      */
-    public String sendSMS(String recipient, String message, boolean deleteSent) throws GSMException 
+    public String sendSMS(String recipient, String message, boolean deleteSent) throws GSMException, SerialPortConnectionException 
     {
     	this.setReady(false);
     	String result = "";
@@ -441,7 +449,7 @@ public class GSM {
 		gc.start();		
 	}
 
-	public String deleteSMS(int smsID, String storage) throws GSMException 
+	public String deleteSMS(int smsID, String storage) throws GSMException, SerialPortConnectionException 
     {
     	this.setReady(false);
     	String result = "";
@@ -451,7 +459,7 @@ public class GSM {
         return result;
     }
 
-    public String deleteAllSMS(String storage) throws GSMException 
+    public String deleteAllSMS(String storage) throws GSMException, SerialPortConnectionException 
     {
     	this.setReady(false);
     	String result = "";
@@ -461,7 +469,7 @@ public class GSM {
         return result;
     }
     
-    public void deleteAllSentSMS() throws GSMException 
+    public void deleteAllSentSMS() throws GSMException, SerialPortConnectionException 
     { 	
     	this.setReady(false);
         this.executeAT("ATE0", 1);
@@ -475,7 +483,7 @@ public class GSM {
         this.setReady(true);
  	}
     
-    public String getIMEI() throws GSMException 
+    public String getIMEI() throws GSMException, SerialPortConnectionException 
     {
     	this.setReady(false);
     	String result = this.executeAT(ATCommand.GET_IMEI, 1, true);
@@ -492,7 +500,7 @@ public class GSM {
         return result;
     }
 
-	public String getIMSI() throws GSMException 
+	public String getIMSI() throws GSMException, SerialPortConnectionException 
     {
     	this.setReady(false);
     	String result = this.executeAT(ATCommand.GET_IMSI, 1, true);
@@ -509,7 +517,7 @@ public class GSM {
         return result;
     }
     
-    public String getICCID() throws GSMException 
+    public String getICCID() throws GSMException, SerialPortConnectionException 
     {
     	this.setReady(false);
     	String result = this.executeAT(ATCommand.GET_ICCID, 1, true);
@@ -526,7 +534,7 @@ public class GSM {
         return result;
     }
 
-    public String getMSISDN() throws GSMException 
+    public String getMSISDN() throws GSMException, SerialPortConnectionException 
     {
     	this.setReady(false);
     	String result = this.executeAT(ATCommand.GET_MSISDN, 1, true);
@@ -543,7 +551,7 @@ public class GSM {
         return result;
     }
     
-    public String getManufacturer() throws GSMException {
+    public String getManufacturer() throws GSMException, SerialPortConnectionException {
     	this.setReady(false);
     	String result = this.executeAT(ATCommand.GET_MANUFACTURER, 1, true);
        	if(!result.isEmpty())
@@ -559,7 +567,7 @@ public class GSM {
         return result;
 	}
 
-	public String getModel() throws GSMException {
+	public String getModel() throws GSMException, SerialPortConnectionException {
 	   	this.setReady(false);
     	String result = this.executeAT(ATCommand.GET_MODEL, 1, true);
        	if(!result.isEmpty())
@@ -575,7 +583,7 @@ public class GSM {
         return result;
 	}
 
-	public String getRevision() throws GSMException {
+	public String getRevision() throws GSMException, SerialPortConnectionException {
 	   	this.setReady(false);
     	String result = this.executeAT(ATCommand.GET_REVISION, 1, true);
        	if(!result.isEmpty())
@@ -591,7 +599,7 @@ public class GSM {
         return result;
 	}
 
-	public String getSMSCenter() throws GSMException {
+	public String getSMSCenter() throws GSMException, SerialPortConnectionException {
 	   	this.setReady(false);
     	String result = this.executeAT(ATCommand.GET_SMS_CENTER, 1, true);
        	if(!result.isEmpty())
@@ -607,7 +615,7 @@ public class GSM {
         return result;
 	}
 	
-	public String getNetworkRegistration() throws GSMException {
+	public String getNetworkRegistration() throws GSMException, SerialPortConnectionException {
 		this.setReady(false);
     	String result = this.executeAT("AT+CREG?", 2, true);
        	if(!result.isEmpty() && result.contains("+CREG"))
@@ -621,7 +629,7 @@ public class GSM {
         return result;
 	}
 	
-	public String getOperatorSelect() throws GSMException {
+	public String getOperatorSelect() throws GSMException, SerialPortConnectionException {
 		this.setReady(false);
     	String result = this.executeAT("AT+COPS?", 2, true);
        	if(!result.isEmpty() && result.contains("+COPS"))
@@ -650,7 +658,7 @@ public class GSM {
     }
  
     public String selectStorage(String storage) {
-		return "AT+CPMS=\"" + storage + "\"";
+		return "AT+CPMS=" + storage + "";
 	}
 
     private String selectDataMode(String operator) 
