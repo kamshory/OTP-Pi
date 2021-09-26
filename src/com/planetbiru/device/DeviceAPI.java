@@ -1,4 +1,4 @@
-package com.planetbiru;
+package com.planetbiru.device;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -8,6 +8,7 @@ import org.apache.commons.net.ntp.NTPUDPClient;
 import org.apache.commons.net.ntp.TimeInfo;
 import org.apache.commons.net.ntp.TimeStamp;
 
+import com.planetbiru.Application;
 import com.planetbiru.config.Config;
 import com.planetbiru.util.CommandLineExecutor;
 import com.planetbiru.util.Utility;

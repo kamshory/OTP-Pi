@@ -8,7 +8,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.planetbiru.Application;
-import com.planetbiru.DeviceAPI;
 import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.buzzer.Music;
 import com.planetbiru.config.Config;
@@ -16,6 +15,7 @@ import com.planetbiru.config.ConfigEmail;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.constant.ResponseCode;
+import com.planetbiru.device.DeviceAPI;
 import com.planetbiru.gsm.InternetDialUtil;
 import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMUtil;

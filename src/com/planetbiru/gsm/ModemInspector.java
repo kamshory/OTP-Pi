@@ -1,4 +1,4 @@
-package com.planetbiru;
+package com.planetbiru.gsm;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,10 +10,6 @@ import com.fazecast.jSerialComm.SerialPort;
 import com.planetbiru.config.ConfigGeneral;
 import com.planetbiru.config.ConfigModem;
 import com.planetbiru.config.DataModem;
-import com.planetbiru.gsm.GSMException;
-import com.planetbiru.gsm.GSMInstance;
-import com.planetbiru.gsm.GSMUtil;
-import com.planetbiru.gsm.ModemNotFoundException;
 
 public class ModemInspector extends Thread {
 
