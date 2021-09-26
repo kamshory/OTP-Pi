@@ -64,35 +64,7 @@ public class ConfigLoader {
 			}
 		} 
 	}
-	private static void overwriteConfig() {
-		List<String> builder = new ArrayList<>();
-		for (Entry<Object, Object> entry : ConfigLoader.properties.entrySet()) 
-		{
-		    String key = (String) entry.getKey();
-		    String keyEnv = key.toUpperCase().replace(".", "_");
-		    String value = (String) entry.getValue();	
-		    
-		    
-		    builder.add("echo 'export "+keyEnv+"=\""+value.replace("'", "\\'")+"\"' >> $HOME/.bashrc");
-		    
-		    String valueEnv = System.getenv(keyEnv);
-		    if(valueEnv != null)
-		    {
-		    	value = valueEnv;
-		    }
-		    ConfigLoader.properties.setProperty(key, value);			    
-		}
-		boolean printConfig = ConfigLoader.properties.getOrDefault("otppi.print.config", "").toString().equalsIgnoreCase("true");
-		if(printConfig)
-		{
-			Collections.sort(builder);
-			for(int i = 0; i<builder.size(); i++)
-			{
-				logger.info(builder.get(i));
-			}
-		}
-	}
-
+	
 	public static void load(String configPath) throws FileNotFoundException
 	{
 		configPath = FileConfigUtil.fixFileName(configPath);
@@ -365,11 +337,84 @@ public class ConfigLoader {
 		ConfigGeneral.load(Config.getGeneralSettingPath());
 		ConfigAPI.load(Config.getApiSettingPath());
 		WebUserAccount.load(Config.getUserSettingPath());			
-		PropertyLoader.load(Config.getMimeSettingPath());	
+		PropertyLoader.load(Config.getMimeSettingPath());		
+		
+		ConfigLoader.printUsed();
     	
 	}
+	
+	private static void printUsed() {
+		List<String> listKey = new ArrayList<>();
+		for (Entry<Object, Object> entry : ConfigLoader.properties.entrySet()) 
+		{
+		    String key = (String) entry.getKey();
+		    String keyEnv = key.toUpperCase().replace(".", "_");
+		    String value = (String) entry.getValue();	
+		    
+		    listKey.add(key);
+		    
+		    String valueEnv = System.getenv(keyEnv);
+		    if(valueEnv != null)
+		    {
+		    	value = valueEnv;
+		    }
+		    ConfigLoader.properties.setProperty(key, value);			    
+		}
+		
+		boolean printConfig = ConfigLoader.properties.getOrDefault("otppi.print.config", "").toString().equalsIgnoreCase("true");
+		if(printConfig)
+		{
+			Collections.sort(listKey);
+			logger.info("\r\nList of Unused Config:\r\n");
+			for(int i = 0; i<listKey.size(); i++)
+			{
+				if(!usedList.contains(listKey.get(i)))
+				{
+					logger.info(listKey.get(i));
+				}
+			}
+		}
+		
+	}
+
+	private static void overwriteConfig() {
+		List<String> listKey = new ArrayList<>();
+		List<String> listKeyValue = new ArrayList<>();
+		for (Entry<Object, Object> entry : ConfigLoader.properties.entrySet()) 
+		{
+		    String key = (String) entry.getKey();
+		    String keyEnv = key.toUpperCase().replace(".", "_");
+		    String value = (String) entry.getValue();	
+		    
+		    listKey.add(key);
+		    listKeyValue.add("echo 'export "+keyEnv+"=\""+value.replace("'", "\\'")+"\"' >> $HOME/.bashrc");
+		    
+		    String valueEnv = System.getenv(keyEnv);
+		    if(valueEnv != null)
+		    {
+		    	value = valueEnv;
+		    }
+		    ConfigLoader.properties.setProperty(key, value);			    
+		}
+		
+		boolean printConfig = ConfigLoader.properties.getOrDefault("otppi.print.config", "").toString().equalsIgnoreCase("true");
+		if(printConfig)
+		{
+			Collections.sort(listKeyValue);
+			Collections.sort(listKey);
+			for(int i = 0; i<listKeyValue.size(); i++)
+			{
+				logger.info(listKeyValue.get(i));
+			}
+		}
+		
+	}
+	
+	
+
 
 	public static String getConfig(String name) {
+		usedList.add(name);
 		String value = ConfigLoader.properties.getProperty(name);
 		if(value == null)
 		{
@@ -379,6 +424,7 @@ public class ConfigLoader {
 	}
 
 	public static long getConfigLong(String name) {
+		usedList.add(name);
 		String value = ConfigLoader.properties.getProperty(name);
 		if(value == null || value.isEmpty())
 		{
@@ -389,6 +435,7 @@ public class ConfigLoader {
 	}
 
 	public static int getConfigInt(String name) {
+		usedList.add(name);
 		String value = ConfigLoader.properties.getProperty(name);
 		if(value == null || value.isEmpty())
 		{
@@ -399,6 +446,7 @@ public class ConfigLoader {
 	}
 
 	public static boolean getConfigBoolean(String name) {
+		usedList.add(name);
 		String value = ConfigLoader.properties.getProperty(name);
 		if(value == null || value.isEmpty())
 		{
@@ -408,4 +456,5 @@ public class ConfigLoader {
 		return value.equals("true");
 	}
 
+	private static List<String> usedList = new ArrayList<>();
 }
