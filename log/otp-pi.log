@@ -30796,3 +30796,317 @@ List of Unused Config:
 2021-09-27 08:14:54 [INFO  ] ConfigLoader                    :373  - otppi.ws.username
 2021-09-27 08:14:54 [INFO  ] ConfigLoader                    :373  - otppi.wvdial.path.config
 2021-09-27 08:14:54 [INFO  ] Application                     :190  - Service started
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_ENABLE_AMQP="true"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_ENABLE_DDNS="true"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_ENABLE_DEVICE="true"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_ENABLE_NTP="true"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_ENABLE_SERVER_STATUS="true"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_EXPRESSION_AMQP="0 0 * * * ?"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_EXPRESSION_DEVICE="0 0 * * * ?"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_EXPRESSION_GENERAL="*/10 * * * * ?"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_EXPRESSION_SERVER_STATUS="0 */5 * * * ?"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_TIME_RESOLUTION="minute"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_DEVICE_IMAGE_NAME="otp.jar"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_DEVICE_NAME="OTP Broker"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_DEVICE_RESET_CONFIG_NAME="reset-config.ini"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_DEVICE_RESET_CONFIG_PATH="/otp-pi/reset-config.ini"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_DEVICE_RESET_TYPE="RPi"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_DEVICE_VERSION="Version 1.0.0"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_DIR_LOG="C:\bitbucket\OTP-Pi\log"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_DIR_STORAGE="C:\bitbucket\OTP-Pi\log"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_LOG_CONFIG_NOT_FOUND="false"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_MAIL_AUTH="true"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_MAIL_HOST="smtp.gmail.com"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_MAIL_PORT="587"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_MAIL_SENDER_ADDRESS="user@gmail.com"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_MAIL_SENDER_PASSWORD="pass"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_MAIL_SSL="false"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_MAIL_START_TLS="true"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_MODEM_DEBUG="true"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_MODEM_INSPECT_INTERVAL="1000"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_OTP_CACHE_FILE="/resource/data/otp/otp.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_OTP_GC_INGTERVAL="60000"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_OTP_LENGTH="6"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_OTP_LIFETIME="30000"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_OTP_SALT="gfiushciyw89erywe98r23r23rj2"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_OS_DHCP="/etc/dhcp/dhcpd.conf"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_BASE="C:/github/OTP-Pi"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_BELL="/resource/data/bell/bell-config.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_BLOCKING="/resource/data/api/blocking.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_DDNS="/resource/data/ddns/ddns.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_DDNS_AFRAID="/resource/data/ddns/vendor/afraid.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_DDNS_CLOUDFLARE="/resource/data/ddns/vendor/cloudflare.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_DDNS_DYNU="/resource/data/ddns/vendor/dynu.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_DDNS_NOIP="/resource/data/ddns/vendor/noip.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_DHCP="/resource/data/network/dhcpd.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_DHCP_DEFAULT="/resource/config/network/dhcpd.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_EMAIL="/resource/data/email/sender-account.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_ETHERNET="/resource/data/network/ethernet.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_ETHERNET_DEFAULT="/resource/config/network/ethernet.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_FIREWALL="/resource/data/network/firewall.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_GENERAL="/resource/data/general/general-config.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_KEYSTORE="/resource/data/keystore/keystores.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_KEYSTORE_DATA="/resource/data/keystore/data"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_MODEM="/resource/data/gsm/devices.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_SERVER_STATUS="/resource/data/server/server-status.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_SMS="/resource/data/gsm/sms.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_SMTP="/resource/data/email/smtp.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_AMQP="/resource/data/subscriber/subscriber-amqp.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_MQTT="/resource/data/subscriber/subscriber-mqtt.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_REDIS="/resource/data/subscriber/subscriber-redis.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_WS="/resource/data/subscriber/subscriber-ws.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_USER="/resource/data/user/urses.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_WLAN="/resource/data/network/wlan.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_WLAN_DEFAULT="/resource/config/network/wlan.json"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PRINT_CONFIG="true"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_RABBITMQ_ENABLE="false"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_RABBITMQ_HOST="localhost"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_RABBITMQ_PASSWORD="guest"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_RABBITMQ_PORT="5672"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_RABBITMQ_QUEUE="sms"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_RABBITMQ_SSL="false"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_RABBITMQ_USERNAME="guest"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SECRET_KEY="itI*t7t7ur^%E65eE54ew43wYu9j9J(7r67R"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SERVER_HMAC="4194cbdf197b1a281612e14b5d0b68a692fd7f81d6a817d4abcf7977407fa76b196a39519281c68eea98f96dae255753b1f5a9bf69d851ac505ec8e44daedbb7"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SERVER_PORT="8888"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SMS_DEBUG_READ="true"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SMS_INBOX_STATUS="REC READ"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SMS_INBOX_STORAGE="SM"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SMS_PATH_LOG="C:/github/OTP-Pi/resource/data/report/outbox"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SMS_SHOW_TRAFIC="true"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_ALERT_OCTAVE="3"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_ALERT_TEMPO="80"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_ALERT_TONE="8c2 4c2 16- 8c2 4c2"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_DISCONNECT_OCTAVE="3"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_DISCONNECT_TEMPO="80"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_DISCONNECT_TONE="8c2 4c2 16- 8c2 4c2"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_ENABLE="true"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_ERROR_OCTAVE="3"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_ERROR_TEMPO="80"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_ERROR_TONE="8c2 4c2 16- 8c2 4c2"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_PIN="26"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_TEST_OCTAVE="3"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_TEST_TEMPO="80"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_TEST_TONE="16c2 16d2 6e2 8d2 8c2 4d2 4g2 32- 6c2 8c2 8b1 16a1 4b1 4e2 32- 6a1 6b1 6c2 6g1 6b1 8c2 6d2 6e2 8c2 4d2"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SSH_CLEANUP_COMMAND="/bin/bash /var/otp-pi/cleanup.sh"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SSH_ENABLE="false"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SSH_HOST="localhost"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SSH_PASSWORD="centos"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SSH_PING_COMMAND="/bin/curl -X GET http://localhost:8888/ping/"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SSH_PORT="22"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SSH_REBOOT_COMMAND="reboot"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SSH_RESTART_COMMAND="/bin/bash /var/otp-pi/restart.sh"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SSH_SLEEP="10"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SSH_USERNAME="root"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WEB_CACHE_FILE_HTML="true"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WEB_DOCUMENT_ROOT="C:/github/OTP-Pi/resource/www"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WEB_SESSION_FILE_PATH="/resource/session"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WEB_SESSION_LIFETIME="144000000000"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WEB_SESSION_NAME="SMSSESSID"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WS_ADDRESS="127.0.0.1"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WS_CHANNEL="sms"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WS_ENABLE="false"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WS_PASSWORD="4lt0@1234"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WS_PATH="/ws"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WS_PORT="8888"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WS_RECONNECT_DELAY="10000"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WS_REFRESH_DELAY="5000"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WS_SSL="false"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WS_TIMEOUT="5000"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WS_USERNAME="qa"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WS_WAIT_LOOP_CHILD="30000"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WS_WAIT_LOOP_PARENT="1000"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WVDIAL_COMMAND_CONNECT="/bin/wvdial &"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WVDIAL_COMMAND_DISCONNECT="/bin/pkill wvdial"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WVDIAL_PATH_CONFIG="/etc/wvdial.conf"' >> $HOME/.bashrc
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :368  - 
+List of Unused Config:
+
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.cron.enable.server.status
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.cron.expression.amqp
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.cron.expression.device
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.cron.expression.general
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.cron.expression.server.status
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.cron.time.resolution
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.mail.auth
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.mail.host
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.mail.port
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.mail.sender.address
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.mail.sender.password
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.mail.ssl
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.mail.start.tls
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.print.config
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.rabbitmq.enable
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.rabbitmq.host
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.rabbitmq.password
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.rabbitmq.port
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.rabbitmq.queue
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.rabbitmq.ssl
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.rabbitmq.username
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.secret.key
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.server.hmac
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.sms.debug.read
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.ssh.ping.command
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.ws.address
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.ws.channel
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.ws.enable
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.ws.password
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.ws.path
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.ws.port
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.ws.reconnect.delay
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.ws.refresh.delay
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.ws.ssl
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.ws.timeout
+2021-09-27 08:18:53 [INFO  ] ConfigLoader                    :373  - otppi.ws.username
+2021-09-27 08:18:53 [INFO  ] Application                     :190  - Service started
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_ENABLE_AMQP="true"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_ENABLE_DDNS="true"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_ENABLE_DEVICE="true"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_ENABLE_NTP="true"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_ENABLE_SERVER_STATUS="true"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_EXPRESSION_AMQP="0 0 * * * ?"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_EXPRESSION_DEVICE="0 0 * * * ?"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_EXPRESSION_GENERAL="*/10 * * * * ?"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_EXPRESSION_SERVER_STATUS="0 */5 * * * ?"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_TIME_RESOLUTION="minute"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_DEVICE_IMAGE_NAME="otp.jar"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_DEVICE_NAME="OTP Broker"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_DEVICE_RESET_CONFIG_NAME="reset-config.ini"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_DEVICE_RESET_CONFIG_PATH="/otp-pi/reset-config.ini"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_DEVICE_RESET_TYPE="RPi"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_DEVICE_VERSION="Version 1.0.0"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_DIR_LOG="C:\bitbucket\OTP-Pi\log"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_DIR_STORAGE="C:\bitbucket\OTP-Pi\log"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_LOG_CONFIG_NOT_FOUND="false"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_MAIL_AUTH="true"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_MAIL_HOST="smtp.gmail.com"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_MAIL_PORT="587"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_MAIL_SENDER_ADDRESS="user@gmail.com"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_MAIL_SENDER_PASSWORD="pass"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_MAIL_SSL="false"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_MAIL_START_TLS="true"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_MODEM_DEBUG="true"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_MODEM_INSPECT_INTERVAL="1000"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_OTP_CACHE_FILE="/resource/data/otp/otp.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_OTP_GC_INGTERVAL="60000"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_OTP_LENGTH="6"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_OTP_LIFETIME="30000"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_OTP_SALT="gfiushciyw89erywe98r23r23rj2"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_OS_DHCP="/etc/dhcp/dhcpd.conf"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_BASE="C:/github/OTP-Pi"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_BELL="/resource/data/bell/bell-config.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_BLOCKING="/resource/data/api/blocking.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_DDNS="/resource/data/ddns/ddns.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_DDNS_AFRAID="/resource/data/ddns/vendor/afraid.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_DDNS_CLOUDFLARE="/resource/data/ddns/vendor/cloudflare.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_DDNS_DYNU="/resource/data/ddns/vendor/dynu.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_DDNS_NOIP="/resource/data/ddns/vendor/noip.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_DHCP="/resource/data/network/dhcpd.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_DHCP_DEFAULT="/resource/config/network/dhcpd.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_EMAIL="/resource/data/email/sender-account.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_ETHERNET="/resource/data/network/ethernet.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_ETHERNET_DEFAULT="/resource/config/network/ethernet.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_FIREWALL="/resource/data/network/firewall.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_GENERAL="/resource/data/general/general-config.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_KEYSTORE="/resource/data/keystore/keystores.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_KEYSTORE_DATA="/resource/data/keystore/data"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_MODEM="/resource/data/gsm/devices.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_SERVER_STATUS="/resource/data/server/server-status.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_SMS="/resource/data/gsm/sms.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_SMTP="/resource/data/email/smtp.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_AMQP="/resource/data/subscriber/subscriber-amqp.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_MQTT="/resource/data/subscriber/subscriber-mqtt.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_REDIS="/resource/data/subscriber/subscriber-redis.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_WS="/resource/data/subscriber/subscriber-ws.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_USER="/resource/data/user/urses.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_WLAN="/resource/data/network/wlan.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PATH_SETTING_WLAN_DEFAULT="/resource/config/network/wlan.json"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_PRINT_CONFIG="true"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_RABBITMQ_ENABLE="false"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_RABBITMQ_HOST="localhost"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_RABBITMQ_PASSWORD="guest"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_RABBITMQ_PORT="5672"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_RABBITMQ_QUEUE="sms"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_RABBITMQ_SSL="false"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_RABBITMQ_USERNAME="guest"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SECRET_KEY="itI*t7t7ur^%E65eE54ew43wYu9j9J(7r67R"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SERVER_HMAC="4194cbdf197b1a281612e14b5d0b68a692fd7f81d6a817d4abcf7977407fa76b196a39519281c68eea98f96dae255753b1f5a9bf69d851ac505ec8e44daedbb7"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SERVER_PORT="8888"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SMS_DEBUG_READ="true"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SMS_INBOX_STATUS="REC READ"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SMS_INBOX_STORAGE="SM"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SMS_PATH_LOG="C:/github/OTP-Pi/resource/data/report/outbox"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SMS_SHOW_TRAFIC="true"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_ALERT_OCTAVE="3"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_ALERT_TEMPO="80"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_ALERT_TONE="8c2 4c2 16- 8c2 4c2"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_DISCONNECT_OCTAVE="3"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_DISCONNECT_TEMPO="80"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_DISCONNECT_TONE="8c2 4c2 16- 8c2 4c2"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_ENABLE="true"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_ERROR_OCTAVE="3"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_ERROR_TEMPO="80"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_ERROR_TONE="8c2 4c2 16- 8c2 4c2"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_PIN="26"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_TEST_OCTAVE="3"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_TEST_TEMPO="80"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SOUND_TEST_TONE="16c2 16d2 6e2 8d2 8c2 4d2 4g2 32- 6c2 8c2 8b1 16a1 4b1 4e2 32- 6a1 6b1 6c2 6g1 6b1 8c2 6d2 6e2 8c2 4d2"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SSH_CLEANUP_COMMAND="/bin/bash /var/otp-pi/cleanup.sh"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SSH_ENABLE="false"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SSH_HOST="localhost"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SSH_PASSWORD="centos"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SSH_PING_COMMAND="/bin/curl -X GET http://localhost:8888/ping/"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SSH_PORT="22"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SSH_REBOOT_COMMAND="reboot"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SSH_RESTART_COMMAND="/bin/bash /var/otp-pi/restart.sh"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SSH_SLEEP="10"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_SSH_USERNAME="root"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WEB_CACHE_FILE_HTML="true"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WEB_DOCUMENT_ROOT="C:/github/OTP-Pi/resource/www"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WEB_SESSION_FILE_PATH="/resource/session"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WEB_SESSION_LIFETIME="144000000000"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WEB_SESSION_NAME="SMSSESSID"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WVDIAL_COMMAND_CONNECT="/bin/wvdial &"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WVDIAL_COMMAND_DISCONNECT="/bin/pkill wvdial"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_WVDIAL_PATH_CONFIG="/etc/wvdial.conf"' >> $HOME/.bashrc
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :368  - 
+List of Unused Config:
+
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.cron.enable.server.status
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.cron.expression.amqp
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.cron.expression.device
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.cron.expression.general
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.cron.expression.server.status
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.cron.time.resolution
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.mail.auth
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.mail.host
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.mail.port
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.mail.sender.address
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.mail.sender.password
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.mail.ssl
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.mail.start.tls
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.print.config
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.rabbitmq.enable
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.rabbitmq.host
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.rabbitmq.password
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.rabbitmq.port
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.rabbitmq.queue
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.rabbitmq.ssl
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.rabbitmq.username
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.secret.key
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.server.hmac
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.sms.debug.read
+2021-09-27 08:19:48 [INFO  ] ConfigLoader                    :373  - otppi.ssh.ping.command
+2021-09-27 08:19:49 [INFO  ] Application                     :190  - Service started

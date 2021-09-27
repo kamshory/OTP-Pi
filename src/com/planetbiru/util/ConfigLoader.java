@@ -136,8 +136,8 @@ public class ConfigLoader {
 		String smtpSettingPath = ConfigLoader.getConfig("otppi.path.setting.smtp");
 		String firewallSettingPath = ConfigLoader.getConfig("otppi.path.setting.firewall");
 		String cleanupCommand = ConfigLoader.getConfig("otppi.ssh.cleanup.command");
-		String logDir = ConfigLoader.getConfig("otppi.dir.log");	
-		String storageDir = ConfigLoader.getConfig("otppi.dir.storage");
+		String logDir = ConfigLoader.getConfig("otppi.server.dir.log");	
+		String storageDir = ConfigLoader.getConfig("otppi.server.dir.storage");
 		int portManager = ConfigLoader.getConfigInt("otppi.server.port");
 		boolean showTraffic = ConfigLoader.getConfigBoolean("otppi.sms.show.trafic");
 		int serverPort = ConfigLoader.getConfigInt("otppi.server.port");
@@ -152,7 +152,7 @@ public class ConfigLoader {
 		long waitLoopParent = ConfigLoader.getConfigLong("otppi.ws.wait.loop.parent");
 		long waitLoopChild = ConfigLoader.getConfigLong("otppi.ws.wait.loop.child");
 		String imageName = ConfigLoader.getConfig("otppi.device.image.name");
-		boolean logConfigNotFound = ConfigLoader.getConfigBoolean("otppi.log.config.not.found");
+		boolean logConfigNotFound = ConfigLoader.getConfigBoolean("otppi.server.log.config.not.found");
 	
 		String resetConfigPath = ConfigLoader.getConfig("otppi.device.reset.config.path");		
 		String resetDeviceType = ConfigLoader.getConfig("otppi.device.reset.type");
