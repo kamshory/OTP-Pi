@@ -146,16 +146,28 @@ public class ModemInspector extends Thread {
 				GSMInstance instance = GSMUtil.getGSMInstanceByPort(port);
 				if(connecting)
 				{
-					this.sendNotification(port, true);
-				}
-				
+					Thread.sleep(100);
+					String result = instance.testAT();
+					if(result.contains("OK"))
+					{
+						this.sendNotification(port, true, null);
+					}
+					else
+					{
+						this.sendNotification(port, true, "Please check connection for "+instance.getModem().getName()+" on port "+port);
+					}
+				}			
 				this.lastConnection.put(port, instance.isConnected());
 			} 
-			catch (ModemNotFoundException e) 
+			catch (ModemNotFoundException | GSMException | SerialPortConnectionException e) 
 			{
 				/**
 				 * Do nothing
 				 */
+			} 
+			catch (InterruptedException e) 
+			{
+				Thread.currentThread().interrupt();
 			}
 		}		
 	}
@@ -173,12 +185,14 @@ public class ModemInspector extends Thread {
 				if(connected && this.indexOf(arr, port) == -1 && instance != null && instance.getModem() != null && instance.getModem().isActive() && !instance.getModem().isInternetAccess())
 				{
 					this.disconnectModem(port);
-					this.sendNotification(port, false);
+					this.sendNotification(port, false, null);
 				}
 			} 
 			catch (ModemNotFoundException e) 
 			{
-				e.printStackTrace();
+				/**
+				 * Do nothing
+				 */
 			}
 			this.lastConnection.remove(port);
 			
@@ -186,40 +200,52 @@ public class ModemInspector extends Thread {
 	}
 	
 	private void disconnectModem(String port) {
-		try {
+		try 
+		{
 			GSMInstance instance = GSMUtil.getGSMInstanceByPort(port);
 			instance.disconnect();
 			ServerInfo.sendModemStatus();
-		} catch (ModemNotFoundException | GSMException e) {
-			e.printStackTrace();
+		} 
+		catch (ModemNotFoundException | GSMException e) 
+		{
+			/**
+			 * Do nothing
+			 */
 		}
 		
 	}
 
-	private void sendNotification(String port, boolean connect) {
+	private void sendNotification(String port, boolean connect, String notif) {
 		String message = "";
 		DataModem modemData = ConfigModem.getModemDataByPort(port);
-		if(modemData == null)
+		if(notif != null)
 		{
-			if(connect)
-			{
-				message = "Connecting "+port;
-			}
-			else
-			{
-				message = "Disconnecting "+port;
-			}
+			message = notif;
 		}
 		else
 		{
-			String fmt = "%s %s (%s)";
-			if(connect)
+			if(modemData == null)
 			{
-				message = String.format(fmt, "Connecting", modemData.getPort(), modemData.getName());
+				if(connect)
+				{
+					message = "Connecting "+port;
+				}
+				else
+				{
+					message = "Disconnecting "+port;
+				}
 			}
 			else
 			{
-				message = String.format(fmt, "Disconnecting", modemData.getPort(), modemData.getName());
+				String fmt = "%s %s (%s)";
+				if(connect)
+				{
+					message = String.format(fmt, "Connecting", modemData.getPort(), modemData.getName());
+				}
+				else
+				{
+					message = String.format(fmt, "Disconnecting", modemData.getPort(), modemData.getName());
+				}
 			}
 		}
 		JSONObject jsonMessage = new JSONObject();
@@ -250,8 +276,7 @@ public class ModemInspector extends Thread {
 					 */
 				}
 			}
-		}
-		
+		}		
 	}
 
 	private boolean isUsed(Map<String, DataModem> modemData, String port) {
