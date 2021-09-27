@@ -57,15 +57,15 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			}
 			else if(path.startsWith("/api/modem-sms"))
 			{
-				this.modemChangeState(httpExchange, "sms");
+				this.modemChangeState(httpExchange, ConstantString.SMS);
 			}
 			else if(path.startsWith("/api/modem-internet"))
 			{
-				this.modemChangeState(httpExchange, "internet");
+				this.modemChangeState(httpExchange, ConstantString.INTERNET);
 			}
 			else if(path.startsWith("/api/modem"))
 			{
-				this.modemChangeState(httpExchange, "all");
+				this.modemChangeState(httpExchange, ConstantString.ALL);
 			}
 			else if(path.startsWith("/api/email"))
 			{
@@ -130,8 +130,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			else if(path.startsWith("/api/tone"))
 			{
 				this.testTone(httpExchange);
-			}			
-			
+			}						
 		}
 	}
 	
@@ -668,22 +667,22 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
 		if(action.equals(ConstantString.CONNECT))
 		{
-			if(modemFunction.equals("sms") || modemFunction.equals("all"))
+			if(modemFunction.equals(ConstantString.SMS) || modemFunction.equals(ConstantString.ALL))
 			{
 				Application.modemSMSStart();
 			}
-			if(modemFunction.equals("internet") || modemFunction.equals("all"))
+			if(modemFunction.equals(ConstantString.INTERNET) || modemFunction.equals(ConstantString.ALL))
 			{
 				Application.modemInternetStart();
 			}
 		}
 		else
 		{
-			if(modemFunction.equals("sms") || modemFunction.equals("all"))
+			if(modemFunction.equals(ConstantString.SMS) || modemFunction.equals(ConstantString.ALL))
 			{
 				Application.modemSMSStop();
 			}
-			if(modemFunction.equals("internet") || modemFunction.equals("all"))
+			if(modemFunction.equals(ConstantString.INTERNET) || modemFunction.equals(ConstantString.ALL))
 			{
 				Application.modemInternetStop();
 			}
@@ -779,11 +778,10 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				{
 					message = "Devive is not connected properly";
 				}
-				responseJSON.put("command", "broadcast-message");
-				item.put("message", message);
-				
+				responseJSON.put(JsonKey.COMMAND, "broadcast-message");
+				item.put("message", message);				
 				data.put(item);
-				responseJSON.put("data", data);
+				responseJSON.put(JsonKey.DATA, data);
 			} 
 		}
 		else
