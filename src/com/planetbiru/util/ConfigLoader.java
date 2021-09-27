@@ -361,7 +361,7 @@ public class ConfigLoader {
 		    ConfigLoader.properties.setProperty(key, value);			    
 		}
 		
-		boolean printConfig = ConfigLoader.properties.getOrDefault("otppi.print.config", "").toString().equalsIgnoreCase("true");
+		boolean printConfig = ConfigLoader.properties.getOrDefault("otppi.device.print.config", "").toString().equalsIgnoreCase("true");
 		if(printConfig)
 		{
 			Collections.sort(listKey);
@@ -397,7 +397,7 @@ public class ConfigLoader {
 		    ConfigLoader.properties.setProperty(key, value);			    
 		}
 		
-		boolean printConfig = ConfigLoader.properties.getOrDefault("otppi.print.config", "").toString().equalsIgnoreCase("true");
+		boolean printConfig = ConfigLoader.properties.getOrDefault("otppi.device.print.config", "").toString().equalsIgnoreCase("true");
 		if(printConfig)
 		{
 			Collections.sort(listKeyValue);

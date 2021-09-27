@@ -69,6 +69,10 @@ Modem is a list of modems installed on the OTP-Pi. Modems are named based on the
 
 OTP-Pi can use multiple modems at once. By default, the OTP-Pi can use up to 4 modems at once without the need for additional devices. The use of a hub is possible so that users can use more than 4 modems in one OTP-Pi device. The modems are registered as usual. Sending SMS will use the Round-Robin algorithm where all active modems will be used in rotation.
 
+## Device Inspector
+
+OTP-Pi will periodically check all serial ports on the server. If a device change is detected, the OTP-Pi will check the list of pre-set modems. If the port is used on one of the modems on the list, the OTP-Pi will update the modem connection status. In addition, OTP-Pi will also display a notification on the administrator screen.
+
 ## Prefix-Based Routing
 
 In reality, cost efficiency becomes very important for users. The cost of sending SMS should be reduced as much as possible. Telecommunications operators usually apply lower cost when sending SMS to subscriber numbers of the same telecommunications operator. On the other hand, the cost of sending SMS will be higher when sending SMS to customer numbers from other operators.
