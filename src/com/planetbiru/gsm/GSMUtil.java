@@ -950,7 +950,7 @@ public class GSMUtil {
 		GSMInstance instance = GSMUtil.getGSMIntance(modemID);
 		String atResult = instance.testAT();
 		JSONObject result = new JSONObject();
-		result.put("atResponse", atResult);
+		result.put("result", atResult);
 		if(atResult.contains("\r\nOK"))
 		{
 			result.put("status", "OK");
