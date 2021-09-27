@@ -124,55 +124,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			
 		}
 	}
-	private void modemChangeState(HttpExchange httpExchange) throws IOException {
-		byte[] req = HttpUtil.getRequestBody(httpExchange);
-		String requestBody = "";
-		if(req != null)
-		{
-			requestBody = new String(req);
-		}
-		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
-		Headers requestHeaders = httpExchange.getRequestHeaders();
-		Headers responseHeaders = httpExchange.getResponseHeaders();
-		int statusCode;
-		JSONObject responseJSON = new JSONObject();
-		statusCode = HttpStatus.OK;
-		try 
-		{
-			if(WebUserAccount.checkUserAuth(requestHeaders))
-			{
-				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
-				if(action.equals("connect"))
-				{
-					Application.modemSMSStart();
-					Application.modemInternetStart();
-				}
-				else
-				{
-					Application.modemSMSStop();
-					Application.modemInternetStop();
-				} 
-				ServerInfo.sendModemStatus();			
-			} 
-			else 
-			{
-				statusCode = HttpStatus.UNAUTHORIZED;
-			}
-		} 
-		catch (NoUserRegisteredException e) 
-		{
-			statusCode = HttpStatus.UNAUTHORIZED;
-		}
-		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
-		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
-		byte[] responseBody = responseJSON.toString(0).getBytes();
-
-
-		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
-		httpExchange.getResponseBody().write(responseBody);
-		httpExchange.close();
-		
-	}
+	
 	//@PostMapping(path="/api/tone")
 	public void testTone(HttpExchange httpExchange) throws IOException
 	{
@@ -299,11 +251,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		{
 			statusCode = HttpStatus.UNAUTHORIZED;
 		} 
-		catch (GSMException | InvalidSIMPinException e) 
-		{
-			logger.error(e.getMessage(), e);
-		} 
-		catch (SerialPortConnectionException e) 
+		catch (GSMException | InvalidSIMPinException | SerialPortConnectionException e) 
 		{
 			logger.error(e.getMessage(), e);
 		}
@@ -666,8 +614,56 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		httpExchange.getResponseBody().write(responseBody);
 		httpExchange.close();
 	}
-	
-	
+	//@PostMapping(path="/api/modem")
+	private void modemChangeState(HttpExchange httpExchange) throws IOException {
+		byte[] req = HttpUtil.getRequestBody(httpExchange);
+		String requestBody = "";
+		if(req != null)
+		{
+			requestBody = new String(req);
+		}
+		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
+		Headers requestHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
+		int statusCode;
+		JSONObject responseJSON = new JSONObject();
+		statusCode = HttpStatus.OK;
+		try 
+		{
+			if(WebUserAccount.checkUserAuth(requestHeaders))
+			{
+				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
+				if(action.equals(ConstantString.CONNECT))
+				{
+					Application.modemSMSStart();
+					Application.modemInternetStart();
+				}
+				else
+				{
+					Application.modemSMSStop();
+					Application.modemInternetStop();
+				} 
+				ServerInfo.sendModemStatus();			
+			} 
+			else 
+			{
+				statusCode = HttpStatus.UNAUTHORIZED;
+			}
+		} 
+		catch (NoUserRegisteredException e) 
+		{
+			statusCode = HttpStatus.UNAUTHORIZED;
+		}
+		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
+		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
+		byte[] responseBody = responseJSON.toString(0).getBytes();
+
+
+		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+		httpExchange.getResponseBody().write(responseBody);
+		httpExchange.close();
+		
+	}
 	//@PostMapping(path="/api/device/**")
 	public void modemTool(HttpExchange httpExchange) throws IOException
 	{
@@ -688,24 +684,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
-				if(!modemID.isEmpty())
-				{
-					if(action.equals("connect"))
-					{
-						GSMUtil.connect(modemID);						
-						ServerInfo.sendModemStatus();
-					}
-					else if(action.equals("disconnect"))
-					{
-						GSMUtil.disconnect(modemID);
-						ServerInfo.sendModemStatus();
-					} 
-					else if(action.equals("test-at"))
-					{
-						responseJSON = GSMUtil.testAT(modemID);
-					} 
-				}
+				responseJSON = this.modemAction(queryPairs, modemID);
 			} 
 			else 
 			{
@@ -743,6 +722,44 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		httpExchange.close();
 	}
 	
+	private JSONObject modemAction(Map<String, String> queryPairs, String modemID) throws GSMException, InvalidPortException, SerialPortConnectionException
+	{
+		JSONObject responseJSON = new JSONObject();
+		String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
+		if(!modemID.isEmpty())
+		{
+			if(action.equals(ConstantString.CONNECT))
+			{
+				GSMUtil.connect(modemID);						
+				ServerInfo.sendModemStatus();
+			}
+			else if(action.equals(ConstantString.DISCONNECT))
+			{
+				GSMUtil.disconnect(modemID);
+				ServerInfo.sendModemStatus();
+			} 
+			else if(action.equals("test-at"))
+			{
+				responseJSON = GSMUtil.testAT(modemID);
+			} 
+		}
+		else
+		{
+			if(action.equals(ConstantString.CONNECT))
+			{
+				Application.modemSMSStart();
+				Application.modemInternetStart();
+			}
+			else
+			{
+				Application.modemSMSStop();
+				Application.modemInternetStop();
+			}
+		}
+		ServerInfo.sendModemStatus();
+		return responseJSON;
+	}
+	
 	//@PostMapping(path="/api/internet-dial/**")
 	public void internetConnect(HttpExchange httpExchange) throws IOException
 	{
@@ -766,7 +783,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				String modemID = queryPairs.getOrDefault("id", "");
 				if(!modemID.isEmpty())
 				{
-					if(action.equals("connect"))
+					if(action.equals(ConstantString.CONNECT))
 					{
 						InternetDialUtil.connect(modemID);						
 					}
