@@ -93,7 +93,7 @@ public class ConfigLoader {
 		String osSSIDKey = ConfigLoader.getConfig("otppi.path.os.ssid.key");
 		String osEthernetConfigPath = ConfigLoader.getConfig("otppi.path.os.ethernet");
 		String osDHCPConfigPath = ConfigLoader.getConfig("otppi.path.os.dhcp");
-		String baseDirConfig = ConfigLoader.getConfig("otppi.path.base.setting");
+		String baseDirConfig = ConfigLoader.getConfig("otppi.path.setting.base");
 		String sshUsername = ConfigLoader.getConfig("otppi.ssh.username");
 		String sshPassword = ConfigLoader.getConfig("otppi.ssh.password");
 		String sshHost = ConfigLoader.getConfig("otppi.ssh.host");
@@ -110,9 +110,9 @@ public class ConfigLoader {
 		String smsSettingPath = ConfigLoader.getConfig("otppi.path.setting.sms");
 		String restartCommand = ConfigLoader.getConfig("otppi.ssh.restart.command");
 		String modemSettingPath = ConfigLoader.getConfig("otppi.path.setting.modem");
-		boolean debugModem = ConfigLoader.getConfigBoolean("otppi.debug.modem");
-		String smsLogPath = ConfigLoader.getConfig("otppi.path.log.sms");
-		String wvdialSettingPath = ConfigLoader.getConfig("otppi.path.wvdial");
+		boolean debugModem = ConfigLoader.getConfigBoolean("otppi.modem.debug");
+		String smsLogPath = ConfigLoader.getConfig("otppi.sms.path.log");
+		String wvdialSettingPath = ConfigLoader.getConfig("otppi.wvdial.path.config");
 		String wvdialCommandConnect = ConfigLoader.getConfig("otppi.wvdial.command.connect");
 		String wvdialCommandDisconnect = ConfigLoader.getConfig("otppi.wvdial.command.disconnect");		
 		String deviceName = ConfigLoader.getConfig("otppi.device.name");
@@ -136,10 +136,10 @@ public class ConfigLoader {
 		String smtpSettingPath = ConfigLoader.getConfig("otppi.path.setting.smtp");
 		String firewallSettingPath = ConfigLoader.getConfig("otppi.path.setting.firewall");
 		String cleanupCommand = ConfigLoader.getConfig("otppi.ssh.cleanup.command");
-		String logDir = ConfigLoader.getConfig("otppi.log.dir");	
-		String storageDir = ConfigLoader.getConfig("otppi.storage.dir");
+		String logDir = ConfigLoader.getConfig("otppi.server.dir.log");	
+		String storageDir = ConfigLoader.getConfig("otppi.server.dir.storage");
 		int portManager = ConfigLoader.getConfigInt("otppi.server.port");
-		boolean showTraffic = ConfigLoader.getConfigBoolean("otppi.show.trafic");
+		boolean showTraffic = ConfigLoader.getConfigBoolean("otppi.sms.show.trafic");
 		int serverPort = ConfigLoader.getConfigInt("otppi.server.port");
 		boolean ddnsUpdate = ConfigLoader.getConfigBoolean("otppi.cron.enable.ddns");
 		boolean timeUpdate = ConfigLoader.getConfigBoolean("otppi.cron.enable.ntp");
@@ -147,16 +147,16 @@ public class ConfigLoader {
 		boolean cronAMQPEnable = ConfigLoader.getConfigBoolean("otppi.cron.enable.amqp");
 		String timeResolution = ConfigLoader.getConfig("otppi.cron.time.resolution:minute");
 		String serverStatusSettingPath = ConfigLoader.getConfig("otppi.path.setting.server.status");	
-		boolean cacheHTMLFile = ConfigLoader.getConfigBoolean("otppi.cache.file.html");
+		boolean cacheHTMLFile = ConfigLoader.getConfigBoolean("otppi.web.cache.file.html");
 		
 		long waitLoopParent = ConfigLoader.getConfigLong("otppi.ws.wait.loop.parent");
 		long waitLoopChild = ConfigLoader.getConfigLong("otppi.ws.wait.loop.child");
-		String imageName = ConfigLoader.getConfig("otppi.image.name");
-		boolean logConfigNotFound = ConfigLoader.getConfigBoolean("otppi.log.config.not.found");
+		String imageName = ConfigLoader.getConfig("otppi.device.image.name");
+		boolean logConfigNotFound = ConfigLoader.getConfigBoolean("otppi.server.log.config.not.found");
 	
-		String resetConfigPath = ConfigLoader.getConfig("otppi.path.reset.config");		
-		String resetDeviceType = ConfigLoader.getConfig("otppi.reset.device.type");
-		String resetDeviceFile = ConfigLoader.getConfig("otppi.reset.device.file");
+		String resetConfigPath = ConfigLoader.getConfig("otppi.device.reset.config.path");		
+		String resetDeviceType = ConfigLoader.getConfig("otppi.device.reset.type");
+		String resetDeviceFile = ConfigLoader.getConfig("otppi.device.reset.config.name");
 		
 		String bellSettingPath = ConfigLoader.getConfig("otppi.path.setting.bell");
 		
@@ -187,7 +187,7 @@ public class ConfigLoader {
 		long otpLifetime = ConfigLoader.getConfigInt("otppi.otp.lifetime");
 		int otpGCInterval = ConfigLoader.getConfigInt("otppi.otp.gc.ingterval");
 
-		long inspectModemInterval = ConfigLoader.getConfigLong("otppi.inspect.modem.interval");
+		long inspectModemInterval = ConfigLoader.getConfigLong("otppi.modem.inspect.interval");
 		
 		Config.setInspectModemInterval(inspectModemInterval);
 		
@@ -361,7 +361,7 @@ public class ConfigLoader {
 		    ConfigLoader.properties.setProperty(key, value);			    
 		}
 		
-		boolean printConfig = ConfigLoader.properties.getOrDefault("otppi.print.config", "").toString().equalsIgnoreCase("true");
+		boolean printConfig = ConfigLoader.properties.getOrDefault("otppi.device.print.config", "").toString().equalsIgnoreCase("true");
 		if(printConfig)
 		{
 			Collections.sort(listKey);
@@ -397,7 +397,7 @@ public class ConfigLoader {
 		    ConfigLoader.properties.setProperty(key, value);			    
 		}
 		
-		boolean printConfig = ConfigLoader.properties.getOrDefault("otppi.print.config", "").toString().equalsIgnoreCase("true");
+		boolean printConfig = ConfigLoader.properties.getOrDefault("otppi.device.print.config", "").toString().equalsIgnoreCase("true");
 		if(printConfig)
 		{
 			Collections.sort(listKeyValue);
