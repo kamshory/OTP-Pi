@@ -240,11 +240,11 @@ public class ModemInspector extends Thread {
 				String fmt = "%s %s (%s)";
 				if(connect)
 				{
-					message = String.format(fmt, "Connecting", modemData.getPort(), modemData.getName());
+					message = String.format(fmt, "Connecting", modemData.getName(), modemData.getPort());
 				}
 				else
 				{
-					message = String.format(fmt, "Disconnecting", modemData.getPort(), modemData.getName());
+					message = String.format(fmt, "Disconnecting", modemData.getName(), modemData.getPort());
 				}
 			}
 		}
