@@ -429,11 +429,11 @@ public class GSM {
     	logger.info("msg2 = "+msg2);
     	String msg3 = this.executeAT(this.selectDataMode(ATCommand.DATA_MODE_TEXT), 1, true);
     	logger.info("msg3 = "+msg3);
-    	String msg4 = this.executeAT("AT+CMGW=\"" + recipient + "\"", 2, true);
+    	String msg4 = this.executeAT("AT+CMGW=\"" + recipient + "\"", 1, true);
     	logger.info("msg4 = "+msg4);
-    	String msg5 = this.executeAT(message, 2, true);
+    	String msg5 = this.executeAT(message, 1, true);
     	logger.info("msg5 = "+msg5);
-    	String msg6 = this.executeAT(Character.toString((char) 26), 2, true);
+    	String msg6 = this.executeAT(Character.toString((char) 26), 1, true);
     	logger.info("msg6 = "+msg6);
     	this.setReady(true);
     	
