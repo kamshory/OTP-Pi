@@ -729,7 +729,7 @@ Content-length: 199
 
 {
 	"command": "create-otp",
-	"response_code": "000",
+	"response_code": "0000",
 	"data": {
 		"date_time": 1629685778,
 		"receiver": "08126666666",
@@ -798,7 +798,7 @@ Content-length: 201
 
 {
 	"command": "validate-otp",
-	"response_code": "000",
+	"response_code": "0000",
 	"data": {
 		"date_time": 1629685778,
 		"receiver": "08126666666",
