@@ -1315,7 +1315,7 @@ In this scenario, the user does not need a public IP. Users only need:
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.receiver | String | MSISDN number to be unblocked |
 
-The WSMessageBroker-based server uses the WebSocket protocol. Please download WSMessageBroker at https://github.com/kamshory/Messenger
+The WSMessageBroker-based server uses the WebSocket protocol. Please download **OTP-Publisher** at https://github.com/kamshory/OTP-Publisher
 
 **Handhakes**
 
