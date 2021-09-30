@@ -634,7 +634,7 @@ To reset the device, perform the following steps:
 
 Both WebSocket and Message Broker use a topic that can be configured from both sides (sender and receiver).
 
-To use WebSocket, please use the WSMessageBrocker library with the link https://github.com/kamshory/Messenger or you can create your own.
+To use WebSocket, please use the WSMessageBrocker library with the link https://github.com/kamshory/OTP-Publisher or you can create your own.
 
 To use RabbitMQ, please open the link https://www.rabbitmq.com/
 
@@ -1315,7 +1315,7 @@ In this scenario, the user does not need a public IP. Users only need:
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.receiver | String | MSISDN number to be unblocked |
 
-The WSMessageBroker-based server uses the WebSocket protocol. Please download WSMessageBroker at https://github.com/kamshory/Messenger
+The WSMessageBroker-based server uses the WebSocket protocol. Please download **OTP-Publisher** at https://github.com/kamshory/OTP-Publisher
 
 **Handhakes**
 
