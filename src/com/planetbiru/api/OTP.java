@@ -133,11 +133,15 @@ public class OTP {
 	}
 
 	public static boolean validateOTP(String otpID, String receiver, String param1, String param2,
-			String param3, String param4, String plainOTP) {
+			String param3, String param4, String plainOTP) throws OTPExpireException {
 		String hash = OTP.createHash(otpID, plainOTP, receiver, param1, param2, param3, param4);
 		if(OTP.isExists(otpID))
 		{
 			JSONObject otp = OTP.data.optJSONObject(otpID);
+			if(otp.optLong(JsonKey.EXPIRATION, 0) < System.currentTimeMillis())
+			{
+				throw new OTPExpireException("OTP has been expire");
+			}
 			if(otp != null && otp.optString(JsonKey.HASH, "").equals(hash))
 			{
 				OTP.data.remove(otpID);

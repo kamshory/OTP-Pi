@@ -22,7 +22,9 @@ public class ModemInspector extends Thread {
 	private String lastList = "";
 	private Map<String, Boolean> lastConnection = new HashMap<>();
 	private long delay;
-	public ModemInspector(long delay) {
+	
+	public ModemInspector(long delay) 
+	{
 		this.delay = delay;
 	}
 
@@ -131,18 +133,15 @@ public class ModemInspector extends Thread {
 		boolean connecting = false;
 		for(int i = 0; i<arr.length; i++)
 		{
-			connecting = false;
-			
+			connecting = false;			
 			try 
 			{
 				String port = arr[i];				
 				if(!newList.contains(port) && this.isUsed(modemData, port))
 				{
 					this.reconnectModem(modemData, port);
-					connecting = true;
-					
-				}
-				
+					connecting = true;				
+				}			
 				GSMInstance instance = GSMUtil.getGSMInstanceByPort(port);
 				if(connecting)
 				{
@@ -182,7 +181,12 @@ public class ModemInspector extends Thread {
 			boolean connected = entry.getValue().booleanValue();
 			try {
 				GSMInstance instance = GSMUtil.getGSMInstanceByPort(port);
-				if(connected && this.indexOf(arr, port) == -1 && instance != null && instance.getModem() != null && instance.getModem().isActive() && !instance.getModem().isInternetAccess())
+				if(connected 
+						&& this.indexOf(arr, port) == -1 
+						&& instance != null 
+						&& instance.getModem() != null 
+						&& instance.getModem().isActive() 
+						&& !instance.getModem().isInternetAccess())
 				{
 					this.disconnectModem(port);
 					this.sendNotification(port, false, null);
@@ -211,8 +215,7 @@ public class ModemInspector extends Thread {
 			/**
 			 * Do nothing
 			 */
-		}
-		
+		}		
 	}
 
 	private void sendNotification(String port, boolean connect, String notif) {

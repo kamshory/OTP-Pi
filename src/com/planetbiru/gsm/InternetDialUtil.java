@@ -14,14 +14,11 @@ import com.planetbiru.util.CommandLineResult;
 import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.ServerInfo;
 
-public class InternetDialUtil {
-	
-	
+public class InternetDialUtil {	
 	private static Map<String, Boolean> internetAccess = new HashMap<>();
 	private static String configPath = "";
 	private static String wvdialCommandConnect = "";
-	private static String wvdialCommandDisconnect = "";
-	
+	private static String wvdialCommandDisconnect = "";	
 	private static Logger logger = Logger.getLogger(InternetDialUtil.class);
 	
 	private InternetDialUtil()

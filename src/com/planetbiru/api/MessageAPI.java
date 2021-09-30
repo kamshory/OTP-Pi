@@ -111,7 +111,7 @@ public class MessageAPI {
 		{
 			if(OTP.isExists(otpID))
 			{
-				responseCode = ResponseCode.FAILED;
+				responseCode = ResponseCode.DUPLICATED;
 			}
 			else
 			{
@@ -154,17 +154,25 @@ public class MessageAPI {
 		JSONObject requestJSON = new JSONObject();
 		JSONObject responseData = new JSONObject();
 		
-		boolean valid = OTP.validateOTP(otpID, receiver, param1, param2, param3, param4, clearOTP);
 		responseData.put(JsonKey.REFERENCE, otpID);
 		responseData.put(JsonKey.RECEIVER, receiver);
 		responseData.put(JsonKey.DATE_TIME, dateTime);
-		if(valid)
+		boolean valid = false;
+		try 
 		{
-			responseCode = ResponseCode.SUCCESS;
-		}
-		else
+			valid = OTP.validateOTP(otpID, receiver, param1, param2, param3, param4, clearOTP);
+			if(valid)
+			{
+				responseCode = ResponseCode.SUCCESS;
+			}
+			else
+			{
+				responseCode = ResponseCode.INVALID_OTP;
+			}
+		} 
+		catch (OTPExpireException e) 
 		{
-			responseCode = ResponseCode.FAILED;
+			responseCode = ResponseCode.EXPIRED;
 		}
 		
 		requestJSON.put(JsonKey.COMMAND, command);
