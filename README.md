@@ -634,7 +634,7 @@ To reset the device, perform the following steps:
 
 Both WebSocket and Message Broker use a topic that can be configured from both sides (sender and receiver).
 
-To use WebSocket, please use the WSMessageBrocker library with the link https://github.com/kamshory/Messenger or you can create your own.
+To use WebSocket, please use the WSMessageBrocker library with the link https://github.com/kamshory/OTP-Publisher or you can create your own.
 
 To use RabbitMQ, please open the link https://www.rabbitmq.com/
 
