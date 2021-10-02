@@ -8,8 +8,8 @@ public class GSMConst {
 	public static final String CREATE_DELETE_SMS_ALL              = "AT+CMGD=0,4";
 	private static String[] smsStorage = new String[]
 	{
-    		"SM",
-	   		"MT" 
+		"SM",
+   		"MT" 
 	};
 	
 	private GSMConst()

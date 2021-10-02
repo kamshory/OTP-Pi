@@ -1035,7 +1035,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				response.put(JsonKey.REPLYABLE, replyable);				
 			}
 		} 
-		catch (GSMException | InvalidPortException e) 
+		catch (GSMException e) 
 		{
 			e.printStackTrace();
 			String message = e.getMessage();

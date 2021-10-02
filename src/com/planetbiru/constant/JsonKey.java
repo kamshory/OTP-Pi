@@ -91,6 +91,8 @@ public class JsonKey {
 	public static final String PARAM3                     = "param3";
 	public static final String PARAM4                     = "param4";
 	public static final String IDLE                       = "idle";
+	public static final String RESULT                     = "result";
+	public static final String STATUS                     = "status";
 	
 	private JsonKey()
 	{

@@ -1,6 +1,5 @@
 package com.planetbiru.api;
 
-
 import javax.mail.MessagingException;
 
 import org.apache.log4j.Logger;
@@ -16,7 +15,6 @@ import com.planetbiru.constant.JsonKey;
 import com.planetbiru.constant.ResponseCode;
 import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMUtil;
-import com.planetbiru.gsm.InvalidPortException;
 import com.planetbiru.gsm.InvalidSIMPinException;
 import com.planetbiru.gsm.SerialPortConnectionException;
 import com.planetbiru.mail.MailUtil;
@@ -131,7 +129,7 @@ public class MessageAPI {
 				responseData.put(JsonKey.DATE_TIME, dateTime);
 			}
 		}
-		catch(MessagingException | NoEmailAccountException | GSMException | InvalidSIMPinException | InvalidPortException e)
+		catch(MessagingException | NoEmailAccountException | GSMException | InvalidSIMPinException e)
 		{
 			responseCode = ResponseCode.FAILED;
 		}
@@ -285,7 +283,7 @@ public class MessageAPI {
 					jsonData = GSMUtil.sendSMS(receiver, textMessage, ste);
 					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);			
 				} 
-				catch (GSMException | InvalidSIMPinException | InvalidPortException | SerialPortConnectionException e) 
+				catch (GSMException | InvalidSIMPinException | SerialPortConnectionException e) 
 				{
 					Buzzer.toneSMSFailed();
 					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.NO_DEVICE_CONNECTED);

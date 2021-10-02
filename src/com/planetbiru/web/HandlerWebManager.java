@@ -423,7 +423,7 @@ public class HandlerWebManager implements HttpHandler {
 					{
 						GSMUtil.sendSMS(phone, message, ste);
 					} 
-					catch (GSMException | InvalidSIMPinException | SerialPortConnectionException | InvalidPortException e) 
+					catch (GSMException | InvalidSIMPinException | SerialPortConnectionException e) 
 					{
 						/**
 						 * Do nothing
