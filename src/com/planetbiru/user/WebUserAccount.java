@@ -256,4 +256,104 @@ public class WebUserAccount {
 		return WebUserAccount.users.isEmpty();
 	}
 
+	public static void delete(Map<String, String> queryPairs, String loggedUsername) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id[") && !value.equals(loggedUsername))
+			{
+				WebUserAccount.deleteUser(value);
+			}
+		}
+		
+	}
+
+	public static void deactivate(Map<String, String> queryPairs, String loggedUsername) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id[") && !value.equals(loggedUsername))
+			{
+				try 
+				{
+					WebUserAccount.deactivate(value);
+				} 
+				catch (NoUserRegisteredException e) 
+				{
+					/**
+					 * Do nothing
+					 */
+				}
+			}
+		}
+		
+	}
+
+	public static void activate(Map<String, String> queryPairs) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id["))
+			{
+				try 
+				{
+					WebUserAccount.activate(value);
+				} 
+				catch (NoUserRegisteredException e) 
+				{
+					/**
+					 * Do nothing
+					 */
+				}
+			}
+		}
+		
+	}
+
+	public static void block(Map<String, String> queryPairs, String loggedUsername) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id[") && !value.equals(loggedUsername))
+			{
+				try 
+				{
+					WebUserAccount.block(value);
+				} 
+				catch (NoUserRegisteredException e) 
+				{
+					/**
+					 * Do nothing
+					 */
+				}
+			}
+		}
+		
+	}
+
+	public static void unblock(Map<String, String> queryPairs) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id["))
+			{
+				try 
+				{
+					WebUserAccount.unblock(value);
+				} 
+				catch (NoUserRegisteredException e) 
+				{
+					/**
+					 * Do nothing
+					 */
+				}
+			}
+		}
+	}
+
 }

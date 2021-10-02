@@ -47,7 +47,6 @@ import com.planetbiru.ddns.DDNSRecord;
 import com.planetbiru.device.DeviceAPI;
 import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMUtil;
-import com.planetbiru.gsm.InvalidPortException;
 import com.planetbiru.gsm.InvalidSIMPinException;
 import com.planetbiru.gsm.SerialPortConnectionException;
 import com.planetbiru.mail.MailUtil;
@@ -103,7 +102,7 @@ public class HandlerWebManager implements HttpHandler {
 	}
 
 	private WebResponse invalidDevice() {
-		String fileName = WebManagerTool.getFileName("/invalid-device.html");
+		String fileName = WebManagerTool.getFileName(ConstantString.PATH_SEPARATOR+"invalid-device.html");
 		byte[] responseBody = "".getBytes();
 		int statusCode = HttpStatus.OK;
 		try 
@@ -117,7 +116,7 @@ public class HandlerWebManager implements HttpHandler {
 			{
 				try 
 				{
-					responseBody = FileUtil.readResource(WebManagerTool.getFileName("/404.html"));
+					responseBody = FileUtil.readResource(WebManagerTool.getFileName(ConstantString.PATH_SEPARATOR+"404.html"));
 				} 
 				catch (FileNotFoundException e1) 
 				{
@@ -133,7 +132,7 @@ public class HandlerWebManager implements HttpHandler {
 	private WebResponse serveDocumentRoot(HttpExchange httpExchange, String path) {
 		if(path.equals(ConstantString.DOCUMENT_PATH_SEPARATOR))
 		{
-			path = "/index.html";
+			path = ConstantString.PATH_SEPARATOR+"index.html";
 		}
 		WebResponse response = new WebResponse();
 		Headers requestHeaders = httpExchange.getRequestHeaders();
@@ -152,7 +151,7 @@ public class HandlerWebManager implements HttpHandler {
 			{
 				try 
 				{
-					responseBody = FileUtil.readResource(WebManagerTool.getFileName("/404.html"));
+					responseBody = FileUtil.readResource(WebManagerTool.getFileName(ConstantString.PATH_SEPARATOR+"404.html"));
 				} 
 				catch (FileNotFoundException e1) 
 				{
@@ -256,115 +255,115 @@ public class HandlerWebManager implements HttpHandler {
 			if(WebUserAccount.checkUserAuth(headers))
 			{
 				CookieServer cookie = new CookieServer(headers, Config.getSessionName(), Config.getSessionLifetime());
-				if(path.equals("/keystore.html"))
+				if(path.equals(ConstantString.PATH_SEPARATOR+"keystore.html"))
 				{
 					this.processKeystore(requestBody);
 				}
-				else if(path.equals("/keystore-update.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"keystore-update.html"))
 				{
 					this.processKeystore(requestBody);
 				}
-				else if(path.equals("/admin.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"admin.html"))
 				{
 					this.processAdmin(requestBody, cookie);
 				}
-				else if(path.equals("/account-update.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"account-update.html"))
 				{
 					this.processAccount(requestBody, cookie);
 				}
-				else if(path.equals("/ddns-record.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"ddns-record.html"))
 				{
 					this.processDDNS(requestBody, cookie);
 				}
-				else if(path.equals("/ddns-record-update.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"ddns-record-update.html"))
 				{
 					this.processDDNS(requestBody, cookie);
 				}
-				else if(path.equals("/api-user.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"api-user.html"))
 				{
 					this.processAPIUser(requestBody);
 				}
-				else if(path.equals("/api-user-update.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"api-user-update.html"))
 				{
 					this.processAPIUser(requestBody);
 				}
-				else if(path.equals("/subscriber-setting.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"subscriber-setting.html"))
 				{
 					this.processSubscriberSetting(requestBody);
 				}
-				else if(path.equals("/sms-setting.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"sms-setting.html"))
 				{
 					this.processSMSSetting(requestBody);
 				}
-				else if(path.equals("/modem.html") || path.equals("/modem-add.html") || path.equals("/modem-update.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"modem.html") || path.equals(ConstantString.PATH_SEPARATOR+"modem-add.html") || path.equals(ConstantString.PATH_SEPARATOR+"modem-update.html"))
 				{
 					this.processModemSetting(requestBody);
 				}
-				else if(path.equals("/email-account.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"email-account.html"))
 				{
 					this.processEmailAccount(requestBody);
 				}
-				else if(path.equals("/sms.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"sms.html"))
 				{
 					this.processSMS(requestBody);
 				}
-				else if(path.equals("/api-setting.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"api-setting.html"))
 				{
 					this.processAPISetting(requestBody);
 				}
-				else if(path.equals("/general-setting.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"general-setting.html"))
 				{
 					this.processGeneralSetting(requestBody);
 				}
-				else if(path.equals("/bell-setting.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"bell-setting.html"))
 				{
 					this.processBellSetting(requestBody);
 				}
-				else if(path.equals("/date-time-setting.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"date-time-setting.html"))
 				{
 					this.processDateTimeSetting(requestBody);
 				}
-				else if(path.equals("/cloudflare.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"cloudflare.html"))
 				{
 					this.processCloudflareSetting(requestBody);
 				}
-				else if(path.equals("/noip.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"noip.html"))
 				{
 					this.processNoIPSetting(requestBody);
 				}
-				else if(path.equals("/afraid.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"afraid.html"))
 				{
 					this.processAfraidSetting(requestBody);
 				}
-				else if(path.equals("/dynu.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"dynu.html"))
 				{
 					this.processDynuSetting(requestBody);
 				}
-				else if(path.equals("/network-setting.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"network-setting.html"))
 				{
 					this.processNetworkSetting(requestBody);
 				}
-				else if(path.equals("/block-list.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"block-list.html"))
 				{
 					this.processBlockList(requestBody);
 				}
-				else if(path.equals("/firewall.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"firewall.html"))
 				{
 					this.processFirewall(requestBody);
 				}
-				else if(path.equals("/logs.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"logs.html"))
 				{
 					this.processDeleteLog(requestBody);
 				}
-				else if(path.equals("/sms-report.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"sms-report.html"))
 				{
 					this.processDeleteReport(requestBody);
 				}
-				else if(path.equals("/smtp-setting.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"smtp-setting.html"))
 				{
 					this.processSMTPSetting(requestBody);
 				}
-				else if(path.equals("/forget-password.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"forget-password.html"))
 				{
 					this.processForgetPassword(requestBody);
 				}
@@ -520,43 +519,19 @@ public class HandlerWebManager implements HttpHandler {
 		if(queryPairs.containsKey(JsonKey.DELETE))
 		{
 			ConfigFirewall.load(Config.getFirewallSettingPath());
-			for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
-			{
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.startsWith("id["))
-				{
-					ConfigFirewall.remove(value);
-				}
-			}
+			ConfigFirewall.delete(queryPairs);
 			ConfigFirewall.save();
 		}
 		if(queryPairs.containsKey(JsonKey.ACTIVATE))
 		{
 			ConfigFirewall.load(Config.getFirewallSettingPath());
-			for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
-			{
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.startsWith("id["))
-				{
-					ConfigFirewall.activate(value);
-				}
-			}
+			ConfigFirewall.activate(queryPairs);
 			ConfigFirewall.save();
 		}
 		if(queryPairs.containsKey(JsonKey.DEACTIVATE))
 		{
 			ConfigFirewall.load(Config.getFirewallSettingPath());
-			for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
-			{
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.startsWith("id["))
-				{
-					ConfigFirewall.deactivate(value);
-				}
-			}
+			ConfigFirewall.deactivate(queryPairs);
 			ConfigFirewall.save();
 		}		
 		if(queryPairs.containsKey(JsonKey.ADD))
@@ -573,76 +548,25 @@ public class HandlerWebManager implements HttpHandler {
 		if(queryPairs.containsKey(JsonKey.DELETE))
 		{
 			ConfigBlocking.load(Config.getBlockingSettingPath());
-			for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
-			{
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.startsWith("id["))
-				{
-					ConfigBlocking.remove(value);
-				}
-			}
+			ConfigBlocking.delete(queryPairs);
 			ConfigBlocking.save();
 		}
 		if(queryPairs.containsKey(JsonKey.BLOCK))
 		{
 			ConfigBlocking.load(Config.getBlockingSettingPath());
-			for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
-			{
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.startsWith("id["))
-				{
-					try 
-					{
-						ConfigBlocking.block(value);
-					} 
-					catch (GSMException e) 
-					{
-						/**
-						 * Do nothing
-						 */
-					}
-				}
-			}
+			ConfigBlocking.block(queryPairs);
 			ConfigBlocking.save();
 		}
 		if(queryPairs.containsKey(JsonKey.UNBLOCK))
 		{
 			ConfigBlocking.load(Config.getBlockingSettingPath());
-			for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
-			{
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.startsWith("id["))
-				{
-					try 
-					{
-						ConfigBlocking.unblock(value);
-					} 
-					catch (GSMException e) 
-					{
-						/**
-						 * Do nothing
-						 */
-					}
-				}
-			}
+			ConfigBlocking.unblock(queryPairs);
 			ConfigBlocking.save();
 		}		
 		if(queryPairs.containsKey(JsonKey.ADD))
 		{
 			ConfigBlocking.load(Config.getBlockingSettingPath());
-			try 
-			{
-				ConfigBlocking.block(msisdn);
-			} 
-			catch (GSMException e) 
-			{
-				/**
-				 * Do nothing
-				 */
-			}
+			ConfigBlocking.addList(msisdn);
 			ConfigBlocking.save();
 		}
 	}
@@ -652,43 +576,19 @@ public class HandlerWebManager implements HttpHandler {
 		if(queryPairs.containsKey(JsonKey.DELETE))
 		{
 			ConfigKeystore.load(Config.getKeystoreSettingPath());
-			for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
-			{
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.startsWith("id["))
-				{
-					ConfigKeystore.remove(value);
-				}
-			}
+			ConfigKeystore.delete(queryPairs);
 			ConfigKeystore.save();
 		}
 		if(queryPairs.containsKey(JsonKey.DEACTIVATE))
 		{
 			ConfigKeystore.load(Config.getKeystoreSettingPath());
-			for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
-			{
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.startsWith("id["))
-				{
-					ConfigKeystore.deactivate(value);
-				}
-			}
+			ConfigKeystore.deactivate(queryPairs);
 			ConfigKeystore.save();
 		}
 		if(queryPairs.containsKey(JsonKey.ACTIVATE))
 		{
 			ConfigKeystore.load(Config.getKeystoreSettingPath());
-			for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
-			{
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.startsWith("id["))
-				{
-					ConfigKeystore.activate(value);
-				}
-			}
+			ConfigKeystore.activate(queryPairs);
 			ConfigKeystore.save();
 		}
 		if(queryPairs.containsKey(JsonKey.UPDATE))
@@ -922,25 +822,8 @@ public class HandlerWebManager implements HttpHandler {
 					nsList.put(str1);
 				}
 			}
-			JSONArray rangeList = new JSONArray();
-			String[] arr2 = ranges.split("\\,");
-			for(int i = 0; i<arr2.length; i++)
-			{
-				String str2 = arr2[i].trim();
-				if(!str2.isEmpty())
-				{
-					String[] arr3 = str2.split("\\-");
-					String str3 = arr3[0].trim();
-					String str4 = arr3[1].trim();
-					if(!str3.isEmpty() && !str4.isEmpty())
-					{
-						JSONObject obj1 = new JSONObject();
-						obj1.put("begin", str3);
-						obj1.put("end", str4);
-						rangeList.put(obj1);
-					}
-				}
-			}
+			JSONArray rangeList = this.createRange(ranges);
+			
 			
 			ConfigNetDHCP.load(Config.getDhcpSettingPath());
 			ConfigNetDHCP.setDomainName(domainName);
@@ -983,6 +866,29 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigNetEthernet.save();
 			ConfigNetEthernet.apply(Config.getOsEthernetConfigPath());
 		}
+	}
+
+	private JSONArray createRange(String ranges) {
+		JSONArray rangeList = new JSONArray();
+		String[] arr2 = ranges.split("\\,");
+		for(int i = 0; i<arr2.length; i++)
+		{
+			String str2 = arr2[i].trim();
+			if(!str2.isEmpty())
+			{
+				String[] arr3 = str2.split("\\-");
+				String str3 = arr3[0].trim();
+				String str4 = arr3[1].trim();
+				if(!str3.isEmpty() && !str4.isEmpty())
+				{
+					JSONObject obj1 = new JSONObject();
+					obj1.put("begin", str3);
+					obj1.put("end", str4);
+					rangeList.put(obj1);
+				}
+			}
+		}
+		return rangeList;
 	}
 
 	private void processCloudflareSetting(String requestBody) {
@@ -1090,41 +996,17 @@ public class HandlerWebManager implements HttpHandler {
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
 		if(queryPairs.containsKey(JsonKey.DELETE))
 		{
-			for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
-			{
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.startsWith("id["))
-				{
-					ConfigEmail.deleteRecord(value);
-				}
-			}
+			ConfigEmail.delete(queryPairs);
 			ConfigEmail.save();
 		}
 		if(queryPairs.containsKey(JsonKey.DEACTIVATE))
 		{
-			for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
-			{
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.startsWith("id["))
-				{
-					ConfigEmail.deactivate(value);
-				}
-			}
+			ConfigEmail.deactivate(queryPairs);
 			ConfigEmail.save();
 		}
 		if(queryPairs.containsKey(JsonKey.ACTIVATE))
 		{
-			for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
-			{
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.startsWith("id["))
-				{
-					ConfigEmail.activate(value);
-				}
-			}
+			ConfigEmail.activate(queryPairs);
 			ConfigEmail.save();
 		}
 		if(queryPairs.containsKey("update"))
@@ -1207,41 +1089,17 @@ public class HandlerWebManager implements HttpHandler {
 		ConfigModem.load(Config.getModemSettingPath());
 		if(queryPairs.containsKey(JsonKey.DELETE))
 		{
-			for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
-			{
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.startsWith("id["))
-				{
-					ConfigModem.deleteRecord(value);
-				}
-			}
+			ConfigModem.delete(queryPairs);
 			ConfigModem.save();
 		}
 		if(queryPairs.containsKey(JsonKey.DEACTIVATE))
 		{
-			for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
-			{
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.startsWith("id["))
-				{
-					ConfigModem.deactivate(value);
-				}
-			}
+			ConfigModem.deactivate(queryPairs);
 			ConfigModem.save();
 		}
 		if(queryPairs.containsKey(JsonKey.ACTIVATE))
 		{
-			for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
-			{
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.startsWith("id["))
-				{
-					ConfigModem.activate(value);
-				}
-			}
+			ConfigModem.activate(queryPairs);
 			ConfigModem.save();
 		}
 		
@@ -1613,15 +1471,7 @@ public class HandlerWebManager implements HttpHandler {
 			/**
 			 * Delete
 			 */
-			for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
-			{
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.startsWith("id[") && !value.equals(loggedUsername))
-				{
-					WebUserAccount.deleteUser(value);
-				}
-			}
+			WebUserAccount.delete(queryPairs, loggedUsername);
 			WebUserAccount.save();
 		}
 		else if(queryPairs.containsKey(JsonKey.DEACTIVATE))
@@ -1629,24 +1479,7 @@ public class HandlerWebManager implements HttpHandler {
 			/**
 			 * Deactivate
 			 */
-			for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
-			{
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.startsWith("id[") && !value.equals(loggedUsername))
-				{
-					try 
-					{
-						WebUserAccount.deactivate(value);
-					} 
-					catch (NoUserRegisteredException e) 
-					{
-						/**
-						 * Do nothing
-						 */
-					}
-				}
-			}
+			WebUserAccount.deactivate(queryPairs, loggedUsername);
 			WebUserAccount.save();
 		}
 		else if(queryPairs.containsKey(JsonKey.ACTIVATE))
@@ -1654,24 +1487,7 @@ public class HandlerWebManager implements HttpHandler {
 			/**
 			 * Activate
 			 */
-			for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
-			{
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.startsWith("id["))
-				{
-					try 
-					{
-						WebUserAccount.activate(value);
-					} 
-					catch (NoUserRegisteredException e) 
-					{
-						/**
-						 * Do nothing
-						 */
-					}
-				}
-			}
+			WebUserAccount.activate(queryPairs);
 			WebUserAccount.save();
 		}
 		else if(queryPairs.containsKey("block"))
@@ -1679,24 +1495,7 @@ public class HandlerWebManager implements HttpHandler {
 			/**
 			 * Block
 			 */
-			for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
-			{
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.startsWith("id[") && !value.equals(loggedUsername))
-				{
-					try 
-					{
-						WebUserAccount.block(value);
-					} 
-					catch (NoUserRegisteredException e) 
-					{
-						/**
-						 * Do nothing
-						 */
-					}
-				}
-			}
+			WebUserAccount.block(queryPairs, loggedUsername);
 			WebUserAccount.save();		
 		}
 		else if(queryPairs.containsKey("unblock"))
@@ -1704,24 +1503,7 @@ public class HandlerWebManager implements HttpHandler {
 			/**
 			 * Unblock
 			 */
-			for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
-			{
-				String key = entry.getKey();
-				String value = entry.getValue();
-				if(key.startsWith("id["))
-				{
-					try 
-					{
-						WebUserAccount.unblock(value);
-					} 
-					catch (NoUserRegisteredException e) 
-					{
-						/**
-						 * Do nothing
-						 */
-					}
-				}
-			}
+			WebUserAccount.unblock(queryPairs);
 			WebUserAccount.save();
 		}
 		else if(queryPairs.containsKey("update-data"))

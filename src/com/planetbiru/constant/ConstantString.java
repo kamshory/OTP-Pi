@@ -52,6 +52,7 @@ public class ConstantString {
 	public static final String INTERNET                        = "internet";
 	public static final String SMS                             = "sms";
 	public static final String ALL                             = "all";
+	public static final String PATH_SEPARATOR                  = "/";
 	
 	private ConstantString()
 	{
