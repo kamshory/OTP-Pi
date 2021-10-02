@@ -12,6 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.planetbiru.constant.JsonKey;
 import com.planetbiru.ddns.DDNSRecord;
 import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.FileNotFoundException;
@@ -213,5 +214,143 @@ public class ConfigDDNS {
 
 	public static void reset() {
 		ConfigDDNS.records = new HashMap<>();		
+	}
+
+	public static void delete(Map<String, String> queryPairs) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id["))
+			{
+				ConfigDDNS.deleteRecord(value);
+			}
+		}
+		
+	}
+
+	public static void deactivate(Map<String, String> queryPairs) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id["))
+			{
+				ConfigDDNS.deactivate(value);
+			}
+		}
+		
+	}
+
+	public static void activate(Map<String, String> queryPairs) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id["))
+			{
+				ConfigDDNS.activate(value);
+			}
+		}
+		
+	}
+
+	public static void proxied(Map<String, String> queryPairs) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id["))
+			{
+				ConfigDDNS.proxied(value);
+			}
+		}
+		
+	}
+
+	public static void unproxied(Map<String, String> queryPairs) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id["))
+			{
+				ConfigDDNS.unproxied(value);
+			}
+		}
+		
+	}
+
+	public static void update(Map<String, String> queryPairs) {
+		String id = queryPairs.getOrDefault(JsonKey.ID, "").trim();
+		String provider = queryPairs.getOrDefault(JsonKey.PROVIDER, "").trim();
+		String zone = queryPairs.getOrDefault(JsonKey.ZONE, "").trim();
+		String recordName = queryPairs.getOrDefault(JsonKey.RECORD_NAME, "").trim();
+		String ttls = queryPairs.getOrDefault(JsonKey.TTL, "").trim();
+		String cronExpression = queryPairs.getOrDefault(JsonKey.CRON_EXPRESSION, "").trim();
+		boolean proxied = queryPairs.getOrDefault(JsonKey.PROXIED, "").equals("1");
+		boolean forceCreateZone = queryPairs.getOrDefault(JsonKey.FORCE_CREATE_ZONE, "").equals("1");
+		boolean active = queryPairs.getOrDefault(JsonKey.ACTIVE, "").equals("1");
+		String type = queryPairs.getOrDefault(JsonKey.TYPE, "0");
+		int ttl = Utility.atoi(ttls);
+		
+		if(!id.isEmpty())
+		{
+			DDNSRecord ddnsRecord = ConfigDDNS.getRecords().getOrDefault(id, new DDNSRecord());
+			if(!id.isEmpty())
+			{
+				ddnsRecord.setId(id);
+			}
+			if(!zone.isEmpty())
+			{
+				ddnsRecord.setZone(zone);
+			}
+			if(!recordName.isEmpty())
+			{
+				ddnsRecord.setRecordName(recordName);
+			}
+			ddnsRecord.setProvider(provider);
+			ddnsRecord.setProxied(proxied);
+			ddnsRecord.setForceCreateZone(forceCreateZone);
+			ddnsRecord.setCronExpression(cronExpression);
+			ddnsRecord.setTtl(ttl);
+			ddnsRecord.setActive(active);		
+			ddnsRecord.setType(type);
+			ConfigDDNS.updateRecord(ddnsRecord);
+		}
+		
+	}
+
+	public static void add(Map<String, String> queryPairs) {
+		String provider = queryPairs.getOrDefault(JsonKey.PROVIDER, "").trim();
+		String zone = queryPairs.getOrDefault(JsonKey.ZONE, "").trim();
+		String recordName = queryPairs.getOrDefault(JsonKey.RECORD_NAME, "").trim();
+		String cronExpression = queryPairs.getOrDefault("cron_expression", "").trim();
+		boolean proxied = queryPairs.getOrDefault(JsonKey.PROXIED, "").trim().equals("1");
+		boolean forceCreateZone = queryPairs.getOrDefault(JsonKey.FORCE_CREATE_ZONE, "").trim().equals("1");
+		boolean active = queryPairs.getOrDefault(JsonKey.ACTIVE, "").trim().equals("1");
+		
+		String ttls = queryPairs.getOrDefault(JsonKey.TTL, "0");
+		int ttl = Utility.atoi(ttls);
+		String type = queryPairs.getOrDefault(JsonKey.TYPE, "0");
+		String id = Utility.md5(zone+":"+recordName);
+		DDNSRecord ddnsRecord = new DDNSRecord();
+		
+		ddnsRecord.setId(id);
+		ddnsRecord.setZone(zone);
+		ddnsRecord.setRecordName(recordName);
+		ddnsRecord.setType(type);
+		ddnsRecord.setProxied(proxied);
+		ddnsRecord.setTtl(ttl);
+		ddnsRecord.setForceCreateZone(forceCreateZone);
+		ddnsRecord.setProvider(provider);
+		ddnsRecord.setActive(active);
+		ddnsRecord.setCronExpression(cronExpression);
+		
+		if(!zone.isEmpty() && !recordName.isEmpty())
+		{
+			ConfigDDNS.getRecords().put(id, ddnsRecord);	
+		}
+		
 	}
 }

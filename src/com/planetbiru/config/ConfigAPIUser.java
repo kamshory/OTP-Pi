@@ -217,4 +217,38 @@ public class ConfigAPIUser {
 		ConfigAPIUser.users = new HashMap<>();
 		
 	}
+
+	public static void delete(Map<String, String> queryPairs) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String value = entry.getValue();
+			ConfigAPIUser.deleteUser(value);
+		}
+		
+	}
+
+	public static void deactivate(Map<String, String> queryPairs) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id["))
+			{
+				ConfigAPIUser.deactivate(value);
+			}
+		}
+		
+	}
+
+	public static void activate(Map<String, String> queryPairs) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id["))
+			{
+				ConfigAPIUser.activate(value);
+			}
+		}
+	}
 }
