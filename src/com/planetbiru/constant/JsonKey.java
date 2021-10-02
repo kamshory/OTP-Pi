@@ -93,6 +93,7 @@ public class JsonKey {
 	public static final String IDLE                       = "idle";
 	public static final String RESULT                     = "result";
 	public static final String STATUS                     = "status";
+	public static final String NETMASK                    = "netmask";
 	
 	private JsonKey()
 	{

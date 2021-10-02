@@ -803,7 +803,7 @@ public class HandlerWebManager implements HttpHandler {
 			String domainName = queryPairs.getOrDefault("domainName", "").trim();
 			String domainNameServersStr = queryPairs.getOrDefault("domainNameServers", "").trim();
 			String ipRouter = queryPairs.getOrDefault("ipRouter", "").trim();
-			String netmask = queryPairs.getOrDefault("netmask", "").trim();
+			String netmask = queryPairs.getOrDefault(JsonKey.NETMASK, "").trim();
 			String subnetMask = queryPairs.getOrDefault("subnetMask", "").trim();
 			String domainNameServersAddress = queryPairs.getOrDefault("domainNameServersAddress", "").trim();
 			String defaultLeaseTime = queryPairs.getOrDefault("defaultLeaseTime", "").trim();
@@ -846,7 +846,7 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigNetWLAN.setKeyMgmt(queryPairs.getOrDefault("keyMgmt", "").trim());
 			ConfigNetWLAN.setIpAddress(queryPairs.getOrDefault("ipAddress", "").trim());
 			ConfigNetWLAN.setPrefix(queryPairs.getOrDefault("prefix", "").trim());
-			ConfigNetWLAN.setNetmask(queryPairs.getOrDefault("netmask", "").trim());
+			ConfigNetWLAN.setNetmask(queryPairs.getOrDefault(JsonKey.NETMASK, "").trim());
 			ConfigNetWLAN.setGateway(queryPairs.getOrDefault("gateway", "").trim());
 			ConfigNetWLAN.setDns1(queryPairs.getOrDefault("dns1", "").trim());
 			ConfigNetWLAN.save();
@@ -858,7 +858,7 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigNetEthernet.load(Config.getEthernetSettingPath());
 			ConfigNetEthernet.setIpAddress(queryPairs.getOrDefault("ipAddress", "").trim());
 			ConfigNetEthernet.setPrefix(queryPairs.getOrDefault("prefix", "").trim());
-			ConfigNetEthernet.setNetmask(queryPairs.getOrDefault("netmask", "").trim());
+			ConfigNetEthernet.setNetmask(queryPairs.getOrDefault(JsonKey.NETMASK, "").trim());
 			ConfigNetEthernet.setGateway(queryPairs.getOrDefault("gateway", "").trim());
 			ConfigNetEthernet.setDns1(queryPairs.getOrDefault("dns1", "").trim());
 			ConfigNetEthernet.setDns2(queryPairs.getOrDefault("dns2", "").trim());
@@ -1036,7 +1036,7 @@ public class HandlerWebManager implements HttpHandler {
 			boolean active = queryPairs.getOrDefault(JsonKey.ACTIVE, "").trim().equals("1");
 			
 			dataEmail.setId(id);
-			dataEmail.setAuth(auth);;
+			dataEmail.setAuth(auth);
 			dataEmail.setHost(host);
 			dataEmail.setPort(port);
 			dataEmail.setSenderAddress(senderAddress);
@@ -1069,7 +1069,7 @@ public class HandlerWebManager implements HttpHandler {
 			boolean active = queryPairs.getOrDefault(JsonKey.ACTIVE, "").trim().equals("1");
 			
 			dataEmail.setId(id);
-			dataEmail.setAuth(auth);;
+			dataEmail.setAuth(auth);
 			dataEmail.setHost(host);
 			dataEmail.setPort(port);
 			dataEmail.setSenderAddress(senderAddress);
