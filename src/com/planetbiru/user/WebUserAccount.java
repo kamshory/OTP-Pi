@@ -356,4 +356,106 @@ public class WebUserAccount {
 		}
 	}
 
+	public static void updateData(Map<String, String> queryPairs) {
+		String pkID = queryPairs.getOrDefault("pk_id", "");
+		String field = queryPairs.getOrDefault("field", "");
+		String value = queryPairs.getOrDefault("value", "");
+		if(!field.equals(JsonKey.USERNAME))
+		{
+			User user;
+			try 
+			{
+				user = WebUserAccount.getUser(pkID);
+				if(field.equals(JsonKey.PHONE))
+				{
+					user.setPhone(value);
+				}
+				if(field.equals(JsonKey.NAME))
+				{
+					user.setName(value);
+				}
+				WebUserAccount.updateUser(user);
+			} 
+			catch (NoUserRegisteredException e) 
+			{
+				/**
+				 * Do nothing
+				 */
+			}
+		}
+		
+	}
+
+	public static void update(Map<String, String> queryPairs, String loggedUsername) {
+		String username = queryPairs.getOrDefault(JsonKey.USERNAME, "").trim();
+		String name = queryPairs.getOrDefault(JsonKey.NAME, "").trim();
+		String phone = queryPairs.getOrDefault(JsonKey.PHONE, "").trim();
+		String email = queryPairs.getOrDefault(JsonKey.EMAIL, "").trim();
+		String password = queryPairs.getOrDefault(JsonKey.PASSWORD, "").trim();
+		boolean blocked = queryPairs.getOrDefault(JsonKey.BLOCKED, "").equals("1");
+		boolean active = queryPairs.getOrDefault(JsonKey.ACTIVE, "").equals("1");
+
+		if(!username.isEmpty())
+		{
+			User user;
+			try 
+			{
+				user = WebUserAccount.getUser(username);
+				if(!username.equals(loggedUsername) && !user.getUsername().isEmpty())
+				{
+					user.setUsername(username);
+				}
+				if(!name.isEmpty())
+				{
+					user.setName(name);
+				}
+				user.setPhone(phone);
+				user.setEmail(email);
+				if(!password.isEmpty())
+				{
+					user.setPassword(password);
+				}
+				if(!username.equals(loggedUsername))
+				{
+					user.setBlocked(blocked);
+				}
+				if(!username.equals(loggedUsername))
+				{
+					user.setActive(active);
+				}
+				WebUserAccount.updateUser(user);
+			} 
+			catch (NoUserRegisteredException e) 
+			{
+				/**
+				 * Do nothing
+				 */
+			}
+		}
+		
+	}
+
+	public static void add(Map<String, String> queryPairs) {
+		String username = queryPairs.getOrDefault(JsonKey.USERNAME, "");
+	    String password = queryPairs.getOrDefault(JsonKey.PASSWORD, "");
+	    String email = queryPairs.getOrDefault(JsonKey.EMAIL, "");
+	    String name = queryPairs.getOrDefault(JsonKey.NAME, "");
+	    String phone = queryPairs.getOrDefault(JsonKey.PHONE, "");
+
+	    JSONObject jsonObject = new JSONObject();
+		jsonObject.put(JsonKey.USERNAME, username);
+		jsonObject.put(JsonKey.NAME, name);
+		jsonObject.put(JsonKey.EMAIL, email);
+		jsonObject.put(JsonKey.PASSWORD, password);
+		jsonObject.put(JsonKey.PHONE, phone);
+		jsonObject.put(JsonKey.BLOCKED, false);
+		jsonObject.put(JsonKey.ACTIVE, true);
+		
+		if(!username.isEmpty())
+		{
+			WebUserAccount.addUser(new User(jsonObject));		
+		}	
+		
+	}
+
 }

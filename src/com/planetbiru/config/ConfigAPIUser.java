@@ -251,4 +251,85 @@ public class ConfigAPIUser {
 			}
 		}
 	}
+
+	public static void block(Map<String, String> queryPairs) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id["))
+			{
+				ConfigAPIUser.block(value);
+			}
+		}
+		
+	}
+
+	public static void unblock(Map<String, String> queryPairs) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id["))
+			{
+				ConfigAPIUser.unblock(value);
+			}
+		}
+		
+	}
+
+	public static void update(Map<String, String> queryPairs) {
+		String username = queryPairs.getOrDefault(JsonKey.USERNAME, "").trim();
+		String name = queryPairs.getOrDefault(JsonKey.NAME, "").trim();
+		String phone = queryPairs.getOrDefault(JsonKey.PHONE, "").trim();
+		String email = queryPairs.getOrDefault(JsonKey.EMAIL, "").trim();
+		String password = queryPairs.getOrDefault(JsonKey.PASSWORD, "").trim();
+		boolean blocked = queryPairs.getOrDefault(JsonKey.BLOCKED, "").equals("1");
+		boolean active = queryPairs.getOrDefault(JsonKey.ACTIVE, "").equals("1");
+
+		if(!username.isEmpty())
+		{
+			ConfigAPIUser.load(Config.getUserAPISettingPath());
+	
+		    JSONObject jsonObject = new JSONObject();
+			jsonObject.put(JsonKey.USERNAME, username);
+			jsonObject.put(JsonKey.NAME, name);
+			jsonObject.put(JsonKey.EMAIL, email);
+			jsonObject.put(JsonKey.PHONE, phone);
+			jsonObject.put(JsonKey.BLOCKED, blocked);
+			jsonObject.put(JsonKey.ACTIVE, active);
+			if(!username.isEmpty())
+			{
+				jsonObject.put(JsonKey.USERNAME, username);
+			}
+			if(!password.isEmpty())
+			{
+				jsonObject.put(JsonKey.PASSWORD, password);
+			}
+			ConfigAPIUser.updateUser(new User(jsonObject));		
+		}
+		
+	}
+
+	public static void add(Map<String, String> queryPairs) {
+		String username = queryPairs.getOrDefault(JsonKey.USERNAME, "");
+	    String password = queryPairs.getOrDefault(JsonKey.PASSWORD, "");
+	    String email = queryPairs.getOrDefault(JsonKey.EMAIL, "");
+	    String name = queryPairs.getOrDefault(JsonKey.NAME, "");
+	    String phone = queryPairs.getOrDefault(JsonKey.PHONE, "");
+	    
+	    JSONObject jsonObject = new JSONObject();
+		jsonObject.put(JsonKey.USERNAME, username);
+		jsonObject.put(JsonKey.NAME, name);
+		jsonObject.put(JsonKey.EMAIL, email);
+		jsonObject.put(JsonKey.PASSWORD, password);
+		jsonObject.put(JsonKey.PHONE, phone);
+		jsonObject.put(JsonKey.BLOCKED, false);
+		jsonObject.put(JsonKey.ACTIVE, true);
+		
+		if(!username.isEmpty())
+		{
+			ConfigAPIUser.addUser(new User(jsonObject));		
+		}	
+	}
 }
