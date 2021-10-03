@@ -179,7 +179,6 @@ function setWSConnected(value)
 {
     var key = 'otp-ws-connected';
     window.localStorage.setItem(key, (value)?'1':'0');
-    console.log('otp-ws-connected', value)
 }
 function getWSConnected()
 {
@@ -198,11 +197,32 @@ function getAMQPConnected()
     var value = window.localStorage.getItem(key) || '';
     return value == '1';
 }
+function setRedisConnected(value)
+{
+    var key = 'otp-redis-connected';
+    window.localStorage.setItem(key, (value)?'1':'0');
+}
+function getRedisConnected()
+{
+    var key = 'otp-redis-connected';
+    var value = window.localStorage.getItem(key) || '';
+    return value == '1';
+}
+function setMQTTConnected(value)
+{
+    var key = 'otp-mqtt-connected';
+    window.localStorage.setItem(key, (value)?'1':'0');
+}
+function getMQTTConnected()
+{
+    var key = 'otp-mqtt-connected';
+    var value = window.localStorage.getItem(key) || '';
+    return value == '1';
+}
 function setWSEnable(value)
 {
     var key = 'otp-ws-enable';
     window.localStorage.setItem(key, (value)?'1':'0');
-    console.log('otp-ws-enable', value)
 }
 function getWSEnable()
 {
@@ -221,6 +241,28 @@ function getAMQPEnable()
     var value = window.localStorage.getItem(key) || '';
     return value == '1';
 }
+function setRedisEnable(value)
+{
+    var key = 'otp-redis-enable';
+    window.localStorage.setItem(key, (value)?'1':'0');
+}
+function getRedisEnable()
+{
+    var key = 'otp-redis-enable';
+    var value = window.localStorage.getItem(key) || '';
+    return value == '1';
+}
+function setMQTTEnable(value)
+{
+    var key = 'otp-mqtt-enable';
+    window.localStorage.setItem(key, (value)?'1':'0');
+}
+function getMQTTEnable()
+{
+    var key = 'otp-mqtt-enable';
+    var value = window.localStorage.getItem(key) || '';
+    return value == '1';
+}
 function setHTTPEnable(value)
 {
     var key = 'otp-http-enable';
@@ -229,6 +271,39 @@ function setHTTPEnable(value)
 function getHTTPEnable()
 {
     var key = 'otp-http-enable';
+    var value = window.localStorage.getItem(key) || '';
+    return value == '1';
+}
+function setHTTPSEnable(value)
+{
+    var key = 'otp-https-enable';
+    window.localStorage.setItem(key, (value)?'1':'0');
+}
+function getHTTPSEnable()
+{
+    var key = 'otp-https-enable';
+    var value = window.localStorage.getItem(key) || '';
+    return value == '1';
+}
+function setHTTPConnected(value)
+{
+    var key = 'otp-http-connected';
+    window.localStorage.setItem(key, (value)?'1':'0');
+}
+function getHTTPConnected()
+{
+    var key = 'otp-http-connected';
+    var value = window.localStorage.getItem(key) || '';
+    return value == '1';
+}
+function setHTTPSConnected(value)
+{
+    var key = 'otp-https-connected';
+    window.localStorage.setItem(key, (value)?'1':'0');
+}
+function getHTTPSConnected()
+{
+    var key = 'otp-https-connected';
     var value = window.localStorage.getItem(key) || '';
     return value == '1';
 }
@@ -274,6 +349,18 @@ function updateServerInfo(receivedJSON)
         {
             setHTTPEnable(item.value);
         }
+        if (item.name == 'otp-https-enable')
+        {
+            setHTTPSEnable(item.value);
+        }
+        if (item.name == 'otp-http-connected')
+        {
+            setHTTPConnected(item.value);
+        }
+        if (item.name == 'otp-https-connected')
+        {
+            setHTTPSConnected(item.value);
+        }
         if (item.name == 'otp-modem-connected')
         {
             setModemConnected(item.value);
@@ -294,6 +381,22 @@ function updateServerInfo(receivedJSON)
         if (item.name == 'otp-amqp-connected')
         {
             setAMQPConnected(item.value);
+        }
+        if (item.name == 'otp-redis-enable')
+        {
+            setRedisEnable(item.value);
+        }
+        if (item.name == 'otp-redis-connected')
+        {
+            setRedisConnected(item.value);
+        }
+        if (item.name == 'otp-mqtt-enable')
+        {
+            setMQTTEnable(item.value);
+        }
+        if (item.name == 'otp-mqtt-connected')
+        {
+            setMQTTConnected(item.value);
         }
         if(item.name == 'feeder')
         {
@@ -343,6 +446,29 @@ function showNotif(message)
     }, 6000);
 }
 
+function getPreferedModemData(modemData)
+{
+    var result = {enable:false, connected:false};
+    for(var i in modemData)
+    {
+        if(modemData.hasOwnProperty(i))
+        {
+            var id = i;
+            var name = modemData[i].name;
+            if(modemData[i].internetAccess)
+            {
+                result.enable = modemData[i].active;
+                result.connected = modemData[i].internetConnected;
+                if(modemData[i].internetConnected)
+                {
+                    break;
+                }
+            }
+        }
+    }
+    return result;
+}
+
 function updateDashboard()
 {
     var isModemConnected = getModemConnected();
@@ -350,19 +476,41 @@ function updateDashboard()
     var isWSConnected = getWSConnected();
     var isAMQPEnable = getAMQPEnable();
     var isAMQPConnected = getAMQPConnected();
-    var isHTTPEmable = getHTTPEnable();
+    var isMQTTEnable = getMQTTEnable();
+    var isMQTTConnected = getMQTTConnected();
+    var isRedisEnable = getRedisEnable();
+    var isRedisConnected = getRedisConnected();
+    var isHTTPEnable = getHTTPEnable();
+    var isHTTPSEnable = getHTTPSEnable();
+    var isHTTPConnected = getHTTPConnected();
+    var isHTTPSConnected = getHTTPSConnected();
+    var modemData = getModemData();
+    
+    var preferedModemData = getPreferedModemData(modemData);
 
-    $('.service-modem').removeClass('connected');
-    $('.service-modem').removeClass('disconnected');
-    $('.service-modem').addClass('enable');
-    $('.service-modem').addClass(isModemConnected?'connected':'disconnected');
+    $('.service-modem-internet').removeClass('connected');
+    $('.service-modem-internet').removeClass('disconnected');
+    $('.service-modem-internet').addClass(preferedModemData.enable?'enable':'disable');
+    $('.service-modem-internet').addClass(preferedModemData.connected?'connected':'disconnected');
+
+    $('.service-modem, .service-modem-sms').removeClass('connected');
+    $('.service-modem, .service-modem-sms').removeClass('disconnected');
+    $('.service-modem, .service-modem-sms').addClass('enable');
+    $('.service-modem, .service-modem-sms').addClass(isModemConnected?'connected':'disconnected');
 
     $('.service-http').removeClass('connected');
     $('.service-http').removeClass('disconnected');
     $('.service-http').removeClass('enable');
     $('.service-http').removeClass('disable');
-    $('.service-http').addClass(isHTTPEmable?'enable':'disable');
-    $('.service-http').addClass(isHTTPEmable?'connected':'disconnected');
+    $('.service-http').addClass(isHTTPEnable?'enable':'disable');
+    $('.service-http').addClass(isHTTPConnected?'connected':'disconnected');
+
+    $('.service-https').removeClass('connected');
+    $('.service-https').removeClass('disconnected');
+    $('.service-https').removeClass('enable');
+    $('.service-https').removeClass('disable');
+    $('.service-https').addClass(isHTTPSEnable?'enable':'disable');
+    $('.service-https').addClass(isHTTPSConnected?'connected':'disconnected');
 
     $('.service-ws').removeClass('enable');
     $('.service-ws').removeClass('disable');
@@ -377,6 +525,20 @@ function updateDashboard()
     $('.service-amqp').removeClass('disconnected');
     $('.service-amqp').addClass(isAMQPEnable?'enable':'disable');
     $('.service-amqp').addClass(isAMQPConnected?'connected':'disconnected');
+
+    $('.service-redis').removeClass('enable');
+    $('.service-redis').removeClass('disable');
+    $('.service-redis').removeClass('connected');
+    $('.service-amqp').removeClass('disconnected');
+    $('.service-redis').addClass(isRedisEnable?'enable':'disable');
+    $('.service-redis').addClass(isRedisConnected?'connected':'disconnected');
+
+    $('.service-mqtt').removeClass('enable');
+    $('.service-mqtt').removeClass('disable');
+    $('.service-mqtt').removeClass('connected');
+    $('.service-mqtt').removeClass('disconnected');
+    $('.service-mqtt').addClass(isMQTTEnable?'enable':'disable');
+    $('.service-mqtt').addClass(isMQTTConnected?'connected':'disconnected');
 }
 
 function sortObject(unordered, sortArrays = false) {
@@ -592,25 +754,25 @@ function filterData(data, filterValue, filterByKey, attributeName)
 }
 function buildModemMenu(modemData, selector)
 {
-var lastValue = $(selector).val() || '';
-$(selector).empty();
-for(var i in modemData)
-{
-    if(modemData.hasOwnProperty(i))
+    var lastValue = $(selector).val() || '';
+    $(selector).empty();
+    for(var i in modemData)
     {
-    var id = i;
-    var name = modemData[i].name;
-    var port = modemData[i].port;
-    var opt = $('<option />');
-    opt.attr('value', id);
-    opt.append(name+' ('+port+')');
-    $(selector).append(opt);
+        if(modemData.hasOwnProperty(i))
+        {
+        var id = i;
+        var name = modemData[i].name;
+        var port = modemData[i].port;
+        var opt = $('<option />');
+        opt.attr('value', id);
+        opt.append(name+' ('+port+')');
+        $(selector).append(opt);
+        }
     }
-}
-if(lastValue != '')
-{
-    $(selector).val(lastValue);
-}
+    if(lastValue != '')
+    {
+        $(selector).val(lastValue);
+    }
 }
 
 $(document).ready(function(e){
