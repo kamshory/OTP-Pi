@@ -50,7 +50,7 @@ OTP-Pi does not require an RDBMS. All data is stored in RAM and file system. The
 3. 32GB SD Card is recommended. 
 4. Power supply 5 Volt 3 Ampre to prevent the Raspberry Pi from operating with under voltage. 
 5. RTC DS3231 installed on Raspberry Pi.
-6. JRE 1.8 or JDK 1.8
+6. Java Runtime Environment (JRE) 1.8 or Java Development Kit (JDK) 1.8
 
 # Features
 
