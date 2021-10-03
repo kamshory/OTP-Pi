@@ -366,6 +366,5 @@ public class MessageAPI {
 		responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
 		return responseJSON;		
 	}
-
 	
 }

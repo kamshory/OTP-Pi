@@ -68,8 +68,7 @@ public class Scheduller extends Thread{
 	}
 	
 	public void stopService() {
-		this.running = false;
-		
+		this.running = false;	
 	}
 	
 	@Override
