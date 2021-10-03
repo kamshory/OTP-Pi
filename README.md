@@ -45,7 +45,12 @@ OTP-Pi does not require an RDBMS. All data is stored in RAM and file system. The
 
 # System Requirement
 
-OTP-Pi requires Raspberry Pi 3 Model B or higher. Minimum RAM is 1 GB and SD Card minimum is 16 GB. 32GB SD Card is recommended. Power supply 5 Volt 3 Ampre to prevent the Raspberry Pi from operating with under voltage. RTC DS3231 installed on Raspberry Pi.
+1. Raspberry Pi 3 Model B or higher. 
+2. Minimum RAM is 1 GB and SD Card minimum is 16 GB. 
+3. 32GB SD Card is recommended. 
+4. Power supply 5 Volt 3 Ampre to prevent the Raspberry Pi from operating with under voltage. 
+5. RTC DS3231 installed on Raspberry Pi.
+6. JRE 1.8 or JDK 1.8
 
 # Features
 
