@@ -54,6 +54,10 @@ OTP-Pi does not require an RDBMS. All data is stored in RAM and file system. The
 
 # Features
 
+## Built-in Wifi
+
+OTP-Pi comes with built-in wifi. The built-in wifi is used to configure the device so that the OTP-Pi can be installed on your wired network. The built-in wifi is also useful when you are going to reset the OTP-Pi configuration.
+
 ## Multiple Method
 
 User can send OTP with several methods. OTP-Pi allow user to create and validate OTP via REST API or just send SMS or email contains OTP code via RabbitMQ,Redis, Mosquitto and WebSocket.
