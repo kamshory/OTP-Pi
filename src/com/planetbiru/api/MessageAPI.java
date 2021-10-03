@@ -23,15 +23,17 @@ import com.planetbiru.mail.NoEmailAccountException;
 public class MessageAPI {
 
 	private static Logger logger = Logger.getLogger(MessageAPI.class);
+	
 	public JSONObject processRequest(String requestBody) {
 		StackTraceElement ste = Thread.currentThread().getStackTrace()[2]; 
 		return this.processRequest(requestBody, "", ste);	
 	}
-	public JSONObject processRequest(String requestBody, String topic)
-	{
+	
+	public JSONObject processRequest(String requestBody, String topic) {
 		StackTraceElement ste = Thread.currentThread().getStackTrace()[2]; 
 		return this.processRequest(requestBody, topic, ste);	
 	}
+	
 	public JSONObject processRequest(String requestBody, String topic, StackTraceElement ste) {
 		JSONObject requestJSON = new JSONObject();
 		JSONObject responseJSON = new JSONObject();
@@ -218,12 +220,12 @@ public class MessageAPI {
 			String receiver = data.optString(JsonKey.RECEIVER, "");
 			if(receiver.contains("@"))
 			{
-				this.sendMail(command, data, ste);
+				responseJSON = this.sendMail(command, data, ste);
 				responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
 			}
 			else
 			{
-				jsonData = this.sendSMS(command, data, ste);
+				responseJSON = this.sendSMS(command, data, ste);
 				responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);					
 			}
 		}
@@ -232,8 +234,10 @@ public class MessageAPI {
 		return responseJSON;		
 	}
 	
-	public void sendMail(String command, JSONObject data, StackTraceElement ste) 
+	public JSONObject sendMail(String command, JSONObject data, StackTraceElement ste) 
 	{
+		JSONObject responseJSON = new JSONObject();
+		JSONObject jsonData = new JSONObject();
 		if(data != null)
 		{
 			String receiver = data.optString(JsonKey.RECEIVER, "");
@@ -251,6 +255,9 @@ public class MessageAPI {
 				logger.error(e.getMessage(), e);
 			}
 		}	
+		responseJSON.put(JsonKey.COMMAND, command);
+		responseJSON.put(JsonKey.DATA, jsonData);
+		return responseJSON;		
 	}
 
 	public JSONObject sendSMS(String command, JSONObject data, StackTraceElement ste)
@@ -337,8 +344,7 @@ public class MessageAPI {
 	}
 	
 	private void sendMail(String to, String subject, String message, StackTraceElement ste) throws MessagingException, NoEmailAccountException {
-		MailUtil.send(to, subject, message, ste);
-		
+		MailUtil.send(to, subject, message, ste);		
 	}
 	
 	public JSONObject blockMSISDN(String command, JSONObject data) throws GSMException {

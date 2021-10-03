@@ -49,7 +49,7 @@ OTP-Pi requires Raspberry Pi 3 Model B or higher. Minimum RAM is 1 GB and SD Car
 
 User can send OTP with several methods. OTP-Pi allow user to create and validate OTP via REST API or just send SMS or email contains OTP code via RabbitMQ,Redis, Mosquitto and WebSocket.
 
-![Support](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/support.png)
+![Support](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/full.png)
 
 | Method | Send SMS | Send Email | Block MSISDN | Unblock MSISDN | Create OTP | Validate OTP |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | 
