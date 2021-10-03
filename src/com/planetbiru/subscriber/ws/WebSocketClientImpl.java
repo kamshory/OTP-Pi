@@ -89,11 +89,11 @@ public class WebSocketClientImpl extends Thread{
 		}
 		this.webSocketTool.restartThread();
 	}
-	public void evtOnMessage(String message) {
+	public void evtOnMessage(String message, String topic) {
 		try
 		{
             MessageAPI api = new MessageAPI();
-            api.processRequest(message);            
+            api.processRequest(message, topic);            
 		}
 		catch(JSONException e)
 		{
@@ -141,6 +141,7 @@ public class WebSocketClientImpl extends Thread{
 		{
 			URI uri = new URI(endpoint);	
 			Map<String, String> headers = new HashMap<>();
+			String topic = ConfigSubscriberWS.getSubscriberWsTopic();
 			headers.put("Authorization", Utility.basicAuth(ConfigSubscriberWS.getSubscriberWsUsername(), ConfigSubscriberWS.getSubscriberWsPassword()));
 			this.wsClient = null;
 			this.wsClient = new WebSocketClient(uri, headers) {
@@ -151,7 +152,7 @@ public class WebSocketClientImpl extends Thread{
 	
 			    @Override
 			    public void onMessage(String message) {
-			    	evtOnMessage(message);
+			    	evtOnMessage(message, topic);
 			    }
 			    
 				@Override

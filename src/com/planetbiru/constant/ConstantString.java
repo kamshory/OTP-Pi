@@ -48,7 +48,11 @@ public class ConstantString {
 	public static final String INVALID_SIM_CARD_PIN            = "Invalid SIM card PIN";
 	public static final String CRON_EVERY_MINUTE               = "0 * * * * ?";
 	public static final String CONNECT                         = "connect";
-	public static final Object DISCONNECT                      = "disconnect";
+	public static final String DISCONNECT                      = "disconnect";
+	public static final String INTERNET                        = "internet";
+	public static final String SMS                             = "sms";
+	public static final String ALL                             = "all";
+	public static final String PATH_SEPARATOR                  = "/";
 	
 	private ConstantString()
 	{

@@ -266,4 +266,43 @@ public class ConfigModem {
 		ConfigModem.modemData = new HashMap<>();
 		
 	}
+
+	public static void delete(Map<String, String> queryPairs) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id["))
+			{
+				ConfigModem.deleteRecord(value);
+			}
+		}
+		
+	}
+
+	public static void deactivate(Map<String, String> queryPairs) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id["))
+			{
+				ConfigModem.deactivate(value);
+			}
+		}
+		
+	}
+
+	public static void activate(Map<String, String> queryPairs) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id["))
+			{
+				ConfigModem.activate(value);
+			}
+		}
+		
+	}
 }

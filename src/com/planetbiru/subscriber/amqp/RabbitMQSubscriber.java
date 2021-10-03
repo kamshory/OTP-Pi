@@ -54,7 +54,8 @@ public class RabbitMQSubscriber{
 	    {
 			this.connection = factory.newConnection();
 			this.channel = connection.createChannel();
-		    this.channel.queueDeclare(ConfigSubscriberAMQP.getSubscriberAmqpTopic(), false, false, false, null);		    
+		    String topic = ConfigSubscriberAMQP.getSubscriberAmqpTopic();
+			this.channel.queueDeclare(topic, false, false, false, null);		    
 		    DefaultConsumer consumer = new DefaultConsumer(channel) {
 		        @Override
 		        public void handleDelivery(
@@ -62,7 +63,7 @@ public class RabbitMQSubscriber{
 		            Envelope envelope, 
 		            AMQP.BasicProperties properties, 
 		            byte[] body) throws IOException {		     
-		                evtOnMessage(body);
+		                evtOnMessage(body, topic);
 		        }
 		        @Override
 		        public void handleShutdownSignal(String message, ShutdownSignalException e)
@@ -137,13 +138,13 @@ public class RabbitMQSubscriber{
 		this.reconnect = false;	
 	}
 	
-	public void evtOnMessage(byte[] body) 
+	public void evtOnMessage(byte[] body, String topic) 
 	{		
         if(body != null)
 		{
 			String message = new String(body, StandardCharsets.UTF_8);
             MessageAPI api = new MessageAPI();
-            api.processRequest(message);            
+            api.processRequest(message, topic);            
 		}
 	}
 	

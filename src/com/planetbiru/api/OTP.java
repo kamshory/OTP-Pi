@@ -27,6 +27,11 @@ public class OTP {
 	{
 		
 	}
+	
+	/**
+	 * Initialize OTP service
+	 * @param fileName
+	 */
 	public static void initialize(String fileName)
 	{
 		OTP.configPath = fileName;
@@ -35,10 +40,18 @@ public class OTP {
 		OTP.save();
 		OTP.otpGC = new OTPGC();
 	}
+	
+	/**
+	 * Start OTP service
+	 */
 	public static void start()
 	{
 		OTP.otpGC.start();		
 	}
+	
+	/**
+	 * Garbage collection
+	 */
 	public static void gc()
 	{
 		Iterator<String> keys = OTP.data.keys();
@@ -66,10 +79,26 @@ public class OTP {
 		}
 	}
 	
+	/**
+	 * Check if OTP of an OTP ID is exists
+	 * @param otpID
+	 * @return
+	 */
 	public static boolean isExists(String otpID) {
 		return OTP.data.has(otpID);
 	}
 
+	/**
+	 * Create OTP
+	 * @param otpID OTP ID
+	 * @param receiver Receiver ID (email address or phone number)
+	 * @param lifeTime OTP lifetime
+	 * @param param1 Parameter 1
+	 * @param param2 Parameter 2
+	 * @param param3 Parameter 3
+	 * @param param4 Parameter 4
+	 * @return
+	 */
 	public static String createOTP(String otpID, String receiver, long lifeTime, String param1, String param2,
 			String param3, String param4) {
 		int length = Config.getOtpLength();
@@ -104,11 +133,15 @@ public class OTP {
 	}
 
 	public static boolean validateOTP(String otpID, String receiver, String param1, String param2,
-			String param3, String param4, String plainOTP) {
+			String param3, String param4, String plainOTP) throws OTPExpireException {
 		String hash = OTP.createHash(otpID, plainOTP, receiver, param1, param2, param3, param4);
 		if(OTP.isExists(otpID))
 		{
 			JSONObject otp = OTP.data.optJSONObject(otpID);
+			if(otp.optLong(JsonKey.EXPIRATION, 0) < System.currentTimeMillis())
+			{
+				throw new OTPExpireException("OTP has been expire");
+			}
 			if(otp != null && otp.optString(JsonKey.HASH, "").equals(hash))
 			{
 				OTP.data.remove(otpID);
@@ -153,6 +186,7 @@ public class OTP {
 	{
 		OTP.save(OTP.configPath);
 	}
+	
 	public static void save(String path) {
 		JSONObject config = getJSONObject();
 		save(path, config);

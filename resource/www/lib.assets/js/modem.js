@@ -50,7 +50,14 @@ $(document).ready(function (e1) {
             type:'POST',
             dataType: 'json',
             data:{action:'connect', id:modemID},
-            success:function(data){
+            success:function(receivedJSON){
+                if(receivedJSON.command == "broadcast-message")
+                {
+                    for(var i in receivedJSON.data)
+                    {
+                        showNotif(receivedJSON.data[i].message);
+                    }
+                }
             }
         });
     });
@@ -61,8 +68,14 @@ $(document).ready(function (e1) {
             type:'POST',
             dataType: 'json',
             data:{action:'test-at', id:modemID},
-            success:function(data){
-                console.log(data);
+            success:function(receivedJSON){
+                if(receivedJSON.command == "broadcast-message")
+                {
+                    for(var i in receivedJSON.data)
+                    {
+                        showNotif(receivedJSON.data[i].message);
+                    }
+                }
             }
         });
     });
@@ -73,7 +86,14 @@ $(document).ready(function (e1) {
             type:'POST',
             dataType: 'json',
             data:{action:'connect', id:modemID},
-            success:function(data){
+            success:function(receivedJSON){
+                if(receivedJSON.command == "broadcast-message")
+                {
+                    for(var i in receivedJSON.data)
+                    {
+                        showNotif(receivedJSON.data[i].message);
+                    }
+                }
             }
         });
     });

@@ -16,10 +16,10 @@ import org.apache.log4j.Logger;
 
 public class GSM {
     private SerialPort serialPort;
+	private StringBuilder incommingMessage = new StringBuilder(); 
     private boolean connected = false;
 	private boolean ready = false;
 	private boolean gcRunning = false;
-	private StringBuilder incommingMessage = new StringBuilder(); 
 	private boolean eventListener = true;
     
     private static Logger logger = Logger.getLogger(GSM.class);
@@ -178,10 +178,8 @@ public class GSM {
         }
         result = this.updateResult(result);
         this.setReady(true);
-        return result;
-		
-	}
-    
+        return result;		
+	}  
    
     private void sleep(int sleep)
     {
@@ -203,7 +201,7 @@ public class GSM {
      * @throws GSMException 
      * @throws SerialPortConnectionException 
      */
-    public USSDParser executeUSSD(String ussd) throws GSMException, SerialPortConnectionException 
+    public USSDParser executeUSSDX(String ussd) throws GSMException, SerialPortConnectionException 
     {
     	this.setReady(false);
         String cmd = "AT+CUSD=1,\"" + ussd + "\",15";
@@ -234,9 +232,31 @@ public class GSM {
         }
         this.setReady(true);
         return ussdParser;
-    }
-    
+    }  
 
+    public USSDParser executeUSSD(String ussd) throws GSMException, SerialPortConnectionException {
+    	this.setReady(false);
+        String cmd = "AT+CUSD=1,\"" + ussd + "\",15";
+        String result = "";
+        result = this.executeAT(cmd, 2, true);
+        USSDParser ussdParser;
+		if(result.contains(ATCommand.ERROR))
+        {
+        	ussdParser = new USSDParser();
+            return ussdParser;
+        }
+        if(result.startsWith("+CUSD")) 
+        {
+            ussdParser = new USSDParser(result);
+        }
+        else
+        {
+        	ussdParser = new USSDParser();
+        }
+        this.setReady(true);
+        return ussdParser;
+	}
+    
     /**
      * Read the SMS stored in the sim card
      *
@@ -429,16 +449,15 @@ public class GSM {
     	logger.info("msg2 = "+msg2);
     	String msg3 = this.executeAT(this.selectDataMode(ATCommand.DATA_MODE_TEXT), 1, true);
     	logger.info("msg3 = "+msg3);
-    	String msg4 = this.executeAT("AT+CMGW=\"" + recipient + "\"", 2, true);
+    	String msg4 = this.executeAT("AT+CMGW=\"" + recipient + "\"", 1, true);
     	logger.info("msg4 = "+msg4);
-    	String msg5 = this.executeAT(message, 2, true);
+    	String msg5 = this.executeAT(message, 1, true);
     	logger.info("msg5 = "+msg5);
-    	String msg6 = this.executeAT(Character.toString((char) 26), 2, true);
+    	String msg6 = this.executeAT(Character.toString((char) 26), 1, true);
     	logger.info("msg6 = "+msg6);
     	this.setReady(true);
     	
-    	result = msg6;
-    	
+    	result = msg6;  	
     	if(deleteSent)
     	{
     		this.gcDeleteSent();
@@ -746,6 +765,7 @@ public class GSM {
 	public void setGcRunning(boolean gcRunning) {
 		this.gcRunning = gcRunning;
 	}
+
 
 	
 

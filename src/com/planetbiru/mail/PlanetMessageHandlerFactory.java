@@ -76,16 +76,13 @@ public class PlanetMessageHandlerFactory implements MessageHandlerFactory
         {
             String rawMail = this.convertStreamToString(data);
             this.email.setRawMail(rawMail);
-
             Session session = Session.getDefaultInstance(new Properties());
             InputStream is = new ByteArrayInputStream(rawMail.getBytes());
-
             try
             {
                 MimeMessage message = new MimeMessage(session, is);
                 this.email.setSubject(message.getSubject());
                 this.email.setMimeMessage(message);
-
                 Object messageContent = message.getContent();
                 if(messageContent instanceof Multipart)
                 {
@@ -133,10 +130,8 @@ public class PlanetMessageHandlerFactory implements MessageHandlerFactory
         @Override
         public void done()
         {
-            // set the received date
-        	
-            this.email.setReceivedTime(System.currentTimeMillis());
-           
+            // set the received date      	
+            this.email.setReceivedTime(System.currentTimeMillis());         
         }
 
         /**
@@ -148,7 +143,6 @@ public class PlanetMessageHandlerFactory implements MessageHandlerFactory
         {
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             StringBuilder stringBuilder = new StringBuilder();
-
             String line;
             try
             {
@@ -162,7 +156,6 @@ public class PlanetMessageHandlerFactory implements MessageHandlerFactory
             {
                 logger.error(e.getMessage(), e);
             }
-
             return stringBuilder.toString();
         }
     }

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Map;
 
 import javax.mail.MessagingException;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -53,9 +55,17 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			{
 				this.internetConnect(httpExchange);
 			}
+			else if(path.startsWith("/api/modem-sms"))
+			{
+				this.modemChangeState(httpExchange, ConstantString.SMS);
+			}
+			else if(path.startsWith("/api/modem-internet"))
+			{
+				this.modemChangeState(httpExchange, ConstantString.INTERNET);
+			}
 			else if(path.startsWith("/api/modem"))
 			{
-				this.modemChangeState(httpExchange);
+				this.modemChangeState(httpExchange, ConstantString.ALL);
 			}
 			else if(path.startsWith("/api/email"))
 			{
@@ -120,8 +130,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			else if(path.startsWith("/api/tone"))
 			{
 				this.testTone(httpExchange);
-			}			
-			
+			}						
 		}
 	}
 	
@@ -615,7 +624,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		httpExchange.close();
 	}
 	//@PostMapping(path="/api/modem")
-	private void modemChangeState(HttpExchange httpExchange) throws IOException {
+	private void modemChangeState(HttpExchange httpExchange, String modemFunction) throws IOException {
 		byte[] req = HttpUtil.getRequestBody(httpExchange);
 		String requestBody = "";
 		if(req != null)
@@ -632,17 +641,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
-				if(action.equals(ConstantString.CONNECT))
-				{
-					Application.modemSMSStart();
-					Application.modemInternetStart();
-				}
-				else
-				{
-					Application.modemSMSStop();
-					Application.modemInternetStop();
-				} 
+				responseJSON = this.modemAction(queryPairs, modemFunction);
 				ServerInfo.sendModemStatus();			
 			} 
 			else 
@@ -658,12 +657,39 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
 		byte[] responseBody = responseJSON.toString(0).getBytes();
 
-
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 		httpExchange.getResponseBody().write(responseBody);
 		httpExchange.close();
 		
 	}
+	private JSONObject modemAction(Map<String, String> queryPairs, String modemFunction) {
+		JSONObject result = new JSONObject();
+		String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
+		if(action.equals(ConstantString.CONNECT))
+		{
+			if(modemFunction.equals(ConstantString.SMS) || modemFunction.equals(ConstantString.ALL))
+			{
+				Application.modemSMSStart();
+			}
+			if(modemFunction.equals(ConstantString.INTERNET) || modemFunction.equals(ConstantString.ALL))
+			{
+				Application.modemInternetStart();
+			}
+		}
+		else
+		{
+			if(modemFunction.equals(ConstantString.SMS) || modemFunction.equals(ConstantString.ALL))
+			{
+				Application.modemSMSStop();
+			}
+			if(modemFunction.equals(ConstantString.INTERNET) || modemFunction.equals(ConstantString.ALL))
+			{
+				Application.modemInternetStop();
+			}
+		} 
+		return result;
+	}
+
 	//@PostMapping(path="/api/device/**")
 	public void modemTool(HttpExchange httpExchange) throws IOException
 	{
@@ -684,7 +710,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				responseJSON = this.modemAction(queryPairs, modemID);
+				responseJSON = this.deviceAction(queryPairs, modemID);
 			} 
 			else 
 			{
@@ -722,7 +748,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		httpExchange.close();
 	}
 	
-	private JSONObject modemAction(Map<String, String> queryPairs, String modemID) throws GSMException, InvalidPortException, SerialPortConnectionException
+	private JSONObject deviceAction(Map<String, String> queryPairs, String modemID) throws GSMException, InvalidPortException, SerialPortConnectionException
 	{
 		JSONObject responseJSON = new JSONObject();
 		String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
@@ -740,7 +766,22 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			} 
 			else if(action.equals("test-at"))
 			{
-				responseJSON = GSMUtil.testAT(modemID);
+				JSONObject resp = GSMUtil.testAT(modemID);				
+				JSONArray data = new JSONArray();
+				JSONObject item = new JSONObject();
+				String message = "";
+				if(resp.optString("result", "").contains("OK"))
+				{
+					message = "Devive is connected properly";
+				}
+				else
+				{
+					message = "Devive is not connected properly";
+				}
+				responseJSON.put(JsonKey.COMMAND, "broadcast-message");
+				item.put("message", message);				
+				data.put(item);
+				responseJSON.put(JsonKey.DATA, data);
 			} 
 		}
 		else
@@ -994,7 +1035,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				response.put(JsonKey.REPLYABLE, replyable);				
 			}
 		} 
-		catch (GSMException | InvalidPortException e) 
+		catch (GSMException e) 
 		{
 			e.printStackTrace();
 			String message = e.getMessage();

@@ -49,7 +49,7 @@ OTP-Pi requires Raspberry Pi 3 Model B or higher. Minimum RAM is 1 GB and SD Car
 
 User can send OTP with several methods. OTP-Pi allow user to create and validate OTP via REST API or just send SMS or email contains OTP code via RabbitMQ,Redis, Mosquitto and WebSocket.
 
-![Support](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/support.png)
+![Support](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/full.png)
 
 | Method | Send SMS | Send Email | Block MSISDN | Unblock MSISDN | Create OTP | Validate OTP |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | 
@@ -634,7 +634,7 @@ To reset the device, perform the following steps:
 
 Both WebSocket and Message Broker use a topic that can be configured from both sides (sender and receiver).
 
-To use WebSocket, please use the WSMessageBrocker library with the link https://github.com/kamshory/Messenger or you can create your own.
+To use WebSocket, please use the WSMessageBrocker library with the link https://github.com/kamshory/OTP-Publisher or you can create your own.
 
 To use RabbitMQ, please open the link https://www.rabbitmq.com/
 
@@ -729,7 +729,7 @@ Content-length: 199
 
 {
 	"command": "create-otp",
-	"response_code": "000",
+	"response_code": "0000",
 	"data": {
 		"date_time": 1629685778,
 		"receiver": "08126666666",
@@ -798,7 +798,7 @@ Content-length: 201
 
 {
 	"command": "validate-otp",
-	"response_code": "000",
+	"response_code": "0000",
 	"data": {
 		"date_time": 1629685778,
 		"receiver": "08126666666",
@@ -1315,7 +1315,7 @@ In this scenario, the user does not need a public IP. Users only need:
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.receiver | String | MSISDN number to be unblocked |
 
-The WSMessageBroker-based server uses the WebSocket protocol. Please download WSMessageBroker at https://github.com/kamshory/Messenger
+The WSMessageBroker-based server uses the WebSocket protocol. Please download **OTP-Publisher** at https://github.com/kamshory/OTP-Publisher
 
 **Handhakes**
 

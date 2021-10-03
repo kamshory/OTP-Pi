@@ -221,5 +221,44 @@ public class ConfigKeystore {
 		ConfigKeystore.keystores = new HashMap<>();
 		
 	}
+
+	public static void delete(Map<String, String> queryPairs) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id["))
+			{
+				ConfigKeystore.remove(value);
+			}
+		}
+		
+	}
+
+	public static void deactivate(Map<String, String> queryPairs) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id["))
+			{
+				ConfigKeystore.deactivate(value);
+			}
+		}
+		
+	}
+
+	public static void activate(Map<String, String> queryPairs) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id["))
+			{
+				ConfigKeystore.activate(value);
+			}
+		}
+		
+	}
 	
 }

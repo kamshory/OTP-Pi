@@ -197,5 +197,75 @@ public class ConfigBlocking {
 		ConfigBlocking.blockList = new LinkedHashMap<>();
 		
 	}
+
+	public static void delete(Map<String, String> queryPairs) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id["))
+			{
+				ConfigBlocking.remove(value);
+			}
+		}
+		
+	}
+
+	public static void block(Map<String, String> queryPairs) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id["))
+			{
+				try 
+				{
+					ConfigBlocking.block(value);
+				} 
+				catch (GSMException e) 
+				{
+					/**
+					 * Do nothing
+					 */
+				}
+			}
+		}
+		
+	}
+
+	public static void unblock(Map<String, String> queryPairs) {
+		for (Map.Entry<String, String> entry : queryPairs.entrySet()) 
+		{
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if(key.startsWith("id["))
+			{
+				try 
+				{
+					ConfigBlocking.unblock(value);
+				} 
+				catch (GSMException e) 
+				{
+					/**
+					 * Do nothing
+					 */
+				}
+			}
+		}
+		
+	}
+
+	public static void addList(String msisdn) {
+		try 
+		{
+			ConfigBlocking.block(msisdn);
+		} 
+		catch (GSMException e) 
+		{
+			/**
+			 * Do nothing
+			 */
+		}
+	}
 	
 }

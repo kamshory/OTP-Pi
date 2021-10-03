@@ -1,6 +1,5 @@
 package com.planetbiru.api;
 
-
 import javax.mail.MessagingException;
 
 import org.apache.log4j.Logger;
@@ -16,7 +15,6 @@ import com.planetbiru.constant.JsonKey;
 import com.planetbiru.constant.ResponseCode;
 import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMUtil;
-import com.planetbiru.gsm.InvalidPortException;
 import com.planetbiru.gsm.InvalidSIMPinException;
 import com.planetbiru.gsm.SerialPortConnectionException;
 import com.planetbiru.mail.MailUtil;
@@ -25,15 +23,17 @@ import com.planetbiru.mail.NoEmailAccountException;
 public class MessageAPI {
 
 	private static Logger logger = Logger.getLogger(MessageAPI.class);
+	
 	public JSONObject processRequest(String requestBody) {
 		StackTraceElement ste = Thread.currentThread().getStackTrace()[2]; 
 		return this.processRequest(requestBody, "", ste);	
 	}
-	public JSONObject processRequest(String requestBody, String topic)
-	{
+	
+	public JSONObject processRequest(String requestBody, String topic) {
 		StackTraceElement ste = Thread.currentThread().getStackTrace()[2]; 
 		return this.processRequest(requestBody, topic, ste);	
 	}
+	
 	public JSONObject processRequest(String requestBody, String topic, StackTraceElement ste) {
 		JSONObject requestJSON = new JSONObject();
 		JSONObject responseJSON = new JSONObject();
@@ -111,7 +111,7 @@ public class MessageAPI {
 		{
 			if(OTP.isExists(otpID))
 			{
-				responseCode = ResponseCode.FAILED;
+				responseCode = ResponseCode.DUPLICATED;
 			}
 			else
 			{
@@ -131,7 +131,7 @@ public class MessageAPI {
 				responseData.put(JsonKey.DATE_TIME, dateTime);
 			}
 		}
-		catch(MessagingException | NoEmailAccountException | GSMException | InvalidSIMPinException | InvalidPortException e)
+		catch(MessagingException | NoEmailAccountException | GSMException | InvalidSIMPinException e)
 		{
 			responseCode = ResponseCode.FAILED;
 		}
@@ -154,17 +154,25 @@ public class MessageAPI {
 		JSONObject requestJSON = new JSONObject();
 		JSONObject responseData = new JSONObject();
 		
-		boolean valid = OTP.validateOTP(otpID, receiver, param1, param2, param3, param4, clearOTP);
 		responseData.put(JsonKey.REFERENCE, otpID);
 		responseData.put(JsonKey.RECEIVER, receiver);
 		responseData.put(JsonKey.DATE_TIME, dateTime);
-		if(valid)
+		boolean valid = false;
+		try 
 		{
-			responseCode = ResponseCode.SUCCESS;
-		}
-		else
+			valid = OTP.validateOTP(otpID, receiver, param1, param2, param3, param4, clearOTP);
+			if(valid)
+			{
+				responseCode = ResponseCode.SUCCESS;
+			}
+			else
+			{
+				responseCode = ResponseCode.INVALID_OTP;
+			}
+		} 
+		catch (OTPExpireException e) 
 		{
-			responseCode = ResponseCode.FAILED;
+			responseCode = ResponseCode.EXPIRED;
 		}
 		
 		requestJSON.put(JsonKey.COMMAND, command);
@@ -212,12 +220,12 @@ public class MessageAPI {
 			String receiver = data.optString(JsonKey.RECEIVER, "");
 			if(receiver.contains("@"))
 			{
-				this.sendMail(command, data, ste);
+				responseJSON = this.sendMail(command, data, ste);
 				responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
 			}
 			else
 			{
-				jsonData = this.sendSMS(command, data, ste);
+				responseJSON = this.sendSMS(command, data, ste);
 				responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);					
 			}
 		}
@@ -226,8 +234,10 @@ public class MessageAPI {
 		return responseJSON;		
 	}
 	
-	public void sendMail(String command, JSONObject data, StackTraceElement ste) 
+	public JSONObject sendMail(String command, JSONObject data, StackTraceElement ste) 
 	{
+		JSONObject responseJSON = new JSONObject();
+		JSONObject jsonData = new JSONObject();
 		if(data != null)
 		{
 			String receiver = data.optString(JsonKey.RECEIVER, "");
@@ -245,6 +255,9 @@ public class MessageAPI {
 				logger.error(e.getMessage(), e);
 			}
 		}	
+		responseJSON.put(JsonKey.COMMAND, command);
+		responseJSON.put(JsonKey.DATA, jsonData);
+		return responseJSON;		
 	}
 
 	public JSONObject sendSMS(String command, JSONObject data, StackTraceElement ste)
@@ -277,7 +290,7 @@ public class MessageAPI {
 					jsonData = GSMUtil.sendSMS(receiver, textMessage, ste);
 					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);			
 				} 
-				catch (GSMException | InvalidSIMPinException | InvalidPortException | SerialPortConnectionException e) 
+				catch (GSMException | InvalidSIMPinException | SerialPortConnectionException e) 
 				{
 					Buzzer.toneSMSFailed();
 					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.NO_DEVICE_CONNECTED);
@@ -331,8 +344,7 @@ public class MessageAPI {
 	}
 	
 	private void sendMail(String to, String subject, String message, StackTraceElement ste) throws MessagingException, NoEmailAccountException {
-		MailUtil.send(to, subject, message, ste);
-		
+		MailUtil.send(to, subject, message, ste);		
 	}
 	
 	public JSONObject blockMSISDN(String command, JSONObject data) throws GSMException {
@@ -360,6 +372,5 @@ public class MessageAPI {
 		responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
 		return responseJSON;		
 	}
-
 	
 }

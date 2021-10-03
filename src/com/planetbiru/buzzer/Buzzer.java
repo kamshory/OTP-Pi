@@ -8,6 +8,7 @@ import com.planetbiru.config.ConfigBell;
 public class Buzzer {
 	
 	private static Logger logger = Logger.getLogger(Buzzer.class);
+	
 	private Buzzer()
 	{
 		

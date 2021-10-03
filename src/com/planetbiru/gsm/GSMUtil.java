@@ -21,7 +21,7 @@ public class GSMUtil {
 	
 	private static final String NO_DEVICE_CONNECTED = "No device connected";
 	private static final String MODEM_ID = "modemID";
-	private static final String RESULT = "result";
+	private static final String RESULT = JsonKey.RESULT;
 	private static final String SENDER_TYPE = "senderType";
 	private static final String MODEM_NAME = "modemName";
 	private static final String MODEM_IMEI = "modemIMEI";
@@ -70,7 +70,7 @@ public class GSMUtil {
 				} 
 				catch (GSMException | InvalidPortException e) 
 				{
-					logger.error(e.getMessage());
+					logger.error(e.getMessage(), e);
 				}
 			}
 		}
@@ -117,7 +117,7 @@ public class GSMUtil {
 		}
 		catch (ModemNotFoundException e) 
 		{
-			e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 		
 	}
@@ -134,7 +134,8 @@ public class GSMUtil {
 		if(instance != null)
 		{
 			DataModem modem;
-			try {
+			try 
+			{
 				modem = (DataModem) instance.getModem().clone();
 				instance.disconnect();
 				String pin = modem.getSimCardPIN();				
@@ -144,24 +145,17 @@ public class GSMUtil {
 				}
 				GSMUtil.gsmInstance.remove(instance);
 				boolean connected = false;
-				try 
+				instance = new GSMInstance(modem, GSMUtil.eventListener);				
+				connected = instance.connect(pin);
+				if(connected)
 				{
-					instance = new GSMInstance(modem, eventListener);				
-					connected = instance.connect(pin);
-					if(connected)
-					{
-						GSMUtil.gsmInstance.add(instance);
-					}
-				} 
-				catch (GSMException | InvalidPortException e) 
-				{
-					e.printStackTrace();
-				}			
+					GSMUtil.gsmInstance.add(instance);
+				}
 			} 
-			catch (CloneNotSupportedException e) 
+			catch (GSMException | InvalidPortException | CloneNotSupportedException e) 
 			{
-				e.printStackTrace();
-			}		
+				logger.error(e.getMessage(), e);
+			}			
 		}	
 		GSMUtil.updateConnectedDevice();
 	}
@@ -187,7 +181,7 @@ public class GSMUtil {
 					} 
 					catch (GSMException e) 
 					{
-						logger.error(e.getMessage());
+						logger.error(e.getMessage(), e);
 					}
 				}
 			}
@@ -329,7 +323,7 @@ public class GSMUtil {
 	 * @throws SerialPortConnectionException 
 	 * @throws InvalidPortException 
 	 */
-	public static JSONObject sendSMS(String receiver, String message, StackTraceElement ste) throws GSMException, InvalidSIMPinException, SerialPortConnectionException, InvalidPortException
+	public static JSONObject sendSMS(String receiver, String message, StackTraceElement ste) throws GSMException, InvalidSIMPinException, SerialPortConnectionException
 	{
 		if(GSMUtil.getGSMInstance().isEmpty())
 		{
@@ -404,7 +398,7 @@ public class GSMUtil {
 		return GSMUtil.getCallerType().getOrDefault(key, "");
 	}
 
-	public static USSDParser executeUSSD(String ussd, String modemID) throws GSMException, InvalidPortException 
+	public static USSDParser executeUSSD(String ussd, String modemID) throws GSMException 
 	{
 		if(GSMUtil.getGSMInstance().isEmpty())
 		{
@@ -679,7 +673,7 @@ public class GSMUtil {
 					/**
 					 * Do nothing
 					 */
-					logger.error(e.getMessage());
+					logger.error(e.getMessage(), e);
 				}
 			}
 		}		
@@ -727,7 +721,7 @@ public class GSMUtil {
 		} 
 		catch (SerialPortConnectionException e) 
 		{
-			e.printStackTrace();
+			logger.error(e.getMessage(), e);
 			
 			GSMInstance instance;
 			try 
@@ -738,7 +732,7 @@ public class GSMUtil {
 			} 
 			catch (ModemNotFoundException | GSMException e2) 
 			{
-				
+				logger.error(e2.getMessage(), e2);
 			}	
 			
 			throw new SerialPortConnectionException(e);
@@ -794,7 +788,7 @@ public class GSMUtil {
 		} 
 		catch (GSMException | InvalidPortException e) 
 		{
-			e.printStackTrace();
+			logger.error(e.getMessage(), e);
 			/**
 			 * Do nothing
 			 */
@@ -948,16 +942,19 @@ public class GSMUtil {
 
 	public static JSONObject testAT(String modemID) throws GSMException, SerialPortConnectionException {
 		GSMInstance instance = GSMUtil.getGSMIntance(modemID);
-		String atResult = instance.testAT();
 		JSONObject result = new JSONObject();
-		result.put("atResponse", atResult);
-		if(atResult.contains("\r\nOK"))
+		if(instance != null)
 		{
-			result.put("status", "OK");
-		}
-		else
-		{
-			result.put("status", "ERROR");
+			String atResult = instance.testAT();
+			result.put(JsonKey.RESULT, atResult);
+			if(atResult.contains("\r\nOK"))
+			{
+				result.put(JsonKey.STATUS, "OK");
+			}
+			else
+			{
+				result.put(JsonKey.STATUS, "ERROR");
+			}
 		}
 		return result;
 	}
