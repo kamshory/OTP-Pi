@@ -80,8 +80,8 @@ public class MessageAPI {
 				}
 				else if(command.equals(ConstantString.VERIFY_OTP))
 				{
-					logger.info("Validate OTP");
-					responseJSON = this.validateOTP(command, data);					
+					logger.info("Verify OTP");
+					responseJSON = this.verifyOTP(command, data);					
 				}
 			}		
 		}
@@ -141,7 +141,7 @@ public class MessageAPI {
 		return requestJSON;
 	}
 	
-	private JSONObject validateOTP(String command, JSONObject data) {
+	private JSONObject verifyOTP(String command, JSONObject data) {
 		String dateTime = data.optString(JsonKey.DATE_TIME, "").trim();
 		String otpID = data.optString(JsonKey.REFERENCE, "").trim();
 		String receiver = data.optString(JsonKey.RECEIVER, "").trim();
