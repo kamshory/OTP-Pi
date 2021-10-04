@@ -78,7 +78,7 @@ public class MessageAPI {
 					logger.info("Create OTP");
 					responseJSON = this.createOTP(command, data, ste);					
 				}
-				else if(command.equals(ConstantString.VALIDATE_OTP))
+				else if(command.equals(ConstantString.VERIFY_OTP))
 				{
 					logger.info("Validate OTP");
 					responseJSON = this.validateOTP(command, data);					
