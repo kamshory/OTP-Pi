@@ -1,5 +1,10 @@
 package com.planetbiru.subscriber.redis;
 
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLParameters;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocketFactory;
+
 import org.json.JSONObject;
 
 import com.planetbiru.ServerWebSocketAdmin;
@@ -7,6 +12,9 @@ import com.planetbiru.api.MessageAPI;
 import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigSubscriberRedis;
 import com.planetbiru.constant.JsonKey;
+
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.exceptions.JedisConnectionException;
 
 public class SubscriberRedis extends Thread {
 	
@@ -107,7 +115,53 @@ public class SubscriberRedis extends Thread {
 	}
 	
 	private void sendMessage(String callbackTopic, String message) {
-		// TODO Auto-generated method stub
+		String host = ConfigSubscriberRedis.getSubscriberRedisAddress();
+		int port = ConfigSubscriberRedis.getSubscriberRedisPort();
+		boolean ssl = ConfigSubscriberRedis.isSubscriberRedisSSL();
+		String username = ConfigSubscriberRedis.getSubscriberRedisUsername();
+		String password = ConfigSubscriberRedis.getSubscriberRedisPassword();
+		
+		Jedis jedisSubscriber;
+		if(ssl)
+		{
+			jedisSubscriber = new Jedis(host, port); 
+		}
+		else
+		{
+			SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+		    SSLParameters sslParameters = new SSLParameters();		    
+		    final HostnameVerifier allHostsValid = new HostnameVerifier() {   
+				public boolean verify(String hostname, SSLSession session) {   
+					return true;   
+				}   
+		    };
+		    jedisSubscriber = new Jedis(host, port, ssl, sslSocketFactory, sslParameters, allHostsValid); 	
+		}
+		
+		if(!username.isEmpty())
+		{
+			jedisSubscriber.clientSetname(username);
+		}
+		if(!password.isEmpty())
+		{
+			jedisSubscriber.auth(password);
+		}
+		
+		try
+		{
+			jedisSubscriber.connect();	
+			jedisSubscriber.publish(callbackTopic.getBytes(), message.getBytes());				
+		}
+		catch(JedisConnectionException e)
+		{
+			/**
+			 * Do nothing
+			 */
+		}
+		finally 
+		{
+			jedisSubscriber.close();
+		}
 		
 	}
 
@@ -145,8 +199,6 @@ public class SubscriberRedis extends Thread {
 
 	public void setConnected(boolean connected) {
 		this.connected = connected;
-	}
-
-	
+	}	
 	
 }

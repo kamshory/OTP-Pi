@@ -112,7 +112,44 @@ public class WebSocketClientImpl extends Thread{
 		}	
 	}
 	private void sendMessage(String callbackTopic, String message) {
-		// TODO Auto-generated method stub
+		String endpoint = this.createWSEndpoint();
+		endpoint = this.fixWSEndpoint(endpoint, callbackTopic);
+		WebSocketClient localWSClient = null;
+		try 
+		{
+			URI uri = new URI(endpoint);	
+			Map<String, String> headers = new HashMap<>();
+			headers.put("Authorization", Utility.basicAuth(ConfigSubscriberWS.getSubscriberWsUsername(), ConfigSubscriberWS.getSubscriberWsPassword()));
+			localWSClient = new WebSocketClient(uri, headers) {
+			    @Override
+			    public void onOpen(ServerHandshake serverHandshake) {
+			    }
+	
+			    @Override
+			    public void onMessage(String message) {
+			    	
+			    }
+			    
+				@Override
+				public void onClose(int code, String reason, boolean remote) {					
+					
+				}
+
+				@Override
+			    public void onError(Exception e) {
+			    	
+			    }
+			};
+			localWSClient.connect();
+			localWSClient.send(message);
+			localWSClient.close();
+		} 	
+		catch (URISyntaxException e) 
+		{
+			/**
+			 * Do nothing
+			 */
+		}
 		
 	}
 
@@ -149,13 +186,13 @@ public class WebSocketClientImpl extends Thread{
 
 	public void initWSClient() throws URISyntaxException
 	{
+		String topic = ConfigSubscriberWS.getSubscriberWsTopic();
 		String endpoint = this.createWSEndpoint();
-		endpoint = this.fixWSEndpoint(endpoint);
+		endpoint = this.fixWSEndpoint(endpoint, topic);
 		try 
 		{
 			URI uri = new URI(endpoint);	
 			Map<String, String> headers = new HashMap<>();
-			String topic = ConfigSubscriberWS.getSubscriberWsTopic();
 			headers.put("Authorization", Utility.basicAuth(ConfigSubscriberWS.getSubscriberWsUsername(), ConfigSubscriberWS.getSubscriberWsPassword()));
 			this.wsClient = null;
 			this.wsClient = new WebSocketClient(uri, headers) {
@@ -188,8 +225,7 @@ public class WebSocketClientImpl extends Thread{
 		}
 	}
 	
-	private String fixWSEndpoint(String endpoint) {
-		String topic = Utility.urlEncode(ConfigSubscriberWS.getSubscriberWsTopic());
+	private String fixWSEndpoint(String endpoint, String topic) {
 		String path = endpoint;
 		Map<String, List<String>> params = new HashMap<>();
 		String query = "";
