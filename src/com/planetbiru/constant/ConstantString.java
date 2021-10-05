@@ -53,6 +53,7 @@ public class ConstantString {
 	public static final String SMS                             = "sms";
 	public static final String ALL                             = "all";
 	public static final String PATH_SEPARATOR                  = "/";
+	public static final String REQUEST_USSD                    = "request-ussd";
 	
 	private ConstantString()
 	{

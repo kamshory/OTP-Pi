@@ -27,7 +27,7 @@ public class RedisClientThread extends Thread {
 	public void run()
 	{
 		this.setRunning(true);
-		String channel = ConfigSubscriberRedis.getSubscriberRedisTopic();
+		String topic = ConfigSubscriberRedis.getSubscriberRedisTopic();
 		String host = ConfigSubscriberRedis.getSubscriberRedisAddress();
 		int port = ConfigSubscriberRedis.getSubscriberRedisPort();
 		boolean ssl = ConfigSubscriberRedis.isSubscriberRedisSSL();
@@ -89,7 +89,7 @@ public class RedisClientThread extends Thread {
 					subscriberRedis.evtOnPong(pattern);
 				}
 				
-			}, channel);
+			}, topic);
 		}
 		catch(JedisConnectionException e)
 		{

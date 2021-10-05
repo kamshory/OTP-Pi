@@ -10,9 +10,12 @@ import java.util.Map;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.planetbiru.api.MessageAPI;
 import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigSubscriberWS;
+import com.planetbiru.constant.JsonKey;
 import com.planetbiru.util.Utility;
 
 public class WebSocketClientImpl extends Thread{
@@ -93,7 +96,13 @@ public class WebSocketClientImpl extends Thread{
 		try
 		{
             MessageAPI api = new MessageAPI();
-            api.processRequest(message, topic);            
+            JSONObject response = api.processRequest(message, topic);  
+            JSONObject requestJSON = new JSONObject(message);
+            if(requestJSON.optString(JsonKey.COMMAND, "").equals("request-ussd") || requestJSON.optString(JsonKey.COMMAND, "").equals("list-modem"))
+            {
+            	this.sendMessage(requestJSON.optString(JsonKey.CALLBACK_TOPIC, ""), response.toString());
+            }
+            
 		}
 		catch(JSONException e)
 		{
@@ -102,6 +111,48 @@ public class WebSocketClientImpl extends Thread{
 			 */
 		}	
 	}
+	private void sendMessage(String callbackTopic, String message) {
+		String endpoint = this.createWSEndpoint();
+		endpoint = this.fixWSEndpoint(endpoint, callbackTopic);
+		WebSocketClient localWSClient = null;
+		try 
+		{
+			URI uri = new URI(endpoint);	
+			Map<String, String> headers = new HashMap<>();
+			headers.put("Authorization", Utility.basicAuth(ConfigSubscriberWS.getSubscriberWsUsername(), ConfigSubscriberWS.getSubscriberWsPassword()));
+			localWSClient = new WebSocketClient(uri, headers) {
+			    @Override
+			    public void onOpen(ServerHandshake serverHandshake) {
+			    }
+	
+			    @Override
+			    public void onMessage(String message) {
+			    	
+			    }
+			    
+				@Override
+				public void onClose(int code, String reason, boolean remote) {					
+					
+				}
+
+				@Override
+			    public void onError(Exception e) {
+			    	
+			    }
+			};
+			localWSClient.connect();
+			localWSClient.send(message);
+			localWSClient.close();
+		} 	
+		catch (URISyntaxException e) 
+		{
+			/**
+			 * Do nothing
+			 */
+		}
+		
+	}
+
 	public void evtOnOpen(ServerHandshake serverHandshake)
 	{
 		if(serverHandshake.getHttpStatus() != 101 && this.reconnect)
@@ -135,13 +186,13 @@ public class WebSocketClientImpl extends Thread{
 
 	public void initWSClient() throws URISyntaxException
 	{
+		String topic = ConfigSubscriberWS.getSubscriberWsTopic();
 		String endpoint = this.createWSEndpoint();
-		endpoint = this.fixWSEndpoint(endpoint);
+		endpoint = this.fixWSEndpoint(endpoint, topic);
 		try 
 		{
 			URI uri = new URI(endpoint);	
 			Map<String, String> headers = new HashMap<>();
-			String topic = ConfigSubscriberWS.getSubscriberWsTopic();
 			headers.put("Authorization", Utility.basicAuth(ConfigSubscriberWS.getSubscriberWsUsername(), ConfigSubscriberWS.getSubscriberWsPassword()));
 			this.wsClient = null;
 			this.wsClient = new WebSocketClient(uri, headers) {
@@ -174,8 +225,7 @@ public class WebSocketClientImpl extends Thread{
 		}
 	}
 	
-	private String fixWSEndpoint(String endpoint) {
-		String topic = Utility.urlEncode(ConfigSubscriberWS.getSubscriberWsTopic());
+	private String fixWSEndpoint(String endpoint, String topic) {
 		String path = endpoint;
 		Map<String, List<String>> params = new HashMap<>();
 		String query = "";

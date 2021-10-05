@@ -7,9 +7,12 @@ import java.util.concurrent.TimeoutException;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
 
+import org.json.JSONObject;
+
 import com.planetbiru.api.MessageAPI;
 import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.constant.JsonKey;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -52,11 +55,11 @@ public class RabbitMQSubscriber{
 		
 	    try 
 	    {
-			this.connection = factory.newConnection();
-			this.channel = connection.createChannel();
+			this.connection = this.factory.newConnection();
+			this.channel = this.connection.createChannel();
 		    String topic = ConfigSubscriberAMQP.getSubscriberAmqpTopic();
 			this.channel.queueDeclare(topic, false, false, false, null);		    
-		    DefaultConsumer consumer = new DefaultConsumer(channel) {
+		    DefaultConsumer consumer = new DefaultConsumer(this.channel) {
 		        @Override
 		        public void handleDelivery(
 		            String consumerTag,
@@ -144,8 +147,55 @@ public class RabbitMQSubscriber{
 		{
 			String message = new String(body, StandardCharsets.UTF_8);
             MessageAPI api = new MessageAPI();
-            api.processRequest(message, topic);            
+            JSONObject response = api.processRequest(message, topic); 
+            JSONObject requestJSON = new JSONObject(message);
+            String command = requestJSON.optString(JsonKey.COMMAND, "");
+            String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
+            if(command.equals("request-ussd") || command.equals("list-modem"))
+            {
+            	this.sendMessage(callbackTopic, response.toString());
+            }
 		}
+	}
+	private void sendMessage(String callbackTopic, String message) {
+		ConnectionFactory connectionFactory = new ConnectionFactory();
+	    connectionFactory.setHost(ConfigSubscriberAMQP.getSubscriberAmqpAddress());
+	    connectionFactory.setPort(ConfigSubscriberAMQP.getSubscriberAmqpPort());
+	    connectionFactory.setUsername(ConfigSubscriberAMQP.getSubscriberAmqpUsername());
+	    connectionFactory.setPassword(ConfigSubscriberAMQP.getSubscriberAmqpPassword());	  
+	    connectionFactory.setConnectionTimeout(ConfigSubscriberAMQP.getSubscriberAmqpTimeout());
+	    
+	    if(ConfigSubscriberAMQP.isSubscriberAmqpSSL())
+		{
+			SSLContext sslContext;		
+    		try 
+    		{
+    			sslContext = SSLContext.getInstance("TLS");
+    			sslContext.init(null,null,null);
+    			SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();    	  		
+    			connectionFactory.setSocketFactory(sslSocketFactory); 		
+    		} 
+    		catch(Exception e) 
+    		{
+    			/**
+    			 * Do nothing
+    			 */
+    		}
+		}	
+		
+	    try(
+	    		Connection clientConnection = connectionFactory.newConnection();
+	    		Channel clientChannel = clientConnection.createChannel()) 
+	    {
+	    	clientChannel.queueDeclare(callbackTopic, false, false, false, null);
+	    	clientChannel.basicPublish(callbackTopic, "", null, message.getBytes());
+	    }
+	    catch (IOException | TimeoutException e) 
+	    {
+	    	/**
+	    	 * Do nothing
+	    	 */
+	    }
 	}
 	
 }

@@ -10,11 +10,13 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+import org.json.JSONObject;
 
 import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.api.MessageAPI;
 import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigSubscriberMQTT;
+import com.planetbiru.constant.JsonKey;
 
 public class SubscriberMQTT extends Thread{
 	private MqttClient subscriber;
@@ -102,7 +104,7 @@ public class SubscriberMQTT extends Thread{
 			    @Override
 				public void messageArrived(String topic, MqttMessage payload) throws Exception {
 			        latch.countDown(); 
-			        onMessage(topic, payload);
+			        evtOnMessage(topic, payload);
 			    }			    
 
 				@Override
@@ -133,13 +135,52 @@ public class SubscriberMQTT extends Thread{
 		}		
 	}
 	
-	private void onMessage(String topic, MqttMessage payload) {
+	public void evtOnMessage(String topic, MqttMessage payload) {
 		String message = new String(payload.getPayload());
         MessageAPI api = new MessageAPI();
-        api.processRequest(message, topic);
+        JSONObject response = api.processRequest(message, topic);
+        JSONObject requestJSON = new JSONObject(message);
+        if(requestJSON.optString(JsonKey.COMMAND, "").equals("request-ussd") || requestJSON.optString(JsonKey.COMMAND, "").equals("list-modem"))
+        {
+        	this.sendMessage(requestJSON.optString(JsonKey.CALLBACK_TOPIC, ""), response.toString());
+        }
 		
 	}
 	
+	private void sendMessage(String callbackTopic, String message) {
+		String uri = "tcp://"+ConfigSubscriberMQTT.getSubscriberMqttAddress()+":"+ConfigSubscriberMQTT.getSubscriberMqttPort();
+		String clientID = UUID.randomUUID().toString();
+		MemoryPersistence persistence = new MemoryPersistence();
+		try {
+			MqttClient mqttSubscriber = new MqttClient(uri, clientID, persistence);
+			MqttConnectOptions options = new MqttConnectOptions();
+			options.setAutomaticReconnect(false);
+			options.setCleanSession(true);
+			options.setConnectionTimeout(ConfigSubscriberMQTT.getSubscriberMqttTimeout());
+			String username = ConfigSubscriberMQTT.getSubscriberMqttUsername();
+			String password = ConfigSubscriberMQTT.getSubscriberMqttPassword();
+			if(!username.isEmpty())
+			{
+				options.setUserName(username);
+			}
+			if(!password.isEmpty())
+			{
+				options.setPassword(password.toCharArray());
+			}
+			
+			mqttSubscriber.connect(options);
+			MqttMessage mqttMessage = new MqttMessage(message.getBytes());
+			mqttSubscriber.publish(callbackTopic, mqttMessage);
+			mqttSubscriber.close();
+			
+		} catch (MqttException e) {
+			e.printStackTrace();
+		}
+	
+		
+		
+	}
+
 	public boolean isRunning() {
 		return running;
 	}
