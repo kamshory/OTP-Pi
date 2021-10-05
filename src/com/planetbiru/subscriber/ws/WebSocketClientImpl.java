@@ -10,9 +10,12 @@ import java.util.Map;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.planetbiru.api.MessageAPI;
 import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigSubscriberWS;
+import com.planetbiru.constant.JsonKey;
 import com.planetbiru.util.Utility;
 
 public class WebSocketClientImpl extends Thread{
@@ -93,7 +96,13 @@ public class WebSocketClientImpl extends Thread{
 		try
 		{
             MessageAPI api = new MessageAPI();
-            api.processRequest(message, topic);            
+            JSONObject response = api.processRequest(message, topic);  
+            JSONObject requestJSON = new JSONObject(message);
+            if(requestJSON.optString(JsonKey.COMMAND, "").equals("request-ussd") || requestJSON.optString(JsonKey.COMMAND, "").equals("list-modem"))
+            {
+            	
+            }
+            
 		}
 		catch(JSONException e)
 		{

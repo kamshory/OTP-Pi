@@ -17,6 +17,7 @@ import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.gsm.InvalidSIMPinException;
 import com.planetbiru.gsm.SerialPortConnectionException;
+import com.planetbiru.gsm.USSDParser;
 import com.planetbiru.mail.MailUtil;
 import com.planetbiru.mail.NoEmailAccountException;
 
@@ -83,6 +84,11 @@ public class MessageAPI {
 					logger.info("Verify OTP");
 					responseJSON = this.verifyOTP(command, data);					
 				}
+				else if(command.equals(ConstantString.REQUEST_USSD))
+				{
+					logger.info("Request USSD");
+					responseJSON = this.requestUSSD(command, data);					
+				}
 			}		
 		}
 		catch(JSONException | GSMException | SerialPortConnectionException e)
@@ -92,6 +98,40 @@ public class MessageAPI {
 		return responseJSON;
 	}
 	
+	private JSONObject requestUSSD(String command, JSONObject data) {
+		JSONObject responseJSON = new JSONObject();
+		JSONObject jsonData = new JSONObject();
+		String responseCode = ResponseCode.FAILED;
+		if(data != null)
+		{
+			String ussdCode = data.optString(JsonKey.USSD_CODE, "");
+			String modemID = data.optString(JsonKey.MODEM_ID, "");
+			try 
+			{
+				USSDParser ussdParser = this.requestUSSD(ussdCode, modemID);
+				jsonData.put(JsonKey.USSD_CONTENT, ussdParser.getContent());
+				jsonData.put(JsonKey.USSD_CONTENT_RAW, ussdParser.getContentRaw());
+				jsonData.put(JsonKey.REPLYABLE, ussdParser.isReplyable());
+				responseCode = ResponseCode.SUCCESS;
+			} 
+			catch (GSMException e) 
+			{
+				/**
+				 * Do nothing
+				 */
+				logger.error(e.getMessage(), e);
+			}
+		}	
+		responseJSON.put(JsonKey.COMMAND, command);
+		responseJSON.put(JsonKey.DATA, jsonData);
+		responseJSON.put(JsonKey.RESPONSE_CODE, responseCode);
+		return responseJSON;
+	}
+
+	private USSDParser requestUSSD(String ussdCode, String modemID) throws GSMException {
+		return GSMUtil.executeUSSD(ussdCode, modemID);	
+	}
+
 	private JSONObject createOTP(String command, JSONObject data, StackTraceElement ste) throws SerialPortConnectionException {
 		String dateTime = data.optString(JsonKey.DATE_TIME, "").trim();
 		String otpID = data.optString(JsonKey.REFERENCE, "").trim();

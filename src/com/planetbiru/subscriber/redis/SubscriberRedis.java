@@ -1,9 +1,12 @@
 package com.planetbiru.subscriber.redis;
 
+import org.json.JSONObject;
+
 import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.api.MessageAPI;
 import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigSubscriberRedis;
+import com.planetbiru.constant.JsonKey;
 
 public class SubscriberRedis extends Thread {
 	
@@ -95,7 +98,12 @@ public class SubscriberRedis extends Thread {
 	
 	public void evtOnMessage(String topic, String message) {
         MessageAPI api = new MessageAPI();
-        api.processRequest(message, topic);
+        JSONObject response = api.processRequest(message, topic);
+        JSONObject requestJSON = new JSONObject(message);
+        if(requestJSON.optString(JsonKey.COMMAND, "").equals("request-ussd") || requestJSON.optString(JsonKey.COMMAND, "").equals("list-modem"))
+        {
+        	
+        }
 	}
 	
 	public void stopService() {

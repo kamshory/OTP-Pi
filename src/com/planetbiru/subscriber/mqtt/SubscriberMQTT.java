@@ -102,7 +102,7 @@ public class SubscriberMQTT extends Thread{
 			    @Override
 				public void messageArrived(String topic, MqttMessage payload) throws Exception {
 			        latch.countDown(); 
-			        onMessage(topic, payload);
+			        evtOnMessage(topic, payload);
 			    }			    
 
 				@Override
@@ -133,7 +133,7 @@ public class SubscriberMQTT extends Thread{
 		}		
 	}
 	
-	private void onMessage(String topic, MqttMessage payload) {
+	public void evtOnMessage(String topic, MqttMessage payload) {
 		String message = new String(payload.getPayload());
         MessageAPI api = new MessageAPI();
         api.processRequest(message, topic);

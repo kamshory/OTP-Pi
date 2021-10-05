@@ -7,9 +7,12 @@ import java.util.concurrent.TimeoutException;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
 
+import org.json.JSONObject;
+
 import com.planetbiru.api.MessageAPI;
 import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.constant.JsonKey;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -144,7 +147,12 @@ public class RabbitMQSubscriber{
 		{
 			String message = new String(body, StandardCharsets.UTF_8);
             MessageAPI api = new MessageAPI();
-            api.processRequest(message, topic);            
+            JSONObject response = api.processRequest(message, topic); 
+            JSONObject requestJSON = new JSONObject(message);
+            if(requestJSON.optString(JsonKey.COMMAND, "").equals("request-ussd") || requestJSON.optString(JsonKey.COMMAND, "").equals("list-modem"))
+            {
+            	
+            }
 		}
 	}
 	
