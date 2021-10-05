@@ -148,7 +148,36 @@ public class SubscriberMQTT extends Thread{
 	}
 	
 	private void sendMessage(String callbackTopic, String message) {
-		// TODO Auto-generated method stub
+		String uri = "tcp://"+ConfigSubscriberMQTT.getSubscriberMqttAddress()+":"+ConfigSubscriberMQTT.getSubscriberMqttPort();
+		String clientID = UUID.randomUUID().toString();
+		MemoryPersistence persistence = new MemoryPersistence();
+		try {
+			MqttClient mqttSubscriber = new MqttClient(uri, clientID, persistence);
+			MqttConnectOptions options = new MqttConnectOptions();
+			options.setAutomaticReconnect(false);
+			options.setCleanSession(true);
+			options.setConnectionTimeout(ConfigSubscriberMQTT.getSubscriberMqttTimeout());
+			String username = ConfigSubscriberMQTT.getSubscriberMqttUsername();
+			String password = ConfigSubscriberMQTT.getSubscriberMqttPassword();
+			if(!username.isEmpty())
+			{
+				options.setUserName(username);
+			}
+			if(!password.isEmpty())
+			{
+				options.setPassword(password.toCharArray());
+			}
+			
+			mqttSubscriber.connect(options);
+			MqttMessage mqttMessage = new MqttMessage(message.getBytes());
+			mqttSubscriber.publish(callbackTopic, mqttMessage);
+			mqttSubscriber.close();
+			
+		} catch (MqttException e) {
+			e.printStackTrace();
+		}
+	
+		
 		
 	}
 
