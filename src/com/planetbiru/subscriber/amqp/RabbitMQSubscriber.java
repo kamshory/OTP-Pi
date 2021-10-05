@@ -55,11 +55,11 @@ public class RabbitMQSubscriber{
 		
 	    try 
 	    {
-			this.connection = factory.newConnection();
-			this.channel = connection.createChannel();
+			this.connection = this.factory.newConnection();
+			this.channel = this.connection.createChannel();
 		    String topic = ConfigSubscriberAMQP.getSubscriberAmqpTopic();
 			this.channel.queueDeclare(topic, false, false, false, null);		    
-		    DefaultConsumer consumer = new DefaultConsumer(channel) {
+		    DefaultConsumer consumer = new DefaultConsumer(this.channel) {
 		        @Override
 		        public void handleDelivery(
 		            String consumerTag,
@@ -149,13 +149,53 @@ public class RabbitMQSubscriber{
             MessageAPI api = new MessageAPI();
             JSONObject response = api.processRequest(message, topic); 
             JSONObject requestJSON = new JSONObject(message);
-            if(requestJSON.optString(JsonKey.COMMAND, "").equals("request-ussd") || requestJSON.optString(JsonKey.COMMAND, "").equals("list-modem"))
+            String command = requestJSON.optString(JsonKey.COMMAND, "");
+            String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
+            if(command.equals("request-ussd") || command.equals("list-modem"))
             {
-            	this.sendMessage(requestJSON.optString(JsonKey.CALLBACK_TOPIC, ""), response.toString());
+            	this.sendMessage(callbackTopic, response.toString());
             }
 		}
 	}
 	private void sendMessage(String callbackTopic, String message) {
+		ConnectionFactory connectionFactory = new ConnectionFactory();
+	    connectionFactory.setHost(ConfigSubscriberAMQP.getSubscriberAmqpAddress());
+	    connectionFactory.setPort(ConfigSubscriberAMQP.getSubscriberAmqpPort());
+	    connectionFactory.setUsername(ConfigSubscriberAMQP.getSubscriberAmqpUsername());
+	    connectionFactory.setPassword(ConfigSubscriberAMQP.getSubscriberAmqpPassword());	  
+	    connectionFactory.setConnectionTimeout(ConfigSubscriberAMQP.getSubscriberAmqpTimeout());
+	    
+	    if(ConfigSubscriberAMQP.isSubscriberAmqpSSL())
+		{
+			SSLContext sslContext;		
+    		try 
+    		{
+    			sslContext = SSLContext.getInstance("TLS");
+    			sslContext.init(null,null,null);
+    			SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();    	  		
+    			connectionFactory.setSocketFactory(sslSocketFactory); 		
+    		} 
+    		catch(Exception e) 
+    		{
+    			/**
+    			 * Do nothing
+    			 */
+    		}
+		}	
+		
+	    try(
+	    		Connection clientConnection = connectionFactory.newConnection();
+	    		Channel clientChannel = clientConnection.createChannel()) 
+	    {
+	    	clientChannel.queueDeclare(callbackTopic, false, false, false, null);
+	    	clientChannel.basicPublish(callbackTopic, "", null, message.getBytes());
+	    }
+	    catch (IOException | TimeoutException e) 
+	    {
+	    	/**
+	    	 * Do nothing
+	    	 */
+	    }
 	}
 	
 }
