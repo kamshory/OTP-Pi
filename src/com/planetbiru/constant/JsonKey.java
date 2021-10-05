@@ -95,8 +95,9 @@ public class JsonKey {
 	public static final String STATUS                     = "status";
 	public static final String NETMASK                    = "netmask";
 	public static final String USSD_CODE                  = "ussd_code";
-	public static final String USSD_CONTENT = "ussd_content";
-	public static final String USSD_CONTENT_RAW = "ussd_content_raw";
+	public static final String USSD_CONTENT               = "ussd_content";
+	public static final String USSD_CONTENT_RAW           = "ussd_content_raw";
+	public static final String CALLBACK_TOPIC             = "callback_topic";
 	
 	private JsonKey()
 	{

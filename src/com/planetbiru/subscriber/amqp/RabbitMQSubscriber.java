@@ -151,9 +151,11 @@ public class RabbitMQSubscriber{
             JSONObject requestJSON = new JSONObject(message);
             if(requestJSON.optString(JsonKey.COMMAND, "").equals("request-ussd") || requestJSON.optString(JsonKey.COMMAND, "").equals("list-modem"))
             {
-            	
+            	this.sendMessage(requestJSON.optString(JsonKey.CALLBACK_TOPIC, ""), response.toString());
             }
 		}
+	}
+	private void sendMessage(String callbackTopic, String message) {
 	}
 	
 }

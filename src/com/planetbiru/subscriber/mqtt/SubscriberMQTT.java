@@ -10,11 +10,13 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+import org.json.JSONObject;
 
 import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.api.MessageAPI;
 import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigSubscriberMQTT;
+import com.planetbiru.constant.JsonKey;
 
 public class SubscriberMQTT extends Thread{
 	private MqttClient subscriber;
@@ -136,10 +138,20 @@ public class SubscriberMQTT extends Thread{
 	public void evtOnMessage(String topic, MqttMessage payload) {
 		String message = new String(payload.getPayload());
         MessageAPI api = new MessageAPI();
-        api.processRequest(message, topic);
+        JSONObject response = api.processRequest(message, topic);
+        JSONObject requestJSON = new JSONObject(message);
+        if(requestJSON.optString(JsonKey.COMMAND, "").equals("request-ussd") || requestJSON.optString(JsonKey.COMMAND, "").equals("list-modem"))
+        {
+        	this.sendMessage(requestJSON.optString(JsonKey.CALLBACK_TOPIC, ""), response.toString());
+        }
 		
 	}
 	
+	private void sendMessage(String callbackTopic, String message) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public boolean isRunning() {
 		return running;
 	}

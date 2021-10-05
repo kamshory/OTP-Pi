@@ -100,7 +100,7 @@ public class WebSocketClientImpl extends Thread{
             JSONObject requestJSON = new JSONObject(message);
             if(requestJSON.optString(JsonKey.COMMAND, "").equals("request-ussd") || requestJSON.optString(JsonKey.COMMAND, "").equals("list-modem"))
             {
-            	
+            	this.sendMessage(requestJSON.optString(JsonKey.CALLBACK_TOPIC, ""), response.toString());
             }
             
 		}
@@ -111,6 +111,11 @@ public class WebSocketClientImpl extends Thread{
 			 */
 		}	
 	}
+	private void sendMessage(String callbackTopic, String message) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public void evtOnOpen(ServerHandshake serverHandshake)
 	{
 		if(serverHandshake.getHttpStatus() != 101 && this.reconnect)
