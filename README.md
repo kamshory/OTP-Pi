@@ -1365,15 +1365,76 @@ When a client sends a message, the message will be sent to all clients by topic 
 
 The OTP-Pi never sends messages to the WSMessageBroker server. OTP-Pi only accepts messages according to the desired topic.
 
-## Subscribe to Our YouTube Channel
+
+# USSD Request Via API
+
+Users can run USSD code via the API either using the REST API or using the message broker. When executing the USSD code, the user must submit the modem ID. The modem ID can be obtained using the API either using the REST API or using a message broker.
+
+**Get Modem List Request**
+
+```json
+{
+   "data":{
+      "date_time":1629685778
+   },
+   "command":"get-modem-list"
+}
+
+```
+
+**Get Modem List Response**
+
+```json
+{
+   "response_code":"0000",
+   "data":{
+      "modem_list":{
+         "d740eb1f5e9799c2b50452ea5acf6054":{
+            "internetConnected":false,
+            "active":true,
+            "imsi":"990106913401164",
+            "smsCenter":"",
+            "operatorSelect":"TELKOMSEL",
+            "connected":false,
+            "iccid":"89621010691340116477",
+            "defaultModem":true,
+            "internetAccess":false,
+            "port":"COM7",
+            "name":"SIMCOM_SIM800L",
+            "imei":"359848091599999",
+            "id":"d740eb1f5e9799c2b50452ea5acf6054"
+         },
+         "20570ff7f9a4664df11e8c3dfdf4c6c4":{
+            "internetConnected":false,
+            "active":true,
+            "imsi":"880106913401164",
+            "smsCenter":"",
+            "operatorSelect":"TELKOMSEL",
+            "connected":false,
+            "iccid":"89621010691340116454",
+            "defaultModem":false,
+            "internetAccess":false,
+            "port":"COM3",
+            "name":"Huawei",
+            "imei":"359848091599994",
+            "id":"20570ff7f9a4664df11e8c3dfdf4c6c4"
+         }
+      }
+   },
+   "command":"get-modem-list"
+}
+```
+
+
+# Subscribe to Our YouTube Channel
 
 https://www.youtube.com/channel/UCY-qziSbBmJ7iZj-cXqmcMg
 
-## Donate to Our Developer
+# Donate to Our Developer
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DMHFJ6LR7FGQS)
 
 
-## Bonus! AT Command Documentation
+# Bonus! AT Command Documentation
 
 https://docs.rs-online.com/5931/0900766b80bec52c.pdf
