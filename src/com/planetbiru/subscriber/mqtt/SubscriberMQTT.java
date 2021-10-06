@@ -174,7 +174,9 @@ public class SubscriberMQTT extends Thread{
 			mqttSubscriber.close();
 			
 		} catch (MqttException e) {
-			e.printStackTrace();
+			/**
+			 * Do nothing
+			 */
 		}
 	
 		

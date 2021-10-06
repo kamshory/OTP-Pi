@@ -98,6 +98,8 @@ public class JsonKey {
 	public static final String USSD_CONTENT               = "ussd_content";
 	public static final String USSD_CONTENT_RAW           = "ussd_content_raw";
 	public static final String CALLBACK_TOPIC             = "callback_topic";
+	public static final String MODEM_LIST                 = "modem_list";
+	public static final String TOPIC                      = "topic";
 	
 	private JsonKey()
 	{

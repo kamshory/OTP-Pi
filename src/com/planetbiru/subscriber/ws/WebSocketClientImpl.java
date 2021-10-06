@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import com.planetbiru.api.MessageAPI;
 import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigSubscriberWS;
+import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.util.Utility;
 
@@ -98,7 +99,7 @@ public class WebSocketClientImpl extends Thread{
             MessageAPI api = new MessageAPI();
             JSONObject response = api.processRequest(message, topic);  
             JSONObject requestJSON = new JSONObject(message);
-            if(requestJSON.optString(JsonKey.COMMAND, "").equals("request-ussd") || requestJSON.optString(JsonKey.COMMAND, "").equals("list-modem"))
+            if(requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) || requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST))
             {
             	this.sendMessage(requestJSON.optString(JsonKey.CALLBACK_TOPIC, ""), response.toString());
             }
@@ -123,26 +124,28 @@ public class WebSocketClientImpl extends Thread{
 			localWSClient = new WebSocketClient(uri, headers) {
 			    @Override
 			    public void onOpen(ServerHandshake serverHandshake) {
+			    	this.send(message);
+			    	this.close();
 			    }
 	
 			    @Override
 			    public void onMessage(String message) {
-			    	
+			    	/**
+			    	 * Do nothing
+			    	 */
 			    }
 			    
 				@Override
 				public void onClose(int code, String reason, boolean remote) {					
-					
+					this.close();
 				}
 
 				@Override
 			    public void onError(Exception e) {
-			    	
+					this.close();
 			    }
 			};
 			localWSClient.connect();
-			localWSClient.send(message);
-			localWSClient.close();
 		} 	
 		catch (URISyntaxException e) 
 		{
@@ -238,9 +241,9 @@ public class WebSocketClientImpl extends Thread{
 				try 
 				{
 					params = Utility.splitQuery(arr[1]);
-					if(params.containsKey("topic"))
+					if(params.containsKey(JsonKey.TOPIC))
 					{
-						params.remove("topic");
+						params.remove(JsonKey.TOPIC);
 					}				
 				} 
 				catch (UnsupportedEncodingException e) 
@@ -251,7 +254,7 @@ public class WebSocketClientImpl extends Thread{
 				}				
 			}
 		}
-		params.put("topic", Utility.asList(topic));
+		params.put(JsonKey.TOPIC, Utility.asList(topic));
 		query = Utility.buildQuery(params);
 		
 		endpoint = path + "?"+query;
