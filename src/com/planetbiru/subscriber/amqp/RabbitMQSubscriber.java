@@ -140,7 +140,17 @@ public class RabbitMQSubscriber{
 		}
 		this.reconnect = false;	
 	}
-	
+	public void delay(long sleep)
+	{
+		try 
+		{
+			Thread.sleep(sleep);
+		} 
+		catch (InterruptedException e) 
+		{
+			Thread.currentThread().interrupt();
+		}
+	}
 	public void evtOnMessage(byte[] body, String topic) 
 	{		
         if(body != null)
@@ -151,8 +161,9 @@ public class RabbitMQSubscriber{
             JSONObject requestJSON = new JSONObject(message);
             String command = requestJSON.optString(JsonKey.COMMAND, "");
             String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
-            if(command.equals("request-ussd") || command.equals("list-modem"))
+            if(command.equals("request-ussd") || command.equals("get-modem-list"))
             {
+            	this.delay(50);
             	this.sendMessage(callbackTopic, response.toString());
             }
 		}
@@ -182,13 +193,13 @@ public class RabbitMQSubscriber{
     			 */
     		}
 		}	
-		
+	    
 	    try(
 	    		Connection clientConnection = connectionFactory.newConnection();
-	    		Channel clientChannel = clientConnection.createChannel()) 
+	    		Channel clientChannel = clientConnection.createChannel()
+	    		) 
 	    {
-	    	clientChannel.queueDeclare(callbackTopic, false, false, false, null);
-	    	clientChannel.basicPublish(callbackTopic, "", null, message.getBytes());
+	    	clientChannel.basicPublish("", callbackTopic, null, message.getBytes());
 	    }
 	    catch (IOException | TimeoutException e) 
 	    {

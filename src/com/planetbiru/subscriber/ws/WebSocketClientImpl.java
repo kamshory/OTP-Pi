@@ -93,6 +93,17 @@ public class WebSocketClientImpl extends Thread{
 		}
 		this.webSocketTool.restartThread();
 	}
+	public void delay(long sleep)
+	{
+		try 
+		{
+			Thread.sleep(sleep);
+		} 
+		catch (InterruptedException e) 
+		{
+			Thread.currentThread().interrupt();
+		}
+	}
 	public void evtOnMessage(String message, String topic) {
 		try
 		{
@@ -101,6 +112,7 @@ public class WebSocketClientImpl extends Thread{
             JSONObject requestJSON = new JSONObject(message);
             if(requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) || requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST))
             {
+            	this.delay(50);
             	this.sendMessage(requestJSON.optString(JsonKey.CALLBACK_TOPIC, ""), response.toString());
             }
             
