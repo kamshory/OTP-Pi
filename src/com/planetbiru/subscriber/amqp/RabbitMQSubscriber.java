@@ -76,7 +76,7 @@ public class RabbitMQSubscriber{
 				
 		    };
 		    ConfigSubscriberAMQP.setConnected(true);
-		    this.channel.basicConsume(ConfigSubscriberAMQP.getSubscriberAmqpTopic(), true, consumer);
+		    this.channel.basicConsume(topic, true, consumer);
 		} 
 		catch (IOException e) 
 		{
@@ -169,6 +169,19 @@ public class RabbitMQSubscriber{
 		}
 	}
 	private void sendMessage(String callbackTopic, String message) {
+		try(Channel replyChannel = this.connection.createChannel()) 
+		{
+			replyChannel.basicPublish("", callbackTopic, null, message.getBytes());
+		} 
+		catch (IOException | TimeoutException e) 
+		{
+			/**
+			 * Do nothing
+			 */
+		}
+		
+	}
+	public void sendMessageX(String callbackTopic, String message) {
 		ConnectionFactory connectionFactory = new ConnectionFactory();
 	    connectionFactory.setHost(ConfigSubscriberAMQP.getSubscriberAmqpAddress());
 	    connectionFactory.setPort(ConfigSubscriberAMQP.getSubscriberAmqpPort());
