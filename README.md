@@ -702,7 +702,7 @@ Content-length: 313
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 {
-	"command": "create-otp",
+	"command": "request-otp",
 	"data": {
 		"date_time": 1629685778,
 		"expiration": 1629685838,
@@ -741,7 +741,7 @@ Content-type: application/json
 Content-length: 199
 
 {
-	"command": "create-otp",
+	"command": "request-otp",
 	"response_code": "0000",
 	"data": {
 		"date_time": 1629685778,

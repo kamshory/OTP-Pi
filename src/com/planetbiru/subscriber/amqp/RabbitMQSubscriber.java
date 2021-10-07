@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import com.planetbiru.api.MessageAPI;
 import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
@@ -161,13 +162,14 @@ public class RabbitMQSubscriber{
             JSONObject requestJSON = new JSONObject(message);
             String command = requestJSON.optString(JsonKey.COMMAND, "");
             String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
-            if(command.equals("request-ussd") || command.equals("get-modem-list"))
+            if(command.equals(ConstantString.REQUEST_USSD) || command.equals(ConstantString.GET_MODEM_LIST))
             {
             	this.delay(50);
             	this.sendMessage(callbackTopic, response.toString());
             }
 		}
 	}
+	
 	private void sendMessage(String callbackTopic, String message) {
 		try(Channel replyChannel = this.connection.createChannel()) 
 		{
@@ -178,9 +180,9 @@ public class RabbitMQSubscriber{
 			/**
 			 * Do nothing
 			 */
-		}
-		
+		}	
 	}
+	
 	public void sendMessageX(String callbackTopic, String message) {
 		ConnectionFactory connectionFactory = new ConnectionFactory();
 	    connectionFactory.setHost(ConfigSubscriberAMQP.getSubscriberAmqpAddress());

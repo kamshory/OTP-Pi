@@ -41,7 +41,7 @@ public class ConstantString {
 	public static final String ACCEPT                          = "Accept";
 	public static final String BEARER                          = "Bearer ";
 	public static final String TEXT_PLAIN                      = "text/plain";
-	public static final String REQUEST_OTP                     = "create-otp";
+	public static final String REQUEST_OTP                     = "request-otp";
 	public static final String VERIFY_OTP                      = "verify-otp";
 	public static final String DOCUMENT_PATH_SEPARATOR         = "/";
 	public static final String SIM_CARD_NOT_READY              = "SIM card is not ready";

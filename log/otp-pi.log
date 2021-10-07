@@ -911,3 +911,174 @@ List of Unused Config:
 2021-10-07 09:36:15 [INFO  ] MessageAPI                      :52   - Command   : get-modem-list
 2021-10-07 09:36:15 [INFO  ] MessageAPI                      :53   - Date Time : 1633574175
 2021-10-07 09:36:15 [INFO  ] MessageAPI                      :96   - List Modem
+2021-10-07 09:37:17 [INFO  ] MessageAPI                      :50   - Topic     : sms
+2021-10-07 09:37:17 [INFO  ] MessageAPI                      :51   - Message   : {
+    "callback_topic": "modem-list-236461",
+    "data": {"date_time": 1633574237},
+    "command": "get-modem-list"
+}
+2021-10-07 09:37:17 [INFO  ] MessageAPI                      :52   - Command   : get-modem-list
+2021-10-07 09:37:17 [INFO  ] MessageAPI                      :53   - Date Time : 1633574237
+2021-10-07 09:37:17 [INFO  ] MessageAPI                      :96   - List Modem
+2021-10-07 09:37:18 [INFO  ] MessageAPI                      :50   - Topic     : sms
+2021-10-07 09:37:18 [INFO  ] MessageAPI                      :51   - Message   : {
+    "callback_topic": "modem-list-963286",
+    "data": {"date_time": 1633574238},
+    "command": "get-modem-list"
+}
+2021-10-07 09:37:18 [INFO  ] MessageAPI                      :52   - Command   : get-modem-list
+2021-10-07 09:37:18 [INFO  ] MessageAPI                      :53   - Date Time : 1633574238
+2021-10-07 09:37:18 [INFO  ] MessageAPI                      :96   - List Modem
+2021-10-07 09:37:25 [INFO  ] MessageAPI                      :50   - Topic     : sms
+2021-10-07 09:37:25 [INFO  ] MessageAPI                      :51   - Message   : {
+    "callback_topic": "modem-list-470652",
+    "data": {"date_time": 1633574244},
+    "command": "get-modem-list"
+}
+2021-10-07 09:37:25 [INFO  ] MessageAPI                      :52   - Command   : get-modem-list
+2021-10-07 09:37:25 [INFO  ] MessageAPI                      :53   - Date Time : 1633574244
+2021-10-07 09:37:25 [INFO  ] MessageAPI                      :96   - List Modem
+2021-10-07 09:37:32 [INFO  ] MessageAPI                      :50   - Topic     : sms
+2021-10-07 09:37:32 [INFO  ] MessageAPI                      :51   - Message   : {
+    "callback_topic": "modem-list-361176",
+    "data": {"date_time": 1633574252},
+    "command": "get-modem-list"
+}
+2021-10-07 09:37:32 [INFO  ] MessageAPI                      :52   - Command   : get-modem-list
+2021-10-07 09:37:32 [INFO  ] MessageAPI                      :53   - Date Time : 1633574252
+2021-10-07 09:37:32 [INFO  ] MessageAPI                      :96   - List Modem
+2021-10-07 09:37:32 [INFO  ] MessageAPI                      :50   - Topic     : sms
+2021-10-07 09:37:32 [INFO  ] MessageAPI                      :51   - Message   : {
+    "callback_topic": "modem-list-830904",
+    "data": {"date_time": 1633574252},
+    "command": "get-modem-list"
+}
+2021-10-07 09:37:32 [INFO  ] MessageAPI                      :52   - Command   : get-modem-list
+2021-10-07 09:37:32 [INFO  ] MessageAPI                      :53   - Date Time : 1633574252
+2021-10-07 09:37:32 [INFO  ] MessageAPI                      :96   - List Modem
+2021-10-07 09:37:32 [INFO  ] MessageAPI                      :50   - Topic     : sms
+2021-10-07 09:37:32 [INFO  ] MessageAPI                      :51   - Message   : {
+    "callback_topic": "modem-list-375496",
+    "data": {"date_time": 1633574252},
+    "command": "get-modem-list"
+}
+2021-10-07 09:37:32 [INFO  ] MessageAPI                      :52   - Command   : get-modem-list
+2021-10-07 09:37:32 [INFO  ] MessageAPI                      :53   - Date Time : 1633574252
+2021-10-07 09:37:32 [INFO  ] MessageAPI                      :96   - List Modem
+2021-10-07 09:37:33 [INFO  ] MessageAPI                      :50   - Topic     : sms
+2021-10-07 09:37:33 [INFO  ] MessageAPI                      :51   - Message   : {
+    "callback_topic": "modem-list-713255",
+    "data": {"date_time": 1633574253},
+    "command": "get-modem-list"
+}
+2021-10-07 09:37:33 [INFO  ] MessageAPI                      :52   - Command   : get-modem-list
+2021-10-07 09:37:33 [INFO  ] MessageAPI                      :53   - Date Time : 1633574253
+2021-10-07 09:37:33 [INFO  ] MessageAPI                      :96   - List Modem
+2021-10-07 09:37:33 [INFO  ] MessageAPI                      :50   - Topic     : sms
+2021-10-07 09:37:33 [INFO  ] MessageAPI                      :51   - Message   : {
+    "callback_topic": "modem-list-560488",
+    "data": {"date_time": 1633574253},
+    "command": "get-modem-list"
+}
+2021-10-07 09:37:33 [INFO  ] MessageAPI                      :52   - Command   : get-modem-list
+2021-10-07 09:37:33 [INFO  ] MessageAPI                      :53   - Date Time : 1633574253
+2021-10-07 09:37:33 [INFO  ] MessageAPI                      :96   - List Modem
+2021-10-07 09:37:33 [INFO  ] MessageAPI                      :50   - Topic     : sms
+2021-10-07 09:37:33 [INFO  ] MessageAPI                      :51   - Message   : {
+    "callback_topic": "modem-list-298684",
+    "data": {"date_time": 1633574253},
+    "command": "get-modem-list"
+}
+2021-10-07 09:37:33 [INFO  ] MessageAPI                      :52   - Command   : get-modem-list
+2021-10-07 09:37:33 [INFO  ] MessageAPI                      :53   - Date Time : 1633574253
+2021-10-07 09:37:33 [INFO  ] MessageAPI                      :96   - List Modem
+2021-10-07 10:11:22 [INFO  ] MessageAPI                      :50   - Topic     : sms
+2021-10-07 10:11:22 [INFO  ] MessageAPI                      :51   - Message   : {
+    "callback_topic": "modem-list-797792",
+    "data": {"date_time": 1633576282},
+    "command": "get-modem-list"
+}
+2021-10-07 10:11:22 [INFO  ] MessageAPI                      :52   - Command   : get-modem-list
+2021-10-07 10:11:22 [INFO  ] MessageAPI                      :53   - Date Time : 1633576282
+2021-10-07 10:11:22 [INFO  ] MessageAPI                      :96   - List Modem
+2021-10-07 10:11:23 [INFO  ] MessageAPI                      :50   - Topic     : sms
+2021-10-07 10:11:23 [INFO  ] MessageAPI                      :51   - Message   : {
+    "callback_topic": "modem-list-171802",
+    "data": {"date_time": 1633576283},
+    "command": "get-modem-list"
+}
+2021-10-07 10:11:23 [INFO  ] MessageAPI                      :52   - Command   : get-modem-list
+2021-10-07 10:11:23 [INFO  ] MessageAPI                      :53   - Date Time : 1633576283
+2021-10-07 10:11:23 [INFO  ] MessageAPI                      :96   - List Modem
+2021-10-07 10:11:24 [INFO  ] MessageAPI                      :50   - Topic     : sms
+2021-10-07 10:11:24 [INFO  ] MessageAPI                      :51   - Message   : {
+    "callback_topic": "modem-list-912470",
+    "data": {"date_time": 1633576284},
+    "command": "get-modem-list"
+}
+2021-10-07 10:11:24 [INFO  ] MessageAPI                      :52   - Command   : get-modem-list
+2021-10-07 10:11:24 [INFO  ] MessageAPI                      :53   - Date Time : 1633576284
+2021-10-07 10:11:24 [INFO  ] MessageAPI                      :96   - List Modem
+2021-10-07 10:11:25 [INFO  ] MessageAPI                      :50   - Topic     : sms
+2021-10-07 10:11:25 [INFO  ] MessageAPI                      :51   - Message   : {
+    "callback_topic": "modem-list-601361",
+    "data": {"date_time": 1633576285},
+    "command": "get-modem-list"
+}
+2021-10-07 10:11:25 [INFO  ] MessageAPI                      :52   - Command   : get-modem-list
+2021-10-07 10:11:25 [INFO  ] MessageAPI                      :53   - Date Time : 1633576285
+2021-10-07 10:11:25 [INFO  ] MessageAPI                      :96   - List Modem
+2021-10-07 10:11:26 [INFO  ] MessageAPI                      :50   - Topic     : sms
+2021-10-07 10:11:26 [INFO  ] MessageAPI                      :51   - Message   : {
+    "callback_topic": "modem-list-546406",
+    "data": {"date_time": 1633576286},
+    "command": "get-modem-list"
+}
+2021-10-07 10:11:26 [INFO  ] MessageAPI                      :52   - Command   : get-modem-list
+2021-10-07 10:11:26 [INFO  ] MessageAPI                      :53   - Date Time : 1633576286
+2021-10-07 10:11:26 [INFO  ] MessageAPI                      :96   - List Modem
+2021-10-07 10:12:22 [INFO  ] MessageAPI                      :50   - Topic     : sms
+2021-10-07 10:12:22 [INFO  ] MessageAPI                      :51   - Message   : {
+    "callback_topic": "modem-list-984216",
+    "data": {"date_time": 1633576341},
+    "command": "get-modem-list"
+}
+2021-10-07 10:12:22 [INFO  ] MessageAPI                      :52   - Command   : get-modem-list
+2021-10-07 10:12:22 [INFO  ] MessageAPI                      :53   - Date Time : 1633576341
+2021-10-07 10:12:22 [INFO  ] MessageAPI                      :96   - List Modem
+2021-10-07 10:12:45 [INFO  ] MessageAPI                      :50   - Topic     : sms
+2021-10-07 10:12:45 [INFO  ] MessageAPI                      :51   - Message   : {
+    "callback_topic": "modem-list-130301",
+    "data": {"date_time": 1633576365},
+    "command": "get-modem-list"
+}
+2021-10-07 10:12:45 [INFO  ] MessageAPI                      :52   - Command   : get-modem-list
+2021-10-07 10:12:45 [INFO  ] MessageAPI                      :53   - Date Time : 1633576365
+2021-10-07 10:12:45 [INFO  ] MessageAPI                      :96   - List Modem
+2021-10-07 11:59:23 [INFO  ] MessageAPI                      :50   - Topic     : sms
+2021-10-07 11:59:23 [INFO  ] MessageAPI                      :51   - Message   : {
+    "callback_topic": "modem-list-508302",
+    "data": {"date_time": 1633582763},
+    "command": "get-modem-list"
+}
+2021-10-07 11:59:23 [INFO  ] MessageAPI                      :52   - Command   : get-modem-list
+2021-10-07 11:59:23 [INFO  ] MessageAPI                      :53   - Date Time : 1633582763
+2021-10-07 11:59:23 [INFO  ] MessageAPI                      :96   - List Modem
+2021-10-07 11:59:24 [INFO  ] MessageAPI                      :50   - Topic     : sms
+2021-10-07 11:59:24 [INFO  ] MessageAPI                      :51   - Message   : {
+    "callback_topic": "modem-list-354499",
+    "data": {"date_time": 1633582764},
+    "command": "get-modem-list"
+}
+2021-10-07 11:59:24 [INFO  ] MessageAPI                      :52   - Command   : get-modem-list
+2021-10-07 11:59:24 [INFO  ] MessageAPI                      :53   - Date Time : 1633582764
+2021-10-07 11:59:24 [INFO  ] MessageAPI                      :96   - List Modem
+2021-10-07 11:59:24 [INFO  ] MessageAPI                      :50   - Topic     : sms
+2021-10-07 11:59:24 [INFO  ] MessageAPI                      :51   - Message   : {
+    "callback_topic": "modem-list-546564",
+    "data": {"date_time": 1633582764},
+    "command": "get-modem-list"
+}
+2021-10-07 11:59:24 [INFO  ] MessageAPI                      :52   - Command   : get-modem-list
+2021-10-07 11:59:24 [INFO  ] MessageAPI                      :53   - Date Time : 1633582764
+2021-10-07 11:59:24 [INFO  ] MessageAPI                      :96   - List Modem

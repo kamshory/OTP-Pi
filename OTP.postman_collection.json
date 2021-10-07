@@ -54,7 +54,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"command\": \"create-otp\",\r\n    \"data\": {\r\n        \"id\": {{datetime}},\r\n        \"date_time\": {{datetime}},\r\n        \"expiration\": {{expiration}},\r\n        \"receiver\": \"08126666666\",\r\n        \"message\": \"Your OTP is %s\",\r\n        \"reference\": \"{{timestamp}}\",\r\n        \"param1\": \"100000\",\r\n        \"param2\": \"1234567890\",\r\n        \"param3\": \"987654\",\r\n        \"param4\": \"674527846556468254\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"command\": \"request-otp\",\r\n    \"data\": {\r\n        \"id\": {{datetime}},\r\n        \"date_time\": {{datetime}},\r\n        \"expiration\": {{expiration}},\r\n        \"receiver\": \"08126666666\",\r\n        \"message\": \"Your OTP is %s\",\r\n        \"reference\": \"{{timestamp}}\",\r\n        \"param1\": \"100000\",\r\n        \"param2\": \"1234567890\",\r\n        \"param3\": \"987654\",\r\n        \"param4\": \"674527846556468254\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
