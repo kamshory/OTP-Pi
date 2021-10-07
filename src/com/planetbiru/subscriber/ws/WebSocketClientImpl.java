@@ -110,10 +110,12 @@ public class WebSocketClientImpl extends Thread{
             MessageAPI api = new MessageAPI();
             JSONObject response = api.processRequest(message, topic);  
             JSONObject requestJSON = new JSONObject(message);
+            String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
+            long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
             if(requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) || requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST))
             {
-            	this.delay(50);
-            	this.sendMessage(requestJSON.optString(JsonKey.CALLBACK_TOPIC, ""), response.toString());
+            	this.delay(callbackDelay);
+            	this.sendMessage(callbackTopic, response.toString());
             }
             
 		}
@@ -124,6 +126,7 @@ public class WebSocketClientImpl extends Thread{
 			 */
 		}	
 	}
+	
 	private void sendMessage(String callbackTopic, String message) {
 		String endpoint = this.createWSEndpoint();
 		endpoint = this.fixWSEndpoint(endpoint, callbackTopic);
