@@ -1332,7 +1332,7 @@ In this scenario, the user does not need a public IP. Users only need:
 
 The WSMessageBroker-based server uses the WebSocket protocol. Please download **OTP-Publisher** at https://github.com/kamshory/OTP-Publisher
 
-**Handhakes**
+**Handshakes**
 
 The handshake between OTP-Pi and WSMessageBroker is as follows:
 1. OTP-Pi as client and WSMessageBroker as server
@@ -1349,7 +1349,7 @@ The handshake between OTP-Pi and WSMessageBroker is as follows:
 | Password | password |
 | Topic | sms |
 
-**Example of a WebSocket Handhake**
+**Example of a WebSocket Handshake**
 
 ```http
 GET /ws?topic=sms HTTP/1.1
