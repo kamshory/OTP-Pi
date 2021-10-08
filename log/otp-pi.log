@@ -1082,6 +1082,7 @@ List of Unused Config:
 2021-10-07 11:59:24 [INFO  ] MessageAPI                      :52   - Command   : get-modem-list
 2021-10-07 11:59:24 [INFO  ] MessageAPI                      :53   - Date Time : 1633582764
 2021-10-07 11:59:24 [INFO  ] MessageAPI                      :96   - List Modem
+<<<<<<< Updated upstream
 2021-10-07 21:48:24 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_ENABLE_AMQP="true"' >> $HOME/.bashrc
 2021-10-07 21:48:24 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_ENABLE_DDNS="true"' >> $HOME/.bashrc
 2021-10-07 21:48:24 [INFO  ] ConfigLoader                    :407  - echo 'export OTPPI_CRON_ENABLE_DEVICE="true"' >> $HOME/.bashrc
@@ -8572,3 +8573,5 @@ List of Unused Config:
 2021-10-08 22:48:57 [INFO  ] ConfigLoader                    :373  - otppi.sms.debug.read
 2021-10-08 22:48:57 [INFO  ] ConfigLoader                    :373  - otppi.ssh.ping.command
 2021-10-08 22:49:01 [INFO  ] Application                     :191  - Service started
+=======
+>>>>>>> Stashed changes
