@@ -77,7 +77,10 @@ public class RabbitMQSubscriber{
 				
 		    };
 		    ConfigSubscriberAMQP.setConnected(true);
-		    this.channel.basicConsume(topic, true, consumer);
+		    if(this.channel != null)
+		    {
+		    	this.channel.basicConsume(topic, true, consumer);
+		    }
 		} 
 		catch (IOException e) 
 		{
