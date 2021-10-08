@@ -116,8 +116,7 @@ public class WebSocketClientImpl extends Thread{
             {
             	this.delay(callbackDelay);
             	this.sendMessage(callbackTopic, response.toString());
-            }
-            
+            }          
 		}
 		catch(JSONException e)
 		{

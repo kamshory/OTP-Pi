@@ -159,8 +159,7 @@ public class SubscriberMQTT extends Thread{
         {
         	this.delay(callbackDelay);
         	this.sendMessage(callbackTopic, response.toString());
-        }
-		
+        }		
 	}
 	
 	private void sendMessage(String callbackTopic, String message) {
@@ -194,9 +193,6 @@ public class SubscriberMQTT extends Thread{
 			 * Do nothing
 			 */
 		}
-	
-		
-		
 	}
 
 	public boolean isRunning() {

@@ -162,9 +162,10 @@ public class RabbitMQSubscriber{
             JSONObject requestJSON = new JSONObject(message);
             String command = requestJSON.optString(JsonKey.COMMAND, "");
             String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
+            long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
             if(command.equals(ConstantString.REQUEST_USSD) || command.equals(ConstantString.GET_MODEM_LIST))
             {
-            	this.delay(50);
+            	this.delay(callbackDelay);
             	this.sendMessage(callbackTopic, response.toString());
             }
 		}
