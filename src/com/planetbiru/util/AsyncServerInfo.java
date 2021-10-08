@@ -14,6 +14,6 @@ public class AsyncServerInfo extends Thread{
 		info.put("cpu", ServerInfo.cpuTemperatureInfo());
 		info.put("storage", ServerInfo.storageInfo());
 		info.put("memory", ServerInfo.memoryInfo());
-		ServerInfo.setCacheServerInfo(info.toString(4));
+		ServerInfo.setCacheServerInfo(info.toString(0));
 	}
 }

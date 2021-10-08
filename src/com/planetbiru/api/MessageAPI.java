@@ -8,8 +8,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.planetbiru.buzzer.Buzzer;
+import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigBlocking;
 import com.planetbiru.config.ConfigGeneral;
+import com.planetbiru.config.ConfigModem;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.constant.ResponseCode;
@@ -46,7 +48,7 @@ public class MessageAPI {
 			if(data != null)
 			{
 				logger.info("Topic     : " + topic);
-				logger.info("Message   : " + requestJSON.toString(4));
+				logger.info("Message   : " + requestJSON.toString(0));
 				logger.info("Command   : " + command);
 				logger.info("Date Time : " + data.optLong(JsonKey.DATE_TIME, 0));
 				if(command.equals(ConstantString.SEND_SMS))
@@ -74,10 +76,10 @@ public class MessageAPI {
 					logger.info("Unblock Number");
 					responseJSON = this.unblockMSISDN(command, data);					
 				}
-				else if(command.equals(ConstantString.CREATE_OTP))
+				else if(command.equals(ConstantString.REQUEST_OTP))
 				{
-					logger.info("Create OTP");
-					responseJSON = this.createOTP(command, data, ste);					
+					logger.info("Request OTP");
+					responseJSON = this.requestOTP(command, data, ste);					
 				}
 				else if(command.equals(ConstantString.VERIFY_OTP))
 				{
@@ -89,15 +91,37 @@ public class MessageAPI {
 					logger.info("Request USSD");
 					responseJSON = this.requestUSSD(command, data);					
 				}
+				else if(command.equals(ConstantString.GET_MODEM_LIST))
+				{
+					logger.info("List Modem");
+					responseJSON = this.listModem(command, data);					
+				}
 			}		
 		}
 		catch(JSONException | GSMException | SerialPortConnectionException e)
 		{
-			logger.error(e.getMessage());
+			logger.error(e.getMessage(), e);
 		}
 		return responseJSON;
 	}
 	
+	private JSONObject listModem(String command, JSONObject data) {
+		JSONObject responseJSON = new JSONObject();
+		JSONObject jsonData = new JSONObject();
+		String responseCode = ResponseCode.FAILED;
+		if(data != null)
+		{
+			ConfigModem.load(Config.getModemSettingPath());
+			JSONObject list = ConfigModem.getStatus();
+			jsonData.put(JsonKey.MODEM_LIST, list);
+			responseCode = ResponseCode.SUCCESS;
+		}	
+		responseJSON.put(JsonKey.COMMAND, command);
+		responseJSON.put(JsonKey.DATA, jsonData);
+		responseJSON.put(JsonKey.RESPONSE_CODE, responseCode);
+		return responseJSON;
+	}
+
 	private JSONObject requestUSSD(String command, JSONObject data) {
 		JSONObject responseJSON = new JSONObject();
 		JSONObject jsonData = new JSONObject();
@@ -132,7 +156,7 @@ public class MessageAPI {
 		return GSMUtil.executeUSSD(ussdCode, modemID);	
 	}
 
-	private JSONObject createOTP(String command, JSONObject data, StackTraceElement ste) throws SerialPortConnectionException {
+	private JSONObject requestOTP(String command, JSONObject data, StackTraceElement ste) throws SerialPortConnectionException {
 		String dateTime = data.optString(JsonKey.DATE_TIME, "").trim();
 		String otpID = data.optString(JsonKey.REFERENCE, "").trim();
 		String receiver = data.optString(JsonKey.RECEIVER, "").trim();

@@ -15,6 +15,7 @@ import com.planetbiru.config.ConfigSubscriberAMQP;
 import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigSubscriberRedis;
 import com.planetbiru.config.ConfigSubscriberWS;
+import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.device.ResetDevice;
 import com.planetbiru.gsm.InternetDialUtil;
@@ -359,7 +360,7 @@ public class Application {
 	public static void restartService()
 	{
 		JSONObject info = new JSONObject();
-		info.put(JsonKey.COMMAND, "server-shutdown");
+		info.put(JsonKey.COMMAND, ConstantString.SERVER_SHUTDOWN);
 		ServerWebSocketAdmin.broadcastMessage(info.toString());	
 		Application.stopAllServices();
 		/**
@@ -402,7 +403,7 @@ public class Application {
 	}
 
 	public static SubscriberAMQP getAmqpSubscriber() {
-		return amqpSubscriber;
+		return Application.amqpSubscriber;
 	}
 
 	public static void setAmqpSubscriber(SubscriberAMQP amqpSubscriber) {
@@ -410,7 +411,7 @@ public class Application {
 	}
 
 	public static SubscriberRedis getRedisSubscriber() {
-		return redisSubscriber;
+		return Application.redisSubscriber;
 	}
 
 	public static void setRedisSubscriber(SubscriberRedis redisSubscriber) {

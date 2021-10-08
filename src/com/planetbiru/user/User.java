@@ -44,7 +44,7 @@ public class User {
 	
 	public String toString()
 	{
-		return this.toJSONObject().toString(4);
+		return this.toJSONObject().toString(0);
 	}
 	public String getUsername() {
 		return username;

@@ -16,6 +16,7 @@ import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.api.MessageAPI;
 import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigSubscriberMQTT;
+import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 
 public class SubscriberMQTT extends Thread{
@@ -135,16 +136,30 @@ public class SubscriberMQTT extends Thread{
 		}		
 	}
 	
+	private void delay(long sleep) {
+		try 
+		{
+			Thread.sleep(sleep);
+		} 
+		catch (InterruptedException e) 
+		{
+			Thread.currentThread().interrupt();
+		}
+		
+	}
+	
 	public void evtOnMessage(String topic, MqttMessage payload) {
 		String message = new String(payload.getPayload());
         MessageAPI api = new MessageAPI();
         JSONObject response = api.processRequest(message, topic);
-        JSONObject requestJSON = new JSONObject(message);
-        if(requestJSON.optString(JsonKey.COMMAND, "").equals("request-ussd") || requestJSON.optString(JsonKey.COMMAND, "").equals("list-modem"))
+        JSONObject requestJSON = new JSONObject(message); 
+        String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
+        long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
+        if(requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) || requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST))
         {
-        	this.sendMessage(requestJSON.optString(JsonKey.CALLBACK_TOPIC, ""), response.toString());
-        }
-		
+        	this.delay(callbackDelay);
+        	this.sendMessage(callbackTopic, response.toString());
+        }		
 	}
 	
 	private void sendMessage(String callbackTopic, String message) {
@@ -174,11 +189,10 @@ public class SubscriberMQTT extends Thread{
 			mqttSubscriber.close();
 			
 		} catch (MqttException e) {
-			e.printStackTrace();
+			/**
+			 * Do nothing
+			 */
 		}
-	
-		
-		
 	}
 
 	public boolean isRunning() {

@@ -58,7 +58,7 @@ public class HttpUtil {
 		itemData.put(JsonKey.MESSAGE, message);
 		data.put(itemData);
 		messageJSON.put(JsonKey.DATA, data);		
-		ServerWebSocketAdmin.broadcastMessage(messageJSON.toString(4));			
+		ServerWebSocketAdmin.broadcastMessage(messageJSON.toString(0));			
 	}
 
 	public static String getMIMEType(String fileName) 

@@ -41,7 +41,7 @@ public class ConstantString {
 	public static final String ACCEPT                          = "Accept";
 	public static final String BEARER                          = "Bearer ";
 	public static final String TEXT_PLAIN                      = "text/plain";
-	public static final String CREATE_OTP                      = "create-otp";
+	public static final String REQUEST_OTP                     = "request-otp";
 	public static final String VERIFY_OTP                      = "verify-otp";
 	public static final String DOCUMENT_PATH_SEPARATOR         = "/";
 	public static final String SIM_CARD_NOT_READY              = "SIM card is not ready";
@@ -54,6 +54,10 @@ public class ConstantString {
 	public static final String ALL                             = "all";
 	public static final String PATH_SEPARATOR                  = "/";
 	public static final String REQUEST_USSD                    = "request-ussd";
+	public static final String GET_MODEM_LIST                  = "get-modem-list";
+	public static final String SERVER_SHUTDOWN                 = "server-shutdown";
+	public static final String SERVER_INFO                     = "server-info";
+	public static final String OTP_MODEM_CONNECTED             = "otp-modem-connected";
 	
 	private ConstantString()
 	{

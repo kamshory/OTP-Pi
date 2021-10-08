@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import com.planetbiru.api.MessageAPI;
 import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
@@ -76,7 +77,10 @@ public class RabbitMQSubscriber{
 				
 		    };
 		    ConfigSubscriberAMQP.setConnected(true);
-		    this.channel.basicConsume(ConfigSubscriberAMQP.getSubscriberAmqpTopic(), true, consumer);
+		    if(this.channel != null)
+		    {
+		    	this.channel.basicConsume(topic, true, consumer);
+		    }
 		} 
 		catch (IOException e) 
 		{
@@ -140,7 +144,17 @@ public class RabbitMQSubscriber{
 		}
 		this.reconnect = false;	
 	}
-	
+	public void delay(long sleep)
+	{
+		try 
+		{
+			Thread.sleep(sleep);
+		} 
+		catch (InterruptedException e) 
+		{
+			Thread.currentThread().interrupt();
+		}
+	}
 	public void evtOnMessage(byte[] body, String topic) 
 	{		
         if(body != null)
@@ -151,13 +165,29 @@ public class RabbitMQSubscriber{
             JSONObject requestJSON = new JSONObject(message);
             String command = requestJSON.optString(JsonKey.COMMAND, "");
             String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
-            if(command.equals("request-ussd") || command.equals("list-modem"))
+            long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
+            if(command.equals(ConstantString.REQUEST_USSD) || command.equals(ConstantString.GET_MODEM_LIST))
             {
+            	this.delay(callbackDelay);
             	this.sendMessage(callbackTopic, response.toString());
             }
 		}
 	}
+	
 	private void sendMessage(String callbackTopic, String message) {
+		try(Channel replyChannel = this.connection.createChannel()) 
+		{
+			replyChannel.basicPublish("", callbackTopic, null, message.getBytes());
+		} 
+		catch (IOException | TimeoutException e) 
+		{
+			/**
+			 * Do nothing
+			 */
+		}	
+	}
+	
+	public void sendMessageX(String callbackTopic, String message) {
 		ConnectionFactory connectionFactory = new ConnectionFactory();
 	    connectionFactory.setHost(ConfigSubscriberAMQP.getSubscriberAmqpAddress());
 	    connectionFactory.setPort(ConfigSubscriberAMQP.getSubscriberAmqpPort());
@@ -182,13 +212,13 @@ public class RabbitMQSubscriber{
     			 */
     		}
 		}	
-		
+	    
 	    try(
 	    		Connection clientConnection = connectionFactory.newConnection();
-	    		Channel clientChannel = clientConnection.createChannel()) 
+	    		Channel clientChannel = clientConnection.createChannel()
+	    		) 
 	    {
-	    	clientChannel.queueDeclare(callbackTopic, false, false, false, null);
-	    	clientChannel.basicPublish(callbackTopic, "", null, message.getBytes());
+	    	clientChannel.basicPublish("", callbackTopic, null, message.getBytes());
 	    }
 	    catch (IOException | TimeoutException e) 
 	    {

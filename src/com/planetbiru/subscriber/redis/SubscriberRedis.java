@@ -11,6 +11,7 @@ import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.api.MessageAPI;
 import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigSubscriberRedis;
+import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 
 import redis.clients.jedis.Jedis;
@@ -104,13 +105,28 @@ public class SubscriberRedis extends Thread {
 		this.setConnected(true);
 	}
 	
+	private void delay(long sleep) {
+		try 
+		{
+			Thread.sleep(sleep);
+		} 
+		catch (InterruptedException e) 
+		{
+			Thread.currentThread().interrupt();
+		}
+		
+	}
+	
 	public void evtOnMessage(String topic, String message) {
         MessageAPI api = new MessageAPI();
         JSONObject response = api.processRequest(message, topic);
         JSONObject requestJSON = new JSONObject(message);
-        if(requestJSON.optString(JsonKey.COMMAND, "").equals("request-ussd") || requestJSON.optString(JsonKey.COMMAND, "").equals("list-modem"))
+        String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
+        long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
+        if(requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) || requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST))
         {
-        	this.sendMessage(requestJSON.optString(JsonKey.CALLBACK_TOPIC, ""), response.toString());
+        	this.delay(callbackDelay);
+        	this.sendMessage(callbackTopic, response.toString());
         }
 	}
 	
@@ -150,6 +166,7 @@ public class SubscriberRedis extends Thread {
 		try
 		{
 			jedisSubscriber.connect();	
+			System.out.println("callbackTopic : "+callbackTopic);
 			jedisSubscriber.publish(callbackTopic.getBytes(), message.getBytes());				
 		}
 		catch(JedisConnectionException e)
@@ -157,6 +174,7 @@ public class SubscriberRedis extends Thread {
 			/**
 			 * Do nothing
 			 */
+			e.printStackTrace();
 		}
 		finally 
 		{

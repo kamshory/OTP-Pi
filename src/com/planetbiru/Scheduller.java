@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.apache.log4j.Logger;
 import org.apache.logging.log4j.core.util.CronExpression;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,6 +12,7 @@ import org.json.JSONObject;
 
 import com.planetbiru.config.ConfigDDNS;
 import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigSubscriberRedis;
 import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.config.ConfigGeneral;
@@ -39,6 +39,10 @@ public class Scheduller extends Thread{
 	private String cronExpressionAMQPCheck = ConstantString.CRON_EVERY_MINUTE;
 
 	private String cronExpressionRedisCheck = ConstantString.CRON_EVERY_MINUTE;
+	
+	private String cronExpressionMQTTCheck = ConstantString.CRON_EVERY_MINUTE;
+
+	private String cronExpressionWSCheck = ConstantString.CRON_EVERY_MINUTE;
 
 	private String cronExpressionStatusServer = ConstantString.CRON_EVERY_MINUTE;
 
@@ -52,19 +56,27 @@ public class Scheduller extends Thread{
 
 	private boolean cronUpdateRedis = false;
 	
+	private boolean cronUpdateMQTT = false;
+	
+	private boolean cronUpdateWS = false;
+
 	private boolean cronCeviceCheck = false;
 	
-	private static Logger logger = Logger.getLogger(Scheduller.class);
-	
 	public Scheduller() {
-		this.cronExpressionDeviceCheck = ConfigLoader.getConfig("otpbroker.cron.expression.device");
-		this.cronExpressionAMQPCheck = ConfigLoader.getConfig("otpbroker.cron.expression.amqp");
-		this.cronExpressionDDNSUpdate = ConfigLoader.getConfig("otpbroker.cron.expression.general");
-		this.cronExpressionStatusServer = ConfigLoader.getConfig("otpbroker.cron.expression.server.status");		
-		this.cronUpdateServerStatus = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.server.status");
-		this.cronUpdateDDNS = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.ddns");
-		this.cronUpdateAMQP = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.amqp");
-		this.cronCeviceCheck = ConfigLoader.getConfigBoolean("otpbroker.cron.enable.device");
+		this.cronExpressionDeviceCheck = ConfigLoader.getConfig("otppi.cron.expression.device");
+		this.cronExpressionAMQPCheck = ConfigLoader.getConfig("otppi.cron.expression.amqp");
+		this.cronExpressionRedisCheck = ConfigLoader.getConfig("otppi.cron.expression.redis");
+		this.cronExpressionMQTTCheck = ConfigLoader.getConfig("otppi.cron.expression.mqtt");
+		this.cronExpressionWSCheck = ConfigLoader.getConfig("otppi.cron.expression.ws");
+		this.cronExpressionDDNSUpdate = ConfigLoader.getConfig("otppi.cron.expression.general");
+		this.cronExpressionStatusServer = ConfigLoader.getConfig("otppi.cron.expression.server.status");		
+		this.cronUpdateServerStatus = ConfigLoader.getConfigBoolean("otppi.cron.enable.server.status");
+		this.cronUpdateDDNS = ConfigLoader.getConfigBoolean("otppi.cron.enable.ddns");
+		this.cronUpdateAMQP = ConfigLoader.getConfigBoolean("otppi.cron.enable.amqp");
+		this.cronUpdateMQTT = ConfigLoader.getConfigBoolean("otppi.cron.enable.mqtt");
+		this.cronUpdateRedis = ConfigLoader.getConfigBoolean("otppi.cron.enable.redis");
+		this.cronUpdateWS = ConfigLoader.getConfigBoolean("otppi.cron.enable.ws");
+		this.cronCeviceCheck = ConfigLoader.getConfigBoolean("otppi.cron.enable.device");
 	}
 	
 	public void stopService() {
@@ -77,9 +89,6 @@ public class Scheduller extends Thread{
 		do
 		{
 			Date currentTime = new Date();
-			/**
-			 * Update time
-			 */
 			if(!ConfigGeneral.getNtpUpdateInterval().isEmpty())
 			{
 				this.updateTime(currentTime, ConfigGeneral.getNtpUpdateInterval());
@@ -115,6 +124,18 @@ public class Scheduller extends Thread{
 			 */
 			
 			this.redisCheck(currentTime);				
+
+			/**
+			 * Check MQTT
+			 */
+			
+			this.mqttCheck(currentTime);				
+
+			/**
+			 * Check WS
+			 */
+			
+			this.wsCheck(currentTime);				
 
 			/**
 			 * Status server
@@ -290,7 +311,9 @@ public class Scheduller extends Thread{
 		}
 		catch(JSONException | ParseException e)
 		{
-			logger.error("updateDNS ERROR "+e.getMessage()+" "+cronExpression);
+			/**
+			 * Do nothing
+			 */
 		}
 		return update;	
 	}
@@ -364,6 +387,52 @@ public class Scheduller extends Thread{
 		}			
 	}
 
+	private void mqttCheck(Date currentTime) {
+		if(this.cronUpdateMQTT)
+		{
+			CronExpression exp;		
+			try
+			{
+				exp = new CronExpression(this.cronExpressionMQTTCheck);
+				Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
+				if(currentTime.getTime() > DeviceAPI.getLastCheckMQTT())
+				{
+					this.mqttCheck();
+					DeviceAPI.setLastCheckMQTT(nextValidTimeAfter.getTime());
+				}
+			}
+			catch(JSONException | ParseException e)
+			{
+				/**
+				 * Do nothing
+				 */
+			}
+		}			
+	}
+	
+	private void wsCheck(Date currentTime) {
+		if(this.cronUpdateWS)
+		{
+			CronExpression exp;		
+			try
+			{
+				exp = new CronExpression(this.cronExpressionWSCheck);
+				Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
+				if(currentTime.getTime() > DeviceAPI.getLastCheckWS())
+				{
+					this.wsCheck();
+					DeviceAPI.setLastCheckWS(nextValidTimeAfter.getTime());
+				}
+			}
+			catch(JSONException | ParseException e)
+			{
+				/**
+				 * Do nothing
+				 */
+			}
+		}			
+	}
+
 	private void updateServerStatus(Date currentTime) {
 		if(this.cronUpdateServerStatus)
 		{
@@ -403,13 +472,13 @@ public class Scheduller extends Thread{
 	{
 		JSONArray data = new JSONArray();
 		JSONObject modem = new JSONObject();
-		modem.put(JsonKey.NAME, "otp-modem-connected");
+		modem.put(JsonKey.NAME, ConstantString.OTP_MODEM_CONNECTED);
 		modem.put(JsonKey.VALUE, GSMUtil.isConnected());
 		modem.put(JsonKey.DATA, ConfigModem.getStatus());
 		data.put(modem);
 		JSONObject serverInfo = new JSONObject();
 		serverInfo.put(JsonKey.DATA, data);
-		serverInfo.put(JsonKey.COMMAND, "server-info");
+		serverInfo.put(JsonKey.COMMAND, ConstantString.SERVER_INFO);
 		ServerWebSocketAdmin.broadcastMessage(serverInfo.toString());
 	}
 
@@ -424,6 +493,18 @@ public class Scheduller extends Thread{
 	{
 		boolean connected = Application.getRedisSubscriber().ping(5000);
 		ServerInfo.sendRedisStatus(connected);
+	}
+
+	private void mqttCheck()
+	{
+		boolean connected = ConfigSubscriberMQTT.isConnected();
+		ServerInfo.sendMQTTStatus(connected);
+	}
+
+	private void wsCheck()
+	{
+		boolean connected = ConfigSubscriberWS.isConnected();
+		ServerInfo.sendWSStatus(connected);
 	}
 
 	public void updateServerStatus()

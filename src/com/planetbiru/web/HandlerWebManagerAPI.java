@@ -177,7 +177,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		}
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
-		byte[] responseBody = responseJSON.toString(4).getBytes();
+		byte[] responseBody = responseJSON.toString(0).getBytes();
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 		httpExchange.getResponseBody().write(responseBody);
 		httpExchange.close();
@@ -218,7 +218,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		}
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
-		byte[] responseBody = responseJSON.toString(4).getBytes();
+		byte[] responseBody = responseJSON.toString(0).getBytes();
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 		httpExchange.getResponseBody().write(responseBody);
 		httpExchange.close();
