@@ -177,6 +177,10 @@ public class WebSocketClientImpl extends Thread{
 			this.reconnect = false;
 			this.restartThread();
 		}
+		else
+		{
+			ConfigSubscriberWS.setConnected(true);
+		}
 		/**
 		 * Do nothing
 		 */
@@ -185,6 +189,7 @@ public class WebSocketClientImpl extends Thread{
 	public void evtOnClose(int code, String reason, boolean remote)
 	{
 		Buzzer.toneDisconnectWs();
+		ConfigSubscriberWS.setConnected(false);
 		if(this.reconnect)
 		{
 			this.reconnect = false;
@@ -194,6 +199,7 @@ public class WebSocketClientImpl extends Thread{
 	public void evtOnError(Exception e)
 	{
 		Buzzer.toneDisconnectWs();
+		ConfigSubscriberWS.setConnected(false);
 		if(this.reconnect)
 		{
 			this.reconnect = false;

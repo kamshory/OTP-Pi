@@ -22,6 +22,8 @@ public class DeviceAPI {
 	private static long lastCheckStatus = 0;
 	private static long lastCheckAMQP = 0;
 	private static long lastCheckRedis = 0;
+	private static long lastCheckMQTT = 0;
+	private static long lastCheckWS = 0;
 
 	private DeviceAPI()
 	{
@@ -194,6 +196,22 @@ public class DeviceAPI {
 
 	public static void setLastCheckRedis(long lastCheckRedis) {
 		DeviceAPI.lastCheckRedis = lastCheckRedis;
+	}
+
+	public static long getLastCheckMQTT() {
+		return lastCheckMQTT;
+	}
+
+	public static void setLastCheckMQTT(long lastCheckMQTT) {
+		DeviceAPI.lastCheckMQTT = lastCheckMQTT;
+	}
+
+	public static long getLastCheckWS() {
+		return lastCheckWS;
+	}
+
+	public static void setLastCheckWS(long lastCheckWS) {
+		DeviceAPI.lastCheckWS = lastCheckWS;
 	}
 	
 }
