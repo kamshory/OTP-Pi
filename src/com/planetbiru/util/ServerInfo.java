@@ -67,7 +67,7 @@ public class ServerInfo {
 		info.put(JsonKey.COMMAND, ServerInfo.SERVER_INFO);
 		info.put(JsonKey.DATA, data);
 	
-		ServerWebSocketAdmin.broadcastMessage(info.toString(4));				
+		ServerWebSocketAdmin.broadcastMessage(info.toString(0));				
 	}
 	
 	public static void sendWSStatus(boolean connected) {
@@ -87,7 +87,7 @@ public class ServerInfo {
 		info.put(JsonKey.COMMAND, ServerInfo.SERVER_INFO);
 		info.put(JsonKey.DATA, data);
 	
-		ServerWebSocketAdmin.broadcastMessage(info.toString(4));
+		ServerWebSocketAdmin.broadcastMessage(info.toString(0));
 	}
 	
 	public static void sendRedisStatus(boolean connected) {
@@ -103,7 +103,7 @@ public class ServerInfo {
 		info.put(JsonKey.COMMAND, ServerInfo.SERVER_INFO);
 		info.put(JsonKey.DATA, data);
 	
-		ServerWebSocketAdmin.broadcastMessage(info.toString(4));
+		ServerWebSocketAdmin.broadcastMessage(info.toString(0));
 		
 	}
 

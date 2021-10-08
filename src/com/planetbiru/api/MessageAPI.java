@@ -48,7 +48,7 @@ public class MessageAPI {
 			if(data != null)
 			{
 				logger.info("Topic     : " + topic);
-				logger.info("Message   : " + requestJSON.toString(4));
+				logger.info("Message   : " + requestJSON.toString(0));
 				logger.info("Command   : " + command);
 				logger.info("Date Time : " + data.optLong(JsonKey.DATE_TIME, 0));
 				if(command.equals(ConstantString.SEND_SMS))

@@ -179,7 +179,7 @@ public class DNSDynu extends DNS {
 		requestJSON.put("group", group);
 		requestJSON.put("ipv4Address", ipAddress);
 		
-		String body = requestJSON.toString(4);
+		String body = requestJSON.toString(0);
 		
 		ResponseEntityCustom response = this.httpExchange(method, url, null, headers, body, timeout);
 	
@@ -259,7 +259,7 @@ public class DNSDynu extends DNS {
 		requestJSON.put("group", group);
 		requestJSON.put("ipv4Address", ipAddress);
 		
-		String requestBody = requestJSON.toString(4);
+		String requestBody = requestJSON.toString(0);
 		
 		ResponseEntityCustom response = this.httpExchange(method, url, null, headers, requestBody, timeout);
 	

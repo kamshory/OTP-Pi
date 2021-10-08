@@ -293,7 +293,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				responseBody = ServerInfo.getOpenPort().toString(4).getBytes();
+				responseBody = ServerInfo.getOpenPort().toString(0).getBytes();
 			}
 			else
 			{
@@ -1708,7 +1708,7 @@ public class HandlerWebManagerData implements HttpHandler {
 					from = Utility.atol(tm[0]);
 					to = Utility.atol(tm[1]);
 				}
-				responseBody = ServerStatus.load(from, to).toString(4).getBytes();	
+				responseBody = ServerStatus.load(from, to).toString(0).getBytes();	
 			}
 			else
 			{

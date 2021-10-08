@@ -38,7 +38,7 @@ public class HandlerAPIMessage implements HttpHandler {
     	            String requestBodyStr = new String(requestBody);     
     	            MessageAPI api = new MessageAPI();
     	            JSONObject result = api.processRequest(requestBodyStr);
-    	            byte[] response = result.toString(4).getBytes();            
+    	            byte[] response = result.toString().getBytes();            
     	            responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
     	            httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, response.length);	 
     	            httpExchange.getResponseBody().write(response);
