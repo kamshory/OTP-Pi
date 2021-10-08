@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.apache.log4j.Logger;
 import org.apache.logging.log4j.core.util.CronExpression;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,8 +52,6 @@ public class Scheduller extends Thread{
 	private boolean cronUpdateRedis = false;
 	
 	private boolean cronCeviceCheck = false;
-	
-	private static Logger logger = Logger.getLogger(Scheduller.class);
 	
 	public Scheduller() {
 		this.cronExpressionDeviceCheck = ConfigLoader.getConfig("otpbroker.cron.expression.device");
@@ -290,7 +287,9 @@ public class Scheduller extends Thread{
 		}
 		catch(JSONException | ParseException e)
 		{
-			logger.error("updateDNS ERROR "+e.getMessage()+" "+cronExpression);
+			/**
+			 * Do nothing
+			 */
 		}
 		return update;	
 	}
@@ -365,6 +364,7 @@ public class Scheduller extends Thread{
 	}
 
 	private void updateServerStatus(Date currentTime) {
+		System.out.println(this.cronExpressionStatusServer);
 		if(this.cronUpdateServerStatus)
 		{
 			CronExpression exp;		
@@ -403,13 +403,13 @@ public class Scheduller extends Thread{
 	{
 		JSONArray data = new JSONArray();
 		JSONObject modem = new JSONObject();
-		modem.put(JsonKey.NAME, "otp-modem-connected");
+		modem.put(JsonKey.NAME, ConstantString.OTP_MODEM_CONNECTED);
 		modem.put(JsonKey.VALUE, GSMUtil.isConnected());
 		modem.put(JsonKey.DATA, ConfigModem.getStatus());
 		data.put(modem);
 		JSONObject serverInfo = new JSONObject();
 		serverInfo.put(JsonKey.DATA, data);
-		serverInfo.put(JsonKey.COMMAND, "server-info");
+		serverInfo.put(JsonKey.COMMAND, ConstantString.SERVER_INFO);
 		ServerWebSocketAdmin.broadcastMessage(serverInfo.toString());
 	}
 

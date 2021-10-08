@@ -100,7 +100,7 @@ public class MessageAPI {
 		}
 		catch(JSONException | GSMException | SerialPortConnectionException e)
 		{
-			//logger.error(e.getMessage());
+			logger.error(e.getMessage(), e);
 		}
 		return responseJSON;
 	}

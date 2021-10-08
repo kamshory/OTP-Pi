@@ -55,6 +55,9 @@ public class ConstantString {
 	public static final String PATH_SEPARATOR                  = "/";
 	public static final String REQUEST_USSD                    = "request-ussd";
 	public static final String GET_MODEM_LIST                  = "get-modem-list";
+	public static final String SERVER_SHUTDOWN                 = "server-shutdown";
+	public static final String SERVER_INFO                     = "server-info";
+	public static final String OTP_MODEM_CONNECTED             = "otp-modem-connected";
 	
 	private ConstantString()
 	{
