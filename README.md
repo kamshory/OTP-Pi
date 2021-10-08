@@ -72,6 +72,8 @@ User can send OTP with several methods. OTP-Pi allow user to create and validate
 | Mosquitto | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ |
 | WebSocket | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ |
 
+If you wish all features to be enable from API, you can use  OTP-Publisher. Clone https://github.com/kamshory/OTP-Publisher to get it.
+
 ## Multiple Device
 
 Modem is a list of modems installed on the OTP-Pi. Modems are named based on the make and model of the device and the connection used. The modem can be turned on and off at any time. An inactive modem will not be used to send SMS even if it is physically attached to the OTP-Pi and receiving power.
