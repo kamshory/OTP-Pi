@@ -403,34 +403,16 @@ public class HandlerWebManager implements HttpHandler {
 				{
 					String message = "Username : "+user.getUsername()+"\r\nPassword : "+user.getPassword();
 					ConfigEmail.load(Config.getEmailSettingPath());
-					try 
-					{
-						MailUtil.send(email, "Account Information", message, ste);
-					} 
-					catch (MessagingException | NoEmailAccountException e) 
-					{
-						/**
-						 * Do nothing
-						 */
-					}
+					MailUtil.send(email, "Account Information", message, ste);
 				}
 				else if(!phone.isEmpty())
 				{
 					String message = "Username : "+user.getUsername()+"\r\nPassword : "+user.getPassword();
-					try 
-					{
-						GSMUtil.sendSMS(phone, message, ste);
-					} 
-					catch (GSMException | InvalidSIMPinException | SerialPortConnectionException e) 
-					{
-						/**
-						 * Do nothing
-						 */
-					}
+					GSMUtil.sendSMS(phone, message, ste);
 				}
 			}
 		} 
-		catch (NoUserRegisteredException e1) 
+		catch (NoUserRegisteredException | MessagingException | NoEmailAccountException | GSMException | InvalidSIMPinException | SerialPortConnectionException e1) 
 		{
 		}
 		
