@@ -45,7 +45,6 @@ function requestModemSignal(id)
         dataType: 'json',
         data: {action: 'request-signal-strength', id:id},
         success: function(receivedJSON){
-            //updateModemUI(receivedJSON);
         }
     });
 }
@@ -55,6 +54,7 @@ $(document).ready(function (e1) {
     setInterval(function(){
         requestModemSignal('');
     }, 5000);
+    
     $.ajax({
         type: "GET",
         url: "data/modem/list",
@@ -66,9 +66,7 @@ $(document).ready(function (e1) {
                 }
             }
         }
-    });
-
-    
+    }); 
 
     $(document).on('click', '.service-modem-sms .connect', function(e2){
         var modemID = $(this).closest('.service-item').attr('data-id');
@@ -131,6 +129,7 @@ $(document).ready(function (e1) {
             }
         });
     });
+    
     $(document).on('click', '.service-modem-sms .disconnect', function(e2){
         var modemID = $(this).closest('.service-item').attr('data-id');
         $.ajax({
@@ -142,6 +141,7 @@ $(document).ready(function (e1) {
             }
         });
     });
+    
     $(document).on('click', '.service-modem-internet .disconnect', function(e2){
         var modemID = $(this).closest('.service-item').attr('data-id');
         $.ajax({
