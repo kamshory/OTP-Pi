@@ -211,6 +211,10 @@ public class ConfigModem {
 	}
 	
 	public static JSONObject getStatus() {
+		return ConfigModem.getStatus(false);
+	}
+
+	public static JSONObject getStatus(boolean includeSignalStrength) {
 		JSONObject json = new JSONObject();
 		for (Map.Entry<String, DataModem> entry : ConfigModem.modemData.entrySet())
 		{
@@ -231,7 +235,7 @@ public class ConfigModem {
 			modem.put("port", value.getPort());
 			modem.put("smsCenter", value.getSmsCenter());
 			modem.put("defaultModem", value.isDefaultModem());
-			if(connected && ConfigModem.lastRequestSignalStrength > System.currentTimeMillis() - 15000)
+			if(connected && (includeSignalStrength || ConfigModem.lastRequestSignalStrength > System.currentTimeMillis() - 15000))
 			{
 				try 
 				{

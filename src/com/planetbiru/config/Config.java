@@ -84,7 +84,7 @@ public class Config {
 	private static int ddnsTimeout = 10000;
 	private static long waitLoopParent = 1000;
 	private static long waitLoopChild = 30000;
-	private static String resetConfigPath = "/otp-pi/reset-config.ini";
+	private static String resetConfigPath = "";
 	private static String resetDeviceType = "RPi";
 	private static String resetDeviceFile = "reset-config.ini";
 	private static boolean cacheHTMLFile = false;

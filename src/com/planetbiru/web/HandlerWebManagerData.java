@@ -236,7 +236,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		}
 		else
 		{
-			httpExchange.sendResponseHeaders(404, 0);
+			httpExchange.sendResponseHeaders(HttpStatus.NOT_FOUND, 0);
 			httpExchange.close();
 		}
 	}
@@ -282,9 +282,9 @@ public class HandlerWebManagerData implements HttpHandler {
 
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 		httpExchange.getResponseBody().write(responseBody);
-		httpExchange.close();	
-		
+		httpExchange.close();			
 	}
+	
 	public void handleOpenPort(HttpExchange httpExchange) throws IOException
 	{
 		Headers requestHeaders = httpExchange.getRequestHeaders();
