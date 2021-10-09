@@ -93,8 +93,8 @@ public class MessageAPI {
 				}
 				else if(command.equals(ConstantString.GET_MODEM_LIST))
 				{
-					logger.info("List Modem");
-					responseJSON = this.listModem(command, data);					
+					logger.info("Get Modem List");
+					responseJSON = this.getModemList(command, data);
 				}
 			}		
 		}
@@ -105,7 +105,7 @@ public class MessageAPI {
 		return responseJSON;
 	}
 	
-	private JSONObject listModem(String command, JSONObject data) {
+	private JSONObject getModemList(String command, JSONObject data) {
 		JSONObject responseJSON = new JSONObject();
 		JSONObject jsonData = new JSONObject();
 		String responseCode = ResponseCode.FAILED;
