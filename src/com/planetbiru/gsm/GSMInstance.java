@@ -3,6 +3,8 @@ package com.planetbiru.gsm;
 import java.util.Date;
 import java.util.List;
 
+import org.json.JSONObject;
+
 import com.fazecast.jSerialComm.SerialPortInvalidPortException;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigSMS;
@@ -286,6 +288,10 @@ public class GSMInstance {
 
 	public String testAT() throws GSMException, SerialPortConnectionException {
 		return this.gsm.executeAT("AT", 5, this.eventListener);
+	}
+
+	public JSONObject getSignalStrength() throws GSMException {
+		return this.gsm.getSignalStrength();
 	}
 
 	

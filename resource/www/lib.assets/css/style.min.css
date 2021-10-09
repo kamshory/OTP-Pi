@@ -566,13 +566,19 @@
   .service-item.enable.connected{
     background-color: #66DE93;
   }
+  .service-item.enable.disconnected button.disconnect{
+    display: none;
+  }
+  .service-item.enable.connected button.connect{
+    display: none;
+  }
   .service-item.disable.connected, .service-item.disable.disconnected{
     background-color: #F9F3F3;
   }
-  .service-item .test-at{
+  .service-item .test-at, .service-item button.signal{
     display: none;
   }
-  .service-item.connected .test-at{
+  .service-item.connected .test-at, .service-item.connected button.signal{
     display: inline;
   }
   
@@ -604,7 +610,7 @@
     margin-bottom: 10px;
   }
   .service-button{
-    padding-top: 5px;;
+    padding-top: 5px;
   }
   
   .button-area button, .button-area input[type="button"], .button-area input[type="reset"], .button-area input[type="submit"]{

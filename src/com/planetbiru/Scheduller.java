@@ -141,8 +141,7 @@ public class Scheduller extends Thread{
 			 * Status server
 			 */
 			
-			this.updateServerStatus(currentTime);
-			
+			this.updateServerStatus(currentTime);			
 			
 			this.delay(this.cronInterval);
 		}

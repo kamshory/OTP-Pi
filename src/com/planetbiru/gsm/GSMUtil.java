@@ -959,6 +959,16 @@ public class GSMUtil {
 		return result;
 	}
 
+	public static JSONObject getSignalStrength(String modemID) throws GSMException {
+		GSMInstance instance = GSMUtil.getGSMIntance(modemID);
+		JSONObject result = new JSONObject();
+		if(instance != null)
+		{
+			result = instance.getSignalStrength();
+		}
+		return result;
+	}
+
 	
 	
 

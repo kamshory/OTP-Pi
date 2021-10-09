@@ -58,6 +58,7 @@ public class ConstantString {
 	public static final String SERVER_SHUTDOWN                 = "server-shutdown";
 	public static final String SERVER_INFO                     = "server-info";
 	public static final String OTP_MODEM_CONNECTED             = "otp-modem-connected";
+	public static final String RESPONSE_GSM_OK                 = "\r\nOK";
 	
 	private ConstantString()
 	{

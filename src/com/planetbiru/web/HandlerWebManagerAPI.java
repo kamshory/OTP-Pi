@@ -764,6 +764,14 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				GSMUtil.disconnect(modemID);
 				ServerInfo.sendModemStatus();
 			} 
+			else if(action.equals("signal"))
+			{
+				JSONObject resp = GSMUtil.getSignalStrength(modemID);				
+				JSONArray data = new JSONArray();
+				responseJSON.put(JsonKey.COMMAND, "signal-strength");
+				data.put(resp);
+				responseJSON.put(JsonKey.DATA, data);
+			} 
 			else if(action.equals("test-at"))
 			{
 				JSONObject resp = GSMUtil.testAT(modemID);				

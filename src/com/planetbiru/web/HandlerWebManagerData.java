@@ -42,7 +42,6 @@ import com.planetbiru.cookie.CookieServer;
 import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMInstance;
 import com.planetbiru.gsm.GSMUtil;
-import com.planetbiru.gsm.InvalidPortException;
 import com.planetbiru.gsm.InvalidSIMPinException;
 import com.planetbiru.gsm.SMS;
 import com.planetbiru.gsm.SerialPortConnectionException;
@@ -75,10 +74,6 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			this.handleSMTPSetting(httpExchange);
 		}
-		else if(path.startsWith("/data/subscriber-ws-setting/get"))
-		{
-			this.handleSubscriberWSSetting(httpExchange);
-		}
 		else if(path.startsWith("/data/log/list"))
 		{
 			this.handleLogFile(httpExchange);
@@ -106,6 +101,10 @@ public class HandlerWebManagerData implements HttpHandler {
 		else if(path.startsWith("/data/block-list/list"))
 		{
 			this.handleBlockList(httpExchange);
+		}
+		else if(path.startsWith("/data/subscriber-ws-setting/get"))
+		{
+			this.handleSubscriberWSSetting(httpExchange);
 		}
 		else if(path.startsWith("/data/subscriber-amqp-setting/get"))
 		{
@@ -206,6 +205,10 @@ public class HandlerWebManagerData implements HttpHandler {
 		else if(path.startsWith("/data/modem/detail/"))
 		{
 			this.handleModemDetail(httpExchange);
+		}
+		else if(path.startsWith("/data/modem/signal/"))
+		{
+			this.handleModemSignal(httpExchange);
 		}
 		else if(path.startsWith("/data/modem-info/get/"))
 		{
@@ -646,6 +649,43 @@ public class HandlerWebManagerData implements HttpHandler {
 			}
 		}
 		catch(NoUserRegisteredException e)
+		{
+			statusCode = HttpStatus.UNAUTHORIZED;
+		}
+		cookie.saveSessionData();
+		cookie.putToHeaders(responseHeaders);
+		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
+		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
+
+		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+		httpExchange.getResponseBody().write(responseBody);
+		httpExchange.close();		
+	}
+	
+	//@GetMapping(path="/data/modem/signal/{id}")
+	public void handleModemSignal(HttpExchange httpExchange) throws IOException
+	{
+		String path = httpExchange.getRequestURI().getPath();
+		String id = path.substring("/data/modem/signal/".length());
+		
+		Headers requestHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
+		CookieServer cookie = new CookieServer(requestHeaders, Config.getSessionName(), Config.getSessionLifetime());
+		byte[] responseBody = "".getBytes();
+		int statusCode = HttpStatus.OK;
+		try
+		{
+			if(WebUserAccount.checkUserAuth(requestHeaders))
+			{
+				JSONObject signal = GSMUtil.getSignalStrength(id);
+				responseBody = signal.toString().getBytes();
+			}
+			else
+			{
+				statusCode = HttpStatus.UNAUTHORIZED;			
+			}
+		}
+		catch(NoUserRegisteredException | GSMException e)
 		{
 			statusCode = HttpStatus.UNAUTHORIZED;
 		}
@@ -1103,7 +1143,7 @@ public class HandlerWebManagerData implements HttpHandler {
 			}
 			responseBody = allSMS.toString().getBytes();
 		}
-		catch(NoUserRegisteredException | GSMException | InvalidSIMPinException | SerialPortConnectionException | InvalidPortException e)
+		catch(NoUserRegisteredException | GSMException | InvalidSIMPinException | SerialPortConnectionException e)
 		{
 			/**
 			 * Do nothing
@@ -1119,7 +1159,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		httpExchange.close();	
 	}
 	
-	private JSONArray readSMS(String modemID, String storage, String smsStatus) throws GSMException, InvalidSIMPinException, SerialPortConnectionException, InvalidPortException {
+	private JSONArray readSMS(String modemID, String storage, String smsStatus) throws GSMException, InvalidSIMPinException, SerialPortConnectionException {
 		JSONArray allSMS = new JSONArray();
 		if(modemID.isEmpty())
 		{

@@ -5,6 +5,10 @@ import com.fazecast.jSerialComm.SerialPortDataListener;
 import com.fazecast.jSerialComm.SerialPortEvent;
 import com.fazecast.jSerialComm.SerialPortInvalidPortException;
 import com.planetbiru.config.Config;
+import com.planetbiru.constant.ConstantString;
+import com.planetbiru.constant.JsonKey;
+import com.planetbiru.util.Utility;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -13,6 +17,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
 
 public class GSM {
     private SerialPort serialPort;
@@ -294,7 +299,7 @@ public class GSM {
     	storage = this.fixArrayString(storage);	
     	smsStatus = this.fixArrayString(smsStatus);	
     	this.executeAT(this.selectStorage(storage), 1, true);
-    	String result = this.executeAT("AT+CMGL="+smsStatus+"", 20, true);	  	
+    	String result = this.executeAT("AT+CMGL="+smsStatus, 20, true);	  	
 		result = this.fixingRawData(result);				
 		String[] arr = result.split("\r\n");	
 		int max = this.getMax(arr);				
@@ -402,9 +407,9 @@ public class GSM {
     }
     private String fixResultByOK(String result) 
     {
-    	if(result.contains("\r\nOK"))
+    	if(result.contains(ConstantString.RESPONSE_GSM_OK))
 		{
-			result = result.substring(0, result.indexOf("\r\nOK"));
+			result = result.substring(0, result.indexOf(ConstantString.RESPONSE_GSM_OK));
 		}
 		return result;
 	}
@@ -766,9 +771,52 @@ public class GSM {
 		this.gcRunning = gcRunning;
 	}
 
+	public JSONObject getSignalStrength() throws GSMException {
+		String atResult = this.executeATCommand("AT+CSQ");
+		JSONObject result = new JSONObject();
+		if(atResult.contains(ConstantString.RESPONSE_GSM_OK))
+		{
+			String raw = atResult;
+			raw = raw.replace("\t\nOK", "").replace("AT+CSQ", "").replace("+CSQ:", "").trim();
+			List<String> csvRecord = this.parseCSVResponse(raw);
+			if(csvRecord.size() > 1)
+			{
+				int value = Utility.atoi(csvRecord.get(0));
+				int dbm = (value*2) - 113;
+				String condition = this.getSignalCondition(value);
+				JSONObject data = new JSONObject();
+				data.put("value", value);
+				data.put("rssi", dbm);
+				data.put("condition", condition);
+				result.put(JsonKey.STATUS, "OK");
+				result.put(JsonKey.RESULT, atResult);
+				result.put(JsonKey.DATA, data);
+			}			
+		}
+		else
+		{
+			result.put(JsonKey.STATUS, "ERROR");
+		}
+		return result;
+	}
 
-	
-
-	
+	private String getSignalCondition(int value) {
+		if(value < 10)
+		{
+			return "Marginal";
+		}
+		else if(value >= 10 && value < 15)
+		{
+			return "OK";
+		}
+		else if(value >= 15 && value < 20)
+		{
+			return "Good";
+		}
+		else
+		{
+			return "Excellent";
+		}
+	}
 
 }
