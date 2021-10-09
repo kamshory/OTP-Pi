@@ -74,7 +74,7 @@ User can send OTP with several methods. OTP-Pi allow user to create and validate
 
 If you wish all features to be enable from API, you can use  OTP-Publisher. Clone https://github.com/kamshory/OTP-Publisher to get it.
 
-Vendors
+**Vendors**
 
 1. https://www.rabbitmq.com/
 2. https://redis.io/
