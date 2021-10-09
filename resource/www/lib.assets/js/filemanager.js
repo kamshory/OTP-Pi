@@ -1,5 +1,14 @@
 var tree = [];
 var source = '';
+function repeatText(num, txt)
+{
+    var ret = '';
+    for(var i = 1; i<num; i++)
+    {
+        ret += txt;
+    }
+    return ret;
+}
 $(document).ready(function(e){
     source = $('.file-manager').attr('data-source');
     $.ajax({
@@ -10,7 +19,6 @@ $(document).ready(function(e){
             tree = data;
             renderFile(tree, '');
             $('.parentdir').append(renderDirrectory(tree, ''));
-
             $('.select-path').empty();
             $('.select-path').append('<option value=""></option>');
             $('.parentdir').find('li').each(function(e3){
@@ -241,8 +249,9 @@ function hashSubdir(data)
     }
     return false;
 }
-function renderDirrectory(data, parentDir)
+function renderDirrectory(data, parentDir, level)
 {
+    level = level || 1;
     var list = ''; 
     var path = '';
     for(var i in data)
@@ -260,11 +269,11 @@ function renderDirrectory(data, parentDir)
             }
             if(hashSubdir(data[i]))
             {
-                li = '<li data-name="'+data[i].name+'" data-path="'+path+'" class="icon icon-dir"><a href="javascript:;">'+data[i].name+'</a><ul>'+renderDirrectory(data[i].child, path)+'</ul></li>';
+                li = '<li data-level="'+level+'" data-name="'+data[i].name+'" data-path="'+path+'" class="icon icon-dir"><a href="javascript:;">'+data[i].name+'</a><ul>'+renderDirrectory(data[i].child, path, level+1)+'</ul></li>';
             }
             else
             {
-                li = '<li data-name="'+data[i].name+'" data-path="'+path+'" class="icon icon-dir"><a href="javascript:;">'+data[i].name+'</a></li>';
+                li = '<li data-level="'+level+'" data-name="'+data[i].name+'" data-path="'+path+'" class="icon icon-dir"><a href="javascript:;">'+data[i].name+'</a></li>';
             }
             list += li;
         }

@@ -14,6 +14,7 @@ import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.buzzer.Music;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigEmail;
+import com.planetbiru.config.ConfigModem;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.constant.ResponseCode;
@@ -764,13 +765,10 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				GSMUtil.disconnect(modemID);
 				ServerInfo.sendModemStatus();
 			} 
-			else if(action.equals("signal"))
+			else if(action.equals("request-signal-strength"))
 			{
-				JSONObject resp = GSMUtil.getSignalStrength(modemID);				
-				JSONArray data = new JSONArray();
-				responseJSON.put(JsonKey.COMMAND, "signal-strength");
-				data.put(resp);
-				responseJSON.put(JsonKey.DATA, data);
+				ConfigModem.setLastRequestSignalStrength(System.currentTimeMillis());
+				ServerInfo.sendModemStatus();
 			} 
 			else if(action.equals("test-at"))
 			{
@@ -799,13 +797,16 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				Application.modemSMSStart();
 				Application.modemInternetStart();
 			}
+			else if(action.equals("request-signal-strength"))
+			{
+				ConfigModem.setLastRequestSignalStrength(System.currentTimeMillis());
+			}
 			else
 			{
 				Application.modemSMSStop();
 				Application.modemInternetStop();
 			}
 		}
-		ServerInfo.sendModemStatus();
 		return responseJSON;
 	}
 	

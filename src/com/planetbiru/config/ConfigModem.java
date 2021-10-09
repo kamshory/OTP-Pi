@@ -14,6 +14,7 @@ import org.json.JSONObject;
 import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.gsm.InternetDialUtil;
+import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.FileNotFoundException;
@@ -23,7 +24,7 @@ public class ConfigModem {
 	
 	private static String configPath = "";
     private static Map<String, DataModem> modemData = new HashMap<>();
-	
+	private static long lastRequestSignalStrength = 0;
     private static Logger logger = Logger.getLogger(ConfigModem.class);
     
 	private ConfigModem()
@@ -216,8 +217,9 @@ public class ConfigModem {
 			String id = entry.getKey();
 			JSONObject modem = new JSONObject();
 			DataModem value = entry.getValue();
+			boolean connected = GSMUtil.isConnected(id);
 			modem.put("id", id);
-			modem.put("connected", GSMUtil.isConnected(id));
+			modem.put("connected", connected);
 			modem.put("internetAccess", value.isInternetAccess());
 			modem.put("internetConnected", InternetDialUtil.isConnected(id));
 			modem.put("name", value.getName());
@@ -229,6 +231,23 @@ public class ConfigModem {
 			modem.put("port", value.getPort());
 			modem.put("smsCenter", value.getSmsCenter());
 			modem.put("defaultModem", value.isDefaultModem());
+			if(connected && ConfigModem.lastRequestSignalStrength > System.currentTimeMillis() - 15000)
+			{
+				try 
+				{
+					JSONObject signal = GSMUtil.getSignalStrength(id);
+					modem.put("signalStrength", signal.optJSONObject(JsonKey.DATA));
+				} 
+				catch (GSMException e) 
+				{
+					modem.put("signalStrength", new JSONObject());
+				}
+								
+			}
+			else
+			{
+				modem.put("signalStrength", new JSONObject());
+			}
 			json.put(id, modem);
 		}
 		return json;
@@ -305,4 +324,13 @@ public class ConfigModem {
 		}
 		
 	}
+
+	public static long getLastRequestSignalStrength() {
+		return lastRequestSignalStrength;
+	}
+
+	public static void setLastRequestSignalStrength(long lastRequestSignalStrength) {
+		ConfigModem.lastRequestSignalStrength = lastRequestSignalStrength;
+	}
+	
 }

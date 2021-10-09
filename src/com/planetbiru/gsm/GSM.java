@@ -788,6 +788,7 @@ public class GSM {
 				data.put("value", value);
 				data.put("rssi", dbm);
 				data.put("condition", condition);
+				data.put("class", condition.toLowerCase());
 				result.put(JsonKey.STATUS, "OK");
 				result.put(JsonKey.RESULT, atResult);
 				result.put(JsonKey.DATA, data);

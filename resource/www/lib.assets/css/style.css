@@ -3,6 +3,67 @@
  * Copyright 2014-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+/*
+  @media screen and (max-width: 1200px)  and (min-width: 992px) {
+    .tile-area .tile { 
+      width: 10.1%; 
+      margin-left: 0.6%;    
+    }
+    
+    .tile-area > .tile:nth-child(9n + 1) {
+      margin-left: 0;
+    }
+    
+  }
+  */
+/*
+  .tile-area{
+    padding-bottom: 10px;
+  }
+  .tile{
+      width: 100px;
+      display: inline-block;
+      margin-bottom: 10px;
+      margin-right: 6px;
+  }
+  */
+@-webkit-keyframes "anim" {
+  0% {
+    top: 4px;
+    height: 4px;
+  }
+  22% {
+    top: 0px;
+    height: 12px;
+  }
+  44% {
+    top: 4px;
+    height: 4px;
+  }
+  100% {
+    top: 4px;
+    height: 4px;
+  }
+}
+@keyframes "anim" {
+  0% {
+    top: 4px;
+    height: 4px;
+  }
+  22% {
+    top: 0px;
+    height: 12px;
+  }
+  44% {
+    top: 4px;
+    height: 4px;
+  }
+  100% {
+    top: 4px;
+    height: 4px;
+  }
+}
+
 @-ms-viewport {
   width: device-width;
 }
@@ -60,78 +121,22 @@ legend {
   border: none;
 }
 
-@media all and (max-width: 600px) {
-  .config-table, .modal-table {
-    width: 100%;
-  }
-  .config-table tr td, .modal-table tr td {
-    display: block;
-    padding: 3px 0;
-    width: 100%;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-  }
-  .config-table tr td:empty, .modal-table tr td:empty {
-    display: none;
-  }
-}
-
-@media all and (min-width: 600px) {
-  .config-table, .modal-table {
-    width: 100%;
-  }
-  .config-table tr, .modal-table tr {
-    position: relative;
-  }
-  .config-table tr td, .modal-table tr td {
-    padding: 3px 0;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-  }
-  .config-table tr > td:nth-child(1) {
-    width: 200px;
-  }
-  .modal-table tr > td:nth-child(1) {
-    width: 120px;
-  }
-}
-
 .config-table tr td select {
   display: block;
-  width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border: 1px solid #CCCCCC;
-  background-color: #FFFFFF;
-}
-
-.config-table tr td input[type="text"], .config-table tr td input[type="url"], .config-table tr td input[type="email"], .config-table tr td input[type="tel"], .config-table tr td input[type="number"], .config-table tr td input[type="password"] {
   display: block;
   width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border: 1px solid #CCCCCC;
-  background-color: #FFFFFF;
-}
-
-.config-table tr td select {
-  display: block;
   width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid #CCCCCC;
   border: 1px solid #CCCCCC;
   background-color: #FFFFFF;
-}
-
-.config-table tr td input[type="text"]:focus, .config-table tr td input[type="email"]:focus, .config-table tr td input[type="url"]:focus, .config-table tr td input[type="tel"]:focus, .config-table tr td input[type="number"]:focus, .config-table tr td input[type="password"]:focus {
-  outline: none;
+  background-color: #FFFFFF;
+  padding: 7px 7px;
 }
 
 .config-table tr td select:focus {
-  outline: none;
-}
-
-.config-table tr td input[type="text"]:active, .config-table tr td input[type="url"]:active, .config-table tr td input[type="email"]:active, .config-table tr td input[type="tel"]:active, .config-table tr td input[type="number"]:active, .config-table tr td input[type="password"]:active {
   outline: none;
 }
 
@@ -139,12 +144,117 @@ legend {
   outline: none;
 }
 
-.config-table tr td input[type="text"], .config-table tr td input[type="url"], .config-table tr td input[type="email"], .config-table tr td input[type="tel"], .config-table tr td input[type="number"], .config-table tr td input[type="password"] {
+.config-table tr td input[type="text"] {
+  display: block;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #CCCCCC;
+  background-color: #FFFFFF;
   padding: 7px 11px;
 }
 
-.config-table tr td select {
-  padding: 7px 7px;
+.config-table tr td input[type="text"]:focus {
+  outline: none;
+}
+
+.config-table tr td input[type="text"]:active {
+  outline: none;
+}
+
+.config-table tr td input[type="url"] {
+  display: block;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #CCCCCC;
+  background-color: #FFFFFF;
+  padding: 7px 11px;
+}
+
+.config-table tr td input[type="url"]:focus {
+  outline: none;
+}
+
+.config-table tr td input[type="url"]:active {
+  outline: none;
+}
+
+.config-table tr td input[type="email"] {
+  display: block;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #CCCCCC;
+  background-color: #FFFFFF;
+  padding: 7px 11px;
+}
+
+.config-table tr td input[type="email"]:focus {
+  outline: none;
+}
+
+.config-table tr td input[type="email"]:active {
+  outline: none;
+}
+
+.config-table tr td input[type="tel"] {
+  display: block;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #CCCCCC;
+  background-color: #FFFFFF;
+  padding: 7px 11px;
+}
+
+.config-table tr td input[type="tel"]:focus {
+  outline: none;
+}
+
+.config-table tr td input[type="tel"]:active {
+  outline: none;
+}
+
+.config-table tr td input[type="number"] {
+  display: block;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #CCCCCC;
+  background-color: #FFFFFF;
+  padding: 7px 11px;
+}
+
+.config-table tr td input[type="number"]:focus {
+  outline: none;
+}
+
+.config-table tr td input[type="number"]:active {
+  outline: none;
+}
+
+.config-table tr td input[type="password"] {
+  display: block;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #CCCCCC;
+  background-color: #FFFFFF;
+  padding: 7px 11px;
+}
+
+.config-table tr td input[type="password"]:focus {
+  outline: none;
+}
+
+.config-table tr td input[type="password"]:active {
+  outline: none;
+}
+
+.config-table config-table-connection {
+  table-layout: fixed;
+  width: 100%;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -198,8 +308,17 @@ input[type=number] {
   margin-bottom: 0px;
 }
 
+.phone-page form:last-child {
+  margin-bottom: 20px !important;
+}
+
 button span.number {
   font-size: 24px;
+}
+
+.dialed-number {
+  border: 1px solid #DDDDDD;
+  margin-bottom: 10px;
 }
 
 .dialed-number::after {
@@ -210,19 +329,6 @@ button span.number {
 
 .dialed-number-delete {
   float: right;
-}
-
-.dialed-number {
-  border: 1px solid #DDDDDD;
-  margin-bottom: 10px;
-}
-
-.dialed-number-text {
-  height: 48px;
-  text-align: center;
-  padding: 6px 0px 4px 30px;
-  font-size: 22px;
-  background-color: #FFFFFF;
 }
 
 .dialed-number-delete button {
@@ -243,15 +349,12 @@ button span.number {
   outline: none;
 }
 
-.dialed-number-delete button::before, .dialed-number-delete button::after {
+.dialed-number-delete button::before {
   content: "";
   position: absolute;
   height: 0;
   width: 0;
   height: 0;
-}
-
-.dialed-number-delete button::before {
   top: -1px;
   border-top: 14px solid transparent;
   border-bottom: 14px solid transparent;
@@ -260,11 +363,24 @@ button span.number {
 }
 
 .dialed-number-delete button::after {
+  content: "";
+  position: absolute;
+  height: 0;
+  width: 0;
+  height: 0;
   top: 0px;
   border-top: 13px solid transparent;
   border-bottom: 13px solid transparent;
   border-right: 13px solid #FFFFFF;
   left: -13px;
+}
+
+.dialed-number-text {
+  height: 48px;
+  text-align: center;
+  padding: 6px 0px 4px 30px;
+  font-size: 22px;
+  background-color: #FFFFFF;
 }
 
 .dial-area {
@@ -281,7 +397,11 @@ button span.number {
   border-radius: 50%;
 }
 
-#phone:active, #phone:focus {
+#phone:active {
+  outline: none;
+}
+
+#phone:focus {
   outline: none;
 }
 
@@ -344,7 +464,7 @@ button span.number {
   background-color: #FFFFFF;
 }
 
-.input-text, .input-phone-number {
+.input-text {
   padding: 5px 10px;
   width: 100%;
   -webkit-box-sizing: border-box;
@@ -352,66 +472,55 @@ button span.number {
   border: 1px solid #DDDDDD;
 }
 
-.text-message {
+.input-text:focus {
+  outline: none;
+}
+
+.input-text:active .input-phone-number:focus {
+  outline: none;
+}
+
+.input-phone-number {
   padding: 5px 10px;
   width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border: 1px solid #DDDDDD;
-}
-
-.text-message:focus, .text-message:active {
-  outline: none;
-}
-
-.input-text:focus, .input-text:active .input-phone-number:focus {
-  outline: none;
 }
 
 .input-phone-number:active {
   outline: none;
 }
 
-.receiver-area, message-area {
+.text-message {
+  padding: 5px 10px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #DDDDDD;
+  height: 100px;
+}
+
+.text-message:focus {
+  outline: none;
+}
+
+.text-message:active {
+  outline: none;
+}
+
+.receiver-area {
   margin-bottom: 10px;
   position: relative;
 }
 
-.text-message {
-  height: 100px;
+message-area {
+  margin-bottom: 10px;
+  position: relative;
 }
 
 .input-label {
   padding: 2px 0;
-}
-
-.config-table config-table-connection {
-  table-layout: fixed;
-  width: 100%;
-}
-
-@media screen and (max-width: 320px) {
-  .config-table config-table-connection tr td {
-    display: block;
-    width: 100%;
-    padding: 2px 0;
-  }
-  .config-table config-table-connection tr td:nth-child(1) {
-    font-weight: bold;
-  }
-  .config-table config-table-connection tr td:nth-child(1):empty {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 320px) {
-  .config-table config-table-connection tr td {
-    padding: 2px 0;
-  }
-  .config-table config-table-connection tr td:nth-child(1) {
-    width: 35%;
-    max-width: 200px;
-  }
 }
 
 .row-table {
@@ -456,12 +565,32 @@ button span.number {
   padding: 8px 8px 0px 8px;
 }
 
-.row-table textarea:focus, .row-table textarea:active {
+.row-table textarea:focus {
+  outline: none;
+}
+
+.row-table textarea:active {
   outline: none;
 }
 
 .button-area {
   padding: 10px 0;
+}
+
+.button-area button {
+  margin-bottom: 5px;
+}
+
+.button-area input[type="button"] {
+  margin-bottom: 5px;
+}
+
+.button-area input[type="reset"] {
+  margin-bottom: 5px;
+}
+
+.button-area input[type="submit"] {
+  margin-bottom: 5px;
 }
 
 span.icon {
@@ -637,23 +766,39 @@ span.icon.icon-cross::after {
   color: #FFFFFF;
 }
 
+.service-item.enable.disconnected button.disconnect {
+  display: none;
+}
+
 .service-item.enable.connected {
   background-color: #66DE93;
 }
 
-.service-item.enable.disconnected button.disconnect, .service-item.enable.connected button.connect {
+.service-item.enable.connected button.connect {
   display: none;
 }
 
-.service-item.disable.connected, .service-item.disable.disconnected {
+.service-item.disable.connected {
   background-color: #F9F3F3;
 }
 
-.service-item .test-at, .service-item button.signal {
+.service-item.disable.disconnected {
+  background-color: #F9F3F3;
+}
+
+.service-item .test-at {
   display: none;
 }
 
-.service-item.connected .test-at, .service-item.connected button.signal {
+.service-item button.signal {
+  display: none;
+}
+
+.service-item.connected .test-at {
+  display: inline;
+}
+
+.service-item.connected button.signal {
   display: inline;
 }
 
@@ -682,27 +827,12 @@ span.icon.icon-cross::after {
   width: calc( ( ( 100% / 3 ) * 2) - 20px);
 }
 
-@media (max-width: 600px) {
-  .service-wrapper .service-item {
-    width: 100%;
-    margin: 0px;
-  }
-}
-
 .status-connection {
   margin-bottom: 10px;
 }
 
 .service-button {
   padding-top: 5px;
-}
-
-.button-area button {
-  margin-bottom: 5px;
-}
-
-.button-area input[type="button"], .button-area input[type="reset"], .button-area input[type="submit"] {
-  margin-bottom: 5px;
 }
 
 [data-pagination="true"] {
@@ -726,10 +856,6 @@ span.icon.icon-cross::after {
   border-right: none;
 }
 
-[data-pagination="true"] a.page-selected {
-  background-color: #FFFFFF;
-}
-
 [data-pagination="true"] a:hover {
   text-decoration: none;
 }
@@ -745,34 +871,19 @@ span.icon.icon-cross::after {
   border-bottom-right-radius: 3px;
 }
 
+[data-pagination="true"] a.page-selected {
+  background-color: #FFFFFF;
+}
+
 .filter-data {
   padding: 4px 0;
 }
 
-@media screen and (max-width: 768px) {
-  .filter-data .form-control {
-    width: calc(100% - 90px);
-    display: inline-block;
-  }
-  .filter-data input[type="submit"] {
-    float: right;
-    width: 80px;
-  }
+.btn-group-sm > .btn {
+  padding: 2px 10px;
 }
 
-@media screen and (min-width: 768px) {
-  .filter-data .form-control {
-    width: 240px;
-    display: inline-block;
-  }
-  .filter-data input[type="submit"] {
-    float: none;
-    width: 80px;
-    margin-top: -3px;
-  }
-}
-
-.btn-group-sm > .btn, .btn-sm {
+.btn-sm {
   padding: 2px 10px;
 }
 
@@ -798,80 +909,6 @@ span.icon.icon-cross::after {
   margin-bottom: 10px;
 }
 
-@media screen and (min-width: 1200px) {
-  .tile-area .tile {
-    width: 8.9%;
-    margin-left: 1%;
-  }
-  .tile-area > .tile:nth-child(10n + 1) {
-    margin-left: 0;
-  }
-}
-
-/*
-  @media screen and (max-width: 1200px)  and (min-width: 992px) {
-    .tile-area .tile { 
-      width: 10.1%; 
-      margin-left: 0.6%;    
-    }
-    
-    .tile-area > .tile:nth-child(9n + 1) {
-      margin-left: 0;
-    }
-    
-  }
-  */
-@media screen and (max-width: 1200px) and (min-width: 768px) {
-  .tile-area .tile {
-    width: 14%;
-    margin-left: 1%;
-  }
-  .tile-area > .tile:nth-child(6n + 1) {
-    margin-left: 0;
-  }
-}
-
-@media screen and (max-width: 768px) and (min-width: 480px) {
-  .tile-area .tile {
-    width: 18.5%;
-    margin-left: 1%;
-  }
-  .tile-area > .tile:nth-child(5n + 1) {
-    margin-left: 0;
-  }
-}
-
-@media screen and (max-width: 480px) and (min-width: 320px) {
-  .tile-area .tile {
-    width: 31.5%;
-    margin-left: 1%;
-  }
-  .tile-area > .tile:nth-child(3n + 1) {
-    margin-left: 0;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .tile-area .tile {
-    width: 48.5%;
-    margin-left: 1%;
-  }
-  .tile-area > .tile:nth-child(2n + 1) {
-    margin-left: 0;
-  }
-}
-
-/*
-  .tile-area{
-    padding-bottom: 10px;
-  }
-  .tile{
-      width: 100px;
-      display: inline-block;
-      margin-bottom: 10px;
-      margin-right: 6px;
-  }
-  */
 .tile-wrapper {
   border: 1px solid #DDDDDD;
   border-radius: 4px;
@@ -894,8 +931,12 @@ span.icon.icon-cross::after {
   background-repeat: no-repeat;
 }
 
-.phone-page form:last-child {
-  margin-bottom: 20px !important;
+.tile-icon > a {
+  width: 64px;
+  height: 64px;
+  display: block;
+  color: #555555;
+  text-decoration: none;
 }
 
 .setting .tile-icon {
@@ -906,7 +947,11 @@ span.icon.icon-cross::after {
   background-image: url(../images/icon/network.png);
 }
 
-.reboot .tile-icon, .restart .tile-icon {
+.reboot .tile-icon {
+  background-image: url(../images/icon/reboot.png);
+}
+
+.restart .tile-icon {
   background-image: url(../images/icon/reboot.png);
 }
 
@@ -1022,14 +1067,6 @@ span.icon.icon-cross::after {
   background-image: url(../images/icon/message.png);
 }
 
-.tile-icon > a {
-  width: 64px;
-  height: 64px;
-  display: block;
-  color: #555555;
-  text-decoration: none;
-}
-
 .tile-title {
   text-align: center;
   width: 80px;
@@ -1103,106 +1140,84 @@ span.icon.icon-cross::after {
   padding: 0px 8px;
 }
 
-.animation-pressure::before, .animation-pressure::after {
-  content: "";
-  width: 6px;
-  height: 4px;
-  position: absolute;
-  top: 4px;
-  -webkit-animation-name: anim;
-          animation-name: anim;
-  -webkit-animation-duration: 1.0s;
-          animation-duration: 1.0s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
-          animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
-}
-
-.animation-pressure > span::before, .animation-pressure > span::after {
-  content: "";
-  width: 6px;
-  height: 4px;
-  position: absolute;
-  top: 4px;
-  -webkit-animation-name: anim;
-          animation-name: anim;
-  -webkit-animation-duration: 1.0s;
-          animation-duration: 1.0s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
-          animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
-}
-
-.animation-pressure::before, .animation-pressure > span::before {
-  left: 0;
-}
-
-.animation-pressure::after, .animation-pressure > span::after {
-  right: 0;
-}
-
-.animation-pressure::before {
-  -webkit-animation-delay: 0;
-          animation-delay: 0;
-  background-color: green;
-}
-
 .animation-pressure > span::before {
+  content: "";
+  width: 6px;
+  height: 4px;
+  position: absolute;
+  top: 4px;
+  -webkit-animation-name: anim;
+          animation-name: anim;
+  -webkit-animation-duration: 1.0s;
+          animation-duration: 1.0s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+          animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  left: 0;
   -webkit-animation-delay: 0.12s;
           animation-delay: 0.12s;
   background-color: green;
 }
 
 .animation-pressure > span::after {
+  content: "";
+  width: 6px;
+  height: 4px;
+  position: absolute;
+  top: 4px;
+  -webkit-animation-name: anim;
+          animation-name: anim;
+  -webkit-animation-duration: 1.0s;
+          animation-duration: 1.0s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+          animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  right: 0;
   -webkit-animation-delay: 0.24s;
           animation-delay: 0.24s;
   background-color: green;
 }
 
-.animation-pressure::after {
-  -webkit-animation-delay: 0.36s;
-          animation-delay: 0.36s;
+.animation-pressure::before {
+  content: "";
+  width: 6px;
+  height: 4px;
+  position: absolute;
+  top: 4px;
+  -webkit-animation-name: anim;
+          animation-name: anim;
+  -webkit-animation-duration: 1.0s;
+          animation-duration: 1.0s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+          animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  left: 0;
+  -webkit-animation-delay: 0;
+          animation-delay: 0;
   background-color: green;
 }
 
-@-webkit-keyframes anim {
-  0% {
-    top: 4px;
-    height: 4px;
-  }
-  22% {
-    top: 0px;
-    height: 12px;
-  }
-  44% {
-    top: 4px;
-    height: 4px;
-  }
-  100% {
-    top: 4px;
-    height: 4px;
-  }
-}
-
-@keyframes anim {
-  0% {
-    top: 4px;
-    height: 4px;
-  }
-  22% {
-    top: 0px;
-    height: 12px;
-  }
-  44% {
-    top: 4px;
-    height: 4px;
-  }
-  100% {
-    top: 4px;
-    height: 4px;
-  }
+.animation-pressure::after {
+  content: "";
+  width: 6px;
+  height: 4px;
+  position: absolute;
+  top: 4px;
+  -webkit-animation-name: anim;
+          animation-name: anim;
+  -webkit-animation-duration: 1.0s;
+          animation-duration: 1.0s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+          animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  right: 0;
+  -webkit-animation-delay: 0.36s;
+          animation-delay: 0.36s;
+  background-color: green;
 }
 
 h5.modal-title {
@@ -1263,5 +1278,166 @@ h5.modal-title {
 .animation-loading-sms {
   text-align: center;
   display: none;
+}
+
+@media all and (max-width: 600px) {
+  .config-table {
+    width: 100%;
+  }
+  .config-table tr td {
+    display: block;
+    padding: 3px 0;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .config-table tr td:empty {
+    display: none;
+  }
+  .modal-table {
+    width: 100%;
+  }
+  .modal-table tr td {
+    display: block;
+    padding: 3px 0;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .modal-table tr td:empty {
+    display: none;
+  }
+}
+
+@media all and (min-width: 600px) {
+  .config-table {
+    width: 100%;
+  }
+  .config-table tr {
+    position: relative;
+  }
+  .config-table tr td {
+    padding: 3px 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .config-table tr > td:nth-child(1) {
+    width: 200px;
+  }
+  .modal-table {
+    width: 100%;
+  }
+  .modal-table tr {
+    position: relative;
+  }
+  .modal-table tr td {
+    padding: 3px 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .modal-table tr > td:nth-child(1) {
+    width: 120px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .config-table config-table-connection tr td {
+    display: block;
+    width: 100%;
+    padding: 2px 0;
+  }
+  .config-table config-table-connection tr td:nth-child(1) {
+    font-weight: bold;
+  }
+  .config-table config-table-connection tr td:nth-child(1):empty {
+    display: none;
+  }
+  .tile-area .tile {
+    width: 48.5%;
+    margin-left: 1%;
+  }
+  .tile-area > .tile:nth-child(2n +1) {
+    margin-left: 0;
+  }
+}
+
+@media screen and (min-width: 320px) {
+  .config-table config-table-connection tr td {
+    padding: 2px 0;
+  }
+  .config-table config-table-connection tr td:nth-child(1) {
+    width: 35%;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .service-wrapper .service-item {
+    width: 100%;
+    margin: 0px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .filter-data .form-control {
+    width: calc(100% - 90px);
+    display: inline-block;
+  }
+  .filter-data input[type="submit"] {
+    float: right;
+    width: 80px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .filter-data .form-control {
+    width: 240px;
+    display: inline-block;
+  }
+  .filter-data input[type="submit"] {
+    float: none;
+    width: 80px;
+    margin-top: -3px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .tile-area .tile {
+    width: 8.9%;
+    margin-left: 1%;
+  }
+  .tile-area > .tile:nth-child(10n + 1) {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 768px) {
+  .tile-area .tile {
+    width: 14%;
+    margin-left: 1%;
+  }
+  .tile-area > .tile:nth-child(6n + 1) {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 768px) and (min-width: 480px) {
+  .tile-area .tile {
+    width: 18.5%;
+    margin-left: 1%;
+  }
+  .tile-area > .tile:nth-child(5n + 1) {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 480px) and (min-width: 320px) {
+  .tile-area .tile {
+    width: 31.5%;
+    margin-left: 1%;
+  }
+  .tile-area > .tile:nth-child(3n + 1) {
+    margin-left: 0;
+  }
 }
 /*# sourceMappingURL=style.css.map */

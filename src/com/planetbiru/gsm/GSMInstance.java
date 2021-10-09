@@ -290,10 +290,10 @@ public class GSMInstance {
 		return this.gsm.executeAT("AT", 5, this.eventListener);
 	}
 
-	public JSONObject getSignalStrength() throws GSMException {
+	public JSONObject requestSignalStrength() throws GSMException {
 		return this.gsm.getSignalStrength();
 	}
 
-	
+
 
 }
