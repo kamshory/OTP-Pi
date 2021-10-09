@@ -67,10 +67,10 @@ User can send OTP with several methods. OTP-Pi allow user to create and validate
 | Method | Send SMS | Send Email | Block MSISDN | Unblock MSISDN | Create OTP | Validate OTP |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | 
 | REST API | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| WebSocket | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ |
 | RabbitMQ * | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ |
 | Redis * | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ |
 | Mosquitto * | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ |
-| WebSocket | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ |
 
 If you wish all features to be enable from API, you can use  OTP-Publisher. Clone https://github.com/kamshory/OTP-Publisher to get it.
 
