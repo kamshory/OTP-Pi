@@ -219,7 +219,7 @@ public class GSMUtil {
 		{
 			pin = null;
 		}
-		instance.connect(pin);	
+		instance.connect(pin);
 		GSMUtil.updateConnectedDevice();
 	}
 	
@@ -939,6 +939,17 @@ public class GSMUtil {
 		}
 		throw new ModemNotFoundException("No modem use port "+port);
 	}
+	public static GSMInstance getGSMInstanceByModemID(String id) throws ModemNotFoundException {
+		for(int i = 0; i < GSMUtil.getGSMInstance().size(); i++)
+		{
+			if(GSMUtil.getGSMInstance().get(i).getId().equals(id))
+			{
+				return GSMUtil.getGSMInstance().get(i);
+			}
+		}
+		throw new ModemNotFoundException("No modem with ID  "+id);
+	}
+
 
 	public static JSONObject testAT(String modemID) throws GSMException, SerialPortConnectionException {
 		GSMInstance instance = GSMUtil.getGSMIntance(modemID);
@@ -964,11 +975,12 @@ public class GSMUtil {
 		JSONObject result = new JSONObject();
 		if(instance != null)
 		{
-			result = instance.getSignalStrength();
+			result = instance.getGsm().getSignalStrength();
 		}
 		return result;
 	}
 
+	
 	
 	
 
