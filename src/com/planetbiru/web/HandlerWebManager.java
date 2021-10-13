@@ -1360,8 +1360,10 @@ public class HandlerWebManager implements HttpHandler {
 			int subscriberMqttTimeout = Utility.atoi(timeout);	
 			String refresh = queryPairs.getOrDefault("subscriber_mqtt_refresh", "0");
 			int subscriberMqttRefresh = Utility.atoi(refresh);
-			String recoonectDelay = queryPairs.getOrDefault("subscriber_recoonect_delay", "0");
-			long subscriberWsReconnectDelay = Utility.atol(recoonectDelay);
+			String recoonectDelay = queryPairs.getOrDefault("subscriber_mqtt_recoonect_delay", "0");
+			long subscriberMqttReconnectDelay = Utility.atol(recoonectDelay);
+			String mqttQosStr = queryPairs.getOrDefault("subscriber_mqtt_qos", "0");
+			long subscriberMqttQos = Utility.atol(mqttQosStr);
 			
 			ConfigSubscriberMQTT.setSubscriberMqttEnable(subscriberMqttEnable);
 			ConfigSubscriberMQTT.setSubscriberMqttSSL(subscriberMqttSSL);
@@ -1372,8 +1374,9 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigSubscriberMQTT.setSubscriberMqttPassword(subscriberMqttPassword);
 			ConfigSubscriberMQTT.setSubscriberMqttTopic(subscriberMqttTopic);
 			ConfigSubscriberMQTT.setSubscriberMqttTimeout(subscriberMqttTimeout);
-			ConfigSubscriberMQTT.setSubscriberWsReconnectDelay(subscriberWsReconnectDelay);
+			ConfigSubscriberMQTT.setSubscriberMqttReconnectDelay(subscriberMqttReconnectDelay);
 			ConfigSubscriberMQTT.setSubscriberMqttRefresh(subscriberMqttRefresh);		
+			ConfigSubscriberMQTT.setSubscriberMqttQos(subscriberMqttQos);		
 
 			ConfigSubscriberMQTT.save();			
 		}	

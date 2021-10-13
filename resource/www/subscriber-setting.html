@@ -278,6 +278,11 @@
 								<input type="text" name="subscriber_mqtt_topic" id="subscriber_mqtt_topic" value=""> </td>
 						</tr>
 						<tr>
+							<td>QoS</td>
+							<td>
+								<input type="number" name="subscriber_mqtt_qos" id="subscriber_mqtt_qos" value=""> </td>
+						</tr>
+						<tr>
 							<td>Timeout</td>
 							<td>
 								<input type="number" min="0" name="subscriber_mqtt_timeout" id="subscriber_mqtt_timeout" value=""> </td>
@@ -468,6 +473,7 @@
 						$('[name="subscriber_mqtt_timeout"]').val(data.subscriberMqttTimeout);
 						$('[name="subscriber_mqtt_recoonect_delay"]').val(data.subscriberMqttReconnectDelay);
 						$('[name="subscriber_mqtt_refresh"]').val(data.subscriberMqttRefresh + "");
+						$('[name="subscriber_mqtt_qos"]').val(data.subscriberMqttQos + "");
 					}
 				});
 			});
