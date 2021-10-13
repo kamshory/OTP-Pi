@@ -414,6 +414,9 @@ public class HandlerWebManager implements HttpHandler {
 		} 
 		catch (NoUserRegisteredException | MessagingException | NoEmailAccountException | GSMException | InvalidSIMPinException | SerialPortConnectionException e1) 
 		{
+			/**
+			 * Do nothing
+			 */
 		}
 		
 	}
