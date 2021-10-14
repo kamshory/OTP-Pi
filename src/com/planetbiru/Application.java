@@ -42,32 +42,33 @@ public class Application {
 	private static ServerWebAdmin webAdmin;
 	private static ServerRESTAPI rest;
 	private static ServerEmail smtp;
-	private static Scheduller scheduller;
-	
+	private static Scheduller scheduller;	
 	private static SubscriberWebSocket webSocketSubscriber;	
 	private static SubscriberMQTT mqttSubscriber;
 	private static SubscriberRedis redisSubscriber;
-	private static SubscriberAMQP amqpSubscriber;
-	
+	private static SubscriberAMQP amqpSubscriber;	
 	private static Logger logger = Logger.getLogger(Application.class);
 	private static ModemInspector modemInspector = null;
-	
-
-	public static void main(String[] args) {
-		
-		File currentJavaJarFile = new File(Application.class.getProtectionDomain().getCodeSource().getLocation().getPath());   
-		String currentJavaJarFilePath = currentJavaJarFile.getAbsolutePath();
-		String currentRootDirectoryPath = currentJavaJarFilePath.replace(currentJavaJarFile.getName(), "");
-
-		boolean configLoaded = loadConfig(currentRootDirectoryPath, "config.ini");
+	 
+	public static void main(String[] args) {		
+		String currentRootDirectoryPath = Application.getConfigRoot();
+		boolean configLoaded = Application.loadConfig(currentRootDirectoryPath, "config.ini");
 		if(configLoaded)
 		{
 			Application.startService(args);
 		}
 		else
 		{
-			logger.info("Service not started because failed to read config file");
+			logger.error("Service not started because failed to read config file");
+			logger.error("System can not find "+currentRootDirectoryPath+"/config.ini");
 		}		
+	}
+	
+	private static String getConfigRoot()
+	{
+		File currentJavaJarFile = new File(Application.class.getProtectionDomain().getCodeSource().getLocation().getPath());   
+		String currentJavaJarFilePath = currentJavaJarFile.getAbsolutePath();
+		return currentJavaJarFilePath.replace(currentJavaJarFile.getName(), "");
 	}
 	
 	public static boolean loadConfig(String currentRootDirectoryPath, String fileName)
