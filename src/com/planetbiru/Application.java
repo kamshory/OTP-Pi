@@ -12,6 +12,7 @@ import com.planetbiru.api.OTP;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberActiveMQ;
 import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigSubscriberRedis;
 import com.planetbiru.config.ConfigSubscriberWS;
@@ -50,7 +51,7 @@ public class Application {
 	private static SubscriberAMQP amqpSubscriber;	
 	private static Logger logger = Logger.getLogger(Application.class);
 	private static ModemInspector modemInspector = null;
-	private static SubscriberActiveMQ activeMQ;
+	private static SubscriberActiveMQ activeMQSubscriber;
 	 
 	public static void main(String[] args) {
 		String currentRootDirectoryPath = Application.getConfigRoot();
@@ -279,19 +280,6 @@ public class Application {
 		Application.rest = rest;
 	}
 	
-	public static void subscriberActiveMQStart() {
-		Application.activeMQ = new SubscriberActiveMQ();
-		Application.activeMQ.start();
-		
-	}
-
-	public static void subscriberActiveMQStop() {
-		if(Application.activeMQ != null)
-		{
-			Application.activeMQ.stopService();
-		}		
-	}
-
 	public static void subscriberHTTPStart() {
 		if (ConfigAPI.isHttpEnable() && !Application.rest.isHttpStarted()) {
 			Application.rest.startHTTP();
@@ -314,6 +302,21 @@ public class Application {
 		if (ConfigAPI.isHttpsEnable() && Application.rest.isHttpsStarted()) {
 			Application.rest.stopHTTPS();
 		}
+	}
+
+	public static void subscriberActiveMQStart() {
+		if(ConfigSubscriberActiveMQ.isSubscriberActiveMQEnable() && (Application.activeMQSubscriber == null || !Application.activeMQSubscriber.isRunning()))
+		{
+			Application.activeMQSubscriber = new SubscriberActiveMQ();
+			Application.activeMQSubscriber.start();
+		}
+	}
+
+	public static void subscriberActiveMQStop() {
+		if(Application.activeMQSubscriber != null)
+		{
+			Application.activeMQSubscriber.stopService();
+		}		
 	}
 
 	public static void subscriberMQTTStart() {

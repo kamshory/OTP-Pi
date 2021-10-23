@@ -32,6 +32,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 	private long interval = 5000;
 	private long timeout = 10000;
 	private String topic = "sms";
+	private long timeToLeave = 60000;
 	
 	public ActiveMQInstance()
 	{
@@ -41,16 +42,18 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		} 
 		catch (JMSException e) 
 		{
-			e.printStackTrace();
+			/**
+			 * Do nothing
+			 */
 		}
 	}
 
 	public boolean connect() throws JMSException
 	{
-		System.out.println(ConfigSubscriberActiveMQ.toJSONObject());
 		this.timeout = ConfigSubscriberActiveMQ.getSubscriberActiveMQTimeout();
 		this.interval = ConfigSubscriberActiveMQ.getsubscriberActiveMQReconnectDelay();
-
+		this.timeToLeave = ConfigSubscriberActiveMQ.getSubscriberTimeToLeave();
+		
 		if(this.timeout <= 0)
 		{
 			this.timeout = 10000;
@@ -58,6 +61,10 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		if(this.interval <= 0)
 		{
 			this.interval = 5000;
+		}
+		if(this.timeToLeave <= 0)
+		{
+			this.timeToLeave = 60000;
 		}
 		
 		String host = ConfigSubscriberActiveMQ.getSubscriberActiveMQAddress();
@@ -68,15 +75,11 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 			return false;
 		}
 		String url = String.format("failover://tcp://%s:%d", host, port);
-		this.topic = ConfigSubscriberActiveMQ.getSubscriberActiveMQTopic();
-		
-		/**
-		 * ActiveMQConnection.DEFAULT_BROKER_URL;
-		 */
+		this.topic = ConfigSubscriberActiveMQ.getSubscriberActiveMQTopic();	
 		this.connectionFactory = new ActiveMQConnectionFactory(url);
 		this.connectionFactory.setTrustedPackages(Arrays.asList("com.planetbiru.subscriber.activemq"));
-
 		this.connection = (ActiveMQConnection) connectionFactory.createConnection();
+		
         if(!this.connection.isClosed())
         {
         	this.connection.start();
@@ -91,6 +94,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 			return false;
 		}
  	}
+	
 	public void disconnect() throws JMSException
 	{
 		if(this.consumer != null)
@@ -106,6 +110,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 			this.connection.close();
         }
 	}
+	
 	public String processMessage(String message)
 	{
 		MessageAPI api = new MessageAPI();
@@ -116,27 +121,27 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
         if(requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) || requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST))
         {
         	this.delay(callbackDelay);
-        	try {
+        	try 
+        	{
 				this.sendMessage(callbackTopic, response.toString());
-			} catch (JMSException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			} 
+        	catch (JMSException e) 
+        	{
+				/**
+				 * Do nothing
+				 */
 			}
         }	
 		return "";
 	}
+	
 	private void sendMessage(String callbackTopic, String message) throws JMSException {
-		// Create a MessageProducer from the Session to the Topic or Queue
-		Destination destination = session.createTopic(callbackTopic);
-		MessageProducer producer = session.createProducer(destination);
+		Destination destination = this.session.createTopic(callbackTopic);
+		MessageProducer producer = this.session.createProducer(destination);
         producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
-
-        // Create a messages
-        TextMessage textMessage = session.createTextMessage(message);
-
-        // Tell the producer to send the message
-        producer.send(textMessage);
-		
+        producer.setTimeToLive(this.timeToLeave);
+        TextMessage textMessage = this.session.createTextMessage(message);
+        producer.send(textMessage);		
 	}
 
 	public void loop()
@@ -159,9 +164,11 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		            }
 	            }	            
 	        } 
-			catch (Exception e) 
+			catch (JMSException e) 
 			{
-	            e.printStackTrace();
+				/**
+				 * Do nothing
+				 */
 	        }
 		}
 	}
@@ -179,8 +186,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 			}
 			this.loop();
 		}
-		while(this.running);
-        
+		while(this.isRunning());       
     }
 
 	private void delay(long sleep) {
@@ -195,7 +201,6 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 	}
 
 	private void reconnect() {
-		System.out.println("Connecting...");
 		try 
 		{
 			this.disconnect();
@@ -203,9 +208,11 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		} 
 		catch (JMSException e) 
 		{
-			e.printStackTrace();
-		}
-		
+			/**
+			 * Do nothing
+			 */
+			this.connected = false;
+		}		
 	}
 
 	@Override
@@ -214,9 +221,14 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 	}
 
 	public void stopService() {
-		this.running = false;	
+		this.setRunning(false);	
 	}
 
-    
+	public boolean isRunning() {
+		return running;
+	}
 
+	public void setRunning(boolean running) {
+		this.running = running;
+	}
 }

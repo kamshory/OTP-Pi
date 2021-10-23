@@ -1364,6 +1364,9 @@ public class HandlerWebManager implements HttpHandler {
 			String reconnect = queryPairs.getOrDefault("subscriber_active_mq_reconnect_delay", "0");
 			int subscriberActiveMQReconnectDelay = Utility.atoi(reconnect);
 
+			String ttl = queryPairs.getOrDefault("subscriber_active_mq_time_to_leave", "0");
+			long subscriberActiveMQTimeToLeave = Utility.atoi(ttl);	
+
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQEnable(subscriberActiveMQEnable);
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQSSL(subscriberActiveMQSSL);
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQAddress(subscriberActiveMQAddress);
@@ -1372,8 +1375,10 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQPassword(subscriberActiveMQPassword);
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQTopic(subscriberActiveMQTopic);
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQTimeout(subscriberActiveMQTimeout);
+			ConfigSubscriberActiveMQ.setSubscriberActiveMQTimeToLeave(subscriberActiveMQTimeToLeave);
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQRefresh(subscriberActiveMQRefresh);		
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQReconnectDelay(subscriberActiveMQReconnectDelay);
+			
 
 			ConfigSubscriberActiveMQ.save();			
 		}	

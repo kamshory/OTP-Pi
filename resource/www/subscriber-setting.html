@@ -455,6 +455,11 @@
 								<input type="number" min="0" name="subscriber_active_mq_timeout" id="subscriber_active_mq_timeout" value=""> </td>
 						</tr>
 						<tr>
+							<td>Time To Leave</td>
+							<td>
+								<input type="number" min="0" name="subscriber_active_mq_time_to_leave" id="subscriber_active_mq_time_to_leave" value=""> </td>
+						</tr>
+						<tr>
 							<td>Reconnect Delay</td>
 							<td>
 								<select name="subscriber_active_mq_reconnect_delay">
@@ -580,6 +585,7 @@
 						$('[name="subscriber_active_mq_password"]').val(data.subscriberActiveMQPassword);
 						$('[name="subscriber_active_mq_topic"]').val(data.subscriberActiveMQTopic);
 						$('[name="subscriber_active_mq_timeout"]').val(data.subscriberActiveMQTimeout);
+						$('[name="subscriber_active_mq_time_to_leave"]').val(data.subscriberActiveMQTimeToLeave);
 						$('[name="subscriber_active_mq_reconnect_delay"]').val(data.subscriberActiveMQReconnectDelay);
 						$('[name="subscriber_active_mq_refresh"]').val(data.subscriberActiveMQRefresh + "");
 					}

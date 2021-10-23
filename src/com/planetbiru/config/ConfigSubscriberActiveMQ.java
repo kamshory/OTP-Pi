@@ -25,15 +25,15 @@ public class ConfigSubscriberActiveMQ {
 	private static String subscriberActiveMQPassword = "";
 	private static String subscriberActiveMQTopic = "sms";
 	private static int subscriberActiveMQTimeout = 0;
+	private static long subscriberActiveMQTimeToLeave = 6000;
 	private static int subscriberActiveMQRefresh = 0;
 	private static long subscriberActiveMQReconnectDelay = 0;
 	private static boolean loaded = false;
 	private static boolean connected = false;
+	private static long subscriberTimeToLeave = 60000;
 	
 	private static Logger logger = Logger.getLogger(ConfigSubscriberActiveMQ.class);
 
-
-	
 	private ConfigSubscriberActiveMQ()
 	{
 	}
@@ -55,6 +55,7 @@ public class ConfigSubscriberActiveMQ {
 		setting.put("subscriberActiveMQPassword", ConfigSubscriberActiveMQ.subscriberActiveMQPassword);
 		setting.put("subscriberActiveMQTopic", ConfigSubscriberActiveMQ.subscriberActiveMQTopic);
 		setting.put("subscriberActiveMQTimeout", ConfigSubscriberActiveMQ.subscriberActiveMQTimeout);
+		setting.put("subscriberActiveMQTimeToLeave", ConfigSubscriberActiveMQ.subscriberActiveMQTimeToLeave);
 		setting.put("subscriberActiveMQReconnectDelay", ConfigSubscriberActiveMQ.subscriberActiveMQReconnectDelay);
 		setting.put("subscriberActiveMQRefresh", ConfigSubscriberActiveMQ.subscriberActiveMQRefresh);
 		return setting;
@@ -121,6 +122,7 @@ public class ConfigSubscriberActiveMQ {
 				ConfigSubscriberActiveMQ.subscriberActiveMQPassword = setting.optString("subscriberActiveMQPassword", "");
 				ConfigSubscriberActiveMQ.subscriberActiveMQTopic = setting.optString("subscriberActiveMQTopic", "");
 				ConfigSubscriberActiveMQ.subscriberActiveMQTimeout = setting.optInt("subscriberActiveMQTimeout", 0);
+				ConfigSubscriberActiveMQ.subscriberActiveMQTimeToLeave = setting.optInt("subscriberActiveMQTimeToLeave", 0);
 				ConfigSubscriberActiveMQ.subscriberActiveMQReconnectDelay = setting.optLong("subscriberActiveMQReconnectDelay", 0);
 				ConfigSubscriberActiveMQ.subscriberActiveMQRefresh = setting.optInt("subscriberActiveMQRefresh", 0);
 			}
@@ -222,6 +224,14 @@ public class ConfigSubscriberActiveMQ {
 		ConfigSubscriberActiveMQ.subscriberActiveMQTimeout = subscriberActiveMQTimeout;
 	}
 
+	public static long getSubscriberActiveMQTimeToLeave() {
+		return subscriberActiveMQTimeToLeave;
+	}
+
+	public static void setSubscriberActiveMQTimeToLeave(long subscriberActiveMQTimeToLeave) {
+		ConfigSubscriberActiveMQ.subscriberActiveMQTimeToLeave = subscriberActiveMQTimeToLeave;
+	}
+
 	public static int getSubscriberActiveMQRefresh() {
 		return subscriberActiveMQRefresh;
 	}
@@ -265,6 +275,14 @@ public class ConfigSubscriberActiveMQ {
 
 	public static void setSubscriberActiveMQReconnectDelay(long subscriberActiveMQReconnectDelay) {
 		ConfigSubscriberActiveMQ.subscriberActiveMQReconnectDelay = subscriberActiveMQReconnectDelay;
+	}
+
+	public static long getSubscriberTimeToLeave() {
+		return subscriberTimeToLeave;
+	}
+
+	public static void setSubscriberTimeToLeave(long subscriberTimeToLeave) {
+		ConfigSubscriberActiveMQ.subscriberTimeToLeave = subscriberTimeToLeave;
 	}
 
 }
