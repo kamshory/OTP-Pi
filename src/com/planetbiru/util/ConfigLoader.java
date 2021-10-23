@@ -25,6 +25,7 @@ import com.planetbiru.config.ConfigModem;
 import com.planetbiru.config.ConfigSMS;
 import com.planetbiru.config.ConfigSMTP;
 import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberActiveMQ;
 import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigSubscriberRedis;
 import com.planetbiru.config.ConfigVendorAfraid;
@@ -125,6 +126,7 @@ public class ConfigLoader {
 		String subscriberAMQPSettingPath = ConfigLoader.getConfig("otppi.path.setting.subscriber.amqp");
 		String subscriberRedisSettingPath = ConfigLoader.getConfig("otppi.path.setting.subscriber.redis");
 		String subscriberMQTTSettingPath = ConfigLoader.getConfig("otppi.path.setting.subscriber.mqtt");
+		String subscriberActiveMQSettingPath = ConfigLoader.getConfig("otppi.path.setting.subscriber.activemq");
 		String mimeSettingPath = ConfigLoader.getConfig("otppi.path.setting.all");
 		String userSettingPath = ConfigLoader.getConfig("otppi.path.setting.user");
 		String ddnsSettingPath = ConfigLoader.getConfig("otppi.path.setting.ddns");
@@ -263,6 +265,7 @@ public class ConfigLoader {
 		Config.setSubscriberAMQPSettingPath(subscriberAMQPSettingPath);
 		Config.setSubscriberRedisSettingPath(subscriberRedisSettingPath);
 		Config.setSubscriberMQTTSettingPath(subscriberMQTTSettingPath);
+		Config.setSubscriberActiveMQSettingPath(subscriberActiveMQSettingPath);
 		Config.setSessionFilePath(sessionFilePath);
 		Config.setSessionName(sessionName);
 		Config.setSessionLifetime(sessionLifetime);
@@ -316,6 +319,7 @@ public class ConfigLoader {
 		ConfigSubscriberWS.load(Config.getSubscriberWSSettingPath());
 		ConfigSubscriberAMQP.load(Config.getSubscriberAMQPSettingPath());
 		ConfigSubscriberRedis.load(Config.getSubscriberRedisSettingPath());
+		ConfigSubscriberActiveMQ.load(Config.getSubscriberActiveMQSettingPath());
 		ConfigSubscriberMQTT.load(Config.getSubscriberMQTTSettingPath());
 		ConfigSMS.load(Config.getSmsSettingPath());
 		ConfigBlocking.setCountryCode(ConfigSMS.getCountryCode());

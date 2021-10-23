@@ -12,6 +12,7 @@ import com.planetbiru.api.OTP;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberActiveMQ;
 import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigSubscriberRedis;
 import com.planetbiru.config.ConfigSubscriberWS;
@@ -23,6 +24,7 @@ import com.planetbiru.gsm.ModemInspector;
 import com.planetbiru.mail.ServerEmail;
 import com.planetbiru.server.rest.ServerRESTAPI;
 import com.planetbiru.gsm.GSMUtil;
+import com.planetbiru.subscriber.activemq.SubscriberActiveMQ;
 import com.planetbiru.subscriber.amqp.SubscriberAMQP;
 import com.planetbiru.subscriber.mqtt.SubscriberMQTT;
 import com.planetbiru.subscriber.redis.SubscriberRedis;
@@ -47,10 +49,11 @@ public class Application {
 	private static SubscriberMQTT mqttSubscriber;
 	private static SubscriberRedis redisSubscriber;
 	private static SubscriberAMQP amqpSubscriber;	
+	private static SubscriberActiveMQ activeMQSubscriber;
 	private static Logger logger = Logger.getLogger(Application.class);
 	private static ModemInspector modemInspector = null;
 	 
-	public static void main(String[] args) {		
+	public static void main(String[] args) {
 		String currentRootDirectoryPath = Application.getConfigRoot();
 		boolean configLoaded = Application.loadConfig(currentRootDirectoryPath, "config.ini");
 		if(configLoaded)
@@ -164,6 +167,8 @@ public class Application {
 			 */
 			Application.subscriberMQTTStart();
 			
+			Application.subscriberActiveMQStart();
+			
 			/**
 			 * REST API HTTP
 			 */
@@ -274,7 +279,7 @@ public class Application {
 	public static void setRest(ServerRESTAPI rest) {
 		Application.rest = rest;
 	}
-
+	
 	public static void subscriberHTTPStart() {
 		if (ConfigAPI.isHttpEnable() && !Application.rest.isHttpStarted()) {
 			Application.rest.startHTTP();
@@ -297,6 +302,21 @@ public class Application {
 		if (ConfigAPI.isHttpsEnable() && Application.rest.isHttpsStarted()) {
 			Application.rest.stopHTTPS();
 		}
+	}
+
+	public static void subscriberActiveMQStart() {
+		if(ConfigSubscriberActiveMQ.isSubscriberActiveMQEnable() && (Application.activeMQSubscriber == null || !Application.activeMQSubscriber.isRunning()))
+		{
+			Application.activeMQSubscriber = new SubscriberActiveMQ();
+			Application.activeMQSubscriber.start();
+		}
+	}
+
+	public static void subscriberActiveMQStop() {
+		if(Application.activeMQSubscriber != null)
+		{
+			Application.activeMQSubscriber.stopService();
+		}		
 	}
 
 	public static void subscriberMQTTStart() {

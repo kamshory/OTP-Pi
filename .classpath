@@ -30,5 +30,9 @@
 	<classpathentry kind="lib" path="jar/javax.activation-1.2.0.jar" sourcepath="jar/src/javax.activation-1.2.0-sources.jar"/>
 	<classpathentry kind="lib" path="jar/org.openjdk.dio-1.1.0.jar" sourcepath="jar/src/org.openjdk.dio-1.1.0-sources.jar"/>
 	<classpathentry kind="lib" path="jar/jedis-2.9.0.jar" sourcepath="jar/src/jedis-2.9.0-sources.jar"/>
+	<classpathentry kind="lib" path="jar/activemq-client-5.16.3.jar" sourcepath="jar/src/activemq-client-5.16.3-sources.jar"/>
+	<classpathentry kind="lib" path="jar/javax.jms-api-2.0.1.jar" sourcepath="jar/src/javax.jms-api-2.0.1-sources.jar"/>
+	<classpathentry kind="lib" path="jar/management-api-1.1-rev-1.jar" sourcepath="jar/src/management-api-1.1-rev-1-sources.jar"/>
+	<classpathentry kind="lib" path="jar/hawtbuf-1.11.jar" sourcepath="jar/src/hawtbuf-1.11-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
