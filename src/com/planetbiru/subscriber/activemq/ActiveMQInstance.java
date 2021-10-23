@@ -237,11 +237,5 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 
 	public boolean isRunning() {
 		return running;
-	}
-
-	public void setRunning(boolean running) {
-		this.running = running;
-	}
-
-	
+	}	
 }
