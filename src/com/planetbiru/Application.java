@@ -49,9 +49,9 @@ public class Application {
 	private static SubscriberMQTT mqttSubscriber;
 	private static SubscriberRedis redisSubscriber;
 	private static SubscriberAMQP amqpSubscriber;	
+	private static SubscriberActiveMQ activeMQSubscriber;
 	private static Logger logger = Logger.getLogger(Application.class);
 	private static ModemInspector modemInspector = null;
-	private static SubscriberActiveMQ activeMQSubscriber;
 	 
 	public static void main(String[] args) {
 		String currentRootDirectoryPath = Application.getConfigRoot();

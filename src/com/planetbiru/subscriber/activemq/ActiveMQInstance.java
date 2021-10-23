@@ -27,7 +27,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 	private MessageConsumer consumer = null;
 	private Session session = null;
 	private ActiveMQConnection connection = null;
-	private boolean running = true;
+	private boolean running = false;
 	private boolean connected = false;
 	private long interval = 5000;
 	private long timeout = 10000;
@@ -50,6 +50,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 
 	public boolean connect() throws JMSException
 	{
+		this.running = true;
 		this.timeout = ConfigSubscriberActiveMQ.getSubscriberActiveMQTimeout();
 		this.interval = ConfigSubscriberActiveMQ.getsubscriberActiveMQReconnectDelay();
 		this.timeToLeave = ConfigSubscriberActiveMQ.getSubscriberTimeToLeave();
@@ -75,8 +76,18 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 			return false;
 		}
 		String url = String.format("failover://tcp://%s:%d", host, port);
+		String username = ConfigSubscriberActiveMQ.getSubscriberActiveMQUsername();
+		String password = ConfigSubscriberActiveMQ.getSubscriberActiveMQPassword();
 		this.topic = ConfigSubscriberActiveMQ.getSubscriberActiveMQTopic();	
-		this.connectionFactory = new ActiveMQConnectionFactory(url);
+		
+		if(!username.isEmpty())
+		{
+			this.connectionFactory = new ActiveMQConnectionFactory(username, password, url);
+		}
+		else
+		{
+			this.connectionFactory = new ActiveMQConnectionFactory(url);
+		}
 		this.connectionFactory.setTrustedPackages(Arrays.asList("com.planetbiru.subscriber.activemq"));
 		this.connection = (ActiveMQConnection) connectionFactory.createConnection();
 		
@@ -221,7 +232,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 	}
 
 	public void stopService() {
-		this.setRunning(false);	
+		this.running = false;
 	}
 
 	public boolean isRunning() {
@@ -231,4 +242,6 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 	public void setRunning(boolean running) {
 		this.running = running;
 	}
+
+	
 }

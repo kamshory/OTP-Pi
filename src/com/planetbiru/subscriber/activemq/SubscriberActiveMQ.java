@@ -27,6 +27,6 @@ public class SubscriberActiveMQ extends Thread{
 	}
 
 	public boolean isRunning() {
-		return this.instance.isRunning();
+		return this.instance != null && this.instance.isRunning();
 	}
 }

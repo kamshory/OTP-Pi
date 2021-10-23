@@ -25,6 +25,7 @@ import com.planetbiru.config.ConfigModem;
 import com.planetbiru.config.ConfigSMS;
 import com.planetbiru.config.ConfigSMTP;
 import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberActiveMQ;
 import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigSubscriberRedis;
 import com.planetbiru.config.ConfigVendorAfraid;
@@ -318,6 +319,7 @@ public class ConfigLoader {
 		ConfigSubscriberWS.load(Config.getSubscriberWSSettingPath());
 		ConfigSubscriberAMQP.load(Config.getSubscriberAMQPSettingPath());
 		ConfigSubscriberRedis.load(Config.getSubscriberRedisSettingPath());
+		ConfigSubscriberActiveMQ.load(Config.getSubscriberActiveMQSettingPath());
 		ConfigSubscriberMQTT.load(Config.getSubscriberMQTTSettingPath());
 		ConfigSMS.load(Config.getSmsSettingPath());
 		ConfigBlocking.setCountryCode(ConfigSMS.getCountryCode());
