@@ -23,6 +23,7 @@ import com.planetbiru.gsm.ModemInspector;
 import com.planetbiru.mail.ServerEmail;
 import com.planetbiru.server.rest.ServerRESTAPI;
 import com.planetbiru.gsm.GSMUtil;
+import com.planetbiru.subscriber.activemq.SubscriberActiveMQ;
 import com.planetbiru.subscriber.amqp.SubscriberAMQP;
 import com.planetbiru.subscriber.mqtt.SubscriberMQTT;
 import com.planetbiru.subscriber.redis.SubscriberRedis;
@@ -49,8 +50,9 @@ public class Application {
 	private static SubscriberAMQP amqpSubscriber;	
 	private static Logger logger = Logger.getLogger(Application.class);
 	private static ModemInspector modemInspector = null;
+	private static SubscriberActiveMQ activeMQ;
 	 
-	public static void main(String[] args) {		
+	public static void main(String[] args) {
 		String currentRootDirectoryPath = Application.getConfigRoot();
 		boolean configLoaded = Application.loadConfig(currentRootDirectoryPath, "config.ini");
 		if(configLoaded)
@@ -164,6 +166,8 @@ public class Application {
 			 */
 			Application.subscriberMQTTStart();
 			
+			Application.subscriberActiveMQStart();
+			
 			/**
 			 * REST API HTTP
 			 */
@@ -273,6 +277,19 @@ public class Application {
 
 	public static void setRest(ServerRESTAPI rest) {
 		Application.rest = rest;
+	}
+	
+	public static void subscriberActiveMQStart() {
+		Application.activeMQ = new SubscriberActiveMQ();
+		Application.activeMQ.start();
+		
+	}
+
+	public static void subscriberActiveMQStop() {
+		if(Application.activeMQ != null)
+		{
+			Application.activeMQ.stopService();
+		}		
 	}
 
 	public static void subscriberHTTPStart() {
