@@ -16,6 +16,7 @@ public class Config {
 	private static String subscriberAMQPSettingPath = "";
 	private static String subscriberRedisSettingPath = "";
 	private static String subscriberMQTTSettingPath = "";
+	private static String subscriberActiveMQSettingPath = "";
 	private static String subscriberWSSettingPath = "";
 	private static String wlanSettingPath = "";
 	private static String ddnsSettingPath = "";
@@ -218,6 +219,14 @@ public class Config {
 
 	public static void setSubscriberAMQPSettingPath(String subscriberAMQPSettingPath) {
 		Config.subscriberAMQPSettingPath = subscriberAMQPSettingPath;
+	}
+
+	public static String getSubscriberActiveMQSettingPath() {
+		return subscriberActiveMQSettingPath;
+	}
+
+	public static void setSubscriberActiveMQSettingPath(String subscriberActiveMQSettingPath) {
+		Config.subscriberActiveMQSettingPath = subscriberActiveMQSettingPath;
 	}
 
 	public static String getSubscriberRedisSettingPath() {
