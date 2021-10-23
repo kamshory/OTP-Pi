@@ -26,7 +26,7 @@ public class Config {
 	private static String dhcpSettingPath = "";
 	private static String ethernetSettingPath = "";
 	private static String modemSettingPath = "";
-	private static long subscriberWSRecoonectDelay = 0;
+	private static long subscriberWSreconnectDelay = 0;
 	private static String noIPDevice = "OTP Broker/version 1.0";
 	private static String noIPSettingPath = "";
 	private static String deviceName = "OTP Broker";
@@ -317,12 +317,12 @@ public class Config {
 		Config.modemSettingPath = modemSettingPath;
 	}
 
-	public static long getSubscriberWSRecoonectDelay() {
-		return subscriberWSRecoonectDelay;
+	public static long getSubscriberWSreconnectDelay() {
+		return subscriberWSreconnectDelay;
 	}
 
-	public static void setSubscriberWSRecoonectDelay(long subscriberWSRecoonectDelay) {
-		Config.subscriberWSRecoonectDelay = subscriberWSRecoonectDelay;
+	public static void setSubscriberWSreconnectDelay(long subscriberWSreconnectDelay) {
+		Config.subscriberWSreconnectDelay = subscriberWSreconnectDelay;
 	}
 
 	public static String getNoIPDevice() {

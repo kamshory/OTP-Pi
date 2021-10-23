@@ -79,7 +79,7 @@ public class ConfigSubscriberActiveMQ {
 	}
 	public static void save()
 	{
-		ConfigSubscriberActiveMQ.save(ConfigSubscriberActiveMQ.configPath );
+		ConfigSubscriberActiveMQ.save(ConfigSubscriberActiveMQ.configPath);
 	}
 	public static void load(String path)
 	{

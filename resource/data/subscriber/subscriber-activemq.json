@@ -1,0 +1,1 @@
+{"subscriberActiveMQTopic":"sms","subscriberActiveMQSSL":false,"subscriberActiveMQTimeout":1000,"subscriberActiveMQAddress":"localhost","subscriberActiveMQRefresh":0,"subscriberActiveMQClientID":"","subscriberActiveMQPassword":"pass","subscriberActiveMQPort":61616,"subscriberActiveMQEnable":true,"subscriberActiveMQUsername":"user","subscriberActiveMQReconnectDelay":0}

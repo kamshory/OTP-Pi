@@ -1431,8 +1431,8 @@ public class HandlerWebManager implements HttpHandler {
 			int subscriberMqttTimeout = Utility.atoi(timeout);	
 			String refresh = queryPairs.getOrDefault("subscriber_mqtt_refresh", "0");
 			int subscriberMqttRefresh = Utility.atoi(refresh);
-			String recoonectDelay = queryPairs.getOrDefault("subscriber_mqtt_recoonect_delay", "0");
-			long subscriberMqttReconnectDelay = Utility.atol(recoonectDelay);
+			String reconnectDelay = queryPairs.getOrDefault("subscriber_mqtt_reconnect_delay", "0");
+			long subscriberMqttReconnectDelay = Utility.atol(reconnectDelay);
 			String mqttQosStr = queryPairs.getOrDefault("subscriber_mqtt_qos", "0");
 			long subscriberMqttQos = Utility.atol(mqttQosStr);
 			
