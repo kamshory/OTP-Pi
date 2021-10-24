@@ -291,6 +291,7 @@
 							<td>Reconnect Delay</td>
 							<td>
 								<select name="subscriber_mqtt_reconnect_delay">
+									<option value="10000">10 Seconds</option>
 									<option value="15000">15 Seconds</option>
 									<option value="30000">30 Seconds</option>
 									<option value="60000">1 Minute</option>
@@ -377,7 +378,15 @@
 						<tr>
 							<td>Reconnect Delay</td>
 							<td>
-								<input type="number" min="0" name="subscriber_redis_reconnect_delay" id="subscriber_redis_reconnect_delay" value=""> </td>
+								<select name="subscriber_redis_reconnect_delay">
+									<option value="10000">10 Seconds</option>
+									<option value="15000">15 Seconds</option>
+									<option value="30000">30 Seconds</option>
+									<option value="60000">1 Minute</option>
+									<option value="12000">2 Minutes</option>
+									<option value="300000">5 Minutes</option>
+								</select>
+							</td>
 						</tr>
 						<tr>
 							<td>Refresh Connection</td>
@@ -463,6 +472,7 @@
 							<td>Reconnect Delay</td>
 							<td>
 								<select name="subscriber_active_mq_reconnect_delay">
+									<option value="10000">10 Seconds</option>
 									<option value="15000">15 Seconds</option>
 									<option value="30000">30 Seconds</option>
 									<option value="60000">1 Minute</option>
@@ -574,7 +584,7 @@
 
 				$.ajax({
 					type: "GET",
-					url: "data/subscriber-active-mq-setting/get",
+					url: "data/subscriber-activemq-setting/get",
 					dataType: "json",
 					success: function(data) {
 						$('[name="subscriber_active_mq_enable"]').prop("checked", data.subscriberActiveMQEnable);
