@@ -1352,6 +1352,7 @@ public class HandlerWebManager implements HttpHandler {
 			String subscriberActiveMQAddress = queryPairs.getOrDefault("subscriber_active_mq_address", "");		
 			String port = queryPairs.getOrDefault("subscriber_active_mq_port", "0");
 			int subscriberActiveMQPort = Utility.atoi(port);
+			String subscriberActiveMQClientID = queryPairs.getOrDefault("subscriber_active_mq_client_id", "");		
 			String subscriberActiveMQUsername = queryPairs.getOrDefault("subscriber_active_mq_username", "");		
 			String subscriberActiveMQPassword = queryPairs.getOrDefault("subscriber_active_mq_password", "");		
 			String subscriberActiveMQTopic = queryPairs.getOrDefault("subscriber_active_mq_topic", "");
@@ -1371,6 +1372,7 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQSSL(subscriberActiveMQSSL);
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQAddress(subscriberActiveMQAddress);
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQPort(subscriberActiveMQPort);
+			ConfigSubscriberActiveMQ.setSubscriberActiveMQClientID(subscriberActiveMQClientID);
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQUsername(subscriberActiveMQUsername);
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQPassword(subscriberActiveMQPassword);
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQTopic(subscriberActiveMQTopic);

@@ -152,6 +152,20 @@ public class ConfigSubscriberActiveMQ {
 			d1.mkdir();
 		}		
 	}
+	
+	public static void reset() {
+		ConfigSubscriberActiveMQ.subscriberActiveMQEnable = false;
+		ConfigSubscriberActiveMQ.subscriberActiveMQSSL = false;
+		ConfigSubscriberActiveMQ.subscriberActiveMQAddress = "";
+		ConfigSubscriberActiveMQ.subscriberActiveMQPort = 0;
+		ConfigSubscriberActiveMQ.subscriberActiveMQClientID = "";
+		ConfigSubscriberActiveMQ.subscriberActiveMQUsername = "";
+		ConfigSubscriberActiveMQ.subscriberActiveMQPassword = "";
+		ConfigSubscriberActiveMQ.subscriberActiveMQTopic = "";
+		ConfigSubscriberActiveMQ.subscriberActiveMQTimeout = 0;
+		ConfigSubscriberActiveMQ.subscriberActiveMQRefresh = 0;
+	}
+
 	public static boolean isSubscriberActiveMQEnable() {
 		return subscriberActiveMQEnable;
 	}
@@ -240,6 +254,14 @@ public class ConfigSubscriberActiveMQ {
 		ConfigSubscriberActiveMQ.subscriberActiveMQRefresh = subscriberActiveMQRefresh;
 	}
 
+	public static long getSubscriberActiveMQReconnectDelay() {
+		return subscriberActiveMQReconnectDelay;
+	}
+
+	public static void setSubscriberActiveMQReconnectDelay(long subscriberActiveMQReconnectDelay) {
+		ConfigSubscriberActiveMQ.subscriberActiveMQReconnectDelay = subscriberActiveMQReconnectDelay;
+	}
+
 	public static boolean isLoaded() {
 		return loaded;
 	}
@@ -256,27 +278,6 @@ public class ConfigSubscriberActiveMQ {
 		ConfigSubscriberActiveMQ.connected = connected;
 	}
 
-	public static void reset() {
-		ConfigSubscriberActiveMQ.subscriberActiveMQEnable = false;
-		ConfigSubscriberActiveMQ.subscriberActiveMQSSL = false;
-		ConfigSubscriberActiveMQ.subscriberActiveMQAddress = "";
-		ConfigSubscriberActiveMQ.subscriberActiveMQPort = 0;
-		ConfigSubscriberActiveMQ.subscriberActiveMQClientID = "";
-		ConfigSubscriberActiveMQ.subscriberActiveMQUsername = "";
-		ConfigSubscriberActiveMQ.subscriberActiveMQPassword = "";
-		ConfigSubscriberActiveMQ.subscriberActiveMQTopic = "";
-		ConfigSubscriberActiveMQ.subscriberActiveMQTimeout = 0;
-		ConfigSubscriberActiveMQ.subscriberActiveMQRefresh = 0;
-	}
-
-	public static long getsubscriberActiveMQReconnectDelay() {
-		return subscriberActiveMQReconnectDelay;
-	}
-
-	public static void setSubscriberActiveMQReconnectDelay(long subscriberActiveMQReconnectDelay) {
-		ConfigSubscriberActiveMQ.subscriberActiveMQReconnectDelay = subscriberActiveMQReconnectDelay;
-	}
-
 	public static long getSubscriberTimeToLeave() {
 		return subscriberTimeToLeave;
 	}
@@ -284,5 +285,7 @@ public class ConfigSubscriberActiveMQ {
 	public static void setSubscriberTimeToLeave(long subscriberTimeToLeave) {
 		ConfigSubscriberActiveMQ.subscriberTimeToLeave = subscriberTimeToLeave;
 	}
+
+	
 
 }

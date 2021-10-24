@@ -444,6 +444,11 @@
 								<input type="number" max="65535" name="subscriber_active_mq_port" id="subscriber_active_mq_port" value=""> </td>
 						</tr>
 						<tr>
+							<td>Client ID</td>
+							<td>
+								<input type="text" name="subscriber_active_mq_client_id" id="subscriber_active_mq_client_id" value=""> </td>
+						</tr>
+						<tr>
 							<td>Username</td>
 							<td>
 								<input type="text" name="subscriber_active_mq_username" id="subscriber_active_mq_username" value=""> </td>
@@ -591,6 +596,7 @@
 						$('[name="subscriber_active_mq_ssl"]').val(data.subscriberActiveMQSSL ? "1" : "0");
 						$('[name="subscriber_active_mq_address"]').val(data.subscriberActiveMQAddress);
 						$('[name="subscriber_active_mq_port"]').val(data.subscriberActiveMQPort);
+						$('[name="subscriber_active_mq_client_id"]').val(data.subscriberActiveMQClientID);
 						$('[name="subscriber_active_mq_username"]').val(data.subscriberActiveMQUsername);
 						$('[name="subscriber_active_mq_password"]').val(data.subscriberActiveMQPassword);
 						$('[name="subscriber_active_mq_topic"]').val(data.subscriberActiveMQTopic);

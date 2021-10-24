@@ -245,8 +245,8 @@ OTP-Pi provides an option if this device is installed on a mobile internet netwo
 | ----- | ----------- |
 | Enable | Enable or disable Redis subscribsion |
 | SSL | SSL connection |
-| Host | RabbitMQ host name or IP address |
-| Port | Port number |
+| Host | Redis host name or IP address |
+| Port | Redis port number |
 | Username | Client ID |
 | Password | Redis password (if present) |
 | Topic | Topic or channel of subscribsion | 
@@ -261,13 +261,28 @@ OTP-Pi provides an option if this device is installed on a mobile internet netwo
 | Enable | Enable or disable Mosquitto subscribsion |
 | SSL | SSL connection |
 | Host | Mosquitto host name or IP address |
-| Port | Port number |
+| Port | Mosquitto port number |
 | Client ID | Client ID |
-| Username | Username on basic authorzation |
-| Password | Password on basic authorzation |
+| Username | Username |
+| Password | Password |
 | Topic | Topic or channel of subscribsion | 
 | Timeout | Request time out |
 | Refresh Connection | Refresh Mosquitto connection |
+
+**ActiveMQ**
+
+| Field | Description |
+| ----- | ----------- |
+| Enable | Enable or disable ActiveMQ subscribsion |
+| SSL | SSL connection |
+| Host | ActiveMQ host name or IP address |
+| Port | ActiveMQ port number |
+| Client ID | Client ID |
+| Username | Username |
+| Password | Password |
+| Topic | Topic or channel of subscribsion | 
+| Timeout | Request time out |
+| Refresh Connection | Refresh ActiveMQ connection |
 
 ## SMS Settings
 
@@ -1388,9 +1403,9 @@ Users can run USSD code via the API either using the REST API or using the messa
 ```json
 {
    "data":{
-      "date_time":1629685778
+      "date_time": 1629685778
    },
-   "command":"get-modem-list"
+   "command": "get-modem-list"
 }
 
 ```

@@ -1,1 +1,1 @@
-{"subscriberAmqpPort":5672,"subscriberAmqpTimeout":0,"subscriberAmqpEnable":false,"subscriberAmqpPassword":"guest","subscriberAmqpAddress":"127.0.0.1","subscriberAmqpUsername":"guest","subscriberAmqpRefresh":0,"subscriberAmqpSSL":false,"subscriberAmqpPath":"","subscriberAmqpTopic":"sms"}
+{"subscriberAmqpPort":5672,"subscriberAmqpTimeout":0,"subscriberAmqpEnable":true,"subscriberAmqpPassword":"guest","subscriberAmqpAddress":"127.0.0.1","subscriberAmqpUsername":"guest","subscriberAmqpRefresh":0,"subscriberAmqpSSL":false,"subscriberAmqpPath":"","subscriberAmqpTopic":"sms"}

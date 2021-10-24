@@ -56,7 +56,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 	{
 		this.running = true;
 		this.timeout = ConfigSubscriberActiveMQ.getSubscriberActiveMQTimeout();
-		this.interval = ConfigSubscriberActiveMQ.getsubscriberActiveMQReconnectDelay();
+		this.interval = ConfigSubscriberActiveMQ.getSubscriberActiveMQReconnectDelay();
 		this.timeToLeave = ConfigSubscriberActiveMQ.getSubscriberTimeToLeave();
 		
 		if(this.timeout <= 0)
@@ -81,6 +81,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		String url = String.format("tcp://%s:%d", host, port);
 		String username = ConfigSubscriberActiveMQ.getSubscriberActiveMQUsername();
 		String password = ConfigSubscriberActiveMQ.getSubscriberActiveMQPassword();
+		String clientID = ConfigSubscriberActiveMQ.getSubscriberActiveMQClientID();
 		this.topic = ConfigSubscriberActiveMQ.getSubscriberActiveMQTopic();	
 		
 		
@@ -95,6 +96,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 			{
 				this.connectionFactory = new ActiveMQConnectionFactory(url);
 			}
+			this.connectionFactory.setClientID(clientID);
 			this.connectionFactory.setTrustedPackages(Arrays.asList("com.planetbiru.subscriber.activemq"));
 			this.connection = (ActiveMQConnection) connectionFactory.createConnection();
 			
