@@ -9,7 +9,6 @@ import javax.net.ssl.SSLSocketFactory;
 
 import org.apache.log4j.Logger;
 
-import com.planetbiru.ServerWebAdmin;
 import com.planetbiru.config.ConfigSubscriberRedis;
 
 import redis.clients.jedis.Jedis;
@@ -23,7 +22,7 @@ public class RedisClientThread extends Thread {
 	private SubscriberRedis subscriberRedis;
 	private boolean running = false;
 	
-	private static Logger logger = Logger.getLogger(ServerWebAdmin.class);
+	private static Logger logger = Logger.getLogger(RedisClientThread.class);
 
 	public RedisClientThread(SubscriberRedis subscriberRedis) {
 		this.setSubscriberRedis(subscriberRedis);
