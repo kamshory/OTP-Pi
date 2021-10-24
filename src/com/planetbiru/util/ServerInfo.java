@@ -14,6 +14,7 @@ import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigModem;
 import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberActiveMQ;
 import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigSubscriberRedis;
 import com.planetbiru.config.ConfigSubscriberWS;
@@ -626,7 +627,17 @@ public class ServerInfo {
 		mqttConnected.put(JsonKey.NAME, "otp-mqtt-connected");
 		mqttConnected.put(JsonKey.VALUE, ConfigSubscriberMQTT.isConnected());
 		data.put(mqttConnected);
+
+		JSONObject activeMQEnable = new JSONObject();
+		activeMQEnable.put(JsonKey.NAME, "otp-activemq-enable");
+		activeMQEnable.put(JsonKey.VALUE, ConfigSubscriberActiveMQ.isSubscriberActiveMQEnable());
+		data.put(activeMQEnable);
 		
+		JSONObject activeMQConnected = new JSONObject();
+		activeMQConnected.put(JsonKey.NAME, "otp-activemq-connected");
+		activeMQConnected.put(JsonKey.VALUE, ConfigSubscriberActiveMQ.isConnected());
+		data.put(activeMQConnected);		
+
 		JSONObject httpEnable = new JSONObject();
 		httpEnable.put(JsonKey.NAME, "otp-http-enable");
 		httpEnable.put(JsonKey.VALUE, ConfigAPI.isHttpEnable());

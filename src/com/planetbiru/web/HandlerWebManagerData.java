@@ -119,7 +119,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			this.handleSubscriberMQTTSetting(httpExchange);
 		}
-		else if(path.startsWith("/data/subscriber-active-mq-setting/get"))
+		else if(path.startsWith("/data/subscriber-activemq-setting/get"))
 		{
 			this.handleSubscriberActiveMQSetting(httpExchange);
 		}
@@ -1404,7 +1404,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		httpExchange.close();	
 	}
 	
-	//@GetMapping(path="/data/subscriber-active-mq-setting/get")
+	//@GetMapping(path="/data/subscriber-activemq-setting/get")
 	public void handleSubscriberActiveMQSetting(HttpExchange httpExchange) throws IOException
 	{
 		Headers requestHeaders = httpExchange.getRequestHeaders();

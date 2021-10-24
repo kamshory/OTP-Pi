@@ -16,6 +16,7 @@ import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.json.JSONObject;
 
+import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.api.MessageAPI;
 import com.planetbiru.config.ConfigSubscriberActiveMQ;
 import com.planetbiru.constant.ConstantString;
@@ -39,12 +40,15 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		try 
 		{
 			this.connected = this.connect();
+			this.updateConnectionStatus();
 		} 
 		catch (JMSException e) 
 		{
 			/**
 			 * Do nothing
 			 */
+			this.connected = false;
+			this.updateConnectionStatus();
 		}
 	}
 
@@ -66,8 +70,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		if(this.timeToLeave <= 0)
 		{
 			this.timeToLeave = 60000;
-		}
-		
+		}		
 		String host = ConfigSubscriberActiveMQ.getSubscriberActiveMQAddress();
 		int port = ConfigSubscriberActiveMQ.getSubscriberActiveMQPort();
 		
@@ -75,35 +78,45 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		{
 			return false;
 		}
-		String url = String.format("failover://tcp://%s:%d", host, port);
+		String url = String.format("tcp://%s:%d", host, port);
 		String username = ConfigSubscriberActiveMQ.getSubscriberActiveMQUsername();
 		String password = ConfigSubscriberActiveMQ.getSubscriberActiveMQPassword();
 		this.topic = ConfigSubscriberActiveMQ.getSubscriberActiveMQTopic();	
 		
-		if(!username.isEmpty())
-		{
-			this.connectionFactory = new ActiveMQConnectionFactory(username, password, url);
-		}
-		else
-		{
-			this.connectionFactory = new ActiveMQConnectionFactory(url);
-		}
-		this.connectionFactory.setTrustedPackages(Arrays.asList("com.planetbiru.subscriber.activemq"));
-		this.connection = (ActiveMQConnection) connectionFactory.createConnection();
 		
-        if(!this.connection.isClosed())
-        {
-        	this.connection.start();
-        	this.connection.setExceptionListener(this);
-        	this.session = this.connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-            Destination destination = this.session.createTopic(topic);
-            this.consumer = this.session.createConsumer(destination);
-            return true;
-        }
-		else
+		try
 		{
-			return false;
+		
+			if(!username.isEmpty())
+			{
+				this.connectionFactory = new ActiveMQConnectionFactory(username, password, url);
+			}
+			else
+			{
+				this.connectionFactory = new ActiveMQConnectionFactory(url);
+			}
+			this.connectionFactory.setTrustedPackages(Arrays.asList("com.planetbiru.subscriber.activemq"));
+			this.connection = (ActiveMQConnection) connectionFactory.createConnection();
+			
+	        if(!this.connection.isClosed())
+	        {
+	        	this.connection.start();
+	        	this.connection.setExceptionListener(this);
+	        	this.session = this.connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+	            Destination destination = this.session.createTopic(this.topic);
+	            this.consumer = this.session.createConsumer(destination);
+	            return true;
+	        }
+			else
+			{
+				return false;
+			}
 		}
+		catch(Exception e)
+		{
+			this.connected = false;
+		}
+		return false;
  	}
 	
 	public void disconnect() throws JMSException
@@ -120,6 +133,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
         {
 			this.connection.close();
         }
+		this.connected = false;
 	}
 	
 	public String processMessage(String message)
@@ -129,7 +143,6 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
         JSONObject requestJSON = new JSONObject(message); 
         String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
         long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
-   		System.out.println("Callback Topic : "+callbackTopic);
    		if(!callbackTopic.isEmpty() 
         		&& (requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) 
         				|| requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST)))
@@ -144,6 +157,8 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 				/**
 				 * Do nothing
 				 */
+        		this.connected = false;
+        		this.updateConnectionStatus();
 			}
         }	
 		return "";
@@ -170,7 +185,6 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 	            	if(message instanceof TextMessage) 
 		            {
 		                TextMessage textMessage = (TextMessage) message;
-		                System.out.println("TextMessage");
 		                this.processMessage(textMessage.getText());
 		            } 
 		            else 
@@ -185,6 +199,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 				 * Do nothing
 				 */
 				this.connected = false;
+				this.updateConnectionStatus();
 	        }
 		}
 	}
@@ -215,12 +230,13 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 			Thread.currentThread().interrupt();
 		}
 	}
-
+	
 	private void reconnect() {
 		try 
 		{
 			this.disconnect();
-			this.connect();
+			this.connected = this.connect();
+			this.updateConnectionStatus();
 		} 
 		catch (JMSException e) 
 		{
@@ -228,16 +244,31 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 			 * Do nothing
 			 */
 			this.connected = false;
+			this.updateConnectionStatus();
 		}		
+	}
+
+	private void updateConnectionStatus() {
+		ConfigSubscriberActiveMQ.setConnected(this.connected);
+		ServerWebSocketAdmin.broadcastServerInfo();		
 	}
 
 	@Override
 	public void onException(JMSException exception) {
 		this.connected = false;
+		this.updateConnectionStatus();
 	}
 
 	public void stopService() {
 		this.running = false;
+		try 
+		{
+			this.disconnect();
+		} 
+		catch (JMSException e) {
+			this.connected = false;
+		}
+		updateConnectionStatus();
 	}
 
 	public boolean isRunning() {

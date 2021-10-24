@@ -19,7 +19,7 @@ public class SubscriberActiveMQ extends Thread{
 		this.instance.start();
 	}
 
-	public void stopService() {
+	public void stopService() {	
 		if(this.instance != null)
 		{
 			this.instance.stopService();
