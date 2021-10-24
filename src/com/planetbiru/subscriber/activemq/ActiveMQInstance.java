@@ -129,12 +129,15 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
         JSONObject requestJSON = new JSONObject(message); 
         String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
         long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
-        if(requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) || requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST))
+   		System.out.println("Callback Topic : "+callbackTopic);
+   		if(!callbackTopic.isEmpty() 
+        		&& (requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) 
+        				|| requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST)))
         {
         	this.delay(callbackDelay);
         	try 
         	{
-				this.sendMessage(callbackTopic, response.toString());
+ 				this.sendMessage(callbackTopic, response.toString());
 			} 
         	catch (JMSException e) 
         	{
@@ -167,11 +170,12 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 	            	if(message instanceof TextMessage) 
 		            {
 		                TextMessage textMessage = (TextMessage) message;
+		                System.out.println("TextMessage");
 		                this.processMessage(textMessage.getText());
 		            } 
 		            else 
 		            {
-		                this.processMessage(message.toString());
+		            	this.connected = true;
 		            }
 	            }	            
 	        } 
@@ -180,6 +184,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 				/**
 				 * Do nothing
 				 */
+				this.connected = false;
 	        }
 		}
 	}
