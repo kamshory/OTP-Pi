@@ -125,6 +125,23 @@ public class ServerInfo {
 		
 	}
 
+	public static void sendActiveMQStatus(boolean connected) {
+
+		JSONArray data = new JSONArray();
+		JSONObject info = new JSONObject();
+		
+		JSONObject activeMQ = new JSONObject();
+		activeMQ.put(JsonKey.NAME, "otp-activemq-connected");
+		activeMQ.put(JsonKey.VALUE, connected);
+		data.put(activeMQ);
+		
+		info.put(JsonKey.COMMAND, ServerInfo.SERVER_INFO);
+		info.put(JsonKey.DATA, data);
+	
+		ServerWebSocketAdmin.broadcastMessage(info.toString(0));
+		
+	}
+
 	public static void sendModemStatus()
 	{
 		JSONArray data = new JSONArray();

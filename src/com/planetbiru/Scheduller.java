@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import com.planetbiru.config.ConfigDDNS;
 import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberActiveMQ;
 import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigSubscriberRedis;
 import com.planetbiru.config.ConfigSubscriberWS;
@@ -46,6 +47,8 @@ public class Scheduller extends Thread{
 
 	private String cronExpressionStatusServer = ConstantString.CRON_EVERY_MINUTE;
 
+	private String cronExpressionActiveMQCheck = ConstantString.CRON_EVERY_MINUTE;
+
 	private long cronInterval = 2000;
 
 	private boolean cronUpdateServerStatus = false;
@@ -57,26 +60,38 @@ public class Scheduller extends Thread{
 	private boolean cronUpdateRedis = false;
 	
 	private boolean cronUpdateMQTT = false;
-	
+
+	private boolean cronUpdateActiveMQ = false;
+
 	private boolean cronUpdateWS = false;
 
-	private boolean cronCeviceCheck = false;
+	private boolean cronServiceCheck = false;
+
+
 	
 	public Scheduller() {
 		this.cronExpressionDeviceCheck = ConfigLoader.getConfig("otppi.cron.expression.device");
+		
 		this.cronExpressionAMQPCheck = ConfigLoader.getConfig("otppi.cron.expression.amqp");
 		this.cronExpressionRedisCheck = ConfigLoader.getConfig("otppi.cron.expression.redis");
 		this.cronExpressionMQTTCheck = ConfigLoader.getConfig("otppi.cron.expression.mqtt");
+		this.cronExpressionActiveMQCheck = ConfigLoader.getConfig("otppi.cron.expression.activemq");
 		this.cronExpressionWSCheck = ConfigLoader.getConfig("otppi.cron.expression.ws");
-		this.cronExpressionDDNSUpdate = ConfigLoader.getConfig("otppi.cron.expression.general");
-		this.cronExpressionStatusServer = ConfigLoader.getConfig("otppi.cron.expression.server.status");		
-		this.cronUpdateServerStatus = ConfigLoader.getConfigBoolean("otppi.cron.enable.server.status");
-		this.cronUpdateDDNS = ConfigLoader.getConfigBoolean("otppi.cron.enable.ddns");
+		
 		this.cronUpdateAMQP = ConfigLoader.getConfigBoolean("otppi.cron.enable.amqp");
 		this.cronUpdateMQTT = ConfigLoader.getConfigBoolean("otppi.cron.enable.mqtt");
 		this.cronUpdateRedis = ConfigLoader.getConfigBoolean("otppi.cron.enable.redis");
+		this.cronUpdateActiveMQ = ConfigLoader.getConfigBoolean("otppi.cron.enable.activemq");
 		this.cronUpdateWS = ConfigLoader.getConfigBoolean("otppi.cron.enable.ws");
-		this.cronCeviceCheck = ConfigLoader.getConfigBoolean("otppi.cron.enable.device");
+		
+		
+		this.cronUpdateDDNS = ConfigLoader.getConfigBoolean("otppi.cron.enable.ddns");
+		this.cronExpressionDDNSUpdate = ConfigLoader.getConfig("otppi.cron.expression.general");
+
+		this.cronUpdateServerStatus = ConfigLoader.getConfigBoolean("otppi.cron.enable.server.status");
+		this.cronExpressionStatusServer = ConfigLoader.getConfig("otppi.cron.expression.server.status");		
+		
+		this.cronServiceCheck = ConfigLoader.getConfigBoolean("otppi.cron.enable.device");
 	}
 	
 	public void stopService() {
@@ -130,6 +145,12 @@ public class Scheduller extends Thread{
 			 */
 			
 			this.mqttCheck(currentTime);				
+
+			/**
+			 * Check ActiveMQ
+			 */
+			
+			this.activeMQCheck(currentTime);				
 
 			/**
 			 * Check WS
@@ -318,7 +339,7 @@ public class Scheduller extends Thread{
 	}
 
 	private void modemCheck(Date currentTime) {
-		if(this.cronCeviceCheck)
+		if(this.cronServiceCheck)
 		{
 			CronExpression exp;
 			try
@@ -341,7 +362,7 @@ public class Scheduller extends Thread{
 	}
 
 	private void amqpCheck(Date currentTime) {
-		if(this.cronUpdateAMQP)
+		if(this.cronUpdateAMQP && ConfigSubscriberAMQP.isSubscriberAmqpEnable())
 		{
 			CronExpression exp;		
 			try
@@ -364,7 +385,7 @@ public class Scheduller extends Thread{
 	}
 	
 	private void redisCheck(Date currentTime) {
-		if(this.cronUpdateRedis)
+		if(this.cronUpdateRedis && ConfigSubscriberRedis.isSubscriberRedisEnable())
 		{
 			CronExpression exp;		
 			try
@@ -387,7 +408,7 @@ public class Scheduller extends Thread{
 	}
 
 	private void mqttCheck(Date currentTime) {
-		if(this.cronUpdateMQTT)
+		if(this.cronUpdateMQTT && ConfigSubscriberMQTT.isSubscriberMqttEnable())
 		{
 			CronExpression exp;		
 			try
@@ -409,8 +430,31 @@ public class Scheduller extends Thread{
 		}			
 	}
 	
+	private void activeMQCheck(Date currentTime) {
+		if(this.cronUpdateActiveMQ && ConfigSubscriberActiveMQ.isSubscriberActiveMQEnable())
+		{
+			CronExpression exp;		
+			try
+			{
+				exp = new CronExpression(this.cronExpressionActiveMQCheck);
+				Date nextValidTimeAfter = exp.getNextValidTimeAfter(currentTime);
+				if(currentTime.getTime() > DeviceAPI.getLastCheckMQTT())
+				{
+					this.activeMQCheck();
+					DeviceAPI.setLastCheckActiveMQ(nextValidTimeAfter.getTime());
+				}
+			}
+			catch(JSONException | ParseException e)
+			{
+				/**
+				 * Do nothing
+				 */
+			}
+		}			
+	}
+	
 	private void wsCheck(Date currentTime) {
-		if(this.cronUpdateWS)
+		if(this.cronUpdateWS && ConfigSubscriberWS.isSubscriberWsEnable())
 		{
 			CronExpression exp;		
 			try
@@ -497,6 +541,12 @@ public class Scheduller extends Thread{
 	{
 		boolean connected = ConfigSubscriberMQTT.isConnected();
 		ServerInfo.sendMQTTStatus(connected);
+	}
+
+	private void activeMQCheck()
+	{
+		boolean connected = ConfigSubscriberActiveMQ.isConnected();
+		ServerInfo.sendActiveMQStatus(connected);
 	}
 
 	private void wsCheck()

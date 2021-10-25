@@ -27,6 +27,7 @@ import com.planetbiru.config.ConfigNetWLAN;
 import com.planetbiru.config.ConfigSMS;
 import com.planetbiru.config.ConfigSMTP;
 import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberActiveMQ;
 import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigSubscriberRedis;
 import com.planetbiru.config.ConfigSubscriberWS;
@@ -144,6 +145,11 @@ public class ResetDevice {
 		{
 			ConfigSubscriberWS.reset();
 			ConfigSubscriberWS.save();
+		}
+		if(props.getOrDefault("RESET_SUBSCRIBER_ACTIVEMQ", "").toString().equalsIgnoreCase("true"))
+		{
+			ConfigSubscriberActiveMQ.reset();
+			ConfigSubscriberActiveMQ.save();
 		}
 		if(props.getOrDefault("RESET_FIREWALL", "").toString().equalsIgnoreCase("true"))
 		{
