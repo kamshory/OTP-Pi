@@ -1293,10 +1293,12 @@ public class HandlerWebManager implements HttpHandler {
 			String subscriberAmqpTopic = queryPairs.getOrDefault("subscriber_amqp_topic", "");
 			
 			String timeout = queryPairs.getOrDefault("subscriber_amqp_timeout", "0");
+			String reconnect = queryPairs.getOrDefault("subscriber_amqp_reconnect_delay", "0");
 			int subscriberAmqpTimeout = Utility.atoi(timeout);	
 			String refresh = queryPairs.getOrDefault("subscriber_amqp_refresh", "0");
 			int subscriberAmqpRefresh = Utility.atoi(refresh);
-			
+			long subscriberAmqpReconnectDelay = Utility.atol(reconnect);
+
 			ConfigSubscriberAMQP.setSubscriberAmqpEnable(subscriberAmqpEnable);
 			ConfigSubscriberAMQP.setSubscriberAmqpSSL(subscriberAmqpSSL);
 			ConfigSubscriberAMQP.setSubscriberAmqpAddress(subscriberAmqpAddress);
@@ -1306,6 +1308,7 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigSubscriberAMQP.setSubscriberAmqpPassword(subscriberAmqpPassword);
 			ConfigSubscriberAMQP.setSubscriberAmqpTopic(subscriberAmqpTopic);
 			ConfigSubscriberAMQP.setSubscriberAmqpTimeout(subscriberAmqpTimeout);
+			ConfigSubscriberAMQP.setSubscriberAmqpReconnectDelay(subscriberAmqpReconnectDelay);
 			ConfigSubscriberAMQP.setSubscriberAmqpRefresh(subscriberAmqpRefresh);		
 
 			ConfigSubscriberAMQP.save();			
@@ -1352,6 +1355,7 @@ public class HandlerWebManager implements HttpHandler {
 			String subscriberActiveMQAddress = queryPairs.getOrDefault("subscriber_active_mq_address", "");		
 			String port = queryPairs.getOrDefault("subscriber_active_mq_port", "0");
 			int subscriberActiveMQPort = Utility.atoi(port);
+			String subscriberActiveMQClientID = queryPairs.getOrDefault("subscriber_active_mq_client_id", "");		
 			String subscriberActiveMQUsername = queryPairs.getOrDefault("subscriber_active_mq_username", "");		
 			String subscriberActiveMQPassword = queryPairs.getOrDefault("subscriber_active_mq_password", "");		
 			String subscriberActiveMQTopic = queryPairs.getOrDefault("subscriber_active_mq_topic", "");
@@ -1371,6 +1375,7 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQSSL(subscriberActiveMQSSL);
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQAddress(subscriberActiveMQAddress);
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQPort(subscriberActiveMQPort);
+			ConfigSubscriberActiveMQ.setSubscriberActiveMQClientID(subscriberActiveMQClientID);
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQUsername(subscriberActiveMQUsername);
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQPassword(subscriberActiveMQPassword);
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQTopic(subscriberActiveMQTopic);

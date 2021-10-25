@@ -98,7 +98,7 @@ public class RabbitMQSubscriber{
 		this.channel = null;
 		try 
 		{
-			Thread.sleep(ConfigSubscriberAMQP.getSubscriberAmqpTimeout() * 2L);
+			Thread.sleep(ConfigSubscriberAMQP.getSubscriberAmqpReconnectDelay());
 		} 
 		catch (InterruptedException e) 
 		{

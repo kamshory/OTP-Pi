@@ -60,7 +60,7 @@ OTP-Pi comes with built-in wifi. The built-in wifi is used to configure the devi
 
 ## Multiple Method
 
-User can send OTP with several methods. OTP-Pi allow user to create and validate OTP via REST API or just send SMS or email contains OTP code via RabbitMQ,Redis, Mosquitto and WebSocket.
+User can send OTP with several methods. OTP-Pi allow user to create and validate OTP via REST API or just send SMS or email contains OTP code via RabbitMQ, Redis, Mosquitto, ActiveMQ and WebSocket.
 
 ![Support](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/full.png)
 
@@ -71,6 +71,7 @@ User can send OTP with several methods. OTP-Pi allow user to create and validate
 | RabbitMQ * | ✓ | ✓ | ✓ | ✓ | Need callback | Need callback |
 | Redis * | ✓ | ✓ | ✓ | ✓ | Need callback | Need callback |
 | Mosquitto * | ✓ | ✓ | ✓ | ✓ | Need callback | Need callback |
+| ActiveMQ * | ✓ | ✓ | ✓ | ✓ | Need callback | Need callback |
 
 If you wish all features to be enable from API, you can use  OTP-Publisher. Clone https://github.com/kamshory/OTP-Publisher to get it.
 
@@ -79,6 +80,7 @@ If you wish all features to be enable from API, you can use  OTP-Publisher. Clon
 1. https://www.rabbitmq.com/
 2. https://redis.io/
 3. https://mqtt.org/
+4. https://activemq.apache.org/
 
 
 ## Multiple Device
@@ -202,8 +204,9 @@ API User is an account that sends SMS via REST API.
 OTP-Pi provides an option if this device is installed on a mobile internet network or on a network where the sending device may not be able to reach the address of the OTP-Pi. Users can send OTP with message broker as follows:
 
 1. RabbitMQ (AMQP)
-3. Mosquitto (MQTT)
-4. Redis
+2. Mosquitto (MQTT)
+3. Redis
+4. ActiveMQ
 5. WSMessageBroker (WebSocket)
 
 **WSMessageBroker**
@@ -242,8 +245,8 @@ OTP-Pi provides an option if this device is installed on a mobile internet netwo
 | ----- | ----------- |
 | Enable | Enable or disable Redis subscribsion |
 | SSL | SSL connection |
-| Host | RabbitMQ host name or IP address |
-| Port | Port number |
+| Host | Redis host name or IP address |
+| Port | Redis port number |
 | Username | Client ID |
 | Password | Redis password (if present) |
 | Topic | Topic or channel of subscribsion | 
@@ -258,13 +261,28 @@ OTP-Pi provides an option if this device is installed on a mobile internet netwo
 | Enable | Enable or disable Mosquitto subscribsion |
 | SSL | SSL connection |
 | Host | Mosquitto host name or IP address |
-| Port | Port number |
+| Port | Mosquitto port number |
 | Client ID | Client ID |
-| Username | Username on basic authorzation |
-| Password | Password on basic authorzation |
+| Username | Username |
+| Password | Password |
 | Topic | Topic or channel of subscribsion | 
 | Timeout | Request time out |
 | Refresh Connection | Refresh Mosquitto connection |
+
+**ActiveMQ**
+
+| Field | Description |
+| ----- | ----------- |
+| Enable | Enable or disable ActiveMQ subscribsion |
+| SSL | SSL connection |
+| Host | ActiveMQ host name or IP address |
+| Port | ActiveMQ port number |
+| Client ID | Client ID |
+| Username | Username |
+| Password | Password |
+| Topic | Topic or channel of subscribsion | 
+| Timeout | Request time out |
+| Refresh Connection | Refresh ActiveMQ connection |
 
 ## SMS Settings
 
@@ -963,23 +981,23 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 ### Scenario 2 - App Server Can't Access OTP-Pi
 
-In this scenario, the App Server may send the OTP to RabbitMQ Server, Redis Server, Mosquitto Server or WSMessageBroker. WSMessageBroker uses the WebSoket protocol and Basic Authentication. Both App Server and OTP-Pi act as clients of WSMessageBroker.
+In this scenario, the App Server may send the OTP to RabbitMQ Server, Redis Server, Mosquitto Server, ActiveMQ Server or WSMessageBroker. WSMessageBroker uses the WebSoket protocol and Basic Authentication. Both App Server and OTP-Pi act as clients of WSMessageBroker.
 
 In this scenario, the application cannot request the OTP-Pi to validate the previously sent OTP. Thus, the application must have its own OTP system. The application simply sends a message containing the OTP. The application must have a mechanism to validate the previously submitted OTP.
 
 Another way is to use a separate OTP system from the application. It is this system that issues the OTP code so that it can validate the code if the application so desires.
 
-App Server acts as publisher and OTP-Pi becomes consumer of RabbitMQ Server, Redis Server, Mosquitto Server and WSMessageBroker. Both must use the same topic so that all OTPs sent by the App Server can be received by the OTP-Pi.
+App Server acts as publisher and OTP-Pi becomes consumer of RabbitMQ Server, Redis Server, Mosquitto Server, ActiveMQ Server or WSMessageBroker. Both must use the same topic so that all OTPs sent by the App Server can be received by the OTP-Pi.
 
 ![OTP-Pi Topology Scenario 2](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/resource/www/lib.assets/images/topology-2.svg)
 
-From the two scenarios above, the OTP-Pi will send SMS using a GSM modem that is physically attached to the OTP-Pi device. Users can use either RabbitMQ Server, Mosquitto Server or WSMessageBroker and can also use both at the same time. However, if the App Server sends the same OTP to RabbitMQ Server, Mosquitto Server and WSMessageBroker, the OTP-Pi will send the SMS twice to the recipient number.
+From the two scenarios above, the OTP-Pi will send SMS using a GSM modem that is physically attached to the OTP-Pi device. Users can use either RabbitMQ Server, Redis Server, Mosquitto Server, ActiveMQ Server or WSMessageBroker can also use both at the same time. However, if the App Server sends the same OTP to RabbitMQ Server, Redis Server, Mosquitto Server, ActiveMQ Server or WSMessageBroker, the OTP-Pi will send the SMS twice to the recipient number.
 
 In this scenario, the user does not need a public IP. Users only need:
 
 1. OTP-Pi
 2. Internet connection (no need for public IP and port forwarding)
-3. RabbitMQ, Mosquitto or WSMessageBroker servers
+3. RabbitMQ, Redis, Mosquitto, ActiveMQ or WSMessageBroker servers
 
 **1. RabbitMQ**
 
@@ -1385,9 +1403,9 @@ Users can run USSD code via the API either using the REST API or using the messa
 ```json
 {
    "data":{
-      "date_time":1629685778
+      "date_time": 1629685778
    },
-   "command":"get-modem-list"
+   "command": "get-modem-list"
 }
 
 ```

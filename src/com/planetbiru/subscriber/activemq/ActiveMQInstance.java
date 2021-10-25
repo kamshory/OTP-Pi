@@ -44,9 +44,6 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		} 
 		catch (JMSException e) 
 		{
-			/**
-			 * Do nothing
-			 */
 			this.connected = false;
 			this.updateConnectionStatus();
 		}
@@ -56,7 +53,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 	{
 		this.running = true;
 		this.timeout = ConfigSubscriberActiveMQ.getSubscriberActiveMQTimeout();
-		this.interval = ConfigSubscriberActiveMQ.getsubscriberActiveMQReconnectDelay();
+		this.interval = ConfigSubscriberActiveMQ.getSubscriberActiveMQReconnectDelay();
 		this.timeToLeave = ConfigSubscriberActiveMQ.getSubscriberTimeToLeave();
 		
 		if(this.timeout <= 0)
@@ -73,7 +70,10 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		}		
 		String host = ConfigSubscriberActiveMQ.getSubscriberActiveMQAddress();
 		int port = ConfigSubscriberActiveMQ.getSubscriberActiveMQPort();
-		
+		if(host.isEmpty())
+		{
+			return false;
+		}
 		if(host.isEmpty() || port == 0)
 		{
 			return false;
@@ -81,12 +81,15 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		String url = String.format("tcp://%s:%d", host, port);
 		String username = ConfigSubscriberActiveMQ.getSubscriberActiveMQUsername();
 		String password = ConfigSubscriberActiveMQ.getSubscriberActiveMQPassword();
-		this.topic = ConfigSubscriberActiveMQ.getSubscriberActiveMQTopic();	
-		
+		String clientID = ConfigSubscriberActiveMQ.getSubscriberActiveMQClientID();
+		this.topic = ConfigSubscriberActiveMQ.getSubscriberActiveMQTopic();		
+		if(this.topic.isEmpty())
+		{
+			return false;
+		}
 		
 		try
-		{
-		
+		{		
 			if(!username.isEmpty())
 			{
 				this.connectionFactory = new ActiveMQConnectionFactory(username, password, url);
@@ -95,6 +98,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 			{
 				this.connectionFactory = new ActiveMQConnectionFactory(url);
 			}
+			this.connectionFactory.setClientID(clientID);
 			this.connectionFactory.setTrustedPackages(Arrays.asList("com.planetbiru.subscriber.activemq"));
 			this.connection = (ActiveMQConnection) connectionFactory.createConnection();
 			
@@ -154,9 +158,6 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 			} 
         	catch (JMSException e) 
         	{
-				/**
-				 * Do nothing
-				 */
         		this.connected = false;
         		this.updateConnectionStatus();
 			}
@@ -195,9 +196,6 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 	        } 
 			catch (JMSException e) 
 			{
-				/**
-				 * Do nothing
-				 */
 				this.connected = false;
 				this.updateConnectionStatus();
 	        }
@@ -240,9 +238,6 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		} 
 		catch (JMSException e) 
 		{
-			/**
-			 * Do nothing
-			 */
 			this.connected = false;
 			this.updateConnectionStatus();
 		}		

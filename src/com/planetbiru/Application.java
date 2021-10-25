@@ -62,7 +62,7 @@ public class Application {
 		}
 		else
 		{
-			logger.error("Service not started because failed to read config file");
+			logger.error("Service not started because failed to read configuration file");
 			logger.error("System can not find "+currentRootDirectoryPath+"/config.ini");
 		}		
 	}
@@ -131,8 +131,7 @@ public class Application {
 		if(needToStart)
 		{
 			ConfigLoader.init();
-			
-			
+						
 			if(needToReset)
 			{
 				ResetDevice.resetConfig();
@@ -152,35 +151,38 @@ public class Application {
 			 */
 			Application.subscriberWSStart();
 			
+			
 			/**
 			 * RabbitMQ Client for subscriber
 			 */
 			Application.subscriberAMQPStart();
 
+			
 			/**
 			 * Redis Client for subscriber
 			 */
 			Application.subscriberRedisStart();
 
+			
 			/**
 			 * Mosquitto Client for subscriber
 			 */
 			Application.subscriberMQTTStart();
 			
+			
+			/**
+			 * ActiveMQ Client for subscriber
+			 */
 			Application.subscriberActiveMQStart();
+			
 			
 			/**
 			 * REST API HTTP
 			 */
-			Application.restAPIStart();
-			
-			Application.otpStart();
-					
-	
+			Application.restAPIStart();			
+			Application.otpStart();			
 			Application.modemSMSStart();
-			
 			Application.modemInternetStart();
-			
 			Application.modemInspectorStart(5000);
 
 			/**
@@ -199,8 +201,7 @@ public class Application {
 		else
 		{
 			logger.info("Service already started");
-		}
-		
+		}	
 	}
 
 	private static void otpStart() {
@@ -438,7 +439,6 @@ public class Application {
 	public static void setRedisSubscriber(SubscriberRedis redisSubscriber) {
 		Application.redisSubscriber = redisSubscriber;
 	}
-
 
 }
 
