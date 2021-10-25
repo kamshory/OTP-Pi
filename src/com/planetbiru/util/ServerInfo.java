@@ -92,7 +92,6 @@ public class ServerInfo {
 	}
 	
 	public static void sendRedisStatus(boolean connected) {
-
 		JSONArray data = new JSONArray();
 		JSONObject info = new JSONObject();
 		
@@ -104,12 +103,10 @@ public class ServerInfo {
 		info.put(JsonKey.COMMAND, ServerInfo.SERVER_INFO);
 		info.put(JsonKey.DATA, data);
 	
-		ServerWebSocketAdmin.broadcastMessage(info.toString(0));
-		
+		ServerWebSocketAdmin.broadcastMessage(info.toString(0));	
 	}
 
 	public static void sendMQTTStatus(boolean connected) {
-
 		JSONArray data = new JSONArray();
 		JSONObject info = new JSONObject();
 		
@@ -121,12 +118,10 @@ public class ServerInfo {
 		info.put(JsonKey.COMMAND, ServerInfo.SERVER_INFO);
 		info.put(JsonKey.DATA, data);
 	
-		ServerWebSocketAdmin.broadcastMessage(info.toString(0));
-		
+		ServerWebSocketAdmin.broadcastMessage(info.toString(0));	
 	}
 
 	public static void sendActiveMQStatus(boolean connected) {
-
 		JSONArray data = new JSONArray();
 		JSONObject info = new JSONObject();
 		
@@ -138,8 +133,7 @@ public class ServerInfo {
 		info.put(JsonKey.COMMAND, ServerInfo.SERVER_INFO);
 		info.put(JsonKey.DATA, data);
 	
-		ServerWebSocketAdmin.broadcastMessage(info.toString(0));
-		
+		ServerWebSocketAdmin.broadcastMessage(info.toString(0));		
 	}
 
 	public static void sendModemStatus()
@@ -167,8 +161,7 @@ public class ServerInfo {
 	public static JSONObject memoryInfo()
 	{
 		String command = "free";
-		String result = CommandLineExecutor.exec(command).toString();
-		
+		String result = CommandLineExecutor.exec(command).toString();		
 		
 		result = fixingRawData(result);
 
