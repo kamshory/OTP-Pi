@@ -245,7 +245,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 
 	private void updateConnectionStatus() {
 		ConfigSubscriberActiveMQ.setConnected(this.connected);
-		ServerWebSocketAdmin.broadcastServerInfo();		
+		ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_ACTIVEMQ);		
 	}
 
 	@Override

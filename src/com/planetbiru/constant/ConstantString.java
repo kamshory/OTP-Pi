@@ -60,6 +60,17 @@ public class ConstantString {
 	public static final String OTP_MODEM_CONNECTED             = "otp-modem-connected";
 	public static final String RESPONSE_GSM_OK                 = "\r\nOK";
 	
+	public static final String SERVICE_ACTIVEMQ                = "activemq";
+	public static final String SERVICE_AMQP                    = "amqp";
+	public static final String SERVICE_MQTT                    = "mqtt";
+	public static final String SERVICE_REDIS                   = "redis";
+	public static final String SERVICE_WS                      = "ws";
+	public static final String SERVICE_HTTP                    = "http";
+	public static final String SERVICE_HTTPS                   = "https";
+	public static final String SERVICE_MODEM                   = "modem";
+
+	public static final String SERVICE_ALL                     = "activemq,amqp,mqtt,redis,ws,http,https,modem";
+	
 	private ConstantString()
 	{
 		

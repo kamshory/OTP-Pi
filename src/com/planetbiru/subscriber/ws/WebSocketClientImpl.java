@@ -180,7 +180,7 @@ public class WebSocketClientImpl extends Thread{
 		else
 		{
 			ConfigSubscriberWS.setConnected(true);
-			ServerWebSocketAdmin.broadcastServerInfo();
+			ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_WS);
 		}
 	}
 	
@@ -188,7 +188,7 @@ public class WebSocketClientImpl extends Thread{
 	{
 		Buzzer.toneDisconnectWs();
 		ConfigSubscriberWS.setConnected(false);
-		ServerWebSocketAdmin.broadcastServerInfo();
+		ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_WS);
 		if(this.reconnect)
 		{
 			this.reconnect = false;
@@ -199,7 +199,7 @@ public class WebSocketClientImpl extends Thread{
 	{
 		Buzzer.toneDisconnectWs();
 		ConfigSubscriberWS.setConnected(false);
-		ServerWebSocketAdmin.broadcastServerInfo();
+		ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_WS);
 		if(this.reconnect)
 		{
 			this.reconnect = false;

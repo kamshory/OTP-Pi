@@ -17708,3 +17708,10 @@ List of Unused Config:
 2021-10-25 18:59:42 [INFO  ] GSM                             :129  - Execute AT Command : AT+CNUM
 2021-10-25 18:59:42 [INFO  ] GSM                             :129  - Execute AT Command : AT+COPS?
 2021-10-25 18:59:42 [INFO  ] GSM                             :129  - Execute AT Command : AT+CSCA
+2021-10-25 19:27:51 [INFO  ] ConfigLoader                    :411  - echo 'export OTPPI_CRON_EXPRESSION_MQTT="0 * * * * ?"' >> $HOME/.bashrc
+2021-10-25 19:27:51 [INFO  ] ConfigLoader                    :411  - echo 'export OTPPI_CRON_EXPRESSION_REDIS="0 * * * * ?"' >> $HOME/.bashrc
+2021-10-25 19:27:51 [INFO  ] ConfigLoader                    :411  - echo 'export OTPPI_CRON_EXPRESSION_SERVER_STATUS="0 */5 * * * ?"' >> $HOME/.bashrc
+2021-10-25 19:27:51 [INFO  ] ConfigLoader                    :411  - echo 'export OTPPI_CRON_EXPRESSION_WS="0 * * * * ?"' >> $HOME/.bashrc
+2021-10-25 19:27:51 [INFO  ] ConfigLoader                    :411  - echo 'export OTPPI_CRON_TIME_RESOLUTION="minute"' >> $HOME/.bashrc
+2021-10-25 19:27:51 [INFO  ] ConfigLoader                    :411  - echo 'export OTPPI_DEVICE_HMAC="4194cbdf197b1a281612e14b5d0b68a692fd7f81d6a817d4abcf7977407fa76b196a39519281c68eea98f96dae255753b1f5a9bf69d851ac505ec8e44daedbb7"' >> $HOME/.bashrc
+2021-10-25 19:27:51 [INFO  ] ConfigLoader                    :411  - echo 'export OTPPI_DEVICE_IMAGE_NAME="otp.jar"' >> $HOME/.bashrc

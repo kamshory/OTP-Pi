@@ -2,7 +2,9 @@ package com.planetbiru.util;
 
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
@@ -18,6 +20,7 @@ import com.planetbiru.config.ConfigSubscriberActiveMQ;
 import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigSubscriberRedis;
 import com.planetbiru.config.ConfigSubscriberWS;
+import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.gsm.GSMUtil;
 
@@ -57,17 +60,14 @@ public class ServerInfo {
 	public static void sendWSStatus(boolean connected, String message) 
     {
 		JSONArray data = new JSONArray();
-		JSONObject info = new JSONObject();
-		
+		JSONObject info = new JSONObject();	
 		JSONObject ws = new JSONObject();
 		ws.put(JsonKey.NAME, "otp-ws-connected");
 		ws.put(JsonKey.VALUE, connected);
 		ws.put(JsonKey.MESSAGE, message);
-		data.put(ws);
-		
+		data.put(ws);		
 		info.put(JsonKey.COMMAND, ServerInfo.SERVER_INFO);
-		info.put(JsonKey.DATA, data);
-	
+		info.put(JsonKey.DATA, data);	
 		ServerWebSocketAdmin.broadcastMessage(info.toString(0));				
 	}
 	
@@ -217,6 +217,7 @@ public class ServerInfo {
 		}
 		return info;
 	}
+	
 	public static String cpuSerialNumber()
 	{
 		String serialNumber = "";
@@ -464,6 +465,7 @@ public class ServerInfo {
 		}
 		return temp;
 	}
+	
 	public static JSONArray getOpenPort() {
 		JSONArray info = new JSONArray();
 		String command = "/sbin/lsof -i -P -n";
@@ -490,6 +492,7 @@ public class ServerInfo {
 		}
 		return info;		
 	}
+	
 	private static JSONObject parseOpenPortLine(String[] arr, String[] arr1, int j) {
 		String[] arr2 = arr[j].replaceAll("\\s+", " ").trim().split(" ", 9);
 		for(int i = 0; i<arr2.length; i++)
@@ -537,6 +540,7 @@ public class ServerInfo {
 		}
 		return port;
 	}
+	
 	public static JSONObject getCPUTemperature(String[] arr2) {
 		String cpuLabel = arr2[0].trim();
 		String cpuInfo = arr2[1].trim();
@@ -588,85 +592,117 @@ public class ServerInfo {
 		return core;
 	}
 
-	public static JSONObject buildServerInfo()
+	public static JSONObject buildServerInfo(String services)
 	{
+		if(services == null || services.isEmpty())
+		{
+			services = ConstantString.SERVICE_ALL;
+		}
+		String[] arr = services.split(",");
+		List<String> list = Arrays.asList(arr);
+		
 		JSONArray data = new JSONArray();
 		JSONObject info = new JSONObject();
 		
-		JSONObject modem = new JSONObject();
-		modem.put(JsonKey.NAME, "otp-modem-connected");
-		modem.put(JsonKey.VALUE, GSMUtil.isConnected());
-		modem.put(JsonKey.DATA, ConfigModem.getStatus());
-		data.put(modem);
-		JSONObject wsEnable = new JSONObject();
-		wsEnable.put(JsonKey.NAME, "otp-ws-enable");
-		wsEnable.put(JsonKey.VALUE, ConfigSubscriberWS.isSubscriberWsEnable());
-		data.put(wsEnable);
+		if(list.contains(ConstantString.SERVICE_MODEM))
+		{
+			JSONObject modem = new JSONObject();
+			modem.put(JsonKey.NAME, "otp-modem-connected");
+			modem.put(JsonKey.VALUE, GSMUtil.isConnected());
+			modem.put(JsonKey.DATA, ConfigModem.getStatus());
+			data.put(modem);
+		}
 		
-		JSONObject wsConnected = new JSONObject();
-		wsConnected.put(JsonKey.NAME, "otp-ws-connected");
-		wsConnected.put(JsonKey.VALUE, ConfigSubscriberWS.isConnected());
-		data.put(wsConnected);
+		if(list.contains(ConstantString.SERVICE_WS))
+		{
+			JSONObject wsEnable = new JSONObject();
+			wsEnable.put(JsonKey.NAME, "otp-ws-enable");
+			wsEnable.put(JsonKey.VALUE, ConfigSubscriberWS.isSubscriberWsEnable());
+			data.put(wsEnable);
+			
+			JSONObject wsConnected = new JSONObject();
+			wsConnected.put(JsonKey.NAME, "otp-ws-connected");
+			wsConnected.put(JsonKey.VALUE, ConfigSubscriberWS.isConnected());
+			data.put(wsConnected);
+		}
 		
-		JSONObject amqpEnable = new JSONObject();
-		amqpEnable.put(JsonKey.NAME, "otp-amqp-enable");
-		amqpEnable.put(JsonKey.VALUE, ConfigSubscriberAMQP.isSubscriberAmqpEnable());
-		data.put(amqpEnable);
+		if(list.contains(ConstantString.SERVICE_AMQP))
+		{
+			JSONObject amqpEnable = new JSONObject();
+			amqpEnable.put(JsonKey.NAME, "otp-amqp-enable");
+			amqpEnable.put(JsonKey.VALUE, ConfigSubscriberAMQP.isSubscriberAmqpEnable());
+			data.put(amqpEnable);
+			
+			JSONObject amqpConnected = new JSONObject();
+			amqpConnected.put(JsonKey.NAME, "otp-amqp-connected");
+			amqpConnected.put(JsonKey.VALUE, ConfigSubscriberAMQP.isConnected());
+			data.put(amqpConnected);
+		}
 		
-		JSONObject amqpConnected = new JSONObject();
-		amqpConnected.put(JsonKey.NAME, "otp-amqp-connected");
-		amqpConnected.put(JsonKey.VALUE, ConfigSubscriberAMQP.isConnected());
-		data.put(amqpConnected);
+		if(list.contains(ConstantString.SERVICE_REDIS))
+		{
+			JSONObject redisEnable = new JSONObject();
+			redisEnable.put(JsonKey.NAME, "otp-redis-enable");
+			redisEnable.put(JsonKey.VALUE, ConfigSubscriberRedis.isSubscriberRedisEnable());
+			data.put(redisEnable);
+			
+			JSONObject redisConnected = new JSONObject();
+			redisConnected.put(JsonKey.NAME, "otp-redis-connected");
+			redisConnected.put(JsonKey.VALUE, ConfigSubscriberRedis.isConnected());
+			data.put(redisConnected);
+		}
 		
-		JSONObject redisEnable = new JSONObject();
-		redisEnable.put(JsonKey.NAME, "otp-redis-enable");
-		redisEnable.put(JsonKey.VALUE, ConfigSubscriberRedis.isSubscriberRedisEnable());
-		data.put(redisEnable);
-		
-		JSONObject redisConnected = new JSONObject();
-		redisConnected.put(JsonKey.NAME, "otp-redis-connected");
-		redisConnected.put(JsonKey.VALUE, ConfigSubscriberRedis.isConnected());
-		data.put(redisConnected);
-		
-		JSONObject mqttEnable = new JSONObject();
-		mqttEnable.put(JsonKey.NAME, "otp-mqtt-enable");
-		mqttEnable.put(JsonKey.VALUE, ConfigSubscriberMQTT.isSubscriberMqttEnable());
-		data.put(mqttEnable);
-		
-		JSONObject mqttConnected = new JSONObject();
-		mqttConnected.put(JsonKey.NAME, "otp-mqtt-connected");
-		mqttConnected.put(JsonKey.VALUE, ConfigSubscriberMQTT.isConnected());
-		data.put(mqttConnected);
+		if(list.contains(ConstantString.SERVICE_MQTT))
+		{
+			JSONObject mqttEnable = new JSONObject();
+			mqttEnable.put(JsonKey.NAME, "otp-mqtt-enable");
+			mqttEnable.put(JsonKey.VALUE, ConfigSubscriberMQTT.isSubscriberMqttEnable());
+			data.put(mqttEnable);
+			
+			JSONObject mqttConnected = new JSONObject();
+			mqttConnected.put(JsonKey.NAME, "otp-mqtt-connected");
+			mqttConnected.put(JsonKey.VALUE, ConfigSubscriberMQTT.isConnected());
+			data.put(mqttConnected);
+		}
 
-		JSONObject activeMQEnable = new JSONObject();
-		activeMQEnable.put(JsonKey.NAME, "otp-activemq-enable");
-		activeMQEnable.put(JsonKey.VALUE, ConfigSubscriberActiveMQ.isSubscriberActiveMQEnable());
-		data.put(activeMQEnable);
-		
-		JSONObject activeMQConnected = new JSONObject();
-		activeMQConnected.put(JsonKey.NAME, "otp-activemq-connected");
-		activeMQConnected.put(JsonKey.VALUE, ConfigSubscriberActiveMQ.isConnected());
-		data.put(activeMQConnected);		
+		if(list.contains(ConstantString.SERVICE_ACTIVEMQ))
+		{
+			JSONObject activeMQEnable = new JSONObject();
+			activeMQEnable.put(JsonKey.NAME, "otp-activemq-enable");
+			activeMQEnable.put(JsonKey.VALUE, ConfigSubscriberActiveMQ.isSubscriberActiveMQEnable());
+			data.put(activeMQEnable);
+			
+			JSONObject activeMQConnected = new JSONObject();
+			activeMQConnected.put(JsonKey.NAME, "otp-activemq-connected");
+			activeMQConnected.put(JsonKey.VALUE, ConfigSubscriberActiveMQ.isConnected());
+			data.put(activeMQConnected);	
+		}
 
-		JSONObject httpEnable = new JSONObject();
-		httpEnable.put(JsonKey.NAME, "otp-http-enable");
-		httpEnable.put(JsonKey.VALUE, ConfigAPI.isHttpEnable());
-		data.put(httpEnable);
-		
-		JSONObject httpsEnable = new JSONObject();
-		httpsEnable.put(JsonKey.NAME, "otp-https-enable");
-		httpsEnable.put(JsonKey.VALUE, ConfigAPI.isHttpsEnable());
-		data.put(httpsEnable);
-		
-		JSONObject httpConneted = new JSONObject();
-		httpConneted.put(JsonKey.NAME, "otp-http-connected");
-		httpConneted.put(JsonKey.VALUE, Application.getRest().isHttpStarted());
-		data.put(httpConneted);
-		
-		JSONObject httpsConneted = new JSONObject();
-		httpsConneted.put(JsonKey.NAME, "otp-https-connected");
-		httpsConneted.put(JsonKey.VALUE, Application.getRest().isHttpsStarted());
-		data.put(httpsConneted);
+		if(list.contains(ConstantString.SERVICE_HTTP))
+		{
+			JSONObject httpEnable = new JSONObject();
+			httpEnable.put(JsonKey.NAME, "otp-http-enable");
+			httpEnable.put(JsonKey.VALUE, ConfigAPI.isHttpEnable());
+			data.put(httpEnable);		
+
+			JSONObject httpConneted = new JSONObject();
+			httpConneted.put(JsonKey.NAME, "otp-http-connected");
+			httpConneted.put(JsonKey.VALUE, Application.getRest().isHttpStarted());
+			data.put(httpConneted);
+		}
+
+		if(list.contains(ConstantString.SERVICE_HTTPS))
+		{
+			JSONObject httpsEnable = new JSONObject();
+			httpsEnable.put(JsonKey.NAME, "otp-https-enable");
+			httpsEnable.put(JsonKey.VALUE, ConfigAPI.isHttpsEnable());
+			data.put(httpsEnable);	
+			
+			JSONObject httpsConneted = new JSONObject();
+			httpsConneted.put(JsonKey.NAME, "otp-https-connected");
+			httpsConneted.put(JsonKey.VALUE, Application.getRest().isHttpsStarted());
+			data.put(httpsConneted);
+		}
 		
 		info.put(JsonKey.COMMAND, ServerInfo.SERVER_INFO);
 		info.put(JsonKey.DATA, data);

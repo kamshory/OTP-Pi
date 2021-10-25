@@ -16,6 +16,7 @@ import org.java_websocket.server.WebSocketServer;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.cookie.CookieServer;
 import com.planetbiru.device.DeviceAPI;
@@ -86,7 +87,7 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 			if(WebUserAccount.checkUserAuth(username, password))
 			{
 				ServerWebSocketAdmin.clients.add(new WebSocketConnection(conn, request, path));
-				this.sendServerStatus(conn);
+				this.sendServerStatus(ConstantString.SERVICE_ALL, conn);
 			}
 			else
 			{
@@ -163,9 +164,9 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 		return query;
 	}
 	
-	private void sendServerStatus(WebSocket conn) {
+	private void sendServerStatus(String services, WebSocket conn) {
 		
-		JSONObject info = ServerInfo.buildServerInfo();
+		JSONObject info = ServerInfo.buildServerInfo(services);
 		try 
 		{
 			conn.send(info.toString());
@@ -178,9 +179,9 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 		}	
 	}
 	
-	public static void broadcastServerInfo()
+	public static void broadcastServerInfo(String services)
 	{
-		JSONObject info = ServerInfo.buildServerInfo();
+		JSONObject info = ServerInfo.buildServerInfo(services);
 		broadcastMessage(info.toString());
 	}
 

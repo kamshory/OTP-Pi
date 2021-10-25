@@ -305,7 +305,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				{
 					Application.subscriberWSStop();
 				} 
-				ServerWebSocketAdmin.broadcastServerInfo();
+				ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_WS);
 			} 
 			else 
 			{
@@ -353,7 +353,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				{
 					Application.subscriberAMQPStop();
 				} 
-				ServerWebSocketAdmin.broadcastServerInfo();
+				ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_AMQP);
 			} 
 			else 
 			{
@@ -447,7 +447,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				{
 					Application.subscriberMQTTStop();
 				}
-				ServerWebSocketAdmin.broadcastServerInfo();
+				ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_MQTT);
 			} 
 			else 
 			{
@@ -495,7 +495,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				{
 					Application.subscriberActiveMQStop();
 				}
-				ServerWebSocketAdmin.broadcastServerInfo();
+				ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_ACTIVEMQ);
 			} 
 			else 
 			{
@@ -543,7 +543,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				{
 					Application.subscriberHTTPStop();
 				}
-				ServerWebSocketAdmin.broadcastServerInfo();
+				ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_HTTP);
 			} 
 			else 
 			{
@@ -591,7 +591,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				{
 					Application.subscriberHTTPSStop();
 				}
-				ServerWebSocketAdmin.broadcastServerInfo();
+				ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_HTTPS);
 			} 
 			else 
 			{

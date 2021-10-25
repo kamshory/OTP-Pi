@@ -195,12 +195,12 @@ public class SubscriberRedis extends Thread {
 		this.setConnected(false);
 		this.clientThread.setSubscriberRedis(null);
 		ConfigSubscriberRedis.setConnected(false);
-		ServerWebSocketAdmin.broadcastServerInfo();
+		ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_REDIS);
 	}
 	
 	public void flagConnected(boolean connected) {
 		ConfigSubscriberRedis.setConnected(connected);
-		ServerWebSocketAdmin.broadcastServerInfo();
+		ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_REDIS);
 	}
 
 	public boolean isRunning() {

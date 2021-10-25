@@ -73,7 +73,7 @@ public class SubscriberMQTT extends Thread{
 		this.connected = false;
 		this.subscriber = null;
 		ConfigSubscriberMQTT.setConnected(false);
-		ServerWebSocketAdmin.broadcastServerInfo();
+		ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_MQTT);
 	}
 	
 	private void connect() {
@@ -128,7 +128,7 @@ public class SubscriberMQTT extends Thread{
 			this.connected = true;
 			this.subscriber.subscribe(ConfigSubscriberMQTT.getSubscriberMqttTopic(), 0);
 			ConfigSubscriberMQTT.setConnected(true);
-			ServerWebSocketAdmin.broadcastServerInfo();
+			ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_MQTT);
 		} 
 		catch (MqttException e) 
 		{
