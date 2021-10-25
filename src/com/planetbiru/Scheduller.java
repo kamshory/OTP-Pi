@@ -486,7 +486,6 @@ public class Scheduller extends Thread{
 		boolean connected = ConfigSubscriberAMQP.isConnected();
 		ServerInfo.sendAMQPStatus(connected);
 	}
-	
 
 	private void redisCheck()
 	{

@@ -70,7 +70,10 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		}		
 		String host = ConfigSubscriberActiveMQ.getSubscriberActiveMQAddress();
 		int port = ConfigSubscriberActiveMQ.getSubscriberActiveMQPort();
-		
+		if(host.isEmpty())
+		{
+			return false;
+		}
 		if(host.isEmpty() || port == 0)
 		{
 			return false;
@@ -79,7 +82,11 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		String username = ConfigSubscriberActiveMQ.getSubscriberActiveMQUsername();
 		String password = ConfigSubscriberActiveMQ.getSubscriberActiveMQPassword();
 		String clientID = ConfigSubscriberActiveMQ.getSubscriberActiveMQClientID();
-		this.topic = ConfigSubscriberActiveMQ.getSubscriberActiveMQTopic();			
+		this.topic = ConfigSubscriberActiveMQ.getSubscriberActiveMQTopic();		
+		if(this.topic.isEmpty())
+		{
+			return false;
+		}
 		
 		try
 		{		
