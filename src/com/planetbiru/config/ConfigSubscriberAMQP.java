@@ -31,8 +31,6 @@ public class ConfigSubscriberAMQP {
 	private static boolean connected = false;
 	
 	private static Logger logger = Logger.getLogger(ConfigSubscriberAMQP.class);
-
-
 	
 	private ConfigSubscriberAMQP()
 	{

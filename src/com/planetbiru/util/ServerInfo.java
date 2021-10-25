@@ -301,11 +301,11 @@ public class ServerInfo {
 		double factor = 1;
 		if(value.contains("G"))
 		{
-			factor = 1000000;
+			factor = 1048576;
 		}
 		else if(value.contains("M"))
 		{
-			factor = 1000;
+			factor = 1024;
 		}
 		else if(value.toUpperCase().contains("K"))
 		{
@@ -703,12 +703,4 @@ public class ServerInfo {
 	public static void setCacheLifetime(long cacheLifetime) {
 		ServerInfo.cacheLifetime = cacheLifetime;
 	}
-
-	
 }
-
-
-
-
-
-

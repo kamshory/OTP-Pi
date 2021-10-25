@@ -82,8 +82,7 @@ public class Scheduller extends Thread{
 		this.cronUpdateMQTT = ConfigLoader.getConfigBoolean("otppi.cron.enable.mqtt");
 		this.cronUpdateRedis = ConfigLoader.getConfigBoolean("otppi.cron.enable.redis");
 		this.cronUpdateActiveMQ = ConfigLoader.getConfigBoolean("otppi.cron.enable.activemq");
-		this.cronUpdateWS = ConfigLoader.getConfigBoolean("otppi.cron.enable.ws");
-		
+		this.cronUpdateWS = ConfigLoader.getConfigBoolean("otppi.cron.enable.ws");	
 		
 		this.cronUpdateDDNS = ConfigLoader.getConfigBoolean("otppi.cron.enable.ddns");
 		this.cronExpressionDDNSUpdate = ConfigLoader.getConfig("otppi.cron.expression.general");
@@ -130,38 +129,32 @@ public class Scheduller extends Thread{
 			
 			/**
 			 * Check AMQP
-			 */
-			
+			 */			
 			this.amqpCheck(currentTime);			
 	
 			/**
 			 * Check Redis
-			 */
-			
+			 */			
 			this.redisCheck(currentTime);				
 
 			/**
 			 * Check MQTT
-			 */
-			
+			 */			
 			this.mqttCheck(currentTime);				
 
 			/**
 			 * Check ActiveMQ
-			 */
-			
+			 */			
 			this.activeMQCheck(currentTime);				
 
 			/**
 			 * Check WS
-			 */
-			
+			 */			
 			this.wsCheck(currentTime);				
 
 			/**
 			 * Status server
-			 */
-			
+			 */		
 			this.updateServerStatus(currentTime);			
 			
 			this.delay(this.cronInterval);
