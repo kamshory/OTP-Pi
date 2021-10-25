@@ -42,7 +42,7 @@ public class Application {
 	
 	private static ServerWebSocketAdmin webSocketAdmin;
 	private static ServerWebAdmin webAdmin;
-	private static ServerRESTAPI rest;
+	private static ServerRESTAPI rest = new ServerRESTAPI();
 	private static ServerEmail smtp;
 	private static Scheduller scheduller;	
 	private static SubscriberWebSocket webSocketSubscriber;	

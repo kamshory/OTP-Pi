@@ -12,6 +12,7 @@ import org.java_websocket.handshake.ServerHandshake;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.api.MessageAPI;
 import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigSubscriberWS;
@@ -166,8 +167,7 @@ public class WebSocketClientImpl extends Thread{
 			/**
 			 * Do nothing
 			 */
-		}
-		
+		}		
 	}
 
 	public void evtOnOpen(ServerHandshake serverHandshake)
@@ -180,16 +180,15 @@ public class WebSocketClientImpl extends Thread{
 		else
 		{
 			ConfigSubscriberWS.setConnected(true);
+			ServerWebSocketAdmin.broadcastServerInfo();
 		}
-		/**
-		 * Do nothing
-		 */
 	}
 	
 	public void evtOnClose(int code, String reason, boolean remote)
 	{
 		Buzzer.toneDisconnectWs();
 		ConfigSubscriberWS.setConnected(false);
+		ServerWebSocketAdmin.broadcastServerInfo();
 		if(this.reconnect)
 		{
 			this.reconnect = false;
@@ -200,6 +199,7 @@ public class WebSocketClientImpl extends Thread{
 	{
 		Buzzer.toneDisconnectWs();
 		ConfigSubscriberWS.setConnected(false);
+		ServerWebSocketAdmin.broadcastServerInfo();
 		if(this.reconnect)
 		{
 			this.reconnect = false;
