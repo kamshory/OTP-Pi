@@ -278,6 +278,11 @@
 								<input type="text" name="subscriber_mqtt_topic" id="subscriber_mqtt_topic" value=""> </td>
 						</tr>
 						<tr>
+							<td>QoS</td>
+							<td>
+								<input type="number" name="subscriber_mqtt_qos" id="subscriber_mqtt_qos" value=""> </td>
+						</tr>
+						<tr>
 							<td>Timeout</td>
 							<td>
 								<input type="number" min="0" name="subscriber_mqtt_timeout" id="subscriber_mqtt_timeout" value=""> </td>
@@ -285,7 +290,8 @@
 						<tr>
 							<td>Reconnect Delay</td>
 							<td>
-								<select name="subscriber_mqtt_recoonect_delay">
+								<select name="subscriber_mqtt_reconnect_delay">
+									<option value="10000">10 Seconds</option>
 									<option value="15000">15 Seconds</option>
 									<option value="30000">30 Seconds</option>
 									<option value="60000">1 Minute</option>
@@ -372,7 +378,15 @@
 						<tr>
 							<td>Reconnect Delay</td>
 							<td>
-								<input type="number" min="0" name="subscriber_redis_reconnect_delay" id="subscriber_redis_reconnect_delay" value=""> </td>
+								<select name="subscriber_redis_reconnect_delay">
+									<option value="10000">10 Seconds</option>
+									<option value="15000">15 Seconds</option>
+									<option value="30000">30 Seconds</option>
+									<option value="60000">1 Minute</option>
+									<option value="12000">2 Minutes</option>
+									<option value="300000">5 Minutes</option>
+								</select>
+							</td>
 						</tr>
 						<tr>
 							<td>Refresh Connection</td>
@@ -399,6 +413,99 @@
 				</table>
 			</form>
 
+			<h4>ActiveMQ</h4>
+			<form action="subscriber-setting.html" method="post">
+				<table class="config-table config-table-feeder">
+					<tbody>
+						<tr>
+							<td>Enable</td>
+							<td>
+								<label>
+									<input type="checkbox" name="subscriber_active_mq_enable" value="1"> Enable</label>
+							</td>
+						</tr>
+						<tr>
+							<td>SSL</td>
+							<td>
+								<select name="subscriber_active_mq_ssl">
+									<option value="0">No</option>
+									<option value="1">Yes</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Host</td>
+							<td>
+								<input type="text" name="subscriber_active_mq_address" id="subscriber_active_mq_address" value=""> </td>
+						</tr>
+						<tr>
+							<td>Port</td>
+							<td>
+								<input type="number" max="65535" name="subscriber_active_mq_port" id="subscriber_active_mq_port" value=""> </td>
+						</tr>
+						<tr>
+							<td>Username</td>
+							<td>
+								<input type="text" name="subscriber_active_mq_username" id="subscriber_active_mq_username" value=""> </td>
+						</tr>
+						<tr>
+							<td>Password</td>
+							<td>
+								<input type="text" name="subscriber_active_mq_password" id="subscriber_active_mq_password" value=""> </td>
+						</tr>
+						<tr>
+							<td>Topic</td>
+							<td>
+								<input type="text" name="subscriber_active_mq_topic" id="subscriber_active_mq_topic" value=""> </td>
+						</tr>
+						<tr>
+							<td>Timeout</td>
+							<td>
+								<input type="number" min="0" name="subscriber_active_mq_timeout" id="subscriber_active_mq_timeout" value=""> </td>
+						</tr>
+						<tr>
+							<td>Time To Leave</td>
+							<td>
+								<input type="number" min="0" name="subscriber_active_mq_time_to_leave" id="subscriber_active_mq_time_to_leave" value=""> </td>
+						</tr>
+						<tr>
+							<td>Reconnect Delay</td>
+							<td>
+								<select name="subscriber_active_mq_reconnect_delay">
+									<option value="10000">10 Seconds</option>
+									<option value="15000">15 Seconds</option>
+									<option value="30000">30 Seconds</option>
+									<option value="60000">1 Minute</option>
+									<option value="12000">2 Minutes</option>
+									<option value="300000">5 Minutes</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Refresh Connection</td>
+							<td>
+								<select name="subscriber_active_mq_refresh">
+									<option value="0">Never</option>
+									<option value="600">10 Minutes</option>
+									<option value="1800">30 Minutes</option>
+									<option value="3600">1 Hour</option>
+									<option value="7200">2 Hours</option>
+									<option value="21600">6 Hours</option>
+									<option value="43200">12 Hours</option>
+									<option value="86400">24 Hours</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<input type="submit" class="btn btn-success" name="save_subscriber_active_mq_setting" id="save_subscriber_active_mq_setting" value="Save">
+								<input type="reset" class="btn btn-default" value="Reset"> </td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+
 			<script type="text/javascript">
 			$(document).ready(function(e) {
 				$.ajax({
@@ -419,6 +526,7 @@
 						$('[name="subscriber_ws_refresh"]').val(data.subscriberWsRefresh + "");
 					}
 				});
+
 				$.ajax({
 					type: "GET",
 					url: "data/subscriber-amqp-setting/get",
@@ -435,6 +543,7 @@
 						$('[name="subscriber_amqp_refresh"]').val(data.subscriberAmqpRefresh + "");
 					}
 				});
+
 				$.ajax({
 					type: "GET",
 					url: "data/subscriber-redis-setting/get",
@@ -452,6 +561,7 @@
 						$('[name="subscriber_redis_refresh"]').val(data.subscriberRedisRefresh + "");
 					}
 				});
+
 				$.ajax({
 					type: "GET",
 					url: "data/subscriber-mqtt-setting/get",
@@ -466,8 +576,28 @@
 						$('[name="subscriber_mqtt_password"]').val(data.subscriberMqttPassword);
 						$('[name="subscriber_mqtt_topic"]').val(data.subscriberMqttTopic);
 						$('[name="subscriber_mqtt_timeout"]').val(data.subscriberMqttTimeout);
-						$('[name="subscriber_mqtt_recoonect_delay"]').val(data.subscriberMqttReconnectDelay);
+						$('[name="subscriber_mqtt_reconnect_delay"]').val(data.subscriberMqttReconnectDelay);
 						$('[name="subscriber_mqtt_refresh"]').val(data.subscriberMqttRefresh + "");
+						$('[name="subscriber_mqtt_qos"]').val(data.subscriberMqttQos + "");
+					}
+				});
+
+				$.ajax({
+					type: "GET",
+					url: "data/subscriber-activemq-setting/get",
+					dataType: "json",
+					success: function(data) {
+						$('[name="subscriber_active_mq_enable"]').prop("checked", data.subscriberActiveMQEnable);
+						$('[name="subscriber_active_mq_ssl"]').val(data.subscriberActiveMQSSL ? "1" : "0");
+						$('[name="subscriber_active_mq_address"]').val(data.subscriberActiveMQAddress);
+						$('[name="subscriber_active_mq_port"]').val(data.subscriberActiveMQPort);
+						$('[name="subscriber_active_mq_username"]').val(data.subscriberActiveMQUsername);
+						$('[name="subscriber_active_mq_password"]').val(data.subscriberActiveMQPassword);
+						$('[name="subscriber_active_mq_topic"]').val(data.subscriberActiveMQTopic);
+						$('[name="subscriber_active_mq_timeout"]').val(data.subscriberActiveMQTimeout);
+						$('[name="subscriber_active_mq_time_to_leave"]').val(data.subscriberActiveMQTimeToLeave);
+						$('[name="subscriber_active_mq_reconnect_delay"]').val(data.subscriberActiveMQReconnectDelay);
+						$('[name="subscriber_active_mq_refresh"]').val(data.subscriberActiveMQRefresh + "");
 					}
 				});
 			});

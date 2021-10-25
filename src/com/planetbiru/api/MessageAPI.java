@@ -112,7 +112,7 @@ public class MessageAPI {
 		if(data != null)
 		{
 			ConfigModem.load(Config.getModemSettingPath());
-			JSONObject list = ConfigModem.getStatus();
+			JSONObject list = ConfigModem.getStatus(true);
 			jsonData.put(JsonKey.MODEM_LIST, list);
 			responseCode = ResponseCode.SUCCESS;
 		}	
@@ -216,8 +216,7 @@ public class MessageAPI {
 		String clearOTP = data.optString("otp", "");
 		String responseCode;
 		JSONObject requestJSON = new JSONObject();
-		JSONObject responseData = new JSONObject();
-		
+		JSONObject responseData = new JSONObject();		
 		responseData.put(JsonKey.REFERENCE, otpID);
 		responseData.put(JsonKey.RECEIVER, receiver);
 		responseData.put(JsonKey.DATE_TIME, dateTime);
@@ -237,8 +236,7 @@ public class MessageAPI {
 		catch (OTPExpireException e) 
 		{
 			responseCode = ResponseCode.EXPIRED;
-		}
-		
+		}		
 		requestJSON.put(JsonKey.COMMAND, command);
 		requestJSON.put(JsonKey.DATA, responseData);
 		requestJSON.put(JsonKey.RESPONSE_CODE, responseCode);

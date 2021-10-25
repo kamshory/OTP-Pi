@@ -30,7 +30,7 @@ public class SubscriberMQTT extends Thread{
 	{
 		if(ConfigSubscriberMQTT.isSubscriberMqttEnable())
 		{
-			long sleep = ConfigSubscriberMQTT.getSubscriberWsReconnectDelay();
+			long sleep = ConfigSubscriberMQTT.getsubscriberMqttReconnectDelay();
 			if(sleep == 0)
 			{
 				sleep = 10000;

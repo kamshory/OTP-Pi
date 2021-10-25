@@ -26,11 +26,13 @@ public class ConfigSubscriberMQTT {
 	private static String subscriberMqttTopic = "sms";
 	private static int subscriberMqttTimeout = 0;
 	private static int subscriberMqttRefresh = 0;
-	private static long subscriberWsReconnectDelay = 0;
+	private static long subscriberMqttReconnectDelay = 0;
+	private static long subscriberMqttQos = 0;
 	private static boolean loaded = false;
 	private static boolean connected = false;
 	
 	private static Logger logger = Logger.getLogger(ConfigSubscriberMQTT.class);
+
 
 	
 	private ConfigSubscriberMQTT()
@@ -54,8 +56,9 @@ public class ConfigSubscriberMQTT {
 		setting.put("subscriberMqttPassword", ConfigSubscriberMQTT.subscriberMqttPassword);
 		setting.put("subscriberMqttTopic", ConfigSubscriberMQTT.subscriberMqttTopic);
 		setting.put("subscriberMqttTimeout", ConfigSubscriberMQTT.subscriberMqttTimeout);
-		setting.put("subscriberWsReconnectDelay", ConfigSubscriberMQTT.subscriberWsReconnectDelay);
+		setting.put("subscriberMqttReconnectDelay", ConfigSubscriberMQTT.subscriberMqttReconnectDelay);
 		setting.put("subscriberMqttRefresh", ConfigSubscriberMQTT.subscriberMqttRefresh);
+		setting.put("subscriberMqttQos", ConfigSubscriberMQTT.subscriberMqttQos);
 		return setting;
 	}
 	
@@ -120,8 +123,9 @@ public class ConfigSubscriberMQTT {
 				ConfigSubscriberMQTT.subscriberMqttPassword = setting.optString("subscriberMqttPassword", "");
 				ConfigSubscriberMQTT.subscriberMqttTopic = setting.optString("subscriberMqttTopic", "");
 				ConfigSubscriberMQTT.subscriberMqttTimeout = setting.optInt("subscriberMqttTimeout", 0);
-				ConfigSubscriberMQTT.subscriberWsReconnectDelay = setting.optLong("subscriberWsReconnectDelay", 0);
+				ConfigSubscriberMQTT.subscriberMqttReconnectDelay = setting.optLong("subscriberMqttReconnectDelay", 0);
 				ConfigSubscriberMQTT.subscriberMqttRefresh = setting.optInt("subscriberMqttRefresh", 0);
+				ConfigSubscriberMQTT.subscriberMqttQos = setting.optInt("subscriberMqttQos", 0);
 			}
 			catch(JSONException e)
 			{
@@ -256,14 +260,23 @@ public class ConfigSubscriberMQTT {
 		ConfigSubscriberMQTT.subscriberMqttTopic = "";
 		ConfigSubscriberMQTT.subscriberMqttTimeout = 0;
 		ConfigSubscriberMQTT.subscriberMqttRefresh = 0;
+		ConfigSubscriberMQTT.subscriberMqttQos = 0;
 	}
 
-	public static long getSubscriberWsReconnectDelay() {
-		return subscriberWsReconnectDelay;
+	public static long getsubscriberMqttReconnectDelay() {
+		return subscriberMqttReconnectDelay;
 	}
 
-	public static void setSubscriberWsReconnectDelay(long subscriberWsReconnectDelay) {
-		ConfigSubscriberMQTT.subscriberWsReconnectDelay = subscriberWsReconnectDelay;
+	public static void setSubscriberMqttReconnectDelay(long subscriberMqttReconnectDelay) {
+		ConfigSubscriberMQTT.subscriberMqttReconnectDelay = subscriberMqttReconnectDelay;
+	}
+
+	public static long getSubscriberMqttQos() {
+		return subscriberMqttQos;
+	}
+
+	public static void setSubscriberMqttQos(long subscriberMqttQos) {
+		ConfigSubscriberMQTT.subscriberMqttQos = subscriberMqttQos;
 	}
 
 }

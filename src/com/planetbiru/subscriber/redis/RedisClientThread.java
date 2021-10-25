@@ -7,17 +7,22 @@ import javax.net.ssl.SSLParameters;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 
+import org.apache.log4j.Logger;
+
 import com.planetbiru.config.ConfigSubscriberRedis;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;
 import redis.clients.jedis.exceptions.JedisConnectionException;
+import redis.clients.jedis.exceptions.JedisDataException;
 
 public class RedisClientThread extends Thread {
 	
 	private Jedis subscriber;
 	private SubscriberRedis subscriberRedis;
 	private boolean running = false;
+	
+	private static Logger logger = Logger.getLogger(RedisClientThread.class);
 
 	public RedisClientThread(SubscriberRedis subscriberRedis) {
 		this.setSubscriberRedis(subscriberRedis);
@@ -49,15 +54,22 @@ public class RedisClientThread extends Thread {
 		    };
 			this.setSubscriber(new Jedis(host, port, ssl, sslSocketFactory, sslParameters, allHostsValid)); 	
 		}
+		try
+		{
+			if(!username.isEmpty())
+			{
+				this.subscriber.clientSetname(username);
+			}
+			if(!password.isEmpty())
+			{
+				this.subscriber.auth(password);
+			}
+		}
+		catch(JedisDataException e)
+		{
+			logger.error(e.getMessage());
+		}
 		
-		if(!username.isEmpty())
-		{
-			this.subscriber.clientSetname(username);
-		}
-		if(!password.isEmpty())
-		{
-			this.subscriber.auth(password);
-		}
 		
 		try
 		{

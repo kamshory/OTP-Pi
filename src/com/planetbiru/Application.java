@@ -12,6 +12,7 @@ import com.planetbiru.api.OTP;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberActiveMQ;
 import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigSubscriberRedis;
 import com.planetbiru.config.ConfigSubscriberWS;
@@ -23,6 +24,7 @@ import com.planetbiru.gsm.ModemInspector;
 import com.planetbiru.mail.ServerEmail;
 import com.planetbiru.server.rest.ServerRESTAPI;
 import com.planetbiru.gsm.GSMUtil;
+import com.planetbiru.subscriber.activemq.SubscriberActiveMQ;
 import com.planetbiru.subscriber.amqp.SubscriberAMQP;
 import com.planetbiru.subscriber.mqtt.SubscriberMQTT;
 import com.planetbiru.subscriber.redis.SubscriberRedis;
@@ -42,32 +44,34 @@ public class Application {
 	private static ServerWebAdmin webAdmin;
 	private static ServerRESTAPI rest;
 	private static ServerEmail smtp;
-	private static Scheduller scheduller;
-	
+	private static Scheduller scheduller;	
 	private static SubscriberWebSocket webSocketSubscriber;	
 	private static SubscriberMQTT mqttSubscriber;
 	private static SubscriberRedis redisSubscriber;
-	private static SubscriberAMQP amqpSubscriber;
-	
+	private static SubscriberAMQP amqpSubscriber;	
+	private static SubscriberActiveMQ activeMQSubscriber;
 	private static Logger logger = Logger.getLogger(Application.class);
 	private static ModemInspector modemInspector = null;
-	
-
+	 
 	public static void main(String[] args) {
-		
-		File currentJavaJarFile = new File(Application.class.getProtectionDomain().getCodeSource().getLocation().getPath());   
-		String currentJavaJarFilePath = currentJavaJarFile.getAbsolutePath();
-		String currentRootDirectoryPath = currentJavaJarFilePath.replace(currentJavaJarFile.getName(), "");
-
-		boolean configLoaded = loadConfig(currentRootDirectoryPath, "config.ini");
+		String currentRootDirectoryPath = Application.getConfigRoot();
+		boolean configLoaded = Application.loadConfig(currentRootDirectoryPath, "config.ini");
 		if(configLoaded)
 		{
 			Application.startService(args);
 		}
 		else
 		{
-			logger.info("Service not started because failed to read config file");
+			logger.error("Service not started because failed to read config file");
+			logger.error("System can not find "+currentRootDirectoryPath+"/config.ini");
 		}		
+	}
+	
+	private static String getConfigRoot()
+	{
+		File currentJavaJarFile = new File(Application.class.getProtectionDomain().getCodeSource().getLocation().getPath());   
+		String currentJavaJarFilePath = currentJavaJarFile.getAbsolutePath();
+		return currentJavaJarFilePath.replace(currentJavaJarFile.getName(), "");
 	}
 	
 	public static boolean loadConfig(String currentRootDirectoryPath, String fileName)
@@ -162,6 +166,8 @@ public class Application {
 			 * Mosquitto Client for subscriber
 			 */
 			Application.subscriberMQTTStart();
+			
+			Application.subscriberActiveMQStart();
 			
 			/**
 			 * REST API HTTP
@@ -273,7 +279,7 @@ public class Application {
 	public static void setRest(ServerRESTAPI rest) {
 		Application.rest = rest;
 	}
-
+	
 	public static void subscriberHTTPStart() {
 		if (ConfigAPI.isHttpEnable() && !Application.rest.isHttpStarted()) {
 			Application.rest.startHTTP();
@@ -296,6 +302,21 @@ public class Application {
 		if (ConfigAPI.isHttpsEnable() && Application.rest.isHttpsStarted()) {
 			Application.rest.stopHTTPS();
 		}
+	}
+
+	public static void subscriberActiveMQStart() {
+		if(ConfigSubscriberActiveMQ.isSubscriberActiveMQEnable() && (Application.activeMQSubscriber == null || !Application.activeMQSubscriber.isRunning()))
+		{
+			Application.activeMQSubscriber = new SubscriberActiveMQ();
+			Application.activeMQSubscriber.start();
+		}
+	}
+
+	public static void subscriberActiveMQStop() {
+		if(Application.activeMQSubscriber != null)
+		{
+			Application.activeMQSubscriber.stopService();
+		}		
 	}
 
 	public static void subscriberMQTTStart() {

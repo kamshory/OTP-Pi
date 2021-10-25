@@ -10,7 +10,6 @@ public class SubscriberAMQP {
 	
 	public void start()
 	{
-		Config.setSubscriberAMQPSettingPath(Config.getSubscriberAMQPSettingPath());
 		ConfigSubscriberAMQP.load(Config.getSubscriberAMQPSettingPath());
 		if(ConfigSubscriberAMQP.isSubscriberAmqpEnable())
 		{

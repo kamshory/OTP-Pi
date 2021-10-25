@@ -201,9 +201,10 @@ API User is an account that sends SMS via REST API.
 
 OTP-Pi provides an option if this device is installed on a mobile internet network or on a network where the sending device may not be able to reach the address of the OTP-Pi. Users can send OTP with message broker as follows:
 
-1. WSMessageBroker (WebSocket)
-2. RabbitMQ (AMQP)
+1. RabbitMQ (AMQP)
 3. Mosquitto (MQTT)
+4. Redis
+5. WSMessageBroker (WebSocket)
 
 **WSMessageBroker**
 

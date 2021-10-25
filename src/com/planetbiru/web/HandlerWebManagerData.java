@@ -19,6 +19,7 @@ import com.planetbiru.config.ConfigBlocking;
 import com.planetbiru.config.ConfigDDNS;
 import com.planetbiru.config.ConfigEmail;
 import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberActiveMQ;
 import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigSubscriberRedis;
 import com.planetbiru.config.ConfigSubscriberWS;
@@ -117,6 +118,10 @@ public class HandlerWebManagerData implements HttpHandler {
 		else if(path.startsWith("/data/subscriber-mqtt-setting/get"))
 		{
 			this.handleSubscriberMQTTSetting(httpExchange);
+		}
+		else if(path.startsWith("/data/subscriber-activemq-setting/get"))
+		{
+			this.handleSubscriberActiveMQSetting(httpExchange);
 		}
 		else if(path.startsWith("/data/sms-setting/get"))
 		{
@@ -236,7 +241,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		}
 		else
 		{
-			httpExchange.sendResponseHeaders(404, 0);
+			httpExchange.sendResponseHeaders(HttpStatus.NOT_FOUND, 0);
 			httpExchange.close();
 		}
 	}
@@ -282,9 +287,9 @@ public class HandlerWebManagerData implements HttpHandler {
 
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 		httpExchange.getResponseBody().write(responseBody);
-		httpExchange.close();	
-		
+		httpExchange.close();			
 	}
+	
 	public void handleOpenPort(HttpExchange httpExchange) throws IOException
 	{
 		Headers requestHeaders = httpExchange.getRequestHeaders();
@@ -1376,6 +1381,43 @@ public class HandlerWebManagerData implements HttpHandler {
 			{
 				ConfigSubscriberMQTT.load(Config.getSubscriberMQTTSettingPath());
 				String list = ConfigSubscriberMQTT.toJSONObject().toString();
+				responseBody = list.getBytes();
+			}
+			else
+			{
+				statusCode = HttpStatus.UNAUTHORIZED;			
+			}
+		}
+		catch(NoUserRegisteredException e)
+		{
+			/**
+			 * Do nothing
+			 */
+		}
+		cookie.saveSessionData();
+		cookie.putToHeaders(responseHeaders);
+		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
+		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
+
+		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+		httpExchange.getResponseBody().write(responseBody);
+		httpExchange.close();	
+	}
+	
+	//@GetMapping(path="/data/subscriber-activemq-setting/get")
+	public void handleSubscriberActiveMQSetting(HttpExchange httpExchange) throws IOException
+	{
+		Headers requestHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
+		CookieServer cookie = new CookieServer(requestHeaders, Config.getSessionName(), Config.getSessionLifetime());
+		byte[] responseBody = "".getBytes();
+		int statusCode = HttpStatus.OK;
+		try
+		{
+			if(WebUserAccount.checkUserAuth(requestHeaders))
+			{
+				ConfigSubscriberActiveMQ.load(Config.getSubscriberActiveMQSettingPath());
+				String list = ConfigSubscriberActiveMQ.toJSONObject().toString();
 				responseBody = list.getBytes();
 			}
 			else

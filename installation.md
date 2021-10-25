@@ -12,7 +12,6 @@ mkdir /media/usb/c
 mkdir /media/usb/d
 
 
-
 yum install -y nano
 yum install -y telnet
 yum install -y lm_sensors
@@ -42,7 +41,7 @@ systemctl start rtc.service
 
 
 yum install -y dhcp
-echo -e 'ESSID=PlanetPOS' > /etc/sysconfig/network-scripts/ifcfg-wlan0
+echo -e 'ESSID=OTP-Pi' > /etc/sysconfig/network-scripts/ifcfg-wlan0
 echo -e 'MODE=Ap' >> /etc/sysconfig/network-scripts/ifcfg-wlan0
 echo -e 'KEY_MGMT=WPA-PSK' >> /etc/sysconfig/network-scripts/ifcfg-wlan0
 echo -e 'MAC_ADDRESS_RANDOMIZATION=default' >> /etc/sysconfig/network-scripts/ifcfg-wlan0
@@ -62,7 +61,7 @@ echo -e 'IPV6_DEFROUTE=yes' >> /etc/sysconfig/network-scripts/ifcfg-wlan0
 echo -e 'IPV6_FAILURE_FATAL=no' >> /etc/sysconfig/network-scripts/ifcfg-wlan0
 echo -e 'IPV6_ADDR_GEN_MODE=stable-privacy' >> /etc/sysconfig/network-scripts/ifcfg-wlan0
 echo -e 'NAME=wlan0' >> /etc/sysconfig/network-scripts/ifcfg-wlan0
-echo -e 'UUID=605a8783-c38b-4351-8f28-e82f99fdd0c6' >> /etc/sysconfig/network-scripts/ifcfg-wlan0
+echo -e 'UUID="'$(cat /proc/sys/kernel/random/uuid)'"' >> /etc/sysconfig/network-scripts/ifcfg-wlan0
 echo -e 'ONBOOT=yes' >> /etc/sysconfig/network-scripts/ifcfg-wlan0
 echo -e 'WPA_PSK=planetbiru' > /etc/sysconfig/network-scripts/keys-wlan0
 echo '' > /etc/dhcp/dhcpd.conf
@@ -98,7 +97,7 @@ echo -e 'BOOTPROTO=none' >> /etc/sysconfig/ifcfg-eth0
 echo -e 'NM_CONTROLLED="yes"' >> /etc/sysconfig/ifcfg-eth0
 echo -e 'DEFROUTE="yes"' >> /etc/sysconfig/ifcfg-eth0
 echo -e 'NAME="eth0"' >> /etc/sysconfig/ifcfg-eth0
-echo -e 'UUID="a5ae9a6c-3951-4e8a-b99d-a4ea5dc33bf1"' >> /etc/sysconfig/ifcfg-eth0
+echo -e 'UUID="'$(cat /proc/sys/kernel/random/uuid)'"' >> /etc/sysconfig/ifcfg-eth0
 echo -e 'ONBOOT="yes"' >> /etc/sysconfig/ifcfg-eth0
 echo -e 'DNS1=8.8.8.8' >> /etc/sysconfig/ifcfg-eth0
 echo -e 'IPV4_FAILURE_FATAL=no' >> /etc/sysconfig/ifcfg-eth0
@@ -130,12 +129,14 @@ echo -e '/bin/mount /dev/sdb /media/usb/b' >> /var/otp-pi/mountusb.sh
 echo -e '/bin/mount /dev/sdc /media/usb/c' >> /var/otp-pi/mountusb.sh
 echo -e '/bin/mount /dev/sdd /media/usb/d' >> /var/otp-pi/mountusb.sh
 
+
 echo -e '#!/bin/sh' > /var/otp-pi/umountusb.sh
 echo -e '' >> /var/otp-pi/mountusb.sh
 echo -e '/bin/umount /dev/sda' >> /var/otp-pi/umountusb.sh
 echo -e '/bin/umount /dev/sdb' >> /var/otp-pi/umountusb.sh
 echo -e '/bin/umount /dev/sdc' >> /var/otp-pi/umountusb.sh
 echo -e '/bin/umount /dev/sdd' >> /var/otp-pi/umountusb.sh
+
 
 echo -e '[Unit]' > /usr/lib/systemd/system/mountusb.service
 echo -e 'Description=otp-pi' >> /usr/lib/systemd/system/mountusb.service

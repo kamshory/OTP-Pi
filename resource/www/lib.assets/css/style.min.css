@@ -834,6 +834,10 @@ span.icon.icon-cross::after {
   padding: 10px;
 }
 
+.service-wrapper .service-message-broker {
+  width: 100%;
+}
+
 .service-wrapper .feature {
   width: calc( ( ( 100% / 3 ) * 2) - 20px);
 }
