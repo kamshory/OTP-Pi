@@ -25,11 +25,13 @@ public class ConfigSubscriberAMQP {
 	private static String subscriberAmqpPassword = "";
 	private static String subscriberAmqpTopic = "";
 	private static int subscriberAmqpTimeout = 0;
+	private static long subscriberAmqpReconnectDelay = 10000;
 	private static int subscriberAmqpRefresh = 0;
 	private static boolean loaded = false;
 	private static boolean connected = false;
 	
 	private static Logger logger = Logger.getLogger(ConfigSubscriberAMQP.class);
+
 
 	
 	private ConfigSubscriberAMQP()
@@ -53,6 +55,7 @@ public class ConfigSubscriberAMQP {
 		setting.put("subscriberAmqpPassword", ConfigSubscriberAMQP.subscriberAmqpPassword);
 		setting.put("subscriberAmqpTopic", ConfigSubscriberAMQP.subscriberAmqpTopic);
 		setting.put("subscriberAmqpTimeout", ConfigSubscriberAMQP.subscriberAmqpTimeout);
+		setting.put("subscriberAmqpReconnectDelay", ConfigSubscriberAMQP.subscriberAmqpReconnectDelay);
 		setting.put("subscriberAmqpRefresh", ConfigSubscriberAMQP.subscriberAmqpRefresh);
 		return setting;
 	}
@@ -118,6 +121,7 @@ public class ConfigSubscriberAMQP {
 				ConfigSubscriberAMQP.subscriberAmqpPassword = setting.optString("subscriberAmqpPassword", "");
 				ConfigSubscriberAMQP.subscriberAmqpTopic = setting.optString("subscriberAmqpTopic", "");
 				ConfigSubscriberAMQP.subscriberAmqpTimeout = setting.optInt("subscriberAmqpTimeout", 0);
+				ConfigSubscriberAMQP.subscriberAmqpReconnectDelay = setting.optLong("subscriberAmqpReconnectDelay", 0);
 				ConfigSubscriberAMQP.subscriberAmqpRefresh = setting.optInt("subscriberAmqpRefresh", 0);
 			}
 			catch(JSONException e)
@@ -242,6 +246,14 @@ public class ConfigSubscriberAMQP {
 		ConfigSubscriberAMQP.connected = connected;
 	}
 
+	public static long getSubscriberAmqpReconnectDelay() {
+		return subscriberAmqpReconnectDelay;
+	}
+
+	public static void setSubscriberAmqpReconnectDelay(long subscriberAmqpReconnectDelay) {
+		ConfigSubscriberAMQP.subscriberAmqpReconnectDelay = subscriberAmqpReconnectDelay;
+	}
+
 	public static void reset() {
 		ConfigSubscriberAMQP.subscriberAmqpEnable = false;
 		ConfigSubscriberAMQP.subscriberAmqpSSL = false;
@@ -252,6 +264,7 @@ public class ConfigSubscriberAMQP {
 		ConfigSubscriberAMQP.subscriberAmqpPassword = "";
 		ConfigSubscriberAMQP.subscriberAmqpTopic = "";
 		ConfigSubscriberAMQP.subscriberAmqpTimeout = 0;
+		ConfigSubscriberAMQP.subscriberAmqpReconnectDelay = 0;
 		ConfigSubscriberAMQP.subscriberAmqpRefresh = 0;
 	}
 

@@ -127,7 +127,15 @@
 						<tr>
 							<td>Reconnect Delay</td>
 							<td>
-								<input type="number" min="0" name="subscriber_ws_reconnect_delay" id="subscriber_ws_reconnect_delay" value=""> </td>
+								<select name="subscriber_ws_reconnect_delay">
+									<option value="10000">10 Seconds</option>
+									<option value="15000">15 Seconds</option>
+									<option value="30000">30 Seconds</option>
+									<option value="60000">1 Minute</option>
+									<option value="12000">2 Minutes</option>
+									<option value="300000">5 Minutes</option>
+								</select>
+							</td>
 						</tr>
 						<tr>
 							<td>Refresh Connection</td>
@@ -199,9 +207,17 @@
 								<input type="text" name="subscriber_amqp_topic" id="subscriber_amqp_topic" value=""> </td>
 						</tr>
 						<tr>
-							<td>Timeout</td>
+							<td>Reconnect Delay</td>
 							<td>
-								<input type="number" min="0" name="subscriber_amqp_timeout" id="subscriber_amqp_timeout" value=""> </td>
+								<select name="subscriber_amqp_reconnect_delay">
+									<option value="10000">10 Seconds</option>
+									<option value="15000">15 Seconds</option>
+									<option value="30000">30 Seconds</option>
+									<option value="60000">1 Minute</option>
+									<option value="12000">2 Minutes</option>
+									<option value="300000">5 Minutes</option>
+								</select>
+							</td>
 						</tr>
 						<tr>
 							<td>Refresh Connection</td>
@@ -545,6 +561,7 @@
 						$('[name="subscriber_amqp_password"]').val(data.subscriberAmqpPassword);
 						$('[name="subscriber_amqp_topic"]').val(data.subscriberAmqpTopic);
 						$('[name="subscriber_amqp_timeout"]').val(data.subscriberAmqpTimeout);
+						$('[name="subscriber_amqp_reconnect_delay"]').val(data.subscriberAmqpReconnectDelay);
 						$('[name="subscriber_amqp_refresh"]').val(data.subscriberAmqpRefresh + "");
 					}
 				});
