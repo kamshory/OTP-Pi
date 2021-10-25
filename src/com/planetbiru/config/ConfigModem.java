@@ -258,7 +258,7 @@ public class ConfigModem {
 	}
 	
 	public static String getConfigPath() {
-		return configPath;
+		return ConfigModem.configPath;
 	}
 
 	public static void setConfigPath(String configPath) {
@@ -325,12 +325,11 @@ public class ConfigModem {
 			{
 				ConfigModem.activate(value);
 			}
-		}
-		
+		}	
 	}
 
 	public static long getLastRequestSignalStrength() {
-		return lastRequestSignalStrength;
+		return ConfigModem.lastRequestSignalStrength;
 	}
 
 	public static void setLastRequestSignalStrength(long lastRequestSignalStrength) {
