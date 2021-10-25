@@ -5,7 +5,7 @@ import com.planetbiru.config.ConfigSubscriberActiveMQ;
 
 public class SubscriberActiveMQ extends Thread{
 	
-	private ActiveMQInstance instance = null;
+	private ActiveMQInstance activeMQIstance = null;
 	
 	public SubscriberActiveMQ()
 	{
@@ -15,18 +15,18 @@ public class SubscriberActiveMQ extends Thread{
 	@Override
 	public void run()
 	{
-		this.instance = new ActiveMQInstance();
-		this.instance.start();
+		this.activeMQIstance = new ActiveMQInstance();
+		this.activeMQIstance.start();
 	}
 
 	public void stopService() {	
-		if(this.instance != null)
+		if(this.activeMQIstance != null)
 		{
-			this.instance.stopService();
+			this.activeMQIstance.stopService();
 		}
 	}
 
 	public boolean isRunning() {
-		return this.instance != null && this.instance.isRunning();
+		return this.activeMQIstance != null && this.activeMQIstance.isRunning();
 	}
 }

@@ -44,9 +44,6 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		} 
 		catch (JMSException e) 
 		{
-			/**
-			 * Do nothing
-			 */
 			this.connected = false;
 			this.updateConnectionStatus();
 		}
@@ -82,12 +79,10 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		String username = ConfigSubscriberActiveMQ.getSubscriberActiveMQUsername();
 		String password = ConfigSubscriberActiveMQ.getSubscriberActiveMQPassword();
 		String clientID = ConfigSubscriberActiveMQ.getSubscriberActiveMQClientID();
-		this.topic = ConfigSubscriberActiveMQ.getSubscriberActiveMQTopic();	
-		
+		this.topic = ConfigSubscriberActiveMQ.getSubscriberActiveMQTopic();			
 		
 		try
-		{
-		
+		{		
 			if(!username.isEmpty())
 			{
 				this.connectionFactory = new ActiveMQConnectionFactory(username, password, url);
@@ -156,9 +151,6 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 			} 
         	catch (JMSException e) 
         	{
-				/**
-				 * Do nothing
-				 */
         		this.connected = false;
         		this.updateConnectionStatus();
 			}
@@ -197,9 +189,6 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 	        } 
 			catch (JMSException e) 
 			{
-				/**
-				 * Do nothing
-				 */
 				this.connected = false;
 				this.updateConnectionStatus();
 	        }
@@ -242,9 +231,6 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		} 
 		catch (JMSException e) 
 		{
-			/**
-			 * Do nothing
-			 */
 			this.connected = false;
 			this.updateConnectionStatus();
 		}		
