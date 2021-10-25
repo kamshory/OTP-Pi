@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import org.json.XML;
 
 import com.planetbiru.config.Config;
+import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.util.OSUtil.OS;
 
@@ -143,11 +144,11 @@ public class WebManagerTool {
 	public static String getFileName(String path) 
 	{
 		String dir = Config.getDocumentRoot();
-		if(!path.startsWith("/"))
+		if(!path.startsWith(ConstantString.DOCUMENT_PATH_SEPARATOR))
 		{
-			path = "/"+path;
+			path = ConstantString.DOCUMENT_PATH_SEPARATOR+path;
 		}
-		if(dir.endsWith("/"))
+		if(dir.endsWith(ConstantString.DOCUMENT_PATH_SEPARATOR))
 		{
 			dir = dir.substring(0, dir.length() - 1);
 		}	
