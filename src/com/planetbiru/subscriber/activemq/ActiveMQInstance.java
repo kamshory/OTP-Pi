@@ -44,8 +44,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		} 
 		catch (JMSException e) 
 		{
-			this.connected = false;
-			this.updateConnectionStatus();
+			this.flagDisconnected();
 		}
 	}
 
@@ -158,8 +157,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 			} 
         	catch (JMSException e) 
         	{
-        		this.connected = false;
-        		this.updateConnectionStatus();
+        		this.flagDisconnected();
 			}
         }	
 		return "";
@@ -196,8 +194,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 	        } 
 			catch (JMSException e) 
 			{
-				this.connected = false;
-				this.updateConnectionStatus();
+				this.flagDisconnected();
 	        }
 		}
 	}
@@ -238,9 +235,14 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		} 
 		catch (JMSException e) 
 		{
-			this.connected = false;
-			this.updateConnectionStatus();
+			this.flagDisconnected();
 		}		
+	}
+
+	private void flagDisconnected() {
+		this.connected = false;
+		this.updateConnectionStatus();
+		
 	}
 
 	private void updateConnectionStatus() {
@@ -250,20 +252,21 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 
 	@Override
 	public void onException(JMSException exception) {
-		this.connected = false;
-		this.updateConnectionStatus();
+		this.flagDisconnected();
 	}
 
 	public void stopService() {
 		this.running = false;
 		try 
 		{
-			this.disconnect();
+			this.disconnect();			
 		} 
 		catch (JMSException e) {
-			this.connected = false;
+			/**
+			 * Do nothing
+			 */
 		}
-		updateConnectionStatus();
+		this.flagDisconnected();
 	}
 
 	public boolean isRunning() {

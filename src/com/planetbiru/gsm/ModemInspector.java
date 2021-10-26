@@ -14,50 +14,53 @@ import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.config.ConfigGeneral;
 import com.planetbiru.config.ConfigModem;
 import com.planetbiru.config.DataModem;
+import com.planetbiru.constant.JsonKey;
 import com.planetbiru.util.ServerInfo;
 
 public class ModemInspector extends Thread {
-
 	private boolean running = true;
 	private String lastList = "";
 	private Map<String, Boolean> lastConnection = new HashMap<>();
-	private long delay;
+	private long delayInt = 1000;
+	private long skipDelay = 5000;
 	
 	public ModemInspector(long delay) 
 	{
-		this.delay = delay;
+		this.delayInt = delay;
 	}
 
 	@Override
 	public void run()
 	{
 		this.initPort();
-		if(this.delay > 0)
+		if(this.delayInt > 0)
 		{
-			try 
+			this.delay(this.delayInt);
+		}
+		while(this.running)
+		{
+			long interval = ConfigGeneral.getInspectModemInterval();
+			if(interval == 0)
 			{
-				Thread.sleep(this.delay);
-			} 
-			catch (InterruptedException e) 
-			{
-				Thread.currentThread().interrupt();
+				this.delay(this.skipDelay);
+			}
+			else
+			{		
+				this.inspectSerialPort(true);		
+				this.delay(interval);
 			}
 		}
-		long interval = ConfigGeneral.getInspectModemInterval();
-		if(interval >= 1000)
-		{		
-			while(this.running)
-			{
-				try 
-				{
-					Thread.sleep(interval);
-				} 
-				catch (InterruptedException e) 
-				{
-					Thread.currentThread().interrupt();
-				}
-				this.inspectSerialPort(true);			
-			}
+	}
+	
+	private void delay(long interval)
+	{
+		try 
+		{
+			Thread.sleep(interval);
+		} 
+		catch (InterruptedException e) 
+		{
+			Thread.currentThread().interrupt();
 		}
 	}
 	
@@ -253,11 +256,11 @@ public class ModemInspector extends Thread {
 		}
 		JSONObject jsonMessage = new JSONObject();
 		JSONObject item = new JSONObject();
-		item.put("message", message);
-		jsonMessage.put("command", "broadcast-message");
+		item.put(JsonKey.MESSAGE, message);
+		jsonMessage.put(JsonKey.COMMAND, "broadcast-message");
 		JSONArray data = new JSONArray();
 		data.put(item);
-		jsonMessage.put("data", data);
+		jsonMessage.put(JsonKey.DATA, data);
 		ServerWebSocketAdmin.broadcastMessage(jsonMessage.toString());
 		
 	}

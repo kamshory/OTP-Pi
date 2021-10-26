@@ -15,6 +15,7 @@ public class MailUtil {
 	{
 		
 	}
+	
 	public static void send(String receiver, String subject, String message, StackTraceElement ste, String id) throws MessagingException, NoEmailAccountException {
 		if(id == null || id.isEmpty())
 		{
@@ -27,6 +28,7 @@ public class MailUtil {
 		DataEmail mailer = ConfigEmail.getAccount(id);
 		mailer.send(receiver, subject, message, ste);
 	}
+	
 	public static void send(String receiver, String subject, String message, StackTraceElement ste) throws MessagingException, NoEmailAccountException 
 	{
 		if(MailUtil.activeAccounts.isEmpty())
@@ -58,9 +60,9 @@ public class MailUtil {
 		}
 		MailUtil.activeAccounts = activeAccounts;
 	}
+	
 	public static void updateIndex() {
-		MailUtil.reindex();
-		
+		MailUtil.reindex();	
 	}
 	
 }

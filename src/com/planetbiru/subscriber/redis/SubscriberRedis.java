@@ -166,7 +166,6 @@ public class SubscriberRedis extends Thread {
 		try
 		{
 			jedisSubscriber.connect();	
-			System.out.println("callbackTopic : "+callbackTopic);
 			jedisSubscriber.publish(callbackTopic.getBytes(), message.getBytes());				
 		}
 		catch(JedisConnectionException e)
@@ -174,7 +173,6 @@ public class SubscriberRedis extends Thread {
 			/**
 			 * Do nothing
 			 */
-			e.printStackTrace();
 		}
 		finally 
 		{

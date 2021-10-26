@@ -1,6 +1,7 @@
 package com.planetbiru.subscriber.amqp;
 
 import java.io.IOException;
+import java.net.ConnectException;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeoutException;
 
@@ -9,6 +10,7 @@ import javax.net.ssl.SSLSocketFactory;
 
 import org.json.JSONObject;
 
+import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.api.MessageAPI;
 import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigSubscriberAMQP;
@@ -26,9 +28,10 @@ public class RabbitMQSubscriber{
 	private Connection connection;
 	private Channel channel;
 	private ConnectionFactory factory;
-	private boolean reconnect = false;
-	public void connect()
+	private boolean connected;
+	public boolean connect()
 	{
+		boolean con = false;
 		this.factory = new ConnectionFactory();
 	    this.factory.setHost(ConfigSubscriberAMQP.getSubscriberAmqpAddress());
 	    this.factory.setPort(ConfigSubscriberAMQP.getSubscriberAmqpPort());
@@ -77,21 +80,24 @@ public class RabbitMQSubscriber{
 				
 		    };
 		    ConfigSubscriberAMQP.setConnected(true);
-		    if(this.channel != null)
-		    {
-		    	this.channel.basicConsume(topic, true, consumer);
-		    }
+			this.channel.basicConsume(topic, true, consumer);
+			con = true;
 		} 
-		catch (IOException e) 
-		{
+	    catch (ConnectException e)
+	    {
 			this.evtIError(e);
-		} 
+	    }
 		catch (TimeoutException e) 
 		{
 			this.evtTimeout(e);
+		} 
+	    catch (IOException e) {
+			this.evtIError(e);
 		}
+	    return con;
 	}
-	private void restart() 
+
+	public void restart() 
 	{
 		this.connection = null;
 		this.factory = null;
@@ -104,8 +110,15 @@ public class RabbitMQSubscriber{
 		{
 			Thread.currentThread().interrupt();
 		}
-		this.connect();
-		
+
+		if(this.connect())
+		{
+			this.flagConnected();
+		}
+		else
+		{
+			this.flagDisconnected();
+		}
 	}
 	public void stopService() {
 		this.connection = null;
@@ -114,36 +127,24 @@ public class RabbitMQSubscriber{
 	}
 
 	private void evtTimeout(TimeoutException e) {
-		ConfigSubscriberAMQP.setConnected(false);
-		if(!this.reconnect)
-		{
-			this.reconnect = true;
-			this.restart();
-		}
-		this.reconnect = false;
+		this.flagDisconnected();
 	}
 
+	private void evtIError(ConnectException e) {
+		Buzzer.toneDisconnectAmqp();
+		this.flagDisconnected();
+	}
+	
 	private void evtIError(IOException e) {
 		Buzzer.toneDisconnectAmqp();
-		ConfigSubscriberAMQP.setConnected(false);
-		if(!this.reconnect)
-		{
-			this.reconnect = true;
-			this.restart();
-		}
-		this.reconnect = false;
+		this.flagDisconnected();
 	}
-
+	
 	private void evtOnClose(String message, ShutdownSignalException e) {
 		Buzzer.toneDisconnectAmqp();
-		ConfigSubscriberAMQP.setConnected(false);
-		if(!this.reconnect)
-		{
-			this.reconnect = true;
-			this.restart();
-		}
-		this.reconnect = false;	
+		this.flagDisconnected();
 	}
+	
 	public void delay(long sleep)
 	{
 		try 
@@ -155,6 +156,7 @@ public class RabbitMQSubscriber{
 			Thread.currentThread().interrupt();
 		}
 	}
+	
 	public void evtOnMessage(byte[] body, String topic) 
 	{		
         if(body != null)
@@ -226,6 +228,26 @@ public class RabbitMQSubscriber{
 	    	 * Do nothing
 	    	 */
 	    }
+	}
+	
+	public void flagDisconnected() {
+		this.connected = false;
+		ConfigSubscriberAMQP.setConnected(this.connected);
+		ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_AMQP);		
+	}
+	
+	public void flagConnected() {
+		this.connected = true;
+		ConfigSubscriberAMQP.setConnected(this.connected);
+		ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_AMQP);	
+	}
+
+	public boolean isConnected() {
+		return connected;
+	}
+
+	public void setConnected(boolean connected) {
+		this.connected = connected;
 	}
 	
 }

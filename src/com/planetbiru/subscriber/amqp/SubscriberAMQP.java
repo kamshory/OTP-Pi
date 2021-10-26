@@ -6,6 +6,7 @@ import com.planetbiru.config.ConfigSubscriberAMQP;
 
 public class SubscriberAMQP {
 	RabbitMQSubscriber amqp = new RabbitMQSubscriber();
+	RabbitMQInspector inspector = new RabbitMQInspector();
 	private boolean running = false;
 	
 	public void start()
@@ -14,13 +15,25 @@ public class SubscriberAMQP {
 		if(ConfigSubscriberAMQP.isSubscriberAmqpEnable())
 		{
 			this.amqp = new RabbitMQSubscriber();
-			this.amqp.connect();
+			this.inspector = new RabbitMQInspector(this.amqp);
+			this.inspector.start();
+			boolean con = this.amqp.connect();
+			if(con)
+			{
+				this.amqp.flagConnected();
+			}
+			else
+			{
+				this.amqp.flagDisconnected();
+			}
 			this.running = true;
 		}		
 	}
 
 	public void stopService() {
 		this.amqp.stopService();	
+		this.inspector.stopService();	
+		this.amqp.flagDisconnected();
 		this.running = false;
 	}
 
