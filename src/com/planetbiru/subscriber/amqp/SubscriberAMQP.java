@@ -31,9 +31,11 @@ public class SubscriberAMQP {
 	}
 
 	public void stopService() {
-		this.amqp.stopService();	
 		this.inspector.stopService();	
+		this.amqp.stopService();	
 		this.amqp.flagDisconnected();
+		this.amqp = new RabbitMQSubscriber();
+		this.inspector = new RabbitMQInspector();
 		this.running = false;
 	}
 

@@ -5,7 +5,7 @@ import com.planetbiru.config.ConfigSubscriberAMQP;
 public class RabbitMQInspector extends Thread {
 
 	private RabbitMQSubscriber amqp = new RabbitMQSubscriber();
-	private boolean running = true;
+	private boolean running = false;
 	
 	public RabbitMQInspector() {
 		/**
@@ -16,10 +16,11 @@ public class RabbitMQInspector extends Thread {
 	@Override
 	public void run()
 	{
+		this.running = true;
 		while(this.running)
 		{
 			this.delay(ConfigSubscriberAMQP.getSubscriberAmqpReconnectDelay());
-			if(!this.amqp.isConnected())
+			if(!this.amqp.isConnected() && this.running)
 			{
 				this.amqp.restart();
 			}
@@ -40,8 +41,6 @@ public class RabbitMQInspector extends Thread {
 	public RabbitMQInspector(RabbitMQSubscriber amqp) {
 		this.amqp = amqp;
 	}
-
-	
 
 	public void stopService() {
 		this.running = false;	

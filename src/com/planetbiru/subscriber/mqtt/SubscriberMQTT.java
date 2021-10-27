@@ -48,7 +48,7 @@ public class SubscriberMQTT extends Thread{
 				{
 					Thread.currentThread().interrupt();
 				}
-				if(!this.connected)
+				if(!this.connected && this.running)
 				{
 					this.connect();
 				}

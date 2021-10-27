@@ -203,7 +203,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 	@Override
 	public void run() {
 		do {
-			while(!this.connected)
+			while(!this.connected && this.running)
 			{
 				this.reconnect();
 				if(!this.connected)
@@ -213,7 +213,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 			}
 			this.loop();
 		}
-		while(this.isRunning());       
+		while(this.running);       
     }
 
 	private void delay(long sleep) {

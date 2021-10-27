@@ -14,6 +14,8 @@ import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.planetbiru.Application;
+import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigAPIUser;
@@ -1244,6 +1246,7 @@ public class HandlerWebManager implements HttpHandler {
 
 	private void processSubscriberSetting(String requestBody) {
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
+		
 		if(queryPairs.containsKey("save_subscriber_ws_setting"))
 		{
 			ConfigSubscriberWS.load(Config.getSubscriberWSSettingPath());
@@ -1277,43 +1280,13 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigSubscriberWS.setSubscriberWsRefresh(subscriberWsRefresh);		
 			
 			ConfigSubscriberWS.save();
+			
+			if(ConfigSubscriberWS.isSubscriberWsEnable())
+			{
+				Application.subscriberWSStart();
+			}
 		}
 		
-		if(queryPairs.containsKey("save_subscriber_amqp_setting"))
-		{
-			ConfigSubscriberAMQP.load(Config.getSubscriberAMQPSettingPath());
-			boolean subscriberAmqpEnable = queryPairs.getOrDefault("subscriber_amqp_enable", "").equals("1");		
-			boolean subscriberAmqpSSL = queryPairs.getOrDefault("subscriber_amqp_ssl", "").equals("1");		
-			String subscriberAmqpAddress = queryPairs.getOrDefault("subscriber_amqp_address", "");		
-			String port = queryPairs.getOrDefault("subscriber_amqp_port", "0");
-			int subscriberAmqpPort = Utility.atoi(port);
-			String subscriberAmqpPath = queryPairs.getOrDefault("subscriber_amqp_path", "");		
-			String subscriberAmqpUsername = queryPairs.getOrDefault("subscriber_amqp_username", "");		
-			String subscriberAmqpPassword = queryPairs.getOrDefault("subscriber_amqp_password", "");		
-			String subscriberAmqpTopic = queryPairs.getOrDefault("subscriber_amqp_topic", "");
-			
-			String timeout = queryPairs.getOrDefault("subscriber_amqp_timeout", "0");
-			String reconnect = queryPairs.getOrDefault("subscriber_amqp_reconnect_delay", "0");
-			int subscriberAmqpTimeout = Utility.atoi(timeout);	
-			String refresh = queryPairs.getOrDefault("subscriber_amqp_refresh", "0");
-			int subscriberAmqpRefresh = Utility.atoi(refresh);
-			long subscriberAmqpReconnectDelay = Utility.atol(reconnect);
-
-			ConfigSubscriberAMQP.setSubscriberAmqpEnable(subscriberAmqpEnable);
-			ConfigSubscriberAMQP.setSubscriberAmqpSSL(subscriberAmqpSSL);
-			ConfigSubscriberAMQP.setSubscriberAmqpAddress(subscriberAmqpAddress);
-			ConfigSubscriberAMQP.setSubscriberAmqpPort(subscriberAmqpPort);
-			ConfigSubscriberAMQP.setSubscriberAmqpPath(subscriberAmqpPath);
-			ConfigSubscriberAMQP.setSubscriberAmqpUsername(subscriberAmqpUsername);
-			ConfigSubscriberAMQP.setSubscriberAmqpPassword(subscriberAmqpPassword);
-			ConfigSubscriberAMQP.setSubscriberAmqpTopic(subscriberAmqpTopic);
-			ConfigSubscriberAMQP.setSubscriberAmqpTimeout(subscriberAmqpTimeout);
-			ConfigSubscriberAMQP.setSubscriberAmqpReconnectDelay(subscriberAmqpReconnectDelay);
-			ConfigSubscriberAMQP.setSubscriberAmqpRefresh(subscriberAmqpRefresh);		
-
-			ConfigSubscriberAMQP.save();			
-		}	
-		
 		
 		if(queryPairs.containsKey("save_subscriber_amqp_setting"))
 		{
@@ -1344,7 +1317,12 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigSubscriberAMQP.setSubscriberAmqpTimeout(subscriberAmqpTimeout);
 			ConfigSubscriberAMQP.setSubscriberAmqpRefresh(subscriberAmqpRefresh);		
 
-			ConfigSubscriberAMQP.save();			
+			ConfigSubscriberAMQP.save();	
+			
+			if(ConfigSubscriberAMQP.isSubscriberAmqpEnable())
+			{
+				Application.subscriberAMQPStart();
+			}
 		}	
 		
 		if(queryPairs.containsKey("save_subscriber_active_mq_setting"))
@@ -1382,10 +1360,13 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQTimeout(subscriberActiveMQTimeout);
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQTimeToLeave(subscriberActiveMQTimeToLeave);
 			ConfigSubscriberActiveMQ.setSubscriberActiveMQRefresh(subscriberActiveMQRefresh);		
-			ConfigSubscriberActiveMQ.setSubscriberActiveMQReconnectDelay(subscriberActiveMQReconnectDelay);
-			
+			ConfigSubscriberActiveMQ.setSubscriberActiveMQReconnectDelay(subscriberActiveMQReconnectDelay);			
 
-			ConfigSubscriberActiveMQ.save();			
+			ConfigSubscriberActiveMQ.save();	
+			if(ConfigSubscriberActiveMQ.isSubscriberActiveMQEnable())
+			{
+				Application.subscriberMQTTStart();
+			}
 		}	
 		
 		
@@ -1421,7 +1402,12 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigSubscriberRedis.setSubscriberRedisTimeout(subscriberRedisTimeout);
 			ConfigSubscriberRedis.setSubscriberRedisRefresh(subscriberRedisRefresh);		
 
-			ConfigSubscriberRedis.save();			
+			ConfigSubscriberRedis.save();	
+			
+			if(ConfigSubscriberRedis.isSubscriberRedisEnable())
+			{
+				Application.subscriberRedisStart();
+			}
 		}	
 		
 		if(queryPairs.containsKey("save_subscriber_mqtt_setting"))
@@ -1459,8 +1445,15 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigSubscriberMQTT.setSubscriberMqttRefresh(subscriberMqttRefresh);		
 			ConfigSubscriberMQTT.setSubscriberMqttQos(subscriberMqttQos);		
 
-			ConfigSubscriberMQTT.save();			
+			ConfigSubscriberMQTT.save();	
+			
+			if(ConfigSubscriberMQTT.isSubscriberMqttEnable())
+			{
+				Application.subscriberMQTTStart();
+			}
 		}	
+		
+		ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_ALL);
 	}
 	
 	private void processSMS(String requestBody) {

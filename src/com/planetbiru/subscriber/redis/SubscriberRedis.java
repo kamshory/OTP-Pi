@@ -27,20 +27,21 @@ public class SubscriberRedis extends Thread {
 	{
 		if(ConfigSubscriberRedis.isSubscriberRedisEnable())
 		{
-			long sleep = ConfigSubscriberRedis.getSubscriberWsReconnectDelay();
-			if(sleep == 0)
-			{
-				sleep = 10000;
-			}
+			
 			this.connect();
 			do 
 			{
+				long sleep = ConfigSubscriberRedis.getSubscriberWsReconnectDelay();
 				boolean ret = true;
 				if(this.isConnected())
 				{
 					ret = this.ping(1000);		
 				}
-				if(!this.isConnected() || !ret)
+				if(sleep == 0)
+				{
+					sleep = 10000;
+				}
+				if(this.running && (!this.isConnected() || !ret))
 				{
 					this.disconnect();
 					this.connect();
@@ -50,7 +51,7 @@ public class SubscriberRedis extends Thread {
 				this.delay(sleep);
 				
 			}
-			while(this.isRunning());
+			while(this.running);
 		}
 	}
 
@@ -175,8 +176,7 @@ public class SubscriberRedis extends Thread {
 		finally 
 		{
 			jedisSubscriber.close();
-		}
-		
+		}		
 	}
 
 	public void stopService() {
