@@ -373,6 +373,7 @@ public class Application {
 	}
 
 	public static void subscriberWSStop() {
+		
 		if(Application.webSocketSubscriber != null && Application.webSocketSubscriber.isRunning())
 		{
 			Application.webSocketSubscriber.stopService();	

@@ -2,7 +2,7 @@ package com.planetbiru.subscriber.ws;
 
 public class SubscriberWebSocket extends Thread{
 
-	private boolean running;
+	private boolean running = true;
 	private WebSocketClientImpl ws;
 	private long reconnectDelay = 5000;
 	private long waitLoopParent = 1000;
@@ -16,12 +16,13 @@ public class SubscriberWebSocket extends Thread{
 	@Override
 	public void run()
 	{
+		this.running = true;
 		this.startThread(true);
 		do 
 		{
 			this.delay(this.waitLoopParent);
 		}
-		while(this.isRunning());
+		while(this.running);
 	}
 	private void startThread(boolean reconnect) {
 		this.ws = null;
@@ -45,6 +46,10 @@ public class SubscriberWebSocket extends Thread{
 	}
 	public void stopService() {
 		this.running = false;
+		if(this.ws != null)
+		{
+			this.ws.stopService();
+		}
 	}
 	public boolean isRunning() {
 		return running;

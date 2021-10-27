@@ -52,18 +52,10 @@ public class WebSocketClientImpl extends Thread{
 				/**
 				 * Do nothing
 				 */
-			}
-			
+			}			
 			do
 			{			
-				try 
-				{
-					Thread.sleep(this.waitLoop);
-				} 
-				catch (InterruptedException e) 
-				{
-					Thread.currentThread().interrupt();
-				}
+				this.delay(this.waitLoop);
 			}
 			while(!this.stopend);
 		}
@@ -327,6 +319,12 @@ public class WebSocketClientImpl extends Thread{
 			}
 		}	
 		return String.format("%s%s%s%s", protocol, host, port, contextPath);
+	}
+
+	public void stopService() {
+		this.stopend = true;	
+		this.connected = false;
+		this.updateConnectionStatus();
 	}
 }
 
