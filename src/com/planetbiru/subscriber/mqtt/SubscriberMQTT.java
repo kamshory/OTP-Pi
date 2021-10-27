@@ -24,6 +24,7 @@ public class SubscriberMQTT extends Thread{
 	private boolean connected = false;
 	private boolean running = true;
 	private MqttCallback callback;
+	private boolean lastConnected;
 
 	@Override
 	public void run()
@@ -54,26 +55,6 @@ public class SubscriberMQTT extends Thread{
 			}
 			while(this.running);
 		}
-	}
-	
-	private void flagDisconnected()
-	{
-		Buzzer.toneDisconnectMqtt();
-		this.callback = null;
-		try 
-		{
-			this.subscriber.disconnect();
-		} 
-		catch (MqttException e) 
-		{
-			/**
-			 * Do nothing
-			 */
-		}
-		this.connected = false;
-		this.subscriber = null;
-		ConfigSubscriberMQTT.setConnected(false);
-		ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_MQTT);
 	}
 	
 	private void connect() {
@@ -117,9 +98,7 @@ public class SubscriberMQTT extends Thread{
 			    @Override
 			    public void deliveryComplete(IMqttDeliveryToken token) 
 			    {
-			    	/**
-			    	 * Do nothing
-			    	 */
+			    	flagConnected();
 			    }	
 			};
 			
@@ -127,15 +106,46 @@ public class SubscriberMQTT extends Thread{
 			this.subscriber.setCallback(this.callback);
 			this.connected = true;
 			this.subscriber.subscribe(ConfigSubscriberMQTT.getSubscriberMqttTopic(), 0);
-			ConfigSubscriberMQTT.setConnected(true);
-			ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_MQTT);
+			this.updateConnectionStatus();
 		} 
 		catch (MqttException e) 
 		{
-			flagDisconnected();
+			this.flagDisconnected();
 		}		
 	}
+	private void flagConnected()
+	{
+		this.connected = true;
+		this.updateConnectionStatus();
+	}
+	private void flagDisconnected()
+	{
+		Buzzer.toneDisconnectMqtt();
+		this.callback = null;
+		try 
+		{
+			this.subscriber.disconnect();
+		} 
+		catch (MqttException e) 
+		{
+			/**
+			 * Do nothing
+			 */
+		}
+		this.connected = false;
+		this.subscriber = null;
+		this.updateConnectionStatus();
+	}
 	
+	private void updateConnectionStatus() {
+		ConfigSubscriberMQTT.setConnected(this.connected);
+		if(this.connected != this.lastConnected)
+		{
+			ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_MQTT);
+		}
+		this.lastConnected = this.connected;
+	}
+
 	private void delay(long sleep) {
 		try 
 		{

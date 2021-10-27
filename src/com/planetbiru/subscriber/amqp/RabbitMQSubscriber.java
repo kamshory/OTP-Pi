@@ -28,7 +28,8 @@ public class RabbitMQSubscriber{
 	private Connection connection;
 	private Channel channel;
 	private ConnectionFactory factory;
-	private boolean connected;
+	private boolean connected = false;
+	private boolean lastConnected = false;
 	public boolean connect()
 	{
 		boolean con = false;
@@ -232,14 +233,21 @@ public class RabbitMQSubscriber{
 	
 	public void flagDisconnected() {
 		this.connected = false;
-		ConfigSubscriberAMQP.setConnected(this.connected);
-		ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_AMQP);		
+		this.updateConnectionStatus();
 	}
 	
 	public void flagConnected() {
 		this.connected = true;
+		this.updateConnectionStatus();
+	}
+	
+	private void updateConnectionStatus() {
 		ConfigSubscriberAMQP.setConnected(this.connected);
-		ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_AMQP);	
+		if(this.connected != this.lastConnected)
+		{
+			ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_AMQP);		
+		}
+		this.lastConnected = this.connected;	
 	}
 
 	public boolean isConnected() {

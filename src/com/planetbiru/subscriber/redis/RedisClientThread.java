@@ -9,7 +9,9 @@ import javax.net.ssl.SSLSocketFactory;
 
 import org.apache.log4j.Logger;
 
+import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.config.ConfigSubscriberRedis;
+import com.planetbiru.constant.ConstantString;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisMonitor;
@@ -22,6 +24,8 @@ public class RedisClientThread extends Thread {
 	private Jedis subscriber;
 	private SubscriberRedis subscriberRedis;
 	private boolean running = false;
+	private boolean connected = false;
+	private boolean lastComnnected = false;
 	
 	private static Logger logger = Logger.getLogger(RedisClientThread.class);
 
@@ -75,15 +79,13 @@ public class RedisClientThread extends Thread {
 		try
 		{
 			this.subscriber.connect();	
-			this.subscriberRedis.flagConnected(true);
 			CountDownLatch latch = new CountDownLatch(10);
 			
 			this.subscriber.monitor(new JedisMonitor() {
 
 				@Override
 				public void onCommand(String command) {
-					System.out.println(command);
-					
+					flagConnected();					
 				}
 				
 			});
@@ -105,7 +107,7 @@ public class RedisClientThread extends Thread {
 			    public void onUnsubscribe(String channel, int subscribedChannels) {
 			    	latch.countDown();			        
 			    	subscriberRedis.evtOnUnsubscribe(channel, subscribedChannels);
-			    	subscriberRedis.flagDisconnected();
+			    	
 			    }
 				
 				@Override
@@ -117,19 +119,37 @@ public class RedisClientThread extends Thread {
 		}
 		catch(JedisConnectionException e)
 		{
-			if(this.subscriberRedis != null)
-			{
-				this.subscriberRedis.setConnected(false);
-			}
+			this.flagDisconnected();
 		}
-		if(this.subscriberRedis != null)
+	}
+	public void flagConnected() {
+		this.connected = true;	
+		this.updateConnectionStatus();
+	}
+	public void flagDisconnected() {
+		this.connected = false;		
+		this.updateConnectionStatus();
+	}
+
+	
+	private void updateConnectionStatus() {
+		ConfigSubscriberRedis.setConnected(this.connected);
+		if(this.connected != this.lastComnnected)
 		{
-			this.subscriberRedis.setConnected(false);
+			ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_REDIS);	
 		}
+		this.lastComnnected = this.connected;
 	}
 
 	public void ping() {
-		this.subscriber.ping();
+		try
+		{
+			this.subscriber.ping();
+		}
+		catch(Exception e)
+		{
+			this.flagDisconnected();
+		}
 	}
 
 	public boolean isRunning() {
@@ -154,6 +174,10 @@ public class RedisClientThread extends Thread {
 
 	public void setSubscriberRedis(SubscriberRedis subscriberRedis) {
 		this.subscriberRedis = subscriberRedis;
+	}
+
+	public boolean isConnected() {
+		return this.connected && this.subscriber.isConnected();
 	}
 
 }

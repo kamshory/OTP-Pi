@@ -27,6 +27,8 @@ public class WebSocketClientImpl extends Thread{
 	private SubscriberWebSocket webSocketTool;
 	private boolean reconnect = false;
 	private long waitLoop = 300000;
+	private boolean connected = false;
+	private boolean lastConnected = false;
 	
 	public WebSocketClientImpl(long reconnectDelay, long waitLoop, SubscriberWebSocket webSocketTool, boolean reconnect)
 	{
@@ -167,6 +169,7 @@ public class WebSocketClientImpl extends Thread{
 			/**
 			 * Do nothing
 			 */
+			this.flagDisconnected();
 		}		
 	}
 
@@ -179,27 +182,44 @@ public class WebSocketClientImpl extends Thread{
 		}
 		else
 		{
-			ConfigSubscriberWS.setConnected(true);
-			ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_WS);
+			this.flagConnected();
 		}
 	}
 	
+	private void flagConnected() {
+		this.connected = true;
+		this.updateConnectionStatus();
+	}
+
+	private void flagDisconnected() {
+		this.connected = false;
+		this.updateConnectionStatus();
+	}
+
+	private void updateConnectionStatus() {
+		ConfigSubscriberWS.setConnected(this.connected);
+		if(this.connected != this.lastConnected)
+		{
+			ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_WS);
+		}
+		this.lastConnected = this.connected;
+	}
+
 	public void evtOnClose(int code, String reason, boolean remote)
 	{
 		Buzzer.toneDisconnectWs();
-		ConfigSubscriberWS.setConnected(false);
-		ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_WS);
+		this.flagDisconnected();
 		if(this.reconnect)
 		{
 			this.reconnect = false;
 			this.restartThread();
 		}
 	}
+	
 	public void evtOnError(Exception e)
 	{
 		Buzzer.toneDisconnectWs();
-		ConfigSubscriberWS.setConnected(false);
-		ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_WS);
+		this.flagDisconnected();
 		if(this.reconnect)
 		{
 			this.reconnect = false;

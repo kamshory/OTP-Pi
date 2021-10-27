@@ -7,9 +7,7 @@ import javax.net.ssl.SSLSocketFactory;
 
 import org.json.JSONObject;
 
-import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.api.MessageAPI;
-import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigSubscriberRedis;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
@@ -19,7 +17,6 @@ import redis.clients.jedis.exceptions.JedisConnectionException;
 
 public class SubscriberRedis extends Thread {
 	
-	private boolean connected = false;
 	private boolean running = true;
 
 	private boolean pong = false;
@@ -38,19 +35,20 @@ public class SubscriberRedis extends Thread {
 			this.connect();
 			do 
 			{
-				try 
+				boolean ret = true;
+				if(this.isConnected())
 				{
-					Thread.sleep(sleep);
-				} 
-				catch (InterruptedException e) 
-				{
-					Thread.currentThread().interrupt();
+					ret = this.ping(1000);		
 				}
-				if(!this.isConnected())
+				if(!this.isConnected() || !ret)
 				{
 					this.disconnect();
 					this.connect();
+					this.delay(500);
+					this.ping(100);
 				}
+				this.delay(sleep);
+				
 			}
 			while(this.isRunning());
 		}
@@ -87,22 +85,22 @@ public class SubscriberRedis extends Thread {
 		while(!this.pong && timeout > (end - start));
 		if(!this.pong)
 		{
-			this.setConnected(false);
+			this.clientThread.flagDisconnected();
 		}
 		return this.pong;
 	}
 	public void evtOnPong(String pattern)
 	{
 		this.pong = true;
-		this.setConnected(true);
+		this.clientThread.flagConnected();
 	}
 	
 	public void evtOnUnsubscribe(String topic, int subscribedChannels) {
-		this.setConnected(false);
+		this.clientThread.flagDisconnected();
 	}
 	
 	public void evtOnSubscribe(String topic, int subscribedChannels) {
-		this.setConnected(true);
+		this.clientThread.flagConnected();
 	}
 	
 	private void delay(long sleep) {
@@ -183,24 +181,9 @@ public class SubscriberRedis extends Thread {
 
 	public void stopService() {
 		this.setRunning(false);	
-		this.flagDisconnected();
+		this.clientThread.flagDisconnected();
 	}
 	
-	public void flagDisconnected()
-	{
-		Buzzer.toneDisconnectRedis();
-		this.clientThread.getSubscriber().disconnect();
-		this.setConnected(false);
-		this.clientThread.setSubscriberRedis(null);
-		ConfigSubscriberRedis.setConnected(false);
-		ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_REDIS);
-	}
-	
-	public void flagConnected(boolean connected) {
-		ConfigSubscriberRedis.setConnected(connected);
-		ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_REDIS);
-	}
-
 	public boolean isRunning() {
 		return this.running;
 	}
@@ -210,11 +193,9 @@ public class SubscriberRedis extends Thread {
 	}
 
 	public boolean isConnected() {
-		return connected;
+		return this.clientThread.isConnected();
 	}
 
-	public void setConnected(boolean connected) {
-		this.connected = connected;
-	}	
+	
 	
 }

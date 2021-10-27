@@ -34,6 +34,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 	private long timeout = 10000;
 	private String topic = "sms";
 	private long timeToLeave = 60000;
+	private boolean lastConnected;
 	
 	public ActiveMQInstance()
 	{
@@ -247,7 +248,11 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 
 	private void updateConnectionStatus() {
 		ConfigSubscriberActiveMQ.setConnected(this.connected);
-		ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_ACTIVEMQ);		
+		if(this.connected != this.lastConnected)
+		{
+			ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_ACTIVEMQ);	
+		}
+		this.lastConnected = this.connected;
 	}
 
 	@Override
