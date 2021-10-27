@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import com.planetbiru.config.ConfigSubscriberRedis;
 
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisMonitor;
 import redis.clients.jedis.JedisPubSub;
 import redis.clients.jedis.exceptions.JedisConnectionException;
 import redis.clients.jedis.exceptions.JedisDataException;
@@ -74,8 +75,19 @@ public class RedisClientThread extends Thread {
 		try
 		{
 			this.subscriber.connect();	
-			subscriberRedis.flagConnected(true);
-			CountDownLatch latch = new CountDownLatch(10);			
+			this.subscriberRedis.flagConnected(true);
+			CountDownLatch latch = new CountDownLatch(10);
+			
+			this.subscriber.monitor(new JedisMonitor() {
+
+				@Override
+				public void onCommand(String command) {
+					System.out.println(command);
+					
+				}
+				
+			});
+			
 			this.subscriber.subscribe(new JedisPubSub() {
 				
 				@Override
