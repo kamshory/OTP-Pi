@@ -28,6 +28,7 @@ import com.planetbiru.config.ConfigSubscriberAMQP;
 import com.planetbiru.config.ConfigSubscriberActiveMQ;
 import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigSubscriberRedis;
+import com.planetbiru.config.ConfigSubscriberRedisson;
 import com.planetbiru.config.ConfigVendorAfraid;
 import com.planetbiru.config.ConfigVendorCloudflare;
 import com.planetbiru.config.ConfigVendorDynu;
@@ -127,6 +128,7 @@ public class ConfigLoader {
 		String subscriberWSSettingPath = ConfigLoader.getConfig("otppi.path.setting.subscriber.ws");
 		String subscriberAMQPSettingPath = ConfigLoader.getConfig("otppi.path.setting.subscriber.amqp");
 		String subscriberRedisSettingPath = ConfigLoader.getConfig("otppi.path.setting.subscriber.redis");
+		String subscriberRedissonSettingPath = ConfigLoader.getConfig("otppi.path.setting.subscriber.redisson");
 		String subscriberMQTTSettingPath = ConfigLoader.getConfig("otppi.path.setting.subscriber.mqtt");
 		String subscriberActiveMQSettingPath = ConfigLoader.getConfig("otppi.path.setting.subscriber.activemq");
 		String mimeSettingPath = ConfigLoader.getConfig("otppi.path.setting.all");
@@ -266,6 +268,7 @@ public class ConfigLoader {
 		Config.setSubscriberWSSettingPath(subscriberWSSettingPath);
 		Config.setSubscriberAMQPSettingPath(subscriberAMQPSettingPath);
 		Config.setSubscriberRedisSettingPath(subscriberRedisSettingPath);
+		Config.setSubscriberRedissonSettingPath(subscriberRedissonSettingPath);
 		Config.setSubscriberMQTTSettingPath(subscriberMQTTSettingPath);
 		Config.setSubscriberActiveMQSettingPath(subscriberActiveMQSettingPath);
 		Config.setSessionFilePath(sessionFilePath);
@@ -321,6 +324,7 @@ public class ConfigLoader {
 		ConfigSubscriberWS.load(Config.getSubscriberWSSettingPath());
 		ConfigSubscriberAMQP.load(Config.getSubscriberAMQPSettingPath());
 		ConfigSubscriberRedis.load(Config.getSubscriberRedisSettingPath());
+		ConfigSubscriberRedisson.load(Config.getSubscriberRedissonSettingPath());
 		ConfigSubscriberActiveMQ.load(Config.getSubscriberActiveMQSettingPath());
 		ConfigSubscriberMQTT.load(Config.getSubscriberMQTTSettingPath());
 		ConfigSMS.load(Config.getSmsSettingPath());

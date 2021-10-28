@@ -221,6 +221,14 @@ public class ConfigSubscriberRedis {
 		ConfigSubscriberRedis.subscriberRedisTimeout = subscriberRedisTimeout;
 	}
 
+	public static long getSubscriberRedisReconnectDelay() {
+		return subscriberRedisReconnectDelay;
+	}
+
+	public static void setSubscriberRedisReconnectDelay(long subscriberRedisReconnectDelay) {
+		ConfigSubscriberRedis.subscriberRedisReconnectDelay = subscriberRedisReconnectDelay;
+	}
+
 	public static int getSubscriberRedisRefresh() {
 		return subscriberRedisRefresh;
 	}
@@ -258,13 +266,7 @@ public class ConfigSubscriberRedis {
 		ConfigSubscriberRedis.subscriberRedisRefresh = 0;
 	}
 
-	public static long getSubscriberWsReconnectDelay() {
-		return subscriberRedisReconnectDelay;
-	}
-
-	public static void setSubscriberWsReconnectDelay(long subscriberRedisReconnectDelay) {
-		ConfigSubscriberRedis.subscriberRedisReconnectDelay = subscriberRedisReconnectDelay;
-	}
+	
 
 	
 }

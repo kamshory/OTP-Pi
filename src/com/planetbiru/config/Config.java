@@ -15,6 +15,7 @@ public class Config {
 	private static String emailSettingPath = "";
 	private static String subscriberAMQPSettingPath = "";
 	private static String subscriberRedisSettingPath = "";
+	private static String subscriberRedissonSettingPath = "";
 	private static String subscriberMQTTSettingPath = "";
 	private static String subscriberActiveMQSettingPath = "";
 	private static String subscriberWSSettingPath = "";
@@ -221,14 +222,6 @@ public class Config {
 		Config.subscriberAMQPSettingPath = subscriberAMQPSettingPath;
 	}
 
-	public static String getSubscriberActiveMQSettingPath() {
-		return subscriberActiveMQSettingPath;
-	}
-
-	public static void setSubscriberActiveMQSettingPath(String subscriberActiveMQSettingPath) {
-		Config.subscriberActiveMQSettingPath = subscriberActiveMQSettingPath;
-	}
-
 	public static String getSubscriberRedisSettingPath() {
 		return subscriberRedisSettingPath;
 	}
@@ -237,12 +230,28 @@ public class Config {
 		Config.subscriberRedisSettingPath = subscriberRedisSettingPath;
 	}
 
+	public static String getSubscriberRedissonSettingPath() {
+		return subscriberRedissonSettingPath;
+	}
+
+	public static void setSubscriberRedissonSettingPath(String subscriberRedissonSettingPath) {
+		Config.subscriberRedissonSettingPath = subscriberRedissonSettingPath;
+	}
+
 	public static String getSubscriberMQTTSettingPath() {
 		return subscriberMQTTSettingPath;
 	}
 
 	public static void setSubscriberMQTTSettingPath(String subscriberMQTTSettingPath) {
 		Config.subscriberMQTTSettingPath = subscriberMQTTSettingPath;
+	}
+
+	public static String getSubscriberActiveMQSettingPath() {
+		return subscriberActiveMQSettingPath;
+	}
+
+	public static void setSubscriberActiveMQSettingPath(String subscriberActiveMQSettingPath) {
+		Config.subscriberActiveMQSettingPath = subscriberActiveMQSettingPath;
 	}
 
 	public static String getSubscriberWSSettingPath() {
@@ -995,8 +1004,9 @@ public class Config {
 
 	public static void setInspectModemInterval(long inspectModemInterval) {
 		Config.inspectModemInterval = inspectModemInterval;
-	}	
+	}
 
+	
 	
 
 }

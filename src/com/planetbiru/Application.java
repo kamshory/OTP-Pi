@@ -356,7 +356,7 @@ public class Application {
 			Application.getRedisSubscriber().stopService();
 		}		
 	}
-
+	
 	public static void subscriberAMQPStop() {
 		if(Application.getAmqpSubscriber() != null && Application.getAmqpSubscriber().isRunning())
 		{
