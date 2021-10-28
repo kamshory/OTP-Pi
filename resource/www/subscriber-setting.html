@@ -429,99 +429,6 @@
 				</table>
 			</form>
 
-			<form id="redisson" action="subscriber-setting.html" method="post">
-				<h4>Redisson</h4>
-				<table class="config-table config-table-feeder">
-					<tbody>
-						<tr>
-							<td>Enable</td>
-							<td>
-								<label>
-									<input type="checkbox" name="subscriber_redisson_enable" value="1"> Enable</label>
-							</td>
-						</tr>
-						<tr>
-							<td>SSL</td>
-							<td>
-								<select name="subscriber_redisson_ssl">
-									<option value="0">No</option>
-									<option value="1">Yes</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td>Host</td>
-							<td>
-								<input type="text" name="subscriber_redisson_address" id="subscriber_redisson_address" value=""> </td>
-						</tr>
-						<tr>
-							<td>Port</td>
-							<td>
-								<input type="number" max="65535" name="subscriber_redisson_port" id="subscriber_redisson_port" value=""> </td>
-						</tr>
-						<tr>
-							<td>Database</td>
-							<td>
-								<input type="number" max="65535" name="subscriber_redisson_database" id="subscriber_redisson_database" value=""> </td>
-						</tr>
-						<tr>
-							<td>Username</td>
-							<td>
-								<input type="text" name="subscriber_redisson_username" id="subscriber_redisson_username" value=""> </td>
-						</tr>
-						<tr>
-							<td>Password</td>
-							<td>
-								<input type="text" name="subscriber_redisson_password" id="subscriber_redisson_password" value=""> </td>
-						</tr>
-						<tr>
-							<td>Topic</td>
-							<td>
-								<input type="text" name="subscriber_redisson_topic" id="subscriber_redisson_topic" value=""> </td>
-						</tr>
-						<tr>
-							<td>Timeout</td>
-							<td>
-								<input type="number" min="0" name="subscriber_redisson_timeout" id="subscriber_redisson_timeout" value=""> </td>
-						</tr>
-						<tr>
-							<td>Reconnect Delay</td>
-							<td>
-								<select name="subscriber_redisson_reconnect_delay">
-									<option value="10000">10 Seconds</option>
-									<option value="15000">15 Seconds</option>
-									<option value="30000">30 Seconds</option>
-									<option value="60000">1 Minute</option>
-									<option value="12000">2 Minutes</option>
-									<option value="300000">5 Minutes</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td>Refresh Connection</td>
-							<td>
-								<select name="subscriber_redisson_refresh">
-									<option value="0">Never</option>
-									<option value="600">10 Minutes</option>
-									<option value="1800">30 Minutes</option>
-									<option value="3600">1 Hour</option>
-									<option value="7200">2 Hours</option>
-									<option value="21600">6 Hours</option>
-									<option value="43200">12 Hours</option>
-									<option value="86400">24 Hours</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>
-								<input type="submit" class="btn btn-success" name="save_subscriber_redisson_setting" id="save_subscriber_redisson_setting" value="Save">
-								<input type="reset" class="btn btn-default" value="Reset"> </td>
-						</tr>
-					</tbody>
-				</table>
-			</form>
-
 			<form id="activemq" action="subscriber-setting.html" method="post">
 				<h4>ActiveMQ</h4>
 				<table class="config-table config-table-feeder">
@@ -674,25 +581,6 @@
 						$('[name="subscriber_redis_reconnect_delay"]').val(data.subscriberRedisReconnectDelay);
 						$('[name="subscriber_redis_timeout"]').val(data.subscriberRedisTimeout);
 						$('[name="subscriber_redis_refresh"]').val(data.subscriberRedisRefresh + "");
-					}
-				});
-
-				$.ajax({
-					type: "GET",
-					url: "data/subscriber-redisson-setting/get",
-					dataType: "json",
-					success: function(data) {
-						$('[name="subscriber_redisson_enable"]').prop("checked", data.subscriberRedissonEnable);
-						$('[name="subscriber_redisson_ssl"]').val(data.subscriberRedissonSSL ? "1" : "0");
-						$('[name="subscriber_redisson_address"]').val(data.subscriberRedissonAddress);
-						$('[name="subscriber_redisson_port"]').val(data.subscriberRedissonPort);
-						$('[name="subscriber_redisson_database"]').val(data.subscriberRedissonDatabase);
-						$('[name="subscriber_redisson_username"]').val(data.subscriberRedissonUsername);
-						$('[name="subscriber_redisson_password"]').val(data.subscriberRedissonPassword);
-						$('[name="subscriber_redisson_topic"]').val(data.subscriberRedissonTopic);
-						$('[name="subscriber_redisson_reconnect_delay"]').val(data.subscriberRedissonReconnectDelay);
-						$('[name="subscriber_redisson_timeout"]').val(data.subscriberRedissonTimeout);
-						$('[name="subscriber_redisson_refresh"]').val(data.subscriberRedissonRefresh + "");
 					}
 				});
 

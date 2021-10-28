@@ -15,6 +15,7 @@ import com.planetbiru.config.ConfigSubscriberAMQP;
 import com.planetbiru.config.ConfigSubscriberActiveMQ;
 import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigSubscriberRedis;
+import com.planetbiru.config.ConfigSubscriberRedisson;
 import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
@@ -28,6 +29,7 @@ import com.planetbiru.subscriber.activemq.SubscriberActiveMQ;
 import com.planetbiru.subscriber.amqp.SubscriberAMQP;
 import com.planetbiru.subscriber.mqtt.SubscriberMQTT;
 import com.planetbiru.subscriber.redis.SubscriberRedis;
+import com.planetbiru.subscriber.redisson.SubscriberRedisson;
 import com.planetbiru.subscriber.ws.SubscriberWebSocket;
 import com.planetbiru.util.CommandLineExecutor;
 import com.planetbiru.util.ConfigLoader;
@@ -48,6 +50,7 @@ public class Application {
 	private static SubscriberWebSocket webSocketSubscriber;	
 	private static SubscriberMQTT mqttSubscriber;
 	private static SubscriberRedis redisSubscriber;
+	private static SubscriberRedisson redissonSubscriber;
 	private static SubscriberAMQP amqpSubscriber;	
 	private static SubscriberActiveMQ activeMQSubscriber;
 	private static Logger logger = Logger.getLogger(Application.class);
@@ -162,6 +165,12 @@ public class Application {
 			 * Redis Client for subscriber
 			 */
 			Application.subscriberRedisStart();
+			
+			
+			/**
+			 * Redisson Client for subscriber
+			 */
+			Application.subscriberRedissonStart();
 
 			
 			/**
@@ -357,6 +366,21 @@ public class Application {
 		}		
 	}
 	
+	public static void subscriberRedissonStart() {
+		if(ConfigSubscriberRedisson.isSubscriberRedissonEnable() && (Application.getRedissonSubscriber() == null || !Application.getRedissonSubscriber().isRunning()))
+		{
+			Application.setRedissonSubscriber(new SubscriberRedisson());
+			Application.getRedissonSubscriber().setRunning(true);
+			Application.getRedissonSubscriber().start();
+		}		
+	}
+	public static void subscriberRedissonStop() {
+		if(Application.getRedissonSubscriber() != null && Application.getRedissonSubscriber().isRunning())
+		{
+			Application.getRedissonSubscriber().stopService();
+		}		
+	}
+
 	public static void subscriberAMQPStop() {
 		if(Application.getAmqpSubscriber() != null && Application.getAmqpSubscriber().isRunning())
 		{
@@ -439,6 +463,14 @@ public class Application {
 
 	public static void setRedisSubscriber(SubscriberRedis redisSubscriber) {
 		Application.redisSubscriber = redisSubscriber;
+	}
+
+	public static SubscriberRedisson getRedissonSubscriber() {
+		return redissonSubscriber;
+	}
+
+	public static void setRedissonSubscriber(SubscriberRedisson redissonSubscriber) {
+		Application.redissonSubscriber = redissonSubscriber;
 	}
 
 }
