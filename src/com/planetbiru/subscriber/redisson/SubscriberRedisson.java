@@ -21,9 +21,6 @@ public class SubscriberRedisson {
 	}
 
 	public void stopService() {
-		this.running = false;
-		
-	}
-	
-	
+		this.running = false;		
+	}	
 }
