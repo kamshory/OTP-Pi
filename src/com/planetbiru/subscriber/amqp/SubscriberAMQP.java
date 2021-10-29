@@ -51,7 +51,14 @@ public class SubscriberAMQP {
 		this.inspector.stopService();	
 		this.amqp.stopService();	
 		this.amqp.flagDisconnected();
-		this.amqp = new RabbitMQSubV0();
+		if(this.version == 0)
+		{
+			this.amqp = new RabbitMQSubV0();
+		}
+		else
+		{
+			this.amqp = new RabbitMQSubV1();
+		}
 		this.inspector = new RabbitMQInspector();
 		this.running = false;
 	}

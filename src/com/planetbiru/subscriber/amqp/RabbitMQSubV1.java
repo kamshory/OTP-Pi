@@ -14,6 +14,7 @@ import javax.jms.TextMessage;
 import org.apache.qpid.jms.JmsConnectionFactory;
 import org.json.JSONObject;
 
+import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.api.MessageAPI;
 import com.planetbiru.config.ConfigSubscriberAMQP;
 import com.planetbiru.constant.ConstantString;
@@ -23,6 +24,7 @@ public class RabbitMQSubV1 extends RabbitMQSubscriber implements AMQPClient {
 
 	private boolean running = false;
 	private boolean connected = false;
+	private boolean lastConnected = false;
 	
 	@Override
 	public void run()
@@ -30,11 +32,7 @@ public class RabbitMQSubV1 extends RabbitMQSubscriber implements AMQPClient {
 		while (this.running)
 		{
 			this.connect();
-			try {
-				Thread.sleep(ConfigSubscriberAMQP.getSubscriberAmqpReconnectDelay());
-			} catch (InterruptedException e) {
-				Thread.currentThread().interrupt();
-			}
+			this.delay(ConfigSubscriberAMQP.getSubscriberAmqpReconnectDelay());
 		}
 	}
 
@@ -121,9 +119,11 @@ public class RabbitMQSubV1 extends RabbitMQSubscriber implements AMQPClient {
             TextMessage msg = session.createTextMessage(message);
             producer.send(msg);
         }
-        catch(Exception e)
+        catch(JMSException e)
         {
-        	e.printStackTrace();
+        	/**
+        	 * Do nothing
+        	 */
         }
 	}
 	public void delay(long sleep)
@@ -152,20 +152,28 @@ public class RabbitMQSubV1 extends RabbitMQSubscriber implements AMQPClient {
 	@Override
 	public void flagConnected() {
 		this.connected = true;
-		
+		this.updateConnectionStatus();
 	}
 
 	@Override
 	public void flagDisconnected() {
 		this.connected = false;
-		
+		this.updateConnectionStatus();
+	}
+	
+	private void updateConnectionStatus() {
+		ConfigSubscriberAMQP.setConnected(this.connected);
+		if(this.connected != this.lastConnected)
+		{
+			ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_AMQP);		
+		}
+		this.lastConnected = this.connected;	
 	}
 
 	@Override
 	public void stopService() {
 		this.running = false;
 		this.connected = false;
-		
 	}
 
 }
