@@ -1305,6 +1305,8 @@ public class HandlerWebManager implements HttpHandler {
 			int subscriberAmqpTimeout = Utility.atoi(timeout);	
 			String refresh = queryPairs.getOrDefault("subscriber_amqp_refresh", "0");
 			int subscriberAmqpRefresh = Utility.atoi(refresh);
+			String version = queryPairs.getOrDefault("subscriber_amqp_version", "0");
+			int subscriberAmqpVersion = Utility.atoi(version);
 			
 			ConfigSubscriberAMQP.setSubscriberAmqpEnable(subscriberAmqpEnable);
 			ConfigSubscriberAMQP.setSubscriberAmqpSSL(subscriberAmqpSSL);
@@ -1315,7 +1317,8 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigSubscriberAMQP.setSubscriberAmqpPassword(subscriberAmqpPassword);
 			ConfigSubscriberAMQP.setSubscriberAmqpTopic(subscriberAmqpTopic);
 			ConfigSubscriberAMQP.setSubscriberAmqpTimeout(subscriberAmqpTimeout);
-			ConfigSubscriberAMQP.setSubscriberAmqpRefresh(subscriberAmqpRefresh);		
+			ConfigSubscriberAMQP.setSubscriberAmqpRefresh(subscriberAmqpRefresh);	
+			ConfigSubscriberAMQP.setSubscriberAmqpVersion(subscriberAmqpVersion);
 
 			ConfigSubscriberAMQP.save();	
 			

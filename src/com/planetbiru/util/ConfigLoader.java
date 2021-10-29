@@ -37,7 +37,7 @@ import com.planetbiru.config.PropertyLoader;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.gsm.SMSLogger;
 import com.planetbiru.subscriber.activemq.ActiveMQInstance;
-import com.planetbiru.subscriber.amqp.RabbitMQSubscriber;
+import com.planetbiru.subscriber.amqp.RabbitMQSubV0;
 import com.planetbiru.subscriber.mqtt.SubscriberMQTT;
 import com.planetbiru.subscriber.redis.SubscriberRedis;
 import com.planetbiru.subscriber.ws.WebSocketClientImpl;
@@ -335,7 +335,7 @@ public class ConfigLoader {
 		{
 			SMSLogger.setPath(Config.getSmsLogPath());
 		}
-		GSMUtil.getCallerType().put(Utility.getClassName(RabbitMQSubscriber.class.toString()), "amqp");
+		GSMUtil.getCallerType().put(Utility.getClassName(RabbitMQSubV0.class.toString()), "amqp");
 		GSMUtil.getCallerType().put(Utility.getClassName(SubscriberMQTT.class.toString()), "mqtt");
 		GSMUtil.getCallerType().put(Utility.getClassName(WebSocketClientImpl.class.toString()), "ws");
 		GSMUtil.getCallerType().put(Utility.getClassName(SubscriberRedis.class.toString()), "redis");

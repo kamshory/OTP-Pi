@@ -29,8 +29,11 @@ public class ConfigSubscriberAMQP {
 	private static int subscriberAmqpRefresh = 0;
 	private static boolean loaded = false;
 	private static boolean connected = false;
+	private static int subscriberAmqpVersion = 0;
 	
 	private static Logger logger = Logger.getLogger(ConfigSubscriberAMQP.class);
+
+
 	
 	private ConfigSubscriberAMQP()
 	{
@@ -55,6 +58,7 @@ public class ConfigSubscriberAMQP {
 		setting.put("subscriberAmqpTimeout", ConfigSubscriberAMQP.subscriberAmqpTimeout);
 		setting.put("subscriberAmqpReconnectDelay", ConfigSubscriberAMQP.subscriberAmqpReconnectDelay);
 		setting.put("subscriberAmqpRefresh", ConfigSubscriberAMQP.subscriberAmqpRefresh);
+		setting.put("subscriberAmqpVersion", ConfigSubscriberAMQP.subscriberAmqpVersion);
 		return setting;
 	}
 	
@@ -121,6 +125,7 @@ public class ConfigSubscriberAMQP {
 				ConfigSubscriberAMQP.subscriberAmqpTimeout = setting.optInt("subscriberAmqpTimeout", 0);
 				ConfigSubscriberAMQP.subscriberAmqpReconnectDelay = setting.optLong("subscriberAmqpReconnectDelay", 0);
 				ConfigSubscriberAMQP.subscriberAmqpRefresh = setting.optInt("subscriberAmqpRefresh", 0);
+				ConfigSubscriberAMQP.subscriberAmqpVersion = setting.optInt("subscriberAmqpVersion", 0);
 			}
 			catch(JSONException e)
 			{
@@ -250,6 +255,14 @@ public class ConfigSubscriberAMQP {
 
 	public static void setSubscriberAmqpReconnectDelay(long subscriberAmqpReconnectDelay) {
 		ConfigSubscriberAMQP.subscriberAmqpReconnectDelay = subscriberAmqpReconnectDelay;
+	}
+
+	public static int getSubscriberAmqpVersion() {
+		return subscriberAmqpVersion;
+	}
+
+	public static void setSubscriberAmqpVersion(int subscriberAmqpVersion) {
+		ConfigSubscriberAMQP.subscriberAmqpVersion = subscriberAmqpVersion;
 	}
 
 	public static void reset() {

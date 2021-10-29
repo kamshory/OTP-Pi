@@ -34,5 +34,16 @@
 	<classpathentry kind="lib" path="jar/javax.jms-api-2.0.1.jar" sourcepath="jar/src/javax.jms-api-2.0.1-sources.jar"/>
 	<classpathentry kind="lib" path="jar/management-api-1.1-rev-1.jar" sourcepath="jar/src/management-api-1.1-rev-1-sources.jar"/>
 	<classpathentry kind="lib" path="jar/hawtbuf-1.11.jar" sourcepath="jar/src/hawtbuf-1.11-sources.jar"/>
+	<classpathentry kind="lib" path="jar/qpid-jms-client-0.40.0.jar"/>
+	<classpathentry kind="lib" path="jar/netty-buffer-4.1.32.Final.jar"/>
+	<classpathentry kind="lib" path="jar/netty-codec-4.1.32.Final.jar"/>
+	<classpathentry kind="lib" path="jar/netty-codec-http-4.1.32.Final.jar"/>
+	<classpathentry kind="lib" path="jar/netty-common-4.1.32.Final.jar"/>
+	<classpathentry kind="lib" path="jar/netty-handler-4.1.32.Final.jar"/>
+	<classpathentry kind="lib" path="jar/netty-resolver-4.1.32.Final.jar"/>
+	<classpathentry kind="lib" path="jar/netty-transport-4.1.32.Final.jar"/>
+	<classpathentry kind="lib" path="jar/netty-transport-native-epoll-4.1.32.Final-linux-x86_64.jar"/>
+	<classpathentry kind="lib" path="jar/netty-transport-native-unix-common-4.1.32.Final.jar"/>
+	<classpathentry kind="lib" path="jar/proton-j-0.31.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

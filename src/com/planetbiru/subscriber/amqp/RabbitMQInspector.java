@@ -8,9 +8,13 @@ public class RabbitMQInspector extends Thread {
 	private boolean running = false;
 	
 	public RabbitMQInspector() {
+	}
+	
+	public RabbitMQInspector(RabbitMQSubscriber amqp) {
 		/**
 		 * Do nothing
 		 */
+		this.amqp = amqp;
 	}
 	
 	@Override
@@ -36,10 +40,6 @@ public class RabbitMQInspector extends Thread {
 		{
 			Thread.currentThread().interrupt();
 		}		
-	}
-
-	public RabbitMQInspector(RabbitMQSubscriber amqp) {
-		this.amqp = amqp;
 	}
 
 	public void stopService() {
