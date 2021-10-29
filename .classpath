@@ -46,5 +46,7 @@
 	<classpathentry kind="lib" path="jar/netty-transport-native-unix-common-4.1.32.Final.jar" sourcepath="jar/src/netty-transport-native-unix-common-4.1.32.Final-sources.jar"/>
 	<classpathentry kind="lib" path="jar/proton-j-0.31.0.jar" sourcepath="jar/src/proton-j-0.31.0-sources.jar"/>
 	<classpathentry kind="lib" path="jar/stompjms-client-1.19.jar"/>
+	<classpathentry kind="lib" path="jar/hawtdispatch-1.20.jar" sourcepath="jar/src/hawtdispatch-1.20-sources.jar"/>
+	<classpathentry kind="lib" path="jar/hawtdispatch-transport-1.20.jar" sourcepath="jar/src/hawtdispatch-transport-1.20-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

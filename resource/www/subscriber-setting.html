@@ -438,6 +438,94 @@
 				</table>
 			</form>
 
+			<form id="stomp" action="subscriber-setting.html" method="post">
+				<h4>Stomp</h4>
+				<table class="config-table config-table-feeder">
+					<tbody>
+						<tr>
+							<td>Enable</td>
+							<td>
+								<label>
+									<input type="checkbox" name="subscriber_stomp_enable" value="1"> Enable</label>
+							</td>
+						</tr>
+						<tr>
+							<td>SSL</td>
+							<td>
+								<select name="subscriber_stomp_ssl">
+									<option value="0">No</option>
+									<option value="1">Yes</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Host</td>
+							<td>
+								<input type="text" name="subscriber_stomp_address" id="subscriber_stomp_address" value=""> </td>
+						</tr>
+						<tr>
+							<td>Port</td>
+							<td>
+								<input type="number" max="65535" name="subscriber_stomp_port" id="subscriber_stomp_port" value=""> </td>
+						</tr>
+						<tr>
+							<td>Username</td>
+							<td>
+								<input type="text" name="subscriber_stomp_username" id="subscriber_stomp_username" value=""> </td>
+						</tr>
+						<tr>
+							<td>Password</td>
+							<td>
+								<input type="text" name="subscriber_stomp_password" id="subscriber_stomp_password" value=""> </td>
+						</tr>
+						<tr>
+							<td>Topic</td>
+							<td>
+								<input type="text" name="subscriber_stomp_topic" id="subscriber_stomp_topic" value=""> </td>
+						</tr>
+						<tr>
+							<td>Timeout</td>
+							<td>
+								<input type="number" min="0" name="subscriber_stomp_timeout" id="subscriber_stomp_timeout" value=""> </td>
+						</tr>
+						<tr>
+							<td>Reconnect Delay</td>
+							<td>
+								<select name="subscriber_stomp_reconnect_delay">
+									<option value="10000">10 Seconds</option>
+									<option value="15000">15 Seconds</option>
+									<option value="30000">30 Seconds</option>
+									<option value="60000">1 Minute</option>
+									<option value="12000">2 Minutes</option>
+									<option value="300000">5 Minutes</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Refresh Connection</td>
+							<td>
+								<select name="subscriber_stomp_refresh">
+									<option value="0">Never</option>
+									<option value="600">10 Minutes</option>
+									<option value="1800">30 Minutes</option>
+									<option value="3600">1 Hour</option>
+									<option value="7200">2 Hours</option>
+									<option value="21600">6 Hours</option>
+									<option value="43200">12 Hours</option>
+									<option value="86400">24 Hours</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<input type="submit" class="btn btn-success" name="save_subscriber_stomp_setting" id="save_subscriber_stomp_setting" value="Save">
+								<input type="reset" class="btn btn-default" value="Reset"> </td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+
 			<form id="activemq" action="subscriber-setting.html" method="post">
 				<h4>ActiveMQ</h4>
 				<table class="config-table config-table-feeder">
@@ -591,6 +679,24 @@
 						$('[name="subscriber_redis_reconnect_delay"]').val(data.subscriberRedisReconnectDelay);
 						$('[name="subscriber_redis_timeout"]').val(data.subscriberRedisTimeout);
 						$('[name="subscriber_redis_refresh"]').val(data.subscriberRedisRefresh + "");
+					}
+				});
+
+				$.ajax({
+					type: "GET",
+					url: "data/subscriber-stomp-setting/get",
+					dataType: "json",
+					success: function(data) {
+						$('[name="subscriber_stomp_enable"]').prop("checked", data.subscriberStompEnable);
+						$('[name="subscriber_stomp_ssl"]').val(data.subscriberStompSSL ? "1" : "0");
+						$('[name="subscriber_stomp_address"]').val(data.subscriberStompAddress);
+						$('[name="subscriber_stomp_port"]').val(data.subscriberStompPort);
+						$('[name="subscriber_stomp_username"]').val(data.subscriberStompUsername);
+						$('[name="subscriber_stomp_password"]').val(data.subscriberStompPassword);
+						$('[name="subscriber_stomp_topic"]').val(data.subscriberStompTopic);
+						$('[name="subscriber_stomp_reconnect_delay"]').val(data.subscriberStompReconnectDelay);
+						$('[name="subscriber_stomp_timeout"]').val(data.subscriberStompTimeout);
+						$('[name="subscriber_stomp_refresh"]').val(data.subscriberStompRefresh + "");
 					}
 				});
 

@@ -1416,7 +1416,7 @@ public class HandlerWebManager implements HttpHandler {
 		if(queryPairs.containsKey("save_subscriber_stomp_setting"))
 		{
 			ConfigSubscriberStomp.load(Config.getSubscriberStompSettingPath());
-			boolean subscriberStompEnable = queryPairs.getOrDefault("subscriber_rstomp_enable", "").equals("1");		
+			boolean subscriberStompEnable = queryPairs.getOrDefault("subscriber_stomp_enable", "").equals("1");		
 			boolean subscriberStompSSL = queryPairs.getOrDefault("subscriber_stomp_ssl", "").equals("1");		
 			String subscriberStompAddress = queryPairs.getOrDefault("subscriber_stomp_address", "");		
 			String port = queryPairs.getOrDefault("subscriber_stomp_port", "0");
