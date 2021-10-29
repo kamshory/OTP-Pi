@@ -30,6 +30,15 @@ public class RabbitMQSubV0 extends RabbitMQSubscriber implements AMQPClient {
 	private Channel channel;
 	private ConnectionFactory factory;
 	
+	public void run()
+	{
+		while (this.running)
+		{
+			this.connect();
+			this.delay(ConfigSubscriberAMQP.getSubscriberAmqpReconnectDelay());
+		}
+	}
+	
 	@Override
 	public void connect()
 	{

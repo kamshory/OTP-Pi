@@ -23,8 +23,6 @@ import com.planetbiru.constant.JsonKey;
 
 public class RabbitMQSubV1 extends RabbitMQSubscriber implements AMQPClient {
 
-	private boolean running = false;
-	
 	@Override
 	public void run()
 	{

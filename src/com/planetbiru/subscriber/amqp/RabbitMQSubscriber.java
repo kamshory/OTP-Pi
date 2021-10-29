@@ -4,6 +4,7 @@ public class RabbitMQSubscriber extends Thread implements AMQPClient {
 	
 	protected boolean connected = false;
 	protected boolean lastConnected = false;
+	protected boolean running = false;
 
 	@Override
 	public void run()
