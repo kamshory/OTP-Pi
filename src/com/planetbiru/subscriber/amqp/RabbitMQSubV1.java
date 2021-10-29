@@ -4,6 +4,7 @@ import java.nio.charset.StandardCharsets;
 import javax.jms.Connection;
 import javax.jms.DeliveryMode;
 import javax.jms.Destination;
+import javax.jms.ExceptionListener;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
@@ -23,8 +24,6 @@ import com.planetbiru.constant.JsonKey;
 public class RabbitMQSubV1 extends RabbitMQSubscriber implements AMQPClient {
 
 	private boolean running = false;
-	private boolean connected = false;
-	private boolean lastConnected = false;
 	
 	@Override
 	public void run()
@@ -37,7 +36,7 @@ public class RabbitMQSubV1 extends RabbitMQSubscriber implements AMQPClient {
 	}
 
 	@Override
-	public boolean connect() {
+	public void connect() {
 		this.running = true;
 		String user = ConfigSubscriberAMQP.getSubscriberAmqpUsername();
         String password = ConfigSubscriberAMQP.getSubscriberAmqpPassword();
@@ -48,15 +47,24 @@ public class RabbitMQSubV1 extends RabbitMQSubscriber implements AMQPClient {
         JmsConnectionFactory factory = new JmsConnectionFactory(connectionURI);
         try (Connection connection = factory.createConnection(user, password))
         {
+        	connection.setExceptionListener(new ExceptionListener() {				
+				@Override
+				public void onException(JMSException exception) {
+					setConnected(false);
+					flagDisconnected();
+					
+				}
+			});
+        	
             connection.start();
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             Destination destination = session.createTopic(topic);
             MessageConsumer consumer = session.createConsumer(destination);
             this.connected = true;
+            this.updateConnectionStatus();
             do
             {
-            	Message msg = consumer.receive(ConfigSubscriberAMQP.getSubscriberAmqpTimeout());
-                
+            	Message msg = consumer.receive(ConfigSubscriberAMQP.getSubscriberAmqpTimeout());              
                 if(msg != null)
                 {
 	                if (msg instanceof TextMessage) 
@@ -76,9 +84,9 @@ public class RabbitMQSubV1 extends RabbitMQSubscriber implements AMQPClient {
         }
         catch(JMSException e)
         {
-        	return false;
+        	this.connected = false;
+        	this.updateConnectionStatus();
         }
-		return true;
 	}
 
 	public void evtOnMessage(byte[] body, String topic) 
@@ -136,6 +144,11 @@ public class RabbitMQSubV1 extends RabbitMQSubscriber implements AMQPClient {
 		{
 			Thread.currentThread().interrupt();
 		}
+	}
+	
+	public void setConnected(boolean con)
+	{
+		this.connected = con;
 	}
 
 	@Override
