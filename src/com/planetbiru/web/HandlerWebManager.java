@@ -233,11 +233,9 @@ public class HandlerWebManager implements HttpHandler {
 				 * Do nothing
 				 */
 				statusCode = HttpStatus.PERMANENT_REDIRECT;
-				webContent.setStatusCode(statusCode);
-				
+				webContent.setStatusCode(statusCode);			
 				responseHeaders.add(ConstantString.LOCATION, ConstantString.ADMIN_INIT);
-				webContent.setResponseHeaders(responseHeaders);
-				
+				webContent.setResponseHeaders(responseHeaders);				
 				responseBody = "".getBytes();
 			}
 			webContent.setResponseBody(responseBody);
@@ -298,7 +296,9 @@ public class HandlerWebManager implements HttpHandler {
 				{
 					this.processSMSSetting(requestBody);
 				}
-				else if(path.equals(ConstantString.PATH_SEPARATOR+"modem.html") || path.equals(ConstantString.PATH_SEPARATOR+"modem-add.html") || path.equals(ConstantString.PATH_SEPARATOR+"modem-update.html"))
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"modem.html") 
+						|| path.equals(ConstantString.PATH_SEPARATOR+"modem-add.html") 
+						|| path.equals(ConstantString.PATH_SEPARATOR+"modem-update.html"))
 				{
 					this.processModemSetting(requestBody);
 				}
@@ -421,8 +421,7 @@ public class HandlerWebManager implements HttpHandler {
 			/**
 			 * Do nothing
 			 */
-		}
-		
+		}	
 	}
 
 	private void processSMTPSetting(String requestBody) {
@@ -723,7 +722,6 @@ public class HandlerWebManager implements HttpHandler {
 			DeviceAPI.setTimeZone(deviceTimeZone);
 		}
 	}
-
 	
 	private void processBellSetting(String requestBody) {
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
@@ -743,8 +741,7 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigBell.setRedisDisconnected(redisDisconnected);
 			ConfigBell.setWsDisconnected(wsDisconnected);
 			
-			ConfigBell.save();
-			
+			ConfigBell.save();			
 		}
 	}
 
@@ -810,8 +807,7 @@ public class HandlerWebManager implements HttpHandler {
 					nsList.put(str1);
 				}
 			}
-			JSONArray rangeList = this.createRange(ranges);
-			
+			JSONArray rangeList = this.createRange(ranges);			
 			
 			ConfigNetDHCP.load(Config.getDhcpSettingPath());
 			ConfigNetDHCP.setDomainName(domainName);
@@ -1165,8 +1161,7 @@ public class HandlerWebManager implements HttpHandler {
 						/**
 						 * Do nothing
 						 */
-					}
-					
+					}					
 				}
 			}
 			recipientPrefix = String.join(",", pref);
