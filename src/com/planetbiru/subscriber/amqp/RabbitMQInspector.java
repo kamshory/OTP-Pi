@@ -23,19 +23,20 @@ public class RabbitMQInspector extends Thread {
 		this.running = true;
 		while(this.running)
 		{
+			System.out.println("Running");
 			this.delay(ConfigSubscriberAMQP.getSubscriberAmqpReconnectDelay());
 			if(!this.amqp.isConnected() && this.running)
 			{
 				this.amqp.flagDisconnected();
-				this.amqp.updateConnection();
 				this.amqp.restart();
 			}
 			else
 			{
 				this.amqp.flagConnected();
-				this.amqp.updateConnection();
 			}
+			this.delay(ConfigSubscriberAMQP.getSubscriberAmqpReconnectDelay());
 		}
+		this.amqp.flagDisconnected();
 	}
 
 	private void delay(long sleep) {
@@ -51,6 +52,7 @@ public class RabbitMQInspector extends Thread {
 
 	public void stopService() {
 		this.running = false;	
+		this.amqp.stopService();
 	}
 
 }

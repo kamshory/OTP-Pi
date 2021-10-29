@@ -6,14 +6,13 @@ import com.planetbiru.config.ConfigSubscriberAMQP;
 
 public class SubscriberAMQP {
 	RabbitMQSubscriber amqp = new RabbitMQSubscriber();
-	RabbitMQInspector inspector = new RabbitMQInspector();
 	private boolean running = false;
 	private int version = 0;
 	
 	public void start()
 	{
 		ConfigSubscriberAMQP.load(Config.getSubscriberAMQPSettingPath());
-		this.version = ConfigSubscriberAMQP.getSubscriberAmqpVersion();
+		this.version = ConfigSubscriberAMQP.getSubscriberAmqpVersion();		
 		if(ConfigSubscriberAMQP.isSubscriberAmqpEnable())
 		{
 			if(this.version == 0)
@@ -24,8 +23,6 @@ public class SubscriberAMQP {
 			{
 				this.amqp = new RabbitMQSubV1();
 			}
-			this.inspector = new RabbitMQInspector(this.amqp);
-			this.inspector.start();
 			this.amqp.start();
 			if(this.amqp.connected)
 			{
@@ -48,7 +45,6 @@ public class SubscriberAMQP {
 	}
 
 	public void stopService() {
-		this.inspector.stopService();	
 		this.amqp.stopService();	
 		this.amqp.flagDisconnected();
 		if(this.version == 0)
@@ -59,7 +55,6 @@ public class SubscriberAMQP {
 		{
 			this.amqp = new RabbitMQSubV1();
 		}
-		this.inspector = new RabbitMQInspector();
 		this.running = false;
 	}
 

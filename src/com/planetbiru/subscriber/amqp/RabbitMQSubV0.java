@@ -14,6 +14,7 @@ import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.api.MessageAPI;
 import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigSubscriberAMQP;
+import com.planetbiru.config.ConfigSubscriberStomp;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 import com.rabbitmq.client.AMQP;
@@ -34,6 +35,16 @@ public class RabbitMQSubV0 extends RabbitMQSubscriber implements AMQPClient {
 	public void run()
 	{
 		this.connect();
+		this.running = true;
+		while (this.running)
+		{
+			if(!this.isConnected() || !this.connection.isOpen())
+			{
+				this.delay(ConfigSubscriberStomp.getSubscriberStompReconnectDelay());
+				this.connect();
+			}
+			this.delay(ConfigSubscriberStomp.getSubscriberStompReconnectDelay());
+		}
 	}
 	
 	@Override
@@ -67,7 +78,6 @@ public class RabbitMQSubV0 extends RabbitMQSubscriber implements AMQPClient {
 	    {
 			this.connection = this.factory.newConnection();
 			this.channel = this.connection.createChannel();
-			this.connected = true;
 		    String topic = ConfigSubscriberAMQP.getSubscriberAmqpTopic();
 			this.channel.queueDeclare(topic, false, false, false, null);		    
 		    DefaultConsumer consumer = new DefaultConsumer(this.channel) {
@@ -86,7 +96,7 @@ public class RabbitMQSubV0 extends RabbitMQSubscriber implements AMQPClient {
 		        }
 				
 		    };
-		    ConfigSubscriberAMQP.setConnected(true);
+		    this.flagConnected();
 			this.channel.basicConsume(topic, true, consumer);
 		} 
 	    catch (ConnectException e)
@@ -245,6 +255,7 @@ public class RabbitMQSubV0 extends RabbitMQSubscriber implements AMQPClient {
 	    	/**
 	    	 * Do nothing
 	    	 */
+	    	e.printStackTrace();
 	    }
 	}
 	
