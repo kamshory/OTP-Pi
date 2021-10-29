@@ -30,13 +30,10 @@ public class RabbitMQSubV0 extends RabbitMQSubscriber implements AMQPClient {
 	private Channel channel;
 	private ConnectionFactory factory;
 	
+	@Override
 	public void run()
 	{
-		while (this.running)
-		{
-			this.connect();
-			this.delay(ConfigSubscriberAMQP.getSubscriberAmqpReconnectDelay());
-		}
+		this.connect();
 	}
 	
 	@Override
@@ -70,6 +67,7 @@ public class RabbitMQSubV0 extends RabbitMQSubscriber implements AMQPClient {
 	    {
 			this.connection = this.factory.newConnection();
 			this.channel = this.connection.createChannel();
+			this.connected = true;
 		    String topic = ConfigSubscriberAMQP.getSubscriberAmqpTopic();
 			this.channel.queueDeclare(topic, false, false, false, null);		    
 		    DefaultConsumer consumer = new DefaultConsumer(this.channel) {

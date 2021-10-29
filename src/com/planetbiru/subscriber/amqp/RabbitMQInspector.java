@@ -26,7 +26,14 @@ public class RabbitMQInspector extends Thread {
 			this.delay(ConfigSubscriberAMQP.getSubscriberAmqpReconnectDelay());
 			if(!this.amqp.isConnected() && this.running)
 			{
+				this.amqp.flagDisconnected();
+				this.amqp.updateConnection();
 				this.amqp.restart();
+			}
+			else
+			{
+				this.amqp.flagConnected();
+				this.amqp.updateConnection();
 			}
 		}
 	}

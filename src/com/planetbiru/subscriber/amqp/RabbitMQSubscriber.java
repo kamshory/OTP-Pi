@@ -1,7 +1,6 @@
 package com.planetbiru.subscriber.amqp;
 
-public class RabbitMQSubscriber extends Thread implements AMQPClient {
-	
+public class RabbitMQSubscriber extends Thread implements AMQPClient {	
 	protected boolean connected = false;
 	protected boolean lastConnected = false;
 	protected boolean running = false;
@@ -52,5 +51,11 @@ public class RabbitMQSubscriber extends Thread implements AMQPClient {
 		/**
 		 * Do nothing
 		 */
+	}
+
+	@Override
+	public void updateConnection() {
+		// TODO Auto-generated method stub
+		
 	}
 }

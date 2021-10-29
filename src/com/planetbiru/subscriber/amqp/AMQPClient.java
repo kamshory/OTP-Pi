@@ -14,4 +14,6 @@ public interface AMQPClient {
 
 	public void stopService();
 	
+	public void updateConnection();
+	
 }
