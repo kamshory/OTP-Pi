@@ -64,12 +64,13 @@ public class ConstantString {
 	public static final String SERVICE_AMQP                    = "amqp";
 	public static final String SERVICE_MQTT                    = "mqtt";
 	public static final String SERVICE_REDIS                   = "redis";
+	public static final String SERVICE_STOMP                   = "stomp";
 	public static final String SERVICE_WS                      = "ws";
 	public static final String SERVICE_HTTP                    = "http";
 	public static final String SERVICE_HTTPS                   = "https";
 	public static final String SERVICE_MODEM                   = "modem";
 
-	public static final String SERVICE_ALL                     = "activemq,amqp,mqtt,redis,ws,http,https,modem";
+	public static final String SERVICE_ALL                     = "activemq,amqp,mqtt,redis,stomp,ws,http,https,modem";
 	
 	private ConstantString()
 	{

@@ -2,7 +2,7 @@ package com.planetbiru.subscriber.amqp;
 
 public interface AMQPClient {
 	
-	public boolean connect();
+	public void connect();
 
 	public boolean isConnected();
 

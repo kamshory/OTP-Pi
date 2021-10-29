@@ -19,6 +19,7 @@ import com.planetbiru.config.ConfigSubscriberAMQP;
 import com.planetbiru.config.ConfigSubscriberActiveMQ;
 import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigSubscriberRedis;
+import com.planetbiru.config.ConfigSubscriberStomp;
 import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
@@ -650,6 +651,19 @@ public class ServerInfo {
 			redisConnected.put(JsonKey.NAME, "otp-redis-connected");
 			redisConnected.put(JsonKey.VALUE, ConfigSubscriberRedis.isConnected());
 			data.put(redisConnected);
+		}
+		
+		if(list.contains(ConstantString.SERVICE_STOMP))
+		{
+			JSONObject stompEnable = new JSONObject();
+			stompEnable.put(JsonKey.NAME, "otp-stomp-enable");
+			stompEnable.put(JsonKey.VALUE, ConfigSubscriberStomp.isSubscriberStompEnable());
+			data.put(stompEnable);
+			
+			JSONObject stompConnected = new JSONObject();
+			stompConnected.put(JsonKey.NAME, "otp-stomp-connected");
+			stompConnected.put(JsonKey.VALUE, ConfigSubscriberStomp.isConnected());
+			data.put(stompConnected);
 		}
 		
 		if(list.contains(ConstantString.SERVICE_MQTT))

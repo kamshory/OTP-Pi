@@ -29,13 +29,19 @@ public class RabbitMQSubV0 extends RabbitMQSubscriber implements AMQPClient {
 	private Connection connection;
 	private Channel channel;
 	private ConnectionFactory factory;
-	private boolean connected = false;
-	private boolean lastConnected = false;
+	
+	public void run()
+	{
+		while (this.running)
+		{
+			this.connect();
+			this.delay(ConfigSubscriberAMQP.getSubscriberAmqpReconnectDelay());
+		}
+	}
 	
 	@Override
-	public boolean connect()
+	public void connect()
 	{
-		boolean con = false;
 		this.factory = new ConnectionFactory();
 	    this.factory.setHost(ConfigSubscriberAMQP.getSubscriberAmqpAddress());
 	    this.factory.setPort(ConfigSubscriberAMQP.getSubscriberAmqpPort());
@@ -84,7 +90,6 @@ public class RabbitMQSubV0 extends RabbitMQSubscriber implements AMQPClient {
 		    };
 		    ConfigSubscriberAMQP.setConnected(true);
 			this.channel.basicConsume(topic, true, consumer);
-			con = true;
 		} 
 	    catch (ConnectException e)
 	    {
@@ -101,7 +106,6 @@ public class RabbitMQSubV0 extends RabbitMQSubscriber implements AMQPClient {
 	    catch (IOException e) {
 			this.evtIError(e);
 		}
-	    return con;
 	}
 
 	@Override
@@ -119,7 +123,8 @@ public class RabbitMQSubV0 extends RabbitMQSubscriber implements AMQPClient {
 			Thread.currentThread().interrupt();
 		}
 
-		if(this.connect())
+		this.connect();
+		if(this.connected)
 		{
 			this.flagConnected();
 		}
