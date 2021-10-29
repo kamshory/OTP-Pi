@@ -55,7 +55,9 @@ public class RabbitMQSubscriber extends Thread implements AMQPClient {
 
 	@Override
 	public void updateConnection() {
-		// TODO Auto-generated method stub
+		/**
+		 * Do nothing
+		 */
 		
 	}
 }
