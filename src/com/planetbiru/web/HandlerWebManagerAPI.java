@@ -307,7 +307,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				}
 				else
 				{
-					Application.subscriberWSStop();
+					Application.subscriberWSStop(true);
 				} 
 				ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_WS);
 			} 
@@ -355,7 +355,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				}
 				else
 				{
-					Application.subscriberAMQPStop();
+					Application.subscriberAMQPStop(true);
 				} 
 				ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_AMQP);
 			} 
@@ -403,7 +403,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				}
 				else
 				{
-					Application.subscriberRedisStop();
+					Application.subscriberRedisStop(true);
 				}				
 			} 
 			else 
@@ -449,7 +449,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				}
 				else
 				{
-					Application.subscriberStompStop();
+					Application.subscriberStompStop(true);
 				}				
 			} 
 			else 
@@ -495,7 +495,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				}
 				else
 				{
-					Application.subscriberMQTTStop();
+					Application.subscriberMQTTStop(true);
 				}
 				ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_MQTT);
 			} 
@@ -543,7 +543,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				}
 				else
 				{
-					Application.subscriberActiveMQStop();
+					Application.subscriberActiveMQStop(true);
 				}
 				ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_ACTIVEMQ);
 			} 
@@ -591,7 +591,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				}
 				else
 				{
-					Application.subscriberHTTPStop();
+					Application.subscriberHTTPStop(true);
 				}
 				ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_HTTP);
 			} 
@@ -639,7 +639,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				}
 				else
 				{
-					Application.subscriberHTTPSStop();
+					Application.subscriberHTTPSStop(true);
 				}
 				ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_HTTPS);
 			} 

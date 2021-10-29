@@ -296,8 +296,8 @@ public class Application {
 		}
 	}
 
-	public static void subscriberHTTPStop() {
-		if (ConfigAPI.isHttpEnable() && Application.rest.isHttpStarted()) {
+	public static void subscriberHTTPStop(boolean force) {
+		if (force || (Application.rest.isHttpStarted())) {
 			Application.rest.stopHTTP();
 		}
 	}
@@ -308,8 +308,8 @@ public class Application {
 		}
 	}
 
-	public static void subscriberHTTPSStop() {
-		if (ConfigAPI.isHttpsEnable() && Application.rest.isHttpsStarted()) {
+	public static void subscriberHTTPSStop(boolean force) {
+		if (force || (Application.rest.isHttpsStarted())) {
 			Application.rest.stopHTTPS();
 		}
 	}
@@ -322,8 +322,8 @@ public class Application {
 		}
 	}
 
-	public static void subscriberActiveMQStop() {
-		if(Application.activeMQSubscriber != null)
+	public static void subscriberActiveMQStop(boolean force) {
+		if(Application.activeMQSubscriber != null && (force || Application.activeMQSubscriber.isRunning()))
 		{
 			Application.activeMQSubscriber.stopService();
 		}		
@@ -337,8 +337,8 @@ public class Application {
 		}		
 	}
 
-	public static void subscriberMQTTStop() {
-		if(Application.mqttSubscriber != null && Application.mqttSubscriber.isRunning())
+	public static void subscriberMQTTStop(boolean force) {
+		if(Application.mqttSubscriber != null && (force || Application.mqttSubscriber.isRunning()))
 		{
 			Application.mqttSubscriber.stopService();
 		}		
@@ -351,6 +351,12 @@ public class Application {
 			Application.getAmqpSubscriber().start();
 		}		
 	}
+	public static void subscriberAMQPStop(boolean force) {
+		if(Application.getAmqpSubscriber() != null && (force || Application.getAmqpSubscriber().isRunning()))
+		{
+			Application.getAmqpSubscriber().stopService();
+		}		
+	}
 	public static void subscriberRedisStart() {
 		if(ConfigSubscriberRedis.isSubscriberRedisEnable() && (Application.getRedisSubscriber() == null || !Application.getRedisSubscriber().isRunning()))
 		{
@@ -359,8 +365,8 @@ public class Application {
 			Application.getRedisSubscriber().start();
 		}		
 	}
-	public static void subscriberRedisStop() {
-		if(Application.getRedisSubscriber() != null && Application.getRedisSubscriber().isRunning())
+	public static void subscriberRedisStop(boolean force) {
+		if(Application.getRedisSubscriber() != null && (force && Application.getRedisSubscriber().isRunning()))
 		{
 			Application.getRedisSubscriber().stopService();
 		}		
@@ -374,17 +380,10 @@ public class Application {
 			Application.getStompSubscriber().start();
 		}		
 	}
-	public static void subscriberStompStop() {
-		if(Application.getStompSubscriber() != null && Application.getStompSubscriber().isRunning())
+	public static void subscriberStompStop(boolean force) {
+		if(Application.getStompSubscriber() != null && (force || Application.getStompSubscriber().isRunning()))
 		{
 			Application.getStompSubscriber().stopService();
-		}		
-	}
-
-	public static void subscriberAMQPStop() {
-		if(Application.getAmqpSubscriber() != null && Application.getAmqpSubscriber().isRunning())
-		{
-			Application.getAmqpSubscriber().stopService();
 		}		
 	}
 
@@ -396,9 +395,9 @@ public class Application {
 		}
 	}
 
-	public static void subscriberWSStop() {
+	public static void subscriberWSStop(boolean force) {
 		
-		if(Application.webSocketSubscriber != null && Application.webSocketSubscriber.isRunning())
+		if(Application.webSocketSubscriber != null && (force || Application.webSocketSubscriber.isRunning()))
 		{
 			Application.webSocketSubscriber.stopService();	
 		}

@@ -144,6 +144,8 @@ public class RabbitMQSubV0 extends RabbitMQSubscriber implements AMQPClient {
 	
 	@Override
 	public void stopService() {
+		this.running = false;
+		this.flagDisconnected();		
 		this.connection = null;
 		this.factory = null;
 		this.channel = null;

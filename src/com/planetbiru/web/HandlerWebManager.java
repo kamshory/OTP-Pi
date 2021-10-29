@@ -1285,8 +1285,7 @@ public class HandlerWebManager implements HttpHandler {
 			{
 				Application.subscriberWSStart();
 			}
-		}
-		
+		}		
 		
 		if(queryPairs.containsKey("save_subscriber_amqp_setting"))
 		{
@@ -1318,10 +1317,16 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigSubscriberAMQP.setSubscriberAmqpTopic(subscriberAmqpTopic);
 			ConfigSubscriberAMQP.setSubscriberAmqpTimeout(subscriberAmqpTimeout);
 			ConfigSubscriberAMQP.setSubscriberAmqpRefresh(subscriberAmqpRefresh);	
+			
+			boolean changeVerstion = (ConfigSubscriberAMQP.getSubscriberAmqpVersion() != subscriberAmqpVersion);
+			
 			ConfigSubscriberAMQP.setSubscriberAmqpVersion(subscriberAmqpVersion);
-
 			ConfigSubscriberAMQP.save();	
 			
+			if(changeVerstion)
+			{
+				Application.subscriberAMQPStop(true);
+			}
 			if(ConfigSubscriberAMQP.isSubscriberAmqpEnable())
 			{
 				Application.subscriberAMQPStart();

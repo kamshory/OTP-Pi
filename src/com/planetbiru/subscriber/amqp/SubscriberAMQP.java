@@ -13,6 +13,7 @@ public class SubscriberAMQP {
 	{
 		ConfigSubscriberAMQP.load(Config.getSubscriberAMQPSettingPath());
 		this.version = ConfigSubscriberAMQP.getSubscriberAmqpVersion();		
+		this.stopService();
 		if(ConfigSubscriberAMQP.isSubscriberAmqpEnable())
 		{
 			if(this.version == 0)
@@ -45,22 +46,13 @@ public class SubscriberAMQP {
 	}
 
 	public void stopService() {
+		this.running = false;
 		this.amqp.stopService();	
 		this.amqp.flagDisconnected();
-		if(this.version == 0)
-		{
-			this.amqp = new RabbitMQSubV0();
-		}
-		else
-		{
-			this.amqp = new RabbitMQSubV1();
-		}
-		this.running = false;
 	}
 
 	public boolean isRunning() {
 		return running;
 	}
-	
 }
 
