@@ -45,5 +45,6 @@
 	<classpathentry kind="lib" path="jar/netty-transport-native-epoll-4.1.32.Final-linux-x86_64.jar" sourcepath="jar/src/netty-transport-native-epoll-4.1.32.Final-sources.jar"/>
 	<classpathentry kind="lib" path="jar/netty-transport-native-unix-common-4.1.32.Final.jar" sourcepath="jar/src/netty-transport-native-unix-common-4.1.32.Final-sources.jar"/>
 	<classpathentry kind="lib" path="jar/proton-j-0.31.0.jar" sourcepath="jar/src/proton-j-0.31.0-sources.jar"/>
+	<classpathentry kind="lib" path="jar/stompjms-client-1.19.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

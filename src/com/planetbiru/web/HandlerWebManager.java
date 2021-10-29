@@ -27,7 +27,7 @@ import com.planetbiru.config.ConfigSubscriberAMQP;
 import com.planetbiru.config.ConfigSubscriberActiveMQ;
 import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigSubscriberRedis;
-import com.planetbiru.config.ConfigSubscriberRedisson;
+import com.planetbiru.config.ConfigSubscriberStomp;
 import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.config.ConfigFirewall;
 import com.planetbiru.config.ConfigGeneral;
@@ -1413,43 +1413,43 @@ public class HandlerWebManager implements HttpHandler {
 			}
 		}	
 		
-		if(queryPairs.containsKey("save_subscriber_redisson_setting"))
+		if(queryPairs.containsKey("save_subscriber_stomp_setting"))
 		{
-			ConfigSubscriberRedisson.load(Config.getSubscriberRedissonSettingPath());
-			boolean subscriberRedissonEnable = queryPairs.getOrDefault("subscriber_redisson_enable", "").equals("1");		
-			boolean subscriberRedissonSSL = queryPairs.getOrDefault("subscriber_redisson_ssl", "").equals("1");		
-			String subscriberRedissonAddress = queryPairs.getOrDefault("subscriber_redisson_address", "");		
-			String port = queryPairs.getOrDefault("subscriber_redisson_port", "0");
-			int subscriberRedissonPort = Utility.atoi(port);
-			String subscriberRedissonUsername = queryPairs.getOrDefault("subscriber_redisson_username", "");		
-			String subscriberRedissonPassword = queryPairs.getOrDefault("subscriber_redisson_password", "");		
-			String subscriberRedissonTopic = queryPairs.getOrDefault("subscriber_redisson_topic", "");
+			ConfigSubscriberStomp.load(Config.getSubscriberStompSettingPath());
+			boolean subscriberStompEnable = queryPairs.getOrDefault("subscriber_rstomp_enable", "").equals("1");		
+			boolean subscriberStompSSL = queryPairs.getOrDefault("subscriber_stomp_ssl", "").equals("1");		
+			String subscriberStompAddress = queryPairs.getOrDefault("subscriber_stomp_address", "");		
+			String port = queryPairs.getOrDefault("subscriber_stomp_port", "0");
+			int subscriberStompPort = Utility.atoi(port);
+			String subscriberStompUsername = queryPairs.getOrDefault("subscriber_stomp_username", "");		
+			String subscriberStompPassword = queryPairs.getOrDefault("subscriber_stomp_password", "");		
+			String subscriberStompTopic = queryPairs.getOrDefault("subscriber_stomp_topic", "");
 			
-			String timeout = queryPairs.getOrDefault("subscriber_redisson_timeout", "0");
-			int subscriberRedissonTimeout = Utility.atoi(timeout);	
-			String reconnect = queryPairs.getOrDefault("subscriber_redisson_reconnect_delay", "0");
-			int subscriberRedissonReconnectDelay = Utility.atoi(reconnect);	
-			String refresh = queryPairs.getOrDefault("subscriber_redisson_refresh", "0");
-			int subscriberRedissonRefresh = Utility.atoi(refresh);
+			String timeout = queryPairs.getOrDefault("subscriber_stomp_timeout", "0");
+			int subscriberStompTimeout = Utility.atoi(timeout);	
+			String reconnect = queryPairs.getOrDefault("subscriber_stomp_reconnect_delay", "0");
+			int subscriberStompReconnectDelay = Utility.atoi(reconnect);	
+			String refresh = queryPairs.getOrDefault("subscriber_stomp_refresh", "0");
+			int subscriberStompRefresh = Utility.atoi(refresh);
 
-			String database = queryPairs.getOrDefault("subscriber_redisson_database", "0");
-			int subscriberRedissonDatabase = Utility.atoi(database);
+			String database = queryPairs.getOrDefault("subscriber_stomp_database", "0");
+			int subscriberStompDatabase = Utility.atoi(database);
 
-			ConfigSubscriberRedisson.setSubscriberRedissonEnable(subscriberRedissonEnable);
-			ConfigSubscriberRedisson.setSubscriberRedissonSSL(subscriberRedissonSSL);
-			ConfigSubscriberRedisson.setSubscriberRedissonAddress(subscriberRedissonAddress);
-			ConfigSubscriberRedisson.setSubscriberRedissonPort(subscriberRedissonPort);
-			ConfigSubscriberRedisson.setSubscriberRedissonDatabase(subscriberRedissonDatabase);
-			ConfigSubscriberRedisson.setSubscriberRedissonUsername(subscriberRedissonUsername);
-			ConfigSubscriberRedisson.setSubscriberRedissonPassword(subscriberRedissonPassword);
-			ConfigSubscriberRedisson.setSubscriberRedissonTopic(subscriberRedissonTopic);
-			ConfigSubscriberRedisson.setSubscriberRedissonReconnectDelay(subscriberRedissonReconnectDelay);
-			ConfigSubscriberRedisson.setSubscriberRedissonTimeout(subscriberRedissonTimeout);
-			ConfigSubscriberRedisson.setSubscriberRedissonRefresh(subscriberRedissonRefresh);		
+			ConfigSubscriberStomp.setSubscriberStompEnable(subscriberStompEnable);
+			ConfigSubscriberStomp.setSubscriberStompSSL(subscriberStompSSL);
+			ConfigSubscriberStomp.setSubscriberStompAddress(subscriberStompAddress);
+			ConfigSubscriberStomp.setSubscriberStompPort(subscriberStompPort);
+			ConfigSubscriberStomp.setSubscriberStompDatabase(subscriberStompDatabase);
+			ConfigSubscriberStomp.setSubscriberStompUsername(subscriberStompUsername);
+			ConfigSubscriberStomp.setSubscriberStompPassword(subscriberStompPassword);
+			ConfigSubscriberStomp.setSubscriberStompTopic(subscriberStompTopic);
+			ConfigSubscriberStomp.setSubscriberStompReconnectDelay(subscriberStompReconnectDelay);
+			ConfigSubscriberStomp.setSubscriberStompTimeout(subscriberStompTimeout);
+			ConfigSubscriberStomp.setSubscriberStompRefresh(subscriberStompRefresh);		
 
-			ConfigSubscriberRedisson.save();	
+			ConfigSubscriberStomp.save();	
 			
-			if(ConfigSubscriberRedisson.isSubscriberRedissonEnable())
+			if(ConfigSubscriberStomp.isSubscriberStompEnable())
 			{
 				/**
 				 * Do nothing

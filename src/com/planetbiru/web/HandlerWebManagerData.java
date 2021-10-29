@@ -22,7 +22,7 @@ import com.planetbiru.config.ConfigSubscriberAMQP;
 import com.planetbiru.config.ConfigSubscriberActiveMQ;
 import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigSubscriberRedis;
-import com.planetbiru.config.ConfigSubscriberRedisson;
+import com.planetbiru.config.ConfigSubscriberStomp;
 import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.config.ConfigFirewall;
 import com.planetbiru.config.ConfigGeneral;
@@ -116,9 +116,9 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			this.handleSubscriberRedisSetting(httpExchange);
 		}
-		else if(path.startsWith("/data/subscriber-redisson-setting/get"))
+		else if(path.startsWith("/data/subscriber-stomp-setting/get"))
 		{
-			this.handleSubscriberRedissonSetting(httpExchange);
+			this.handleSubscriberStompSetting(httpExchange);
 		}
 		else if(path.startsWith("/data/subscriber-mqtt-setting/get"))
 		{
@@ -1372,8 +1372,8 @@ public class HandlerWebManagerData implements HttpHandler {
 		httpExchange.close();	
 	}
 	
-	//@GetMapping(path="/data/subscriber-redisson-setting/get")
-	public void handleSubscriberRedissonSetting(HttpExchange httpExchange) throws IOException
+	//@GetMapping(path="/data/subscriber-stomp-setting/get")
+	public void handleSubscriberStompSetting(HttpExchange httpExchange) throws IOException
 	{
 		Headers requestHeaders = httpExchange.getRequestHeaders();
 		Headers responseHeaders = httpExchange.getResponseHeaders();
@@ -1384,8 +1384,8 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				ConfigSubscriberRedisson.load(Config.getSubscriberRedissonSettingPath());
-				String list = ConfigSubscriberRedisson.toJSONObject().toString();
+				ConfigSubscriberStomp.load(Config.getSubscriberStompSettingPath());
+				String list = ConfigSubscriberStomp.toJSONObject().toString();
 				responseBody = list.getBytes();
 			}
 			else

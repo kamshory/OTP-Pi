@@ -15,7 +15,7 @@ public class Config {
 	private static String emailSettingPath = "";
 	private static String subscriberAMQPSettingPath = "";
 	private static String subscriberRedisSettingPath = "";
-	private static String subscriberRedissonSettingPath = "";
+	private static String subscriberStompSettingPath = "";
 	private static String subscriberMQTTSettingPath = "";
 	private static String subscriberActiveMQSettingPath = "";
 	private static String subscriberWSSettingPath = "";
@@ -229,13 +229,15 @@ public class Config {
 	public static void setSubscriberRedisSettingPath(String subscriberRedisSettingPath) {
 		Config.subscriberRedisSettingPath = subscriberRedisSettingPath;
 	}
+	
+	
 
-	public static String getSubscriberRedissonSettingPath() {
-		return subscriberRedissonSettingPath;
+	public static String getSubscriberStompSettingPath() {
+		return subscriberStompSettingPath;
 	}
 
-	public static void setSubscriberRedissonSettingPath(String subscriberRedissonSettingPath) {
-		Config.subscriberRedissonSettingPath = subscriberRedissonSettingPath;
+	public static void setSubscriberStompSettingPath(String subscriberStompSettingPath) {
+		Config.subscriberStompSettingPath = subscriberStompSettingPath;
 	}
 
 	public static String getSubscriberMQTTSettingPath() {
