@@ -29,7 +29,7 @@ import com.planetbiru.subscriber.activemq.SubscriberActiveMQ;
 import com.planetbiru.subscriber.amqp.SubscriberAMQP;
 import com.planetbiru.subscriber.mqtt.SubscriberMQTT;
 import com.planetbiru.subscriber.redis.SubscriberRedis;
-import com.planetbiru.subscriber.stomp.SubscriberStompThread;
+import com.planetbiru.subscriber.stomp.SubscriberStomp;
 import com.planetbiru.subscriber.ws.SubscriberWebSocket;
 import com.planetbiru.util.CommandLineExecutor;
 import com.planetbiru.util.ConfigLoader;
@@ -50,7 +50,7 @@ public class Application {
 	private static SubscriberWebSocket webSocketSubscriber;	
 	private static SubscriberMQTT mqttSubscriber;
 	private static SubscriberRedis redisSubscriber;
-	private static SubscriberStompThread stompSubscriber;
+	private static SubscriberStomp redissonSubscriber;
 	private static SubscriberAMQP amqpSubscriber;	
 	private static SubscriberActiveMQ activeMQSubscriber;
 	private static Logger logger = Logger.getLogger(Application.class);
@@ -170,7 +170,7 @@ public class Application {
 			/**
 			 * Redisson Client for subscriber
 			 */
-			Application.subscriberRedissonStart();
+			Application.subscriberStompStart();
 
 			
 			/**
@@ -366,15 +366,15 @@ public class Application {
 		}		
 	}
 	
-	public static void subscriberRedissonStart() {
+	public static void subscriberStompStart() {
 		if(ConfigSubscriberStomp.isSubscriberStompEnable() && (Application.getStompSubscriber() == null || !Application.getStompSubscriber().isRunning()))
 		{
-			Application.setRedissonSubscriber(new SubscriberStompThread());
+			Application.setStompSubscriber(new SubscriberStomp());
 			Application.getStompSubscriber().setRunning(true);
 			Application.getStompSubscriber().start();
 		}		
 	}
-	public static void subscriberRedissonStop() {
+	public static void subscriberStompStop() {
 		if(Application.getStompSubscriber() != null && Application.getStompSubscriber().isRunning())
 		{
 			Application.getStompSubscriber().stopService();
@@ -465,12 +465,12 @@ public class Application {
 		Application.redisSubscriber = redisSubscriber;
 	}
 
-	public static SubscriberStompThread getStompSubscriber() {
-		return stompSubscriber;
+	public static SubscriberStomp getStompSubscriber() {
+		return redissonSubscriber;
 	}
 
-	public static void setRedissonSubscriber(SubscriberStompThread stompSubscriber) {
-		Application.stompSubscriber = stompSubscriber;
+	public static void setStompSubscriber(SubscriberStomp redissonSubscriber) {
+		Application.redissonSubscriber = redissonSubscriber;
 	}
 
 }

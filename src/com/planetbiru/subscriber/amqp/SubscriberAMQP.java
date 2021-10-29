@@ -26,8 +26,8 @@ public class SubscriberAMQP {
 			}
 			this.inspector = new RabbitMQInspector(this.amqp);
 			this.inspector.start();
-			boolean con = this.amqp.connect();
-			if(con)
+			this.amqp.connect();
+			if(this.amqp.connected)
 			{
 				this.amqp.flagConnected();
 			}

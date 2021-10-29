@@ -112,9 +112,9 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			{
 				this.subscriberActiveMQ(httpExchange);
 			}
-			else if(path.startsWith("/api/subscriber-redisson"))
+			else if(path.startsWith("/api/subscriber-stomp"))
 			{
-				this.subscriberRedisson(httpExchange);
+				this.subscriberStomp(httpExchange);
 			}
 			else if(path.startsWith("/api/subscriber-redis"))
 			{
@@ -424,7 +424,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		httpExchange.close();
 	}
 	//@PostMapping(path="/api/subscriber-redisson")
-	public void subscriberRedisson(HttpExchange httpExchange) throws IOException
+	public void subscriberStomp(HttpExchange httpExchange) throws IOException
 	{
 		byte[] req = HttpUtil.getRequestBody(httpExchange);
 		String requestBody = "";
@@ -445,15 +445,11 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
 				if(action.equals(JsonKey.START))
 				{
-					/**
-					 * Do nothing			
-					 */
+					Application.subscriberStompStart();
 				}
 				else
 				{
-					/**
-					 * Do nothing			
-					 */
+					Application.subscriberStompStop();
 				}				
 			} 
 			else 

@@ -2,6 +2,9 @@ package com.planetbiru.subscriber.amqp;
 
 public class RabbitMQSubscriber extends Thread implements AMQPClient {
 	
+	protected boolean connected = false;
+	protected boolean lastConnected = false;
+
 	@Override
 	public void run()
 	{
@@ -11,13 +14,15 @@ public class RabbitMQSubscriber extends Thread implements AMQPClient {
 	}
 
 	@Override
-	public boolean connect() {
-		return false;
+	public void connect() {
+		/**
+		 * Do nothing
+		 */
 	}
 
 	@Override
 	public boolean isConnected() {
-		return false;
+		return this.connected;
 	}
 
 	@Override
@@ -47,5 +52,4 @@ public class RabbitMQSubscriber extends Thread implements AMQPClient {
 		 * Do nothing
 		 */
 	}
-
 }
