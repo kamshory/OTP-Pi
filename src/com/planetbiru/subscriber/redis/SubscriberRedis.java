@@ -5,6 +5,7 @@ import javax.net.ssl.SSLParameters;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.planetbiru.api.MessageAPI;
@@ -117,15 +118,24 @@ public class SubscriberRedis extends Thread {
 	}
 	
 	public void evtOnMessage(String topic, String message) {
-        MessageAPI api = new MessageAPI();
-        JSONObject response = api.processRequest(message, topic);
-        JSONObject requestJSON = new JSONObject(message);
-        String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
-        long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
-        if(requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) || requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST))
+        try
         {
-        	this.delay(callbackDelay);
-        	this.sendMessage(callbackTopic, response.toString());
+        	MessageAPI api = new MessageAPI();
+            JSONObject response = api.processRequest(message, topic);
+            JSONObject requestJSON = new JSONObject(message);
+            String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
+            long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
+            if(requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) || requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST))
+            {
+            	this.delay(callbackDelay);
+            	this.sendMessage(callbackTopic, response.toString());
+            }
+        }
+        catch(JSONException e)
+        {
+        	/**
+        	 * Do nothing
+        	 */
         }
 	}
 	

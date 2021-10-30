@@ -10,6 +10,7 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.planetbiru.ServerWebSocketAdmin;
@@ -160,16 +161,25 @@ public class SubscriberMQTT extends Thread{
 	
 	public void evtOnMessage(String topic, MqttMessage payload) {
 		String message = new String(payload.getPayload());
-        MessageAPI api = new MessageAPI();
-        JSONObject response = api.processRequest(message, topic);
-        JSONObject requestJSON = new JSONObject(message); 
-        String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
-        long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
-        if(requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) || requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST))
-        {
-        	this.delay(callbackDelay);
-        	this.sendMessage(callbackTopic, response.toString());
-        }		
+		try
+		{
+			MessageAPI api = new MessageAPI();
+	        JSONObject response = api.processRequest(message, topic);
+	        JSONObject requestJSON = new JSONObject(message); 
+	        String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
+	        long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
+	        if(requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) || requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST))
+	        {
+	        	this.delay(callbackDelay);
+	        	this.sendMessage(callbackTopic, response.toString());
+	        }	
+		}
+        catch(JSONException e)
+		{
+        	/**
+        	 * Do nothing
+        	 */
+		}
 	}
 	
 	private void sendMessage(String callbackTopic, String message) {

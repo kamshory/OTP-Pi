@@ -471,6 +471,10 @@ public class Application {
 	public static void setStompSubscriber(SubscriberStomp redissonSubscriber) {
 		Application.redissonSubscriber = redissonSubscriber;
 	}
-
+	
+	public static void exit()
+	{
+		System.exit(0);
+	}
 }
 

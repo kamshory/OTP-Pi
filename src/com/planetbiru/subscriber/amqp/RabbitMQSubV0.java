@@ -8,6 +8,7 @@ import java.util.concurrent.TimeoutException;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.planetbiru.ServerWebSocketAdmin;
@@ -192,16 +193,23 @@ public class RabbitMQSubV0 extends RabbitMQSubscriber implements AMQPClient {
         if(body != null)
 		{
 			String message = new String(body, StandardCharsets.UTF_8);
-            MessageAPI api = new MessageAPI();
-            JSONObject response = api.processRequest(message, topic); 
-            JSONObject requestJSON = new JSONObject(message);
-            String command = requestJSON.optString(JsonKey.COMMAND, "");
-            String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
-            long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
-            if(command.equals(ConstantString.REQUEST_USSD) || command.equals(ConstantString.GET_MODEM_LIST))
+            try
             {
-            	this.delay(callbackDelay);
-            	this.sendMessage(callbackTopic, response.toString());
+                MessageAPI api = new MessageAPI();
+                JSONObject response = api.processRequest(message, topic);
+               	JSONObject requestJSON = new JSONObject(message);
+                String command = requestJSON.optString(JsonKey.COMMAND, "");
+                String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
+                long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
+                if(command.equals(ConstantString.REQUEST_USSD) || command.equals(ConstantString.GET_MODEM_LIST))
+                {
+                	this.delay(callbackDelay);
+                	this.sendMessage(callbackTopic, response.toString());
+                }
+            }
+            catch(JSONException e)
+            {
+            	e.printStackTrace();
             }
 		}
 	}
