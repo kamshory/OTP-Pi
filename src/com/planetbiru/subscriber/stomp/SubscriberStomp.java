@@ -65,19 +65,27 @@ public class SubscriberStomp extends Thread {
             this.connected = true;
             this.updateConnectionStatus();
             
-            this.sendMessage("aaaa", "sms");
+            int timeout = ConfigSubscriberStomp.getSubscriberStompTimeout();
             
             do
             {
             	
-            	Message msg = consumer.receive(ConfigSubscriberStomp.getSubscriberStompTimeout());
+            	Message msg = null;
+            	
+            	if(timeout > 0)
+            	{
+            		msg = consumer.receive(timeout);
+            	}
+            	else
+            	{
+            		msg = consumer.receive();
+            	}
                 
                 if(msg != null)
                 {
 	                if (msg instanceof TextMessage) 
 	                {
 	                    String body = ((TextMessage) msg).getText();   
-	                    System.out.println(body);
 	                    this.evtOnMessage(body.getBytes(), topic);
 	                }	                
 	                else 

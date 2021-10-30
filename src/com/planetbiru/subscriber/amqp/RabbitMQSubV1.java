@@ -62,9 +62,19 @@ public class RabbitMQSubV1 extends RabbitMQSubscriber implements AMQPClient {
             MessageConsumer consumer = session.createConsumer(destination);
             this.connected = true;
             this.updateConnectionStatus();
+            
+            int timeout = ConfigSubscriberAMQP.getSubscriberAmqpTimeout();
             do
             {
-            	Message msg = consumer.receive(ConfigSubscriberAMQP.getSubscriberAmqpTimeout());              
+            	Message msg = null;
+            	if(timeout > 0)
+            	{
+            		msg = consumer.receive(timeout);              
+            	}
+            	else
+            	{
+            		msg = consumer.receive();
+            	}
                 if(msg != null)
                 {
 	                if (msg instanceof TextMessage) 

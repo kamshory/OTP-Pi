@@ -56,7 +56,11 @@ public class RabbitMQSubV0 extends RabbitMQSubscriber implements AMQPClient {
 	    this.factory.setPort(ConfigSubscriberAMQP.getSubscriberAmqpPort());
 	    this.factory.setUsername(ConfigSubscriberAMQP.getSubscriberAmqpUsername());
 	    this.factory.setPassword(ConfigSubscriberAMQP.getSubscriberAmqpPassword());	  
-	    this.factory.setConnectionTimeout(ConfigSubscriberAMQP.getSubscriberAmqpTimeout());
+	    int timeout = ConfigSubscriberAMQP.getSubscriberAmqpTimeout();
+	    if(timeout > 0)
+	    {
+	    	this.factory.setConnectionTimeout(timeout);
+	    }
         
 	    if(ConfigSubscriberAMQP.isSubscriberAmqpSSL())
 		{

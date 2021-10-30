@@ -20,7 +20,7 @@ import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.util.Utility;
 
-public class WebSocketClientImpl extends Thread{
+public class WebSocketClientImpl extends Thread {
 	private long reconnectDelay = 10000;
 	private boolean stopend = false;
 	private WebSocketClient wsClient;
@@ -30,7 +30,7 @@ public class WebSocketClientImpl extends Thread{
 	private boolean connected = false;
 	private boolean lastConnected = false;
 	
-	public WebSocketClientImpl(long reconnectDelay, long waitLoop, SubscriberWebSocket webSocketTool, boolean reconnect)
+	public WebSocketClientImpl(long reconnectDelay, long waitLoop, SubscriberWebSocket webSocketTool, boolean reconnect) 
 	{
 		this.reconnectDelay = reconnectDelay;
 		this.waitLoop = waitLoop;
@@ -246,8 +246,7 @@ public class WebSocketClientImpl extends Thread{
 			    
 				@Override
 				public void onClose(int code, String reason, boolean remote) {
-					evtOnClose(code, reason, remote);
-					
+					evtOnClose(code, reason, remote);			
 				}
 
 				@Override
@@ -290,8 +289,7 @@ public class WebSocketClientImpl extends Thread{
 			}
 		}
 		params.put(JsonKey.TOPIC, Utility.asList(topic));
-		query = Utility.buildQuery(params);
-		
+		query = Utility.buildQuery(params);	
 		endpoint = path + "?"+query;
 		return endpoint;	
 	}
