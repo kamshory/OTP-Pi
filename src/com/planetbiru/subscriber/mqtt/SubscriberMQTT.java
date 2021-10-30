@@ -168,12 +168,14 @@ public class SubscriberMQTT extends Thread{
 				MessageAPI api = new MessageAPI();
 			    JSONObject response = api.processRequest(message, topic);
 			    JSONObject requestJSON = new JSONObject(message); 
+			    
 			    String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
-			    long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
-			    if(requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) || requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST))
+		        long callbackDelay = Math.abs(requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10));
+		        String command = requestJSON.optString(JsonKey.COMMAND, "");
+		   		if(!callbackTopic.isEmpty() && (command.equals(ConstantString.ECHO) || command.equals(ConstantString.REQUEST_USSD) || command.equals(ConstantString.GET_MODEM_LIST)))
 			    {
 			    	this.delay(callbackDelay);
-			    	this.sendMessage(callbackTopic, response.toString());
+			    	this.sendMessage(response.toString(), callbackTopic);
 			    }	
 			}
 			catch(JSONException e)
@@ -185,7 +187,7 @@ public class SubscriberMQTT extends Thread{
 		}
 	}
 	
-	private void sendMessage(String callbackTopic, String message) {
+	private void sendMessage(String message, String callbackTopic) {
 		String uri = "tcp://"+ConfigSubscriberMQTT.getSubscriberMqttAddress()+":"+ConfigSubscriberMQTT.getSubscriberMqttPort();
 		String clientID = UUID.randomUUID().toString();
 		MemoryPersistence persistence = new MemoryPersistence();

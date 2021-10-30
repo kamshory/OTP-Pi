@@ -96,6 +96,11 @@ public class MessageAPI {
 					logger.info("Get Modem List");
 					responseJSON = this.getModemList(command, data);
 				}
+				else if(command.equals(ConstantString.ECHO))
+				{
+					logger.info("Echo");
+					responseJSON = new JSONObject(requestBody);
+				}
 			}		
 		}
 		catch(JSONException | GSMException | SerialPortConnectionException e)
