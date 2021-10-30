@@ -14,6 +14,7 @@ import javax.jms.TextMessage;
 
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.planetbiru.ServerWebSocketAdmin;
@@ -140,31 +141,40 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		this.connected = false;
 	}
 	
-	public String processMessage(String message)
+	public void evtOnMessage(byte[] payload, String topic)
 	{
-		MessageAPI api = new MessageAPI();
-        JSONObject response = api.processRequest(message, this.topic);
-        JSONObject requestJSON = new JSONObject(message); 
-        String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
-        long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
-   		if(!callbackTopic.isEmpty() 
-        		&& (requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) 
-        				|| requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST)))
-        {
-        	this.delay(callbackDelay);
-        	try 
-        	{
- 				this.sendMessage(callbackTopic, response.toString());
-			} 
-        	catch (JMSException e) 
-        	{
-        		this.flagDisconnected();
+		try
+		{
+			if(payload != null)
+			{
+				String message = new String(payload);
+				MessageAPI api = new MessageAPI();
+		        JSONObject response = api.processRequest(message, this.topic);
+		        JSONObject requestJSON = new JSONObject(message); 
+		       
+		        String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
+		        long callbackDelay = Math.abs(requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10));
+		        String command = requestJSON.optString(JsonKey.COMMAND, "");
+		   		if(!callbackTopic.isEmpty() && (command.equals(ConstantString.ECHO) || command.equals(ConstantString.REQUEST_USSD) || command.equals(ConstantString.GET_MODEM_LIST)))
+		        {
+		        	this.delay(callbackDelay);
+	 				this.sendMessage(response.toString(), callbackTopic);	        	
+		        }
 			}
-        }	
-		return "";
+		}
+		catch(JSONException e)
+		{
+			/**
+			 * Do nothing
+			 */
+		}
+		catch (JMSException e) 
+    	{
+    		this.flagDisconnected();
+		}
 	}
 	
-	private void sendMessage(String callbackTopic, String message) throws JMSException {
+	private void sendMessage(String message, String callbackTopic) throws JMSException {
 		Destination destination = this.session.createTopic(callbackTopic);
 		MessageProducer producer = this.session.createProducer(destination);
         producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
@@ -185,7 +195,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 	            	if(message instanceof TextMessage) 
 		            {
 		                TextMessage textMessage = (TextMessage) message;
-		                this.processMessage(textMessage.getText());
+		                this.evtOnMessage(textMessage.getText().getBytes(), this.topic);
 		            } 
 		            else 
 		            {

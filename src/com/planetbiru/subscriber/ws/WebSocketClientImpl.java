@@ -99,29 +99,35 @@ public class WebSocketClientImpl extends Thread{
 			Thread.currentThread().interrupt();
 		}
 	}
-	public void evtOnMessage(String message, String topic) {
-		try
+	public void evtOnMessage(byte[] payload, String topic) {
+		if(payload != null)
 		{
-            MessageAPI api = new MessageAPI();
-            JSONObject response = api.processRequest(message, topic);  
-            JSONObject requestJSON = new JSONObject(message);
-            String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
-            long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
-            if(requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) || requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST))
-            {
-            	this.delay(callbackDelay);
-            	this.sendMessage(callbackTopic, response.toString());
-            }          
+			String message = new String(payload);
+			try
+			{
+			    MessageAPI api = new MessageAPI();
+			    JSONObject response = api.processRequest(message, topic);  
+			    JSONObject requestJSON = new JSONObject(message);
+			    
+			    String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
+		        long callbackDelay = Math.abs(requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10));
+		        String command = requestJSON.optString(JsonKey.COMMAND, "");
+		   		if(!callbackTopic.isEmpty() && (command.equals(ConstantString.ECHO) || command.equals(ConstantString.REQUEST_USSD) || command.equals(ConstantString.GET_MODEM_LIST)))
+			    {
+			    	this.delay(callbackDelay);
+			    	this.sendMessage(response.toString(), callbackTopic);
+			    }          
+			}
+			catch(JSONException e)
+			{
+				/**
+				 * Do nothing
+				 */
+			}
 		}
-		catch(JSONException e)
-		{
-			/**
-			 * Do nothing
-			 */
-		}	
 	}
 	
-	private void sendMessage(String callbackTopic, String message) {
+	private void sendMessage(String message, String callbackTopic) {
 		String endpoint = this.createWSEndpoint();
 		endpoint = this.fixWSEndpoint(endpoint, callbackTopic);
 		WebSocketClient localWSClient = null;
@@ -158,9 +164,6 @@ public class WebSocketClientImpl extends Thread{
 		} 	
 		catch (URISyntaxException e) 
 		{
-			/**
-			 * Do nothing
-			 */
 			this.flagDisconnected();
 		}		
 	}
@@ -238,7 +241,7 @@ public class WebSocketClientImpl extends Thread{
 	
 			    @Override
 			    public void onMessage(String message) {
-			    	evtOnMessage(message, topic);
+			    	evtOnMessage(message.getBytes(), topic);
 			    }
 			    
 				@Override
@@ -298,9 +301,9 @@ public class WebSocketClientImpl extends Thread{
 		String host = ConfigSubscriberWS.getSubscriberWsAddress();
 		String port = "";
 		String contextPath = ConfigSubscriberWS.getSubscriberWsPath();
-		if(!contextPath.startsWith("/"))
+		if(!contextPath.startsWith(ConstantString.PATH_SEPARATOR))
 		{
-			contextPath = "/"+contextPath;
+			contextPath = ConstantString.PATH_SEPARATOR+contextPath;
 		}
 		if(ConfigSubscriberWS.isSubscriberWsSSL())
 		{

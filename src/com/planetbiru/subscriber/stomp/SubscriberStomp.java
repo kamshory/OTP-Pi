@@ -14,6 +14,7 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 
 import org.fusesource.stomp.jms.StompJmsConnectionFactory;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.planetbiru.ServerWebSocketAdmin;
@@ -54,8 +55,7 @@ public class SubscriberStomp extends Thread {
 				@Override
 				public void onException(JMSException exception) {
 					setConnected(false);
-					flagDisconnected();
-					
+					flagDisconnected();					
 				}
 			});
             connection.start();
@@ -64,6 +64,9 @@ public class SubscriberStomp extends Thread {
             MessageConsumer consumer = session.createConsumer(destination);
             this.connected = true;
             this.updateConnectionStatus();
+            
+            this.sendMessage("aaaa", "sms");
+            
             do
             {
             	
@@ -73,7 +76,8 @@ public class SubscriberStomp extends Thread {
                 {
 	                if (msg instanceof TextMessage) 
 	                {
-	                    String body = ((TextMessage) msg).getText();    
+	                    String body = ((TextMessage) msg).getText();   
+	                    System.out.println(body);
 	                    this.evtOnMessage(body.getBytes(), topic);
 	                }	                
 	                else 
@@ -93,26 +97,36 @@ public class SubscriberStomp extends Thread {
         }
 	}
 
-	public void evtOnMessage(byte[] body, String topic) 
+	public void evtOnMessage(byte[] payload, String topic) 
 	{		
-        if(body != null)
+        if(payload != null)
 		{
-			String message = new String(body, StandardCharsets.UTF_8);
-            MessageAPI api = new MessageAPI();
-            JSONObject response = api.processRequest(message, topic); 
-            JSONObject requestJSON = new JSONObject(message);
-            String command = requestJSON.optString(JsonKey.COMMAND, "");
-            String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
-            long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
-            if(command.equals(ConstantString.REQUEST_USSD) || command.equals(ConstantString.GET_MODEM_LIST))
-            {
-            	this.delay(callbackDelay);
-            	this.sendMessage(callbackTopic, response.toString());
-            }
+			String message = new String(payload, StandardCharsets.UTF_8);
+			try
+			{
+			    MessageAPI api = new MessageAPI();
+			    JSONObject response = api.processRequest(message, topic); 
+			    JSONObject requestJSON = new JSONObject(message);
+			    
+			    String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
+		        long callbackDelay = Math.abs(requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10));
+		        String command = requestJSON.optString(JsonKey.COMMAND, "");
+		   		if(!callbackTopic.isEmpty() && (command.equals(ConstantString.ECHO) || command.equals(ConstantString.REQUEST_USSD) || command.equals(ConstantString.GET_MODEM_LIST)))
+			    {
+			    	this.delay(callbackDelay);
+			    	this.sendMessage(response.toString(), callbackTopic);
+			    }
+			}
+			catch(JSONException e)
+			{
+				/**
+				 * Do noting
+				 */
+			}
 		}
 	}
 	
-	private void sendMessage(String callbackTopic, String message) {
+	private void sendMessage(String message, String callbackTopic) {
 		String user = ConfigSubscriberStomp.getSubscriberStompUsername();
         String password = ConfigSubscriberStomp.getSubscriberStompPassword();
         String host = ConfigSubscriberStomp.getSubscriberStompAddress();

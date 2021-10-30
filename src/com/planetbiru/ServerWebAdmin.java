@@ -45,7 +45,9 @@ public class ServerWebAdmin {
 		} 
 		catch (IOException e) 
 		{
-			logger.error(e.getMessage(), e);
+			logger.error(e.getMessage());
+			logger.info("Exit...");
+			Application.exit();
 		}
 	}
 
@@ -53,8 +55,7 @@ public class ServerWebAdmin {
 		if(ServiceHTTP.getHttpServer() != null)
 		{
 			ServiceHTTP.getHttpServer().stop(0);
-		}
-		
+		}	
 	}
 	
 
