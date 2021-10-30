@@ -87,7 +87,7 @@ public class SubscriberMQTT extends Thread{
 			    @Override
 				public void messageArrived(String topic, MqttMessage payload) throws Exception {
 			        latch.countDown(); 
-			        evtOnMessage(topic, payload);
+			        evtOnMessage(payload.getPayload(), topic);
 			    }			    
 
 				@Override
@@ -159,26 +159,29 @@ public class SubscriberMQTT extends Thread{
 		
 	}
 	
-	public void evtOnMessage(String topic, MqttMessage payload) {
-		String message = new String(payload.getPayload());
-		try
+	public void evtOnMessage(byte[] payload, String topic) {
+		if(payload != null)
 		{
-			MessageAPI api = new MessageAPI();
-	        JSONObject response = api.processRequest(message, topic);
-	        JSONObject requestJSON = new JSONObject(message); 
-	        String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
-	        long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
-	        if(requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) || requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST))
-	        {
-	        	this.delay(callbackDelay);
-	        	this.sendMessage(callbackTopic, response.toString());
-	        }	
-		}
-        catch(JSONException e)
-		{
-        	/**
-        	 * Do nothing
-        	 */
+			String message = new String(payload);
+			try
+			{
+				MessageAPI api = new MessageAPI();
+			    JSONObject response = api.processRequest(message, topic);
+			    JSONObject requestJSON = new JSONObject(message); 
+			    String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
+			    long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
+			    if(requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) || requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST))
+			    {
+			    	this.delay(callbackDelay);
+			    	this.sendMessage(callbackTopic, response.toString());
+			    }	
+			}
+			catch(JSONException e)
+			{
+				/**
+				 * Do nothing
+				 */
+			}
 		}
 	}
 	

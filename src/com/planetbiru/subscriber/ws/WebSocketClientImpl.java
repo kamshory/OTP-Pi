@@ -99,26 +99,30 @@ public class WebSocketClientImpl extends Thread{
 			Thread.currentThread().interrupt();
 		}
 	}
-	public void evtOnMessage(String message, String topic) {
-		try
+	public void evtOnMessage(byte[] payload, String topic) {
+		if(payload != null)
 		{
-            MessageAPI api = new MessageAPI();
-            JSONObject response = api.processRequest(message, topic);  
-            JSONObject requestJSON = new JSONObject(message);
-            String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
-            long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
-            if(requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) || requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST))
-            {
-            	this.delay(callbackDelay);
-            	this.sendMessage(callbackTopic, response.toString());
-            }          
+			String message = new String(payload);
+			try
+			{
+			    MessageAPI api = new MessageAPI();
+			    JSONObject response = api.processRequest(message, topic);  
+			    JSONObject requestJSON = new JSONObject(message);
+			    String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
+			    long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
+			    if(requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) || requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST))
+			    {
+			    	this.delay(callbackDelay);
+			    	this.sendMessage(callbackTopic, response.toString());
+			    }          
+			}
+			catch(JSONException e)
+			{
+				/**
+				 * Do nothing
+				 */
+			}
 		}
-		catch(JSONException e)
-		{
-			/**
-			 * Do nothing
-			 */
-		}	
 	}
 	
 	private void sendMessage(String callbackTopic, String message) {
@@ -158,9 +162,6 @@ public class WebSocketClientImpl extends Thread{
 		} 	
 		catch (URISyntaxException e) 
 		{
-			/**
-			 * Do nothing
-			 */
 			this.flagDisconnected();
 		}		
 	}
@@ -238,7 +239,7 @@ public class WebSocketClientImpl extends Thread{
 	
 			    @Override
 			    public void onMessage(String message) {
-			    	evtOnMessage(message, topic);
+			    	evtOnMessage(message.getBytes(), topic);
 			    }
 			    
 				@Override
@@ -298,9 +299,9 @@ public class WebSocketClientImpl extends Thread{
 		String host = ConfigSubscriberWS.getSubscriberWsAddress();
 		String port = "";
 		String contextPath = ConfigSubscriberWS.getSubscriberWsPath();
-		if(!contextPath.startsWith("/"))
+		if(!contextPath.startsWith(ConstantString.PATH_SEPARATOR))
 		{
-			contextPath = "/"+contextPath;
+			contextPath = ConstantString.PATH_SEPARATOR+contextPath;
 		}
 		if(ConfigSubscriberWS.isSubscriberWsSSL())
 		{

@@ -94,7 +94,7 @@ public class RedisClientThread extends Thread {
 				
 				@Override
 			    public void onMessage(String channel, String message) {
-					subscriberRedis.evtOnMessage(channel, message);
+					subscriberRedis.evtOnMessage(message.getBytes(), channel);
 			    }
 			    
 			    @Override

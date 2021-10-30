@@ -117,26 +117,30 @@ public class SubscriberRedis extends Thread {
 		
 	}
 	
-	public void evtOnMessage(String topic, String message) {
-        try
-        {
-        	MessageAPI api = new MessageAPI();
-            JSONObject response = api.processRequest(message, topic);
-            JSONObject requestJSON = new JSONObject(message);
-            String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
-            long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
-            if(requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) || requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST))
-            {
-            	this.delay(callbackDelay);
-            	this.sendMessage(callbackTopic, response.toString());
-            }
-        }
-        catch(JSONException e)
-        {
-        	/**
-        	 * Do nothing
-        	 */
-        }
+	public void evtOnMessage(byte[] payload, String topic) {
+		if(payload != null)
+		{
+			String message = new String(payload);
+			try
+			{
+				MessageAPI api = new MessageAPI();
+			    JSONObject response = api.processRequest(message, topic);
+			    JSONObject requestJSON = new JSONObject(message);
+			    String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
+			    long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
+			    if(requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) || requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST))
+			    {
+			    	this.delay(callbackDelay);
+			    	this.sendMessage(callbackTopic, response.toString());
+			    }
+			}
+			catch(JSONException e)
+			{
+				/**
+				 * Do nothing
+				 */
+			}
+		}
 	}
 	
 	private void sendMessage(String callbackTopic, String message) {

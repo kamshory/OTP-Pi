@@ -89,31 +89,31 @@ public class RabbitMQSubV1 extends RabbitMQSubscriber implements AMQPClient {
         }
 	}
 
-	public void evtOnMessage(byte[] body, String topic) 
+	public void evtOnMessage(byte[] payload, String topic) 
 	{		
-        if(body != null)
+        if(payload != null)
 		{
-			String message = new String(body, StandardCharsets.UTF_8);
+			String message = new String(payload, StandardCharsets.UTF_8);
 			try
 			{
-	            MessageAPI api = new MessageAPI();
-	            JSONObject response = api.processRequest(message, topic); 
-	            JSONObject requestJSON = new JSONObject(message);
-	            String command = requestJSON.optString(JsonKey.COMMAND, "");
-	            String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
-	            long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
-	            if(command.equals(ConstantString.REQUEST_USSD) || command.equals(ConstantString.GET_MODEM_LIST))
-	            {
-	            	this.delay(callbackDelay);
-	            	this.sendMessage(callbackTopic, response.toString());
-	            }
+			    MessageAPI api = new MessageAPI();
+			    JSONObject response = api.processRequest(message, topic); 
+			    JSONObject requestJSON = new JSONObject(message);
+			    String command = requestJSON.optString(JsonKey.COMMAND, "");
+			    String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
+			    long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
+			    if(command.equals(ConstantString.REQUEST_USSD) || command.equals(ConstantString.GET_MODEM_LIST))
+			    {
+			    	this.delay(callbackDelay);
+			    	this.sendMessage(callbackTopic, response.toString());
+			    }
 			}
 			catch(JSONException e)
-            {
-            	/**
-            	 * Do nothing
-            	 */
-            }
+			{
+				/**
+				 * Do nothing
+				 */
+			}
 		}
 	}
 	

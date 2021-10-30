@@ -141,23 +141,27 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		this.connected = false;
 	}
 	
-	public void evtOnMessage(String message)
+	public void evtOnMessage(byte[] payload, String topic)
 	{
 		try
 		{
-			MessageAPI api = new MessageAPI();
-	        JSONObject response = api.processRequest(message, this.topic);
-	        JSONObject requestJSON = new JSONObject(message); 
-	        String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
-	        long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
-	   		if(!callbackTopic.isEmpty() 
-	        		&& (requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) 
-	        				|| requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST)))
-	        {
-	        	this.delay(callbackDelay);
- 				this.sendMessage(callbackTopic, response.toString());
-	        	
-	        }
+			if(payload != null)
+			{
+				String message = new String(payload);
+				MessageAPI api = new MessageAPI();
+		        JSONObject response = api.processRequest(message, this.topic);
+		        JSONObject requestJSON = new JSONObject(message); 
+		        String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
+		        long callbackDelay = requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10);
+		   		if(!callbackTopic.isEmpty() 
+		        		&& (requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.REQUEST_USSD) 
+		        				|| requestJSON.optString(JsonKey.COMMAND, "").equals(ConstantString.GET_MODEM_LIST)))
+		        {
+		        	this.delay(callbackDelay);
+	 				this.sendMessage(callbackTopic, response.toString());
+		        	
+		        }
+			}
 		}
 		catch(JSONException e)
 		{
@@ -192,7 +196,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 	            	if(message instanceof TextMessage) 
 		            {
 		                TextMessage textMessage = (TextMessage) message;
-		                this.evtOnMessage(textMessage.getText());
+		                this.evtOnMessage(textMessage.getText().getBytes(), this.topic);
 		            } 
 		            else 
 		            {
