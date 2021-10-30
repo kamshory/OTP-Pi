@@ -233,11 +233,30 @@ OTP-Pi provides an option if this device is installed on a mobile internet netwo
 | SSL | SSL connection |
 | Host | RabbitMQ host name or IP address |
 | Port | Port number |
+| Version | AMQP version |
 | Username | RabbitMQ username |
 | Password | RabbitMQ password |
 | Topic | Topic or channel of subscribsion | 
 | Timeout | Request time out |
+| Reconnect Delay | Delay to reconnect |
 | Refresh Connection | Refresh RabbitMQ connection |
+
+**Mosquitto**
+
+| Field | Description |
+| ----- | ----------- |
+| Enable | Enable or disable Mosquitto subscribsion |
+| SSL | SSL connection |
+| Host | Mosquitto host name or IP address |
+| Port | Mosquitto port number |
+| Client ID | Client ID |
+| Username | Username |
+| Password | Password |
+| Topic | Topic or channel of subscribsion | 
+| QoS | QoS of the subscribsion |
+| Timeout | Request time out |
+| Reconnect Delay | Delay to reconnect |
+| Refresh Connection | Refresh Mosquitto connection |
 
 **Redis**
 
@@ -254,20 +273,20 @@ OTP-Pi provides an option if this device is installed on a mobile internet netwo
 | Reconnect Delay | Delay to reconnect |
 | Refresh Connection | Refresh Redis connection |
 
-**Mosquitto**
+**Stomp**
 
 | Field | Description |
 | ----- | ----------- |
-| Enable | Enable or disable Mosquitto subscribsion |
+| Enable | Enable or disable Stomp subscribsion |
 | SSL | SSL connection |
-| Host | Mosquitto host name or IP address |
-| Port | Mosquitto port number |
-| Client ID | Client ID |
+| Host | Stomp host name or IP address |
+| Port | Stomp port number |
 | Username | Username |
 | Password | Password |
 | Topic | Topic or channel of subscribsion | 
 | Timeout | Request time out |
-| Refresh Connection | Refresh Mosquitto connection |
+| Reconnect Delay | Delay to reconnect |
+| Refresh Connection | Refresh Stomp connection |
 
 **ActiveMQ**
 
