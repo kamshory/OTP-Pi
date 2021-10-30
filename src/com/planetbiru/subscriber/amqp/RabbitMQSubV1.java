@@ -26,6 +26,7 @@ public class RabbitMQSubV1 extends RabbitMQSubscriber implements AMQPClient {
 	@Override
 	public void run()
 	{
+		this.running = true;
 		while (this.running)
 		{
 			this.connect();
