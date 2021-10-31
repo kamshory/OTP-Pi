@@ -1177,7 +1177,7 @@ public class HandlerWebManagerData implements HttpHandler {
 			for(int i = 0; i<instances.size(); i++)
 			{
 				GSMInstance instance =  GSMUtil.getGSMInstance().get(i);
-				DataModem modemData = ConfigModem.getModemData(instance.getId());
+				DataModem modemData = ConfigModem.getModemData(instance.getModemID());
 				try
 				{
 					List<SMS> sms = instance.readSMS(storage, smsStatus);

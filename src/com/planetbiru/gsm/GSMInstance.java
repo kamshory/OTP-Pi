@@ -13,19 +13,19 @@ import com.planetbiru.constant.ConstantString;
 import com.planetbiru.util.Utility;
 
 public class GSMInstance {
-	
 	private GSM gsm;
-	private String id = "";
+	private String modemID = "";
 	private String port = "";
 	private boolean eventListener = true;
 	private boolean pinValid = true;
 	private DataModem modem = new DataModem();
+	
 	public GSMInstance(DataModem modem, boolean eventListener)
 	{
 		this.modem = modem;
 		this.port = modem.getPort();
 		this.eventListener = eventListener;
-		this.id = modem.getId();
+		this.modemID = modem.getId();
 		this.gsm = new GSM();
 	}
 	
@@ -34,6 +34,7 @@ public class GSMInstance {
 		this.eventListener =eventListener;
 		this.gsm = new GSM();
 	}
+	
 	private void processPIN(String pin)
 	{
 		if(pin != null && !pin.trim().isEmpty())
@@ -65,6 +66,7 @@ public class GSMInstance {
 			}
 		}
 	}
+	
 	public boolean connect(String pin) throws GSMException, InvalidPortException 
 	{
 		if(!this.gsm.isConnected())
@@ -123,7 +125,7 @@ public class GSMInstance {
 	private void logSendSMS(String sender, String receiver, Date date, int length) {
 		if(ConfigSMS.isLogSMS())
 		{
-			SMSLogger.add(date, this.id, sender, Utility.maskMSISDN(receiver), length);	
+			SMSLogger.add(date, this.modemID, sender, Utility.maskMSISDN(receiver), length);	
 		}
 	}
 	
@@ -140,6 +142,7 @@ public class GSMInstance {
 		this.waitUntilReady();
 		return this.gsm.readSMS(null, null);
 	}
+	
 	public List<SMS> readSMS(String storage, String smsStatus) throws GSMException, InvalidSIMPinException, SerialPortConnectionException
 	{
 		if(storage == null)
@@ -204,15 +207,19 @@ public class GSMInstance {
 	public String getRevision() throws GSMException, SerialPortConnectionException {
 		return this.gsm.getRevision();
 	}
+	
 	public String getSMSCenter() throws GSMException, SerialPortConnectionException {
 		return this.gsm.getSMSCenter();
 	}
-	public String getOperatorSelect() throws GSMException, SerialPortConnectionException {
-		return this.gsm.getOperatorSelect();
+	
+	public String getCopsOperator() throws GSMException, SerialPortConnectionException {
+		return this.gsm.getCopsOperator();
 	}
+	
 	public String getNetworkRegistration() throws GSMException, SerialPortConnectionException {
 		return this.gsm.getNetworkRegistration();
 	}
+	
 	private void waitUntilReady() {
 		long maxWait = Config.getMaxWaitModemReady();
 		long ellapsed = 0;
@@ -238,12 +245,12 @@ public class GSMInstance {
 		return this.gsm.isConnected();
 	}
 	
-	public String getId() {
-		return id;
+	public String getModemID() {
+		return modemID;
 	}
 	
-	public void setId(String id) {
-		this.id = id;
+	public void setModemID(String modemID) {
+		this.modemID = modemID;
 	}
 	
 	public GSM getGsm() {
@@ -293,7 +300,4 @@ public class GSMInstance {
 	public JSONObject requestSignalStrength() throws GSMException {
 		return this.gsm.getSignalStrength();
 	}
-
-
-
 }

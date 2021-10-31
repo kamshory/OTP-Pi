@@ -458,7 +458,9 @@ public class GSM {
     	logger.info("msg4 = "+msg4);
     	String msg5 = this.executeAT(message, 1, true);
     	logger.info("msg5 = "+msg5);
-    	String msg6 = this.executeAT(Character.toString((char) 26), 1, true);
+    	
+    	//String msg6 = this.executeAT(Character.toString((char) 26), 1, true);
+    	String msg6 = this.executeAT(Character.toString((char) 0x1a), 1, true);
     	logger.info("msg6 = "+msg6);
     	this.setReady(true);
     	
@@ -655,7 +657,7 @@ public class GSM {
         return result;
 	}
 	
-	public String getOperatorSelect() throws GSMException, SerialPortConnectionException {
+	public String getCopsOperator() throws GSMException, SerialPortConnectionException {
 		this.setReady(false);
     	String result = this.executeAT("AT+COPS?", 2, true);
        	if(!result.isEmpty() && result.contains("+COPS"))

@@ -204,7 +204,7 @@ public class GSMUtil {
 		for(int i = 0; i<GSMUtil.getGSMInstance().size(); i++)
 		{
 			instance =  GSMUtil.getGSMInstance().get(i);
-			if(instance.getId().equals(modemID))
+			if(instance.getModemID().equals(modemID))
 			{
 				found = true;
 				break;
@@ -333,7 +333,7 @@ public class GSMUtil {
 		int index = GSMUtil.getModemIndex(receiver);
 		GSMInstance instance = GSMUtil.getGSMInstance().get(index);	
 		
-		DataModem modemData = ConfigModem.getModemData(instance.getId());      
+		DataModem modemData = ConfigModem.getModemData(instance.getModemID());      
 		String result = "";
 		try 
 		{
@@ -428,7 +428,7 @@ public class GSMUtil {
 		for(int i = 0; i<GSMUtil.getGSMInstance().size(); i++)
 		{
 			GSMInstance instance =  GSMUtil.getGSMInstance().get(i);
-			if(instance.getId().equals(modemID))
+			if(instance.getModemID().equals(modemID))
 			{
 				return instance;
 			}
@@ -463,7 +463,7 @@ public class GSMUtil {
 	{
 		for(int i = 0; i < GSMUtil.getGSMInstance().size(); i++)
 		{
-			if(GSMUtil.getGSMInstance().get(i).getId().equals(modemID) && GSMUtil.getGSMInstance().get(i).isConnected())
+			if(GSMUtil.getGSMInstance().get(i).getModemID().equals(modemID) && GSMUtil.getGSMInstance().get(i).isConnected())
 			{
 				return true;
 			}
@@ -486,7 +486,7 @@ public class GSMUtil {
 		{
 			return false;
 		}
-		String modemID = GSMUtil.getGSMInstance().get(index).getId();
+		String modemID = GSMUtil.getGSMInstance().get(index).getModemID();
 		return ConfigModem.getModemData(modemID).getRecipientPrefix().length() > 0;
 	}
 	
@@ -504,7 +504,7 @@ public class GSMUtil {
 			if(GSMUtil.isConnected(i))
 			{
 				
-				String modemID = GSMUtil.getGSMInstance().get(i).getId();
+				String modemID = GSMUtil.getGSMInstance().get(i).getModemID();
 				DataModem modemData = ConfigModem.getModemData(modemID);
 				
 				if(modemData.isSmsAPI())
@@ -662,7 +662,7 @@ public class GSMUtil {
 	private static void reindexInstantce() {
 		for(int i = 0; i < GSMUtil.getGSMInstance().size(); i++)
 		{
-			if(GSMUtil.getGSMInstance().get(i).isConnected() && !ConfigModem.getModemData(GSMUtil.getGSMInstance().get(i).getId()).isActive())
+			if(GSMUtil.getGSMInstance().get(i).isConnected() && !ConfigModem.getModemData(GSMUtil.getGSMInstance().get(i).getModemID()).isActive())
 			{
 				try 
 				{
@@ -686,7 +686,7 @@ public class GSMUtil {
 	private static GSMInstance getGSMIntance(String id) {
 		for(int i = 0; i < GSMUtil.getGSMInstance().size(); i++)
 		{
-			if(GSMUtil.getGSMInstance().get(i).getId().equals(id))
+			if(GSMUtil.getGSMInstance().get(i).getModemID().equals(id))
 			{
 				return GSMUtil.getGSMInstance().get(i);
 			}
@@ -697,7 +697,7 @@ public class GSMUtil {
 	private static boolean hasGSMInstanceID(String id) {
 		for(int i = 0; i < GSMUtil.getGSMInstance().size(); i++)
 		{
-			if(GSMUtil.getGSMInstance().get(i).getId().equals(id))
+			if(GSMUtil.getGSMInstance().get(i).getModemID().equals(id))
 			{
 				return true;
 			}
@@ -775,7 +775,7 @@ public class GSMUtil {
 			info.put("networkRegistration", networkRegistration);
 			String msisdn = instance.getMSISDN();			
 			info.put("msisdn", msisdn);
-			String operatorSelect = instance.getOperatorSelect();			
+			String operatorSelect = instance.getCopsOperator();			
 			info.put("operatorSelect", operatorSelect);
 			String smsCenter = instance.getSMSCenter();		
 			info.put("smsCenter", smsCenter);
@@ -942,7 +942,7 @@ public class GSMUtil {
 	public static GSMInstance getGSMInstanceByModemID(String id) throws ModemNotFoundException {
 		for(int i = 0; i < GSMUtil.getGSMInstance().size(); i++)
 		{
-			if(GSMUtil.getGSMInstance().get(i).getId().equals(id))
+			if(GSMUtil.getGSMInstance().get(i).getModemID().equals(id))
 			{
 				return GSMUtil.getGSMInstance().get(i);
 			}
