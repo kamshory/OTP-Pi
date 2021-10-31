@@ -21,11 +21,11 @@ public class ModemRouter {
 		this.modemIndex.add(Integer.valueOf(index));
 	}
 
-	public int getIndex() throws InvalidModemRouterException
+	public int getIndex() throws ModemNotFoudException
 	{
 		if(this.modemIndex.isEmpty())
 		{
-			throw new InvalidModemRouterException("Invalid GSM router");
+			throw new ModemNotFoudException("Invalid GSM router");
 		}
 		this.currentIndex++;
 		if(this.currentIndex >= this.modemIndex.size())

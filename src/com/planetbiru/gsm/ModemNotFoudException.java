@@ -1,6 +1,6 @@
 package com.planetbiru.gsm;
 
-public class InvalidModemRouterException extends Exception {
+public class ModemNotFoudException extends Exception {
 	/**
 	 * 
 	 */
@@ -8,7 +8,7 @@ public class InvalidModemRouterException extends Exception {
 	/**
 	 * Default constructor
 	 */
-	public InvalidModemRouterException() 
+	public ModemNotFoudException() 
 	{ 
 		super(); 
 	}
@@ -16,7 +16,7 @@ public class InvalidModemRouterException extends Exception {
 	 * Constructor with the message
 	 * @param message Message
 	 */
-	public InvalidModemRouterException(String message) 
+	public ModemNotFoudException(String message) 
 	{ 
 		super(message); 
 	}
@@ -25,7 +25,7 @@ public class InvalidModemRouterException extends Exception {
 	 * @param message Message
 	 * @param cause Cause
 	 */
-	public InvalidModemRouterException(String message, Throwable cause) 
+	public ModemNotFoudException(String message, Throwable cause) 
 	{ 
 		super(message, cause); 
 	}
@@ -33,7 +33,7 @@ public class InvalidModemRouterException extends Exception {
 	 * Constructor with cause
 	 * @param cause Cause
 	 */
-	public InvalidModemRouterException(Throwable cause) 
+	public ModemNotFoudException(Throwable cause) 
 	{ 
 		super(cause); 
 	}

@@ -553,7 +553,7 @@ public class GSMUtil {
 			{
 				return GSMUtil.getRouterIndex(receiver);
 			} 
-			catch (GSMException | InvalidModemRouterException e) 
+			catch (GSMException | ModemNotFoudException e) 
 			{
 				return GSMUtil.getModemIndex();
 			}
@@ -568,7 +568,7 @@ public class GSMUtil {
 		}
 	}
 
-	private static int getRouterIndex(String receiver) throws GSMException, InvalidModemRouterException {
+	private static int getRouterIndex(String receiver) throws GSMException, ModemNotFoudException {
 		String prefix = GSMUtil.getPrefix(receiver);
 		if(GSMUtil.modemRouterList.containsKey(prefix))
 		{
@@ -576,7 +576,7 @@ public class GSMUtil {
 			{
 				return GSMUtil.modemRouterList.get(prefix).getIndex();
 			} 
-			catch (InvalidModemRouterException e) 
+			catch (ModemNotFoudException e) 
 			{
 				return GSMUtil.getModemIndex();
 			}
@@ -587,16 +587,16 @@ public class GSMUtil {
 		}
 	}
 
-	private static String getPrefix(String receiver) throws InvalidModemRouterException 
+	private static String getPrefix(String receiver) throws ModemNotFoudException 
 	{
 		int length = ConfigSMS.getRecipientPrefixLength();
 		if(length <= 0)
 		{
-			throw new InvalidModemRouterException("Recipient prefix length must be greater than zero");
+			throw new ModemNotFoudException("Recipient prefix length must be greater than zero");
 		}
 		if(receiver.isEmpty())
 		{
-			throw new InvalidModemRouterException("Recipient can not be empty");
+			throw new ModemNotFoudException("Recipient can not be empty");
 		}
 		String recv;
 		try 
@@ -605,7 +605,7 @@ public class GSMUtil {
 		} 
 		catch (GSMException e) 
 		{
-			throw new InvalidModemRouterException(e.getMessage());
+			throw new ModemNotFoudException(e.getMessage());
 		}
 		if(recv.length() >= length)
 		{
