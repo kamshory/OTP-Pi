@@ -1134,7 +1134,7 @@ public class HandlerWebManager implements HttpHandler {
 		String iccid = queryPairs.getOrDefault("iccid", "").trim();
 
 		String imei = queryPairs.getOrDefault("imei", "").trim();
-		String operatorSelect = queryPairs.getOrDefault("operator_select", "").trim();
+		String copsOperator = queryPairs.getOrDefault("cops_operator", "").trim();
 		String imsi = queryPairs.getOrDefault("imsi", "").trim();
 		String msisdn = queryPairs.getOrDefault("msisdn", "").trim();
 		String recipientPrefix = queryPairs.getOrDefault("recipient_prefix", "").trim();
@@ -1197,7 +1197,7 @@ public class HandlerWebManager implements HttpHandler {
 		modem.setTimeRange(timeRange);
 		modem.setMaxPerTimeRange(maxPerTimeRange);
 		modem.setImei(imei);
-		modem.setOperatorSelect(operatorSelect);
+		modem.setcopsOperator(copsOperator);
 		modem.setMsisdn(msisdn);
 		modem.setImsi(imsi);
 		modem.setRecipientPrefix(recipientPrefix);

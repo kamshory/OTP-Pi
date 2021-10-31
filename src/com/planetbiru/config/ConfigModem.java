@@ -227,7 +227,7 @@ public class ConfigModem {
 			modem.put("internetAccess", value.isInternetAccess());
 			modem.put("internetConnected", InternetDialUtil.isConnected(id));
 			modem.put("name", value.getName());
-			modem.put("operatorSelect", value.getOperatorSelect());
+			modem.put("copsOperator", value.getcopsOperator());
 			modem.put("imei", value.getImei());
 			modem.put("iccid", value.getIccid());
 			modem.put("imsi", value.getImsi());

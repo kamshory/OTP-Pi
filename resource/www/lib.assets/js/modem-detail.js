@@ -142,7 +142,7 @@ function detect()
                 $('[name="model"]').val(data.model || '');
                 $('[name="revision"]').val(data.revision || '');
                 $('[name="imei"]').val(data.imei || '');
-                $('[name="operator_select"]').val(data.operatorSelect);
+                $('[name="cops_operator"]').val(data.copsOperator);
                 $('[name="msisdn"]').val(data.msisdn || '');
                 $('[name="imsi"]').val(data.imsi || '');
                 $('[name="iccid"]').val(data.iccid || '');
@@ -193,7 +193,7 @@ function loadDetail()
                 $('[name="model"]').val(data.model || '');
                 $('[name="revision"]').val(data.revision || '');
                 $('[name="imei"]').val(data.imei);
-                $('[name="operator_select"]').val(data.operatorSelect);
+                $('[name="cops_operator"]').val(data.copsOperator);
                 $('[name="msisdn"]').val(data.msisdn);
                 $('[name="imsi"]').val(data.imsi);
                 $('[name="iccid"]').val(data.iccid);

@@ -68,10 +68,8 @@ public class SubscriberStomp extends Thread {
             int timeout = ConfigSubscriberStomp.getSubscriberStompTimeout();
             
             do
-            {
-            	
-            	Message msg = null;
-            	
+            {            	
+            	Message msg = null;           	
             	if(timeout > 0)
             	{
             		msg = consumer.receive(timeout);
@@ -79,8 +77,7 @@ public class SubscriberStomp extends Thread {
             	else
             	{
             		msg = consumer.receive();
-            	}
-                
+            	}   
                 if(msg != null)
                 {
 	                if (msg instanceof TextMessage) 
@@ -106,7 +103,7 @@ public class SubscriberStomp extends Thread {
 	}
 
 	public void evtOnMessage(byte[] payload, String topic) 
-	{		
+	{
         if(payload != null)
 		{
 			String message = new String(payload, StandardCharsets.UTF_8);
@@ -161,6 +158,7 @@ public class SubscriberStomp extends Thread {
         	 */
         }
 	}
+	
 	public void delay(long sleep)
 	{
 		try 
@@ -217,7 +215,5 @@ public class SubscriberStomp extends Thread {
 
 	public void setConnected(boolean connected) {
 		this.connected = connected;
-	}	
-	
-	
+	}
 }

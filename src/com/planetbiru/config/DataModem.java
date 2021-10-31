@@ -44,7 +44,7 @@ public class DataModem implements Cloneable {
 	private String model = "";
 	private String revision = "";
 	private String iccid = "";
-	private String operatorSelect = "";
+	private String copsOperator = "";
 
 	public DataModem() {
 		
@@ -64,7 +64,7 @@ public class DataModem implements Cloneable {
 		this.maxPerTimeRange = jsonObject.optInt("maxPerTimeRange", 0);
 		this.provider = jsonObject.optString("provider", "");
 		this.imei = jsonObject.optString("imei", "");
-		this.operatorSelect = jsonObject.optString("operatorSelect", "");
+		this.copsOperator = jsonObject.optString("copsOperator", "");
 		this.msisdn = jsonObject.optString("msisdn", "");
 		this.imsi = jsonObject.optString("imsi", "");
 		this.recipientPrefix = jsonObject.optString("recipientPrefix", "");
@@ -106,7 +106,7 @@ public class DataModem implements Cloneable {
 		jsonObject.put("maxPerTimeRange", this.maxPerTimeRange);
 		jsonObject.put("provider", this.provider);
 		jsonObject.put("imei", this.imei);
-		jsonObject.put("operatorSelect", this.operatorSelect);
+		jsonObject.put("copsOperator", this.copsOperator);
 		jsonObject.put("msisdn", this.msisdn);
 		jsonObject.put("imsi", this.imsi);
 		jsonObject.put("recipientPrefix", this.getRecipientPrefix());
@@ -244,12 +244,12 @@ public class DataModem implements Cloneable {
 		return msisdn;
 	}
 
-	public String getOperatorSelect() {
-		return operatorSelect;
+	public String getcopsOperator() {
+		return copsOperator;
 	}
 
-	public void setOperatorSelect(String operatorSelect) {
-		this.operatorSelect = operatorSelect;
+	public void setcopsOperator(String copsOperator) {
+		this.copsOperator = copsOperator;
 	}
 
 	public void setMsisdn(String msisdn) {

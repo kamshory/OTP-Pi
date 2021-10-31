@@ -99,33 +99,6 @@ public class WebSocketClientImpl extends Thread {
 			Thread.currentThread().interrupt();
 		}
 	}
-	public void evtOnMessage(byte[] payload, String topic) {
-		if(payload != null)
-		{
-			String message = new String(payload);
-			try
-			{
-			    MessageAPI api = new MessageAPI();
-			    JSONObject response = api.processRequest(message, topic);  
-			    JSONObject requestJSON = new JSONObject(message);
-			    
-			    String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
-		        long callbackDelay = Math.abs(requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10));
-		        String command = requestJSON.optString(JsonKey.COMMAND, "");
-		   		if(!callbackTopic.isEmpty() && (command.equals(ConstantString.ECHO) || command.equals(ConstantString.REQUEST_USSD) || command.equals(ConstantString.GET_MODEM_LIST)))
-			    {
-			    	this.delay(callbackDelay);
-			    	this.sendMessage(response.toString(), callbackTopic);
-			    }          
-			}
-			catch(JSONException e)
-			{
-				/**
-				 * Do nothing
-				 */
-			}
-		}
-	}
 	
 	private void sendMessage(String message, String callbackTopic) {
 		String endpoint = this.createWSEndpoint();
@@ -167,19 +140,6 @@ public class WebSocketClientImpl extends Thread {
 			this.flagDisconnected();
 		}		
 	}
-
-	public void evtOnOpen(ServerHandshake serverHandshake)
-	{
-		if(serverHandshake.getHttpStatus() != 101 && this.reconnect)
-		{
-			this.reconnect = false;
-			this.restartThread();
-		}
-		else
-		{
-			this.flagConnected();
-		}
-	}
 	
 	private void flagConnected() {
 		this.connected = true;
@@ -198,6 +158,47 @@ public class WebSocketClientImpl extends Thread {
 			ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_WS);
 		}
 		this.lastConnected = this.connected;
+	}
+	
+	public void evtOnMessage(byte[] payload, String topic) {
+		if(payload != null)
+		{
+			String message = new String(payload);
+			try
+			{
+			    MessageAPI api = new MessageAPI();
+			    JSONObject response = api.processRequest(message, topic);  
+			    JSONObject requestJSON = new JSONObject(message);
+			    
+			    String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
+		        long callbackDelay = Math.abs(requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10));
+		        String command = requestJSON.optString(JsonKey.COMMAND, "");
+		   		if(!callbackTopic.isEmpty() && (command.equals(ConstantString.ECHO) || command.equals(ConstantString.REQUEST_USSD) || command.equals(ConstantString.GET_MODEM_LIST)))
+			    {
+			    	this.delay(callbackDelay);
+			    	this.sendMessage(response.toString(), callbackTopic);
+			    }          
+			}
+			catch(JSONException e)
+			{
+				/**
+				 * Do nothing
+				 */
+			}
+		}
+	}
+	
+	public void evtOnOpen(ServerHandshake serverHandshake)
+	{
+		if(serverHandshake.getHttpStatus() != 101 && this.reconnect)
+		{
+			this.reconnect = false;
+			this.restartThread();
+		}
+		else
+		{
+			this.flagConnected();
+		}
 	}
 
 	public void evtOnClose(int code, String reason, boolean remote)

@@ -47,6 +47,7 @@ public class MessageAPI {
 			JSONObject data = requestJSON.optJSONObject(JsonKey.DATA);
 			if(data != null)
 			{
+				logger.info("\r\n");
 				logger.info("Topic     : " + topic);
 				logger.info("Message   : " + requestJSON.toString(0));
 				logger.info("Command   : " + command);
@@ -98,7 +99,6 @@ public class MessageAPI {
 				}
 				else if(command.equals(ConstantString.ECHO))
 				{
-					logger.info("Echo");
 					responseJSON = new JSONObject(requestBody);
 				}
 			}		

@@ -775,8 +775,8 @@ public class GSMUtil {
 			info.put("networkRegistration", networkRegistration);
 			String msisdn = instance.getMSISDN();			
 			info.put("msisdn", msisdn);
-			String operatorSelect = instance.getCopsOperator();			
-			info.put("operatorSelect", operatorSelect);
+			String copsOperator = instance.getCopsOperator();			
+			info.put("copsOperator", copsOperator);
 			String smsCenter = instance.getSMSCenter();		
 			info.put("smsCenter", smsCenter);
 		    

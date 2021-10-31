@@ -31,11 +31,11 @@ $(document).ready(function (e1) {
         var modem = modemList[id];       
         var imsi = modem.imsi;
         var iccid = modem.iccid;
-        var operatorSelect = modem.operatorSelect;
+        var copsOperator = modem.copsOperator;
         var msisdn = modem.msisdn;
         $('#sim-tool').find('input#imsi').val(imsi);
         $('#sim-tool').find('input#iccid').val(iccid);
-        $('#sim-tool').find('input#operator').val(operatorSelect);
+        $('#sim-tool').find('input#operator').val(copsOperator);
         $('#sim-tool').find('input#msisdn').val(msisdn);
         $('#sim-tool').attr('data-modem-id', id);
         $('#sim-tool').modal('show');
@@ -45,7 +45,7 @@ $(document).ready(function (e1) {
         var id = $(this).closest('#sim-tool').attr('data-modem-id');
         var modem = modemList[id];       
         var port = modem.port;
-        var operatorSelect = modem.operatorSelect;
+        var copsOperator = modem.copsOperator;
         var msisdn = modem.msisdn;
         $.ajax({
             type: "GET",
@@ -54,7 +54,7 @@ $(document).ready(function (e1) {
             success: function(data) {
                 $('#sim-tool').find('input#imsi').val(data.imsi);
                 $('#sim-tool').find('input#iccid').val(data.iccid);
-                $('#sim-tool').find('input#operator').val(operatorSelect);
+                $('#sim-tool').find('input#operator').val(copsOperator);
                 $('#sim-tool').find('input#msisdn').val(msisdn);
             }
         });

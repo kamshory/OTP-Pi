@@ -65,11 +65,7 @@ public class DeviceAPI {
 
 	public static void syncTime(String ntpServer) {
 		NTPUDPClient client = new NTPUDPClient();
-	    /**
-	     * We want to timeout if a response takes longer than 10 seconds
-	     */
 	    client.setDefaultTimeout(10000);
-
 		try 
 		{
 			InetAddress inetAddress = InetAddress.getByName(ntpServer);
@@ -79,9 +75,6 @@ public class DeviceAPI {
 			if (timeInfo.getOffset() != null) 
 		    {
 		        offset  = timeInfo.getOffset();
-		        /**
-			     * Calculate the remote server NTP time
-			     */
 			    long currentTimeMils = System.currentTimeMillis();
 			    TimeStamp atomicNtpTime = TimeStamp.getNtpTime(currentTimeMils + offset);
 
