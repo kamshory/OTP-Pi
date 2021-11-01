@@ -68,10 +68,11 @@ User can send OTP with several methods. OTP-Pi allow user to create and validate
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | 
 | REST API | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 | WebSocket | ✓ | ✓ | ✓ | ✓ | Need callback | Need callback |
-| RabbitMQ * | ✓ | ✓ | ✓ | ✓ | Need callback | Need callback |
-| Redis * | ✓ | ✓ | ✓ | ✓ | Need callback | Need callback |
-| Mosquitto * | ✓ | ✓ | ✓ | ✓ | Need callback | Need callback |
-| ActiveMQ * | ✓ | ✓ | ✓ | ✓ | Need callback | Need callback |
+| RabbitMQ* | ✓ | ✓ | ✓ | ✓ | Need callback | Need callback |
+| Redis* | ✓ | ✓ | ✓ | ✓ | Need callback | Need callback |
+| Mosquitto* | ✓ | ✓ | ✓ | ✓ | Need callback | Need callback |
+| ActiveMQ* | ✓ | ✓ | ✓ | ✓ | Need callback | Need callback |
+| Stomp* | ✓ | ✓ | ✓ | ✓ | Need callback | Need callback |
 
 If you wish all features to be enable from API, you can use  OTP-Publisher. Clone https://github.com/kamshory/OTP-Publisher to get it.
 
@@ -737,7 +738,7 @@ These four parameters are additional information for validating the OTP. These f
 
 OTP-Pi does not store the clear OTP but only stores the hash. In addition, the OTP-Pi immediately deletes the SMS sent immediately after. Thus, the OTP is very safe because it is only known by the recipient.
 
-**1. REST API**
+**1. Message Format**
 
 **Create OTP Request**
 
@@ -1000,6 +1001,10 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.receiver | String | MSISDN number to be unblocked |
 
+**2. Authorization**
+
+OTP-Pi use `Basic Authorization`. Username and password required on each reaquest.
+
 ### Scenario 2 - App Server Can't Access OTP-Pi
 
 In this scenario, the App Server may send the OTP to RabbitMQ Server, Redis Server, Mosquitto Server, ActiveMQ Server or WSMessageBroker. WSMessageBroker uses the WebSoket protocol and Basic Authentication. Both App Server and OTP-Pi act as clients of WSMessageBroker.
@@ -1018,98 +1023,10 @@ In this scenario, the user does not need a public IP. Users only need:
 
 1. OTP-Pi
 2. Internet connection (no need for public IP and port forwarding)
-3. RabbitMQ, Redis, Mosquitto, ActiveMQ or WSMessageBroker servers
+3. RabbitMQ, Redis, Mosquitto, ActiveMQ, Stomp or WSMessageBroker servers
 
-**1. RabbitMQ**
 
-**Send SMS Request**
-
-```json
-{
-	"command": "send-sms",
-	"data": {
-		"date_time": 1629685778,
-		"expiration": 1629685838,
-		"id": 123456,
-		"receiver": "08126666666",
-		"message": "Your OTP is 1234"
-	}
-}
-```
-
-| Parameter | Type | Description |
-| --------- | ---- | ----------|
-| command | String | Command for OTP-Pi |
-| data | Object | Data for OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.id | String | SMS ID |
-| `data`.receiver | String | MSISDN of the receiver |
-| `data`.message | String | Content of the SMS |
-
-**Send Email Request**
-
-```json
-{
-	"command": "send-email",
-	"data": {
-		"date_time": 1629685778,
-		"expiration": 1629685838,
-		"id": 123456,
-		"receiver": "someone@domain.tld",
-		"subject": "Your OTP Code",
-		"message": "Your OTP is 1234"
-	}
-}
-```
-
-| Parameter | Type | Description |
-| --------- | ---- | ----------|
-| command | String | Command for OTP-Pi |
-| data | Object | Data for OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.id | String | SMS ID |
-| `data`.receiver | String | Recipient's email address |
-| `data`.message | String | Content of the SMS |
-
-**Block Number Request**
-
-```json
-{
-	"command": "block-msisdn",
-	"data": {
-		"date_time": 1629685778,
-		"receiver": "08126666666",
-	}
-}
-```
-
-| Parameter | Type | Description |
-| --------- | ---- | ----------|
-| command | String | Command for OTP-Pi |
-| data | Object | Data for OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.receiver | String | MSISDN number to block |
-
-**Unblock Number Request**
-
-```json
-{
-	"command": "unblock-msisdn",
-	"data":{
-		"date_time": 1629685778,
-		"receiver": "08126666666",
-	}
-}
-```
-
-| Parameter | Type | Description |
-| --------- | ---- | ----------|
-| command | String | Command for OTP-Pi |
-| data | Object | Data for OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.receiver | String | MSISDN number to be unblocked |
-
-**2. Redis**
+**1. Message Format**
 
 **Send SMS Request**
 
@@ -1198,226 +1115,6 @@ In this scenario, the user does not need a public IP. Users only need:
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.receiver | String | MSISDN number to be unblocked |
 
-**3. Mosquitto**
-
-**Send SMS Request**
-
-```json
-{
-	"command":"send-sms",
-	"data": {
-		"date_time": 1629685778,
-		"expiration": 1629685838,
-		"id": 123456,
-		"receiver": "08126666666",
-		"message": "Your OTP is 1234"
-	}
-}
-```
-
-| Parameter | Type | Description |
-| --------- | ---- | ----------|
-| command | String | Command for OTP-Pi |
-| data | Object | Data for OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.id | String | SMS ID |
-| `data`.receiver | String | MSISDN of the receiver |
-| `data`.message | String | Content of the SMS |
-
-**Send Email Request**
-
-```json
-{
-	"command": "send-email",
-	"data": {
-		"date_time": 1629685778,
-		"expiration": 1629685838,
-		"id": 123456,
-		"receiver": "someone@domain.tld",
-		"subject": "Your OTP Code",
-		"message": "Your OTP is 1234"
-	}
-}
-```
-
-| Parameter | Type | Description |
-| --------- | ---- | ----------|
-| command | String | Command for OTP-Pi |
-| data | Object | Data for OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.id | String | SMS ID |
-| `data`.receiver | String | Recipient's email address |
-| `data`.message | String | Content of the SMS |
-
-**Block Number Request**
-
-```json
-{
-	"command": "block-msisdn",
-	"data": {
-		"date_time": 1629685778,
-		"receiver": "08126666666",
-	}
-}
-```
-
-| Parameter | Type | Description |
-| --------- | ---- | ----------|
-| command | String | Command for OTP-Pi |
-| data | Object | Data for OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.receiver | String | MSISDN number to block |
-
-**Unblock Number Request**
-
-```json
-{
-	"command": "unblock-msisdn",
-	"data": {
-		"date_time": 1629685778,
-		"receiver": "08126666666",
-	}
-}
-```
-
-| Parameter | Type | Description |
-| --------- | ---- | ----------|
-| command | String | Command for OTP-Pi |
-| data | Object | Data for OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.receiver | String | MSISDN number to be unblocked |
-
-**4. WSMessageBroker**
-
-**Send SMS Request**
-
-```json
-{
-	"command": "send-sms",
-	"data": {	
-		"date_time": 1629685778,
-		"expiration": 1629685838,
-		"id": 123456,
-		"receiver": "08126666666",
-		"message": "Your OTP is 1234"
-	}
-}
-```
-
-| Parameter | Type | Description |
-| --------- | ---- | ----------|
-| command | String | Command for OTP-Pi |
-| data | Object | Data for OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.id | String | SMS ID |
-| `data`.receiver | String | MSISDN of the receiver |
-| `data`.message | String | Content of the SMS |
-
-**Send Email Request**
-
-```json
-{
-	"command": "send-email",
-	"data": {
-		"date_time": 1629685778,
-		"expiration": 1629685838,
-		"id": 123456,
-		"receiver": "someone@domain.tld",
-		"subject": "Your OTP Code",
-		"message": "Your OTP is 1234"
-	}
-}
-```
-
-| Parameter | Type | Description |
-| --------- | ---- | ----------|
-| command | String | Command for OTP-Pi |
-| data | Object | Data for OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.id | String | SMS ID |
-| `data`.receiver | String | Recipient's email address |
-| `data`.message | String | Content of the SMS |
-
-**Block Number Request**
-
-```json
-{
-	"command": "block-msisdn",
-	"data": {
-		"date_time": 1629685778,
-		"receiver": "08126666666",
-	}
-}
-```
-
-| Parameter | Type | Description |
-| --------- | ---- | ----------|
-| command | String | Command for OTP-Pi |
-| data | Object | Data for OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.receiver | String | MSISDN number to block |
-
-**Unblock Number Request**
-
-```json
-{
-
-	"command": "unblock-msisdn",
-	"data":{
-		"date_time": 1629685778,
-		"receiver": "08126666666",
-	}
-}
-```
-
-| Parameter | Type | Description |
-| --------- | ---- | ----------|
-| command | String | Command for OTP-Pi |
-| data | Object | Data for OTP-Pi | 
-| `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
-| `data`.receiver | String | MSISDN number to be unblocked |
-
-The WSMessageBroker-based server uses the WebSocket protocol. Please download **OTP-Publisher** at https://github.com/kamshory/OTP-Publisher
-
-**Handshakes**
-
-The handshake between OTP-Pi and WSMessageBroker is as follows:
-1. OTP-Pi as client and WSMessageBroker as server
-2. OTP-Pi sends request to WSMessageBroker
-
-**WebSocket Subscriber Configuration Example**
-
-| Parameter | Value |
-|--|--|
-| Host | domain.example |
-| Port | 8000 |
-| Path | /ws |
-| Username | username |
-| Password | password |
-| Topic | sms |
-
-**Example of a WebSocket Handshake**
-
-```http
-GET /ws?topic=sms HTTP/1.1
-Host: domain.example:8000
-Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=
-Upgrade: websocket
-Connection: Upgrade
-Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
-Sec-WebSocket-Version: 13
-```
-
-The server will verify whether the username and password are correct. If true, the server will add the connection to the list of recipients of the message.
-
-When a client sends a message, the message will be sent to all clients by topic except the sender. Thus, the handshake between the sender and the recipient of the message is the same.
-
-The OTP-Pi never sends messages to the WSMessageBroker server. OTP-Pi only accepts messages according to the desired topic.
-
-
-# USSD Request Via API
-
-Users can run USSD code via the API either using the REST API or using the message broker. When executing the USSD code, the user must submit the modem ID. The modem ID can be obtained using the API either using the REST API or using a message broker.
 
 **Get Modem List Request**
 
@@ -1426,7 +1123,9 @@ Users can run USSD code via the API either using the REST API or using the messa
    "data":{
       "date_time": 1629685778
    },
-   "command": "get-modem-list"
+   "command": "get-modem-list",
+   "callback_topic": "random_topic",
+   "callback_delay": 50
 }
 
 ```
@@ -1473,6 +1172,79 @@ Users can run USSD code via the API either using the REST API or using the messa
    "command":"get-modem-list"
 }
 ```
+
+**USSD Command Request**
+
+Users can run USSD code via the API either using the REST API or using the message broker. When executing the USSD code, the user must submit the modem ID. The modem ID can be obtained using the API either using the REST API or using a message broker.
+
+```json
+{
+   "data":{
+      "date_time": 1629685778,
+	  "modem_id": "d740eb1f5e9799c2b50452ea5acf6054",
+	  "ussd_code": "*888#"
+   },
+   "command": "request-ussd",
+   "callback_topic": "random_topic",
+   "callback_delay": 50
+}
+
+```
+
+**USSD Command Response**
+
+```json
+{
+   "data":{
+      "date_time": 1629685778,
+	  "modem_id": "d740eb1f5e9799c2b50452ea5acf6054",
+	  "ussd_code": "*888#",
+	  "ussd_response": "Sisa pulsa Anda adalah Rp 12345"
+   },
+   "command": "request-ussd",
+   "callback_topic": "random_topic",
+   "callback_delay": 50
+}
+
+```
+
+**2. Websocket Handshakes**
+
+The handshake between OTP-Pi and WSMessageBroker is as follows:
+1. OTP-Pi as client and WSMessageBroker as server
+2. OTP-Pi sends request to WSMessageBroker
+
+**WebSocket Subscriber Configuration Example**
+
+| Parameter | Value |
+|--|--|
+| Host | domain.example |
+| Port | 8000 |
+| Path | /ws |
+| Username | username |
+| Password | password |
+| Topic | sms |
+
+**Example of a WebSocket Handshake**
+
+```http
+GET /ws?topic=sms HTTP/1.1
+Host: domain.example:8000
+Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
+Sec-WebSocket-Version: 13
+```
+
+The server will verify whether the username and password are correct. If true, the server will add the connection to the list of recipients of the message.
+
+When a client sends a message, the message will be sent to all clients by topic except the sender. Thus, the handshake between the sender and the recipient of the message is the same.
+
+The OTP-Pi never sends messages to the WSMessageBroker server. OTP-Pi only accepts messages according to the desired topic.
+
+
+
 
 
 # Subscribe to Our YouTube Channel
