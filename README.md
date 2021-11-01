@@ -742,7 +742,7 @@ OTP-Pi does not store the clear OTP but only stores the hash. In addition, the O
 
 **Create OTP Request**
 
-```http
+```ht
 POST /api/otp HTTP/1.1
 Host: sub.domain.tld
 Connection: close
@@ -783,7 +783,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 **Create OTP Response**
 
-```http
+```ht
 HTTP/1.1 200 OK
 Host: sub.domain.tld
 Connection: close
@@ -812,7 +812,7 @@ Content-length: 199
 
 **Validate OTP Request**
 
-```http
+```ht
 POST /api/otp HTTP/1.1
 Host: sub.domain.tld
 Connection: close
@@ -852,7 +852,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 **Validate OTP Response**
 
-```http
+```ht
 HTTP/1.1 200 OK
 Host: sub.domain.tld
 Connection: close
@@ -882,7 +882,7 @@ Content-length: 201
 
 **Send SMS Request**
 
-```http
+```ht
 POST /api/sms HTTP/1.1
 Host: sub.domain.tld
 Connection: close
@@ -915,7 +915,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 **Send Email Request**
 
-```http
+```ht
 POST /api/sms HTTP/1.1
 Host: sub.domain.tld
 Connection: close
@@ -949,7 +949,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 **Block Number Request**
 
-```http
+```ht
 POST /api/block HTTP/1.1
 Host: sub.domain.tld
 Connection: close
@@ -976,7 +976,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 **Unblock Number Request**
 
-```http
+```ht
 POST /api/unblock HTTP/1.1
 Host: sub.domain.tld
 Connection: close
@@ -1003,7 +1003,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 **Get Modem List Request**
 
-```http
+```ht
 POST /api/modem HTTP/1.1
 Host: sub.domain.tld
 Connection: close
@@ -1022,7 +1022,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 **Get Modem List Response**
 
-```http
+```ht
 HTTP/1.1 200 OK
 Date: Sun, 18 Oct 2012 10:36:20 GMT
 Server: Apache/2.2.14
@@ -1343,7 +1343,7 @@ The handshake between OTP-Pi and WSMessageBroker is as follows:
 
 **Example of a WebSocket Handshake**
 
-```http
+```ht
 GET /ws?topic=sms HTTP/1.1
 Host: domain.example:8000
 Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=
