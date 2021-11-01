@@ -287,8 +287,7 @@ public class WebUserAccount {
 					 */
 				}
 			}
-		}
-		
+		}		
 	}
 
 	public static void activate(Map<String, String> queryPairs) {
@@ -331,8 +330,7 @@ public class WebUserAccount {
 					 */
 				}
 			}
-		}
-		
+		}		
 	}
 
 	public static void unblock(Map<String, String> queryPairs) {
@@ -382,8 +380,7 @@ public class WebUserAccount {
 				 * Do nothing
 				 */
 			}
-		}
-		
+		}	
 	}
 
 	public static void update(Map<String, String> queryPairs, String loggedUsername) {
@@ -431,8 +428,7 @@ public class WebUserAccount {
 				 * Do nothing
 				 */
 			}
-		}
-		
+		}		
 	}
 
 	public static void add(Map<String, String> queryPairs) {
@@ -454,8 +450,6 @@ public class WebUserAccount {
 		if(!username.isEmpty())
 		{
 			WebUserAccount.addUser(new User(jsonObject));		
-		}	
-		
+		}			
 	}
-
 }
