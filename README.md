@@ -1074,7 +1074,8 @@ Connection: Closed
 
 Users can run USSD code via the API either using the REST API or using the message broker. When executing the USSD code, the user must submit the modem ID. The modem ID can be obtained using the API either using the REST API or using a message broker.
 
-```json
+
+```ht
 POST /api/ussd HTTP/1.1
 Host: sub.domain.tld
 Connection: close
@@ -1095,7 +1096,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 **USSD Command Response**
 
-```json
+```ht
 HTTP/1.1 200 OK
 Date: Sun, 18 Oct 2012 10:36:20 GMT
 Server: Apache/2.2.14
