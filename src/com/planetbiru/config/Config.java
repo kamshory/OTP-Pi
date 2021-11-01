@@ -112,6 +112,7 @@ public class Config {
 	private static long otpGCInterval = 60000;
 	private static String otpCacheFile = "";
 	private static long inspectModemInterval = 5000;
+	private static String hwClock = "hwclock";
 	
 	private Config()
 	{
@@ -1006,6 +1007,14 @@ public class Config {
 
 	public static void setInspectModemInterval(long inspectModemInterval) {
 		Config.inspectModemInterval = inspectModemInterval;
+	}
+
+	public static String getHwClock() {
+		return hwClock;
+	}
+
+	public static void setHwClock(String hwClock) {
+		Config.hwClock = hwClock;
 	}
 
 	

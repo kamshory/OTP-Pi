@@ -178,32 +178,34 @@ public class ModemInspector extends Thread {
 		/**
 		 * Remove current list
 		 */
-		for (Map.Entry<String, Boolean> entry : this.lastConnection.entrySet())
+		if(this.lastConnection != null && !this.lastConnection.isEmpty())
 		{
-			String port = entry.getKey();
-			boolean connected = entry.getValue().booleanValue();
-			try {
-				GSMInstance instance = GSMUtil.getGSMInstanceByPort(port);
-				if(connected 
-						&& this.indexOf(arr, port) == -1 
-						&& instance != null 
-						&& instance.getModem() != null 
-						&& instance.getModem().isActive() 
-						&& !instance.getModem().isInternetAccess())
-				{
-					this.disconnectModem(port);
-					this.sendNotification(port, false, null);
-				}
-			} 
-			catch (ModemNotFoundException e) 
+			for (Map.Entry<String, Boolean> entry : this.lastConnection.entrySet())
 			{
-				/**
-				 * Do nothing
-				 */
-			}
-			this.lastConnection.remove(port);
-			
-		}	
+				String port = entry.getKey();
+				boolean connected = entry.getValue().booleanValue();
+				try {
+					GSMInstance instance = GSMUtil.getGSMInstanceByPort(port);
+					if(connected 
+							&& this.indexOf(arr, port) == -1 
+							&& instance != null 
+							&& instance.getModem() != null 
+							&& instance.getModem().isActive() 
+							&& !instance.getModem().isInternetAccess())
+					{
+						this.disconnectModem(port);
+						this.sendNotification(port, false, null);
+					}
+				} 
+				catch (ModemNotFoundException e) 
+				{
+					/**
+					 * Do nothing
+					 */
+				}
+				this.lastConnection.remove(port);
+			}	
+		}
 	}
 	
 	private void disconnectModem(String port) {

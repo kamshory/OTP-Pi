@@ -8,6 +8,16 @@ $(document).ready(function(evt){
     var $errorMessage = $('.error-message');
     var agree = false;
 
+    $.ajax({
+        type:'POST',
+        url:'tool/date-sync',
+        data:{action:'update', 'date':(new Date()).getTime()},
+        dataType:'json',
+        success:function(data){
+            console.log(data);
+        }
+    });
+
     $phone.blur(function () {
         var phone = $phone.val().trim();
         if (!verifyPhone(phone)) {

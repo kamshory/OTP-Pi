@@ -1,11 +1,15 @@
 package com.planetbiru.web;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Map;
 
 import org.json.JSONObject;
 
 import com.planetbiru.constant.JsonKey;
+import com.planetbiru.device.DeviceAPI;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.user.NoUserRegisteredException;
 import com.planetbiru.user.WebUserAccount;
@@ -43,6 +47,12 @@ public class HandlerWebManagerTool implements HttpHandler {
 					JSONObject response = this.processSIM(requestBody);
 					responseBody = response.toString().getBytes();
 				}
+				
+			}
+			if(path.startsWith("/tool/date-sync") && method.equals(HttpMethod.POST))
+			{
+				JSONObject response = this.processDateSync(requestBody);
+				responseBody = response.toString().getBytes();
 			}
 		} 
 		catch (NoUserRegisteredException e) 
@@ -55,6 +65,40 @@ public class HandlerWebManagerTool implements HttpHandler {
 		httpExchange.sendResponseHeaders(HttpStatus.OK, responseBody.length);	
 		httpExchange.getResponseBody().write(responseBody);
 		httpExchange.close();
+	}
+
+	private JSONObject processDateSync(String requestBody) {
+		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
+		String action = queryPairs.getOrDefault("action", "");
+		String date = queryPairs.getOrDefault("date", "");
+		JSONObject result = new JSONObject();
+		if(action.equals("update"))
+		{
+			long clientTimeMills = Utility.atol(date);
+			if(clientTimeMills > 0)
+			{
+				Date clientDate = new Date(clientTimeMills);
+			    Calendar clientCalendar = new GregorianCalendar();
+			    clientCalendar.setTime(clientDate);
+			    
+				Date serverDate = new Date();
+				System.out.println("Server Date : "+serverDate);
+			    
+				if((clientDate.getTime() - serverDate.getTime()) > 86400000 && clientCalendar.get(Calendar.YEAR) > 2020)
+				{
+					System.out.println("Set Server Date : "+clientDate);
+					DeviceAPI.updateServerTime(clientDate);
+					result.put("set", true);
+				}
+				else
+				{
+					System.out.println("Do nothing");
+					result.put("set", false);	
+				}
+				result.put("response_code", "0000");
+			}
+		}
+		return result;
 	}
 
 	private JSONObject processIMEI(String requestBody) {

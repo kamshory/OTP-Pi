@@ -195,6 +195,9 @@ public class ConfigLoader {
 
 		long inspectModemInterval = ConfigLoader.getConfigLong("otppi.modem.inspect.interval");
 		
+		String hwClock = ConfigLoader.getConfig("otppi.hwclock");
+		Config.setHwClock(hwClock);
+		
 		Config.setInspectModemInterval(inspectModemInterval);
 		
 		Config.setOtpCacheFile(otpCacheFile);

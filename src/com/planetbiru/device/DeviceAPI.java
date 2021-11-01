@@ -96,7 +96,7 @@ public class DeviceAPI {
 	     * URL : https://www.thegeekstuff.com/2013/08/hwclock-examples/
 	     */
 		String currentTime = Utility.date("MM/dd/yyyy HH:mm:ss", date);
-	    String command = "/bin/hwclock --set --date \""+currentTime+"\"";
+	    String command = Config.getHwClock() + " --set --date \""+currentTime+"\"";
 	    CommandLineExecutor.exec(command);			
 	}
 
