@@ -1001,9 +1001,124 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 | `data`.date_time | Number | Unix Time Stamp when the message is transmitted by the applications | 
 | `data`.receiver | String | MSISDN number to be unblocked |
 
+**Get Modem List Request**
+
+```http
+POST /api/modem HTTP/1.1
+Host: sub.domain.tld
+Connection: close
+User-agent: KSPS
+Content-type: application/json
+Content-length: 87
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+{
+   "data":{
+      "date_time": 1629685778
+   },
+   "command": "get-modem-list"
+}
+```
+
+**Get Modem List Response**
+
+```http
+HTTP/1.1 200 OK
+Date: Sun, 18 Oct 2012 10:36:20 GMT
+Server: Apache/2.2.14
+Content-Length: 1192
+Content-Type: text/html; charset=UTF-8
+Connection: Closed
+
+{
+   "response_code":"0000",
+   "data":{
+      "modem_list":{
+         "d740eb1f5e9799c2b50452ea5acf6054":{
+            "internetConnected":false,
+            "active":true,
+            "imsi":"990106913401164",
+            "smsCenter":"",
+            "copsOperator":"TELKOMSEL",
+            "connected":false,
+            "iccid":"89621010691340116477",
+            "defaultModem":true,
+            "internetAccess":false,
+            "port":"COM7",
+            "name":"SIMCOM_SIM800L",
+            "imei":"359848091599999",
+            "id":"d740eb1f5e9799c2b50452ea5acf6054"
+         },
+         "20570ff7f9a4664df11e8c3dfdf4c6c4":{
+            "internetConnected":false,
+            "active":true,
+            "imsi":"880106913401164",
+            "smsCenter":"",
+            "copsOperator":"TELKOMSEL",
+            "connected":false,
+            "iccid":"89621010691340116454",
+            "defaultModem":false,
+            "internetAccess":false,
+            "port":"COM3",
+            "name":"Huawei",
+            "imei":"359848091599994",
+            "id":"20570ff7f9a4664df11e8c3dfdf4c6c4"
+         }
+      }
+   },
+   "command":"get-modem-list"
+}
+```
+
+**USSD Command Request**
+
+Users can run USSD code via the API either using the REST API or using the message broker. When executing the USSD code, the user must submit the modem ID. The modem ID can be obtained using the API either using the REST API or using a message broker.
+
+```json
+POST /api/ussd HTTP/1.1
+Host: sub.domain.tld
+Connection: close
+User-agent: KSPS
+Content-type: application/json
+Content-length: 163
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+{
+   "data":{
+      "date_time": 1629685778,
+	  "modem_id": "d740eb1f5e9799c2b50452ea5acf6054",
+	  "ussd_code": "*888#"
+   },
+   "command": "request-ussd"
+}
+```
+
+**USSD Command Response**
+
+```json
+HTTP/1.1 200 OK
+Date: Sun, 18 Oct 2012 10:36:20 GMT
+Server: Apache/2.2.14
+Content-Length: 220
+Content-Type: text/html; charset=UTF-8
+Connection: Closed
+
+{
+   "data":{
+      "date_time": 1629685778,
+	  "modem_id": "d740eb1f5e9799c2b50452ea5acf6054",
+	  "ussd_code": "*888#",
+	  "ussd_response": "Sisa pulsa Anda adalah Rp 12345"
+   },
+   "command": "request-ussd",
+}
+```
+
 **2. Authorization**
 
 OTP-Pi use `Basic Authorization`. Username and password required on each reaquest.
+
+For more information, click https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization 
 
 ### Scenario 2 - App Server Can't Access OTP-Pi
 
@@ -1242,9 +1357,6 @@ The server will verify whether the username and password are correct. If true, t
 When a client sends a message, the message will be sent to all clients by topic except the sender. Thus, the handshake between the sender and the recipient of the message is the same.
 
 The OTP-Pi never sends messages to the WSMessageBroker server. OTP-Pi only accepts messages according to the desired topic.
-
-
-
 
 
 # Subscribe to Our YouTube Channel
