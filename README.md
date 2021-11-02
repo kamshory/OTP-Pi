@@ -792,9 +792,9 @@ Content-length: 199
 	"command": "request-otp",
 	"response_code": "0000",
 	"data": {
-		"date_time": 1629685778,
-		"receiver": "08126666666",
-		"reference": "12345678901234567890"
+      "date_time": 1629685778,
+      "receiver": "08126666666",
+      "reference": "12345678901234567890"
 	}
 }
 ```
@@ -822,14 +822,14 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 {
 	"command": "verify-otp",
 	"data": {
-		"date_time": 1629685778,
-		"receiver": "08126666666",
-		"otp": "123456",
-		"reference": "12345678901234567890",
-		"param1": "100000",
-		"param2": "1234567890",
-		"param3": "987654",
-		"param4": "674527846556468254"
+      "date_time": 1629685778,
+      "receiver": "08126666666",
+      "otp": "123456",
+      "reference": "12345678901234567890",
+      "param1": "100000",
+      "param2": "1234567890",
+      "param3": "987654",
+      "param4": "674527846556468254"
 	}
 }
 ```
@@ -861,9 +861,9 @@ Content-length: 201
 	"command": "verify-otp",
 	"response_code": "0000",
 	"data": {
-		"date_time": 1629685778,
-		"receiver": "08126666666",
-		"reference": "12345678901234567890"
+      "date_time": 1629685778,
+      "receiver": "08126666666",
+      "reference": "12345678901234567890"
 	}
 }
 ```
@@ -892,11 +892,11 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 {
 	"command": "send-sms",
 	"data": {
-		"date_time": 1629685778,
-		"expiration": 1629685838,
-		"id": 123456,
-		"receiver": "08126666666",
-		"message": "Your OTP is 1234"
+      "date_time": 1629685778,
+      "expiration": 1629685838,
+      "id": 123456,
+      "receiver": "08126666666",
+      "message": "Your OTP is 1234"
 	}
 }
 ```
@@ -925,12 +925,12 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 {
 	"command": "send-email",
 	"data": {
-		"date_time": 1629685778,
-		"expiration": 1629685838,
-		"id": 123456,
-		"receiver": "someone@domain.tld",
-		"subject": "Your OTP Code",
-		"message": "Your OTP is 1234"
+      "date_time": 1629685778,
+      "expiration": 1629685838,
+      "id": 123456,
+      "receiver": "someone@domain.tld",
+      "subject": "Your OTP Code",
+      "message": "Your OTP is 1234"
 	}
 }
 ```
@@ -1085,8 +1085,8 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 {
    "data":{
       "date_time": 1629685778,
-	  "modem_id": "d740eb1f5e9799c2b50452ea5acf6054",
-	  "ussd_code": "*888#"
+      "modem_id": "d740eb1f5e9799c2b50452ea5acf6054",
+      "ussd_code": "*888#"
    },
    "command": "request-ussd"
 }
@@ -1105,9 +1105,9 @@ Connection: Closed
 {
    "data":{
       "date_time": 1629685778,
-	  "modem_id": "d740eb1f5e9799c2b50452ea5acf6054",
-	  "ussd_code": "*888#",
-	  "ussd_response": "Sisa pulsa Anda adalah Rp 12345"
+      "modem_id": "d740eb1f5e9799c2b50452ea5acf6054",
+      "ussd_code": "*888#",
+      "ussd_response": "Sisa pulsa Anda adalah Rp 12345"
    },
    "command": "request-ussd",
 }
@@ -1146,11 +1146,11 @@ In this scenario, the user does not need a public IP. Users only need:
 {
 	"command": "send-sms",
 	"data": {
-		"date_time": 1629685778,
-		"expiration": 1629685838,
-		"id": 123456,
-		"receiver": "08126666666",
-		"message": "Your OTP is 1234"
+      "date_time": 1629685778,
+      "expiration": 1629685838,
+      "id": 123456,
+      "receiver": "08126666666",
+      "message": "Your OTP is 1234"
 	}
 }
 ```
@@ -1170,12 +1170,12 @@ In this scenario, the user does not need a public IP. Users only need:
 {
 	"command": "send-email",
 	"data": {
-		"date_time": 1629685778,
-		"expiration": 1629685838,
-		"id": 123456,
-		"receiver": "someone@domain.tld",
-		"subject": "Your OTP Code",
-		"message": "Your OTP is 1234"
+      "date_time": 1629685778,
+      "expiration": 1629685838,
+      "id": 123456,
+      "receiver": "someone@domain.tld",
+      "subject": "Your OTP Code",
+      "message": "Your OTP is 1234"
 	}
 }
 ```
@@ -1195,8 +1195,8 @@ In this scenario, the user does not need a public IP. Users only need:
 {
 	"command": "block-msisdn",
 	"data": {
-		"date_time": 1629685778,
-		"receiver": "08126666666",
+      "date_time": 1629685778,
+      "receiver": "08126666666",
 	}
 }
 ```
@@ -1214,8 +1214,8 @@ In this scenario, the user does not need a public IP. Users only need:
 {
 	"command": "unblock-msisdn",
 	"data":{
-		"date_time": 1629685778,
-		"receiver": "08126666666",
+      "date_time": 1629685778,
+      "receiver": "08126666666",
 	}
 }
 ```
@@ -1293,8 +1293,8 @@ Users can run USSD code via the API either using the REST API or using the messa
 {
    "data":{
       "date_time": 1629685778,
-	  "modem_id": "d740eb1f5e9799c2b50452ea5acf6054",
-	  "ussd_code": "*888#"
+      "modem_id": "d740eb1f5e9799c2b50452ea5acf6054",
+      "ussd_code": "*888#"
    },
    "command": "request-ussd",
    "callback_topic": "random_topic",
@@ -1309,9 +1309,9 @@ Users can run USSD code via the API either using the REST API or using the messa
 {
    "data":{
       "date_time": 1629685778,
-	  "modem_id": "d740eb1f5e9799c2b50452ea5acf6054",
-	  "ussd_code": "*888#",
-	  "ussd_response": "Sisa pulsa Anda adalah Rp 12345"
+      "modem_id": "d740eb1f5e9799c2b50452ea5acf6054",
+      "ussd_code": "*888#",
+      "ussd_response": "Sisa pulsa Anda adalah Rp 12345"
    },
    "command": "request-ussd",
    "callback_topic": "random_topic",
