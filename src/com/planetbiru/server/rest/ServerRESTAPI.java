@@ -104,8 +104,7 @@ public class ServerRESTAPI {
 
 	public void startHTTP() 
 	{
-		
-		if(ConfigAPI.isHttpsEnable())
+		if(ConfigAPI.isHttpEnable())
 		{
 			try 
 			{
