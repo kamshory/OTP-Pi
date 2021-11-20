@@ -822,17 +822,17 @@ Content-length: 274
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 {
-	"command": "verify-otp",
-	"data": {
-      "date_time": 1629685778,
-      "receiver": "08126666666",
-      "otp": "123456",
-      "reference": "12345678901234567890",
-      "param1": "100000",
-      "param2": "1234567890",
-      "param3": "987654",
-      "param4": "674527846556468254"
-	}
+    "command": "verify-otp",
+    "data": {
+        "date_time": 1629685778,
+        "receiver": "08126666666",
+        "otp": "123456",
+        "reference": "12345678901234567890",
+        "param1": "100000",
+        "param2": "1234567890",
+        "param3": "987654",
+        "param4": "674527846556468254"
+    }
 }
 ```
 
@@ -860,13 +860,13 @@ Content-type: application/json
 Content-length: 201
 
 {
-	"command": "verify-otp",
-	"response_code": "0000",
-	"data": {
-      "date_time": 1629685778,
-      "receiver": "08126666666",
-      "reference": "12345678901234567890"
-	}
+    "command": "verify-otp",
+    "response_code": "0000",
+    "data": {
+        "date_time": 1629685778,
+        "receiver": "08126666666",
+        "reference": "12345678901234567890"
+    }
 }
 ```
 
@@ -892,14 +892,14 @@ Content-length: 182
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 {
-	"command": "send-sms",
-	"data": {
-      "date_time": 1629685778,
-      "expiration": 1629685838,
-      "id": 123456,
-      "receiver": "08126666666",
-      "message": "Your OTP is 1234"
-	}
+    "command": "send-sms",
+    "data": {
+        "date_time": 1629685778,
+        "expiration": 1629685838,
+        "id": 123456,
+        "receiver": "08126666666",
+        "message": "Your OTP is 1234"
+    }
 }
 ```
 
@@ -925,15 +925,15 @@ Content-length: 222
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 {
-	"command": "send-email",
-	"data": {
-      "date_time": 1629685778,
-      "expiration": 1629685838,
-      "id": 123456,
-      "receiver": "someone@domain.tld",
-      "subject": "Your OTP Code",
-      "message": "Your OTP is 1234"
-	}
+    "command": "send-email",
+    "data": {
+        "date_time": 1629685778,
+        "expiration": 1629685838,
+        "id": 123456,
+        "receiver": "someone@domain.tld",
+        "subject": "Your OTP Code",
+        "message": "Your OTP is 1234"
+    }
 }
 ```
 
@@ -959,11 +959,11 @@ Content-length: 107
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 {
-	"command": "block-msisdn",
-	"data": {
-		"date_time": 1629685778,
-		"receiver": "08126666666",
-	}
+    "command": "block-msisdn",
+    "data": {
+        "date_time": 1629685778,
+        "receiver": "08126666666"
+    }
 }
 ```
 
@@ -986,11 +986,11 @@ Content-length: 109
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 {
-	"command": "unblock-msisdn",
-	"data": {
-		"date_time": 1629685778,
-		"receiver": "08126666666",
-	}
+    "command": "unblock-msisdn",
+    "data": {
+        "date_time": 1629685778,
+        "receiver": "08126666666"
+    }
 }
 ```
 
@@ -1013,10 +1013,10 @@ Content-length: 87
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 {
-   "data":{
-      "date_time": 1629685778
-   },
-   "command": "get-modem-list"
+    "data": {
+        "date_time": 1629685778
+    },
+    "command": "get-modem-list"
 }
 ```
 
@@ -1031,42 +1031,42 @@ Content-Type: text/html; charset=UTF-8
 Connection: Closed
 
 {
-   "response_code":"0000",
-   "data":{
-      "modem_list":{
-         "d740eb1f5e9799c2b50452ea5acf6054":{
-            "internetConnected":false,
-            "active":true,
-            "imsi":"990106913401164",
-            "smsCenter":"",
-            "copsOperator":"TELKOMSEL",
-            "connected":false,
-            "iccid":"89621010691340116477",
-            "defaultModem":true,
-            "internetAccess":false,
-            "port":"COM7",
-            "name":"SIMCOM_SIM800L",
-            "imei":"359848091599999",
-            "id":"d740eb1f5e9799c2b50452ea5acf6054"
-         },
-         "20570ff7f9a4664df11e8c3dfdf4c6c4":{
-            "internetConnected":false,
-            "active":true,
-            "imsi":"880106913401164",
-            "smsCenter":"",
-            "copsOperator":"TELKOMSEL",
-            "connected":false,
-            "iccid":"89621010691340116454",
-            "defaultModem":false,
-            "internetAccess":false,
-            "port":"COM3",
-            "name":"Huawei",
-            "imei":"359848091599994",
-            "id":"20570ff7f9a4664df11e8c3dfdf4c6c4"
-         }
-      }
-   },
-   "command":"get-modem-list"
+    "response_code": "0000",
+    "data": {
+        "modem_list": {
+            "d740eb1f5e9799c2b50452ea5acf6054": {
+                "internetConnected": false,
+                "active": true,
+                "imsi": "990106913401164",
+                "smsCenter": "",
+                "copsOperator": "TELKOMSEL",
+                "connected": false,
+                "iccid": "89621010691340116477",
+                "defaultModem": true,
+                "internetAccess": false,
+                "port": "COM7",
+                "name": "SIMCOM_SIM800L",
+                "imei": "359848091599999",
+                "id": "d740eb1f5e9799c2b50452ea5acf6054"
+            },
+            "20570ff7f9a4664df11e8c3dfdf4c6c4": {
+                "internetConnected": false,
+                "active": true,
+                "imsi": "880106913401164",
+                "smsCenter": "",
+                "copsOperator": "TELKOMSEL",
+                "connected": false,
+                "iccid": "89621010691340116454",
+                "defaultModem": false,
+                "internetAccess": false,
+                "port": "COM3",
+                "name": "Huawei",
+                "imei": "359848091599994",
+                "id": "20570ff7f9a4664df11e8c3dfdf4c6c4"
+            }
+        }
+    },
+    "command": "get-modem-list"
 }
 ```
 
@@ -1085,12 +1085,12 @@ Content-length: 163
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 {
-   "data":{
-      "date_time": 1629685778,
-      "modem_id": "d740eb1f5e9799c2b50452ea5acf6054",
-      "ussd_code": "*888#"
-   },
-   "command": "request-ussd"
+    "data": {
+        "date_time": 1629685778,
+        "modem_id": "d740eb1f5e9799c2b50452ea5acf6054",
+        "ussd_code": "*888#"
+    },
+    "command": "request-ussd"
 }
 ```
 
@@ -1105,13 +1105,13 @@ Content-Type: text/html; charset=UTF-8
 Connection: Closed
 
 {
-   "data":{
-      "date_time": 1629685778,
-      "modem_id": "d740eb1f5e9799c2b50452ea5acf6054",
-      "ussd_code": "*888#",
-      "ussd_response": "Sisa pulsa Anda adalah Rp 12345"
-   },
-   "command": "request-ussd",
+    "data": {
+        "date_time": 1629685778,
+        "modem_id": "d740eb1f5e9799c2b50452ea5acf6054",
+        "ussd_code": "*888#",
+        "ussd_response": "Sisa pulsa Anda adalah Rp 12345"
+    },
+    "command": "request-ussd",
 }
 ```
 
@@ -1146,14 +1146,14 @@ In this scenario, the user does not need a public IP. Users only need:
 
 ```json
 {
-	"command": "send-sms",
-	"data": {
-      "date_time": 1629685778,
-      "expiration": 1629685838,
-      "id": 123456,
-      "receiver": "08126666666",
-      "message": "Your OTP is 1234"
-	}
+    "command": "send-sms",
+    "data": {
+        "date_time": 1629685778,
+        "expiration": 1629685838,
+        "id": 123456,
+        "receiver": "08126666666",
+        "message": "Your OTP is 1234"
+    }
 }
 ```
 
@@ -1170,15 +1170,15 @@ In this scenario, the user does not need a public IP. Users only need:
 
 ```json
 {
-	"command": "send-email",
-	"data": {
-      "date_time": 1629685778,
-      "expiration": 1629685838,
-      "id": 123456,
-      "receiver": "someone@domain.tld",
-      "subject": "Your OTP Code",
-      "message": "Your OTP is 1234"
-	}
+    "command": "send-email",
+    "data": {
+        "date_time": 1629685778,
+        "expiration": 1629685838,
+        "id": 123456,
+        "receiver": "someone@domain.tld",
+        "subject": "Your OTP Code",
+        "message": "Your OTP is 1234"
+    }
 }
 ```
 
@@ -1195,11 +1195,11 @@ In this scenario, the user does not need a public IP. Users only need:
 
 ```json
 {
-	"command": "block-msisdn",
-	"data": {
-      "date_time": 1629685778,
-      "receiver": "08126666666",
-	}
+    "command": "block-msisdn",
+    "data": {
+        "date_time": 1629685778,
+        "receiver": "08126666666",
+    }
 }
 ```
 
@@ -1214,11 +1214,11 @@ In this scenario, the user does not need a public IP. Users only need:
 
 ```json
 {
-	"command": "unblock-msisdn",
-	"data":{
-      "date_time": 1629685778,
-      "receiver": "08126666666",
-	}
+    "command": "unblock-msisdn",
+    "data": {
+        "date_time": 1629685778,
+        "receiver": "08126666666",
+    }
 }
 ```
 
@@ -1234,12 +1234,12 @@ In this scenario, the user does not need a public IP. Users only need:
 
 ```json
 {
-   "data":{
-      "date_time": 1629685778
-   },
-   "command": "get-modem-list",
-   "callback_topic": "random_topic",
-   "callback_delay": 50
+    "data": {
+        "date_time": 1629685778
+    },
+    "command": "get-modem-list",
+    "callback_topic": "random_topic",
+    "callback_delay": 50
 }
 
 ```
@@ -1248,42 +1248,42 @@ In this scenario, the user does not need a public IP. Users only need:
 
 ```json
 {
-   "response_code":"0000",
-   "data":{
-      "modem_list":{
-         "d740eb1f5e9799c2b50452ea5acf6054":{
-            "internetConnected":false,
-            "active":true,
-            "imsi":"990106913401164",
-            "smsCenter":"",
-            "copsOperator":"TELKOMSEL",
-            "connected":false,
-            "iccid":"89621010691340116477",
-            "defaultModem":true,
-            "internetAccess":false,
-            "port":"COM7",
-            "name":"SIMCOM_SIM800L",
-            "imei":"359848091599999",
-            "id":"d740eb1f5e9799c2b50452ea5acf6054"
-         },
-         "20570ff7f9a4664df11e8c3dfdf4c6c4":{
-            "internetConnected":false,
-            "active":true,
-            "imsi":"880106913401164",
-            "smsCenter":"",
-            "copsOperator":"TELKOMSEL",
-            "connected":false,
-            "iccid":"89621010691340116454",
-            "defaultModem":false,
-            "internetAccess":false,
-            "port":"COM3",
-            "name":"Huawei",
-            "imei":"359848091599994",
-            "id":"20570ff7f9a4664df11e8c3dfdf4c6c4"
-         }
-      }
-   },
-   "command":"get-modem-list"
+    "response_code": "0000",
+    "data": {
+        "modem_list": {
+            "d740eb1f5e9799c2b50452ea5acf6054": {
+                "internetConnected": false,
+                "active": true,
+                "imsi": "990106913401164",
+                "smsCenter": "",
+                "copsOperator": "TELKOMSEL",
+                "connected": false,
+                "iccid": "89621010691340116477",
+                "defaultModem": true,
+                "internetAccess": false,
+                "port": "COM7",
+                "name": "SIMCOM_SIM800L",
+                "imei": "359848091599999",
+                "id": "d740eb1f5e9799c2b50452ea5acf6054"
+            },
+            "20570ff7f9a4664df11e8c3dfdf4c6c4": {
+                "internetConnected": false,
+                "active": true,
+                "imsi": "880106913401164",
+                "smsCenter": "",
+                "copsOperator": "TELKOMSEL",
+                "connected": false,
+                "iccid": "89621010691340116454",
+                "defaultModem": false,
+                "internetAccess": false,
+                "port": "COM3",
+                "name": "Huawei",
+                "imei": "359848091599994",
+                "id": "20570ff7f9a4664df11e8c3dfdf4c6c4"
+            }
+        }
+    },
+    "command": "get-modem-list"
 }
 ```
 
@@ -1293,14 +1293,14 @@ Users can run USSD code via the API either using the REST API or using the messa
 
 ```json
 {
-   "data":{
-      "date_time": 1629685778,
-      "modem_id": "d740eb1f5e9799c2b50452ea5acf6054",
-      "ussd_code": "*888#"
-   },
-   "command": "request-ussd",
-   "callback_topic": "random_topic",
-   "callback_delay": 50
+    "data": {
+        "date_time": 1629685778,
+        "modem_id": "d740eb1f5e9799c2b50452ea5acf6054",
+        "ussd_code": "*888#"
+    },
+    "command": "request-ussd",
+    "callback_topic": "random_topic",
+    "callback_delay": 50
 }
 
 ```
@@ -1309,15 +1309,15 @@ Users can run USSD code via the API either using the REST API or using the messa
 
 ```json
 {
-   "data":{
-      "date_time": 1629685778,
-      "modem_id": "d740eb1f5e9799c2b50452ea5acf6054",
-      "ussd_code": "*888#",
-      "ussd_response": "Sisa pulsa Anda adalah Rp 12345"
-   },
-   "command": "request-ussd",
-   "callback_topic": "random_topic",
-   "callback_delay": 50
+    "data": {
+        "date_time": 1629685778,
+        "modem_id": "d740eb1f5e9799c2b50452ea5acf6054",
+        "ussd_code": "*888#",
+        "ussd_response": "Sisa pulsa Anda adalah Rp 12345"
+    },
+    "command": "request-ussd",
+    "callback_topic": "random_topic",
+    "callback_delay": 50
 }
 
 ```
