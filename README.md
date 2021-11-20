@@ -752,18 +752,18 @@ Content-length: 313
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 {
-	"command": "request-otp",
-	"data": {
-		"date_time": 1629685778,
-		"expiration": 1629685838,
-		"receiver": "08126666666",
-		"message": "Your OTP is %s",
-		"reference": "12345678901234567890",
-		"param1": "100000",
-		"param2": "1234567890",
-		"param3": "987654",
-		"param4": "674527846556468254"
-	}
+    "command": "request-otp",
+    "data": {
+        "date_time": 1629685778,
+        "expiration": 1629685838,
+        "receiver": "08126666666",
+        "message": "Your OTP is %s",
+        "reference": "12345678901234567890",
+        "param1": "100000",
+        "param2": "1234567890",
+        "param3": "987654",
+        "param4": "674527846556468254"
+    }
 }
 ```
 
