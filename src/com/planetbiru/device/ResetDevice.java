@@ -30,6 +30,7 @@ import com.planetbiru.config.ConfigSubscriberAMQP;
 import com.planetbiru.config.ConfigSubscriberActiveMQ;
 import com.planetbiru.config.ConfigSubscriberMQTT;
 import com.planetbiru.config.ConfigSubscriberRedis;
+import com.planetbiru.config.ConfigSubscriberStomp;
 import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.config.ConfigVendorAfraid;
 import com.planetbiru.config.ConfigVendorCloudflare;
@@ -150,6 +151,11 @@ public class ResetDevice {
 		{
 			ConfigSubscriberActiveMQ.reset();
 			ConfigSubscriberActiveMQ.save();
+		}
+		if(props.getOrDefault("RESET_SUBSCRIBER_ACTIVEMQ", "").toString().equalsIgnoreCase("true"))
+		{
+			ConfigSubscriberStomp.reset();
+			ConfigSubscriberStomp.save();
 		}
 		if(props.getOrDefault("RESET_FIREWALL", "").toString().equalsIgnoreCase("true"))
 		{
