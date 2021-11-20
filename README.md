@@ -791,13 +791,13 @@ Content-type: application/json
 Content-length: 199
 
 {
-	"command": "request-otp",
-	"response_code": "0000",
-	"data": {
-      "date_time": 1629685778,
-      "receiver": "08126666666",
-      "reference": "12345678901234567890"
-	}
+    "command": "request-otp",
+    "response_code": "0000",
+    "data": {
+        "date_time": 1629685778,
+        "receiver": "08126666666",
+        "reference": "12345678901234567890"
+    }
 }
 ```
 
