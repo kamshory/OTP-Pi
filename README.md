@@ -8,7 +8,7 @@ OTP or `One Time Password` is a one-time use password that has a certain validit
 
 The most popular OTPs are sent via SMS or Short Message Service. The use of SMS has the following advantages:
 
-1. Can only be received by the device where the SIM card is installed. This of course comply `What you have` role in `multifactor authentication`
+1. Can only be received by the device where the SIM card is installed. This of course comply `What you have` rule in `multifactor authentication`
 2. Easily readable on almost all makes and models of mobile phone devices
 3. Generally the device immediately notifies the presence of an incoming message without requiring user action
 4. On smartphone devices, applications can directly read the message if permitted by the user. Thus, the application can directly verify the OTP without requiring manual action from the user. This will save time and reduce errors
