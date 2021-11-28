@@ -152,7 +152,7 @@ public class ResetDevice {
 			ConfigSubscriberActiveMQ.reset();
 			ConfigSubscriberActiveMQ.save();
 		}
-		if(props.getOrDefault("RESET_SUBSCRIBER_ACTIVEMQ", "").toString().equalsIgnoreCase("true"))
+		if(props.getOrDefault("RESET_SUBSCRIBER_STOMP", "").toString().equalsIgnoreCase("true"))
 		{
 			ConfigSubscriberStomp.reset();
 			ConfigSubscriberStomp.save();
