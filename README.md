@@ -208,7 +208,8 @@ OTP-Pi provides an option if this device is installed on a mobile internet netwo
 2. Mosquitto (MQTT)
 3. Redis
 4. ActiveMQ
-5. WSMessageBroker (WebSocket)
+5. Stomp
+6. WSMessageBroker (WebSocket)
 
 **WSMessageBroker**
 
