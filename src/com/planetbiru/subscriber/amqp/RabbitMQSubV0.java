@@ -27,7 +27,7 @@ import com.rabbitmq.client.Envelope;
 import com.rabbitmq.client.MalformedFrameException;
 import com.rabbitmq.client.ShutdownSignalException;
 
-public class RabbitMQSubV0 extends RabbitMQSubscriber implements AMQPClient {
+public class RabbitMQSubV0 extends RabbitMQSubscriber {
 	private Connection connection;
 	private Channel channel;
 	private ConnectionFactory factory;
@@ -156,26 +156,31 @@ public class RabbitMQSubV0 extends RabbitMQSubscriber implements AMQPClient {
 		this.channel = null;
 	}
 
-	private void evtTimeout(TimeoutException e) {
+	private void evtTimeout(TimeoutException e) // NOSONAR
+	{
 		this.flagDisconnected();
 	}
 
-	private void evtIError(ConnectException e) {
+	private void evtIError(ConnectException e) // NOSONAR
+	{
 		Buzzer.toneDisconnectAmqp();
 		this.flagDisconnected();
 	}
 	
-	private void evtIError(IOException e) {
+	private void evtIError(IOException e) // NOSONAR
+	{
 		Buzzer.toneDisconnectAmqp();
 		this.flagDisconnected();
 	}
 	
-	private void evtTimeout(MalformedFrameException e) {
+	private void evtTimeout(MalformedFrameException e) // NOSONAR
+	{
 		Buzzer.toneDisconnectAmqp();
 		this.flagDisconnected();
 	}
 	
-	private void evtOnClose(String message, ShutdownSignalException e) {
+	private void evtOnClose(String message, ShutdownSignalException e) // NOSONAR
+	{
 		Buzzer.toneDisconnectAmqp();
 		this.flagDisconnected();
 	}

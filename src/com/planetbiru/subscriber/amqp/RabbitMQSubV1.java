@@ -22,7 +22,7 @@ import com.planetbiru.config.ConfigSubscriberAMQP;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 
-public class RabbitMQSubV1 extends RabbitMQSubscriber implements AMQPClient {
+public class RabbitMQSubV1 extends RabbitMQSubscriber {
 
 	@Override
 	public void run()
@@ -47,7 +47,7 @@ public class RabbitMQSubV1 extends RabbitMQSubscriber implements AMQPClient {
         JmsConnectionFactory factory = new JmsConnectionFactory(connectionURI);
         try (Connection connection = factory.createConnection(user, password))
         {
-        	connection.setExceptionListener(new ExceptionListener() {				
+        	connection.setExceptionListener(new ExceptionListener() /*NOSONAR*/{				
 				@Override
 				public void onException(JMSException exception) {
 					setConnected(false);

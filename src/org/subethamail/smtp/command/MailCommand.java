@@ -58,7 +58,7 @@ public class MailCommand extends BaseCommand
 			if (EmailUtils.isValidEmailAddress(emailAddress))
 			{
 				// extract SIZE argument from MAIL FROM command.
-				// disregard unknown parameters. TODO: reject unknown
+				// disregard unknown parameters. To do, reject unknown
 				// parameters.
 				int size = 0;
 				String largs = args.toLowerCase(Locale.ENGLISH);

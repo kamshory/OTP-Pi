@@ -36,7 +36,6 @@ public class CRLFTerminatedReader extends Reader
 {
 	static int MAX_LINE_LENGTH = 998;
 
-	@SuppressWarnings("serial")
 	public class TerminationException extends IOException
 	{
 		private int where;
@@ -59,7 +58,6 @@ public class CRLFTerminatedReader extends Reader
 		}
 	}
 
-	@SuppressWarnings("serial")
 	public class MaxLineLengthException extends IOException
 	{
 		public MaxLineLengthException()
