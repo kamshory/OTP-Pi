@@ -48,21 +48,39 @@ public class FileConfigUtil {
 	
 	public static void write(String fileName, byte[] data) throws IOException
 	{
+		String dirName = FileConfigUtil.getParentName(fileName);
+		dirName = FileConfigUtil.fixFileName(dirName);
+		File file = new File(dirName);
+		if(!file.exists())
+		{
+			file.mkdirs();
+		}
 		try 
 		(
 			OutputStream os = new FileOutputStream(fileName);
 		)
 		{
-	        final PrintStream printStream = new PrintStream(os);
-	        printStream.write(data);
-	        printStream.close();
+		    final PrintStream printStream = new PrintStream(os);
+		    printStream.write(data);
+		    printStream.close();
 		}
-		 catch (IOException ex) 
-		 {
-			 throw new IOException(ex);
-		 }
+		catch (IOException ex) 
+		{
+			throw new IOException(ex);
+		}
 	}
 	
+	public static String getDirSeparator() {
+		if(OSUtil.getOS().equals(OS.WINDOWS))
+		{
+			return "/";
+		}
+		else
+		{
+			return "\\";
+		}
+	}
+
 	public static String removeParentWithDot(String path) {
 		path = path.replace("/../", "/");
 		path = path.replace("\\..\\", "\\");
@@ -115,6 +133,51 @@ public class FileConfigUtil {
 		{
 			d1.mkdir();
 		}
+	}
+	
+	public static String getFolderName(String fullPath)
+	{
+		String folder = "";
+		if(fullPath.contains("\\"))
+		{
+			fullPath = fullPath.replace("\\", "/");
+		}
+		if(fullPath.contains("/"))
+		{			
+			String[] arr = fullPath.split("/");
+			folder = arr[arr.length - 2];
+		}
+		folder = folder.replace("/", "");
+		folder = folder.replace("\\", "");
+		return folder;
+	}
+	
+	public static String getParentName(String fullPath)
+	{
+		if(fullPath.contains("/") || fullPath.contains("\\"))
+		{
+			String baseName = FileConfigUtil.getBaseName(fullPath);
+			return fullPath.substring(0, fullPath.length() - baseName.length() - 1);
+		}
+		else
+		{
+			return FileConfigUtil.getDirSeparator();
+		}
+	}
+	
+	public static String getBaseName(String fullPath)
+	{
+		String name = fullPath;
+		if(fullPath.contains("\\"))
+		{
+			fullPath = fullPath.replace("\\", "/");
+		}
+		if(fullPath.contains("/"))
+		{			
+			String[] arr = fullPath.split("/");
+			name = arr[arr.length - 1];
+		}
+		return name;
 	}
 	
 	public static void deleteDirectoryWalkTree(Path path) throws IOException {
