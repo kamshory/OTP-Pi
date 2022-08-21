@@ -1365,6 +1365,15 @@ h5.modal-title {
 			}
 		}
 	}
+	.smartphone-page{
+		max-width: 400px;
+		height: 700px;
+		box-sizing: border-box;
+		padding: 128px 70px 100px 70px;
+		margin: auto;
+		background: url(../images/smartphone.png) no-repeat;
+		background-size: contain;
+	}
 }
 @media screen and (max-width: 768px) and (min-width: 480px) {
 	.tile-area {

@@ -68,76 +68,79 @@
 			</div>
 			<!--/.container-fluid -->
 		</nav>
-		<div class="phone-page"> </div>
 		<!-- /container -->
-		<div class="select-device">
-			<select name="modem" id="modem" class="input-select"> </select>
+
+		<div class="phone-page smartphone-page"> 
+
+			<div class="select-device">
+				<select name="modem" id="modem" class="input-select"> </select>
+			</div>
+			<div class="dialed-number">
+				<div class="dialed-number-delete">
+					<button>&times;</button>
+				</div>
+				<div class="dialed-number-text"></div>
+			</div>
+			<div class="ussd">
+				<div class="ussd-progress">
+					<h4>USSD <span class="dialed-number-result"></span> is running &hellip;</h4> </div>
+				<div class="ussd-response">
+					<h4>USSD <span class="dialed-number-result"></span> response</h4>
+					<div class="ussd-response-inner"> &nbsp; </div>
+				</div>
+			</div>
+			<div class="three-col">
+				<div class="control-wrapper">
+					<button class="number-button" data-value="1"><span class="number">1</span></button>
+				</div>
+				<div class="control-wrapper">
+					<button class="number-button" data-value="2"><span class="number">2</span></button>
+				</div>
+				<div class="control-wrapper">
+					<button class="number-button" data-value="3"><span class="number">3</span></button>
+				</div>
+			</div>
+			<div class="three-col">
+				<div class="control-wrapper">
+					<button class="number-button" data-value="4"><span class="number">4</span></button>
+				</div>
+				<div class="control-wrapper">
+					<button class="number-button" data-value="5"><span class="number">5</span></button>
+				</div>
+				<div class="control-wrapper">
+					<button class="number-button" data-value="6"><span class="number">6</span></button>
+				</div>
+			</div>
+			<div class="three-col">
+				<div class="control-wrapper">
+					<button class="number-button" data-value="7"><span class="number">7</span></button>
+				</div>
+				<div class="control-wrapper">
+					<button class="number-button" data-value="8"><span class="number">8</span></button>
+				</div>
+				<div class="control-wrapper">
+					<button class="number-button" data-value="9"><span class="number">9</span></button>
+				</div>
+			</div>
+			<div class="three-col">
+				<div class="control-wrapper">
+					<button class="number-button" data-value="*"><span class="number">*</span></button>
+				</div>
+				<div class="control-wrapper">
+					<button class="number-button" data-value="0"><span class="number">0</span></button>
+				</div>
+				<div class="control-wrapper">
+					<button class="number-button" data-value="#"><span class="number">#</span></button>
+				</div>
+			</div>
+			<div class="dial-area">
+				<button class="dial" id="phone"><span class="icon-phone"></span></button>
+			</div>
+			<script src="lib.assets/js/ussd.js"></script>
 		</div>
-		<div class="dialed-number">
-			<div class="dialed-number-delete">
-				<button>&times;</button>
+		<div class="waiting-server-up">
+			<div class="loading-icon"><span class="animation-pressure"><span></span></span>
 			</div>
-			<div class="dialed-number-text"></div>
-		</div>
-		<div class="ussd">
-			<div class="ussd-progress">
-				<h4>USSD <span class="dialed-number-result"></span> is running &hellip;</h4> </div>
-			<div class="ussd-response">
-				<h4>USSD <span class="dialed-number-result"></span> response</h4>
-				<div class="ussd-response-inner"> &nbsp; </div>
-			</div>
-		</div>
-		<div class="three-col">
-			<div class="control-wrapper">
-				<button class="number-button" data-value="1"><span class="number">1</span></button>
-			</div>
-			<div class="control-wrapper">
-				<button class="number-button" data-value="2"><span class="number">2</span></button>
-			</div>
-			<div class="control-wrapper">
-				<button class="number-button" data-value="3"><span class="number">3</span></button>
-			</div>
-		</div>
-		<div class="three-col">
-			<div class="control-wrapper">
-				<button class="number-button" data-value="4"><span class="number">4</span></button>
-			</div>
-			<div class="control-wrapper">
-				<button class="number-button" data-value="5"><span class="number">5</span></button>
-			</div>
-			<div class="control-wrapper">
-				<button class="number-button" data-value="6"><span class="number">6</span></button>
-			</div>
-		</div>
-		<div class="three-col">
-			<div class="control-wrapper">
-				<button class="number-button" data-value="7"><span class="number">7</span></button>
-			</div>
-			<div class="control-wrapper">
-				<button class="number-button" data-value="8"><span class="number">8</span></button>
-			</div>
-			<div class="control-wrapper">
-				<button class="number-button" data-value="9"><span class="number">9</span></button>
-			</div>
-		</div>
-		<div class="three-col">
-			<div class="control-wrapper">
-				<button class="number-button" data-value="*"><span class="number">*</span></button>
-			</div>
-			<div class="control-wrapper">
-				<button class="number-button" data-value="0"><span class="number">0</span></button>
-			</div>
-			<div class="control-wrapper">
-				<button class="number-button" data-value="#"><span class="number">#</span></button>
-			</div>
-		</div>
-		<div class="dial-area">
-			<button class="dial" id="phone"><span class="icon-phone"></span></button>
-		</div>
-		<script src="lib.assets/js/ussd.js"></script>
-	</div>
-	<div class="waiting-server-up">
-		<div class="loading-icon"><span class="animation-pressure"><span></span></span>
 		</div>
 	</div>
 </body>
