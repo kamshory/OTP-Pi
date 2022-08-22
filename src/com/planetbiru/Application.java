@@ -192,7 +192,7 @@ public class Application {
 			Application.otpStart();			
 			Application.modemSMSStart();
 			Application.modemInternetStart();
-			Application.modemInspectorStart(5000);
+			Application.modemInspectorStart(Config.getInspectModemInterval());
 
 			/**
 			 * WebSocket Server for Admin

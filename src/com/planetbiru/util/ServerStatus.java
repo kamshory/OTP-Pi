@@ -136,6 +136,7 @@ public class ServerStatus {
 		}
 		ja.put(data);
 		ServerStatus.status = ja;
+		System.out.println(ja.toString(3));
 	}
 	
 	public static JSONArray getStatus() {
