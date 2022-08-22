@@ -48,6 +48,7 @@ public class ServerInfo {
 	public static final String ADAPTER              = "adapter";
 	public static final String PORT                 = "port";
 	public static final String USAGE                = "usage";
+	public static final String DATETIME             = "datetime";
 
 	private static String cacheServerInfo = "";
 	private static long cacheServerInfoExpire = 0;
@@ -235,8 +236,10 @@ public class ServerInfo {
 		JSONObject ram = new JSONObject();
 
         com.sun.management.OperatingSystemMXBean os = (com.sun.management.OperatingSystemMXBean) java.lang.management.ManagementFactory.getOperatingSystemMXBean(); //NOSONAR
-        long total = os.getTotalMemorySize();
-        long free = os.getFreeMemorySize();
+        @SuppressWarnings("deprecation")
+		long total = os.getTotalPhysicalMemorySize(); //NOSONAR
+        @SuppressWarnings("deprecation")
+		long free = os.getFreePhysicalMemorySize(); //NOSONAR
 
 		long used = total - free;
 		float percentUsed  = 100 * ((float)used/(float)total);

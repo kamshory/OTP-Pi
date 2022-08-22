@@ -13,7 +13,7 @@ package com.planetbiru.util;
 import java.util.List;
 import java.util.Map;
 
-import com.sun.net.httpserver.Headers;
+import com.sun.net.httpserver.Headers; //NOSONAR
 
 public class ResponseEntityCustom {
 	private int statusCode = 0;

@@ -19,7 +19,7 @@ import com.planetbiru.config.Config;
 import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.FileNotFoundException;
 import com.planetbiru.util.Utility;
-import com.sun.net.httpserver.Headers;
+import com.sun.net.httpserver.Headers; //NOSONAR
 
 public class CookieServer {
 	

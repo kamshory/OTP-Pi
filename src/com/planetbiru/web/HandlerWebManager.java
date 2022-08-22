@@ -63,7 +63,7 @@ import com.planetbiru.util.FileUtil;
 import com.planetbiru.util.Utility;
 import com.planetbiru.util.WebManagerContent;
 import com.planetbiru.util.WebManagerTool;
-import com.sun.net.httpserver.Headers;
+import com.sun.net.httpserver.Headers; //NOSONAR
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 

@@ -15,7 +15,7 @@ import com.planetbiru.web.HandlerWebManagerPing;
 import com.planetbiru.web.HandlerWebManagerTool;
 import com.planetbiru.web.HandlerWebManagerUserAdd;
 import com.planetbiru.web.HandlerWebManagerUserInit;
-import com.sun.net.httpserver.HttpServer;
+import com.sun.net.httpserver.HttpServer; //NOSONAR
 
 public class ServerWebAdmin {
 	

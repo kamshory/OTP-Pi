@@ -1,6 +1,6 @@
 package com.planetbiru.web;
 
-import com.sun.net.httpserver.Headers;
+import com.sun.net.httpserver.Headers; //NOSONAR
 
 public class WebResponse {
 

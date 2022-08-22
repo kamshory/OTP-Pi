@@ -1,6 +1,5 @@
 package com.planetbiru.config;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -112,7 +111,7 @@ public class ConfigBlocking {
 		}
 		String fileName = FileConfigUtil.fixFileName(dir + path);
 		fileName = FileConfigUtil.fixFileName(fileName);
-		prepareDir(fileName);	
+		FileConfigUtil.prepareDir(fileName);	
 		try 
 		{
 			FileConfigUtil.write(fileName, config.toString().getBytes());
@@ -121,27 +120,6 @@ public class ConfigBlocking {
 		{
 			logger.error(e.getMessage(), e);
 		}
-	}
-	
-	private static void prepareDir(String fileName) {
-		File file = new File(fileName);
-		String directory1 = file.getParent();
-		File file2 = new File(directory1);
-		String directory2 = file2.getParent();
-		
-		File d1 = new File(directory1);
-		File d2 = new File(directory2);		
-
-		if(!d2.exists())
-		{
-			d2.mkdir();
-		}
-		if(!d1.exists())
-		{
-			d1.mkdir();
-		}
-		File file3 = new File(fileName);
-		file3.getParentFile().mkdirs();
 	}
 	
 	public static JSONObject getJSONObject() {

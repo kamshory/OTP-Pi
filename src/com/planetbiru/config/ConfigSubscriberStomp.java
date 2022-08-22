@@ -1,6 +1,5 @@
 package com.planetbiru.config;
 
-import java.io.File;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
@@ -68,7 +67,7 @@ public class ConfigSubscriberStomp {
 			dir = dir.substring(0, dir.length() - 1);
 		}
 		String fileName = FileConfigUtil.fixFileName(dir + path);
-		ConfigSubscriberStomp.prepareDir(fileName);	
+		FileConfigUtil.prepareDir(fileName);	
 		try 
 		{
 			FileUtil.write(fileName, ConfigSubscriberStomp.toJSONObject().toString().getBytes());
@@ -91,7 +90,7 @@ public class ConfigSubscriberStomp {
 			dir = dir.substring(0, dir.length() - 1);
 		}
 		String fileName = FileConfigUtil.fixFileName(dir + path);
-		ConfigSubscriberStomp.prepareDir(fileName);
+		FileConfigUtil.prepareDir(fileName);
 		byte[] data = null;
 		try 
 		{
@@ -134,24 +133,7 @@ public class ConfigSubscriberStomp {
 			}
 		}
 	}
-	private static void prepareDir(String fileName) {
-		File file = new File(fileName);
-		String directory1 = file.getParent();
-		File file2 = new File(directory1);
-		String directory2 = file2.getParent();
-		
-		File d1 = new File(directory1);
-		File d2 = new File(directory2);		
 
-		if(!d2.exists())
-		{
-			d2.mkdir();
-		}
-		if(!d1.exists())
-		{
-			d1.mkdir();
-		}		
-	}
 	public static boolean isSubscriberStompEnable() {
 		return subscriberStompEnable;
 	}

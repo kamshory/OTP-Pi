@@ -18,7 +18,7 @@ import com.planetbiru.constant.ResponseCode;
 import com.planetbiru.util.Utility;
 import com.planetbiru.web.HttpMethod;
 import com.planetbiru.web.HttpUtil;
-import com.sun.net.httpserver.Headers;
+import com.sun.net.httpserver.Headers; //NOSONAR
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 

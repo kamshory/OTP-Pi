@@ -79,7 +79,7 @@ public class ConfigLoader {
 			ConfigLoader.properties.load(inputStream);			
 			ConfigLoader.overwriteConfig();
 		} 
-		catch (IOException e) 
+		catch (IOException e)
 		{
 			throw new FileNotFoundException(e.getMessage());
 		}
@@ -194,6 +194,10 @@ public class ConfigLoader {
 		int otpGCInterval = ConfigLoader.getConfigInt("otppi.otp.gc.ingterval");
 
 		long inspectModemInterval = ConfigLoader.getConfigLong("otppi.modem.inspect.interval");
+		
+		
+		int maxServerStatusRecord = ConfigLoader.getConfigInt("otppi.server.status.max.record");
+		Config.setMaxServerStatusRecord(maxServerStatusRecord);
 		
 		String hwClock = ConfigLoader.getConfig("otppi.hwclock");
 		Config.setHwClock(hwClock);
@@ -352,7 +356,20 @@ public class ConfigLoader {
 		ConfigGeneral.load(Config.getGeneralSettingPath());
 		ConfigAPI.load(Config.getApiSettingPath());
 		WebUserAccount.load(Config.getUserSettingPath());			
-		PropertyLoader.load(Config.getMimeSettingPath());		
+		PropertyLoader.load(Config.getMimeSettingPath());
+		
+		
+		
+		Config.setDefaultHttpPort(ConfigLoader.getConfigInt("otppi.default.http.port"));
+		Config.setDefaultHttpsPort(ConfigLoader.getConfigInt("otppi.default.https.port"));
+		Config.setDefaultHttpEnable(ConfigLoader.getConfigBoolean("otppi.default.http.enable"));
+		Config.setDefaultHttpsEnable(ConfigLoader.getConfigBoolean("otppi.default.https.enable"));	
+		Config.setDefaultOtpPath(ConfigLoader.getConfig("otppi.default.api.path.otp")); 
+		Config.setDefaultMessagePath(ConfigLoader.getConfig("otppi.default.api.path.message")); 
+		Config.setDefaultSmsPath(ConfigLoader.getConfig("otppi.default.api.path.sms")); 
+		Config.setDefaultEmailPath(ConfigLoader.getConfig("otppi.default.api.path.email")); 
+		Config.setDefaultBlockingPath(ConfigLoader.getConfig("otppi.default.api.path.blocking")); 
+		Config.setDefaultUnblockingPath(ConfigLoader.getConfig("otppi.default.api.path.unblocking"));
 		
 		ConfigLoader.printUsed();
     	

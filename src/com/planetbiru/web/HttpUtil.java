@@ -10,7 +10,7 @@ import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.config.PropertyLoader;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.util.Utility;
-import com.sun.net.httpserver.Headers;
+import com.sun.net.httpserver.Headers; //NOSONAR
 import com.sun.net.httpserver.HttpExchange;
 
 public class HttpUtil {

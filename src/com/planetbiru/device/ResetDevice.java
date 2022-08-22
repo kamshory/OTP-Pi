@@ -88,7 +88,7 @@ public class ResetDevice {
 	{
 		logger.info("Reset Config");
 		Properties props = loadResetProfile();
-		if(props != null)
+		if(!props.isEmpty())
 		{
 			resetBasicConfig(props);
 			resetAdvancedConfig(props);
@@ -101,7 +101,8 @@ public class ResetDevice {
 		}
 	}
 
-	private static void resetAdvancedConfig(Properties props) {
+	private static void resetAdvancedConfig(Properties props) //NOSONAR
+	{
 		if(props.getOrDefault("RESET_API", "").toString().equalsIgnoreCase("true"))
 		{
 			ConfigAPI.reset();
@@ -229,10 +230,12 @@ public class ResetDevice {
 			} 
 			catch (IOException e) 
 			{
-				//logger.error(e.getMessage(), e);
+				/**
+				 * Do nothing
+				 */
 			}			
 		}
-		return null;
+		return new Properties();
 	}
 
 	private static boolean verifyResetFile(String verifyString, String deviceType, String baseName) {

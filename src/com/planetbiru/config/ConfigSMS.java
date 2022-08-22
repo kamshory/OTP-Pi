@@ -1,6 +1,5 @@
 package com.planetbiru.config;
 
-import java.io.File;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
@@ -58,7 +57,7 @@ public class ConfigSMS {
 			dir = dir.substring(0, dir.length() - 1);
 		}
 		String fileName = FileConfigUtil.fixFileName(dir + path);
-		ConfigSMS.prepareDir(fileName);	
+		FileConfigUtil.prepareDir(fileName);	
 		try 
 		{
 			FileConfigUtil.write(fileName, config.toString().getBytes());
@@ -81,7 +80,7 @@ public class ConfigSMS {
 			dir = dir.substring(0, dir.length() - 1);
 		}
 		String fileName = FileConfigUtil.fixFileName(dir + path);
-		ConfigSMS.prepareDir(fileName);	
+		FileConfigUtil.prepareDir(fileName);	
 		try 
 		{
 			FileConfigUtil.write(fileName, ConfigSMS.toJSONObject().toString().getBytes());
@@ -101,7 +100,7 @@ public class ConfigSMS {
 			dir = dir.substring(0, dir.length() - 1);
 		}
 		String fileName = FileConfigUtil.fixFileName(dir + path);
-		ConfigSMS.prepareDir(fileName);
+		FileConfigUtil.prepareDir(fileName);
 		byte[] data = null;
 		try 
 		{
@@ -142,25 +141,6 @@ public class ConfigSMS {
 				 */
 			}
 		}
-	}
-	
-	private static void prepareDir(String fileName) {
-		File file = new File(fileName);
-		String directory1 = file.getParent();
-		File file2 = new File(directory1);
-		String directory2 = file2.getParent();
-		
-		File d1 = new File(directory1);
-		File d2 = new File(directory2);	
-		
-		if(!d2.exists())
-		{
-			d2.mkdir();
-		}
-		if(!d1.exists())
-		{
-			d1.mkdir();
-		}		
 	}
 	
 	public static String getConnectionType() {

@@ -1,6 +1,5 @@
 package com.planetbiru.config;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -87,7 +86,7 @@ public class ConfigModem {
 			dir = dir.substring(0, dir.length() - 1);
 		}
 		String fileName = FileConfigUtil.fixFileName(dir + path);
-		ConfigModem.prepareDir(fileName);
+		FileConfigUtil.prepareDir(fileName);
 		try 
 		{
 			byte[] data = FileConfigUtil.read(fileName);
@@ -111,26 +110,6 @@ public class ConfigModem {
 			 * Do nothing
 			 */
 		}
-	}
-	
-	private static void prepareDir(String fileName) 
-	{
-		File file = new File(fileName);
-		String directory1 = file.getParent();
-		File file2 = new File(directory1);
-		String directory2 = file2.getParent();
-		
-		File d1 = new File(directory1);
-		File d2 = new File(directory2);		
-
-		if(!d2.exists())
-		{
-			d2.mkdir();
-		}
-		if(!d1.exists())
-		{
-			d1.mkdir();
-		}		
 	}
 	
 	public static void addDataModem(DataModem modem)
@@ -173,7 +152,7 @@ public class ConfigModem {
 			dir = dir.substring(0, dir.length() - 1);
 		}
 		String fileName = FileConfigUtil.fixFileName(dir + path);
-		ConfigModem.prepareDir(fileName);		
+		FileConfigUtil.prepareDir(fileName);		
 		try 
 		{
 			FileConfigUtil.write(fileName, config.toString().getBytes());

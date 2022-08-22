@@ -32,7 +32,7 @@ import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigBlocking;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.gsm.GSMException;
-import com.sun.net.httpserver.Headers;
+import com.sun.net.httpserver.Headers; //NOSONAR
 
 public class Utility {
 

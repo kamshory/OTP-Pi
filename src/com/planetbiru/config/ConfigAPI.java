@@ -1,6 +1,5 @@
 package com.planetbiru.config;
 
-import java.io.File;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
@@ -99,7 +98,7 @@ public class ConfigAPI {
 			dir = dir.substring(0, dir.length() - 1);
 		}
 		String fileName = FileConfigUtil.fixFileName(dir + path);
-		ConfigAPI.prepareDir(fileName);
+		FileConfigUtil.prepareDir(fileName);
 		
 		try 
 		{
@@ -109,25 +108,6 @@ public class ConfigAPI {
 		{
 			logger.error(e.getMessage(), e);
 		}
-	}
-	
-	private static void prepareDir(String fileName) {
-		File file = new File(fileName);
-		String directory1 = file.getParent();
-		File file2 = new File(directory1);
-		String directory2 = file2.getParent();
-		
-		File d1 = new File(directory1);
-		File d2 = new File(directory2);		
-
-		if(!d2.exists())
-		{
-			d2.mkdir();
-		}
-		if(!d1.exists())
-		{
-			d1.mkdir();
-		}		
 	}
 	
 	public static JSONObject getJSONObject() {
@@ -238,16 +218,17 @@ public class ConfigAPI {
 	}
 
 	public static void reset() {
-		ConfigAPI.httpPort = 80;
-		ConfigAPI.httpsPort = 443;
-		ConfigAPI.httpEnable = false;
-		ConfigAPI.httpsEnable = false;					
-		ConfigAPI.otpPath = "/api/otp";
-		ConfigAPI.messagePath = "/api/message";
-		ConfigAPI.smsPath = "/api/sms";
-		ConfigAPI.emailPath = "/api/email";
-		ConfigAPI.blockingPath = "/api/blocking";
-		ConfigAPI.unblockingPath = "/api/unblocking";
+		
+		ConfigAPI.httpPort = Config.getDefaultHttpPort();
+		ConfigAPI.httpsPort = Config.getDefaultHttpsPort();
+		ConfigAPI.httpEnable = Config.isDefaultHttpEnable();
+		ConfigAPI.httpsEnable = Config.isDefaultHttpsEnable();					
+		ConfigAPI.otpPath = Config.getDefaultOtpPath();
+		ConfigAPI.messagePath = Config.getDefaultMessagePath();
+		ConfigAPI.smsPath = Config.getDefaultSmsPath();
+		ConfigAPI.emailPath = Config.getDefaultEmailPath();
+		ConfigAPI.blockingPath = Config.getDefaultBlockingPath();
+		ConfigAPI.unblockingPath = Config.getDefaultUnblockingPath();
 		
 	}
 

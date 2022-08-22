@@ -7,10 +7,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.planetbiru.config.Config;
+
 
 public class ServerStatus {
 	private static JSONArray status = new JSONArray();
-	private static int maxRecord = 1000;
 	private static String configPath = "";	
 	private static Logger logger = Logger.getLogger(ServerStatus.class);
 	private static boolean firstData = true;
@@ -96,7 +97,7 @@ public class ServerStatus {
 			JSONObject jo = buff.getJSONObject(i);
 			if(jo != null)
 			{
-				long datetime = jo.optLong("datetime", 0);
+				long datetime = jo.optLong(ServerInfo.DATETIME, 0);
 				if(datetime >= from && datetime <= to)
 				{
 					json.put(jo);
@@ -121,6 +122,7 @@ public class ServerStatus {
 		JSONArray ja = new JSONArray();
 		int lastLength = ServerStatus.getStatus().length();
 		int start = 0;
+		int maxRecord = Config.getMaxServerStatusRecord();
 		if(lastLength >= maxRecord)
 		{
 			start = lastLength - maxRecord + 1;

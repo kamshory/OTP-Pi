@@ -55,7 +55,7 @@ import com.planetbiru.util.FileUtil;
 import com.planetbiru.util.ServerInfo;
 import com.planetbiru.util.ServerStatus;
 import com.planetbiru.util.Utility;
-import com.sun.net.httpserver.Headers;
+import com.sun.net.httpserver.Headers; //NOSONAR
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 

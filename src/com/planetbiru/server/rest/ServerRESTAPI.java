@@ -20,7 +20,7 @@ import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigKeystore;
 import com.planetbiru.config.DataKeystore;
 import com.planetbiru.util.ServiceHTTP;
-import com.sun.net.httpserver.HttpServer;
+import com.sun.net.httpserver.HttpServer; //NOSONAR
 import com.sun.net.httpserver.HttpsConfigurator;
 import com.sun.net.httpserver.HttpsServer;
 

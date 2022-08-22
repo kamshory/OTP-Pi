@@ -138,11 +138,11 @@ public class OTP {
 		if(OTP.isExists(otpID))
 		{
 			JSONObject otp = OTP.data.optJSONObject(otpID);
-			if(otp.optLong(JsonKey.EXPIRATION, 0) < System.currentTimeMillis())
+			if(otp == null || otp.optLong(JsonKey.EXPIRATION, 0) < System.currentTimeMillis())
 			{
 				throw new OTPExpireException("OTP has been expire");
 			}
-			if(otp != null && otp.optString(JsonKey.HASH, "").equals(hash))
+			if(otp.optString(JsonKey.HASH, "").equals(hash))
 			{
 				OTP.data.remove(otpID);
 				OTP.save();

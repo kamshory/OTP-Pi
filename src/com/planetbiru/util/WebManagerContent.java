@@ -1,7 +1,7 @@
 package com.planetbiru.util;
 
 import com.planetbiru.cookie.CookieServer;
-import com.sun.net.httpserver.Headers;
+import com.sun.net.httpserver.Headers; //NOSONAR
 
 public class WebManagerContent {
 

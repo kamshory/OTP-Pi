@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 
 import com.planetbiru.constant.ConstantString;
-import com.sun.net.httpserver.Headers;
+import com.sun.net.httpserver.Headers; //NOSONAR
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 

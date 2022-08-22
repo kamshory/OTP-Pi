@@ -1,6 +1,6 @@
 package com.planetbiru.util;
 
-import com.sun.net.httpserver.HttpServer;
+import com.sun.net.httpserver.HttpServer; //NOSONAR
 import com.sun.net.httpserver.HttpsServer;
 
 public class ServiceHTTP {

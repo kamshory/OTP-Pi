@@ -113,6 +113,17 @@ public class Config {
 	private static String otpCacheFile = "";
 	private static long inspectModemInterval = 5000;
 	private static String hwClock = "hwclock";
+	private static int maxServerStatusRecord = 1000;
+	private static int defaultHttpPort;
+	private static int defaultHttpsPort;
+	private static boolean defaultHttpEnable;
+	private static boolean defaultHttpsEnable;
+	private static String defaultOtpPath;
+	private static String defaultMessagePath;
+	private static String defaultSmsPath;
+	private static String defaultEmailPath;
+	private static String defaultBlockingPath;
+	private static String defaultUnblockingPath;
 	
 	private Config()
 	{
@@ -1015,6 +1026,94 @@ public class Config {
 
 	public static void setHwClock(String hwClock) {
 		Config.hwClock = hwClock;
+	}
+
+	public static int getMaxServerStatusRecord() {
+		return maxServerStatusRecord;
+	}
+
+	public static void setMaxServerStatusRecord(int maxServerStatusRecord) {
+		Config.maxServerStatusRecord = maxServerStatusRecord;
+	}
+
+	public static int getDefaultHttpPort() {
+		return defaultHttpPort;
+	}
+
+	public static void setDefaultHttpPort(int defaultHttpPort) {
+		Config.defaultHttpPort = defaultHttpPort;
+	}
+
+	public static int getDefaultHttpsPort() {
+		return defaultHttpsPort;
+	}
+
+	public static void setDefaultHttpsPort(int defaultHttpsPort) {
+		Config.defaultHttpsPort = defaultHttpsPort;
+	}
+
+	public static boolean isDefaultHttpEnable() {
+		return defaultHttpEnable;
+	}
+
+	public static void setDefaultHttpEnable(boolean defaultHttpEnable) {
+		Config.defaultHttpEnable = defaultHttpEnable;
+	}
+
+	public static boolean isDefaultHttpsEnable() {
+		return defaultHttpsEnable;
+	}
+
+	public static void setDefaultHttpsEnable(boolean defaultHttpsEnable) {
+		Config.defaultHttpsEnable = defaultHttpsEnable;
+	}
+
+	public static String getDefaultOtpPath() {
+		return defaultOtpPath;
+	}
+
+	public static void setDefaultOtpPath(String defaultOtpPath) {
+		Config.defaultOtpPath = defaultOtpPath;
+	}
+
+	public static String getDefaultMessagePath() {
+		return defaultMessagePath;
+	}
+
+	public static void setDefaultMessagePath(String defaultMessagePath) {
+		Config.defaultMessagePath = defaultMessagePath;
+	}
+
+	public static String getDefaultSmsPath() {
+		return defaultSmsPath;
+	}
+
+	public static void setDefaultSmsPath(String defaultSmsPath) {
+		Config.defaultSmsPath = defaultSmsPath;
+	}
+
+	public static String getDefaultEmailPath() {
+		return defaultEmailPath;
+	}
+
+	public static void setDefaultEmailPath(String defaultEmailPath) {
+		Config.defaultEmailPath = defaultEmailPath;
+	}
+
+	public static String getDefaultBlockingPath() {
+		return defaultBlockingPath;
+	}
+
+	public static void setDefaultBlockingPath(String defaultBlockingPath) {
+		Config.defaultBlockingPath = defaultBlockingPath;
+	}
+
+	public static String getDefaultUnblockingPath() {
+		return defaultUnblockingPath;
+	}
+
+	public static void setDefaultUnblockingPath(String defaultUnblockingPath) {
+		Config.defaultUnblockingPath = defaultUnblockingPath;
 	}
 
 	

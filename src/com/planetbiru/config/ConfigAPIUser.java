@@ -1,6 +1,5 @@
 package com.planetbiru.config;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -73,7 +72,7 @@ public class ConfigAPIUser {
 			dir = dir.substring(0, dir.length() - 1);
 		}
 		String fileName = FileConfigUtil.fixFileName(dir + path);
-		ConfigAPIUser.prepareDir(fileName);
+		FileConfigUtil.prepareDir(fileName);
 		try 
 		{
 			byte[] data = FileConfigUtil.read(fileName);
@@ -124,30 +123,9 @@ public class ConfigAPIUser {
 		}
 	}
 	
-	private static void prepareDir(String fileName) 
-	{
-		File file = new File(fileName);
-		String directory1 = file.getParent();
-		File file2 = new File(directory1);
-		String directory2 = file2.getParent();
-		
-		File d1 = new File(directory1);
-		File d2 = new File(directory2);		
-
-		if(!d2.exists())
-		{
-			d2.mkdir();
-		}
-		if(!d1.exists())
-		{
-			d1.mkdir();
-		}		
-	}
-	
 	public static void updateUser(User user) {
 		String username = user.getUsername();
-		ConfigAPIUser.users.put(username, user);
-		
+		ConfigAPIUser.users.put(username, user);	
 	}	
 	
 	public static void update(String text) {
@@ -213,9 +191,9 @@ public class ConfigAPIUser {
 		return ConfigAPIUser.toJSONObject().toString();
 	}
 
-	public static void reset() {
-		ConfigAPIUser.users = new HashMap<>();
-		
+	public static void reset() 
+	{
+		ConfigAPIUser.users = new HashMap<>();	
 	}
 
 	public static void delete(Map<String, String> queryPairs) {
@@ -223,8 +201,7 @@ public class ConfigAPIUser {
 		{
 			String value = entry.getValue();
 			ConfigAPIUser.deleteUser(value);
-		}
-		
+		}		
 	}
 
 	public static void deactivate(Map<String, String> queryPairs) {
@@ -236,8 +213,7 @@ public class ConfigAPIUser {
 			{
 				ConfigAPIUser.deactivate(value);
 			}
-		}
-		
+		}	
 	}
 
 	public static void activate(Map<String, String> queryPairs) {
@@ -261,8 +237,7 @@ public class ConfigAPIUser {
 			{
 				ConfigAPIUser.block(value);
 			}
-		}
-		
+		}	
 	}
 
 	public static void unblock(Map<String, String> queryPairs) {
@@ -274,8 +249,7 @@ public class ConfigAPIUser {
 			{
 				ConfigAPIUser.unblock(value);
 			}
-		}
-		
+		}		
 	}
 
 	public static void update(Map<String, String> queryPairs) {

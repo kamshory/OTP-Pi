@@ -17,7 +17,7 @@ import org.json.JSONObject;
 
 import com.planetbiru.util.ResponseEntityCustom;
 import com.planetbiru.util.Utility;
-import com.sun.net.httpserver.Headers;
+import com.sun.net.httpserver.Headers; //NOSONAR
 
 import sun.net.www.protocol.http.HttpURLConnection;
 

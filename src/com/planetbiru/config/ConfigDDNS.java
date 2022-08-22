@@ -1,6 +1,5 @@
 package com.planetbiru.config;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
@@ -37,7 +36,7 @@ public class ConfigDDNS {
 			dir = dir.substring(0, dir.length() - 1);
 		}
 		String fileName = FileConfigUtil.fixFileName(dir + path);
-		prepareDir(fileName);	
+		FileConfigUtil.prepareDir(fileName);	
 		try 
 		{
 			byte[] data = FileConfigUtil.read(fileName);		
@@ -126,7 +125,7 @@ public class ConfigDDNS {
 			dir = dir.substring(0, dir.length() - 1);
 		}
 		String fileName = FileConfigUtil.fixFileName(dir + path);
-		prepareDir(fileName);
+		FileConfigUtil.prepareDir(fileName);
 		
 		try 
 		{
@@ -136,25 +135,6 @@ public class ConfigDDNS {
 		{
 			logger.error(e.getMessage(), e);
 		}
-	}
-	
-	private static void prepareDir(String fileName) {
-		File file = new File(fileName);
-		String directory1 = file.getParent();
-		File file2 = new File(directory1);
-		String directory2 = file2.getParent();
-		
-		File d1 = new File(directory1);
-		File d2 = new File(directory2);		
-
-		if(!d2.exists())
-		{
-			d2.mkdir();
-		}
-		if(!d1.exists())
-		{
-			d1.mkdir();
-		}		
 	}
 	
 	public static JSONObject getJSONObject(String zone, String recordname) {

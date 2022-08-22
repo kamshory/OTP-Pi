@@ -5,7 +5,7 @@ import java.io.IOException;
 import com.planetbiru.config.Config;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.cookie.CookieServer;
-import com.sun.net.httpserver.Headers;
+import com.sun.net.httpserver.Headers; //NOSONAR
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
