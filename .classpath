@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="jar/jsr305-1.3.9.jar"/>
-	<classpathentry kind="lib" path="jar/cron-utils-9.1.5.jar" sourcepath="jar/src/cron-utils-9.1.5-sources.jar"/>
-	<classpathentry kind="lib" path="jar/jSerialComm-2.7.0.jar" sourcepath="jar/src/jSerialComm-2.7.0-sources.jar"/>
-	<classpathentry kind="lib" path="jar/jcabi-ssh-1.6.1.jar" sourcepath="jar/src/jcabi-ssh-1.6.1-sources.jar"/>
-	<classpathentry kind="lib" path="jar/Java-WebSocket-1.5.1.jar" sourcepath="jar/src/Java-WebSocket-1.5.1-sources.jar"/>
-	<classpathentry kind="lib" path="jar/log4j-1.2.17.jar" sourcepath="jar/src/log4j-1.2.17-sources.jar"/>
-	<classpathentry kind="lib" path="jar/org.eclipse.paho.client.mqttv3-1.1.0.jar" sourcepath="jar/src/org.eclipse.paho.client.mqttv3-1.1.0-sources.jar"/>
-	<classpathentry kind="lib" path="jar/jsch-0.1.55.jar" sourcepath="jar/src/jsch-0.1.55-sources.jar"/>
-	<classpathentry kind="lib" path="jar/guava-20.0.jar" sourcepath="jar/src/guava-20.0-sources.jar"/>
-	<classpathentry kind="lib" path="jar/json-20200518.jar" sourcepath="jar/src/json-20200518-sources.jar"/>
-	<classpathentry kind="lib" path="jar/amqp-client-5.10.0.jar" sourcepath="jar/src/amqp-client-5.10.0-sources.jar"/>
-	<classpathentry kind="lib" path="jar/slf4j-simple-1.7.30.jar" sourcepath="jar/src/slf4j-simple-1.7.30-sources.jar"/>
-	<classpathentry kind="lib" path="jar/slf4j-api-1.7.30.jar" sourcepath="jar/src/slf4j-api-1.7.30-sources.jar"/>
-	<classpathentry kind="lib" path="jar/http-20070405.jar" sourcepath="jar/src/http-20070405-sources.jar"/>
-	<classpathentry kind="lib" path="jar/log4j-api-2.13.3.jar" sourcepath="jar/src/log4j-api-2.13.3-sources.jar"/>
-	<classpathentry kind="lib" path="jar/log4j-core-2.13.3.jar" sourcepath="jar/src/log4j-core-2.13.3-sources.jar"/>
-	<classpathentry kind="lib" path="jar/javax.mail-1.4.5.jar" sourcepath="jar/src/javax.mail-1.4.5-sources.jar"/>
-	<classpathentry kind="lib" path="jar/org.apache.commons.codec-1.8.jar" sourcepath="jar/src/org.apache.commons.codec-1.8-sources.jar"/>
-	<classpathentry kind="lib" path="jar/commons-net-3.6.jar" sourcepath="jar/src/commons-net-3.6-sources.jar"/>
-	<classpathentry kind="lib" path="jar/commons-codec-1.15.jar" sourcepath="jar/src/commons-codec-1.15-sources.jar"/>
-	<classpathentry kind="lib" path="jar/cactoos-0.16.jar" sourcepath="jar/src/cactoos-0.16-sources.jar"/>
-	<classpathentry kind="lib" path="jar/javax.activation-1.2.0.jar" sourcepath="jar/src/javax.activation-1.2.0-sources.jar"/>
-	<classpathentry kind="lib" path="jar/org.openjdk.dio-1.1.0.jar" sourcepath="jar/src/org.openjdk.dio-1.1.0-sources.jar"/>
-	<classpathentry kind="lib" path="jar/jedis-2.9.0.jar" sourcepath="jar/src/jedis-2.9.0-sources.jar"/>
-	<classpathentry kind="lib" path="jar/activemq-client-5.16.3.jar" sourcepath="jar/src/activemq-client-5.16.3-sources.jar"/>
-	<classpathentry kind="lib" path="jar/javax.jms-api-2.0.1.jar" sourcepath="jar/src/javax.jms-api-2.0.1-sources.jar"/>
-	<classpathentry kind="lib" path="jar/management-api-1.1-rev-1.jar" sourcepath="jar/src/management-api-1.1-rev-1-sources.jar"/>
-	<classpathentry kind="lib" path="jar/hawtbuf-1.11.jar" sourcepath="jar/src/hawtbuf-1.11-sources.jar"/>
-	<classpathentry kind="lib" path="jar/qpid-jms-client-0.40.0.jar" sourcepath="jar/src/qpid-jms-client-0.40.0-sources.jar"/>
-	<classpathentry kind="lib" path="jar/netty-buffer-4.1.32.Final.jar" sourcepath="jar/src/netty-buffer-4.1.32.Final-sources.jar"/>
-	<classpathentry kind="lib" path="jar/netty-codec-4.1.32.Final.jar" sourcepath="jar/src/netty-codec-4.1.32.Final-sources.jar"/>
-	<classpathentry kind="lib" path="jar/netty-codec-http-4.1.32.Final.jar" sourcepath="jar/src/netty-codec-http-4.1.32.Final-sources.jar"/>
-	<classpathentry kind="lib" path="jar/netty-common-4.1.32.Final.jar" sourcepath="jar/src/netty-common-4.1.32.Final-sources.jar"/>
-	<classpathentry kind="lib" path="jar/netty-handler-4.1.32.Final.jar" sourcepath="jar/src/netty-handler-4.1.32.Final-sources.jar"/>
-	<classpathentry kind="lib" path="jar/netty-resolver-4.1.32.Final.jar" sourcepath="jar/src/netty-resolver-4.1.32.Final-sources.jar"/>
-	<classpathentry kind="lib" path="jar/netty-transport-4.1.32.Final.jar" sourcepath="jar/src/netty-transport-4.1.32.Final-sources.jar"/>
-	<classpathentry kind="lib" path="jar/netty-transport-native-epoll-4.1.32.Final-linux-x86_64.jar" sourcepath="jar/src/netty-transport-native-epoll-4.1.32.Final-sources.jar"/>
-	<classpathentry kind="lib" path="jar/netty-transport-native-unix-common-4.1.32.Final.jar" sourcepath="jar/src/netty-transport-native-unix-common-4.1.32.Final-sources.jar"/>
-	<classpathentry kind="lib" path="jar/proton-j-0.31.0.jar" sourcepath="jar/src/proton-j-0.31.0-sources.jar"/>
-	<classpathentry kind="lib" path="jar/stompjms-client-1.19.jar"/>
-	<classpathentry kind="lib" path="jar/hawtdispatch-1.20.jar" sourcepath="jar/src/hawtdispatch-1.20-sources.jar"/>
-	<classpathentry kind="lib" path="jar/hawtdispatch-transport-1.20.jar" sourcepath="jar/src/hawtdispatch-transport-1.20-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/jsr305-1.3.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/cron-utils-9.1.5.jar" sourcepath="jar/src/cron-utils-9.1.5-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/jSerialComm-2.7.0.jar" sourcepath="jar/src/jSerialComm-2.7.0-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/jcabi-ssh-1.6.1.jar" sourcepath="jar/src/jcabi-ssh-1.6.1-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/Java-WebSocket-1.5.1.jar" sourcepath="jar/src/Java-WebSocket-1.5.1-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/log4j-1.2.17.jar" sourcepath="jar/src/log4j-1.2.17-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/org.eclipse.paho.client.mqttv3-1.1.0.jar" sourcepath="jar/src/org.eclipse.paho.client.mqttv3-1.1.0-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/jsch-0.1.55.jar" sourcepath="jar/src/jsch-0.1.55-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/guava-20.0.jar" sourcepath="jar/src/guava-20.0-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/json-20200518.jar" sourcepath="jar/src/json-20200518-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/amqp-client-5.10.0.jar" sourcepath="jar/src/amqp-client-5.10.0-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/slf4j-simple-1.7.30.jar" sourcepath="jar/src/slf4j-simple-1.7.30-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/slf4j-api-1.7.30.jar" sourcepath="jar/src/slf4j-api-1.7.30-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/http-20070405.jar" sourcepath="jar/src/http-20070405-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/log4j-api-2.13.3.jar" sourcepath="jar/src/log4j-api-2.13.3-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/log4j-core-2.13.3.jar" sourcepath="jar/src/log4j-core-2.13.3-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/javax.mail-1.4.5.jar" sourcepath="jar/src/javax.mail-1.4.5-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/org.apache.commons.codec-1.8.jar" sourcepath="jar/src/org.apache.commons.codec-1.8-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/commons-net-3.6.jar" sourcepath="jar/src/commons-net-3.6-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/commons-codec-1.15.jar" sourcepath="jar/src/commons-codec-1.15-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/cactoos-0.16.jar" sourcepath="jar/src/cactoos-0.16-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/javax.activation-1.2.0.jar" sourcepath="jar/src/javax.activation-1.2.0-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/org.openjdk.dio-1.1.0.jar" sourcepath="jar/src/org.openjdk.dio-1.1.0-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/jedis-2.9.0.jar" sourcepath="jar/src/jedis-2.9.0-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/activemq-client-5.16.3.jar" sourcepath="jar/src/activemq-client-5.16.3-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/javax.jms-api-2.0.1.jar" sourcepath="jar/src/javax.jms-api-2.0.1-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/management-api-1.1-rev-1.jar" sourcepath="jar/src/management-api-1.1-rev-1-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/hawtbuf-1.11.jar" sourcepath="jar/src/hawtbuf-1.11-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/qpid-jms-client-0.40.0.jar" sourcepath="jar/src/qpid-jms-client-0.40.0-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/netty-buffer-4.1.32.Final.jar" sourcepath="jar/src/netty-buffer-4.1.32.Final-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/netty-codec-4.1.32.Final.jar" sourcepath="jar/src/netty-codec-4.1.32.Final-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/netty-codec-http-4.1.32.Final.jar" sourcepath="jar/src/netty-codec-http-4.1.32.Final-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/netty-common-4.1.32.Final.jar" sourcepath="jar/src/netty-common-4.1.32.Final-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/netty-handler-4.1.32.Final.jar" sourcepath="jar/src/netty-handler-4.1.32.Final-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/netty-resolver-4.1.32.Final.jar" sourcepath="jar/src/netty-resolver-4.1.32.Final-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/netty-transport-4.1.32.Final.jar" sourcepath="jar/src/netty-transport-4.1.32.Final-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/netty-transport-native-epoll-4.1.32.Final-linux-x86_64.jar" sourcepath="jar/src/netty-transport-native-epoll-4.1.32.Final-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/netty-transport-native-unix-common-4.1.32.Final.jar" sourcepath="jar/src/netty-transport-native-unix-common-4.1.32.Final-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/proton-j-0.31.0.jar" sourcepath="jar/src/proton-j-0.31.0-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/stompjms-client-1.19.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/hawtdispatch-1.20.jar" sourcepath="jar/src/hawtdispatch-1.20-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/hawtdispatch-transport-1.20.jar" sourcepath="jar/src/hawtdispatch-transport-1.20-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
