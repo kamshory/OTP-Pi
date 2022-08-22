@@ -141,7 +141,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		this.connected = false;
 	}
 	
-	public void evtOnMessage(byte[] payload, String topic)
+	public void evtOnMessage(byte[] payload, String topic) //NOSONAR
 	{
 		try
 		{

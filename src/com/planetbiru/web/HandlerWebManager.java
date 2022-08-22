@@ -243,7 +243,8 @@ public class HandlerWebManager implements HttpHandler {
 		return webContent;
 	}
 
-	private void handlePost(HttpExchange httpExchange, String path) {
+	private void handlePost(HttpExchange httpExchange, String path) //NOSONAR
+	{
 		Headers headers = httpExchange.getRequestHeaders();
 		byte[] req = HttpUtil.getRequestBody(httpExchange);
 		String requestBody = "";
@@ -1240,7 +1241,8 @@ public class HandlerWebManager implements HttpHandler {
 		}
 	}
 
-	private void processSubscriberSetting(String requestBody) {
+	private void processSubscriberSetting(String requestBody) //NOSONAR
+	{
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
 		
 		if(queryPairs.containsKey("save_subscriber_ws_setting"))

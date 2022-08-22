@@ -50,7 +50,7 @@ public class USSDParser {
     	List<String> list = new ArrayList<>();
     	for(int i = 1; i<arr.length-1; i++)
     	{
-    		list.add(arr[i]);
+    		list.add(arr[i]); //NOSONAR
     	}
     	String body = String.join(",", list);
     	if(body.startsWith("\"") && body.endsWith("\""))

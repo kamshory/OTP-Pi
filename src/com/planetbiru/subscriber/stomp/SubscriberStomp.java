@@ -51,7 +51,8 @@ public class SubscriberStomp extends Thread {
         factory.setBrokerURI(connectionURI);
         try (Connection connection = factory.createConnection(user, password))
         {
-        	connection.setExceptionListener(new ExceptionListener() {				
+        	connection.setExceptionListener(new ExceptionListener()  //NOSONAR
+        		{				
 				@Override
 				public void onException(JMSException exception) {
 					setConnected(false);

@@ -5,6 +5,11 @@ package org.subethamail.smtp.server;
  */
 public class InvalidCommandNameException extends CommandException
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** */
 	public InvalidCommandNameException()
 	{

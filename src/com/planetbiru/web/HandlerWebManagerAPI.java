@@ -43,7 +43,8 @@ public class HandlerWebManagerAPI implements HttpHandler {
 	private static Logger logger = Logger.getLogger(HandlerWebManagerAPI.class);
 
 	@Override
-	public void handle(HttpExchange httpExchange) throws IOException {
+	public void handle(HttpExchange httpExchange) throws IOException //NOSONAR
+	{
 		String path = httpExchange.getRequestURI().getPath();
 		String method = httpExchange.getRequestMethod();
 		if(method.equals(HttpMethod.POST))

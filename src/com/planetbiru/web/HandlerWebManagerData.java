@@ -62,7 +62,8 @@ import com.sun.net.httpserver.HttpHandler;
 public class HandlerWebManagerData implements HttpHandler {
 
 	@Override
-	public void handle(HttpExchange httpExchange) throws IOException {
+	public void handle(HttpExchange httpExchange) throws IOException //NOSONAR
+	{
 		String path = httpExchange.getRequestURI().getPath();
 		if(path.startsWith("/data/general-setting/get"))
 		{

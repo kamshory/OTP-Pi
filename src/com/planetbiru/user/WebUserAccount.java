@@ -15,7 +15,7 @@ import com.planetbiru.cookie.CookieServer;
 import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.FileNotFoundException;
 import com.planetbiru.util.Utility;
-import com.sun.net.httpserver.Headers;
+import com.sun.net.httpserver.Headers; //NOSONAR
 
 public class WebUserAccount {
 	private static Map<String, User> users = new HashMap<>();

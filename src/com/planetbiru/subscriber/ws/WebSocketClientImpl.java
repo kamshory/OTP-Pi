@@ -201,7 +201,7 @@ public class WebSocketClientImpl extends Thread {
 		}
 	}
 
-	public void evtOnClose(int code, String reason, boolean remote)
+	public void evtOnClose(int code, String reason, boolean remote) //NOSONAR
 	{
 		Buzzer.toneDisconnectWs();
 		this.flagDisconnected();
@@ -212,7 +212,7 @@ public class WebSocketClientImpl extends Thread {
 		}
 	}
 	
-	public void evtOnError(Exception e)
+	public void evtOnError(Exception e) //NOSONAR
 	{
 		Buzzer.toneDisconnectWs();
 		this.flagDisconnected();
