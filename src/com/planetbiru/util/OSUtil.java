@@ -23,4 +23,24 @@ public class OSUtil {
 	    }
 	    return os;
 	}
+
+	public static boolean isWindows() {
+		OS os = OSUtil.getOS();
+		return (os != null && os.equals(OS.WINDOWS));
+	}
+	
+	public static boolean isLinux() {
+		OS os = OSUtil.getOS();
+		return (os != null && os.equals(OS.LINUX));
+	}
+	
+	public static boolean isMac() {
+		OS os = OSUtil.getOS();
+		return (os != null && os.equals(OS.MAC));
+	}
+	
+	public static boolean isSunOS() {
+		OS os = OSUtil.getOS();
+		return (os != null && os.equals(OS.SOLARIS));
+	}
 }

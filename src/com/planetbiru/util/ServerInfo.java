@@ -1,12 +1,12 @@
 package com.planetbiru.util;
 
+import java.io.File;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -27,27 +27,27 @@ import com.planetbiru.gsm.GSMUtil;
 
 public class ServerInfo {
 	
-	private static final String TOTAL                = "total";
-	private static final String USED                 = "used";
-	private static final String FREE                 = "free";
-	private static final String RAM                  = "ram";
-	private static final String SWAP                 = "swap";
-	private static final String PERCENT_USED         = "percentUsed";
-	private static final String CURRENT_TEMPERATURE  = "currentTemperature";
-	private static final String HIGH_TEMPERATURE     = "highTemperature";
-	private static final String CRITICAL_TEMPERATURE = "criticalTemperature";
-	private static final String CPU                  = "cpu";
-	private static final String SERVER_INFO          = "server-info";
-	private static final String STORAGE              = "storage";
-	private static final String MEMORY               = "memory";
-	private static final String AVAILABLE            = "available";
-	private static final String RAW                  = "raw";
-	private static final String LABEL                = "label";
-	private static final String VALUE                = "value";
-	private static final String TEMPERATURE          = "temperature";
-	private static final String ADAPTER              = "adapter";
-	private static final String PORT                 = "port";
-	private static final String USAGE                = "usage";
+	public static final String TOTAL                = "total";
+	public static final String USED                 = "used";
+	public static final String FREE                 = "free";
+	public static final String RAM                  = "ram";
+	public static final String SWAP                 = "swap";
+	public static final String PERCENT_USED         = "percentUsed";
+	public static final String CURRENT_TEMPERATURE  = "currentTemperature";
+	public static final String HIGH_TEMPERATURE     = "highTemperature";
+	public static final String CRITICAL_TEMPERATURE = "criticalTemperature";
+	public static final String CPU                  = "cpu";
+	public static final String SERVER_INFO          = "server-info";
+	public static final String STORAGE              = "storage";
+	public static final String MEMORY               = "memory";
+	public static final String AVAILABLE            = "available";
+	public static final String RAW                  = "raw";
+	public static final String LABEL                = "label";
+	public static final String VALUE                = "value";
+	public static final String TEMPERATURE          = "temperature";
+	public static final String ADAPTER              = "adapter";
+	public static final String PORT                 = "port";
+	public static final String USAGE                = "usage";
 
 	private static String cacheServerInfo = "";
 	private static long cacheServerInfoExpire = 0;
@@ -161,12 +161,22 @@ public class ServerInfo {
 	
 	public static JSONObject memoryInfo()
 	{
+		if(OSUtil.isWindows())
+		{
+			return memoryInfoWindows();
+		}
+		else
+		{
+			return memoryInfoLinux();
+		}
+	}
+	
+	private static JSONObject memoryInfoLinux() {
+		JSONObject info = new JSONObject();
 		String command = "free";
 		String result = CommandLineExecutor.exec(command).toString();		
 		
 		result = fixingRawData(result);
-
-		JSONObject info = new JSONObject();
 		
 		String[] lines = result.split("\r\n");
 		for(int i = 0; i<lines.length;i++)
@@ -218,7 +228,35 @@ public class ServerInfo {
 		}
 		return info;
 	}
-	
+
+	private static JSONObject memoryInfoWindows() {
+		JSONObject info = new JSONObject();
+
+		JSONObject ram = new JSONObject();
+
+        com.sun.management.OperatingSystemMXBean os = (com.sun.management.OperatingSystemMXBean) java.lang.management.ManagementFactory.getOperatingSystemMXBean(); //NOSONAR
+        long total = os.getTotalMemorySize();
+        long free = os.getFreeMemorySize();
+
+		long used = total - free;
+		float percentUsed  = 100 * ((float)used/(float)total);
+		
+		ram.put(ServerInfo.TOTAL, total);
+		ram.put(ServerInfo.USED, used);
+		ram.put(ServerInfo.FREE, free);				
+		ram.put(ServerInfo.PERCENT_USED, percentUsed);				
+		info.put(ServerInfo.RAM, ram);
+
+		JSONObject swap = new JSONObject();
+
+		swap.put(ServerInfo.TOTAL, 0);
+		swap.put(ServerInfo.USED, 0);
+		swap.put(ServerInfo.FREE, 0);				
+		swap.put(ServerInfo.PERCENT_USED, 0);				
+		info.put(ServerInfo.SWAP, swap);
+		return info;
+	}
+
 	public static String cpuSerialNumber()
 	{
 		String serialNumber = "";
@@ -246,7 +284,7 @@ public class ServerInfo {
 		String hMac = "";
 		try 
 		{
-			hMac = Utility.bytesToHex(Utility.hMac("sha512", serialNumber.getBytes(), secret.getBytes()));
+			hMac = Utility.bytesToHex(Utility.hMac("Hmacsha512", serialNumber.getBytes(), secret.getBytes()));
 		} 
 		catch (InvalidKeyException | NoSuchAlgorithmException e) 
 		{
@@ -256,8 +294,36 @@ public class ServerInfo {
 		}
 		return hMac;
 	}
-	
 	public static JSONObject storageInfo()
+	{
+		if(OSUtil.isWindows())
+		{
+			return storageInfoWindows();
+		}
+		else
+		{
+			return storageInfoLinux();
+		}
+	}
+	private static JSONObject storageInfoWindows() {
+		JSONObject info = new JSONObject();	
+		String dir = Utility.getBaseDir();
+		File diskPartition = new File(dir);
+		
+		long total = diskPartition.getTotalSpace();
+		long avail = diskPartition.getUsableSpace();
+		long used = total - avail;
+		float percentUsed = 100 * ((float)used / (float)total);
+		
+		info.put(ServerInfo.TOTAL, total);
+		info.put(ServerInfo.AVAILABLE, avail);	
+		info.put(ServerInfo.USED, used);
+		info.put(ServerInfo.PERCENT_USED, percentUsed);
+		
+		return info;
+	}
+
+	public static JSONObject storageInfoLinux()
 	{
 		String command = "df -h";
 		String result = CommandLineExecutor.exec(command).toString();
@@ -340,7 +406,6 @@ public class ServerInfo {
 	{
 		String command = "sensors";
 		String result = CommandLineExecutor.exec(command).toString();
-
 		
 		result = result.replace("°", "&deg;");
 		result = fixingRawData(result);
@@ -355,12 +420,33 @@ public class ServerInfo {
 		info.put(ServerInfo.USAGE, cpuUsage());
 		return info;
 	}
-	
 	public static JSONObject cpuUsage()
 	{
+		if(OSUtil.isWindows())
+		{
+			return cpuUsageWindows();
+		}
+		else
+		{
+			return cpuUsageLinux();
+		}
+	}
+	
+	private static JSONObject cpuUsageWindows() {
+		JSONObject info = new JSONObject();
+		com.sun.management.OperatingSystemMXBean os = (com.sun.management.OperatingSystemMXBean) java.lang.management.ManagementFactory.getOperatingSystemMXBean(); //NOSONAR
+		double used = os.getCpuLoad() * 100;
+		double idle = 100 - used;
+		info.put(JsonKey.IDLE, idle);
+		info.put(ServerInfo.USED, used);
+		info.put(ServerInfo.PERCENT_USED, used);
+		return info;
+	}
+
+	public static JSONObject cpuUsageLinux()
+	{
 		String command = "/bin/mpstat";
-		String result = CommandLineExecutor.exec(command).toString();
-		
+		String result = CommandLineExecutor.exec(command).toString();		
 
 		result = fixingRawData(result);
 		result = result.replace("\r\n\r\n", "\r\n");

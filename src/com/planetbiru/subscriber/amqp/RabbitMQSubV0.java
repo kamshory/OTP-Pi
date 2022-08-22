@@ -3,6 +3,8 @@ package com.planetbiru.subscriber.amqp;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.nio.charset.StandardCharsets;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeoutException;
 
 import javax.net.ssl.SSLContext;
@@ -71,7 +73,7 @@ public class RabbitMQSubV0 extends RabbitMQSubscriber {
     			SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();    	  		
     			this.factory.setSocketFactory(sslSocketFactory); 		
     		} 
-    		catch(Exception e) 
+    		catch(NoSuchAlgorithmException | KeyManagementException e) 
     		{
     			/**
     			 * Do nothing
@@ -219,7 +221,9 @@ public class RabbitMQSubV0 extends RabbitMQSubscriber {
 			}
 			catch(JSONException e)
 			{
-				e.printStackTrace();
+				/**
+				 * Do nothing
+				 */
 			}
 		}
 	}
@@ -255,7 +259,7 @@ public class RabbitMQSubV0 extends RabbitMQSubscriber {
     			SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();    	  		
     			connectionFactory.setSocketFactory(sslSocketFactory); 		
     		} 
-    		catch(Exception e) 
+    		catch(NoSuchAlgorithmException | NullPointerException | KeyManagementException e) 
     		{
     			/**
     			 * Do nothing

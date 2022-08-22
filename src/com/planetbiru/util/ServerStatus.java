@@ -1,6 +1,5 @@
 package com.planetbiru.util;
 
-import java.io.File;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
@@ -12,9 +11,9 @@ import org.json.JSONObject;
 public class ServerStatus {
 	private static JSONArray status = new JSONArray();
 	private static int maxRecord = 1000;
-	private static String configPath = "";
-	
+	private static String configPath = "";	
 	private static Logger logger = Logger.getLogger(ServerStatus.class);
+	private static boolean firstData = true;
 	
 	private ServerStatus()
 	{
@@ -109,6 +108,16 @@ public class ServerStatus {
 
 	public static void append(JSONObject data)
 	{
+		if(ServerStatus.firstData)
+		{
+			if(data.optDouble(ServerInfo.CPU, 0) == 0 && ServerStatus.status.length() > 0 && OSUtil.isWindows())
+			{
+				data.remove(ServerInfo.CPU);
+				double lastUsage = ServerStatus.status.getJSONObject(ServerStatus.status.length() - 1).optDouble(ServerInfo.CPU, 0);
+				data.put(ServerInfo.CPU, lastUsage);
+			}
+			ServerStatus.firstData = false;
+		}
 		JSONArray ja = new JSONArray();
 		int lastLength = ServerStatus.getStatus().length();
 		int start = 0;
@@ -122,7 +131,7 @@ public class ServerStatus {
 		}
 		for(int i = start; i<lastLength; i++)
 		{
-			ja.put(ServerStatus.getStatus().get(i));
+			ja.put(ServerStatus.status.get(i));
 		}
 		ja.put(data);
 		ServerStatus.status = ja;
@@ -148,7 +157,7 @@ public class ServerStatus {
 			dir = dir.substring(0, dir.length() - 1);
 		}
 		String fileName = FileConfigUtil.fixFileName(dir + path);
-		ServerStatus.prepareDir(fileName);
+		FileConfigUtil.prepareDir(fileName);
 		
 		try 
 		{
@@ -160,24 +169,5 @@ public class ServerStatus {
 		}
 	}
 	
-	
-	private static void prepareDir(String fileName) {
-		File file = new File(fileName);
-		String directory1 = file.getParent();
-		File file2 = new File(directory1);
-		String directory2 = file2.getParent();
-		
-		File d1 = new File(directory1);
-		File d2 = new File(directory2);		
-
-		if(!d2.exists())
-		{
-			d2.mkdir();
-		}
-		if(!d1.exists())
-		{
-			d1.mkdir();
-		}		
-	}
 
 }

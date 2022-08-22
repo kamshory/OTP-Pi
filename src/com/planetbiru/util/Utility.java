@@ -1206,12 +1206,19 @@ public class Utility {
 	 */
 	public static byte[] hMac(String algorithm, byte[] data, byte[] secret) throws NoSuchAlgorithmException, InvalidKeyException
 	{
-        SecretKeySpec keySpec = new SecretKeySpec(secret,"Hmac"+algorithm);
-        Mac mac =  Mac.getInstance("Hmac"+algorithm);
+        SecretKeySpec keySpec = new SecretKeySpec(secret, algorithm);
+        Mac mac =  Mac.getInstance(algorithm);
         mac.init(keySpec);
         return mac.doFinal(data);
     }
 	
+	/**
+	 * Change date time format
+	 * @param oldDateString Old date time
+	 * @param oldFormat Old format
+	 * @param newFormat New format
+	 * @return Date time in new format
+	 */
 	public static String changeDateFormat(String oldDateString, String oldFormat, String newFormat) 
 	{
 		String newDateString = oldDateString;
@@ -1259,6 +1266,7 @@ public class Utility {
 	    }
 		return queryPairs;
 	}
+	
 	public static Map<String, String> parseQueryPairs(String data)
 	{
 		Map<String, String> queryPairs = new LinkedHashMap<>();
