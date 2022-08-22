@@ -11,8 +11,7 @@ import org.json.JSONObject;
 public class ServerStatus {
 	private static JSONArray status = new JSONArray();
 	private static int maxRecord = 1000;
-	private static String configPath = "";
-	
+	private static String configPath = "";	
 	private static Logger logger = Logger.getLogger(ServerStatus.class);
 	private static boolean firstData = true;
 	
@@ -136,7 +135,6 @@ public class ServerStatus {
 		}
 		ja.put(data);
 		ServerStatus.status = ja;
-		System.out.println(ja.toString(3));
 	}
 	
 	public static JSONArray getStatus() {

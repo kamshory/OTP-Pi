@@ -55,7 +55,11 @@ public class Application {
 	private static SubscriberActiveMQ activeMQSubscriber;
 	private static Logger logger = Logger.getLogger(Application.class);
 	private static ModemInspector modemInspector = null;
-	 
+	
+	/**
+	 * Main method
+	 * @param args Parameters from command line
+	 */
 	public static void main(String[] args) {
 		String currentRootDirectoryPath = Application.getConfigRoot();
 		boolean configLoaded = Application.loadConfig(currentRootDirectoryPath, "config.ini");
@@ -70,6 +74,10 @@ public class Application {
 		}		
 	}
 	
+	/**
+	 * Get absolute directory of configuration
+	 * @return
+	 */
 	private static String getConfigRoot()
 	{
 		File currentJavaJarFile = new File(Application.class.getProtectionDomain().getCodeSource().getLocation().getPath());   
@@ -77,6 +85,12 @@ public class Application {
 		return currentJavaJarFilePath.replace(currentJavaJarFile.getName(), "");
 	}
 	
+	/**
+	 * Load configuration file
+	 * @param currentRootDirectoryPath Current directory of application
+	 * @param fileName Configuration file name
+	 * @return true if success and false if failed
+	 */
 	public static boolean loadConfig(String currentRootDirectoryPath, String fileName)
 	{
 		boolean loaded = false;
@@ -100,6 +114,10 @@ public class Application {
 		return loaded;	
 	}
 	
+	/**
+	 * Start service
+	 * @param args Parameters from command line
+	 */
 	private static void startService(String[] args) {
 		boolean needToStart = true;
 		boolean needToReset = false;
@@ -213,38 +231,63 @@ public class Application {
 		}	
 	}
 
+	/**
+	 * Start OTP
+	 */
 	private static void otpStart() {
 		OTP.initialize(Config.getOtpCacheFile());
 		OTP.start();
 	}
 
+	/**
+	 * Start scheduler
+	 */
 	public static void schedulerStart() {
 		Application.scheduller = new Scheduller();
 		Application.scheduller.start();		
 	}
 
+	/**
+	 * Start SMTP server
+	 */
 	public static void serverEmailStart() {
 		Application.smtp = new ServerEmail();
 		Application.smtp.start();
 		
 	}
 
+	/**
+	 * Start internet modem
+	 */
 	public static void modemInternetStart() {
 		InternetDialUtil.start();
 	}
 
+	/**
+	 * Start SMS modem
+	 */
 	public static void modemSMSStart() {
 		GSMUtil.start();	
 	}
 	
+	/**
+	 * Stop internet modem
+	 */
 	public static void modemInternetStop() {
 		InternetDialUtil.stop();
 	}
 
+	/**
+	 * Stop SMS modem
+	 */
 	public static void modemSMSStop() {
 		GSMUtil.stop();	
 	}
 	
+	/**
+	 * Inspect modem
+	 * @param delay Check interval
+	 */
 	public static void modemInspectorStart(long delay) {
 		if(Application.modemInspector != null)
 		{
@@ -263,11 +306,17 @@ public class Application {
 		Application.modemInspector.start();
 	}
 
+	/**
+	 * Start REST server
+	 */
 	private static void restAPIStart() {
 		Application.rest = new ServerRESTAPI();
 		Application.rest.start();
 	}
 
+	/**
+	 * Start websocket server for admin
+	 */
 	private static void webSocketAdminServerStart() {
 		int port = Config.getServerPort() + 1;
 		InetSocketAddress address = new InetSocketAddress(port);
@@ -276,44 +325,72 @@ public class Application {
 		
 	}
 
+	/**
+	 * Start web server for admin
+	 */
 	private static void webAdminServerStart() {
 		int port = Config.getServerPort();
 		Application.webAdmin = new ServerWebAdmin(port);
 		Application.webAdmin.start();	
 	}
 
+	/**
+	 * Get RESTAPI server
+	 * @return RESTAPI server
+	 */
 	public static ServerRESTAPI getRest() {
 		return rest;
 	}
 
+	/**
+	 * Set RESTAPI server
+	 * @param rest RESTAPI server
+	 */
 	public static void setRest(ServerRESTAPI rest) {
 		Application.rest = rest;
 	}
 	
+	/**
+	 * Start RESTAPI server
+	 */
 	public static void subscriberHTTPStart() {
 		if (ConfigAPI.isHttpEnable() && !Application.rest.isHttpStarted()) {
 			Application.rest.startHTTP();
 		}
 	}
 
+	/**
+	 * Stop RESTAPI server
+	 * @param force Set true for force stop
+	 */
 	public static void subscriberHTTPStop(boolean force) {
 		if (force || (Application.rest.isHttpStarted())) {
 			Application.rest.stopHTTP();
 		}
 	}
 
+	/**
+	 * Start RESTAPI server with SSL
+	 */
 	public static void subscriberHTTPSStart() {
 		if (ConfigAPI.isHttpsEnable() && !Application.rest.isHttpsStarted()) {
 			Application.rest.startHTTPS();
 		}
 	}
 
+	/**
+	 * Stop RESTAPI server with SSL
+	 * @param force Set true for force stop
+	 */
 	public static void subscriberHTTPSStop(boolean force) {
 		if (force || (Application.rest.isHttpsStarted())) {
 			Application.rest.stopHTTPS();
 		}
 	}
 
+	/**
+	 * Start ActiveMQ subscription
+	 */
 	public static void subscriberActiveMQStart() {
 		if(ConfigSubscriberActiveMQ.isSubscriberActiveMQEnable() && (Application.activeMQSubscriber == null || !Application.activeMQSubscriber.isRunning()))
 		{
@@ -322,6 +399,10 @@ public class Application {
 		}
 	}
 
+	/**
+	 * Stop ActiveMQ subscription
+	 * @param force Set true for force stop
+	 */
 	public static void subscriberActiveMQStop(boolean force) {
 		if(Application.activeMQSubscriber != null && (force || Application.activeMQSubscriber.isRunning()))
 		{
@@ -329,6 +410,9 @@ public class Application {
 		}		
 	}
 
+	/**
+	 * Start MQTT subscription
+	 */
 	public static void subscriberMQTTStart() {
 		if(ConfigSubscriberMQTT.isSubscriberMqttEnable() && (Application.mqttSubscriber == null || !Application.mqttSubscriber.isRunning()))
 		{
@@ -337,6 +421,10 @@ public class Application {
 		}		
 	}
 
+	/**
+	 * Stop MQTT subscription
+	 * @param force Set true for force stop
+	 */
 	public static void subscriberMQTTStop(boolean force) {
 		if(Application.mqttSubscriber != null && (force || Application.mqttSubscriber.isRunning()))
 		{
@@ -344,6 +432,9 @@ public class Application {
 		}		
 	}
 
+	/**
+	 * Start AMQP subscription
+	 */
 	public static void subscriberAMQPStart() {
 		if(ConfigSubscriberAMQP.isSubscriberAmqpEnable() && (Application.getAmqpSubscriber() == null || !Application.getAmqpSubscriber().isRunning()))
 		{
@@ -351,12 +442,21 @@ public class Application {
 			Application.getAmqpSubscriber().start();
 		}		
 	}
+	
+	/**
+	 * Stop AMQP subscription
+	 * @param force Set true for force stop
+	 */
 	public static void subscriberAMQPStop(boolean force) {
 		if(Application.getAmqpSubscriber() != null && (force || Application.getAmqpSubscriber().isRunning()))
 		{
 			Application.getAmqpSubscriber().stopService();
 		}		
 	}
+	
+	/**
+	 * Start Redis subscription
+	 */
 	public static void subscriberRedisStart() {
 		if(ConfigSubscriberRedis.isSubscriberRedisEnable() && (Application.getRedisSubscriber() == null || !Application.getRedisSubscriber().isRunning()))
 		{
@@ -365,6 +465,11 @@ public class Application {
 			Application.getRedisSubscriber().start();
 		}		
 	}
+	
+	/**
+	 * Stop Redis subscription
+	 * @param force Set true for force stop
+	 */
 	public static void subscriberRedisStop(boolean force) {
 		if(Application.getRedisSubscriber() != null && (force && Application.getRedisSubscriber().isRunning()))
 		{
