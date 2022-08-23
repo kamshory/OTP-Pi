@@ -2,9 +2,11 @@ package com.planetbiru.web;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.http.HttpResponse;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,9 +14,11 @@ import javax.mail.MessagingException;
 
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.planetbiru.Application;
+import com.planetbiru.DeviceActivation;
 import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
@@ -57,9 +61,11 @@ import com.planetbiru.mail.NoEmailAccountException;
 import com.planetbiru.user.NoUserRegisteredException;
 import com.planetbiru.user.User;
 import com.planetbiru.user.WebUserAccount;
+import com.planetbiru.util.CustomHttpClient;
 import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.FileNotFoundException;
 import com.planetbiru.util.FileUtil;
+import com.planetbiru.util.HttpRequestException;
 import com.planetbiru.util.Utility;
 import com.planetbiru.util.WebManagerContent;
 import com.planetbiru.util.WebManagerTool;
@@ -166,7 +172,7 @@ public class HandlerWebManager implements HttpHandler {
 			}
 		}
 		CookieServer cookie = new CookieServer(requestHeaders, Config.getSessionName(), Config.getSessionLifetime());		
-		WebManagerContent newContent = this.updateContent(fileName, responseHeaders, responseBody, statusCode, cookie);	
+		WebManagerContent newContent = this.updateContent(fileName, responseHeaders, responseBody, statusCode, cookie, DeviceActivation.isActivated());	
 		responseBody = newContent.getResponseBody();
 		responseHeaders = newContent.getResponseHeaders();
 		statusCode = newContent.getStatusCode();
@@ -193,7 +199,7 @@ public class HandlerWebManager implements HttpHandler {
 		return response;
 	}
 
-	private WebManagerContent updateContent(String fileName, Headers responseHeaders, byte[] responseBody, int statusCode, CookieServer cookie) {
+	private WebManagerContent updateContent(String fileName, Headers responseHeaders, byte[] responseBody, int statusCode, CookieServer cookie, boolean activated) {
 		String contentType = HttpUtil.getMIMEType(fileName);
 		WebManagerContent webContent = new WebManagerContent(fileName, responseHeaders, responseBody, statusCode, cookie, contentType);
 		boolean requireLogin = false;
@@ -218,9 +224,9 @@ public class HandlerWebManager implements HttpHandler {
 				if(!WebUserAccount.checkUserAuth(username, password))	
 				{
 					responseBody = FileUtil.readResource(fileSub);
-					return this.updateContent(fileSub, responseHeaders, responseBody, statusCode, cookie);
+					return this.updateContent(fileSub, responseHeaders, responseBody, statusCode, cookie, activated);
 				}
-				responseBody = WebManagerTool.removeMeta(responseBody);
+				responseBody = WebManagerTool.removeMeta(responseBody, activated);
 			}
 			catch (FileNotFoundException e) 
 			{
@@ -371,6 +377,10 @@ public class HandlerWebManager implements HttpHandler {
 				{
 					this.processForgetPassword(requestBody);
 				}
+				else if(path.equals(ConstantString.PATH_SEPARATOR+"activation.html"))
+				{
+					this.processActivation(requestBody);
+				}
 			}
 		} 
 		catch (NoUserRegisteredException e) 
@@ -381,6 +391,62 @@ public class HandlerWebManager implements HttpHandler {
 		}	
 	}
 	
+	private void processActivation(String requestBody) {
+		String username = ConfigActivation.getUsername();
+		String password = ConfigActivation.getPassword();
+		String method = ConfigActivation.getMethod();
+		String url = ConfigActivation.getUrl();
+		String contentType = ConfigActivation.getContentType();
+		String authorization = ConfigActivation.getAuthorization();
+		int timeout = ConfigActivation.getRequestTimeout();		
+		
+		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);					
+		Map<String, String> parameters = new HashMap<>();
+
+		Headers headers = new Headers();
+		headers.add(ConstantString.ACCEPT, contentType);
+		headers.add(ConstantString.AUTHORIZATION, authorization+" "+Utility.base64Encode(username+":"+password));
+		String requestBody2 = "";
+		
+		if(method.equals(HttpMethod.POST) || method.equals(HttpMethod.PUT))
+		{
+			if(contentType.toLowerCase().contains("json"))
+			{
+				JSONObject requestJSON = new JSONObject(queryPairs);
+				requestBody2 = requestJSON.toString(0);
+			}
+			else
+			{
+				requestBody2 = requestBody;
+			}
+			parameters = null;
+		}
+		else if(method.equals(HttpMethod.GET))
+		{
+			requestBody2 = null;			
+			parameters = queryPairs;
+		}
+		
+		JSONObject responseJSON = new JSONObject();
+		HttpResponse<String> response;
+		try 
+		{
+			response = CustomHttpClient.httpExchange(method, url, parameters, headers, requestBody2, timeout);
+			responseJSON = new JSONObject(response.body());
+			System.out.println(responseJSON.toString(4));
+		} 
+		catch (JSONException e) 
+		{
+			e.printStackTrace();
+		}
+		catch(HttpRequestException e)
+		{
+			e.printStackTrace();
+		}
+	
+	
+	}
+
 	private void processForgetPassword(String requestBody) {
 		StackTraceElement ste = Thread.currentThread().getStackTrace()[2];      
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);	

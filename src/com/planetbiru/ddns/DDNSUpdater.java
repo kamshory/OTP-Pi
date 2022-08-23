@@ -1,7 +1,5 @@
 package com.planetbiru.ddns;
 
-import java.io.IOException;
-
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 
@@ -9,6 +7,7 @@ import com.planetbiru.config.ConfigVendorAfraid;
 import com.planetbiru.config.ConfigVendorCloudflare;
 import com.planetbiru.config.ConfigVendorDynu;
 import com.planetbiru.config.ConfigVendorNoIP;
+import com.planetbiru.util.HttpRequestException;
 
 public class DDNSUpdater extends Thread{
 	
@@ -87,7 +86,7 @@ public class DDNSUpdater extends Thread{
 				JSONObject res2 = ddns.update(ddnsRecord);		
 			}
 		}
-		catch(IOException e)
+		catch(HttpRequestException e)
 		{
 			logger.error(e.getMessage(), e);
 		}

@@ -54,11 +54,12 @@ public class WebManagerTool {
 		return new JSONObject();
 	}
 	
-	public static byte[] removeMeta(byte[] responseBody) 
+	public static byte[] removeMeta(byte[] responseBody, boolean activated) 
 	{
 		String responseString = new String(responseBody);
 		int start = 0;
 		int end = 0;
+		String body = responseString;
 		do 
 		{
 			start = responseString.toLowerCase().indexOf("<meta ", end);
@@ -76,7 +77,8 @@ public class WebManagerTool {
 						if(requireLogin(metaObjFixed))
 						{
 							String content = new String(responseBody);
-							return content.replace(metaOri, "").getBytes();
+							body = content.replace(metaOri, "");
+							break;
 						}
 					}
 					catch(JSONException e)
@@ -89,7 +91,18 @@ public class WebManagerTool {
 			}
 		}
 		while(start > -1);
-		return responseBody;
+		
+		body = addActivationScript(body, activated);
+		
+		return body.getBytes();
+	}
+
+	private static String addActivationScript(String body, boolean activated) {
+		if(!activated)
+		{
+			body = body.replace("</body>", "<script src=\"lib.assets/js/activation.js\"></script>\r\n</body>");
+		}
+		return body;
 	}
 
 	public static boolean requireLogin(JSONObject metaObj) {

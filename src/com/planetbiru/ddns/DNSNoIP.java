@@ -1,13 +1,15 @@
 package com.planetbiru.ddns;
 
 import java.io.IOException;
+import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.json.JSONObject;
 
 import com.planetbiru.config.Config;
-import com.planetbiru.util.ResponseEntityCustom;
+import com.planetbiru.util.CustomHttpClient;
+import com.planetbiru.util.HttpRequestException;
 import com.planetbiru.util.Utility;
 import com.planetbiru.web.HttpMethod;
 import com.sun.net.httpserver.Headers; //NOSONAR
@@ -22,7 +24,7 @@ public class DNSNoIP extends DNS{
 	private boolean active = false;
 	
 	@Override
-	public JSONObject update(DDNSRecord ddnsRecord) throws IOException  
+	public JSONObject update(DDNSRecord ddnsRecord) throws HttpRequestException  
 	{
 		JSONObject res = new JSONObject();
 		String method = HttpMethod.GET;
@@ -43,13 +45,14 @@ public class DNSNoIP extends DNS{
 	*
 	* @return mixed
 	 * @throws IOException 
+	 * @throws InterruptedException 
 	*/
-	public ResponseEntityCustom request(String method, String endpoint, Map<String, String> params) throws IOException
+	public HttpResponse<String> request(String method, String endpoint, Map<String, String> params) throws HttpRequestException
 	{
 		int timeout = Config.getDdnsTimeout();
 		Headers headers = this.createRequestHeader();
 		String body = null;
-		return this.httpExchange(method, endpoint, params, headers, body, timeout);
+		return CustomHttpClient.httpExchange(method, endpoint, params, headers, body, timeout);
 	}
 
 	public Headers createRequestHeader() {

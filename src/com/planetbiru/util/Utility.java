@@ -2,6 +2,7 @@ package com.planetbiru.util;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.net.http.HttpHeaders;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.KeyPair;
@@ -1426,6 +1427,20 @@ public class Utility {
 	public static Headers mapToHeaders(Map<String, List<String>> parameters) {
 		Headers headers = new Headers();
 		for (Map.Entry<String, List<String>> entry : parameters.entrySet())
+        {
+        	String key = entry.getKey();
+        	List<String> list = entry.getValue();
+        	for(int i = 0; i<list.size(); i++)
+        	{
+        		headers.add(key, list.get(i));
+        	}
+        }
+		return headers;
+	}
+	public static Headers httpHeadersToHeaders(HttpHeaders responseHeader) {
+		Headers headers = new Headers();
+		Map<String, List<String>> map = responseHeader.map();	
+		for (Map.Entry<String, List<String>> entry : map.entrySet())
         {
         	String key = entry.getKey();
         	List<String> list = entry.getValue();

@@ -42,6 +42,7 @@ import com.planetbiru.subscriber.mqtt.SubscriberMQTT;
 import com.planetbiru.subscriber.redis.SubscriberRedis;
 import com.planetbiru.subscriber.ws.WebSocketClientImpl;
 import com.planetbiru.user.WebUserAccount;
+import com.planetbiru.web.ConfigActivation;
 import com.planetbiru.web.HandlerWebManagerAPI;
 
 public class ConfigLoader {
@@ -370,6 +371,14 @@ public class ConfigLoader {
 		Config.setDefaultEmailPath(ConfigLoader.getConfig("otppi.default.api.path.email")); 
 		Config.setDefaultBlockingPath(ConfigLoader.getConfig("otppi.default.api.path.blocking")); 
 		Config.setDefaultUnblockingPath(ConfigLoader.getConfig("otppi.default.api.path.unblocking"));
+		
+		ConfigActivation.setUsername(ConfigLoader.getConfig("otppi.activation.username"));
+		ConfigActivation.setPassword(ConfigLoader.getConfig("otppi.activation.password"));
+		ConfigActivation.setMethod(ConfigLoader.getConfig("otppi.activation.method"));
+		ConfigActivation.setUrl(ConfigLoader.getConfig("otppi.activation.url"));
+		ConfigActivation.setContentType(ConfigLoader.getConfig("otppi.activation.content.type"));
+		ConfigActivation.setAuthorization(ConfigLoader.getConfig("otppi.activation.authorization"));
+		ConfigActivation.setRequestTimeout(ConfigLoader.getConfigInt("otppi.activation.request.timeout"));
 		
 		ConfigLoader.printUsed();
     	

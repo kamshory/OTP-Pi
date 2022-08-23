@@ -69,7 +69,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			this.handleGeneralSetting(httpExchange);
 		}
-		if(path.startsWith("/data/bell-setting/get"))
+		else if(path.startsWith("/data/bell-setting/get"))
 		{
 			this.handleBellSetting(httpExchange);
 		}

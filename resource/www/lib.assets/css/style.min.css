@@ -340,7 +340,7 @@ button span.number {
   padding: 12px 0;
 }
 
-#phone {
+#ussd-dialer {
   width: 64px;
   height: 64px;
   background-color: #0760ec;
@@ -348,10 +348,10 @@ button span.number {
   padding: 0;
   border-radius: 50%;
 }
-#phone:active {
+#ussd-dialer:active {
   outline: none;
 }
-#phone:focus {
+#ussd-dialer:focus {
   outline: none;
 }
 

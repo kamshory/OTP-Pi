@@ -72,6 +72,7 @@ public class ConstantString {
 
 	public static final String SERVICE_ALL                     = "activemq,amqp,mqtt,redis,stomp,ws,http,https,modem";
 	public static final String ECHO                            = "echo";
+	public static final String BASIC                           = "Basic ";
 	
 	private ConstantString()
 	{

@@ -25,6 +25,7 @@ public class ConfigGeneral {
 	private static boolean dropExpireOTP = false;
 	private static long otpExpirationOffset = 30000;
 	private static long inspectModemInterval = 0;
+	
 	private static Logger logger = Logger.getLogger(ConfigGeneral.class);
 
 	private ConfigGeneral()

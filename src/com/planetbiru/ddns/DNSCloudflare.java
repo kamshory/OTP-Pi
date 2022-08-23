@@ -1,6 +1,7 @@
 package com.planetbiru.ddns;
 
 import java.io.IOException;
+import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +13,8 @@ import org.json.JSONObject;
 
 import com.planetbiru.config.Config;
 import com.planetbiru.constant.ConstantString;
-import com.planetbiru.util.ResponseEntityCustom;
+import com.planetbiru.util.CustomHttpClient;
+import com.planetbiru.util.HttpRequestException;
 import com.planetbiru.util.Utility;
 import com.planetbiru.web.HttpMethod;
 import com.sun.net.httpserver.Headers; //NOSONAR
@@ -45,9 +47,11 @@ public class DNSCloudflare extends DNS{
 	* @throws Exception
 	*
 	* @return mixed
+	 * @throws HttpRequestException 
 	 * @throws IOException 
+	 * @throws InterruptedException 
 	*/
-	public ResponseEntityCustom request(String method, String endpoint, Map<String, List<String>> params, String contentType) throws IOException
+	public HttpResponse<String> request(String method, String endpoint, Map<String, List<String>> params, String contentType) throws HttpRequestException 
 	{
 		int timeout = Config.getDdnsTimeout();
 		Headers headers = this.createRequestHeader(contentType);
@@ -55,17 +59,17 @@ public class DNSCloudflare extends DNS{
 		String body = "";
 		if(contentType.contains("urlencode") && (method.equals(HttpMethod.POST) || method.equals(HttpMethod.PUT) || method.equals(HttpMethod.PATCH)  || method.equals(HttpMethod.DELETE)))
 		{
-			body = this.buildQuery(params);
+			body = CustomHttpClient.buildQuery(params);
 		}
 		else if(contentType.contains("json") && (method.equals(HttpMethod.POST) || method.equals(HttpMethod.PUT) || method.equals(HttpMethod.PATCH)  || method.equals(HttpMethod.DELETE)))
 		{
 			JSONObject obj = new JSONObject(params);
 			body = obj.toString();
 		}	
-		return this.httpExchange(method, endpoint, null, headers, body, timeout);
+		return CustomHttpClient.httpExchange(method, endpoint, null, headers, body, timeout);
 	}	
 	
-	public JSONObject createZoneIfNotExists(DDNSRecord ddnsRecord) throws IOException 
+	public JSONObject createZoneIfNotExists(DDNSRecord ddnsRecord) throws HttpRequestException 
 	{
 		if(this.getZone(ddnsRecord.getZone()) == null)
 		{
@@ -74,12 +78,12 @@ public class DNSCloudflare extends DNS{
 		return null;
 	}
 	
-	public JSONObject createZone(DDNSRecord ddnsRecord) throws IOException
+	public JSONObject createZone(DDNSRecord ddnsRecord) throws HttpRequestException
 	{
 		return this.createZone(ddnsRecord.getZone(), this.accountId);
 	}
 	
-	public JSONObject createZone(String name) throws IOException
+	public JSONObject createZone(String name) throws HttpRequestException
 	{
 		return this.createZone(name, this.accountId);
 	}
@@ -90,9 +94,11 @@ public class DNSCloudflare extends DNS{
 	 * @param name The domain name
 	 * @param params 
 	 * @return
+	 * @throws HttpRequestException 
 	 * @throws IOException 
+	 * @throws InterruptedException 
 	 */
-	public JSONObject createZone(String name, String accountId) throws IOException
+	public JSONObject createZone(String name, String accountId) throws HttpRequestException 
 	{
 		JSONObject json = new JSONObject();
 		JSONObject account = new JSONObject();
@@ -107,11 +113,11 @@ public class DNSCloudflare extends DNS{
 		int timeout = 1000;
 		Headers requestHeaders = this.createRequestHeader();
 		requestHeaders.add(DDNSKey.HEADER_CONTENT_TYPE, ConstantString.APPLICATION_JSON);
-		ResponseEntityCustom response = httpExchange(HttpMethod.POST, url, null, requestHeaders, body, timeout);
+		HttpResponse<String> response = CustomHttpClient.httpExchange(HttpMethod.POST, url, null, requestHeaders, body, timeout);
 		JSONObject resp = new JSONObject();
 		try
 		{
-			resp = new JSONObject(response.getBody());
+			resp = new JSONObject(response.body());
 		}
 		catch(JSONException e)
 		{
@@ -132,18 +138,19 @@ public class DNSCloudflare extends DNS{
 	 * per_page (number)
 	 * @return
 	 * @throws IOException 
+	 * @throws InterruptedException 
 	 */
-	public JSONArray listZones(Map<String, String> params) throws IOException
+	public JSONArray listZones(Map<String, String> params) throws HttpRequestException
 	{
 		String url = this.endpoint + "/zones";
 		Headers requestHeaders = this.createRequestHeader();
 		int timeout = Config.getDdnsTimeout();
-		ResponseEntityCustom response = httpExchange(HttpMethod.GET, url, params, requestHeaders, null, timeout);
-		if(response.getBody().length() > 20)
+		HttpResponse<String> response = CustomHttpClient.httpExchange(HttpMethod.GET, url, params, requestHeaders, null, timeout);
+		if(response.body().length() > 20)
 		{
 			try
 			{
-				JSONObject resp = new JSONObject(response.getBody());
+				JSONObject resp = new JSONObject(response.body());
 				return resp.optJSONArray(DDNSKey.RESULT);
 			}
 			catch(JSONException e)
@@ -157,7 +164,7 @@ public class DNSCloudflare extends DNS{
 		}
 	}
 
-	public JSONObject getZone(String name) throws IOException
+	public JSONObject getZone(String name) throws HttpRequestException
 	{
 		Map<String, String> params = new HashMap<>();
 		params.put(DDNSKey.NAME, name);
@@ -177,7 +184,7 @@ public class DNSCloudflare extends DNS{
 		return zone;
 	}
 
-	public JSONObject deleteZoneByName(String name) throws DDNSException, IOException
+	public JSONObject deleteZoneByName(String name) throws DDNSException, HttpRequestException
 	{
 		JSONObject zone = this.getZone(name);
 		if(zone == null || zone.isEmpty())
@@ -189,13 +196,13 @@ public class DNSCloudflare extends DNS{
 		String url = this.endpoint + DDNSKey.ZONES+zoneId;
 		Headers requestHeaders = this.createRequestHeader();
 		int timeout = Config.getDdnsTimeout();
-		ResponseEntityCustom response = httpExchange(HttpMethod.DELETE, url, null, requestHeaders, null, timeout);
+		HttpResponse<String> response = CustomHttpClient.httpExchange(HttpMethod.DELETE, url, null, requestHeaders, null, timeout);
 		
 		JSONObject resp = new JSONObject();
 		
 		try
 		{
-			resp = new JSONObject(response.getBody());
+			resp = new JSONObject(response.body());
 		}
 		catch(JSONException e)
 		{
@@ -211,20 +218,21 @@ public class DNSCloudflare extends DNS{
 	 * @param zoneId Zone ID
 	 * @return
 	 * @throws IOException 
+	 * @throws InterruptedException 
 	 */
-	public JSONObject deleteZone(String zoneId) throws IOException
+	public JSONObject deleteZone(String zoneId) throws HttpRequestException
 	{
 		String url = this.endpoint + DDNSKey.ZONES+zoneId;
 		Headers requestHeaders = this.createRequestHeader();
 		
 		int timeout = Config.getDdnsTimeout();
-		ResponseEntityCustom response = httpExchange(HttpMethod.DELETE, url, null, requestHeaders, null, timeout);
+		HttpResponse<String> response = CustomHttpClient.httpExchange(HttpMethod.DELETE, url, null, requestHeaders, null, timeout);
 		
 		JSONObject resp = new JSONObject();
 		
 		try
 		{
-			resp = new JSONObject(response.getBody());
+			resp = new JSONObject(response.body());
 		}
 		catch(JSONException e)
 		{
@@ -236,14 +244,14 @@ public class DNSCloudflare extends DNS{
 	}
 
 
-	public JSONObject getZoneDnsRecords(String zoneId, Map<String, List<String>> params) throws IOException
+	public JSONObject getZoneDnsRecords(String zoneId, Map<String, List<String>> params) throws HttpRequestException
 	{
-		ResponseEntityCustom response = this.get(DDNSKey.ZONES + zoneId + "/dns_records", params, ConstantString.URL_ENCODE);
+		HttpResponse<String> response = this.get(DDNSKey.ZONES + zoneId + "/dns_records", params, ConstantString.URL_ENCODE);
 		JSONObject resp = new JSONObject();
 				
 		try
 		{
-			resp = new JSONObject(response.getBody());
+			resp = new JSONObject(response.body());
 		}
 		catch(JSONException e)
 		{
@@ -254,7 +262,7 @@ public class DNSCloudflare extends DNS{
 		return resp;
 	}
 	
-	private JSONObject createDnsRecord(String zoneId, String type, String name, String content, int ttl, boolean proxied) throws IOException
+	private JSONObject createDnsRecord(String zoneId, String type, String name, String content, int ttl, boolean proxied) throws HttpRequestException
 	{		
 		JSONObject json = new JSONObject();
 	
@@ -268,10 +276,10 @@ public class DNSCloudflare extends DNS{
 		Headers requestHeaders = this.createRequestHeader(ConstantString.APPLICATION_JSON);
 		String body = json.toString();
 		int timeout = 1000;
-		ResponseEntityCustom response = httpExchange(HttpMethod.POST, url, null, requestHeaders, body, timeout);
+		HttpResponse<String> response = CustomHttpClient.httpExchange(HttpMethod.POST, url, null, requestHeaders, body, timeout);
 		try
 		{
-			JSONObject resp = new JSONObject(response.getBody());
+			JSONObject resp = new JSONObject(response.body());
 			return resp.optJSONObject(DDNSKey.RESULT);
 		}
 		catch(JSONException e)
@@ -281,7 +289,7 @@ public class DNSCloudflare extends DNS{
 	}
 	
 	@Override
-	public JSONObject update(DDNSRecord ddnsRecord) throws IOException  
+	public JSONObject update(DDNSRecord ddnsRecord) throws HttpRequestException  
 	{
 		String ip = this.getIP();
 		String domain = ddnsRecord.getZone();
@@ -359,32 +367,32 @@ public class DNSCloudflare extends DNS{
 
 	
 
-	public ResponseEntityCustom get(String path, Map<String, List<String>> params, String contentType) throws IOException
+	public HttpResponse<String> get(String path, Map<String, List<String>> params, String contentType) throws HttpRequestException
 	{
 		String url = this.endpoint + path;
 		return this.request(HttpMethod.GET, url, params, contentType);
 	}
-	public ResponseEntityCustom post(String path, Map<String, List<String>> params, String contentType) throws IOException
+	public HttpResponse<String> post(String path, Map<String, List<String>> params, String contentType) throws HttpRequestException
 	{
 		String url = this.endpoint + path;
 		return this.request(HttpMethod.POST, url, params, contentType);
 	}
-	public ResponseEntityCustom put(String path, Map<String, List<String>> params, String contentType) throws IOException
+	public HttpResponse<String> put(String path, Map<String, List<String>> params, String contentType) throws HttpRequestException
 	{
 		String url = this.endpoint + path;
 		return this.request(HttpMethod.PUT, url, params, contentType);
 	}
-	public ResponseEntityCustom patch(String path, Map<String, List<String>> params, String contentType) throws IOException
+	public HttpResponse<String> patch(String path, Map<String, List<String>> params, String contentType) throws HttpRequestException
 	{
 		String url = this.endpoint + path;
 		return this.request(HttpMethod.PATCH, url, params, contentType);
 	}
-	public ResponseEntityCustom delete(String path, Map<String, List<String>> params, String contentType) throws IOException
+	public HttpResponse<String> delete(String path, Map<String, List<String>> params, String contentType) throws HttpRequestException
 	{
 		String url = this.endpoint + path;
 		return this.request(HttpMethod.DELETE, url, params, contentType);
 	}
-	public ResponseEntityCustom delete(String path, String contentType) throws IOException
+	public HttpResponse<String> delete(String path, String contentType) throws HttpRequestException
 	{
 		String url = this.endpoint + path;
 		Map<String, List<String>> params = new HashMap<>();
@@ -411,8 +419,9 @@ public class DNSCloudflare extends DNS{
 	*
 	* Returns information about the zone
 	 * @throws IOException 
+	 * @throws InterruptedException 
 	*/
-	public JSONObject registerDnsZone(String name, String accountId) throws IOException
+	public JSONObject registerDnsZone(String name, String accountId) throws HttpRequestException
 	{
 		JSONObject zone = this.getZone(name);
 		if(zone != null)
@@ -426,7 +435,7 @@ public class DNSCloudflare extends DNS{
 		return zone;
 	}
 
-	public JSONObject setDnsZoneSsl(String zoneId, String type) throws DDNSException, IOException
+	public JSONObject setDnsZoneSsl(String zoneId, String type) throws DDNSException, HttpRequestException, JSONException
 	{
 		List<String> allowedTypes = new ArrayList<>();
 		allowedTypes.add("off");
@@ -440,12 +449,12 @@ public class DNSCloudflare extends DNS{
 		Map<String, List<String>> params = new HashMap<>();
 		params.put(DDNSKey.VALUE, Utility.asList(type));
 	
-		ResponseEntityCustom response = this.patch(DDNSKey.ZONES + zoneId + "/settings/ssl", params, ConstantString.URL_ENCODE);
-		JSONObject resp = new JSONObject(response.getBody());
+		HttpResponse<String> response = this.patch(DDNSKey.ZONES + zoneId + "/settings/ssl", params, ConstantString.URL_ENCODE);
+		JSONObject resp = new JSONObject(response.body());
 		return resp.optJSONObject(DDNSKey.RESULT);
 	}
 
-	public JSONObject setDnsZoneCache(String zoneId, String type) throws DDNSException, IOException
+	public JSONObject setDnsZoneCache(String zoneId, String type) throws DDNSException, HttpRequestException
 	{
 		List<String> allowedTypes = new ArrayList<>();
 		allowedTypes.add("aggressive");
@@ -459,26 +468,26 @@ public class DNSCloudflare extends DNS{
 		Map<String, List<String>> params = new HashMap<>();
 		params.put(DDNSKey.VALUE, Utility.asList(type));
 	
-		ResponseEntityCustom response = this.patch(DDNSKey.ZONES + zoneId + "/settings/cache_level", params, ConstantString.URL_ENCODE);
-		JSONObject resp = new JSONObject(response.getBody());
+		HttpResponse<String> response = this.patch(DDNSKey.ZONES + zoneId + "/settings/cache_level", params, ConstantString.URL_ENCODE);
+		JSONObject resp = new JSONObject(response.body());
 		return resp.optJSONObject(DDNSKey.RESULT);
 	}
 
-	public ResponseEntityCustom clearZoneCache(String zoneId) throws IOException
+	public HttpResponse<String> clearZoneCache(String zoneId) throws HttpRequestException
 	{
 		Map<String, List<String>> params = new HashMap<>();
 		params.put("purge_everything", Utility.asList(Boolean.toString(true)));
 		return this.delete(DDNSKey.ZONES + zoneId + "/purge_cache", params, ConstantString.URL_ENCODE);
 	}
 
-	public ResponseEntityCustom setDnsZoneMinify(String zoneId, String settings) throws IOException
+	public HttpResponse<String> setDnsZoneMinify(String zoneId, String settings) throws HttpRequestException
 	{
 		Map<String, List<String>> params = new HashMap<>();
 		params.put(DDNSKey.VALUE, Utility.asList(settings));
 		return this.patch(DDNSKey.ZONES + zoneId + "/settings/minify", params, ConstantString.URL_ENCODE);
 	}
 
-	public JSONObject updateDnsRecord(String zoneId, String type, String name, String content, int ttl, boolean proxied, String recordId) throws IOException
+	public JSONObject updateDnsRecord(String zoneId, String type, String name, String content, int ttl, boolean proxied, String recordId) throws HttpRequestException
 	{
 		JSONObject json = new JSONObject();
 		
@@ -492,10 +501,10 @@ public class DNSCloudflare extends DNS{
 		Headers requestHeaders = this.createRequestHeader(ConstantString.APPLICATION_JSON);
 		String body = json.toString();
 		int timeout = 1000;
-		ResponseEntityCustom response = httpExchange(HttpMethod.PUT, url, null, requestHeaders, body, timeout);		
+		HttpResponse<String> response = CustomHttpClient.httpExchange(HttpMethod.PUT, url, null, requestHeaders, body, timeout);		
 		try
 		{
-			JSONObject resp = new JSONObject(response.getBody());
+			JSONObject resp = new JSONObject(response.body());
 			return resp.optJSONObject(DDNSKey.RESULT);
 		}
 		catch(JSONException e)
@@ -505,7 +514,7 @@ public class DNSCloudflare extends DNS{
 
 	}
 
-	public ResponseEntityCustom deleteDnsRecord(String zoneId, String recordId) throws IOException
+	public HttpResponse<String> deleteDnsRecord(String zoneId, String recordId) throws HttpRequestException
 	{
 		return this.delete(DDNSKey.ZONES + zoneId + "/dns_records/" + recordId, ConstantString.URL_ENCODE);
 	}

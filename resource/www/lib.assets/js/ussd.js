@@ -56,7 +56,7 @@ $(document).ready(function(e1){
         }
         renderNumber();
     });
-    $(document).on('click', '#phone', function(e){
+    $(document).on('click', '#ussd-dialer', function(e){
         var dialedNumber = dialed.join('').toString();
         dialed = [];
         renderNumber();
