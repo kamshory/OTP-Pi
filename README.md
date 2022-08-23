@@ -67,12 +67,12 @@ User can send OTP with several methods. OTP-Pi allow user to create and validate
 | Method | Send SMS | Send Email | Block MSISDN | Unblock MSISDN | Create OTP | Validate OTP |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | 
 | REST API | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| WebSocket | ✓ | ✓ | ✓ | ✓ | Require callback | Require callback |
-| RabbitMQ* | ✓ | ✓ | ✓ | ✓ | Require callback | Require callback |
-| Redis* | ✓ | ✓ | ✓ | ✓ | Require callback | Require callback |
-| Mosquitto* | ✓ | ✓ | ✓ | ✓ | Require callback | Require callback |
-| ActiveMQ* | ✓ | ✓ | ✓ | ✓ | Require callback | Require callback |
-| Stomp* | ✓ | ✓ | ✓ | ✓ | Require callback | Require callback |
+| WebSocket | ✓ | ✓ | ✓ | ✓ | ✓ | Require callback |
+| RabbitMQ* | ✓ | ✓ | ✓ | ✓ | ✓ | Require callback |
+| Redis* | ✓ | ✓ | ✓ | ✓ | ✓ | Require callback |
+| Mosquitto* | ✓ | ✓ | ✓ | ✓ | ✓ | Require callback |
+| ActiveMQ* | ✓ | ✓ | ✓ | ✓ | ✓ | Require callback |
+| Stomp* | ✓ | ✓ | ✓ | ✓ | ✓ | Require callback |
 
 If you wish all features to be enable from API, you can use  OTP-Publisher. Clone https://github.com/kamshory/OTP-Publisher to get it.
 
@@ -1371,3 +1371,4 @@ https://www.youtube.com/channel/UCY-qziSbBmJ7iZj-cXqmcMg
 # Bonus! AT Command Documentation
 
 https://docs.rs-online.com/5931/0900766b80bec52c.pdf
+
