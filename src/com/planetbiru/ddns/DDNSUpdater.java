@@ -15,7 +15,8 @@ public class DDNSUpdater extends Thread{
 	private static Logger logger = Logger.getLogger(DDNSUpdater.class);
 	private static long lastUpdate = 0;
 	private DDNSRecord ddnsRecord;
-	public DDNSUpdater(DDNSRecord ddnsRecord, String prevFireTimeStr, String currentTimeStr, String nextValidTimeAfterStr) {
+	public DDNSUpdater(DDNSRecord ddnsRecord, String prevFireTimeStr, String currentTimeStr, String nextValidTimeAfterStr)  //NOSONAR
+	{
 		this.ddnsRecord = ddnsRecord;
 	}
 

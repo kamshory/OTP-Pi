@@ -219,7 +219,7 @@ public class ConfigModem {
 				try 
 				{
 					JSONObject signal = GSMUtil.getSignalStrength(id);
-					modem.put("signalStrength", signal.optJSONObject(JsonKey.DATA));
+					modem.put("signalStrength", signal.optJSONObject(JsonKey.DATA)); //NOSONAR
 				} 
 				catch (GSMException e) 
 				{

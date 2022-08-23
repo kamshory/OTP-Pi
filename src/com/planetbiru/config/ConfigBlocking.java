@@ -158,7 +158,7 @@ public class ConfigBlocking {
         int i = 0;
         for (String sKey : map.keySet()) 
         {
-        	String key = sKey.replaceAll("^\"|\"$", "");
+        	String key = sKey.replaceAll("^\"|\"$", ""); //NOSONAR
         	if(i > 0)
         	{
         		builder.append(",");

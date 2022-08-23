@@ -116,7 +116,8 @@ public class DNS {
         }
 	}
 
-	private ResponseEntityCustom sendRequestHttps(String method, String url, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws IOException {
+	private ResponseEntityCustom sendRequestHttps(String method, String url, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws IOException  //NOSONAR
+	{
         HttpsURLConnection con = null;
 		ResponseEntityCustom result = new ResponseEntityCustom();
         byte[] postData = null;
@@ -187,7 +188,8 @@ public class DNS {
 		return result;
 	}
 
-	private ResponseEntityCustom sendRequestHttp(String method, String url, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws IOException {
+	private ResponseEntityCustom sendRequestHttp(String method, String url, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws IOException //NOSONAR
+	{
         HttpURLConnection con = null;
 		ResponseEntityCustom result = new ResponseEntityCustom();
         byte[] postData = null;
@@ -264,7 +266,8 @@ public class DNS {
 	}
 
 
-	public JSONObject update(DDNSRecord ddnsRecord) throws IOException {
+	public JSONObject update(DDNSRecord ddnsRecord) throws IOException  //NOSONAR
+	{
 		return ddnsRecord.toJSONObject();
 	}
 }

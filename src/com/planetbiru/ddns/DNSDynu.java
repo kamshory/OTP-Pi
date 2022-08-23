@@ -172,10 +172,10 @@ public class DNSDynu extends DNS {
 		boolean state = true;
 		String group = "";	
 		
-		requestJSON.put("nodeName", nodeName);
-		requestJSON.put("recordType", recordType);
+		requestJSON.put("nodeName", nodeName); //NOSONAR
+		requestJSON.put("recordType", recordType); //NOSONAR
 		requestJSON.put("ttl", ttl);
-		requestJSON.put("state", state);
+		requestJSON.put("state", state); //NOSONAR
 		requestJSON.put("group", group);
 		requestJSON.put("ipv4Address", ipAddress);
 		

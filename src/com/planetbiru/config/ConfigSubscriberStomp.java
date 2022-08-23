@@ -260,11 +260,13 @@ public class ConfigSubscriberStomp {
 		ConfigSubscriberStomp.subscriberStompRefresh = 0;
 	}
 
-	public static long getSubscriberWsReconnectDelay() {
+	public static long getSubscriberWsReconnectDelay()  //NOSONAR
+	{
 		return subscriberStompReconnectDelay;
 	}
 
-	public static void setSubscriberWsReconnectDelay(long subscriberStompReconnectDelay) {
+	public static void setSubscriberWsReconnectDelay(long subscriberStompReconnectDelay)  //NOSONAR
+	{
 		ConfigSubscriberStomp.subscriberStompReconnectDelay = subscriberStompReconnectDelay;
 	}
 
