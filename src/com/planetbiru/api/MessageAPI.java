@@ -301,7 +301,7 @@ public class MessageAPI {
 		return responseJSON;		
 	}
 	
-	public JSONObject sendMail(String command, JSONObject data, StackTraceElement ste) 
+	public JSONObject sendMail(String command, JSONObject data, StackTraceElement ste) //NOSONAR
 	{
 		JSONObject responseJSON = new JSONObject();
 		JSONObject jsonData = new JSONObject();
@@ -369,7 +369,8 @@ public class MessageAPI {
 		responseJSON.put(JsonKey.DATA, jsonData);
 		return responseJSON;		
 	}
-	private JSONObject sendEmail(String command, JSONObject data, StackTraceElement ste) {
+	private JSONObject sendEmail(String command, JSONObject data, StackTraceElement ste) //NOSONAR
+	{
 		JSONObject responseJSON = new JSONObject();
 		String to = data.optString(JsonKey.RECEIVER, "");
 		String subject = data.optString(JsonKey.SUBJECT, "");

@@ -460,7 +460,8 @@ public class DataModem implements Cloneable {
 		return perfixes;
 	}
 	
-	public Object clone() throws CloneNotSupportedException {  
+	public Object clone() throws CloneNotSupportedException //NOSONAR
+	{  
 		return super.clone();  
 	}
 	
