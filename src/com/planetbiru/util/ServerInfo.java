@@ -195,8 +195,7 @@ public class ServerInfo {
 					double used = Utility.atof(usedStr);
 					double free = Utility.atof(freeStr);
 					double percentUsed  = 100 * used/total;
-					JSONObject ram = new JSONObject();
-					
+					JSONObject ram = new JSONObject();					
 					ram.put(ServerInfo.TOTAL, total);
 					ram.put(ServerInfo.USED, used);
 					ram.put(ServerInfo.FREE, free);				
@@ -438,7 +437,8 @@ public class ServerInfo {
 	private static JSONObject cpuUsageWindows() {
 		JSONObject info = new JSONObject();
 		com.sun.management.OperatingSystemMXBean os = (com.sun.management.OperatingSystemMXBean) java.lang.management.ManagementFactory.getOperatingSystemMXBean(); //NOSONAR
-		double used = os.getCpuLoad() * 100;
+		@SuppressWarnings("deprecation")
+		double used = os.getSystemCpuLoad() * 100; //NOSONAR
 		double idle = 100 - used;
 		info.put(JsonKey.IDLE, idle);
 		info.put(ServerInfo.USED, used);
