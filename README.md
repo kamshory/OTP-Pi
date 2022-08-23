@@ -546,6 +546,8 @@ subnet 192.168.1.0 netmask 255.255.255.0 {
 }
 ```
 
+![enter image description here](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/ss-network-setting-dhcp.png)
+
 ### Wireless LAN
 
 Wireless LAN configuration will set the IP address on the OTP-Pi wireless network. The default IP address of the OTP-Pi is 192.168.0.11
@@ -561,6 +563,8 @@ Wireless LAN configuration will set the IP address on the OTP-Pi wireless networ
 | Gateway | Gateway |
 | DNS | DNS |
 
+![enter image description here](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/ss-network-setting-wlan.png)
+
 ### Ethernet
 
 The Ethernet configuration will set the ethernet IP address on the OTP-Pi.
@@ -573,6 +577,8 @@ The Ethernet configuration will set the ethernet IP address on the OTP-Pi.
 | Gateway | Gateway |
 | DNS1 | DNS 1 |
 | DNS2 | DNS 2 |
+
+![enter image description here](https://raw.githubusercontent.com/kamshory/OTP-Pi/main/ss-network-setting-ethernet.png)
 
 ## Firewalls
 
