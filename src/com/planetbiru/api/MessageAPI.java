@@ -105,7 +105,7 @@ public class MessageAPI {
 		}
 		catch(JSONException | GSMException | SerialPortConnectionException e)
 		{
-			logger.error(e.getMessage(), e);
+			logger.error(e.getMessage());
 		}
 		return responseJSON;
 	}
@@ -148,7 +148,7 @@ public class MessageAPI {
 				/**
 				 * Do nothing
 				 */
-				logger.error(e.getMessage(), e);
+				logger.error(e.getMessage());
 			}
 		}	
 		responseJSON.put(JsonKey.COMMAND, command);
@@ -274,7 +274,7 @@ public class MessageAPI {
 			/**
 			 * Do nothing
 			 */
-			logger.error(e.getMessage(), e);
+			logger.error(e.getMessage());
 		}
 		return requestJSON;
 	}
@@ -319,7 +319,7 @@ public class MessageAPI {
 				/**
 				 * Do nothing
 				 */
-				logger.error(e.getMessage(), e);
+				logger.error(e.getMessage());
 			}
 		}	
 		responseJSON.put(JsonKey.COMMAND, command);
@@ -333,6 +333,7 @@ public class MessageAPI {
 		JSONObject jsonData = new JSONObject();
 		if(data != null)
 		{
+			
 			String receiver = data.optString(JsonKey.RECEIVER, "");
 			String textMessage = data.optString(JsonKey.MESSAGE, "");
 			boolean dropOTPExpire = ConfigGeneral.isDropExpireOTP();

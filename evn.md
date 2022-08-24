@@ -1,7 +1,7 @@
 # Setup Environment Variables
 
 ```bash
-echo 'export OTPPI_DEVICE_NAME="OTP Broker"' >> $HOME/.bashrc
+echo 'export OTPPI_DEVICE_NAME="OTP Pi"' >> $HOME/.bashrc
 echo 'export OTPPI_DEVICE_VERSION="Version 1.0.0"' >> $HOME/.bashrc
 echo 'export OTPPI_SERVER_MANAGEMENT_PORT="8888"' >> $HOME/.bashrc
 echo 'export OTPPI_WEB_SESSION_NAME="SMSSESSID"' >> $HOME/.bashrc

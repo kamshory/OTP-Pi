@@ -17,7 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.planetbiru.Application;
+import com.planetbiru.App;
 import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
@@ -1347,7 +1347,7 @@ public class HandlerWebManager implements HttpHandler {
 			
 			if(ConfigSubscriberWS.isSubscriberWsEnable())
 			{
-				Application.subscriberWSStart();
+				App.subscriberWSStart();
 			}
 		}		
 		
@@ -1389,11 +1389,11 @@ public class HandlerWebManager implements HttpHandler {
 			
 			if(changeVerstion)
 			{
-				Application.subscriberAMQPStop(true);
+				App.subscriberAMQPStop(true);
 			}
 			if(ConfigSubscriberAMQP.isSubscriberAmqpEnable())
 			{
-				Application.subscriberAMQPStart();
+				App.subscriberAMQPStart();
 			}
 		}	
 		
@@ -1437,7 +1437,7 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigSubscriberActiveMQ.save();	
 			if(ConfigSubscriberActiveMQ.isSubscriberActiveMQEnable())
 			{
-				Application.subscriberMQTTStart();
+				App.subscriberMQTTStart();
 			}
 		}	
 		
@@ -1478,7 +1478,7 @@ public class HandlerWebManager implements HttpHandler {
 			
 			if(ConfigSubscriberRedis.isSubscriberRedisEnable())
 			{
-				Application.subscriberRedisStart();
+				App.subscriberRedisStart();
 			}
 		}	
 		
@@ -1565,7 +1565,7 @@ public class HandlerWebManager implements HttpHandler {
 			
 			if(ConfigSubscriberMQTT.isSubscriberMqttEnable())
 			{
-				Application.subscriberMQTTStart();
+				App.subscriberMQTTStart();
 			}
 		}	
 		

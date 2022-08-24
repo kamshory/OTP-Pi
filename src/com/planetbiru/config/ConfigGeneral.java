@@ -7,7 +7,7 @@ import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.planetbiru.Application;
+import com.planetbiru.App;
 import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.FileNotFoundException;
 import com.planetbiru.util.Utility;
@@ -59,10 +59,10 @@ public class ConfigGeneral {
 					ConfigGeneral.restartService = json.optString("restartService", "").trim();
 					ConfigGeneral.restartDevice = json.optString("restartDevice", "").trim();
 					ConfigGeneral.dropExpireOTP = json.optBoolean("dropExpireOTP", false);
-					ConfigGeneral.otpExpirationOffset = json.optLong("otpExpiration", 0);
+					ConfigGeneral.otpExpirationOffset = json.optLong("otpExpirationOffset", 0);
 					ConfigGeneral.inspectModemInterval = json.optLong("inspectModemInterval", 0);
 					
-					Application.modemInspectorStart(0);
+					App.modemInspectorStart(0);
 				}
 			}
 		} 
@@ -111,7 +111,7 @@ public class ConfigGeneral {
 		config.put("restartService", ConfigGeneral.restartService);
 		config.put("restartDevice", ConfigGeneral.restartDevice);
 		config.put("dropExpireOTP", ConfigGeneral.dropExpireOTP);
-		config.put("otpExpiration", ConfigGeneral.otpExpirationOffset);
+		config.put("otpExpirationOffset", ConfigGeneral.otpExpirationOffset);
 		config.put("inspectModemInterval", ConfigGeneral.inspectModemInterval);
 		return config;
 	}

@@ -8,7 +8,7 @@ import org.apache.commons.net.ntp.NTPUDPClient;
 import org.apache.commons.net.ntp.TimeInfo;
 import org.apache.commons.net.ntp.TimeStamp;
 
-import com.planetbiru.Application;
+import com.planetbiru.App;
 import com.planetbiru.config.Config;
 import com.planetbiru.util.CommandLineExecutor;
 import com.planetbiru.util.Utility;
@@ -107,7 +107,7 @@ public class DeviceAPI {
 
 	public static void restart()
 	{
-		Application.restartService();
+		App.restartService();
 	}
 
 	public static void setTimeZone(String timeZone) {

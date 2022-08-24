@@ -10,7 +10,7 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.planetbiru.Application;
+import com.planetbiru.App;
 import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
@@ -789,7 +789,7 @@ public class ServerInfo {
 
 			JSONObject httpConneted = new JSONObject();
 			httpConneted.put(JsonKey.NAME, "otp-http-connected");
-			httpConneted.put(JsonKey.VALUE, Application.getRest().isHttpStarted());
+			httpConneted.put(JsonKey.VALUE, App.getRest().isHttpStarted());
 			data.put(httpConneted);
 		}
 
@@ -802,7 +802,7 @@ public class ServerInfo {
 			
 			JSONObject httpsConneted = new JSONObject();
 			httpsConneted.put(JsonKey.NAME, "otp-https-connected");
-			httpsConneted.put(JsonKey.VALUE, Application.getRest().isHttpsStarted());
+			httpsConneted.put(JsonKey.VALUE, App.getRest().isHttpsStarted());
 			data.put(httpsConneted);
 		}
 		

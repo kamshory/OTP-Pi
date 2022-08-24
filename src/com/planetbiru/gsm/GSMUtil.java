@@ -70,7 +70,7 @@ public class GSMUtil {
 				} 
 				catch (GSMException | InvalidPortException e) 
 				{
-					logger.error(e.getMessage(), e);
+					logger.error(e.getMessage());
 				}
 			}
 		}
@@ -117,7 +117,7 @@ public class GSMUtil {
 		}
 		catch (ModemNotFoundException e) 
 		{
-			logger.error(e.getMessage(), e);
+			logger.error(e.getMessage());
 		}
 		
 	}
@@ -154,7 +154,7 @@ public class GSMUtil {
 			} 
 			catch (GSMException | InvalidPortException | CloneNotSupportedException e) 
 			{
-				logger.error(e.getMessage(), e);
+				logger.error(e.getMessage());
 			}			
 		}	
 		GSMUtil.updateConnectedDevice();
@@ -181,7 +181,7 @@ public class GSMUtil {
 					} 
 					catch (GSMException e) 
 					{
-						logger.error(e.getMessage(), e);
+						logger.error(e.getMessage());
 					}
 				}
 			}
@@ -673,7 +673,7 @@ public class GSMUtil {
 					/**
 					 * Do nothing
 					 */
-					logger.error(e.getMessage(), e);
+					logger.error(e.getMessage());
 				}
 			}
 		}		
@@ -721,7 +721,7 @@ public class GSMUtil {
 		} 
 		catch (SerialPortConnectionException e) 
 		{
-			logger.error(e.getMessage(), e);
+			logger.error(e.getMessage());
 			
 			GSMInstance instance;
 			try 
@@ -732,7 +732,7 @@ public class GSMUtil {
 			} 
 			catch (ModemNotFoundException | GSMException e2) 
 			{
-				logger.error(e2.getMessage(), e2);
+				logger.error(e2.getMessage());
 			}	
 			
 			throw new SerialPortConnectionException(e);
@@ -788,7 +788,7 @@ public class GSMUtil {
 		} 
 		catch (GSMException | InvalidPortException e) 
 		{
-			logger.error(e.getMessage(), e);
+			logger.error(e.getMessage());
 			/**
 			 * Do nothing
 			 */

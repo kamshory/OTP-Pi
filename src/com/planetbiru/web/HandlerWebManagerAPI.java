@@ -9,7 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.planetbiru.Application;
+import com.planetbiru.App;
 import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.buzzer.Music;
 import com.planetbiru.config.Config;
@@ -304,11 +304,11 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
 				if(action.equals(JsonKey.START))
 				{
-					Application.subscriberWSStart();					
+					App.subscriberWSStart();					
 				}
 				else
 				{
-					Application.subscriberWSStop(true);
+					App.subscriberWSStop(true);
 				} 
 				ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_WS);
 			} 
@@ -352,11 +352,11 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
 				if(action.equals(JsonKey.START))
 				{
-					Application.subscriberAMQPStart();				
+					App.subscriberAMQPStart();				
 				}
 				else
 				{
-					Application.subscriberAMQPStop(true);
+					App.subscriberAMQPStop(true);
 				} 
 				ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_AMQP);
 			} 
@@ -400,11 +400,11 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
 				if(action.equals(JsonKey.START))
 				{
-					Application.subscriberRedisStart();				
+					App.subscriberRedisStart();				
 				}
 				else
 				{
-					Application.subscriberRedisStop(true);
+					App.subscriberRedisStop(true);
 				}				
 			} 
 			else 
@@ -446,11 +446,11 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
 				if(action.equals(JsonKey.START))
 				{
-					Application.subscriberStompStart();
+					App.subscriberStompStart();
 				}
 				else
 				{
-					Application.subscriberStompStop(true);
+					App.subscriberStompStop(true);
 				}				
 			} 
 			else 
@@ -492,11 +492,11 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
 				if(action.equals(JsonKey.START))
 				{
-					Application.subscriberMQTTStart();				
+					App.subscriberMQTTStart();				
 				}
 				else
 				{
-					Application.subscriberMQTTStop(true);
+					App.subscriberMQTTStop(true);
 				}
 				ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_MQTT);
 			} 
@@ -540,11 +540,11 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
 				if(action.equals(JsonKey.START))
 				{
-					Application.subscriberActiveMQStart();			
+					App.subscriberActiveMQStart();			
 				}
 				else
 				{
-					Application.subscriberActiveMQStop(true);
+					App.subscriberActiveMQStop(true);
 				}
 				ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_ACTIVEMQ);
 			} 
@@ -588,11 +588,11 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
 				if(action.equals(JsonKey.START))
 				{
-					Application.subscriberHTTPStart();				
+					App.subscriberHTTPStart();				
 				}
 				else
 				{
-					Application.subscriberHTTPStop(true);
+					App.subscriberHTTPStop(true);
 				}
 				ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_HTTP);
 			} 
@@ -636,11 +636,11 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				String action = queryPairs.getOrDefault(JsonKey.ACTION, "");
 				if(action.equals(JsonKey.START))
 				{
-					Application.subscriberHTTPSStart();				
+					App.subscriberHTTPSStart();				
 				}
 				else
 				{
-					Application.subscriberHTTPSStop(true);
+					App.subscriberHTTPSStop(true);
 				}
 				ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_HTTPS);
 			} 
@@ -773,22 +773,22 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		{
 			if(modemFunction.equals(ConstantString.SMS) || modemFunction.equals(ConstantString.ALL))
 			{
-				Application.modemSMSStart();
+				App.modemSMSStart();
 			}
 			if(modemFunction.equals(ConstantString.INTERNET) || modemFunction.equals(ConstantString.ALL))
 			{
-				Application.modemInternetStart();
+				App.modemInternetStart();
 			}
 		}
 		else
 		{
 			if(modemFunction.equals(ConstantString.SMS) || modemFunction.equals(ConstantString.ALL))
 			{
-				Application.modemSMSStop();
+				App.modemSMSStop();
 			}
 			if(modemFunction.equals(ConstantString.INTERNET) || modemFunction.equals(ConstantString.ALL))
 			{
-				Application.modemInternetStop();
+				App.modemInternetStop();
 			}
 		} 
 		return result;
@@ -897,8 +897,8 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		{
 			if(action.equals(ConstantString.CONNECT))
 			{
-				Application.modemSMSStart();
-				Application.modemInternetStart();
+				App.modemSMSStart();
+				App.modemInternetStart();
 			}
 			else if(action.equals("request-signal-strength"))
 			{
@@ -906,8 +906,8 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			}
 			else
 			{
-				Application.modemSMSStop();
-				Application.modemInternetStop();
+				App.modemSMSStop();
+				App.modemInternetStop();
 			}
 		}
 		return responseJSON;
@@ -1149,13 +1149,14 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		} 
 		catch (GSMException e) 
 		{
-			e.printStackTrace();
+			logger.error(e.getMessage());
 			String message = e.getMessage();
 			response.put(JsonKey.MESSAGE, message);
 			response.put(JsonKey.SUCCESS, false);	
 		}		
 		catch (JSONException e)
 		{
+			logger.error(e.getMessage());
 			response.put(JsonKey.MESSAGE, e.getMessage());
 		}
 		catch(NoUserRegisteredException e)

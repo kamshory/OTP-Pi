@@ -47,7 +47,7 @@ public class ServerWebAdmin {
 		{
 			logger.error(e.getMessage());
 			logger.info("Exit...");
-			Application.exit();
+			App.exit();
 		}
 	}
 

@@ -1,1 +1,1 @@
-{"ntpUpdateInterval":"0 0 */6 * * ?","restartService":"","inspectModemInterval":5000,"deviceTimeZone":"Asia/Jakarta","ntpServer":"pool.ntp.org","restartDevice":"","deviceName":"OTP Broker","dropExpireOTP":true,"otpExpiration":0}
+{"ntpUpdateInterval":"0 0 */6 * * ?","restartService":"","inspectModemInterval":5000,"otpExpirationOffset":8460,"deviceTimeZone":"Asia/Jakarta","ntpServer":"pool.ntp.org","restartDevice":"","deviceName":"OTP Pi","dropExpireOTP":true}

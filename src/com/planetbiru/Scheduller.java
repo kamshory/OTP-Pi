@@ -525,7 +525,7 @@ public class Scheduller extends Thread{
 
 	private void redisCheck()
 	{
-		boolean connected = Application.getRedisSubscriber().ping(5000);
+		boolean connected = App.getRedisSubscriber().ping(5000);
 		ServerInfo.sendRedisStatus(connected);
 	}
 
