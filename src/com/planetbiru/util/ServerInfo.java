@@ -172,7 +172,7 @@ public class ServerInfo {
 		}
 	}
 	
-	private static JSONObject memoryInfoLinux() {
+	public static JSONObject memoryInfoLinux() {
 		JSONObject info = new JSONObject();
 		String command = "free";
 		String result = CommandLineExecutor.exec(command).toString();		
@@ -229,7 +229,7 @@ public class ServerInfo {
 		return info;
 	}
 
-	private static JSONObject memoryInfoWindows() {
+	public static JSONObject memoryInfoWindows() {
 		JSONObject info = new JSONObject();
 
 		JSONObject ram = new JSONObject();
@@ -263,8 +263,7 @@ public class ServerInfo {
 	{
 		String serialNumber = "";
 		String command = "more /proc/cpuinfo | grep Serial";
-		String result = CommandLineExecutor.exec(command).toString();
-		
+		String result = CommandLineExecutor.exec(command).toString();	
 		
 		result = fixingRawData(result);
 		
@@ -307,7 +306,7 @@ public class ServerInfo {
 			return storageInfoLinux();
 		}
 	}
-	private static JSONObject storageInfoWindows() {
+	public static JSONObject storageInfoWindows() {
 		JSONObject info = new JSONObject();	
 		String dir = Utility.getBaseDir();
 		File diskPartition = new File(dir);
@@ -488,7 +487,7 @@ public class ServerInfo {
 		return info;	
 	}
 
-	private static String getCPUSensorAdapter(String result) {
+	public static String getCPUSensorAdapter(String result) {
 		
 		String[] lines = result.split("\r\n");
 		String adapter = "";
@@ -583,7 +582,7 @@ public class ServerInfo {
 		return info;		
 	}
 	
-	private static JSONObject parseOpenPortLine(String[] arr, String[] arr1, int j) {
+	public static JSONObject parseOpenPortLine(String[] arr, String[] arr1, int j) {
 		String[] arr2 = arr[j].replaceAll("\\s+", " ").trim().split(" ", 9);
 		for(int i = 0; i<arr2.length; i++)
 		{

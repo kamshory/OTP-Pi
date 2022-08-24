@@ -13,8 +13,8 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.planetbiru.DeviceActivation;
 import com.planetbiru.config.Config;
+import com.planetbiru.device.DeviceActivation;
 
 public class FileUtil {
 	private FileUtil()

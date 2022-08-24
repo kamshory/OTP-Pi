@@ -18,7 +18,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.planetbiru.Application;
-import com.planetbiru.DeviceActivation;
 import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
@@ -51,7 +50,9 @@ import com.planetbiru.config.DataModem;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.cookie.CookieServer;
+import com.planetbiru.device.ConfigActivation;
 import com.planetbiru.device.DeviceAPI;
+import com.planetbiru.device.DeviceActivation;
 import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.gsm.InvalidSIMPinException;

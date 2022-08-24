@@ -19,6 +19,7 @@ import com.planetbiru.config.ConfigSubscriberStomp;
 import com.planetbiru.config.ConfigSubscriberWS;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
+import com.planetbiru.device.DeviceActivation;
 import com.planetbiru.device.ResetDevice;
 import com.planetbiru.gsm.InternetDialUtil;
 import com.planetbiru.gsm.ModemInspector;
@@ -223,6 +224,9 @@ public class Application {
 			Application.serverEmailStart();
 			
 			Application.schedulerStart();
+			
+			DeviceActivation.verify();
+			
 			logger.info("Service started");
 		}
 		else

@@ -88,11 +88,11 @@ public class CustomHttpClient {
         	}
         }
 	}
+	
 	public static HttpResponse<String> sendRequest(String method, String url, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws HttpRequestException 
 	{      
        return CustomHttpClient.sendRequestHttp(method, url, parameters, requestHeaders, body, timeout);
 	}
-
 	
 	private static HttpResponse<String> sendRequestHttp(String method, String url, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws HttpRequestException {
 		

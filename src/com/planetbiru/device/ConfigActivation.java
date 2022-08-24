@@ -1,4 +1,4 @@
-package com.planetbiru.web;
+package com.planetbiru.device;
 
 public class ConfigActivation {
 

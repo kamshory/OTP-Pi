@@ -34,6 +34,7 @@ import com.planetbiru.config.ConfigVendorCloudflare;
 import com.planetbiru.config.ConfigVendorDynu;
 import com.planetbiru.config.ConfigVendorNoIP;
 import com.planetbiru.config.PropertyLoader;
+import com.planetbiru.device.ConfigActivation;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.gsm.SMSLogger;
 import com.planetbiru.subscriber.activemq.ActiveMQInstance;
@@ -42,7 +43,6 @@ import com.planetbiru.subscriber.mqtt.SubscriberMQTT;
 import com.planetbiru.subscriber.redis.SubscriberRedis;
 import com.planetbiru.subscriber.ws.WebSocketClientImpl;
 import com.planetbiru.user.WebUserAccount;
-import com.planetbiru.web.ConfigActivation;
 import com.planetbiru.web.HandlerWebManagerAPI;
 
 public class ConfigLoader {

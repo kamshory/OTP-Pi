@@ -241,8 +241,6 @@ public class Config {
 	public static void setSubscriberRedisSettingPath(String subscriberRedisSettingPath) {
 		Config.subscriberRedisSettingPath = subscriberRedisSettingPath;
 	}
-	
-	
 
 	public static String getSubscriberStompSettingPath() {
 		return subscriberStompSettingPath;
