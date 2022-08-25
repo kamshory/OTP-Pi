@@ -192,6 +192,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		httpExchange.getResponseBody().write(responseBody);
 		httpExchange.close();
 	}
+	
 	//@PostMapping(path="/api/bell/test")
 	public void testBell(HttpExchange httpExchange) throws IOException
 	{
@@ -233,6 +234,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		httpExchange.getResponseBody().write(responseBody);
 		httpExchange.close();
 	}
+	
 	//@PostMapping(path="/api/delete/sms")
 	public void deleteSMS(HttpExchange httpExchange) throws IOException
 	{
@@ -282,6 +284,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		httpExchange.getResponseBody().write(responseBody);
 		httpExchange.close();
 	}
+	
 	//@PostMapping(path="/api/subscriber-ws")
 	public void subscriberWS(HttpExchange httpExchange) throws IOException
 	{
@@ -424,6 +427,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		httpExchange.getResponseBody().write(responseBody);
 		httpExchange.close();
 	}
+	
 	//@PostMapping(path="/api/subscriber-redisson")
 	public void subscriberStomp(HttpExchange httpExchange) throws IOException
 	{
@@ -470,6 +474,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		httpExchange.getResponseBody().write(responseBody);
 		httpExchange.close();
 	}
+	
 	//@PostMapping(path="/api/subscriber-mqtt")
 	public void subscriberMQTT(HttpExchange httpExchange) throws IOException
 	{
