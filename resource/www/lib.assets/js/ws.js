@@ -11,6 +11,19 @@ var ws = null;
 var wsConnected = false;
 var connetionInterval = setTimeout('', 1000);
 
+function broadcast(message)
+{
+    if(ws != null)
+    {
+        ws.send(JSON.stringify({
+            command:'broadcast-message',
+            data:[{
+                message:message
+            }]
+        }))
+    }
+}
+
 function createBaseURL(protocol, host, port){
     var url = "";
     if(protocol.indexOf("https") != -1)
@@ -81,15 +94,13 @@ function connectWebSocket()
     
     ws.onmessage = function (evt) { 
         serverUp();
-
         var receivedRaw = evt.data;
-        console.log(receivedRaw)
         var receivedJSON = JSON.parse(receivedRaw);
         if(receivedJSON.command == "broadcast-message")
         {
           for(var i in receivedJSON.data)
           {
-            showNotif(receivedJSON.data[i].message);
+            showNotif(receivedJSON.data[i].message, receivedJSON.data[i].sender_info);
           }
         }
         else if(receivedJSON.command == "server-shutdown")
@@ -219,6 +230,17 @@ function getMQTTConnected()
     var value = window.localStorage.getItem(key) || '';
     return value == '1';
 }
+function setActiveMQConnected(value)
+{
+    var key = 'otp-activemq-connected';
+    window.localStorage.setItem(key, (value)?'1':'0');
+}
+function getActiveMQConnected()
+{
+    var key = 'otp-activemq-connected';
+    var value = window.localStorage.getItem(key) || '';
+    return value == '1';
+}
 function setWSEnable(value)
 {
     var key = 'otp-ws-enable';
@@ -241,6 +263,18 @@ function getAMQPEnable()
     var value = window.localStorage.getItem(key) || '';
     return value == '1';
 }
+function getStompEnable()
+{
+    var key = 'otp-stomp-enable';
+    var value = window.localStorage.getItem(key) || '';
+    return value == '1';
+}
+function getStompConnected()
+{
+    var key = 'otp-stomp-connected';
+    var value = window.localStorage.getItem(key) || '';
+    return value == '1';
+}
 function setRedisEnable(value)
 {
     var key = 'otp-redis-enable';
@@ -260,6 +294,27 @@ function setMQTTEnable(value)
 function getMQTTEnable()
 {
     var key = 'otp-mqtt-enable';
+    var value = window.localStorage.getItem(key) || '';
+    return value == '1';
+}
+function setActiveMQEnable(value)
+{
+    var key = 'otp-activemq-enable';
+    window.localStorage.setItem(key, (value)?'1':'0');
+}
+function setStompEnable(value)
+{
+    var key = 'otp-stomp-enable';
+    window.localStorage.setItem(key, (value)?'1':'0');
+}
+function setStompConnected(value)
+{
+    var key = 'otp-stomp-connected';
+    window.localStorage.setItem(key, (value)?'1':'0');
+}
+function getActiveMQEnable()
+{
+    var key = 'otp-activemq-enable';
     var value = window.localStorage.getItem(key) || '';
     return value == '1';
 }
@@ -389,7 +444,7 @@ function updateServerInfo(receivedJSON)
         if (item.name == 'otp-redis-connected')
         {
             setRedisConnected(item.value);
-        }
+        }      
         if (item.name == 'otp-mqtt-enable')
         {
             setMQTTEnable(item.value);
@@ -398,6 +453,24 @@ function updateServerInfo(receivedJSON)
         {
             setMQTTConnected(item.value);
         }
+        if (item.name == 'otp-activemq-enable')
+        {
+            setActiveMQEnable(item.value);
+        }
+        if (item.name == 'otp-activemq-connected')
+        {
+            setActiveMQConnected(item.value);
+        }
+
+        if (item.name == 'otp-stomp-enable')
+        {
+            setStompEnable(item.value);
+        }
+        if (item.name == 'otp-stomp-connected')
+        {
+            setStompConnected(item.value);
+        }
+        
         if(item.name == 'feeder')
         {
             setFeeder(item.feeder);
@@ -427,15 +500,20 @@ function getFeeder()
     }
     return value;
 }
-function showNotif(message)
+function showNotif(message, senderInfo)
 {
+    var senderInfoHTML = '';
+    if(typeof senderInfo != 'undefined')
+    {
+        senderInfoHTML = '<div class="notification-sender"><strong>'+senderInfo.name+' ('+senderInfo.username+')</strong></div>\r\n';
+    }
     var html = '<div class="notification-item">\r\n'+
         '<div class="notification-wrapper">\r\n'+
         '  <div class="notification-close">\r\n'+
         '    <a href="javascript:;"></a>\r\n'+
-        '  </div>\r\n'+
+        '  </div>\r\n'+senderInfoHTML+
         '  <div class="notification-message">\r\n'+
-        '    '+message+'\r\n'+
+        '    '+message.split('\n').join('<br />')+'\r\n'+
         '  </div>\r\n'+
         '</div>\r\n'+
         '</div>\r\n';
@@ -476,8 +554,15 @@ function updateDashboard()
     var isWSConnected = getWSConnected();
     var isAMQPEnable = getAMQPEnable();
     var isAMQPConnected = getAMQPConnected();
+ 
+    var isStompEnable = getStompEnable();
+    var isStompConnected = getStompConnected();
+ 
     var isMQTTEnable = getMQTTEnable();
     var isMQTTConnected = getMQTTConnected();
+    var isActiveMQEnable = getActiveMQEnable();
+    var isActiveMQConnected = getActiveMQConnected();
+    
     var isRedisEnable = getRedisEnable();
     var isRedisConnected = getRedisConnected();
     var isHTTPEnable = getHTTPEnable();
@@ -526,10 +611,24 @@ function updateDashboard()
     $('.service-amqp').addClass(isAMQPEnable?'enable':'disable');
     $('.service-amqp').addClass(isAMQPConnected?'connected':'disconnected');
 
+    $('.service-stomp').removeClass('enable');
+    $('.service-stomp').removeClass('disable');
+    $('.service-stomp').removeClass('connected');
+    $('.service-stomp').removeClass('disconnected');
+    $('.service-stomp').addClass(isStompEnable?'enable':'disable');
+    $('.service-stomp').addClass(isStompConnected?'connected':'disconnected');
+
+    $('.service-activemq').removeClass('enable');
+    $('.service-activemq').removeClass('disable');
+    $('.service-activemq').removeClass('connected');
+    $('.service-activemq').removeClass('disconnected');
+    $('.service-activemq').addClass(isActiveMQEnable?'enable':'disable');
+    $('.service-activemq').addClass(isActiveMQConnected?'connected':'disconnected');
+
     $('.service-redis').removeClass('enable');
     $('.service-redis').removeClass('disable');
     $('.service-redis').removeClass('connected');
-    $('.service-amqp').removeClass('disconnected');
+    $('.service-redis').removeClass('disconnected');
     $('.service-redis').addClass(isRedisEnable?'enable':'disable');
     $('.service-redis').addClass(isRedisConnected?'connected':'disconnected');
 
@@ -824,3 +923,4 @@ function dateFormat(today)
     var str = yyyy + '-' + mm + '-' + dd + ' '+hh + ':' + ii + ':' + ss;
     return str;
 }
+

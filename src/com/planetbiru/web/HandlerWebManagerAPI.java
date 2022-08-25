@@ -846,7 +846,6 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
 		byte[] responseBody = responseJSON.toString(0).getBytes();
 
-
 		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
 		httpExchange.getResponseBody().write(responseBody);
 		httpExchange.close();
@@ -1018,6 +1017,7 @@ public class HandlerWebManagerAPI implements HttpHandler {
 			String message = e.getMessage();
 			HttpUtil.broardcastWebSocket(message);
 			response.put(JsonKey.SUCCESS, false);
+			HttpUtil.broardcastWebSocket(message);
 		}
 		catch (NoUserRegisteredException e) 
 		{
@@ -1079,9 +1079,10 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		} 
 		catch (GSMException e) 
 		{
-			String result = e.getMessage();
-			response.put(JsonKey.MESSAGE, result);
+			String message = e.getMessage();
+			response.put(JsonKey.MESSAGE, message);
 			response.put(JsonKey.SUCCESS, false);
+			HttpUtil.broardcastWebSocket(message);
 		}
 		catch (NoUserRegisteredException e) 
 		{
@@ -1091,9 +1092,11 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		} 
 		catch (InvalidSIMPinException e) 
 		{
+			String message = e.getMessage();
 			statusCode = HttpStatus.UNAUTHORIZED;
 			response.put(JsonKey.SUCCESS, false);
 			response.put(JsonKey.MESSAGE, ConstantString.SIM_CARD_NOT_READY);
+			HttpUtil.broardcastWebSocket(message);
 		}
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
