@@ -22,6 +22,7 @@ import com.planetbiru.gsm.SerialPortConnectionException;
 import com.planetbiru.gsm.USSDParser;
 import com.planetbiru.mail.MailUtil;
 import com.planetbiru.mail.NoEmailAccountException;
+import com.planetbiru.web.HttpUtil;
 
 public class MessageAPI {
 
@@ -345,6 +346,7 @@ public class MessageAPI {
 	{
 		JSONObject responseJSON = new JSONObject();
 		JSONObject jsonData = new JSONObject();
+		String result = "";
 		if(data != null)
 		{
 			String receiver = data.optString(JsonKey.RECEIVER, "");
@@ -359,8 +361,10 @@ public class MessageAPI {
 				catch (GSMException | InvalidSIMPinException | SerialPortConnectionException e) 
 				{
 					Buzzer.toneSMSFailed();
+					result = e.getMessage();
 					responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.NO_DEVICE_CONNECTED);
-					responseJSON.put(JsonKey.ERROR, e.getMessage());
+					responseJSON.put(JsonKey.ERROR, result);
+					HttpUtil.broardcastWebSocket(result);
 				}
 			}
 		}
@@ -388,7 +392,8 @@ public class MessageAPI {
 			{
 				result = e.getMessage();
 				responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.FAILED);
-				responseJSON.put(JsonKey.MESSAGE, result);
+				responseJSON.put(JsonKey.ERROR, result);
+				HttpUtil.broardcastWebSocket(result);
 			}	
 		}
 		responseJSON.put(JsonKey.COMMAND, command);

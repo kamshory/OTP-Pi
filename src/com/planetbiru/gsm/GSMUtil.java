@@ -42,6 +42,9 @@ public class GSMUtil {
 	private static boolean eventListener = true;
 	private static Logger logger = Logger.getLogger(GSMUtil.class);
 	
+	/**
+	 * Private constructor. Prevent instance creation
+	 */
 	private GSMUtil()
 	{
 		/**
@@ -59,14 +62,14 @@ public class GSMUtil {
 		Map<String, DataModem> modemData = ConfigModem.getModemData();		
 		for (Map.Entry<String, DataModem> entry : modemData.entrySet())
 		{
-			DataModem modem = entry.getValue();
-			if(modem.isActive() && !modem.isInternetAccess())
+			DataModem dataModem = entry.getValue();
+			if(dataModem.isActive() && !dataModem.isInternetAccess())
 			{
-				boolean exists = GSMUtil.hasGSMInstanceID(modem.getId());				
-				GSMInstance instance = GSMUtil.getOrCreate(modem, GSMUtil.eventListener, exists);				
+				boolean exists = GSMUtil.hasGSMInstanceID(dataModem.getId());				
+				GSMInstance instance = GSMUtil.getOrCreate(dataModem, GSMUtil.eventListener, exists);				
 				try 
 				{
-					GSMUtil.connectIfRequired(modem, instance, exists);
+					GSMUtil.connectIfRequired(dataModem, instance, exists);
 				} 
 				catch (GSMException | InvalidPortException e) 
 				{
@@ -78,11 +81,19 @@ public class GSMUtil {
 		GSMUtil.updateConnectedDevice();
 	}
 	
-	private static void connectIfRequired(DataModem modem, GSMInstance instance, boolean exists) throws GSMException, InvalidPortException
+	/**
+	 * Connect to modem if required
+	 * @param dataModem DataModem
+	 * @param instance GSMInstance
+	 * @param exists Flag if GSMInstance already exists or not 
+	 * @throws GSMException If any GSMException
+	 * @throws InvalidPortException if any InvalidPortException
+	 */
+	private static void connectIfRequired(DataModem dataModem, GSMInstance instance, boolean exists) throws GSMException, InvalidPortException
 	{
 		if(instance != null)
 		{
-			String pin = modem.getSimCardPIN();
+			String pin = dataModem.getSimCardPIN();
 			if(pin.isEmpty())
 			{
 				pin = null;
@@ -95,16 +106,16 @@ public class GSMUtil {
 		}
 	}
 
-	private static GSMInstance getOrCreate(DataModem modem, boolean eventListener, boolean exists) {
+	private static GSMInstance getOrCreate(DataModem dataModem, boolean eventListener, boolean exists) {
 		GSMInstance instance;
 		if(exists)
 		{
-			instance = GSMUtil.getGSMIntance(modem.getId());
+			instance = GSMUtil.getGSMIntance(dataModem.getId());
 			
 		}
 		else
 		{
-			instance = new GSMInstance(modem, eventListener);
+			instance = new GSMInstance(dataModem, eventListener);
 		}
 		return instance;
 	}
@@ -133,19 +144,19 @@ public class GSMUtil {
 	public static void reconnectModem(GSMInstance instance) throws GSMException {
 		if(instance != null)
 		{
-			DataModem modem;
+			DataModem dataModem;
 			try 
 			{
-				modem = (DataModem) instance.getModem().clone();
+				dataModem = (DataModem) instance.getModem().clone();
 				instance.disconnect();
-				String pin = modem.getSimCardPIN();				
+				String pin = dataModem.getSimCardPIN();				
 				if(pin.isEmpty())
 				{
 					pin = null;
 				}
 				GSMUtil.gsmInstance.remove(instance);
 				boolean connected = false;
-				instance = new GSMInstance(modem, GSMUtil.eventListener);				
+				instance = new GSMInstance(dataModem, GSMUtil.eventListener);				
 				connected = instance.connect(pin);
 				if(connected)
 				{
@@ -198,9 +209,9 @@ public class GSMUtil {
 	 */
 	public static void connect(String modemID) throws GSMException, InvalidPortException
 	{
-		DataModem modem = ConfigModem.getModemData(modemID);
+		DataModem dataModem = ConfigModem.getModemData(modemID);
 		boolean found = false;
-		GSMInstance instance = new GSMInstance(modem, GSMUtil.eventListener);
+		GSMInstance instance = new GSMInstance(dataModem, GSMUtil.eventListener);
 		for(int i = 0; i<GSMUtil.getGSMInstance().size(); i++)
 		{
 			instance =  GSMUtil.getGSMInstance().get(i);
@@ -214,7 +225,7 @@ public class GSMUtil {
 		{
 			GSMUtil.getGSMInstance().add(instance);
 		}
-		String pin = modem.getSimCardPIN();
+		String pin = dataModem.getSimCardPIN();
 		if(pin.isEmpty())
 		{
 			pin = null;
@@ -373,11 +384,11 @@ public class GSMUtil {
         ServerWebSocketAdmin.broadcastMessage(monitor.toString(), GSMUtil.MONITOR_PATH);
 	}
 	
-	public static void sendTraffic(String receiver, StackTraceElement ste, DataModem modemData)
+	public static void sendTraffic(String receiver, StackTraceElement ste, DataModem dataModem)
 	{
-		String modemID = modemData.getId();
-		String modemName = modemData.getName();
-		String modemIMEI = modemData.getImei();
+		String modemID = dataModem.getId();
+		String modemName = dataModem.getName();
+		String modemIMEI = dataModem.getImei();
 
 		String callerClass = ste.getClassName();
         JSONObject monitor = new JSONObject();
@@ -505,20 +516,20 @@ public class GSMUtil {
 			{
 				
 				String modemID = GSMUtil.getGSMInstance().get(i).getModemID();
-				DataModem modemData = ConfigModem.getModemData(modemID);
+				DataModem dataModem = ConfigModem.getModemData(modemID);
 				
-				if(modemData.isSmsAPI())
+				if(dataModem.isSmsAPI())
 				{
 					connectedDev.add(i);
 				}
 				
-				if(modemData.isDefaultModem() && modemData.isSmsAPI())
+				if(dataModem.isDefaultModem() && dataModem.isSmsAPI())
 				{
 					connectedDefaultDev.add(i);
 				}
-				if(modemData.getRecipientPrefix().length() > 0)
+				if(dataModem.getRecipientPrefix().length() > 0)
 				{
-					List<String> prefixes = modemData.getRecipientPrefixList();
+					List<String> prefixes = dataModem.getRecipientPrefixList();
 					GSMUtil.addRecipientPrefix(prefixes, i);
 					GSMUtil.hasPrefix = true;
 				}
@@ -647,8 +658,8 @@ public class GSMUtil {
 	}
 
 	public static String getModemName(String modemID) {
-		DataModem modemData = ConfigModem.getModemData(modemID);
-		return modemData.getName();
+		DataModem dataModem = ConfigModem.getModemData(modemID);
+		return dataModem.getName();
 	}
 
 	public static Map<String, String> getCallerType() {

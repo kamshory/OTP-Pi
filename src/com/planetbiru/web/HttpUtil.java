@@ -57,7 +57,7 @@ public class HttpUtil {
 		itemData.put(JsonKey.ID, uuid);
 		itemData.put(JsonKey.MESSAGE, message);
 		data.put(itemData);
-		messageJSON.put(JsonKey.DATA, data);		
+		messageJSON.put(JsonKey.DATA, data);	
 		ServerWebSocketAdmin.broadcastMessage(messageJSON.toString(0));			
 	}
 
