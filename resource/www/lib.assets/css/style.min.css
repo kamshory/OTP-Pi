@@ -635,8 +635,9 @@ span.icon.icon-cross::after {
 .notification-message {
   padding-left: 4px;
 }
+
 .notification-sender {
-	padding-left: 4px;
+  padding-left: 4px;
 }
 
 .server-into-item {
@@ -1376,4 +1377,7 @@ h5.modal-title {
   .tile-area > .tile:nth-child(3n+1) {
     margin-left: 0;
   }
+}
+textarea {
+  resize: vertical;
 }/*# sourceMappingURL=style.min.css.map */

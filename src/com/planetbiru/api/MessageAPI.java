@@ -149,7 +149,9 @@ public class MessageAPI {
 				/**
 				 * Do nothing
 				 */
-				logger.error(e.getMessage());
+				String result = e.getMessage();
+				logger.error(result, e);
+				HttpUtil.broardcastWebSocket(result);
 			}
 		}	
 		responseJSON.put(JsonKey.COMMAND, command);

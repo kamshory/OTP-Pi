@@ -1003,8 +1003,8 @@ public class HandlerWebManagerAPI implements HttpHandler {
 				}
 				result = "The message was sent successfuly";
 				response.put(JsonKey.SUCCESS, true);
-				ServerWebSocketAdmin.broadcastMessage(result);
 				response.put(JsonKey.MESSAGE, result);
+				HttpUtil.broardcastWebSocket(result);
 			}
 			else
 			{
@@ -1015,8 +1015,8 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		} 
 		catch (MessagingException | NoEmailAccountException e) 
 		{
-			String result = e.getMessage();
-			ServerWebSocketAdmin.broadcastMessage(result);
+			String message = e.getMessage();
+			HttpUtil.broardcastWebSocket(message);
 			response.put(JsonKey.SUCCESS, false);
 		}
 		catch (NoUserRegisteredException e) 
@@ -1149,21 +1149,24 @@ public class HandlerWebManagerAPI implements HttpHandler {
 		} 
 		catch (GSMException e) 
 		{
-			logger.error(e.getMessage());
 			String message = e.getMessage();
 			response.put(JsonKey.MESSAGE, message);
 			response.put(JsonKey.SUCCESS, false);	
+			HttpUtil.broardcastWebSocket(message);
 		}		
 		catch (JSONException e)
 		{
-			logger.error(e.getMessage());
-			response.put(JsonKey.MESSAGE, e.getMessage());
+			String message = e.getMessage();
+			response.put(JsonKey.MESSAGE, message);
+			HttpUtil.broardcastWebSocket(message);
 		}
 		catch(NoUserRegisteredException e)
 		{
+			String message = e.getMessage();
 			statusCode = HttpStatus.UNAUTHORIZED;		
 			response.put(JsonKey.MESSAGE, ConstantString.UNAUTHORIZED);
-			response.put(JsonKey.SUCCESS, false);	
+			response.put(JsonKey.SUCCESS, false);
+			HttpUtil.broardcastWebSocket(message);
 		}
 		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
