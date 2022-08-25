@@ -13,6 +13,7 @@ import java.util.Map;
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,6 +22,7 @@ import com.planetbiru.constant.JsonKey;
 import com.planetbiru.cookie.CookieServer;
 import com.planetbiru.device.DeviceAPI;
 import com.planetbiru.user.NoUserRegisteredException;
+import com.planetbiru.user.User;
 import com.planetbiru.user.WebUserAccount;
 import com.planetbiru.util.ServerInfo;
 import com.planetbiru.util.Utility;
@@ -28,6 +30,8 @@ import com.planetbiru.util.Utility;
 public class ServerWebSocketAdmin extends WebSocketServer{
 
 	private static Collection<WebSocketConnection> clients = new ArrayList<>();
+	private User user = new User();
+	
 	public ServerWebSocketAdmin(InetSocketAddress address) {
 		super(address);
 	}
@@ -47,6 +51,41 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 		/**
 		 * Do nothing
 		 */
+		try
+		{
+			JSONObject obj = new JSONObject(message);
+			String command = obj.optString(JsonKey.COMMAND, "");
+			if(command.equals("broadcast-message"))
+			{
+				ServerWebSocketAdmin.addSenderInfo(obj, this.user);
+				this.broadcastMessage(obj.toString(), conn, true);
+			}
+		}
+		catch(JSONException e)
+		{
+			/**
+			 * Do nothing
+			 */
+		}
+	}
+
+	private static void addSenderInfo(JSONObject obj, User user) {
+		if(obj != null && obj.has(JsonKey.DATA) && obj.get(JsonKey.DATA) instanceof JSONArray)
+		{
+			JSONArray data = obj.getJSONArray(JsonKey.DATA);
+			if(data.length() > 0)
+			{
+				for(int i = 0; i<data.length(); i++)
+				{
+					JSONObject item = data.getJSONObject(i);
+					if(item != null)
+					{
+						item.put("sender_info", new JSONObject().put("username", user.getUsername()).put("name", user.getName()));
+					}
+				}
+			}
+		}
+		
 	}
 
 	@Override
@@ -84,9 +123,11 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 		
 		try 
 		{
-			if(WebUserAccount.checkUserAuth(username, password))
+			User lUser = WebUserAccount.getUser(username);
+			if(WebUserAccount.checkUserAuth(lUser, password))
 			{
-				ServerWebSocketAdmin.clients.add(new WebSocketConnection(conn, request, path));
+				this.user = lUser;
+				ServerWebSocketAdmin.clients.add(new WebSocketConnection(conn, lUser, request, path));
 				this.sendServerStatus(ConstantString.SERVICE_ALL, conn);
 			}
 			else
@@ -126,6 +167,17 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 		for(WebSocketConnection client : ServerWebSocketAdmin.clients)
 		{
 			client.send(message);
+		}
+	}
+	
+	public void broadcastMessage(String message, WebSocket sender, boolean exceptMe)
+	{
+		for(WebSocketConnection client : ServerWebSocketAdmin.clients)
+		{
+			if(!exceptMe || !client.getConn().equals(sender))
+			{
+				client.send(message);
+			}
 		}
 	}
 	

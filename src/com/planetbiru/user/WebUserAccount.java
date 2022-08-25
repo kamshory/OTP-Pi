@@ -127,6 +127,11 @@ public class WebUserAccount {
 		return user.getPassword().equals(password) && user.isActive() && !user.isBlocked();
 	}
 	
+	public static boolean checkUserAuth(User user, String password) 
+	{
+		return user.getPassword().equals(password) && user.isActive() && !user.isBlocked();
+	}
+	
 	private static void prepareDir(String fileName) 
 	{
 		File file = new File(fileName);

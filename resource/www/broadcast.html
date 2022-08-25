@@ -33,7 +33,7 @@
 						<li><a href="./">Home</a></li>
 						<li><a href="ussd.html">USSD</a></li>
 						<li><a href="sms.html">SMS</a></li>
-						<li><a href="broadcast.html">Broadcast</a></li>
+						<li class="active"><a href="broadcast.html">Broadcast</a></li>
 						<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="general-setting.html">General Setting</a></li>
@@ -61,7 +61,7 @@
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li class="active"><a href="account.html">Account</a></li>
+						<li><a href="account.html">Account</a></li>
 						<li><a href="logout.html">Logout</a></li>
 					</ul>
 				</div>
@@ -69,60 +69,25 @@
 			<!--/.container-fluid -->
 		</nav>
 		<div class="phone-page">
-			<h3>Account</h3>
-			<form action="account-update.html" method="post">
-				<table class="config-table config-table-connection">
-					<tbody>
-						<tr>
-							<td>Name</td>
-							<td>
-								<input type="text" class="form-control" name="name" value="">
-							</td>
-						</tr>
-						<tr>
-							<td>Email</td>
-							<td>
-								<input type="email" class="form-control" name="email" value="">
-							</td>
-						</tr>
-						<tr>
-							<td>Phone Number</td>
-							<td>
-								<input type="tel" class="form-control" name="phone" value="">
-							</td>
-						</tr>
-						<tr>
-							<td>Password</td>
-							<td>
-								<input type="password" class="form-control" name="password">
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<table class="config-table config-table-connection">
-					<tbody>
-						<tr>
-							<td></td>
-							<td>
-								<input type="submit" class="btn btn-success" value="Save Changes" onclick="return confirm('Are you sure you want to save changes')" name="update">
-								<input type="button" class="btn btn-primary" value="Back" onclick="window.location='account.html'"> </td>
-						</tr>
-					</tbody>
-				</table>
+			<form action="sms.html" method="POST" onsubmit="return processForm(this)">
+				<div class="message-area">
+					<div class="input-label">Message</div>
+					<textarea class="text-message" name="message" id="message" cols="30" rows="10" maxlength="200"></textarea>
+				</div>
+				<div class="text-right">
+					<input type="submit" class="btn btn-success" value="Send" name="send"> 
+					<input type="reset" class="btn btn-default" value="Reset">
+                </div>
 			</form>
-			<script type="text/javascript">
-			$(document).ready(function(e) {
-				$.ajax({
-					type: "GET",
-					url: "data/user/self",
-					dataType: "json",
-					success: function(data) {
-						$('input[name="name"]').val(data.name);
-						$('input[name="email"]').val(data.email);
-						$('input[name="phone"]').val(data.phone);
-					}
-				});
-			});
+			<script>
+			function processForm(obj) {
+				var urlParams = new URLSearchParams(window.location.search);
+				var id = urlParams.get('id') || '';
+				var message = $('#message').val();
+				broadcast(message);
+                $('#message').val('');
+				return false;
+			}
 			</script>
 		</div>
 		<!-- /container -->

@@ -722,7 +722,9 @@ span.icon.icon-cross::after {
 .notification-message {
   padding-left: 4px;
 }
-
+.notification-sender {
+	padding-left: 4px;
+}
 .server-into-item {
   position: relative;
   margin-bottom: 10px;
