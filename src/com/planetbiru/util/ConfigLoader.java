@@ -152,7 +152,7 @@ public class ConfigLoader {
 		boolean timeUpdate = ConfigLoader.getConfigBoolean("otppi.cron.enable.ntp");
 		boolean cronDeviceEnable = ConfigLoader.getConfigBoolean("otppi.cron.enable.device");
 		boolean cronAMQPEnable = ConfigLoader.getConfigBoolean("otppi.cron.enable.amqp");
-		String timeResolution = ConfigLoader.getConfig("otppi.cron.time.resolution:minute");
+		String timeResolution = ConfigLoader.getConfig("otppi.cron.time.resolution");
 		String serverStatusSettingPath = ConfigLoader.getConfig("otppi.path.setting.server.status");	
 		boolean cacheHTMLFile = ConfigLoader.getConfigBoolean("otppi.web.cache.file.html");
 		
@@ -350,6 +350,7 @@ public class ConfigLoader {
 		GSMUtil.getCallerType().put(Utility.getClassName(ActiveMQInstance.class.toString()), "activemq");
 		GSMUtil.getCallerType().put(Utility.getClassName(HandlerWebManagerAPI.class.toString()), "rest");
 		ConfigAPI.load(Config.getApiSettingPath());	
+		
 		/**
 		 * Override email setting if exists
 		 */
@@ -357,8 +358,7 @@ public class ConfigLoader {
 		ConfigGeneral.load(Config.getGeneralSettingPath());
 		ConfigAPI.load(Config.getApiSettingPath());
 		WebUserAccount.load(Config.getUserSettingPath());			
-		PropertyLoader.load(Config.getMimeSettingPath());
-		
+		PropertyLoader.load(Config.getMimeSettingPath());	
 		
 		
 		Config.setDefaultHttpPort(ConfigLoader.getConfigInt("otppi.default.http.port"));
@@ -379,6 +379,24 @@ public class ConfigLoader {
 		ConfigActivation.setContentType(ConfigLoader.getConfig("otppi.activation.content.type"));
 		ConfigActivation.setAuthorization(ConfigLoader.getConfig("otppi.activation.authorization"));
 		ConfigActivation.setRequestTimeout(ConfigLoader.getConfigInt("otppi.activation.request.timeout"));
+		
+		
+		Config.setCronExpressionDeviceCheck(ConfigLoader.getConfig("otppi.cron.expression.device"));
+		Config.setCronExpressionAMQPCheck(ConfigLoader.getConfig("otppi.cron.expression.amqp"));
+		Config.setCronExpressionRedisCheck(ConfigLoader.getConfig("otppi.cron.expression.redis"));
+		Config.setCronExpressionMQTTCheck(ConfigLoader.getConfig("otppi.cron.expression.mqtt"));
+		Config.setCronExpressionActiveMQCheck(ConfigLoader.getConfig("otppi.cron.expression.activemq"));
+		Config.setCronExpressionWSCheck(ConfigLoader.getConfig("otppi.cron.expression.ws"));
+		Config.setCronUpdateAMQP(ConfigLoader.getConfigBoolean("otppi.cron.enable.amqp"));
+		Config.setCronUpdateMQTT(ConfigLoader.getConfigBoolean("otppi.cron.enable.mqtt"));
+		Config.setCronUpdateRedis(ConfigLoader.getConfigBoolean("otppi.cron.enable.redis"));
+		Config.setCronUpdateActiveMQ(ConfigLoader.getConfigBoolean("otppi.cron.enable.activemq"));
+		Config.setCronUpdateWS(ConfigLoader.getConfigBoolean("otppi.cron.enable.ws"));			
+		Config.setCronUpdateDDNS(ConfigLoader.getConfigBoolean("otppi.cron.enable.ddns"));
+		Config.setCronExpressionDDNSUpdate(ConfigLoader.getConfig("otppi.cron.expression.general"));
+		Config.setCronUpdateServerStatus(ConfigLoader.getConfigBoolean("otppi.cron.enable.server.status"));
+		Config.setCronExpressionStatusServer(ConfigLoader.getConfig("otppi.cron.expression.server.status"));			
+		Config.setCronServiceCheck(ConfigLoader.getConfigBoolean("otppi.cron.enable.device"));
 		
 		ConfigLoader.printUsed();
     	

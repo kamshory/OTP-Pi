@@ -114,16 +114,33 @@ public class Config {
 	private static long inspectModemInterval = 5000;
 	private static String hwClock = "hwclock";
 	private static int maxServerStatusRecord = 1000;
-	private static int defaultHttpPort;
-	private static int defaultHttpsPort;
-	private static boolean defaultHttpEnable;
-	private static boolean defaultHttpsEnable;
-	private static String defaultOtpPath;
-	private static String defaultMessagePath;
-	private static String defaultSmsPath;
-	private static String defaultEmailPath;
-	private static String defaultBlockingPath;
-	private static String defaultUnblockingPath;
+	private static int defaultHttpPort = 80;
+	private static int defaultHttpsPort = 443;
+	private static boolean defaultHttpEnable = false;
+	private static boolean defaultHttpsEnable = false;
+	private static String defaultOtpPath = "/";
+	private static String defaultMessagePath = "/";
+	private static String defaultSmsPath = "/";
+	private static String defaultEmailPath = "/";
+	private static String defaultBlockingPath = "/";
+	private static String defaultUnblockingPath = "/";
+	
+	private static String cronExpressionDeviceCheck = "";
+	private static String cronExpressionAMQPCheck = "";
+	private static String cronExpressionRedisCheck = "";
+	private static String cronExpressionMQTTCheck = "";
+	private static String cronExpressionActiveMQCheck = "";
+	private static String cronExpressionWSCheck = "";
+	private static boolean cronUpdateAMQP = false;
+	private static boolean cronUpdateMQTT = false;
+	private static boolean cronUpdateRedis = false;
+	private static boolean cronUpdateActiveMQ = false;
+	private static boolean cronUpdateWS = false;
+	private static boolean cronUpdateDDNS = false;
+	private static String cronExpressionDDNSUpdate = "";
+	private static boolean cronUpdateServerStatus = false;
+	private static String cronExpressionStatusServer = "";
+	private static boolean cronServiceCheck = false;
 	
 	private Config()
 	{
@@ -1112,6 +1129,134 @@ public class Config {
 
 	public static void setDefaultUnblockingPath(String defaultUnblockingPath) {
 		Config.defaultUnblockingPath = defaultUnblockingPath;
+	}
+
+	public static String getCronExpressionDeviceCheck() {
+		return cronExpressionDeviceCheck;
+	}
+
+	public static void setCronExpressionDeviceCheck(String cronExpressionDeviceCheck) {
+		Config.cronExpressionDeviceCheck = cronExpressionDeviceCheck;
+	}
+
+	public static String getCronExpressionAMQPCheck() {
+		return cronExpressionAMQPCheck;
+	}
+
+	public static void setCronExpressionAMQPCheck(String cronExpressionAMQPCheck) {
+		Config.cronExpressionAMQPCheck = cronExpressionAMQPCheck;
+	}
+
+	public static String getCronExpressionRedisCheck() {
+		return cronExpressionRedisCheck;
+	}
+
+	public static void setCronExpressionRedisCheck(String cronExpressionRedisCheck) {
+		Config.cronExpressionRedisCheck = cronExpressionRedisCheck;
+	}
+
+	public static String getCronExpressionMQTTCheck() {
+		return cronExpressionMQTTCheck;
+	}
+
+	public static void setCronExpressionMQTTCheck(String cronExpressionMQTTCheck) {
+		Config.cronExpressionMQTTCheck = cronExpressionMQTTCheck;
+	}
+
+	public static String getCronExpressionActiveMQCheck() {
+		return cronExpressionActiveMQCheck;
+	}
+
+	public static void setCronExpressionActiveMQCheck(String cronExpressionActiveMQCheck) {
+		Config.cronExpressionActiveMQCheck = cronExpressionActiveMQCheck;
+	}
+
+	public static String getCronExpressionWSCheck() {
+		return cronExpressionWSCheck;
+	}
+
+	public static void setCronExpressionWSCheck(String cronExpressionWSCheck) {
+		Config.cronExpressionWSCheck = cronExpressionWSCheck;
+	}
+
+	public static boolean isCronUpdateAMQP() {
+		return cronUpdateAMQP;
+	}
+
+	public static void setCronUpdateAMQP(boolean cronUpdateAMQP) {
+		Config.cronUpdateAMQP = cronUpdateAMQP;
+	}
+
+	public static boolean isCronUpdateMQTT() {
+		return cronUpdateMQTT;
+	}
+
+	public static void setCronUpdateMQTT(boolean cronUpdateMQTT) {
+		Config.cronUpdateMQTT = cronUpdateMQTT;
+	}
+
+	public static boolean isCronUpdateRedis() {
+		return cronUpdateRedis;
+	}
+
+	public static void setCronUpdateRedis(boolean cronUpdateRedis) {
+		Config.cronUpdateRedis = cronUpdateRedis;
+	}
+
+	public static boolean isCronUpdateActiveMQ() {
+		return cronUpdateActiveMQ;
+	}
+
+	public static void setCronUpdateActiveMQ(boolean cronUpdateActiveMQ) {
+		Config.cronUpdateActiveMQ = cronUpdateActiveMQ;
+	}
+
+	public static boolean isCronUpdateWS() {
+		return cronUpdateWS;
+	}
+
+	public static void setCronUpdateWS(boolean cronUpdateWS) {
+		Config.cronUpdateWS = cronUpdateWS;
+	}
+
+	public static boolean isCronUpdateDDNS() {
+		return cronUpdateDDNS;
+	}
+
+	public static void setCronUpdateDDNS(boolean cronUpdateDDNS) {
+		Config.cronUpdateDDNS = cronUpdateDDNS;
+	}
+
+	public static String getCronExpressionDDNSUpdate() {
+		return cronExpressionDDNSUpdate;
+	}
+
+	public static void setCronExpressionDDNSUpdate(String cronExpressionDDNSUpdate) {
+		Config.cronExpressionDDNSUpdate = cronExpressionDDNSUpdate;
+	}
+
+	public static boolean isCronUpdateServerStatus() {
+		return cronUpdateServerStatus;
+	}
+
+	public static void setCronUpdateServerStatus(boolean cronUpdateServerStatus) {
+		Config.cronUpdateServerStatus = cronUpdateServerStatus;
+	}
+
+	public static String getCronExpressionStatusServer() {
+		return cronExpressionStatusServer;
+	}
+
+	public static void setCronExpressionStatusServer(String cronExpressionStatusServer) {
+		Config.cronExpressionStatusServer = cronExpressionStatusServer;
+	}
+
+	public static boolean isCronServiceCheck() {
+		return cronServiceCheck;
+	}
+
+	public static void setCronServiceCheck(boolean cronServiceCheck) {
+		Config.cronServiceCheck = cronServiceCheck;
 	}
 
 	

@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigDDNS;
 import com.planetbiru.config.ConfigSubscriberAMQP;
 import com.planetbiru.config.ConfigSubscriberActiveMQ;
@@ -24,7 +25,6 @@ import com.planetbiru.ddns.DDNSRecord;
 import com.planetbiru.ddns.DDNSUpdater;
 import com.planetbiru.device.DeviceAPI;
 import com.planetbiru.gsm.GSMUtil;
-import com.planetbiru.util.ConfigLoader;
 import com.planetbiru.util.ServerInfo;
 import com.planetbiru.util.ServerStatus;
 import com.planetbiru.util.Utility;
@@ -70,27 +70,27 @@ public class Scheduller extends Thread{
 
 	
 	public Scheduller() {
-		this.cronExpressionDeviceCheck = ConfigLoader.getConfig("otppi.cron.expression.device");
+		this.cronExpressionDeviceCheck = Config.getCronExpressionDeviceCheck();
 		
-		this.cronExpressionAMQPCheck = ConfigLoader.getConfig("otppi.cron.expression.amqp");
-		this.cronExpressionRedisCheck = ConfigLoader.getConfig("otppi.cron.expression.redis");
-		this.cronExpressionMQTTCheck = ConfigLoader.getConfig("otppi.cron.expression.mqtt");
-		this.cronExpressionActiveMQCheck = ConfigLoader.getConfig("otppi.cron.expression.activemq");
-		this.cronExpressionWSCheck = ConfigLoader.getConfig("otppi.cron.expression.ws");
+		this.cronExpressionAMQPCheck = Config.getCronExpressionAMQPCheck();
+		this.cronExpressionRedisCheck = Config.getCronExpressionRedisCheck();
+		this.cronExpressionMQTTCheck = Config.getCronExpressionMQTTCheck();
+		this.cronExpressionActiveMQCheck = Config.getCronExpressionActiveMQCheck();
+		this.cronExpressionWSCheck = Config.getCronExpressionWSCheck();
 		
-		this.cronUpdateAMQP = ConfigLoader.getConfigBoolean("otppi.cron.enable.amqp");
-		this.cronUpdateMQTT = ConfigLoader.getConfigBoolean("otppi.cron.enable.mqtt");
-		this.cronUpdateRedis = ConfigLoader.getConfigBoolean("otppi.cron.enable.redis");
-		this.cronUpdateActiveMQ = ConfigLoader.getConfigBoolean("otppi.cron.enable.activemq");
-		this.cronUpdateWS = ConfigLoader.getConfigBoolean("otppi.cron.enable.ws");	
+		this.cronUpdateAMQP = Config.isCronUpdateAMQP();
+		this.cronUpdateMQTT = Config.isCronUpdateMQTT();
+		this.cronUpdateRedis = Config.isCronUpdateRedis();
+		this.cronUpdateActiveMQ = Config.isCronUpdateActiveMQ();
+		this.cronUpdateWS = Config.isCronUpdateWS();	
 		
-		this.cronUpdateDDNS = ConfigLoader.getConfigBoolean("otppi.cron.enable.ddns");
-		this.cronExpressionDDNSUpdate = ConfigLoader.getConfig("otppi.cron.expression.general");
+		this.cronUpdateDDNS = Config.isCronUpdateDDNS();
+		this.cronExpressionDDNSUpdate = Config.getCronExpressionDDNSUpdate();
 
-		this.cronUpdateServerStatus = ConfigLoader.getConfigBoolean("otppi.cron.enable.server.status");
-		this.cronExpressionStatusServer = ConfigLoader.getConfig("otppi.cron.expression.server.status");		
+		this.cronUpdateServerStatus = Config.isCronUpdateServerStatus();
+		this.cronExpressionStatusServer = Config.getCronExpressionStatusServer();		
 		
-		this.cronServiceCheck = ConfigLoader.getConfigBoolean("otppi.cron.enable.device");
+		this.cronServiceCheck = Config.isCronServiceCheck();
 	}
 	
 	public void stopService() {
