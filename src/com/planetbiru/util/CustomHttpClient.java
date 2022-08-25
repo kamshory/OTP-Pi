@@ -45,7 +45,7 @@ public class CustomHttpClient {
 		
 	}
 	
-	public static HttpResponse<String> httpExchange(String method, String url, Map<String, String> parameters, Headers requestHeaders, String body, int timeout) throws HttpRequestException
+	public static HttpResponseString httpExchange(String method, String url, Map<String, String> parameters, Headers requestHeaders, String body, int timeout) throws HttpRequestException
 	{
 		Map<String, List<String>> parameters2 = new HashMap<>();
 		if(parameters != null)
@@ -89,12 +89,12 @@ public class CustomHttpClient {
         }
 	}
 	
-	public static HttpResponse<String> sendRequest(String method, String url, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws HttpRequestException 
+	public static HttpResponseString sendRequest(String method, String url, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws HttpRequestException 
 	{      
        return CustomHttpClient.sendRequestHttp(method, url, parameters, requestHeaders, body, timeout);
 	}
 	
-	private static HttpResponse<String> sendRequestHttp(String method, String url, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws HttpRequestException {
+	private static HttpResponseString sendRequestHttp(String method, String url, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws HttpRequestException {
 		
 		Builder builder = HttpRequest.newBuilder();
 		builder.uri(URI.create(url));
@@ -140,10 +140,10 @@ public class CustomHttpClient {
 		        .connectTimeout(Duration.ofMillis(timeout))
 		        .build();
 		
-		HttpResponse<String> response;
 		try {
-			response = client.send(request, BodyHandlers.ofString());
-			return response;
+			HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+			HttpResponseString response2 = new HttpResponseString(response.body(), response.statusCode(), response.headers());
+			return response2;
 		} 
 		catch (InterruptedException e) //NOSONAR
 		{

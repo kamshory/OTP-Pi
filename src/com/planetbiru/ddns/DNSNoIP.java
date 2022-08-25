@@ -1,7 +1,6 @@
 package com.planetbiru.ddns;
 
 import java.io.IOException;
-import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +9,7 @@ import org.json.JSONObject;
 import com.planetbiru.config.Config;
 import com.planetbiru.util.CustomHttpClient;
 import com.planetbiru.util.HttpRequestException;
+import com.planetbiru.util.HttpResponseString;
 import com.planetbiru.util.Utility;
 import com.planetbiru.web.HttpMethod;
 import com.sun.net.httpserver.Headers; //NOSONAR
@@ -47,7 +47,7 @@ public class DNSNoIP extends DNS{
 	 * @throws IOException 
 	 * @throws InterruptedException 
 	*/
-	public HttpResponse<String> request(String method, String endpoint, Map<String, String> params) throws HttpRequestException
+	public HttpResponseString request(String method, String endpoint, Map<String, String> params) throws HttpRequestException
 	{
 		int timeout = Config.getDdnsTimeout();
 		Headers headers = this.createRequestHeader();

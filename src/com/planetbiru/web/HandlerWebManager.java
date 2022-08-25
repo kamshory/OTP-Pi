@@ -1,5 +1,6 @@
 package com.planetbiru.web;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.net.http.HttpResponse;
@@ -67,6 +68,7 @@ import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.FileNotFoundException;
 import com.planetbiru.util.FileUtil;
 import com.planetbiru.util.HttpRequestException;
+import com.planetbiru.util.HttpResponseString;
 import com.planetbiru.util.Utility;
 import com.planetbiru.util.WebManagerContent;
 import com.planetbiru.util.WebManagerTool;
@@ -404,9 +406,9 @@ public class HandlerWebManager implements HttpHandler {
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);					
 		Map<String, String> parameters = new HashMap<>();
 
-		Headers headers = new Headers();
-		headers.add(ConstantString.ACCEPT, contentType);
-		headers.add(ConstantString.AUTHORIZATION, authorization+" "+Utility.base64Encode(username+":"+password));
+		Headers requestHeaders = new Headers();
+		requestHeaders.add(ConstantString.ACCEPT, contentType);
+		requestHeaders.add(ConstantString.AUTHORIZATION, authorization+" "+Utility.base64Encode(username+":"+password));
 		String requestBody2 = "";
 		
 		if(method.equals(HttpMethod.POST) || method.equals(HttpMethod.PUT))
@@ -429,18 +431,17 @@ public class HandlerWebManager implements HttpHandler {
 		}
 		
 		JSONObject responseJSON = new JSONObject();
-		HttpResponse<String> response;
 		try 
 		{
-			response = CustomHttpClient.httpExchange(method, url, parameters, headers, requestBody2, timeout);
-			responseJSON = new JSONObject(response.body());
+			//                   response = CustomHttpClient.httpExchange(method, url, parameters, headers, requestBody2, timeout);
+
+
+			HttpResponseString response = CustomHttpClient.httpExchange(method, url, parameters, requestHeaders, requestBody2, timeout);
+			
+			responseJSON = new JSONObject(response.getBody());
 			System.out.println(responseJSON.toString(4));
 		} 
-		catch (JSONException e) 
-		{
-			e.printStackTrace();
-		}
-		catch(HttpRequestException e)
+		catch (JSONException | HttpRequestException e) 
 		{
 			e.printStackTrace();
 		}
@@ -1349,6 +1350,10 @@ public class HandlerWebManager implements HttpHandler {
 			{
 				App.subscriberWSStart();
 			}
+			else
+			{
+				App.subscriberWSStop(true);
+			}
 		}		
 		
 		if(queryPairs.containsKey("save_subscriber_amqp_setting"))
@@ -1437,7 +1442,11 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigSubscriberActiveMQ.save();	
 			if(ConfigSubscriberActiveMQ.isSubscriberActiveMQEnable())
 			{
-				App.subscriberMQTTStart();
+				App.subscriberActiveMQStart();
+			}
+			else
+			{
+				App.subscriberActiveMQStop(true);
 			}
 		}	
 		
@@ -1479,6 +1488,10 @@ public class HandlerWebManager implements HttpHandler {
 			if(ConfigSubscriberRedis.isSubscriberRedisEnable())
 			{
 				App.subscriberRedisStart();
+			}
+			else
+			{
+				App.subscriberRedisStop(true);
 			}
 		}	
 		
@@ -1566,6 +1579,10 @@ public class HandlerWebManager implements HttpHandler {
 			if(ConfigSubscriberMQTT.isSubscriberMqttEnable())
 			{
 				App.subscriberMQTTStart();
+			}
+			else
+			{
+				App.subscriberMQTTStop(true);
 			}
 		}	
 		

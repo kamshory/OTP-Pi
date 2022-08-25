@@ -1,12 +1,12 @@
 package com.planetbiru.ddns;
 
-import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONObject;
 
 import com.planetbiru.util.CustomHttpClient;
 import com.planetbiru.util.HttpRequestException;
+import com.planetbiru.util.HttpResponseString;
 import com.sun.net.httpserver.Headers; //NOSONAR
 
 public class DNS {
@@ -45,8 +45,8 @@ public class DNS {
 		Headers requestHeaders = new Headers();
 		requestHeaders.add(DDNSKey.HEADER_USER_AGENT, "OTP-Pi");
 		int timeout = 10000;
-		HttpResponse<String> response = CustomHttpClient.httpExchange("GET", url, null, requestHeaders, "", timeout);
-		return response.body();		
+		HttpResponseString response = CustomHttpClient.httpExchange("GET", url, null, requestHeaders, "", timeout);
+		return response.getBody();		
 	}
 
 	public JSONObject update(DDNSRecord ddnsRecord) throws HttpRequestException  //NOSONAR
