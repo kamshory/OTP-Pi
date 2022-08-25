@@ -100,7 +100,7 @@ public class WebManagerTool {
 	private static String addActivationScript(String body, boolean activated) {
 		if(!activated)
 		{
-			body = body.replace("</body>", "<script src=\"lib.assets/js/activation.js\"></script>\r\n</body>");
+			body = body.replace("</body>", "<script src=\"lib.assets/js/activation.min.js\"></script>\r\n</body>");
 		}
 		return body;
 	}
