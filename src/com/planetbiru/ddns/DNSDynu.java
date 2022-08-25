@@ -133,7 +133,7 @@ public class DNSDynu extends DNS {
 		JSONObject responseJSON = new JSONObject();
 		try
 		{
-			responseJSON = new JSONObject(response.getBody());
+			responseJSON = new JSONObject(response.body());
 		}
 		catch(JSONException e)
 		{
@@ -190,7 +190,7 @@ public class DNSDynu extends DNS {
 		JSONObject responseJSON = new JSONObject();
 		try
 		{
-			responseJSON = new JSONObject(response.getBody());
+			responseJSON = new JSONObject(response.body());
 		}
 		catch(JSONException e)
 		{
@@ -270,7 +270,7 @@ public class DNSDynu extends DNS {
 		JSONObject responseJSON = new JSONObject();
 		try
 		{
-			responseJSON = new JSONObject(response.getBody());
+			responseJSON = new JSONObject(response.body());
 		}
 		catch(JSONException e)
 		{
@@ -329,7 +329,7 @@ public class DNSDynu extends DNS {
 		JSONObject responseJSON = new JSONObject();
 		try
 		{
-			responseJSON = new JSONObject(response.getBody());
+			responseJSON = new JSONObject(response.body());
 		}
 		catch(JSONException e)
 		{
@@ -372,7 +372,7 @@ public class DNSDynu extends DNS {
 		JSONObject responseJSON = new JSONObject();
 		try
 		{
-			responseJSON = new JSONObject(response.getBody());
+			responseJSON = new JSONObject(response.body());
 		}
 		catch(JSONException e)
 		{

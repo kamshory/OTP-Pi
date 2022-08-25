@@ -46,7 +46,7 @@ public class DNS {
 		requestHeaders.add(DDNSKey.HEADER_USER_AGENT, "OTP-Pi");
 		int timeout = 10000;
 		HttpResponseString response = CustomHttpClient.httpExchange("GET", url, null, requestHeaders, "", timeout);
-		return response.getBody();		
+		return response.body();		
 	}
 
 	public JSONObject update(DDNSRecord ddnsRecord) throws HttpRequestException  //NOSONAR

@@ -117,7 +117,7 @@ public class DNSCloudflare extends DNS{
 		JSONObject resp = new JSONObject();
 		try
 		{
-			resp = new JSONObject(response.getBody());
+			resp = new JSONObject(response.body());
 		}
 		catch(JSONException e)
 		{
@@ -146,11 +146,11 @@ public class DNSCloudflare extends DNS{
 		Headers requestHeaders = this.createRequestHeader();
 		int timeout = Config.getDdnsTimeout();
 		HttpResponseString response = CustomHttpClient.httpExchange(HttpMethod.GET, url, params, requestHeaders, null, timeout);
-		if(response.getBody().length() > 20)
+		if(response.body().length() > 20)
 		{
 			try
 			{
-				JSONObject resp = new JSONObject(response.getBody());
+				JSONObject resp = new JSONObject(response.body());
 				return resp.optJSONArray(DDNSKey.RESULT);
 			}
 			catch(JSONException e)
@@ -202,7 +202,7 @@ public class DNSCloudflare extends DNS{
 		
 		try
 		{
-			resp = new JSONObject(response.getBody());
+			resp = new JSONObject(response.body());
 		}
 		catch(JSONException e)
 		{
@@ -232,7 +232,7 @@ public class DNSCloudflare extends DNS{
 		
 		try
 		{
-			resp = new JSONObject(response.getBody());
+			resp = new JSONObject(response.body());
 		}
 		catch(JSONException e)
 		{
@@ -251,7 +251,7 @@ public class DNSCloudflare extends DNS{
 				
 		try
 		{
-			resp = new JSONObject(response.getBody());
+			resp = new JSONObject(response.body());
 		}
 		catch(JSONException e)
 		{
@@ -279,7 +279,7 @@ public class DNSCloudflare extends DNS{
 		HttpResponseString response = CustomHttpClient.httpExchange(HttpMethod.POST, url, null, requestHeaders, body, timeout);
 		try
 		{
-			JSONObject resp = new JSONObject(response.getBody());
+			JSONObject resp = new JSONObject(response.body());
 			return resp.optJSONObject(DDNSKey.RESULT);
 		}
 		catch(JSONException e)
@@ -450,7 +450,7 @@ public class DNSCloudflare extends DNS{
 		params.put(DDNSKey.VALUE, Utility.asList(type));
 	
 		HttpResponseString response = this.patch(DDNSKey.ZONES + zoneId + "/settings/ssl", params, ConstantString.URL_ENCODE);
-		JSONObject resp = new JSONObject(response.getBody());
+		JSONObject resp = new JSONObject(response.body());
 		return resp.optJSONObject(DDNSKey.RESULT);
 	}
 
@@ -469,7 +469,7 @@ public class DNSCloudflare extends DNS{
 		params.put(DDNSKey.VALUE, Utility.asList(type));
 	
 		HttpResponseString response = this.patch(DDNSKey.ZONES + zoneId + "/settings/cache_level", params, ConstantString.URL_ENCODE);
-		JSONObject resp = new JSONObject(response.getBody());
+		JSONObject resp = new JSONObject(response.body());
 		return resp.optJSONObject(DDNSKey.RESULT);
 	}
 
@@ -504,7 +504,7 @@ public class DNSCloudflare extends DNS{
 		HttpResponseString response = CustomHttpClient.httpExchange(HttpMethod.PUT, url, null, requestHeaders, body, timeout);		
 		try
 		{
-			JSONObject resp = new JSONObject(response.getBody());
+			JSONObject resp = new JSONObject(response.body());
 			return resp.optJSONObject(DDNSKey.RESULT);
 		}
 		catch(JSONException e)

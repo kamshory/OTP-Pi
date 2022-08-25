@@ -438,7 +438,7 @@ public class HandlerWebManager implements HttpHandler {
 
 			HttpResponseString response = CustomHttpClient.httpExchange(method, url, parameters, requestHeaders, requestBody2, timeout);
 			
-			responseJSON = new JSONObject(response.getBody());
+			responseJSON = new JSONObject(response.body());
 			System.out.println(responseJSON.toString(4));
 		} 
 		catch (JSONException | HttpRequestException e) 

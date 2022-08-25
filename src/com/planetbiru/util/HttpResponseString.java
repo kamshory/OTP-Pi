@@ -2,27 +2,28 @@ package com.planetbiru.util;
 
 import java.net.http.HttpHeaders;
 
-import org.json.JSONTokener;
-
 public class HttpResponseString {
 
-	private String body = "";
-	private int statusCode = 0;
-	private HttpHeaders headers = null;
+	private String responseBody = "";
+	private int status = 0;
+	private HttpHeaders responseHeaders = null;
 
-	public HttpResponseString(String body, int statusCode, HttpHeaders headers) {
-		this.setBody(body);
-		this.statusCode = statusCode;
-		this.headers = headers;
+	public HttpResponseString(String responseBody, int status, HttpHeaders responseHeaders) {
+		this.responseBody = responseBody;
+		this.status = status;
+		this.responseHeaders = responseHeaders;
 	}
 
-	public String getBody() {
-		return body;
+	public String body() {
+		return responseBody;
 	}
 
-	public void setBody(String body) {
-		this.body = body;
+	public int statusCode() {
+		return status;
 	}
 
+	public HttpHeaders headers() {
+		return responseHeaders;
+	}
 
 }
