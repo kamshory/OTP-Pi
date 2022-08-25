@@ -16,9 +16,19 @@ public class USSDParser {
 	private String header = "";
 	private String footer = "";
 
+	/**
+	 * Default constructor
+	 */
 	public USSDParser() {
+		/**
+		 * Default constructor
+		 */
 	}
 
+	/**
+	 * Constructor with raw content
+	 * @param contentRaw Raw content
+	 */
 	public USSDParser(String contentRaw) {
 		this.contentRaw = contentRaw;
 		Map<String, String> parsed = this.parseUSSDResponse(contentRaw);
@@ -43,6 +53,11 @@ public class USSDParser {
  		}
 	}
 	
+	/**
+	 * Parse USSD response
+	 * @param resp USSD response
+	 * @return Map contains parsed USSD
+	 */
 	public Map<String, String> parseUSSDResponse(String resp)
     {
     	String[] arr = resp.split("\\,");
@@ -83,10 +98,18 @@ public class USSDParser {
 		return true;
 	}
 
+	/**
+	 * Check if USSD is can be replied or not
+	 * @return <strong>true</strong> if USSD can be replied and <strong>false</strong> if USSD can be replied
+	 */
 	public boolean isReplyable() {
 		return replyable;
 	}
 
+	/**
+	 * Set USSD can be replied or not
+	 * @param replyable <strong>true</strong> if USSD can be replied and <strong>false</strong> if USSD can be replied
+	 */
 	public void setReplyable(boolean replyable) {
 		this.replyable = replyable;
 	}
