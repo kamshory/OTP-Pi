@@ -409,7 +409,7 @@ public class DNSCloudflare extends DNS{
 		Headers requestHeaders = new Headers();
 		requestHeaders.add(DDNSKey.HEADER_X_AUTH_EMAIL, this.authEmail);
 		requestHeaders.add(DDNSKey.HEADER_X_AUTH_KEY, this.authApiKey);
-		requestHeaders.add(DDNSKey.HEADER_USER_AGENT, "OTP Pi");
+		requestHeaders.add(DDNSKey.HEADER_USER_AGENT, "OTP-Pi");
 		requestHeaders.add(DDNSKey.HEADER_CONNECTION, "close");
 		return requestHeaders;
 	}

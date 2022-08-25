@@ -326,6 +326,20 @@ public class MessageAPI {
 		responseJSON.put(JsonKey.DATA, jsonData);
 		return responseJSON;		
 	}
+	
+	public boolean isExpire(JSONObject data)
+	{
+		boolean dropOTPExpire = ConfigGeneral.isDropExpireOTP();
+		if(dropOTPExpire)
+		{
+			long currentTime = System.currentTimeMillis();
+			long expiration = data.has(JsonKey.EXPIRATION) 
+					? data.optLong(JsonKey.EXPIRATION, 0) 
+					: ((data.optLong(JsonKey.DATE_TIME, 0) * 1000) + ConfigGeneral.getOtpExpirationOffset());
+			return (currentTime > expiration);
+		}
+		return false;
+	}
 
 	public JSONObject sendSMS(String command, JSONObject data, StackTraceElement ste)
 	{
@@ -333,25 +347,9 @@ public class MessageAPI {
 		JSONObject jsonData = new JSONObject();
 		if(data != null)
 		{
-			
 			String receiver = data.optString(JsonKey.RECEIVER, "");
-			String textMessage = data.optString(JsonKey.MESSAGE, "");
-			boolean dropOTPExpire = ConfigGeneral.isDropExpireOTP();
-			boolean sendOTP = false;
-			if(dropOTPExpire)
-			{
-				long currentTime = System.currentTimeMillis();
-				long expiration = (data.optLong(JsonKey.DATE_TIME, 0) * 1000) + ConfigGeneral.getOtpExpirationOffset();
-				if(currentTime < expiration)
-				{
-					sendOTP = true;
-				}
-			}
-			else
-			{
-				sendOTP = true;
-			}
-			if(sendOTP)
+			String textMessage = data.optString(JsonKey.MESSAGE, "");		
+			if(!this.isExpire(data))
 			{
 				try 
 				{
@@ -377,22 +375,7 @@ public class MessageAPI {
 		String subject = data.optString(JsonKey.SUBJECT, "");
 		String message = data.optString(JsonKey.MESSAGE, "");
 		String result = "";
-		boolean dropOTPExpire = ConfigGeneral.isDropExpireOTP();
-		boolean sendOTP = false;
-		if(dropOTPExpire)
-		{
-			long currentTime = System.currentTimeMillis();
-			long expiration = (data.optLong(JsonKey.DATE_TIME, 0) * 1000) + ConfigGeneral.getOtpExpirationOffset();
-			if(currentTime < expiration)
-			{
-				sendOTP = true;
-			}
-		}
-		else
-		{
-			sendOTP = true;
-		}
-		if(sendOTP)
+		if(!this.isExpire(data))
 		{
 			try 
 			{

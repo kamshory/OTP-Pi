@@ -171,14 +171,16 @@ API Setting is a REST API configuration for sending SMS.
 | Field | Description |
 | ----- | ----------- |
 | Device Name | The device name of OTP-Pi |
-| OTP Expiration | OTP expiration in mili second. Application must send the `expiration`. See message specification |
-| Drop Expire OTP | Flag that OTP-Pi will drop or ignone the expire OTP. Application must send the `expiration`. See message specification |
+| OTP Expiration | OTP expiration in mili second. It will be used when sender not send `expiration` on the OTP. OTP-Pi will not forward expire OTP.* |
+| Drop Expire OTP | Flag that OTP-Pi will drop or ignone the expire OTP.* |
 | Device Time Zone | The device time zone. Select one of the time zone listed |
 | NTP Server | NTP server address to update the device time |
 | Update Timer | Time to update the device time. Set to `Never` if the device is offline |
 | Inspect Modem Connection | Time to update the modem connection. Set to `Never` if will not inspect the modem connection |
 | Restart Service | Time to restart the service. Set to `Never` if if you will not restart the device periodically |
 | Restart Device | Time to reboot the device. Set to `Never` if if you will not reboot the device periodically |
+
+\*) Under abnormal conditions, the OTP may be delayed on the message broker and received by the OTP-Pi after expiration. OTP-Pi can ignore expired OTPs to avoid junk delivery. If the sender does not include `expiration` in the OTP, the expiration time will be calculated from `date_time` plus milliseconds in `OTP Expiration`. If the sender includes `expiration` in the OTP, the OTP-Pi will use that time.
 
 ## Time Settings
 

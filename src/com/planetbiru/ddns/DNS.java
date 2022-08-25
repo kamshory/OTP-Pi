@@ -43,7 +43,7 @@ public class DNS {
 		String url = "http://"+prefix+"icanhazip.com/";
 		
 		Headers requestHeaders = new Headers();
-		requestHeaders.add(DDNSKey.HEADER_USER_AGENT, "OTP Pi");
+		requestHeaders.add(DDNSKey.HEADER_USER_AGENT, "OTP-Pi");
 		int timeout = 10000;
 		HttpResponse<String> response = CustomHttpClient.httpExchange("GET", url, null, requestHeaders, "", timeout);
 		return response.body();		

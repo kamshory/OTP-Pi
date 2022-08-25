@@ -28,9 +28,9 @@ public class Config {
 	private static String ethernetSettingPath = "";
 	private static String modemSettingPath = "";
 	private static long subscriberWSreconnectDelay = 0;
-	private static String noIPDevice = "OTP Pi/version 1.0";
+	private static String noIPDevice = "OTP-Pi/version 1.0";
 	private static String noIPSettingPath = "";
-	private static String deviceName = "OTP Pi";
+	private static String deviceName = "OTP-Pi";
 	private static String deviceVersion = "version 1.0";
 	private static String keystoreSettingPath = "";
 	private static String keystoreDataSettingPath = "";
