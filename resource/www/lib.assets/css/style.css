@@ -9,11 +9,11 @@
       width: 10.1%; 
       margin-left: 0.6%;    
     }
-    
+
     .tile-area > .tile:nth-child(9n + 1) {
       margin-left: 0;
     }
-    
+
   }
   */
 /*
@@ -27,7 +27,7 @@
       margin-right: 6px;
   }
   */
-@-webkit-keyframes "anim" {
+@-webkit-keyframes anim {
   0% {
     top: 4px;
     height: 4px;
@@ -45,7 +45,7 @@
     height: 4px;
   }
 }
-@keyframes "anim" {
+@keyframes anim {
   0% {
     top: 4px;
     height: 4px;
@@ -63,19 +63,15 @@
     height: 4px;
   }
 }
-
 @-ms-viewport {
   width: device-width;
 }
-
 @-o-viewport {
   width: device-width;
 }
-
 @viewport {
   width: device-width;
 }
-
 body {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -117,7 +113,7 @@ legend {
   width: auto;
   max-width: auto;
   padding: 0 10px;
-  margin-bottom: .4rem;
+  margin-bottom: 0.4rem;
   border: none;
 }
 
@@ -126,8 +122,7 @@ legend {
   display: block;
   width: 100%;
   width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   box-sizing: border-box;
   border: 1px solid #CCCCCC;
   border: 1px solid #CCCCCC;
@@ -135,123 +130,96 @@ legend {
   background-color: #FFFFFF;
   padding: 7px 7px;
 }
-
 .config-table tr td select:focus {
   outline: none;
 }
-
 .config-table tr td select:active {
   outline: none;
 }
-
-.config-table tr td input[type="text"] {
+.config-table tr td input[type=text] {
   display: block;
   width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border: 1px solid #CCCCCC;
   background-color: #FFFFFF;
   padding: 7px 11px;
 }
-
-.config-table tr td input[type="text"]:focus {
+.config-table tr td input[type=text]:focus {
   outline: none;
 }
-
-.config-table tr td input[type="text"]:active {
+.config-table tr td input[type=text]:active {
   outline: none;
 }
-
-.config-table tr td input[type="url"] {
+.config-table tr td input[type=url] {
   display: block;
   width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border: 1px solid #CCCCCC;
   background-color: #FFFFFF;
   padding: 7px 11px;
 }
-
-.config-table tr td input[type="url"]:focus {
+.config-table tr td input[type=url]:focus {
   outline: none;
 }
-
-.config-table tr td input[type="url"]:active {
+.config-table tr td input[type=url]:active {
   outline: none;
 }
-
-.config-table tr td input[type="email"] {
+.config-table tr td input[type=email] {
   display: block;
   width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border: 1px solid #CCCCCC;
   background-color: #FFFFFF;
   padding: 7px 11px;
 }
-
-.config-table tr td input[type="email"]:focus {
+.config-table tr td input[type=email]:focus {
   outline: none;
 }
-
-.config-table tr td input[type="email"]:active {
+.config-table tr td input[type=email]:active {
   outline: none;
 }
-
-.config-table tr td input[type="tel"] {
+.config-table tr td input[type=tel] {
   display: block;
   width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border: 1px solid #CCCCCC;
   background-color: #FFFFFF;
   padding: 7px 11px;
 }
-
-.config-table tr td input[type="tel"]:focus {
+.config-table tr td input[type=tel]:focus {
   outline: none;
 }
-
-.config-table tr td input[type="tel"]:active {
+.config-table tr td input[type=tel]:active {
   outline: none;
 }
-
-.config-table tr td input[type="number"] {
+.config-table tr td input[type=number] {
   display: block;
   width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border: 1px solid #CCCCCC;
   background-color: #FFFFFF;
   padding: 7px 11px;
 }
-
-.config-table tr td input[type="number"]:focus {
+.config-table tr td input[type=number]:focus {
   outline: none;
 }
-
-.config-table tr td input[type="number"]:active {
+.config-table tr td input[type=number]:active {
   outline: none;
 }
-
-.config-table tr td input[type="password"] {
+.config-table tr td input[type=password] {
   display: block;
   width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border: 1px solid #CCCCCC;
   background-color: #FFFFFF;
   padding: 7px 11px;
 }
-
-.config-table tr td input[type="password"]:focus {
+.config-table tr td input[type=password]:focus {
   outline: none;
 }
-
-.config-table tr td input[type="password"]:active {
+.config-table tr td input[type=password]:active {
   outline: none;
 }
-
 .config-table config-table-connection {
   table-layout: fixed;
   width: 100%;
@@ -261,7 +229,6 @@ legend {
   padding-left: 14px;
   padding-right: 14px;
 }
-
 .navbar-light .navbar-nav .nav-link.active {
   background-color: #EE0000;
   color: #FFFFFF;
@@ -273,19 +240,11 @@ input[type=number] {
 }
 
 .three-col {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-between;
   position: relative;
 }
-
 .three-col .control-wrapper {
   width: 30%;
   position: relative;
@@ -298,8 +257,7 @@ input[type=number] {
   border: none;
   padding: 4px 8px;
   width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .phone-page {
@@ -307,7 +265,6 @@ input[type=number] {
   position: relative;
   margin-bottom: 0px;
 }
-
 .phone-page form:last-child {
   margin-bottom: 20px !important;
 }
@@ -320,7 +277,6 @@ button span.number {
   border: 1px solid #DDDDDD;
   margin-bottom: 10px;
 }
-
 .dialed-number::after {
   content: "";
   display: block;
@@ -330,7 +286,6 @@ button span.number {
 .dialed-number-delete {
   float: right;
 }
-
 .dialed-number-delete button {
   background-color: #FFFFFF;
   border: 1px solid #DDDDDD;
@@ -344,11 +299,9 @@ button span.number {
   margin-right: 10px;
   position: relative;
 }
-
 .dialed-number-delete button:focus {
   outline: none;
 }
-
 .dialed-number-delete button::before {
   content: "";
   position: absolute;
@@ -361,7 +314,6 @@ button span.number {
   border-right: 14px solid #DDDDDD;
   left: -14px;
 }
-
 .dialed-number-delete button::after {
   content: "";
   position: absolute;
@@ -388,7 +340,7 @@ button span.number {
   padding: 12px 0;
 }
 
-#phone {
+#ussd-dialer {
   width: 64px;
   height: 64px;
   background-color: #0760ec;
@@ -396,12 +348,10 @@ button span.number {
   padding: 0;
   border-radius: 50%;
 }
-
-#phone:active {
+#ussd-dialer:active {
   outline: none;
 }
-
-#phone:focus {
+#ussd-dialer:focus {
   outline: none;
 }
 
@@ -412,10 +362,8 @@ button span.number {
   height: 40px;
   border-radius: 50%;
   background-color: #0760ec;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
-
 .icon-phone::before {
   top: 8px;
   left: 18px;
@@ -430,7 +378,6 @@ button span.number {
   border-top-right-radius: 5px 5px;
   border-bottom-right-radius: 5px 5px;
 }
-
 .icon-phone::after {
   top: 18px;
   left: 25px;
@@ -458,8 +405,7 @@ button span.number {
 .input-select {
   padding: 7px 5px;
   width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border: 1px solid #DDDDDD;
   background-color: #FFFFFF;
 }
@@ -467,15 +413,12 @@ button span.number {
 .input-text {
   padding: 5px 10px;
   width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border: 1px solid #DDDDDD;
 }
-
 .input-text:focus {
   outline: none;
 }
-
 .input-text:active .input-phone-number:focus {
   outline: none;
 }
@@ -483,11 +426,9 @@ button span.number {
 .input-phone-number {
   padding: 5px 10px;
   width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border: 1px solid #DDDDDD;
 }
-
 .input-phone-number:active {
   outline: none;
 }
@@ -495,16 +436,13 @@ button span.number {
 .text-message {
   padding: 5px 10px;
   width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border: 1px solid #DDDDDD;
   height: 100px;
 }
-
 .text-message:focus {
   outline: none;
 }
-
 .text-message:active {
   outline: none;
 }
@@ -528,20 +466,16 @@ message-area {
   width: 100%;
   border: 1px solid #CCCCCC;
 }
-
 .row-table td {
   padding: 7px 8px 8px 8px;
   border: 1px solid #CCCCCC;
 }
-
 .row-table thead td {
   font-weight: bold;
 }
-
 .row-table tbody tr td {
   position: relative;
 }
-
 .row-table tbody tr td .inline-editor {
   position: relative;
   min-height: 30px;
@@ -550,13 +484,11 @@ message-area {
   margin: -7px -7px -7px -7px;
   padding: 7px 7px 7px 7px;
 }
-
 .row-table tbody tr td div.inline-editor.no-pad {
   height: 100%;
   width: 100%;
   padding: 0;
 }
-
 .row-table textarea.inline-editor-text {
   margin: -2px -2px -4px -2px;
   border: 1px solid #999999;
@@ -564,11 +496,9 @@ message-area {
   height: calc(100% + 2px);
   padding: 8px 8px 0px 8px;
 }
-
 .row-table textarea:focus {
   outline: none;
 }
-
 .row-table textarea:active {
   outline: none;
 }
@@ -576,20 +506,16 @@ message-area {
 .button-area {
   padding: 10px 0;
 }
-
 .button-area button {
   margin-bottom: 5px;
 }
-
-.button-area input[type="button"] {
+.button-area input[type=button] {
   margin-bottom: 5px;
 }
-
-.button-area input[type="reset"] {
+.button-area input[type=reset] {
   margin-bottom: 5px;
 }
-
-.button-area input[type="submit"] {
+.button-area input[type=submit] {
   margin-bottom: 5px;
 }
 
@@ -609,10 +535,8 @@ span.icon.icon-check::before {
   height: 13px;
   width: 1px;
   background-color: #555555;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
 }
-
 span.icon.icon-check::after {
   content: "";
   display: block;
@@ -622,8 +546,7 @@ span.icon.icon-check::after {
   height: 7px;
   width: 1px;
   background-color: #555555;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 span.icon.icon-cross::before {
@@ -635,10 +558,8 @@ span.icon.icon-cross::before {
   height: 15px;
   width: 1px;
   background-color: #555555;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
 }
-
 span.icon.icon-cross::after {
   content: "";
   display: block;
@@ -648,8 +569,7 @@ span.icon.icon-cross::after {
   height: 15px;
   width: 1px;
   background-color: #555555;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 .code-mirror-editor {
@@ -660,8 +580,7 @@ span.icon.icon-cross::after {
   position: fixed;
   bottom: 10px;
   right: 0px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   width: calc(100vhw - 20px);
   max-width: 400px;
 }
@@ -685,12 +604,10 @@ span.icon.icon-cross::after {
 .notification-close {
   float: right;
 }
-
 .notification-close a {
   padding: 2px;
   display: block;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   text-align: center;
   color: #555555;
   width: 20px;
@@ -698,23 +615,19 @@ span.icon.icon-cross::after {
   border: 1px solid #EEEEEE;
   position: relative;
 }
-
 .notification-close a::before {
   content: "";
   position: absolute;
   border-left: 1px solid #999999;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
   width: 1px;
   height: 14px;
 }
-
 .notification-close a::after {
   content: "";
   position: absolute;
   border-left: 1px solid #999999;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
   width: 1px;
   height: 14px;
 }
@@ -722,9 +635,11 @@ span.icon.icon-cross::after {
 .notification-message {
   padding-left: 4px;
 }
+
 .notification-sender {
-	padding-left: 4px;
+  padding-left: 4px;
 }
+
 .server-into-item {
   position: relative;
   margin-bottom: 10px;
@@ -751,8 +666,7 @@ span.icon.icon-cross::after {
 .info-progress-inner {
   height: 10px;
   background-color: #3B82F2;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   position: relative;
 }
 
@@ -767,7 +681,6 @@ span.icon.icon-cross::after {
   background-color: #D83A56;
   color: #FFFFFF;
 }
-
 .service-item.enable.disconnected button.disconnect {
   display: none;
 }
@@ -775,7 +688,6 @@ span.icon.icon-cross::after {
 .service-item.enable.connected {
   background-color: #66DE93;
 }
-
 .service-item.enable.connected button.connect {
   display: none;
 }
@@ -788,45 +700,46 @@ span.icon.icon-cross::after {
   background-color: #F9F3F3;
 }
 
-.service-item .test-at {
+.service-item {
+  position: relative;
+}
+.service-item button.test-at {
   display: none;
 }
-
 .service-item button.signal {
   display: none;
 }
-
-.service-item.connected .test-at {
+.service-item.connected button.test-at {
   display: inline;
 }
-
 .service-item.connected button.signal {
   display: inline;
 }
-
-.service-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  gap: 20px;
+.service-item .signal-level {
+  position: absolute;
+  width: 24px;
+  height: 18px;
+  right: 10px;
 }
 
+.service-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 20px;
+}
 .service-wrapper .service-item {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border: 1px solid #DDDDDD;
   background-color: white;
   height: 80px;
-  width: calc( (100% / 2) - 10px);
+  width: calc(50% - 10px);
   padding: 10px;
 }
-
+.service-wrapper .service-message-broker {
+  width: 100%;
+}
 .service-wrapper .feature {
-  width: calc( ( ( 100% / 3 ) * 2) - 20px);
+  width: calc(66.6666666667% - 20px);
 }
 
 .status-connection {
@@ -837,43 +750,92 @@ span.icon.icon-cross::after {
   padding-top: 5px;
 }
 
-[data-pagination="true"] {
+.signal-icon {
+  height: 18px;
+  width: 22px;
+  /* To show you the power of flexbox! */
+  display: flex;
+  /* Bars should be placed left to right */
+  flex-direction: row;
+  /* Evenly space the bars with space in between */
+  justify-content: space-between;
+  /* Sink the bars to the bottom, so they go up in steps */
+  align-items: baseline;
+}
+
+.signal-icon .signal-bar {
+  /* 4 + 3 + 4 + 3 + 4 = 18px (as set above)
+  4px per bar and 3px margins between */
+  width: 4px;
+  /* All bars faded by default */
+  opacity: 30%;
+  /* Choose a color */
+  background: #aa2200;
+}
+
+/* 3 different heights for 3 different bars */
+.signal-icon .signal-bar:nth-child(1) {
+  height: 25%;
+}
+
+.signal-icon .signal-bar:nth-child(2) {
+  height: 50%;
+}
+
+.signal-icon .signal-bar:nth-child(3) {
+  height: 75%;
+}
+
+.signal-icon .signal-bar:nth-child(4) {
+  height: 100%;
+}
+
+/* Emphasize different bars depending on
+weak/medium/strong classes */
+.signal-icon.marginal .signal-bar:nth-child(1),
+.signal-icon.ok .signal-bar:nth-child(1),
+.signal-icon.ok .signal-bar:nth-child(2),
+.signal-icon.good .signal-bar:nth-child(1),
+.signal-icon.good .signal-bar:nth-child(2),
+.signal-icon.good .signal-bar:nth-child(3),
+.signal-icon.excellent .signal-bar:nth-child(1),
+.signal-icon.excellent .signal-bar:nth-child(2),
+.signal-icon.excellent .signal-bar:nth-child(3),
+.signal-icon.excellent .signal-bar:nth-child(4) {
+  opacity: 100%;
+}
+
+[data-pagination=true] {
   height: 42px;
   display: block;
   text-align: center;
   padding: 8px 0px;
   width: 100%;
 }
-
-[data-pagination="true"] a {
+[data-pagination=true] a {
   display: inline-block;
   height: 28px;
   width: 40px;
   text-align: center;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 4px 4px;
   border: 1px solid #DDDDDD;
   background-color: #F9F9F9;
   border-right: none;
 }
-
-[data-pagination="true"] a:hover {
+[data-pagination=true] a:hover {
   text-decoration: none;
 }
-
-[data-pagination="true"] a:first-child {
+[data-pagination=true] a:first-child {
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
 }
-
-[data-pagination="true"] a:last-child {
+[data-pagination=true] a:last-child {
   border-right: 1px solid #DDDDDD;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
-
-[data-pagination="true"] a.page-selected {
+[data-pagination=true] a.page-selected {
   background-color: #FFFFFF;
 }
 
@@ -894,17 +856,10 @@ span.icon.icon-cross::after {
 }
 
 .tile-area {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .tile {
@@ -923,8 +878,7 @@ span.icon.icon-cross::after {
 .tile-icon {
   width: 64px;
   height: 64px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border-radius: 5px;
   display: block;
   margin: auto;
@@ -932,7 +886,6 @@ span.icon.icon-cross::after {
   background-position: center;
   background-repeat: no-repeat;
 }
-
 .tile-icon > a {
   width: 64px;
   height: 64px;
@@ -1076,7 +1029,6 @@ span.icon.icon-cross::after {
   padding: 4px 0;
   font-size: 11px;
 }
-
 .tile-title a {
   color: #555555;
   text-decoration: none;
@@ -1090,14 +1042,14 @@ span.icon.icon-cross::after {
   background-image: url(../images/icon/modem-internet-32.png);
   background-repeat: no-repeat;
   background-position-x: calc(100% - 10px);
-  background-position-y: 10px;
+  background-position-y: 40px;
 }
 
 .service-modem-sms {
   background-image: url(../images/icon/modem-sms-32.png);
   background-repeat: no-repeat;
   background-position-x: calc(100% - 10px);
-  background-position-y: 10px;
+  background-position-y: 40px;
 }
 
 .waiting-server-up {
@@ -1116,7 +1068,7 @@ span.icon.icon-cross::after {
   width: 60px;
   position: fixed;
   left: calc(50% - 30px);
-  top: calc(20px);
+  top: 20px;
   background-color: white;
   text-align: center;
   height: 22px;
@@ -1132,7 +1084,6 @@ span.icon.icon-cross::after {
   padding: 0px 10px;
   vertical-align: middle;
 }
-
 .animation-pressure > span {
   position: relative;
   display: inline-block;
@@ -1141,7 +1092,6 @@ span.icon.icon-cross::after {
   vertical-align: top;
   padding: 0px 8px;
 }
-
 .animation-pressure > span::before {
   content: "";
   width: 6px;
@@ -1150,8 +1100,8 @@ span.icon.icon-cross::after {
   top: 4px;
   -webkit-animation-name: anim;
           animation-name: anim;
-  -webkit-animation-duration: 1.0s;
-          animation-duration: 1.0s;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
   -webkit-animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
@@ -1161,7 +1111,6 @@ span.icon.icon-cross::after {
           animation-delay: 0.12s;
   background-color: green;
 }
-
 .animation-pressure > span::after {
   content: "";
   width: 6px;
@@ -1170,8 +1119,8 @@ span.icon.icon-cross::after {
   top: 4px;
   -webkit-animation-name: anim;
           animation-name: anim;
-  -webkit-animation-duration: 1.0s;
-          animation-duration: 1.0s;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
   -webkit-animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
@@ -1181,7 +1130,6 @@ span.icon.icon-cross::after {
           animation-delay: 0.24s;
   background-color: green;
 }
-
 .animation-pressure::before {
   content: "";
   width: 6px;
@@ -1190,8 +1138,8 @@ span.icon.icon-cross::after {
   top: 4px;
   -webkit-animation-name: anim;
           animation-name: anim;
-  -webkit-animation-duration: 1.0s;
-          animation-duration: 1.0s;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
   -webkit-animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
@@ -1201,7 +1149,6 @@ span.icon.icon-cross::after {
           animation-delay: 0;
   background-color: green;
 }
-
 .animation-pressure::after {
   content: "";
   width: 6px;
@@ -1210,8 +1157,8 @@ span.icon.icon-cross::after {
   top: 4px;
   -webkit-animation-name: anim;
           animation-name: anim;
-  -webkit-animation-duration: 1.0s;
-          animation-duration: 1.0s;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
   -webkit-animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
@@ -1233,13 +1180,11 @@ h5.modal-title {
 .port-input td:nth-child(2) {
   position: relative;
 }
-
 .port-input td:nth-child(2) .list-port {
   position: absolute;
   right: 6px;
   top: 8px;
 }
-
 .port-input td:nth-child(2) .list-port-container {
   position: absolute;
   display: none;
@@ -1252,7 +1197,6 @@ h5.modal-title {
 .list-port-container {
   height: auto;
 }
-
 .list-port-container > ul {
   margin: 0;
   padding: 0;
@@ -1261,19 +1205,16 @@ h5.modal-title {
   height: 120px;
   background-color: #FFFFFF;
 }
-
 .list-port-container > ul > li:nth-child(even) {
   background-color: #F5F5F5;
 }
-
 .list-port-container > ul > li > a {
   padding: 5px 10px;
   display: block;
   text-decoration: none;
 }
-
 .list-port-container > ul > li > a:hover {
-  background-color: #496fd6;
+  background-color: rgb(73, 111, 214);
   color: #FFFFFF;
 }
 
@@ -1290,8 +1231,7 @@ h5.modal-title {
     display: block;
     padding: 3px 0;
     width: 100%;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
   }
   .config-table tr td:empty {
     display: none;
@@ -1303,14 +1243,12 @@ h5.modal-title {
     display: block;
     padding: 3px 0;
     width: 100%;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
   }
   .modal-table tr td:empty {
     display: none;
   }
 }
-
 @media all and (min-width: 600px) {
   .config-table {
     width: 100%;
@@ -1320,8 +1258,7 @@ h5.modal-title {
   }
   .config-table tr td {
     padding: 3px 0;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
   }
   .config-table tr > td:nth-child(1) {
     width: 200px;
@@ -1334,14 +1271,12 @@ h5.modal-title {
   }
   .modal-table tr td {
     padding: 3px 0;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
   }
   .modal-table tr > td:nth-child(1) {
     width: 120px;
   }
 }
-
 @media screen and (max-width: 320px) {
   .config-table config-table-connection tr td {
     display: block;
@@ -1358,11 +1293,10 @@ h5.modal-title {
     width: 48.5%;
     margin-left: 1%;
   }
-  .tile-area > .tile:nth-child(2n +1) {
+  .tile-area > .tile:nth-child(2n+1) {
     margin-left: 0;
   }
 }
-
 @media screen and (min-width: 320px) {
   .config-table config-table-connection tr td {
     padding: 2px 0;
@@ -1372,74 +1306,78 @@ h5.modal-title {
     max-width: 200px;
   }
 }
-
 @media (max-width: 600px) {
   .service-wrapper .service-item {
     width: 100%;
     margin: 0px;
   }
 }
-
 @media screen and (max-width: 768px) {
   .filter-data .form-control {
     width: calc(100% - 90px);
     display: inline-block;
   }
-  .filter-data input[type="submit"] {
+  .filter-data input[type=submit] {
     float: right;
     width: 80px;
   }
 }
-
 @media screen and (min-width: 768px) {
   .filter-data .form-control {
     width: 240px;
     display: inline-block;
   }
-  .filter-data input[type="submit"] {
+  .filter-data input[type=submit] {
     float: none;
     width: 80px;
     margin-top: -3px;
   }
 }
-
 @media screen and (min-width: 1200px) {
   .tile-area .tile {
     width: 8.9%;
     margin-left: 1%;
   }
-  .tile-area > .tile:nth-child(10n + 1) {
+  .tile-area > .tile:nth-child(10n+1) {
     margin-left: 0;
   }
 }
-
 @media screen and (max-width: 1200px) and (min-width: 768px) {
   .tile-area .tile {
     width: 14%;
     margin-left: 1%;
   }
-  .tile-area > .tile:nth-child(6n + 1) {
+  .tile-area > .tile:nth-child(6n+1) {
     margin-left: 0;
   }
+  .smartphone-page {
+    max-width: 400px;
+    height: 700px;
+    box-sizing: border-box;
+    padding: 128px 70px 100px 70px;
+    margin: auto;
+    background: url(../images/smartphone.png) no-repeat;
+    background-size: contain;
+  }
 }
-
 @media screen and (max-width: 768px) and (min-width: 480px) {
   .tile-area .tile {
     width: 18.5%;
     margin-left: 1%;
   }
-  .tile-area > .tile:nth-child(5n + 1) {
+  .tile-area > .tile:nth-child(5n+1) {
     margin-left: 0;
   }
 }
-
 @media screen and (max-width: 480px) and (min-width: 320px) {
   .tile-area .tile {
     width: 31.5%;
     margin-left: 1%;
   }
-  .tile-area > .tile:nth-child(3n + 1) {
+  .tile-area > .tile:nth-child(3n+1) {
     margin-left: 0;
   }
 }
-/*# sourceMappingURL=style.css.map */
+textarea {
+  resize: vertical;
+}/*# sourceMappingURL=style.css.map */
