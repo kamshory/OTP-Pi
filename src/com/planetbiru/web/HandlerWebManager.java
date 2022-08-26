@@ -3,7 +3,10 @@ package com.planetbiru.web;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.http.HttpResponse;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,6 +14,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.mail.MessagingException;
 
 import org.apache.log4j.Logger;
@@ -54,6 +60,7 @@ import com.planetbiru.cookie.CookieServer;
 import com.planetbiru.device.ConfigActivation;
 import com.planetbiru.device.DeviceAPI;
 import com.planetbiru.device.DeviceActivation;
+import com.planetbiru.device.TLV;
 import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.gsm.InvalidSIMPinException;
@@ -69,6 +76,7 @@ import com.planetbiru.util.FileNotFoundException;
 import com.planetbiru.util.FileUtil;
 import com.planetbiru.util.HttpRequestException;
 import com.planetbiru.util.HttpResponseString;
+import com.planetbiru.util.ServerInfo;
 import com.planetbiru.util.Utility;
 import com.planetbiru.util.WebManagerContent;
 import com.planetbiru.util.WebManagerTool;
@@ -436,9 +444,20 @@ public class HandlerWebManager implements HttpHandler {
 			HttpResponseString response = CustomHttpClient.httpExchange(method, url, parameters, requestHeaders, requestBody2, timeout);
 			
 			responseJSON = new JSONObject(response.body());
-			System.out.println(responseJSON.toString(4));
+			JSONObject data = responseJSON.optJSONObject(JsonKey.DATA);
+			Map<String, Object> map = data.toMap();
+			String tlv = TLV.build(map);
+			String cpuSN = ServerInfo.cpuSerialNumber();
+			
+			DeviceActivation.activate(tlv, cpuSN);
+			
+			//JSONObject data2 = new JSONObject(TLV.parse(tlv));
+			
+			System.out.println("salt     : "+cpuSN);
+			System.out.println("tlv      : "+tlv);
+			System.out.println("response : "+response.body());
 		} 
-		catch (JSONException | HttpRequestException e) 
+		catch (JSONException | HttpRequestException | InvalidKeyException | NoSuchAlgorithmException | InvalidKeySpecException | NoSuchPaddingException | InvalidAlgorithmParameterException | BadPaddingException | IllegalBlockSizeException | IllegalArgumentException e) 
 		{
 			e.printStackTrace();
 		}

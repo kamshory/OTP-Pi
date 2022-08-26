@@ -17,10 +17,10 @@ public class TLV {
 	private TLV()
 	{		
 	}
-	public static Map<String, String> parse(String data)
+	public static Map<String, Object> parse(String data)
 	{
 		String remaining = data;
-		Map<String, String> values = new HashMap<>();
+		Map<String, Object> values = new HashMap<>();
 		String tag = "";
 		String len = "";
 		String val = "";
@@ -31,7 +31,7 @@ public class TLV {
 			len = remaining.substring(2, 4);
 			try
 			{
-				itemLength = Integer.parseInt(len);
+				itemLength = Integer.parseInt(len, 16);
 			}
 			catch(NumberFormatException e)
 			{
@@ -50,17 +50,18 @@ public class TLV {
 		}
 		return values;		
 	}
-	public static String build(Map<String, String> data) 
+	public static String build(Map<String, Object> data) 
 	{
 		String tag = "";
 		String val = "";
 		StringBuilder builder = new StringBuilder();	
-		for (Map.Entry<String,String> entry : data.entrySet())
+		for (Map.Entry<String, Object> entry : data.entrySet())
 		{
 			tag = entry.getKey();
-			val = entry.getValue();			
-			builder.append(String.format("%-2s%02d%s", tag.length()>2?tag.substring(0, 2):tag, tag.length(), val));
+			val = entry.getValue().toString();			
+			builder.append(String.format("%-2s%02x%s", tag.length()>2?tag.substring(0, 2):tag, val.length(), val));
 		}
 		return builder.toString();
 	}
+	
 }

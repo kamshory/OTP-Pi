@@ -3,7 +3,6 @@ package com.planetbiru.device;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.util.Base64;
@@ -23,10 +22,12 @@ import com.planetbiru.util.CommandLineExecutor;
 import com.planetbiru.util.ServerInfo;
 
 public class DeviceActivation {
-	private static boolean activated = true;
-	private static String secret = "paFyufyuYTDU57778934yuw327";
+	private static boolean activated = false;
+	private static String iv = "nUTRDRUijIJfDTYj";
+	private static String secret = "kiIJujED";
 	private static String algorithm = "AES/CBC/PKCS5Padding";
 	private static String keyEnv = "CPUID";
+	private static String defaultSalt = "IjYTWsrJ";
 	
 	private DeviceActivation()
 	{
@@ -38,34 +39,47 @@ public class DeviceActivation {
 		String dataStr = System.getenv(keyEnv);
 		if(dataStr != null && !dataStr.isEmpty())
 		{
-			String cpuSerialNumber = ServerInfo.cpuSerialNumber();
+			String salt = ServerInfo.cpuSerialNumber();
+			salt = DeviceActivation.fixSalt(salt);
 			try {
-				verify(dataStr, cpuSerialNumber);
+				verify(dataStr, salt);
 			} catch (InvalidKeyException | NoSuchAlgorithmException | InvalidKeySpecException | NoSuchPaddingException
 					| InvalidAlgorithmParameterException | BadPaddingException | IllegalBlockSizeException e) {
 				DeviceActivation.activated = false;
-				e.printStackTrace();
 			}
 		}
 	}
 
 	public static void verify(String dataStr, String salt) throws InvalidKeyException, 
-	NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, 
-	InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException {
+		NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, 
+		InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException, IllegalArgumentException 
+	{
 		if(dataStr != null && !dataStr.isEmpty())
 		{
-			Map<String, String> data = DeviceActivation.parseHmacCPUID(dataStr, salt);
-			DeviceActivation.activated = data.getOrDefault("VR", "").equals("1") && data.getOrDefault("PI", "").equals(salt);
+			salt = DeviceActivation.fixSalt(salt);
+			Map<String, Object> data = DeviceActivation.parseHmacCPUID(dataStr, salt);
+			System.out.println(data.toString());
+			DeviceActivation.activated = data.getOrDefault("VR", "").equals("1");
 		}
 	}
 	
-	public static void activate(Map<String, String> data, String salt) throws InvalidKeyException, 
-	NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, 
-	InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException
+	public static void activate(String tlv, String salt) throws InvalidKeyException, 
+		NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, 
+		InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException, IllegalArgumentException
 	{
-		String value = DeviceActivation.buildHmacCPUID(data, salt); 
+		salt = DeviceActivation.fixSalt(salt);
+		String value = DeviceActivation.buildHmacCPUID(tlv, salt); 
 		String command = "echo 'export "+keyEnv+"=\""+value.replace("'", "\\'")+"\"' >> $HOME/.bashrc";
+		System.out.println(command);
 		CommandLineExecutor.exec(command);
+	}
+
+	public static String fixSalt(String salt) {
+		if(salt == null || salt.isEmpty())
+		{
+			return defaultSalt;
+		}
+		return salt;
 	}
 
 	public static boolean isActivated() {
@@ -85,15 +99,13 @@ public class DeviceActivation {
 	}
 	
 	public static IvParameterSpec generateIv() {
-	    byte[] iv = new byte[16];
-	    new SecureRandom().nextBytes(iv);
-	    return new IvParameterSpec(iv);
+	    return new IvParameterSpec(iv.getBytes());
 	}
 	
 	public static String encrypt(String algorithm, String input, SecretKey key,
 	    IvParameterSpec iv) throws NoSuchPaddingException, NoSuchAlgorithmException,
 	    InvalidAlgorithmParameterException, InvalidKeyException,
-	    BadPaddingException, IllegalBlockSizeException {
+	    BadPaddingException, IllegalBlockSizeException, IllegalArgumentException {
 	    
 	    Cipher cipher = Cipher.getInstance(algorithm);
 	    cipher.init(Cipher.ENCRYPT_MODE, key, iv);
@@ -104,7 +116,7 @@ public class DeviceActivation {
 	public static String decrypt(String algorithm, String cipherText, SecretKey key,
 	    IvParameterSpec iv) throws NoSuchPaddingException, NoSuchAlgorithmException,
 	    InvalidAlgorithmParameterException, InvalidKeyException,
-	    BadPaddingException, IllegalBlockSizeException {
+	    BadPaddingException, IllegalBlockSizeException, IllegalArgumentException {
 	    
 	    Cipher cipher = Cipher.getInstance(algorithm);
 	    cipher.init(Cipher.DECRYPT_MODE, key, iv);
@@ -112,21 +124,20 @@ public class DeviceActivation {
 	    return new String(plainText);
 	}
 	
-	public static String buildHmacCPUID(Map<String, String> data, String salt) 
+	public static String buildHmacCPUID(String dataStr, String salt) 
 			throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException, 
 			NoSuchPaddingException, InvalidAlgorithmParameterException, BadPaddingException, 
-			IllegalBlockSizeException
+			IllegalBlockSizeException, IllegalArgumentException
 	{
 	    SecretKey key = DeviceActivation.getKeyFromPassword(DeviceActivation.secret, salt);
 	    IvParameterSpec ivParameterSpec = DeviceActivation.generateIv();
-	    String input = TLV.build(data);
-	    return DeviceActivation.encrypt(DeviceActivation.algorithm, input, key, ivParameterSpec);
+	    return DeviceActivation.encrypt(DeviceActivation.algorithm, dataStr, key, ivParameterSpec);
 	}
 	
-	public static Map<String, String> parseHmacCPUID(String dataStr, String salt) 
+	public static Map<String, Object> parseHmacCPUID(String dataStr, String salt) 
 			throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException, 
 			NoSuchPaddingException, InvalidAlgorithmParameterException, BadPaddingException, 
-			IllegalBlockSizeException
+			IllegalBlockSizeException, IllegalArgumentException
 	{
 	    SecretKey key = DeviceActivation.getKeyFromPassword(DeviceActivation.secret, salt);
 	    IvParameterSpec ivParameterSpec = DeviceActivation.generateIv();
