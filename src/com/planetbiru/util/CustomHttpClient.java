@@ -142,8 +142,7 @@ public class CustomHttpClient {
 		
 		try {
 			HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-			HttpResponseString response2 = new HttpResponseString(response.body(), response.statusCode(), response.headers());
-			return response2;
+			return new HttpResponseString(response.body(), response.statusCode(), response.headers());
 		} 
 		catch (InterruptedException e) //NOSONAR
 		{
