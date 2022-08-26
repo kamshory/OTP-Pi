@@ -326,7 +326,6 @@ public class WebSocketClientImpl extends Thread {
 	public void stopService() {
 		this.stopend = true;	
 		this.connected = false;
-		ConfigSubscriberWS.setSubscriberWsEnable(false);
 		this.updateConnectionStatus();
 	}
 }
