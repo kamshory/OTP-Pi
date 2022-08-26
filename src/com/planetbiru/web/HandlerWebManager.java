@@ -433,9 +433,6 @@ public class HandlerWebManager implements HttpHandler {
 		JSONObject responseJSON = new JSONObject();
 		try 
 		{
-			//                   response = CustomHttpClient.httpExchange(method, url, parameters, headers, requestBody2, timeout);
-
-
 			HttpResponseString response = CustomHttpClient.httpExchange(method, url, parameters, requestHeaders, requestBody2, timeout);
 			
 			responseJSON = new JSONObject(response.body());
@@ -1400,6 +1397,10 @@ public class HandlerWebManager implements HttpHandler {
 			{
 				App.subscriberAMQPStart();
 			}
+			else
+			{
+				App.subscriberAMQPStop(true);
+			}
 		}	
 		
 		if(queryPairs.containsKey("save_subscriber_active_mq_setting"))
@@ -1585,7 +1586,6 @@ public class HandlerWebManager implements HttpHandler {
 				App.subscriberMQTTStop(true);
 			}
 		}	
-		
 		ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_ALL);
 	}
 	

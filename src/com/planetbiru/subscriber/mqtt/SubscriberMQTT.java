@@ -125,7 +125,10 @@ public class SubscriberMQTT extends Thread{
 		this.callback = null;
 		try 
 		{
-			this.subscriber.disconnect();
+			if(this.subscriber != null && this.subscriber.isConnected())
+			{
+				this.subscriber.disconnect();
+			}
 		} 
 		catch (MqttException e) 
 		{
