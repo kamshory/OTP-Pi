@@ -441,15 +441,12 @@ public class HandlerWebManager implements HttpHandler {
 		try 
 		{
 			HttpResponseString response = CustomHttpClient.httpExchange(method, url, parameters, requestHeaders, requestBody2, timeout);
-			
 			responseJSON = new JSONObject(response.body());
 			JSONObject data = responseJSON.optJSONObject(JsonKey.DATA);
 			Map<String, Object> map = data.toMap();
 			String cpuSN = ServerInfo.cpuSerialNumber();
-			
-			String act = DeviceActivation.activate(map, cpuSN);
-			
-			DeviceActivation.verify(act, cpuSN);
+			String activationCode = DeviceActivation.activate(map, cpuSN);
+			DeviceActivation.verify(activationCode, cpuSN);
 			
 		} 
 		catch (JSONException | HttpRequestException | InvalidKeyException | NoSuchAlgorithmException | InvalidKeySpecException | NoSuchPaddingException | InvalidAlgorithmParameterException | BadPaddingException | IllegalBlockSizeException | IllegalArgumentException e) 
