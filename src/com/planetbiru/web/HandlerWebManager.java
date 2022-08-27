@@ -60,7 +60,6 @@ import com.planetbiru.cookie.CookieServer;
 import com.planetbiru.device.ConfigActivation;
 import com.planetbiru.device.DeviceAPI;
 import com.planetbiru.device.DeviceActivation;
-import com.planetbiru.device.TLV;
 import com.planetbiru.gsm.GSMException;
 import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.gsm.InvalidSIMPinException;
@@ -446,23 +445,17 @@ public class HandlerWebManager implements HttpHandler {
 			responseJSON = new JSONObject(response.body());
 			JSONObject data = responseJSON.optJSONObject(JsonKey.DATA);
 			Map<String, Object> map = data.toMap();
-			String tlv = TLV.build(map);
 			String cpuSN = ServerInfo.cpuSerialNumber();
 			
-			DeviceActivation.activate(tlv, cpuSN);
+			String act = DeviceActivation.activate(map, cpuSN);
 			
-			//JSONObject data2 = new JSONObject(TLV.parse(tlv));
+			DeviceActivation.verify(act, cpuSN);
 			
-			System.out.println("salt     : "+cpuSN);
-			System.out.println("tlv      : "+tlv);
-			System.out.println("response : "+response.body());
 		} 
 		catch (JSONException | HttpRequestException | InvalidKeyException | NoSuchAlgorithmException | InvalidKeySpecException | NoSuchPaddingException | InvalidAlgorithmParameterException | BadPaddingException | IllegalBlockSizeException | IllegalArgumentException e) 
 		{
 			e.printStackTrace();
 		}
-	
-	
 	}
 
 	private void processForgetPassword(String requestBody) {

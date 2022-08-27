@@ -53,10 +53,11 @@ public class App {
 	private static SubscriberRedis redisSubscriber;
 	private static SubscriberStomp redissonSubscriber;
 	private static SubscriberAMQP amqpSubscriber;	
-	private static SubscriberActiveMQ activeMQSubscriber;
-	private static Logger logger = Logger.getLogger(App.class);
+	private static SubscriberActiveMQ activeMQSubscriber;	
 	private static ModemInspector modemInspector = null;
 	
+	
+	private static Logger logger = Logger.getLogger(App.class);
 	/**
 	 * Main method
 	 * @param args Parameters from command line
