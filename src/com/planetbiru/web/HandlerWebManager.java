@@ -10,7 +10,6 @@ import java.security.spec.InvalidKeySpecException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -411,36 +410,35 @@ public class HandlerWebManager implements HttpHandler {
 		int timeout = ConfigActivation.getRequestTimeout();		
 		
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);					
-		Map<String, String> parameters = new HashMap<>();
+		Map<String, String> parameters = null;
 
 		Headers requestHeaders = new Headers();
 		requestHeaders.add(ConstantString.ACCEPT, contentType);
 		requestHeaders.add(ConstantString.AUTHORIZATION, authorization+" "+Utility.base64Encode(username+":"+password));
-		String requestBody2 = "";
+		String requestBodyToSent = "";
 		
 		if(method.equals(HttpMethod.POST) || method.equals(HttpMethod.PUT))
 		{
 			if(contentType.toLowerCase().contains("json"))
 			{
 				JSONObject requestJSON = new JSONObject(queryPairs);
-				requestBody2 = requestJSON.toString(0);
+				requestBodyToSent = requestJSON.toString(0);
 			}
 			else
 			{
-				requestBody2 = requestBody;
+				requestBodyToSent = requestBody;
 			}
-			parameters = null;
 		}
 		else if(method.equals(HttpMethod.GET))
 		{
-			requestBody2 = null;			
+			requestBodyToSent = null;			
 			parameters = queryPairs;
 		}
 		
 		JSONObject responseJSON = new JSONObject();
 		try 
 		{
-			HttpResponseString response = CustomHttpClient.httpExchange(method, url, parameters, requestHeaders, requestBody2, timeout);
+			HttpResponseString response = CustomHttpClient.httpExchange(method, url, parameters, requestHeaders, requestBodyToSent, timeout);
 			responseJSON = new JSONObject(response.body());
 			JSONObject data = responseJSON.optJSONObject(JsonKey.DATA);
 			Map<String, Object> map = data.toMap();
@@ -449,9 +447,11 @@ public class HandlerWebManager implements HttpHandler {
 			DeviceActivation.verify(activationCode, cpuSN);
 			
 		} 
-		catch (JSONException | HttpRequestException | InvalidKeyException | NoSuchAlgorithmException | InvalidKeySpecException | NoSuchPaddingException | InvalidAlgorithmParameterException | BadPaddingException | IllegalBlockSizeException | IllegalArgumentException e) 
+		catch (JSONException | HttpRequestException | InvalidKeyException | NoSuchAlgorithmException | 
+				InvalidKeySpecException | NoSuchPaddingException | InvalidAlgorithmParameterException | 
+				BadPaddingException | IllegalBlockSizeException | IllegalArgumentException e) 
 		{
-			e.printStackTrace();
+			logger.info(e.getMessage());
 		}
 	}
 

@@ -51,7 +51,7 @@ public class App {
 	private static SubscriberWebSocket webSocketSubscriber;	
 	private static SubscriberMQTT mqttSubscriber;
 	private static SubscriberRedis redisSubscriber;
-	private static SubscriberStomp redissonSubscriber;
+	private static SubscriberStomp stompSubscriber;
 	private static SubscriberAMQP amqpSubscriber;	
 	private static SubscriberActiveMQ activeMQSubscriber;	
 	private static ModemInspector modemInspector = null;
@@ -441,10 +441,10 @@ public class App {
 	 * Start AMQP subscription
 	 */
 	public static void subscriberAMQPStart() {
-		if(ConfigSubscriberAMQP.isSubscriberAmqpEnable() && (App.getAmqpSubscriber() == null || !App.getAmqpSubscriber().isRunning()))
+		if(ConfigSubscriberAMQP.isSubscriberAmqpEnable() && (App.amqpSubscriber == null || !App.amqpSubscriber.isRunning()))
 		{
-			App.setAmqpSubscriber(new SubscriberAMQP());
-			App.getAmqpSubscriber().start();
+			App.amqpSubscriber = new SubscriberAMQP();
+			App.amqpSubscriber.start();
 		}		
 	}
 	
@@ -453,9 +453,9 @@ public class App {
 	 * @param force Set true for force stop
 	 */
 	public static void subscriberAMQPStop(boolean force) {
-		if(App.getAmqpSubscriber() != null && (force || App.getAmqpSubscriber().isRunning()))
+		if(App.amqpSubscriber != null && (force || App.amqpSubscriber.isRunning()))
 		{
-			App.getAmqpSubscriber().stopService();
+			App.amqpSubscriber.stopService();
 		}		
 	}
 	
@@ -463,11 +463,11 @@ public class App {
 	 * Start Redis subscription
 	 */
 	public static void subscriberRedisStart() {
-		if(ConfigSubscriberRedis.isSubscriberRedisEnable() && (App.getRedisSubscriber() == null || !App.getRedisSubscriber().isRunning()))
+		if(ConfigSubscriberRedis.isSubscriberRedisEnable() && (App.redisSubscriber == null || !App.redisSubscriber.isRunning()))
 		{
-			App.setRedisSubscriber(new SubscriberRedis());
-			App.getRedisSubscriber().setRunning(true);
-			App.getRedisSubscriber().start();
+			App.redisSubscriber = new SubscriberRedis();
+			App.redisSubscriber.setRunning(true);
+			App.redisSubscriber.start();
 		}		
 	}
 	
@@ -476,24 +476,24 @@ public class App {
 	 * @param force Set true for force stop
 	 */
 	public static void subscriberRedisStop(boolean force) {
-		if(App.getRedisSubscriber() != null && (force && App.getRedisSubscriber().isRunning()))
+		if(App.redisSubscriber != null && (force && App.redisSubscriber.isRunning()))
 		{
-			App.getRedisSubscriber().stopService();
+			App.redisSubscriber.stopService();
 		}		
 	}
 	
 	public static void subscriberStompStart() {
-		if(ConfigSubscriberStomp.isSubscriberStompEnable() && (App.getStompSubscriber() == null || !App.getStompSubscriber().isRunning()))
+		if(ConfigSubscriberStomp.isSubscriberStompEnable() && (App.stompSubscriber == null || !App.stompSubscriber.isRunning()))
 		{
-			App.setStompSubscriber(new SubscriberStomp());
-			App.getStompSubscriber().setRunning(true);
-			App.getStompSubscriber().start();
+			App.stompSubscriber = new SubscriberStomp();
+			App.stompSubscriber.setRunning(true);
+			App.stompSubscriber.start();
 		}		
 	}
 	public static void subscriberStompStop(boolean force) {
-		if(App.getStompSubscriber() != null && (force || App.getStompSubscriber().isRunning()))
+		if(App.stompSubscriber != null && (force || App.stompSubscriber.isRunning()))
 		{
-			App.getStompSubscriber().stopService();
+			App.stompSubscriber.stopService();
 		}		
 	}
 
@@ -548,7 +548,7 @@ public class App {
 		}
 		App.scheduller.stopService();
 		App.webSocketSubscriber.stopService();
-		App.getAmqpSubscriber().stopService();
+		App.amqpSubscriber.stopService();
 		App.mqttSubscriber.stopService();
 	}	
 	
@@ -558,30 +558,6 @@ public class App {
 		FileConfigUtil.prepareDir(fileName);
 	}
 
-	public static SubscriberAMQP getAmqpSubscriber() {
-		return App.amqpSubscriber;
-	}
-
-	public static void setAmqpSubscriber(SubscriberAMQP amqpSubscriber) {
-		App.amqpSubscriber = amqpSubscriber;
-	}
-
-	public static SubscriberRedis getRedisSubscriber() {
-		return App.redisSubscriber;
-	}
-
-	public static void setRedisSubscriber(SubscriberRedis redisSubscriber) {
-		App.redisSubscriber = redisSubscriber;
-	}
-
-	public static SubscriberStomp getStompSubscriber() {
-		return redissonSubscriber;
-	}
-
-	public static void setStompSubscriber(SubscriberStomp redissonSubscriber) {
-		App.redissonSubscriber = redissonSubscriber;
-	}
-	
 	public static void exit()
 	{
 		System.exit(0);

@@ -44,16 +44,33 @@ public class DeviceActivation {
 		
 	}
 	
+	private static String getSecret()
+	{
+		String sec = DeviceActivation.secret;
+		if(sec.length() > 8)
+		{
+			sec = sec.substring(sec.length() - 8);
+		}
+		else
+		{
+			sec = String.format("%8s", sec);
+		}
+		return sec;
+	}
+	
 	public static void verify()
 	{
 		String dataStr = System.getenv(keyEnv);
-		if(dataStr != null && !dataStr.isEmpty())
+		if(dataStr != null && !dataStr.isEmpty()) 
 		{
 			String salt = ServerInfo.cpuSerialNumber();
-			try {
+			try 
+			{
 				verify(dataStr, salt);
-			} catch (InvalidKeyException | NoSuchAlgorithmException | InvalidKeySpecException | NoSuchPaddingException
-					| InvalidAlgorithmParameterException | BadPaddingException | IllegalBlockSizeException e) {
+			} 
+			catch (InvalidKeyException | NoSuchAlgorithmException | InvalidKeySpecException | NoSuchPaddingException
+					| InvalidAlgorithmParameterException | BadPaddingException | IllegalBlockSizeException e) 
+			{
 				DeviceActivation.activated = false;
 			}
 		}
@@ -74,11 +91,9 @@ public class DeviceActivation {
 	
 	public static String activate(Map<String, Object> tlv, String salt) throws InvalidKeyException, 
 		NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, 
-		InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException, IllegalArgumentException
-	{
+		InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException, IllegalArgumentException {
 		salt = DeviceActivation.fixSalt(salt);
-		String value = DeviceActivation.buildHmacCPUID(tlv, salt); 
-		
+		String value = DeviceActivation.buildHmacCPUID(tlv, salt); 	
 		try 
 		{
 			byte[] content = FileConfigUtil.read("$HOME/.bashrc");
@@ -94,8 +109,7 @@ public class DeviceActivation {
 		catch (FileNotFoundException e) 
 		{
 			logger.info(e.getMessage());
-		}		
-		
+		}				
 		String commandEnv = "export "+keyEnv+"=\""+value.replace("'", "\\'")+"\"";
 		logger.info(commandEnv);
 		CommandLineExecutor.exec(commandEnv);		
@@ -106,6 +120,17 @@ public class DeviceActivation {
 		if(salt == null || salt.isEmpty())
 		{
 			return defaultSalt;
+		}
+		else
+		{
+			if(salt.length() > 8)
+			{
+				salt = salt.substring(salt.length() - 8);
+			}
+			else
+			{
+				salt = String.format("%8s", salt);
+			}
 		}
 		return salt;
 	}
@@ -119,53 +144,14 @@ public class DeviceActivation {
 	}
 	
 	public static SecretKey getKeyFromPassword(String password, String salt)
-	    throws NoSuchAlgorithmException, InvalidKeySpecException {
-	    
+	    throws NoSuchAlgorithmException, InvalidKeySpecException 
+	{
 	    SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
 	    KeySpec spec = new PBEKeySpec(password.toCharArray(), salt.getBytes(), 65536, 256);
-	    return new SecretKeySpec(factory.generateSecret(spec).getEncoded(), "AES");
+	    byte[] secureKey = factory.generateSecret(spec).getEncoded();
+		return new SecretKeySpec(secureKey, "AES");
 	}
 
-	private static String encrypt(String algorithm, String dataStr, String salt) throws NoSuchAlgorithmException, 
-	InvalidKeySpecException, InvalidKeyException, NoSuchPaddingException, InvalidAlgorithmParameterException, 
-	BadPaddingException, IllegalBlockSizeException, IllegalArgumentException {
-	    SecretKey key = DeviceActivation.getKeyFromPassword(DeviceActivation.secret, salt);
-	    byte[] iv = DeviceActivation.randomIv(DeviceActivation.keyAlgorithm);
-	    return DeviceActivation.encrypt(algorithm, dataStr, key, iv);
-	}
-
-	public static String encrypt(String algorithm, String input, SecretKey key,
-	    byte[] iv) throws NoSuchPaddingException, NoSuchAlgorithmException,
-	    InvalidAlgorithmParameterException, InvalidKeyException,
-	    BadPaddingException, IllegalBlockSizeException, IllegalArgumentException {
-	
-	    IvParameterSpec ivParameterSpec = DeviceActivation.generateIv(iv);
-
-	    Cipher cipher = Cipher.getInstance(algorithm);
-	    cipher.init(Cipher.ENCRYPT_MODE, key, ivParameterSpec);
-	    byte[] cipherText = cipher.doFinal(input.getBytes());
-	    
-	    ByteArrayOutputStream b = new ByteArrayOutputStream();
-
-        try {
-			b.write(iv);
-			b.write( cipherText );
-			cipherText = b.toByteArray();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
- 	    
-	    return Base64.getEncoder().encodeToString(cipherText);
-	}
-	
-	public static String decrypt(String algorithm, String dataStr, String salt) throws InvalidKeyException, 
-	NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, 
-	BadPaddingException, IllegalBlockSizeException, IllegalArgumentException, InvalidKeySpecException
-	{
-	    SecretKey key = DeviceActivation.getKeyFromPassword(DeviceActivation.secret, salt);
-		return DeviceActivation.decrypt(algorithm, dataStr, key);	  
-	}
-	
 	public static byte[] randomIv(String algorithm) throws NoSuchAlgorithmException, NoSuchPaddingException
 	{
 		SecureRandom random = SecureRandom.getInstanceStrong();
@@ -178,21 +164,61 @@ public class DeviceActivation {
 	    return new IvParameterSpec(iv); //NOSONAR
 	}
 
+	private static String encrypt(String algorithm, String dataStr, String salt) throws NoSuchAlgorithmException, 
+		InvalidKeySpecException, InvalidKeyException, NoSuchPaddingException, InvalidAlgorithmParameterException, 
+		BadPaddingException, IllegalBlockSizeException, IllegalArgumentException 
+	{
+	    SecretKey key = DeviceActivation.getKeyFromPassword(DeviceActivation.getSecret(), salt);
+	    byte[] iv = DeviceActivation.randomIv(DeviceActivation.keyAlgorithm);
+	    return DeviceActivation.encrypt(algorithm, dataStr, key, iv);
+	}
+
+	public static String encrypt(String algorithm, String input, SecretKey key,
+	    byte[] iv) throws NoSuchPaddingException, NoSuchAlgorithmException,
+	    InvalidAlgorithmParameterException, InvalidKeyException,
+	    BadPaddingException, IllegalBlockSizeException, IllegalArgumentException 
+	{
+	    IvParameterSpec ivParameterSpec = DeviceActivation.generateIv(iv);
+	    Cipher cipher = Cipher.getInstance(algorithm);
+	    cipher.init(Cipher.ENCRYPT_MODE, key, ivParameterSpec);
+	    byte[] cipherText = cipher.doFinal(input.getBytes());    
+	    ByteArrayOutputStream b = new ByteArrayOutputStream();
+        try {
+			b.write(iv);
+			b.write( cipherText );
+			cipherText = b.toByteArray();
+		} catch (IOException e) 
+        {
+			e.printStackTrace();
+		}	    
+	    return Base64.getEncoder().encodeToString(cipherText);
+	}
+	
+	public static String decrypt(String algorithm, String dataStr, String salt) throws InvalidKeyException, 
+	NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, 
+	BadPaddingException, IllegalBlockSizeException, IllegalArgumentException, InvalidKeySpecException
+	{
+	    SecretKey key = DeviceActivation.getKeyFromPassword(DeviceActivation.getSecret(), salt);
+		return DeviceActivation.decrypt(algorithm, dataStr, key);	  
+	}
+	
 	public static String decrypt(String algorithm, String cipherText, SecretKey key) throws NoSuchPaddingException, NoSuchAlgorithmException,
 	    InvalidAlgorithmParameterException, InvalidKeyException,
-	    BadPaddingException, IllegalBlockSizeException, IllegalArgumentException {
-	    
-	    Cipher cipher = Cipher.getInstance(algorithm);
-	    
-	    byte[] cipherByte = Base64.getDecoder().decode(cipherText);
-	    
-	    
-	    byte[] iv = Arrays.copyOfRange(cipherByte , 0, 16);
-	    
-	    cipherByte = Arrays.copyOfRange( cipherByte, 16, cipherByte.length);
-	    
+	    BadPaddingException, IllegalBlockSizeException, IllegalArgumentException 
+	{	    
+	    Cipher cipher = Cipher.getInstance(algorithm);	    
+	    byte[] cipherByte = Base64.getDecoder().decode(cipherText);    
+	    byte[] iv;
+	    if(cipherByte.length >= 8)
+	    {
+	    	iv = Arrays.copyOfRange(cipherByte , 0, 16);
+	    }
+	    else
+	    {
+	    	iv = DeviceActivation.randomIv(DeviceActivation.keyAlgorithm);
+	    }    
+	    cipherByte = Arrays.copyOfRange( cipherByte, 16, cipherByte.length);    
 	    IvParameterSpec ivParameterSpec = DeviceActivation.generateIv(iv);
-
 	    cipher.init(Cipher.DECRYPT_MODE, key, ivParameterSpec);
 	    byte[] plainText = cipher.doFinal(cipherByte);
 	    return new String(plainText);
@@ -215,6 +241,5 @@ public class DeviceActivation {
 	    String plainText = DeviceActivation.decrypt(DeviceActivation.algorithm, dataStr, salt);
 		return TLV.parse(plainText);
 	}
-	
 	
 }
