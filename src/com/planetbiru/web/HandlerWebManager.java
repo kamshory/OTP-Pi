@@ -411,6 +411,8 @@ public class HandlerWebManager implements HttpHandler {
 		
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);					
 		Map<String, String> parameters = null;
+		
+		String cpusn = ServerInfo.cpuSerialNumber();
 
 		Headers requestHeaders = new Headers();
 		requestHeaders.add(ConstantString.ACCEPT, contentType);
@@ -422,7 +424,9 @@ public class HandlerWebManager implements HttpHandler {
 			if(contentType.toLowerCase().contains("json"))
 			{
 				JSONObject requestJSON = new JSONObject(queryPairs);
+				requestJSON.put("cpusn", cpusn);
 				requestBodyToSent = requestJSON.toString(0);
+				requestHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 			}
 			else
 			{
@@ -433,6 +437,7 @@ public class HandlerWebManager implements HttpHandler {
 		{
 			requestBodyToSent = null;			
 			parameters = queryPairs;
+			parameters.put("cpusn", cpusn);
 		}
 		
 		JSONObject responseJSON = new JSONObject();
@@ -441,15 +446,15 @@ public class HandlerWebManager implements HttpHandler {
 			HttpResponseString response = CustomHttpClient.httpExchange(method, url, parameters, requestHeaders, requestBodyToSent, timeout);
 			responseJSON = new JSONObject(response.body());
 			JSONObject data = responseJSON.optJSONObject(JsonKey.DATA);
-			Map<String, Object> map = data.toMap();
-			String cpuSN = ServerInfo.cpuSerialNumber();
-			String activationCode = DeviceActivation.activate(map, cpuSN);
-			DeviceActivation.verify(activationCode, cpuSN);
-			
+			String activationCode = data.optString("activation_code", "");			
+			DeviceActivation.verify(activationCode, cpusn);
+			if(DeviceActivation.isActivated())
+			{
+				DeviceActivation.storeToEnv(activationCode);
+				DeviceActivation.activate(activationCode);
+			}
 		} 
-		catch (JSONException | HttpRequestException | InvalidKeyException | NoSuchAlgorithmException | 
-				InvalidKeySpecException | NoSuchPaddingException | InvalidAlgorithmParameterException | 
-				BadPaddingException | IllegalBlockSizeException | IllegalArgumentException e) 
+		catch (JSONException | HttpRequestException | IllegalArgumentException | InvalidKeyException | NoSuchAlgorithmException | InvalidKeySpecException | NoSuchPaddingException | InvalidAlgorithmParameterException | BadPaddingException | IllegalBlockSizeException e) 
 		{
 			logger.info(e.getMessage());
 		}
@@ -809,12 +814,17 @@ public class HandlerWebManager implements HttpHandler {
 			boolean mqttDisconnected = queryPairs.getOrDefault("mqtt_disconnected", "").trim().equals("1");
 			boolean redisDisconnected = queryPairs.getOrDefault("redis_disconnected", "").trim().equals("1");
 			boolean wsDisconnected = queryPairs.getOrDefault("ws_disconnected", "").trim().equals("1");
-			
+
+			boolean activeMQDisconnected = queryPairs.getOrDefault("activemq_disconnected", "").trim().equals("1");
+			boolean stompDisconnected = queryPairs.getOrDefault("stomp_disconnected", "").trim().equals("1");
+
 			ConfigBell.setSmsFailure(smsFailure);
 			ConfigBell.setAmqpDisconnected(amqpDisconnected);
 			ConfigBell.setMqttDisconnected(mqttDisconnected);
 			ConfigBell.setRedisDisconnected(redisDisconnected);
 			ConfigBell.setWsDisconnected(wsDisconnected);
+			ConfigBell.setActiveMQDisconnected(activeMQDisconnected);
+			ConfigBell.setStompDisconnected(stompDisconnected);
 			
 			ConfigBell.save();			
 		}
@@ -1216,10 +1226,9 @@ public class HandlerWebManager implements HttpHandler {
 		boolean deleteSentSMS = queryPairs.getOrDefault("delete_sent_sms", "").trim().equals("1");
 		if(!recipientPrefix.isEmpty())
 		{
-			recipientPrefix = recipientPrefix.replace("\n", "\r\n");
-			recipientPrefix = recipientPrefix.replace("\r\r\n", "\r\n");
-			recipientPrefix = recipientPrefix.replace("\r", "\r\n");
-			recipientPrefix = recipientPrefix.replace("\r\n\n", "\r\n");
+			recipientPrefix = Utility.fixCariageReturn(recipientPrefix);
+			
+			
 			recipientPrefix = recipientPrefix.replace(" ", "");
 			String[] arr = recipientPrefix.split(",");
 			List<String> pref = new ArrayList<>();
@@ -1243,7 +1252,7 @@ public class HandlerWebManager implements HttpHandler {
 		}	
 		
 		String simCardPIN = queryPairs.getOrDefault("sim_card_pin", "").trim();
-
+		
 		String parityBit = queryPairs.getOrDefault("parity_bit", "").trim();
 		String startBits = queryPairs.getOrDefault("start_bits", "").trim();
 		String stopBits = queryPairs.getOrDefault("stop_bits", "").trim();

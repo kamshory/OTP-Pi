@@ -19,6 +19,7 @@ import org.json.JSONObject;
 
 import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.api.MessageAPI;
+import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigSubscriberStomp;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
@@ -187,6 +188,7 @@ public class SubscriberStomp extends Thread {
 	}
 
 	public void flagDisconnected() {
+		Buzzer.toneDisconnectStomp();
 		this.connected = false;
 		this.updateConnectionStatus();
 	}

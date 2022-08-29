@@ -13,11 +13,13 @@ import com.planetbiru.util.Utility;
 public class ConfigBell {
 	private static String configPath = "";
 	private static Logger logger = Logger.getLogger(ConfigBell.class);
-	private static boolean smsFailure;
-	private static boolean amqpDisconnected;
-	private static boolean mqttDisconnected;
-	private static boolean redisDisconnected;
-	private static boolean wsDisconnected;
+	private static boolean smsFailure = false;
+	private static boolean amqpDisconnected = false;
+	private static boolean mqttDisconnected = false;
+	private static boolean redisDisconnected = false;
+	private static boolean wsDisconnected = false;
+	private static boolean activeMQDisconnected = false;
+	private static boolean stompDisconnected = false;
 	
 	private ConfigBell()
 	{
@@ -46,14 +48,18 @@ public class ConfigBell {
 					boolean lsmsFailure = json.optBoolean("smsFailure", false);	
 					boolean lamqpDisconnected = json.optBoolean("amqpDisconnected", false);	
 					boolean lmqttDisconnected = json.optBoolean("mqttDisconnected", false);	
+					boolean lactiveMQDisconnected = json.optBoolean("activeMQDisconnected", false);	
 					boolean lredisDisconnected = json.optBoolean("redisDisconnected", false);	
 					boolean lwsDisconnected = json.optBoolean("wsDisconnected", false);	
+					boolean lstompDisconnected = json.optBoolean("stompDisconnected", false);	
 					
 					ConfigBell.smsFailure = lsmsFailure;
 					ConfigBell.amqpDisconnected = lamqpDisconnected;
 					ConfigBell.mqttDisconnected = lmqttDisconnected;
+					ConfigBell.activeMQDisconnected = lactiveMQDisconnected ;
 					ConfigBell.redisDisconnected = lredisDisconnected;
 					ConfigBell.wsDisconnected = lwsDisconnected;
+					ConfigBell.stompDisconnected = lstompDisconnected;
 				}
 			}
 		} 
@@ -98,8 +104,10 @@ public class ConfigBell {
 		config.put("smsFailure", ConfigBell.smsFailure);
 		config.put("amqpDisconnected", ConfigBell.amqpDisconnected);
 		config.put("mqttDisconnected", ConfigBell.mqttDisconnected);
+		config.put("activeMQDisconnected", ConfigBell.activeMQDisconnected);
 		config.put("redisDisconnected", ConfigBell.redisDisconnected);
 		config.put("wsDisconnected", ConfigBell.wsDisconnected);	
+		config.put("stompDisconnected", ConfigBell.stompDisconnected);	
 		return config;
 	}
 
@@ -113,6 +121,8 @@ public class ConfigBell {
 		ConfigBell.mqttDisconnected = false;	
 		ConfigBell.redisDisconnected = false;
 		ConfigBell.wsDisconnected = false;	
+		ConfigBell.amqpDisconnected = false;	
+		ConfigBell.stompDisconnected = false;	
 	}
 
 	public static String getConfigPath() {
@@ -162,6 +172,22 @@ public class ConfigBell {
 
 	public static void setWsDisconnected(boolean wsDisconnected) {
 		ConfigBell.wsDisconnected = wsDisconnected;
+	}
+
+	public static boolean isActiveMQDisconnected() {
+		return activeMQDisconnected;
+	}
+
+	public static void setActiveMQDisconnected(boolean activeMQDisconnected) {
+		ConfigBell.activeMQDisconnected = activeMQDisconnected;
+	}
+
+	public static boolean isStompDisconnected() {
+		return stompDisconnected;
+	}
+
+	public static void setStompDisconnected(boolean stompDisconnected) {
+		ConfigBell.stompDisconnected = stompDisconnected;
 	}
 	
 }

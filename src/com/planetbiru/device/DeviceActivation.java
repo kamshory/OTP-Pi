@@ -89,16 +89,18 @@ public class DeviceActivation {
 		}
 	}
 	
-	public static String activate(Map<String, Object> tlv, String salt) throws InvalidKeyException, 
-		NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, 
-		InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException, IllegalArgumentException {
-		salt = DeviceActivation.fixSalt(salt);
-		String value = DeviceActivation.buildHmacCPUID(tlv, salt); 	
+	public static void storeToEnv(String activationCode) {
 		try 
 		{
-			byte[] content = FileConfigUtil.read("$HOME/.bashrc");
+			String home = System.getenv("HOME");
+			if(home == null)
+			{
+				home = "";
+			}
+			String path = FileConfigUtil.fixFileName(home + "/.bashrc");
+			byte[] content = FileConfigUtil.read(path);
 			String contentStr = new String(content);			
-			String commandExport = "echo 'export "+keyEnv+"=\""+value.replace("'", "\\'")+"\"' >> $HOME/.bashrc";
+			String commandExport = "echo 'export "+keyEnv+"=\""+activationCode.replace("'", "\\'")+"\"' >> $HOME/.bashrc";
 			logger.info(commandExport);
 			if(!contentStr.contains("export "+keyEnv+"="))
 			{
@@ -109,11 +111,23 @@ public class DeviceActivation {
 		catch (FileNotFoundException e) 
 		{
 			logger.info(e.getMessage());
-		}				
-		String commandEnv = "export "+keyEnv+"=\""+value.replace("'", "\\'")+"\"";
+		}		
+	}
+	
+	public static String activate(Map<String, Object> tlv, String salt) throws InvalidKeyException, 
+		NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, 
+		InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException, IllegalArgumentException {
+		salt = DeviceActivation.fixSalt(salt);
+		String activationCode = DeviceActivation.buildHmacCPUID(tlv, salt); 	
+		DeviceActivation.storeToEnv(activationCode);	
+		DeviceActivation.activate(activationCode);
+		return activationCode;		
+	}
+
+	public static void activate(String activationCode) {
+		String commandEnv = "export "+keyEnv+"=\""+activationCode.replace("'", "\\'")+"\"";
 		logger.info(commandEnv);
-		CommandLineExecutor.exec(commandEnv);		
-		return value;		
+		CommandLineExecutor.exec(commandEnv);	
 	}
 
 	public static String fixSalt(String salt) {
@@ -241,5 +255,6 @@ public class DeviceActivation {
 	    String plainText = DeviceActivation.decrypt(DeviceActivation.algorithm, dataStr, salt);
 		return TLV.parse(plainText);
 	}
+
 	
 }

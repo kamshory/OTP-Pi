@@ -115,6 +115,10 @@ public class FileConfigUtil {
 		return extension;
 	}
 	
+	/**
+	 * Prepare directory before save a file
+	 * @param fileName File path to be save after directory created
+	 */
 	public static void prepareDir(String fileName)
 	{
 		File file = new File(fileName);

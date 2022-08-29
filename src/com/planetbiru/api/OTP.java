@@ -23,6 +23,9 @@ public class OTP {
 	private static OTPGC otpGC;
 	private static Logger logger = Logger.getLogger(OTP.class);
 
+	/**
+	 * Constructor
+	 */
 	private OTP()
 	{
 		
@@ -81,7 +84,7 @@ public class OTP {
 	
 	/**
 	 * Check if OTP of an OTP ID is exists
-	 * @param otpID
+	 * @param otpID OTP ID
 	 * @return
 	 */
 	public static boolean isExists(String otpID) {
@@ -97,7 +100,7 @@ public class OTP {
 	 * @param param2 Parameter 2
 	 * @param param3 Parameter 3
 	 * @param param4 Parameter 4
-	 * @return
+	 * @return OTP message
 	 */
 	public static String createOTP(String otpID, String receiver, long lifeTime, String param1, String param2,
 			String param3, String param4) {
@@ -122,16 +125,44 @@ public class OTP {
 		return plainOTP;
 	}
 
+	/**
+	 * Generate random number
+	 * @param length Random number length
+	 * @return Random number
+	 */
 	private static int generateRandomNumber(int length) {
 		int max = (int) (Math.pow(10, length));
 		return rand.nextInt(max);
 	}
 
+	/**
+	 * Create hash
+	 * @param otpID OTP ID
+	 * @param plainOTP Plain text
+	 * @param receiver Receiver
+	 * @param param1 Parameter 1
+	 * @param param2 Parameter 2
+	 * @param param3 Parameter 3
+	 * @param param4 Parameter 4
+	 * @return Hash
+	 */
 	private static String createHash(String otpID, String plainOTP, String receiver, String param1, String param2,
 			String param3, String param4) {
 		return Utility.sha512(otpID+":"+plainOTP+":"+receiver+":"+param1+":"+param2+":"+param3+":"+param4+":"+Config.getOtpSalt());
 	}
 
+	/**
+	 * Validate OTP
+	 * @param otpID OTP ID
+	 * @param receiver Receiver
+	 * @param param1 Parameter 1
+	 * @param param2 Parameter 2
+	 * @param param3 Parameter 3
+	 * @param param4 Parameter 4
+	 * @param plainOTP Plain OTP
+	 * @return <strong>true</true> if OTP is valid and <strong>false</strong> if OTP is invalid
+	 * @throws OTPExpireException if OTP expire
+	 */
 	public static boolean validateOTP(String otpID, String receiver, String param1, String param2,
 			String param3, String param4, String plainOTP) throws OTPExpireException {
 		String hash = OTP.createHash(otpID, plainOTP, receiver, param1, param2, param3, param4);
@@ -152,6 +183,10 @@ public class OTP {
 		return false;
 	}
 	
+	/**
+	 * Load file
+	 * @param path File path
+	 */
 	public static void load(String path) {
 		OTP.configPath = path;
 		String dir = Utility.getBaseDir();
@@ -182,16 +217,29 @@ public class OTP {
 			}
 		}	
 	}
+	
+	/**
+	 * Save configuration
+	 */
 	public static void save()
 	{
 		OTP.save(OTP.configPath);
 	}
 	
+	/**
+	 * Save to path
+	 * @param path File path
+	 */
 	public static void save(String path) {
 		JSONObject config = getJSONObject();
 		save(path, config);
 	}
 
+	/**
+	 * Save configuration to file
+	 * @param path File path
+	 * @param config Configuration
+	 */
 	public static void save(String path, JSONObject config) {		
 		String dir = Utility.getBaseDir();
 		if(dir.endsWith("/") && path.startsWith("/"))
@@ -211,6 +259,10 @@ public class OTP {
 		}
 	}
 	
+	/**
+	 * Prepare directory before save a file
+	 * @param fileName File path to be save after directory created
+	 */
 	private static void prepareDir(String fileName) {
 		File file = new File(fileName);
 		String directory1 = file.getParent();
@@ -232,10 +284,18 @@ public class OTP {
 		file3.getParentFile().mkdirs();
 	}
 	
+	/**
+	 * Get OTP data
+	 * @return OTP data
+	 */
 	public static JSONObject getJSONObject() {
 		return OTP.data;
 	}
 
+	/**
+	 * Get OTP data
+	 * @return OTP data
+	 */
 	public static JSONObject toJSONObject() {
 		return getJSONObject();
 	}

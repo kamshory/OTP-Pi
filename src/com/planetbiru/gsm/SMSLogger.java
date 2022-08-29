@@ -27,6 +27,10 @@ public class SMSLogger {
 		}	
 	}
 	
+	/**
+	 * Prepare directory before save a file
+	 * @param fileName File path to be save after directory created
+	 */
 	private static void prepareDir(String fileName) {
 		File file = new File(fileName);
 		String directory1 = file.getParent();

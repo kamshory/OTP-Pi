@@ -84,8 +84,7 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 					}
 				}
 			}
-		}
-		
+		}		
 	}
 
 	@Override

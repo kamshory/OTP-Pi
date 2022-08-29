@@ -389,11 +389,7 @@ public class GSM {
 
     public String fixingRawData(String result)
 	{
-		result = result.replace("\n", "\r\n");
-		result = result.replace("\r\r\n", "\r\n");
-		result = result.replace("\r", "\r\n");
-		result = result.replace("\r\n\n", "\r\n");
-		return result;
+		return Utility.fixCariageReturn(result);
 	}
     private String fixArrayString(String input)
     {

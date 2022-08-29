@@ -463,11 +463,11 @@ public class App {
 	 * Start Redis subscription
 	 */
 	public static void subscriberRedisStart() {
-		if(ConfigSubscriberRedis.isSubscriberRedisEnable() && (App.redisSubscriber == null || !App.redisSubscriber.isRunning()))
+		if(ConfigSubscriberRedis.isSubscriberRedisEnable() && (App.getRedisSubscriber() == null || !App.getRedisSubscriber().isRunning()))
 		{
-			App.redisSubscriber = new SubscriberRedis();
-			App.redisSubscriber.setRunning(true);
-			App.redisSubscriber.start();
+			App.setRedisSubscriber(new SubscriberRedis());
+			App.getRedisSubscriber().setRunning(true);
+			App.getRedisSubscriber().start();
 		}		
 	}
 	
@@ -476,9 +476,9 @@ public class App {
 	 * @param force Set true for force stop
 	 */
 	public static void subscriberRedisStop(boolean force) {
-		if(App.redisSubscriber != null && (force && App.redisSubscriber.isRunning()))
+		if(App.getRedisSubscriber() != null && (force && App.getRedisSubscriber().isRunning()))
 		{
-			App.redisSubscriber.stopService();
+			App.getRedisSubscriber().stopService();
 		}		
 	}
 	
@@ -561,6 +561,14 @@ public class App {
 	public static void exit()
 	{
 		System.exit(0);
+	}
+
+	public static SubscriberRedis getRedisSubscriber() {
+		return redisSubscriber;
+	}
+
+	public static void setRedisSubscriber(SubscriberRedis redisSubscriber) {
+		App.redisSubscriber = redisSubscriber;
 	}
 }
 

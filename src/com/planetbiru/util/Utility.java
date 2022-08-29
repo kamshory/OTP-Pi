@@ -1451,5 +1451,12 @@ public class Utility {
         }
 		return headers;
 	}
+	public static String fixCariageReturn(String str) {
+		str = str.replace("\n", "\r\n");
+		str = str.replace("\r\r\n", "\r\n");
+		str = str.replace("\r", "\r\n");
+		str = str.replace("\r\n\n", "\r\n");
+		return str;
+	}
 	
 }

@@ -386,7 +386,7 @@ public class MessageAPI {
 			try 
 			{
 				this.sendMail(to, subject, message, null);
-				result = "The message was sent successfuly";
+				result = ConstantString.EMAIL_SENT_SUCCESSFULLY;
 				responseJSON.put(JsonKey.RESPONSE_CODE, ResponseCode.SUCCESS);
 				responseJSON.put(JsonKey.MESSAGE, result);
 			} 

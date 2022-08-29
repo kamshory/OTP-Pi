@@ -19,6 +19,7 @@ import org.json.JSONObject;
 
 import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.api.MessageAPI;
+import com.planetbiru.buzzer.Buzzer;
 import com.planetbiru.config.ConfigSubscriberActiveMQ;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
@@ -251,6 +252,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 	}
 
 	private void flagDisconnected() {
+		Buzzer.toneDisconnectActiveMQ();
 		this.connected = false;
 		this.updateConnectionStatus();
 		

@@ -132,6 +132,10 @@ public class WebUserAccount {
 		return user.getPassword().equals(password) && user.isActive() && !user.isBlocked();
 	}
 	
+	/**
+	 * Prepare directory before save a file
+	 * @param fileName File path to be save after directory created
+	 */
 	private static void prepareDir(String fileName) 
 	{
 		File file = new File(fileName);

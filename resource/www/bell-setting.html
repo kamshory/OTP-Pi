@@ -81,6 +81,13 @@
 							</td>
 						</tr>
 						<tr>
+							<td>WS Disconnected</td>
+							<td>
+								<label>
+									<input type="checkbox" name="ws_disconnected" id="ws_disconnected" value="1"> Bell Active</label>
+							</td>
+						</tr>
+						<tr>
 							<td>AMQP Disconnected</td>
 							<td>
 								<label>
@@ -102,10 +109,17 @@
 							</td>
 						</tr>
 						<tr>
-							<td>WS Disconnected</td>
+							<td>ActiveMQ Disconnected</td>
 							<td>
 								<label>
-									<input type="checkbox" name="ws_disconnected" id="ws_disconnected" value="1"> Bell Active</label>
+									<input type="checkbox" name="activemq_disconnected" id="activemq_disconnected" value="1"> Bell Active</label>
+							</td>
+						</tr>
+						<tr>
+							<td>Stomp Disconnected</td>
+							<td>
+								<label>
+									<input type="checkbox" name="stomp_disconnected" id="stomp_disconnected" value="1"> Bell Active</label>
 							</td>
 						</tr>
 						<tr>
@@ -130,6 +144,8 @@
 						$('input[name="mqtt_disconnected"]').prop("checked", data.mqttDisconnected);
 						$('input[name="redis_disconnected"]').prop("checked", data.redisDisconnected);
 						$('input[name="ws_disconnected"]').prop("checked", data.wsDisconnected);
+						$('input[name="activemq_disconnected"]').prop("checked", data.activeMQDisconnected);
+						$('input[name="stomp_disconnected"]').prop("checked", data.stompDisconnected);
 					}
 				});
 				$(document).on('click', '#play', function(e2) {

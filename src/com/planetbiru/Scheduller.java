@@ -71,25 +71,20 @@ public class Scheduller extends Thread{
 	
 	public Scheduller() {
 		this.cronExpressionDeviceCheck = Config.getCronExpressionDeviceCheck();
-		
 		this.cronExpressionAMQPCheck = Config.getCronExpressionAMQPCheck();
 		this.cronExpressionRedisCheck = Config.getCronExpressionRedisCheck();
 		this.cronExpressionMQTTCheck = Config.getCronExpressionMQTTCheck();
 		this.cronExpressionActiveMQCheck = Config.getCronExpressionActiveMQCheck();
 		this.cronExpressionWSCheck = Config.getCronExpressionWSCheck();
-		
 		this.cronUpdateAMQP = Config.isCronUpdateAMQP();
 		this.cronUpdateMQTT = Config.isCronUpdateMQTT();
 		this.cronUpdateRedis = Config.isCronUpdateRedis();
 		this.cronUpdateActiveMQ = Config.isCronUpdateActiveMQ();
-		this.cronUpdateWS = Config.isCronUpdateWS();	
-		
+		this.cronUpdateWS = Config.isCronUpdateWS();
 		this.cronUpdateDDNS = Config.isCronUpdateDDNS();
 		this.cronExpressionDDNSUpdate = Config.getCronExpressionDDNSUpdate();
-
 		this.cronUpdateServerStatus = Config.isCronUpdateServerStatus();
-		this.cronExpressionStatusServer = Config.getCronExpressionStatusServer();		
-		
+		this.cronExpressionStatusServer = Config.getCronExpressionStatusServer();
 		this.cronServiceCheck = Config.isCronServiceCheck();
 	}
 	
@@ -314,9 +309,8 @@ public class Scheduller extends Thread{
 			if(currentTime.getTime() > ddnsRecord.getNextValid().getTime())
 			{
 				DDNSUpdater ddns = new DDNSUpdater(ddnsRecord, prevFireTimeStr, currentTimeStr, nextValidTimeAfterStr);
-				ddns.start();
-				
-				ConfigDDNS.getRecords().get(ddnsId).setNextValid(nextValidTimeAfter);		
+				ddns.start();			
+				ConfigDDNS.getRecords().get(ddnsId).setNextValid(nextValidTimeAfter);
 				ConfigDDNS.getRecords().get(ddnsId).setLastUpdate(currentTime);
 				update = true;
 			}
@@ -551,7 +545,7 @@ public class Scheduller extends Thread{
 	{
 		JSONObject data = new JSONObject();
 		data.put(JsonKey.DATETIME, System.currentTimeMillis());
-		
+	
 		JSONObject memory = ServerInfo.memoryInfo();
 		JSONObject cpu = ServerInfo.cpuUsage();
 		JSONObject storage = ServerInfo.storageInfo();

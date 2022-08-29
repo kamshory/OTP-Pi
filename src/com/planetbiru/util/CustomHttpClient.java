@@ -156,6 +156,11 @@ public class CustomHttpClient {
 		{
 			throw new HttpRequestException(e.getMessage());
 		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			throw new HttpRequestException(e.getMessage());
+		}
 	}
 	
 	

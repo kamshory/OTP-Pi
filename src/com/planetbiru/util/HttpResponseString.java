@@ -25,5 +25,11 @@ public class HttpResponseString {
 	public HttpHeaders headers() {
 		return responseHeaders;
 	}
+	
+	@Override
+	public String toString()
+	{
+		return this.body();
+	}
 
 }
