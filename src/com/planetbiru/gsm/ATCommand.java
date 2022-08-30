@@ -13,7 +13,12 @@ public class ATCommand {
 	public static final String ERROR            = "ERROR";
 	public static final String DATA_MODE_TEXT   = "1";
 	public static final String DATA_MODE_PDU    = "0";
-	
+
+	public static final String CREATE_DELETE_SMS_READ             = "AT+CMGD=0,1";
+	public static final String CREATE_DELETE_SMS_READ_SENT        = "AT+CMGD=0,2";
+	public static final String CREATE_DELETE_SMS_READ_SENT_UNSENT = "AT+CMGD=0,3";
+	public static final String CREATE_DELETE_SMS_ALL              = "AT+CMGD=0,4";
+
 	private ATCommand()
 	{
 		

@@ -488,7 +488,7 @@ public class GSM {
     	this.setReady(false);
     	String result = "";
     	this.executeAT(this.selectStorage(storage), 1);
-    	this.executeAT(GSMConst.CREATE_DELETE_SMS_ALL, 1);
+    	this.executeAT(ATCommand.CREATE_DELETE_SMS_ALL, 1);
     	this.setReady(true);
         return result;
     }
@@ -502,7 +502,7 @@ public class GSM {
 		for(String storage : GSMConst.getSmsStorage()) 
         {
 			this.executeAT(this.selectStorage(storage), 1);
-	    	this.executeAT(GSMConst.CREATE_DELETE_SMS_ALL, 1);
+	    	this.executeAT(ATCommand.CREATE_DELETE_SMS_ALL, 1);
         }
         this.setReady(true);
  	}
