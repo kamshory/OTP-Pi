@@ -809,14 +809,13 @@ public class HandlerWebManager implements HttpHandler {
 		{
 			ConfigGeneral.load(Config.getGeneralSettingPath());
 			
-			boolean smsFailure = queryPairs.getOrDefault("sms_failure", "").trim().equals("1");
-			boolean amqpDisconnected = queryPairs.getOrDefault("amqp_disconnected", "").trim().equals("1");
-			boolean mqttDisconnected = queryPairs.getOrDefault("mqtt_disconnected", "").trim().equals("1");
-			boolean redisDisconnected = queryPairs.getOrDefault("redis_disconnected", "").trim().equals("1");
-			boolean wsDisconnected = queryPairs.getOrDefault("ws_disconnected", "").trim().equals("1");
-
-			boolean activeMQDisconnected = queryPairs.getOrDefault("activemq_disconnected", "").trim().equals("1");
-			boolean stompDisconnected = queryPairs.getOrDefault("stomp_disconnected", "").trim().equals("1");
+			int smsFailure = Integer.parseInt(queryPairs.getOrDefault("sms_failure", "0").trim());
+			int amqpDisconnected = Integer.parseInt(queryPairs.getOrDefault("amqp_disconnected", "0").trim());
+			int mqttDisconnected = Integer.parseInt(queryPairs.getOrDefault("mqtt_disconnected", "0").trim());
+			int redisDisconnected = Integer.parseInt(queryPairs.getOrDefault("redis_disconnected", "0").trim());
+			int wsDisconnected = Integer.parseInt(queryPairs.getOrDefault("ws_disconnected", "0").trim());
+			int activeMQDisconnected = Integer.parseInt(queryPairs.getOrDefault("activemq_disconnected", "").trim());
+			int stompDisconnected = Integer.parseInt(queryPairs.getOrDefault("stomp_disconnected", "").trim());
 
 			ConfigBell.setSmsFailure(smsFailure);
 			ConfigBell.setAmqpDisconnected(amqpDisconnected);

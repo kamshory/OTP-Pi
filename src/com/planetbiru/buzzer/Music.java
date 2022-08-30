@@ -8,6 +8,13 @@ public class Music {
 		
 	}
 	
+	/**
+	 * Play sound from a string
+	 * @param pin GPIO pin
+	 * @param song String contain sound code
+	 * @param octave Octave
+	 * @param tempo Tempo in bit per minute
+	 */
 	public static void play(int pin, String song, int octave, int tempo)
 	{
 		if(Music.sound.isRunning())
@@ -17,6 +24,11 @@ public class Music {
 		Music.sound = new Sound(pin, song, octave, tempo);
 		Music.sound.start();
 	}
+	
+	/**
+	 * Stop sound
+	 * @param pin GPIO pin
+	 */
 	public static void stop(int pin)
 	{
 		Music.sound.stopSound(pin);

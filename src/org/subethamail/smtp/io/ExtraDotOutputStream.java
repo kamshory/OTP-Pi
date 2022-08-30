@@ -44,7 +44,7 @@ public class ExtraDotOutputStream extends CRLFOutputStream {
 	 * @see CRLFOutputStream#writeChunk(byte[], int, int)
 	 */
 	@Override
-	protected void writeChunk(byte buffer[], int offset, int length) throws IOException {
+	protected void writeChunk(byte[] buffer, int offset, int length) throws IOException {
 		if (length > 0 && buffer[offset] == '.' && this.startOfLine) {
 			// add extra dot (the first of the pair)
 			this.out.write('.');

@@ -77,57 +77,97 @@
 							<td>Fail Send SMS</td>
 							<td>
 								<label>
-									<input type="checkbox" name="sms_failure" id="sms_failure" value="1"> Bell Active</label>
+								<input type="radio" name="sms_failure" id="sms_failure" value="0"> Off</label>
+								<label>
+								<input type="radio" name="sms_failure" id="sms_failure" value="1"> Tone</label>
+								<label>
+								<input type="radio" name="sms_failure" id="sms_failure" value="2"> WAV</label>
+								<input type="button" class="btn btn-sm btn-primary" value="Play">
+								<input type="button" class="btn btn-sm btn-warning" value="Stop"> </td>
 							</td>
 						</tr>
 						<tr>
 							<td>WS Disconnected</td>
 							<td>
 								<label>
-									<input type="checkbox" name="ws_disconnected" id="ws_disconnected" value="1"> Bell Active</label>
+								<input type="radio" name="ws_disconnected" id="ws_disconnected" value="0"> Off</label>
+								<label>
+								<input type="radio" name="ws_disconnected" id="ws_disconnected" value="1"> Tone</label>
+								<label>
+								<input type="radio" name="ws_disconnected" id="ws_disconnected" value="2"> WAV</label>
+								<input type="button" class="btn btn-sm btn-primary" value="Play">
+								<input type="button" class="btn btn-sm btn-warning" value="Stop"> </td>
 							</td>
 						</tr>
 						<tr>
 							<td>AMQP Disconnected</td>
 							<td>
 								<label>
-									<input type="checkbox" name="amqp_disconnected" id="amqp_disconnected" value="1"> Bell Active</label>
+								<input type="radio" name="amqp_disconnected" id="amqp_disconnected" value="0"> Off</label>
+								<label>
+								<input type="radio" name="amqp_disconnected" id="amqp_disconnected" value="1"> Tone</label>
+								<label>
+								<input type="radio" name="amqp_disconnected" id="amqp_disconnected" value="2"> WAV</label>
+								<input type="button" class="btn btn-sm btn-primary" value="Play">
+								<input type="button" class="btn btn-sm btn-warning" value="Stop"> </td>
 							</td>
 						</tr>
 						<tr>
 							<td>MQTT Disconnected</td>
 							<td>
 								<label>
-									<input type="checkbox" name="mqtt_disconnected" id="mqtt_disconnected" value="1"> Bell Active</label>
+								<input type="radio" name="mqtt_disconnected" id="mqtt_disconnected" value="0"> Off</label>
+								<label>
+								<input type="radio" name="mqtt_disconnected" id="mqtt_disconnected" value="1"> Tone</label>
+								<label>
+								<input type="radio" name="mqtt_disconnected" id="mqtt_disconnected" value="2"> WAV</label>
+								<input type="button" class="btn btn-sm btn-primary" value="Play">
+								<input type="button" class="btn btn-sm btn-warning" value="Stop"> </td>
 							</td>
 						</tr>
 						<tr>
 							<td>Redis Disconnected</td>
 							<td>
 								<label>
-									<input type="checkbox" name="redis_disconnected" id="redis_disconnected" value="1"> Bell Active</label>
+								<input type="radio" name="redis_disconnected" id="redis_disconnected" value="0"> Off</label>
+								<label>
+								<input type="radio" name="redis_disconnected" id="redis_disconnected" value="1"> Tone</label>
+								<label>
+								<input type="radio" name="redis_disconnected" id="redis_disconnected" value="2"> WAV</label>
+								<input type="button" class="btn btn-sm btn-primary" value="Play">
+								<input type="button" class="btn btn-sm btn-warning" value="Stop"> </td>
 							</td>
 						</tr>
 						<tr>
 							<td>ActiveMQ Disconnected</td>
 							<td>
 								<label>
-									<input type="checkbox" name="activemq_disconnected" id="activemq_disconnected" value="1"> Bell Active</label>
+								<input type="radio" name="activemq_disconnected" id="activemq_disconnected" value="0"> Off</label>
+								<label>
+								<input type="radio" name="activemq_disconnected" id="activemq_disconnected" value="1"> Tone</label>
+								<label>
+								<input type="radio" name="activemq_disconnected" id="activemq_disconnected" value="2"> WAV</label>
+								<input type="button" class="btn btn-sm btn-primary" value="Play">
+								<input type="button" class="btn btn-sm btn-warning" value="Stop"> </td>
 							</td>
 						</tr>
 						<tr>
 							<td>Stomp Disconnected</td>
 							<td>
 								<label>
-									<input type="checkbox" name="stomp_disconnected" id="stomp_disconnected" value="1"> Bell Active</label>
+								<input type="radio" name="stomp_disconnected" id="stomp_disconnected" value="0"> Off</label>
+								<label>
+								<input type="radio" name="stomp_disconnected" id="stomp_disconnected" value="1"> Tone</label>
+								<label>
+								<input type="radio" name="stomp_disconnected" id="stomp_disconnected" value="2"> WAV</label>
+								<input type="button" class="btn btn-sm btn-primary" value="Play">
+								<input type="button" class="btn btn-sm btn-warning" value="Stop"> </td>
 							</td>
 						</tr>
 						<tr>
 							<td></td>
 							<td>
 								<input type="submit" class="btn btn-success" name="save_bell_setting" id="save_bell_setting" value="Save">
-								<input type="button" class="btn btn-primary" id="play" value="Play">
-								<input type="button" class="btn btn-primary" id="stop" value="Stop"> </td>
 						</tr>
 					</tbody>
 				</table>
@@ -139,13 +179,13 @@
 					url: "data/bell-setting/get",
 					dataType: "json",
 					success: function(data) {
-						$('input[name="sms_failure"]').prop("checked", data.smsFailure);
-						$('input[name="amqp_disconnected"]').prop("checked", data.amqpDisconnected);
-						$('input[name="mqtt_disconnected"]').prop("checked", data.mqttDisconnected);
-						$('input[name="redis_disconnected"]').prop("checked", data.redisDisconnected);
-						$('input[name="ws_disconnected"]').prop("checked", data.wsDisconnected);
-						$('input[name="activemq_disconnected"]').prop("checked", data.activeMQDisconnected);
-						$('input[name="stomp_disconnected"]').prop("checked", data.stompDisconnected);
+						$('input[name="sms_failure"][value="'+data.smsFailure+'"]').prop("checked", true);
+						$('input[name="amqp_disconnected"][value="'+data.amqpDisconnected+'"]').prop("checked", true)
+						$('input[name="mqtt_disconnected"][value="'+data.mqttDisconnected+'"]').prop("checked", true)
+						$('input[name="redis_disconnected"][value="'+data.redisDisconnected+'"]').prop("checked", true)
+						$('input[name="ws_disconnected"][value="'+data.wsDisconnected+'"]').prop("checked", true)
+						$('input[name="activemq_disconnected"][value="'+data.activeMQDisconnected+'"]').prop("checked", true)
+						$('input[name="stomp_disconnected"][value="'+data.stompDisconnected+'"]').prop("checked", true)
 					}
 				});
 				$(document).on('click', '#play', function(e2) {

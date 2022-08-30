@@ -118,7 +118,12 @@ public class SubscriberStomp extends Thread {
 			    String callbackTopic = requestJSON.optString(JsonKey.CALLBACK_TOPIC, "");
 		        long callbackDelay = Math.abs(requestJSON.optLong(JsonKey.CALLBACK_DELAY, 10));
 		        String command = requestJSON.optString(JsonKey.COMMAND, "");
-		   		if(!callbackTopic.isEmpty() && (command.equals(ConstantString.ECHO) || command.equals(ConstantString.REQUEST_USSD) || command.equals(ConstantString.GET_MODEM_LIST)))
+		   		if(!callbackTopic.isEmpty() && 
+		   				(command.equals(ConstantString.ECHO) 
+		   						|| command.equals(ConstantString.REQUEST_USSD) 
+		   						|| command.equals(ConstantString.GET_MODEM_LIST)
+		   						)
+		   				)
 			    {
 			    	this.delay(callbackDelay);
 			    	this.sendMessage(response.toString(), callbackTopic);

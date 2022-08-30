@@ -1,11 +1,7 @@
 package com.planetbiru.buzzer;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 
 import org.apache.log4j.Logger;
 
@@ -15,6 +11,7 @@ import com.planetbiru.config.ConfigBell;
 public class Buzzer {
 	
 	private static Map<String, Boolean> playingStatus = new HashMap<>();
+	private static Map<String, WAVPlayer> playlist = new HashMap<>();
 	
 	private static Logger logger = Logger.getLogger(Buzzer.class);
 	
@@ -34,7 +31,7 @@ public class Buzzer {
 	}
 	
 	public static void toneDisconnectAmqp() {
-		if(ConfigBell.isAmqpDisconnected())
+		if(ConfigBell.isAmqpDisconnected() == 1)
 		{
 			logger.info("toneDisconnectAmqp");
 			Music.play(Config.getSoundPIN(), Config.getSoundDisconnectTone(), Config.getSoundDisconnectOctave(), Config.getSoundDisconnectTempo());
@@ -42,7 +39,7 @@ public class Buzzer {
 	}
 
 	public static void toneDisconnectMqtt() {
-		if(ConfigBell.isMqttDisconnected())
+		if(ConfigBell.isMqttDisconnected() == 1)
 		{
 			logger.info("toneDisconnectMqtt");
 			Music.play(Config.getSoundPIN(), Config.getSoundDisconnectTone(), Config.getSoundDisconnectOctave(), Config.getSoundDisconnectTempo());
@@ -50,7 +47,7 @@ public class Buzzer {
 	}
 	
 	public static void toneDisconnectActiveMQ() {
-		if(ConfigBell.isActiveMQDisconnected())
+		if(ConfigBell.isActiveMQDisconnected() == 1)
 		{
 			logger.info("toneDisconnectActiveMQ");
 			Music.play(Config.getSoundPIN(), Config.getSoundDisconnectTone(), Config.getSoundDisconnectOctave(), Config.getSoundDisconnectTempo());
@@ -58,16 +55,15 @@ public class Buzzer {
 	}
 	
 	public static void toneDisconnectStomp() {
-		if(ConfigBell.isStompDisconnected())
+		if(ConfigBell.isStompDisconnected() == 1)
 		{
-			makeSound();
 			logger.info("toneDisconnectStomp");
 			Music.play(Config.getSoundPIN(), Config.getSoundDisconnectTone(), Config.getSoundDisconnectOctave(), Config.getSoundDisconnectTempo());
 		}		
 	}
 
 	public static void toneDisconnectWs() {
-		if(ConfigBell.isWsDisconnected())
+		if(ConfigBell.isWsDisconnected() == 1)
 		{
 			logger.info("toneDisconnectWs");
 			Music.play(Config.getSoundPIN(), Config.getSoundDisconnectTone(), Config.getSoundDisconnectOctave(), Config.getSoundDisconnectTempo());
@@ -75,7 +71,7 @@ public class Buzzer {
 	}
 
 	public static void toneSMSFailed() {
-		if(ConfigBell.isSmsFailure())
+		if(ConfigBell.isSmsFailure() == 1)
 		{
 			logger.info("toneSMSFailed");
 			Music.play(Config.getSoundPIN(), Config.getSoundAlertTone(), Config.getSoundAlertOctave(), Config.getSoundAlertTempo());
@@ -83,38 +79,19 @@ public class Buzzer {
 	}
 
 	public static void toneDisconnectRedis() {
-		if(ConfigBell.isRedisDisconnected())
+		if(ConfigBell.isRedisDisconnected() == 1)
 		{
 			logger.info("toneDisconnectRedis");
 			Music.play(Config.getSoundPIN(), Config.getSoundDisconnectTone(), Config.getSoundDisconnectOctave(), Config.getSoundDisconnectTempo());
 		}				
 	}
 	
-	public static void makeSound(){
-
-	    try
-	    {
-			String path = "C:/bitbucket/Ring10.wav";
-		    File lol = new File(path);
-	        Clip clip = AudioSystem.getClip();
-	        clip.open(AudioSystem.getAudioInputStream(lol));
-	        long len = clip.getMicrosecondLength();
-	        if(!Buzzer.isPlaying(path))
-	        {
-	        	Buzzer.setPlaying(path, true);
-	        	clip.start();
-	        	Thread.sleep((long) Math.ceil((double)len/1000));
-	        	Buzzer.setPlaying(path, false);
-	        }
-	    } 
-	    catch(InterruptedException e)
-	    {
-	    	Thread.currentThread().interrupt();
-	    }
-	    catch (Exception e)
-	    {	    	
-	        logger.error(e.getMessage());
-	    }
+	public static void playSound(String path) {
+		if(!Buzzer.playlist.containsKey(path))
+		{
+			Buzzer.playlist.put(path, new WAVPlayer(path));
+			Buzzer.playlist.get(path).play();
+		}	    
 	}
 
 	

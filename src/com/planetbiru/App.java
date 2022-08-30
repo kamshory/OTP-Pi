@@ -73,7 +73,8 @@ public class App {
 		{
 			logger.error("Service not started because failed to read configuration file");
 			logger.error("System can not find "+currentRootDirectoryPath+"/config.ini");
-		}		
+		}
+		
 	}
 	
 	/**
