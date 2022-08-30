@@ -56,8 +56,8 @@ public class App {
 	private static SubscriberActiveMQ activeMQSubscriber;	
 	private static ModemInspector modemInspector = null;
 	
-	
 	private static Logger logger = Logger.getLogger(App.class);
+	
 	/**
 	 * Main method
 	 * @param args Parameters from command line
@@ -514,6 +514,9 @@ public class App {
 		}
 	}
 
+	/**
+	 * Restart service
+	 */
 	public static void restartService()
 	{
 		JSONObject info = new JSONObject();
@@ -534,6 +537,9 @@ public class App {
 		CommandLineExecutor.exec(Config.getRestartCommand());
 	}
 	
+	/**
+	 * Stop all services
+	 */
 	public static void stopAllServices()
 	{
 		App.smtp.stopService();
@@ -553,12 +559,18 @@ public class App {
 		App.mqttSubscriber.stopService();
 	}	
 	
+	/**
+	 * Prepare session directory
+	 */
 	public static void prepareSessionDir()
 	{
 		String fileName = FileConfigUtil.fixFileName(Utility.getBaseDir()+FileSystems.getDefault().getSeparator()+Config.getSessionFilePath()+"/ses");
 		FileConfigUtil.prepareDir(fileName);
 	}
 
+	/**
+	 * Exit all process and terminate the program
+	 */
 	public static void exit()
 	{
 		System.exit(0);
