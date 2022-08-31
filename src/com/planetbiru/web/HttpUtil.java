@@ -1,14 +1,7 @@
 package com.planetbiru.web;
 
 import java.io.IOException;
-import java.util.UUID;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.config.PropertyLoader;
-import com.planetbiru.constant.JsonKey;
 import com.planetbiru.util.Utility;
 import com.sun.net.httpserver.Headers; //NOSONAR
 import com.sun.net.httpserver.HttpExchange;
@@ -47,18 +40,23 @@ public class HttpUtil {
         	return "".getBytes();
         }
 	}
-	public static void broardcastWebSocket(String message) 
+	public static void broardcastWebSocket(String message) {
+		HttpUtil.broardcastWebSocket(message, false, 0);
+		
+	}
+	
+	public static void broardcastWebSocket(String message, boolean async, long delay) 
 	{
-		JSONObject messageJSON = new JSONObject();
-		messageJSON.put(JsonKey.COMMAND, "broadcast-message");
-		JSONArray data = new JSONArray();
-		JSONObject itemData = new JSONObject();
-		String uuid = UUID.randomUUID().toString();
-		itemData.put(JsonKey.ID, uuid);
-		itemData.put(JsonKey.MESSAGE, message);
-		data.put(itemData);
-		messageJSON.put(JsonKey.DATA, data);	
-		ServerWebSocketAdmin.broadcastMessage(messageJSON.toString(0));			
+		if(async)
+		{
+			HttpBroadcaster bc = new HttpBroadcaster(message, delay);
+			bc.start();
+		}
+		else
+		{
+			HttpBroadcaster bc = new HttpBroadcaster(message);
+			bc.broadcast();
+		}
 	}
 
 	public static String getMIMEType(String fileName) 
@@ -92,4 +90,5 @@ public class HttpUtil {
 		}
 		return lifetime;
 	}
+	
 }

@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import com.planetbiru.util.ServiceHTTP;
 import com.planetbiru.web.HandlerWebManager;
 import com.planetbiru.web.HandlerWebManagerAPI;
+import com.planetbiru.web.HandlerWebManagerActivation;
 import com.planetbiru.web.HandlerWebManagerData;
 import com.planetbiru.web.HandlerWebManagerLogin;
 import com.planetbiru.web.HandlerWebManagerLogout;
@@ -35,6 +36,7 @@ public class ServerWebAdmin {
 	        ServiceHTTP.getHttpServer().createContext("/", new HandlerWebManager());
 	        ServiceHTTP.getHttpServer().createContext("/login.html", new HandlerWebManagerLogin());
 	        ServiceHTTP.getHttpServer().createContext("/logout.html", new HandlerWebManagerLogout());
+	        ServiceHTTP.getHttpServer().createContext("/device-activation", new HandlerWebManagerActivation());
 	        ServiceHTTP.getHttpServer().createContext("/user/add", new HandlerWebManagerUserAdd());
 	        ServiceHTTP.getHttpServer().createContext("/user/init", new HandlerWebManagerUserInit());
 	        ServiceHTTP.getHttpServer().createContext("/api/", new HandlerWebManagerAPI());

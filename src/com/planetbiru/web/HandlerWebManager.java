@@ -3,24 +3,16 @@ package com.planetbiru.web;
 
 import java.io.File;
 import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 import javax.mail.MessagingException;
 
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.planetbiru.App;
@@ -56,7 +48,6 @@ import com.planetbiru.config.DataModem;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.cookie.CookieServer;
-import com.planetbiru.device.ConfigActivation;
 import com.planetbiru.device.DeviceAPI;
 import com.planetbiru.device.DeviceActivation;
 import com.planetbiru.gsm.GSMException;
@@ -68,13 +59,9 @@ import com.planetbiru.mail.NoEmailAccountException;
 import com.planetbiru.user.NoUserRegisteredException;
 import com.planetbiru.user.User;
 import com.planetbiru.user.WebUserAccount;
-import com.planetbiru.util.CustomHttpClient;
 import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.FileNotFoundException;
 import com.planetbiru.util.FileUtil;
-import com.planetbiru.util.HttpRequestException;
-import com.planetbiru.util.HttpResponseString;
-import com.planetbiru.util.ServerInfo;
 import com.planetbiru.util.Utility;
 import com.planetbiru.util.WebManagerContent;
 import com.planetbiru.util.WebManagerTool;
@@ -94,7 +81,7 @@ public class HandlerWebManager implements HttpHandler {
 		{
 			this.handlePost(httpExchange, path);
 		}
-		WebResponse response = this.handleGet(httpExchange, path);
+		HttpWebResponse response = this.handleGet(httpExchange, path);
 		long length = 0;
 		if(response.getResponseBody() != null)
 		{
@@ -108,7 +95,7 @@ public class HandlerWebManager implements HttpHandler {
 		httpExchange.close();
 	}
 
-	private WebResponse handleGet(HttpExchange httpExchange, String path) {
+	private HttpWebResponse handleGet(HttpExchange httpExchange, String path) {
 		if(!Config.isValidDevice() && (path.contains(".html") || path.equals(ConstantString.DOCUMENT_PATH_SEPARATOR)))
 		{
 			return this.invalidDevice();
@@ -119,7 +106,7 @@ public class HandlerWebManager implements HttpHandler {
 		}		
 	}
 
-	private WebResponse invalidDevice() {
+	private HttpWebResponse invalidDevice() {
 		String fileName = WebManagerTool.getFileName(ConstantString.PATH_SEPARATOR+"invalid-device.html");
 		byte[] responseBody = "".getBytes();
 		int statusCode = HttpStatus.OK;
@@ -144,15 +131,15 @@ public class HandlerWebManager implements HttpHandler {
 		}
 		Headers responseHeaders = new Headers();
 		responseHeaders.add("Content-type", "text/html");
-		return new WebResponse(statusCode, responseHeaders, responseBody);
+		return new HttpWebResponse(statusCode, responseHeaders, responseBody);
 	}
 
-	private WebResponse serveDocumentRoot(HttpExchange httpExchange, String path) {
+	private HttpWebResponse serveDocumentRoot(HttpExchange httpExchange, String path) {
 		if(path.equals(ConstantString.DOCUMENT_PATH_SEPARATOR))
 		{
 			path = ConstantString.PATH_SEPARATOR+"index.html";
 		}
-		WebResponse response = new WebResponse();
+		HttpWebResponse response = new HttpWebResponse();
 		Headers requestHeaders = httpExchange.getRequestHeaders();
 		Headers responseHeaders = httpExchange.getResponseHeaders();
 		int statusCode = HttpStatus.OK;		
@@ -386,10 +373,6 @@ public class HandlerWebManager implements HttpHandler {
 				{
 					this.processForgetPassword(requestBody);
 				}
-				else if(path.equals(ConstantString.PATH_SEPARATOR+"activation.html"))
-				{
-					this.processActivation(requestBody);
-				}
 			}
 		} 
 		catch (NoUserRegisteredException e) 
@@ -400,66 +383,7 @@ public class HandlerWebManager implements HttpHandler {
 		}	
 	}
 	
-	private void processActivation(String requestBody) {
-		String username = ConfigActivation.getUsername();
-		String password = ConfigActivation.getPassword();
-		String method = ConfigActivation.getMethod();
-		String url = ConfigActivation.getUrl();
-		String contentType = ConfigActivation.getContentType();
-		String authorization = ConfigActivation.getAuthorization();
-		int timeout = ConfigActivation.getRequestTimeout();		
-		
-		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);					
-		Map<String, String> parameters = null;
-		
-		String cpusn = ServerInfo.cpuSerialNumber();
-
-		Headers requestHeaders = new Headers();
-		requestHeaders.add(ConstantString.ACCEPT, contentType);
-		requestHeaders.add(ConstantString.AUTHORIZATION, authorization+" "+Utility.base64Encode(username+":"+password));
-		String requestBodyToSent = "";
-		
-		if(method.equals(HttpMethod.POST) || method.equals(HttpMethod.PUT))
-		{
-			if(contentType.toLowerCase().contains("json"))
-			{
-				JSONObject requestJSON = new JSONObject(queryPairs);
-				requestJSON.put("cpusn", cpusn);
-				requestBodyToSent = requestJSON.toString(0);
-				requestHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
-			}
-			else
-			{
-				requestBodyToSent = requestBody;
-			}
-		}
-		else if(method.equals(HttpMethod.GET))
-		{
-			requestBodyToSent = null;			
-			parameters = queryPairs;
-			parameters.put("cpusn", cpusn);
-		}
-		
-		JSONObject responseJSON = new JSONObject();
-		try 
-		{
-			HttpResponseString response = CustomHttpClient.httpExchange(method, url, parameters, requestHeaders, requestBodyToSent, timeout);
-			responseJSON = new JSONObject(response.body());
-			JSONObject data = responseJSON.optJSONObject(JsonKey.DATA);
-			String activationCode = data.optString("activation_code", "");			
-			DeviceActivation.verify(activationCode, cpusn);
-			if(DeviceActivation.isActivated())
-			{
-				DeviceActivation.storeToEnv(activationCode);
-				DeviceActivation.activate(activationCode);
-			}
-		} 
-		catch (JSONException | HttpRequestException | IllegalArgumentException | InvalidKeyException | NoSuchAlgorithmException | InvalidKeySpecException | NoSuchPaddingException | InvalidAlgorithmParameterException | BadPaddingException | IllegalBlockSizeException e) 
-		{
-			logger.info(e.getMessage());
-		}
-	}
-
+	
 	private void processForgetPassword(String requestBody) {
 		StackTraceElement ste = Thread.currentThread().getStackTrace()[2];      
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);	
@@ -746,9 +670,9 @@ public class HandlerWebManager implements HttpHandler {
 		{
 			ConfigGeneral.load(Config.getGeneralSettingPath());
 			
-			String deviceTime = queryPairs.getOrDefault("device_time", "").trim();
-			String deviceTimeZone = queryPairs.getOrDefault("device_time_zone", "").trim();
-			String ntpServer = queryPairs.getOrDefault("ntp_server", "").trim();
+			String deviceTime        = queryPairs.getOrDefault("device_time", "").trim();
+			String deviceTimeZone    = queryPairs.getOrDefault("device_time_zone", "").trim();
+			String ntpServer         = queryPairs.getOrDefault("ntp_server", "").trim();
 			String ntpUpdateInterval = queryPairs.getOrDefault("ntp_update_interval", "").trim();
 			
 			ConfigGeneral.setDeviceTimeZone(deviceTimeZone);
@@ -776,19 +700,19 @@ public class HandlerWebManager implements HttpHandler {
 		{
 			ConfigGeneral.load(Config.getGeneralSettingPath());
 			
-			String deviceName2 = queryPairs.getOrDefault("device_name", "").trim();
-			String deviceTimeZone = queryPairs.getOrDefault("device_time_zone", "").trim();
-			String ntpServer = queryPairs.getOrDefault("ntp_server", "").trim();
-			String ntpUpdateInterval = queryPairs.getOrDefault("ntp_update_interval", "").trim();
-			String restartService = queryPairs.getOrDefault("restart_service", "").trim();
-			String restartDevice = queryPairs.getOrDefault("restart_device", "").trim();
-			String exp = queryPairs.getOrDefault("otp_expiration_offset", "0").trim();
-			String insp = queryPairs.getOrDefault("inspect_modem_interval", "0").trim();
-			long otpExpirationOffset = Utility.atol(exp);
+			String deviceName         = queryPairs.getOrDefault("device_name", "").trim();
+			String deviceTimeZone     = queryPairs.getOrDefault("device_time_zone", "").trim();
+			String ntpServer          = queryPairs.getOrDefault("ntp_server", "").trim();
+			String ntpUpdateInterval  = queryPairs.getOrDefault("ntp_update_interval", "").trim();
+			String restartService     = queryPairs.getOrDefault("restart_service", "").trim();
+			String restartDevice      = queryPairs.getOrDefault("restart_device", "").trim();
+			String exp                = queryPairs.getOrDefault("otp_expiration_offset", "0").trim();
+			String insp               = queryPairs.getOrDefault("inspect_modem_interval", "0").trim();
+			long otpExpirationOffset  = Utility.atol(exp);
 			long inspectModemInterval = Utility.atol(insp);
-			boolean dropExpireOTP = queryPairs.getOrDefault("drop_expire_otp", "").trim().equals("1");
+			boolean dropExpireOTP     = queryPairs.getOrDefault("drop_expire_otp", "").trim().equals("1");
 			
-			ConfigGeneral.setDeviceName(deviceName2);
+			ConfigGeneral.setDeviceName(deviceName);
 			ConfigGeneral.setDeviceTimeZone(deviceTimeZone);
 			ConfigGeneral.setNtpServer(ntpServer);
 			ConfigGeneral.setNtpUpdateInterval(ntpUpdateInterval);
@@ -809,13 +733,13 @@ public class HandlerWebManager implements HttpHandler {
 		{
 			ConfigGeneral.load(Config.getGeneralSettingPath());
 			
-			int smsFailure = Integer.parseInt(queryPairs.getOrDefault("sms_failure", "0").trim());
-			int amqpDisconnected = Integer.parseInt(queryPairs.getOrDefault("amqp_disconnected", "0").trim());
-			int mqttDisconnected = Integer.parseInt(queryPairs.getOrDefault("mqtt_disconnected", "0").trim());
-			int redisDisconnected = Integer.parseInt(queryPairs.getOrDefault("redis_disconnected", "0").trim());
-			int wsDisconnected = Integer.parseInt(queryPairs.getOrDefault("ws_disconnected", "0").trim());
-			int activeMQDisconnected = Integer.parseInt(queryPairs.getOrDefault("activemq_disconnected", "").trim());
-			int stompDisconnected = Integer.parseInt(queryPairs.getOrDefault("stomp_disconnected", "").trim());
+			int smsFailure           = Integer.parseInt(queryPairs.getOrDefault("sms_failure", "0").trim());
+			int amqpDisconnected     = Integer.parseInt(queryPairs.getOrDefault("amqp_disconnected", "0").trim());
+			int mqttDisconnected     = Integer.parseInt(queryPairs.getOrDefault("mqtt_disconnected", "0").trim());
+			int redisDisconnected    = Integer.parseInt(queryPairs.getOrDefault("redis_disconnected", "0").trim());
+			int wsDisconnected       = Integer.parseInt(queryPairs.getOrDefault("ws_disconnected", "0").trim());
+			int activeMQDisconnected = Integer.parseInt(queryPairs.getOrDefault("activemq_disconnected", "0").trim());
+			int stompDisconnected    = Integer.parseInt(queryPairs.getOrDefault("stomp_disconnected", "0").trim());
 
 			ConfigBell.setSmsFailure(smsFailure);
 			ConfigBell.setAmqpDisconnected(amqpDisconnected);

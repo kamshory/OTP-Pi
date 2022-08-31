@@ -27,7 +27,9 @@ import org.apache.log4j.Logger;
 import com.planetbiru.util.CommandLineExecutor;
 import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.FileNotFoundException;
+import com.planetbiru.util.OSUtil;
 import com.planetbiru.util.ServerInfo;
+import com.planetbiru.web.HttpUtil;
 
 public class DeviceActivation {
 	private static boolean activated = false;
@@ -84,12 +86,28 @@ public class DeviceActivation {
 		{
 			salt = DeviceActivation.fixSalt(salt);
 			Map<String, Object> data = DeviceActivation.parseHmacCPUID(dataStr, salt);
-			logger.info(data.toString());
 			DeviceActivation.activated = data.getOrDefault("VR", "").equals("1");
 		}
 	}
-	
+
 	public static void storeToEnv(String activationCode) {
+		if(OSUtil.isWindows())
+		{
+			DeviceActivation.storeToEnvWindows(activationCode);
+		}
+		else if(OSUtil.isLinux())
+		{
+			DeviceActivation.storeToEnvLinux(activationCode);
+		}
+		
+	}
+
+	public static void storeToEnvWindows(String activationCode) {
+		String commandExport = "setx "+keyEnv+" \""+activationCode.replace("'", "\\'")+"\"";
+		CommandLineExecutor.exec(commandExport);	
+	}
+
+	public static void storeToEnvLinux(String activationCode) {
 		try 
 		{
 			String home = System.getenv("HOME");
@@ -125,7 +143,16 @@ public class DeviceActivation {
 	}
 
 	public static void activate(String activationCode) {
-		String commandEnv = "export "+keyEnv+"=\""+activationCode.replace("'", "\\'")+"\"";
+		String commandEnv = "";
+		if(OSUtil.isWindows())
+		{
+			commandEnv = "setx "+keyEnv+" \""+activationCode.replace("'", "\\'")+"\"";
+			HttpUtil.broardcastWebSocket("Reboot your operating system", true, 2000);
+		}
+		else if(OSUtil.isLinux())
+		{
+			commandEnv = "export "+keyEnv+"=\""+activationCode.replace("'", "\\'")+"\"";
+		}
 		logger.info(commandEnv);
 		CommandLineExecutor.exec(commandEnv);	
 	}

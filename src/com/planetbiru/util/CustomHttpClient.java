@@ -47,7 +47,7 @@ public class CustomHttpClient {
 	
 	public static HttpResponseString httpExchange(String method, String url, Map<String, String> parameters, Headers requestHeaders, String body, int timeout) throws HttpRequestException
 	{
-		Map<String, List<String>> parameters2 = new HashMap<>();
+		Map<String, List<String>> params = new HashMap<>();
 		if(parameters != null)
 		{
 	        for (Map.Entry<String, String> entry : parameters.entrySet())
@@ -56,10 +56,10 @@ public class CustomHttpClient {
 	        	String value = entry.getValue();
 	        	List<String> list = new ArrayList<>();
 	        	list.add(value);
-				parameters2.put(key, list);
+				params.put(key, list);
 	        }
 		}
-		return CustomHttpClient.sendRequest(method, url, parameters2, requestHeaders, body, timeout);
+		return CustomHttpClient.sendRequest(method, url, params, requestHeaders, body, timeout);
 	}
 	public static void setParameters(HttpURLConnection con, Map<String, List<String>> parameters)
 	{
@@ -140,15 +140,12 @@ public class CustomHttpClient {
 		        .connectTimeout(Duration.ofMillis(timeout))
 		        .build();
 		
-		try {
+		try 
+		{
 			HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 			return new HttpResponseString(response.body(), response.statusCode(), response.headers());
 		} 
-		catch (InterruptedException e) //NOSONAR
-		{
-			throw new HttpRequestException(e.getMessage());
-		}
-		catch(ConnectException e) //NOSONAR
+		catch (InterruptedException | ConnectException e) //NOSONAR
 		{
 			throw new HttpRequestException(e.getMessage());
 		}
@@ -156,14 +153,11 @@ public class CustomHttpClient {
 		{
 			throw new HttpRequestException(e.getMessage());
 		}
-		catch(Exception e)
+		catch(Exception e) // NOSONAR
 		{
-			e.printStackTrace();
 			throw new HttpRequestException(e.getMessage());
 		}
 	}
-	
-	
 
 	public static ResponseEntityCustom sendRequestHttps(String method, String url, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws IOException  //NOSONAR
 	{

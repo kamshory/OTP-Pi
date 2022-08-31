@@ -13,6 +13,8 @@ public class ConstantString {
 	public static final String NO_CACHE                        = "no-cache";
 	public static final String CONTENT_TYPE                    = "Content-type";
 	public static final String APPLICATION_JSON                = "application/json";
+	public static final String TEXT_PLAIN                      = "text/plain";
+	public static final String TEXT_HTML                       = "text/html";
 	public static final String LOCATION                        = "Location";
 	public static final String EXT_HTML                        = ".html";
 	public static final String DDNS_FILE_LEVEL_3               = "../../ddns-record.html";
@@ -40,7 +42,6 @@ public class ConstantString {
 	public static final String AUTHORIZATION                   = "Authorization";
 	public static final String ACCEPT                          = "Accept";
 	public static final String BEARER                          = "Bearer ";
-	public static final String TEXT_PLAIN                      = "text/plain";
 	public static final String REQUEST_OTP                     = "request-otp";
 	public static final String VERIFY_OTP                      = "verify-otp";
 	public static final String DOCUMENT_PATH_SEPARATOR         = "/";
