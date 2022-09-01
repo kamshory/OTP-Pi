@@ -19,7 +19,7 @@ import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigKeystore;
 import com.planetbiru.config.DataKeystore;
-import com.planetbiru.util.ServiceHTTP;
+import com.planetbiru.web.HTTPService;
 import com.sun.net.httpserver.HttpServer; //NOSONAR
 import com.sun.net.httpserver.HttpsConfigurator;
 import com.sun.net.httpserver.HttpsServer;
@@ -50,17 +50,17 @@ public class ServerRESTAPI {
 			catch (NoKeyStoreException e2) 
 			{
 				logger.error(e2.getMessage());
-				ServiceHTTP.setHttpsServer(null);
+				HTTPService.setHttpsServer(null);
 				this.httpsStarted = false;
 			}
 			if(!this.httpsStarted)
 			{
-				if(ServiceHTTP.getHttpsServer() != null)
+				if(HTTPService.getHttpsServer() != null)
 				{
-					ServiceHTTP.getHttpsServer().stop(0);
-					ServiceHTTP.setHttpsServer(null);
+					HTTPService.getHttpsServer().stop(0);
+					HTTPService.setHttpsServer(null);
 				}
-				ServiceHTTP.setHttpsServer(null);
+				HTTPService.setHttpsServer(null);
 			}
 		}
 	}	
@@ -90,14 +90,14 @@ public class ServerRESTAPI {
 	        httpsServer.createContext(ConfigAPI.getBlockingPath(), new HandlerAPIMessage());
 	        httpsServer.createContext(ConfigAPI.getUnblockingPath(), new HandlerAPIMessage());
 	        httpsServer.start();
-			ServiceHTTP.setHttpsServer(httpsServer);
+			HTTPService.setHttpsServer(httpsServer);
 	        this.httpsStarted = true;
 		} 
 		catch (IOException | KeyStoreException | NoSuchAlgorithmException | CertificateException | KeyManagementException | UnrecoverableKeyException e) 
 		{
 			logger.error(e.getMessage());
 			this.httpsStarted = false;
-			ServiceHTTP.setHttpsServer(null);
+			HTTPService.setHttpsServer(null);
 		}	
 		
 	}
@@ -108,14 +108,14 @@ public class ServerRESTAPI {
 		{
 			try 
 			{
-				ServiceHTTP.setHttpServer(HttpServer.create(new InetSocketAddress(ConfigAPI.getHttpPort()), 0));
-		        ServiceHTTP.getHttpServer().createContext(ConfigAPI.getOtpPath(), new HandlerAPIMessage());
-		        ServiceHTTP.getHttpServer().createContext(ConfigAPI.getMessagePath(), new HandlerAPIMessage());
-		        ServiceHTTP.getHttpServer().createContext(ConfigAPI.getSmsPath(), new HandlerAPIMessage());
-		        ServiceHTTP.getHttpServer().createContext(ConfigAPI.getEmailPath(), new HandlerAPIMessage());
-		        ServiceHTTP.getHttpServer().createContext(ConfigAPI.getBlockingPath(), new HandlerAPIMessage());
-		        ServiceHTTP.getHttpServer().createContext(ConfigAPI.getUnblockingPath(), new HandlerAPIMessage());
-		        ServiceHTTP.getHttpServer().start();
+				HTTPService.setHttpServer(HttpServer.create(new InetSocketAddress(ConfigAPI.getHttpPort()), 0));
+		        HTTPService.getHttpServer().createContext(ConfigAPI.getOtpPath(), new HandlerAPIMessage());
+		        HTTPService.getHttpServer().createContext(ConfigAPI.getMessagePath(), new HandlerAPIMessage());
+		        HTTPService.getHttpServer().createContext(ConfigAPI.getSmsPath(), new HandlerAPIMessage());
+		        HTTPService.getHttpServer().createContext(ConfigAPI.getEmailPath(), new HandlerAPIMessage());
+		        HTTPService.getHttpServer().createContext(ConfigAPI.getBlockingPath(), new HandlerAPIMessage());
+		        HTTPService.getHttpServer().createContext(ConfigAPI.getUnblockingPath(), new HandlerAPIMessage());
+		        HTTPService.getHttpServer().start();
 		        this.httpStarted = true;
 			} 
 			catch (IOException e) 
@@ -127,17 +127,17 @@ public class ServerRESTAPI {
 	}
 	public void stopHTTP()
 	{
-		if(ServiceHTTP.getHttpServer() != null)
+		if(HTTPService.getHttpServer() != null)
 		{
-			ServiceHTTP.getHttpServer().stop(0);
+			HTTPService.getHttpServer().stop(0);
 			this.httpStarted = false;
 		}
 	}
 	public void stopHTTPS()
 	{
-		if(ServiceHTTP.getHttpsServer() != null)
+		if(HTTPService.getHttpsServer() != null)
 		{
-			ServiceHTTP.getHttpsServer().stop(0);
+			HTTPService.getHttpsServer().stop(0);
 			this.httpsStarted = false;
 		}
 	}

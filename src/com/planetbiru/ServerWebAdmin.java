@@ -5,7 +5,6 @@ import java.net.InetSocketAddress;
 
 import org.apache.log4j.Logger;
 
-import com.planetbiru.util.ServiceHTTP;
 import com.planetbiru.web.HandlerWebManager;
 import com.planetbiru.web.HandlerWebManagerAPI;
 import com.planetbiru.web.HandlerWebManagerActivation;
@@ -16,6 +15,7 @@ import com.planetbiru.web.HandlerWebManagerPing;
 import com.planetbiru.web.HandlerWebManagerTool;
 import com.planetbiru.web.HandlerWebManagerUserAdd;
 import com.planetbiru.web.HandlerWebManagerUserInit;
+import com.planetbiru.web.HTTPService;
 import com.sun.net.httpserver.HttpServer; //NOSONAR
 
 public class ServerWebAdmin {
@@ -32,18 +32,18 @@ public class ServerWebAdmin {
 	{
 		try 
 		{
-			ServiceHTTP.setHttpServer(HttpServer.create(new InetSocketAddress(this.serverPort), 0));
-	        ServiceHTTP.getHttpServer().createContext("/", new HandlerWebManager());
-	        ServiceHTTP.getHttpServer().createContext("/login.html", new HandlerWebManagerLogin());
-	        ServiceHTTP.getHttpServer().createContext("/logout.html", new HandlerWebManagerLogout());
-	        ServiceHTTP.getHttpServer().createContext("/device-activation", new HandlerWebManagerActivation());
-	        ServiceHTTP.getHttpServer().createContext("/user/add", new HandlerWebManagerUserAdd());
-	        ServiceHTTP.getHttpServer().createContext("/user/init", new HandlerWebManagerUserInit());
-	        ServiceHTTP.getHttpServer().createContext("/api/", new HandlerWebManagerAPI());
-	        ServiceHTTP.getHttpServer().createContext("/data/", new HandlerWebManagerData());
-	        ServiceHTTP.getHttpServer().createContext("/ping/", new HandlerWebManagerPing());
-	        ServiceHTTP.getHttpServer().createContext("/tool/", new HandlerWebManagerTool());
-	        ServiceHTTP.getHttpServer().start();
+			HTTPService.setHttpServer(HttpServer.create(new InetSocketAddress(this.serverPort), 0));
+	        HTTPService.getHttpServer().createContext("/", new HandlerWebManager());
+	        HTTPService.getHttpServer().createContext("/login.html", new HandlerWebManagerLogin());
+	        HTTPService.getHttpServer().createContext("/logout.html", new HandlerWebManagerLogout());
+	        HTTPService.getHttpServer().createContext("/device-activation", new HandlerWebManagerActivation());
+	        HTTPService.getHttpServer().createContext("/user/add", new HandlerWebManagerUserAdd());
+	        HTTPService.getHttpServer().createContext("/user/init", new HandlerWebManagerUserInit());
+	        HTTPService.getHttpServer().createContext("/api/", new HandlerWebManagerAPI());
+	        HTTPService.getHttpServer().createContext("/data/", new HandlerWebManagerData());
+	        HTTPService.getHttpServer().createContext("/ping/", new HandlerWebManagerPing());
+	        HTTPService.getHttpServer().createContext("/tool/", new HandlerWebManagerTool());
+	        HTTPService.getHttpServer().start();
 		} 
 		catch (IOException e) 
 		{
@@ -54,8 +54,8 @@ public class ServerWebAdmin {
 	}
 
 	public void stopService() {
-		if(ServiceHTTP.getHttpServer() != null){
-			ServiceHTTP.getHttpServer().stop(0);
+		if(HTTPService.getHttpServer() != null){
+			HTTPService.getHttpServer().stop(0);
 		}	
 	}
 	

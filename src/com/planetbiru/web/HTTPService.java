@@ -1,11 +1,11 @@
-package com.planetbiru.util;
+package com.planetbiru.web;
 
 import com.sun.net.httpserver.HttpServer; //NOSONAR
 import com.sun.net.httpserver.HttpsServer;
 
-public class ServiceHTTP {
+public class HTTPService {
 	
-	private ServiceHTTP()
+	private HTTPService()
 	{
 		
 	}
@@ -14,7 +14,7 @@ public class ServiceHTTP {
 		return httpsServer;
 	}
 	public static void setHttpsServer(HttpsServer httpsServer) {
-		ServiceHTTP.httpsServer = httpsServer;
+		HTTPService.httpsServer = httpsServer;
 	}
 
 	public static HttpServer getHttpServer() {
@@ -22,7 +22,7 @@ public class ServiceHTTP {
 	}
 
 	public static void setHttpServer(HttpServer httpServer) {
-		ServiceHTTP.httpServer = httpServer;
+		HTTPService.httpServer = httpServer;
 	}
 
 	private static HttpServer httpServer;

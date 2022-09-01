@@ -47,7 +47,6 @@ public class HandlerWebManagerActivation implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				
 				byte[] req = HttpUtil.getRequestBody(httpExchange);
 				String requestBody = "";
 				if(req != null)
@@ -57,7 +56,7 @@ public class HandlerWebManagerActivation implements HttpHandler {
 				this.processActivation(requestBody);
 				if(DeviceActivation.isActivated())
 				{
-					responseHeaders.add(ConstantString.LOCATION, "/activated.html");					
+					responseHeaders.add(ConstantString.LOCATION, "/activated.html");
 				}
 				else
 				{
