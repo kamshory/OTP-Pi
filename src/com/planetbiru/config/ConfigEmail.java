@@ -248,4 +248,19 @@ public class ConfigEmail {
 			}
 		}
 	}
+
+	public static JSONArray getMonitorInfo() {
+		JSONArray arr = new JSONArray();
+		for(int i = 0; i<ConfigEmail.getAccounts().size(); i++)
+		{
+			DataEmail value = ConfigEmail.getAccounts().get(i);
+			
+			if(value.isActive())
+			{
+				arr.put(new JSONObject().put("id", value.getId()).put("name", value.getSenderAddress()).put("active",  value.isActive()));
+			}
+			
+		}
+		return arr;
+	}
 }

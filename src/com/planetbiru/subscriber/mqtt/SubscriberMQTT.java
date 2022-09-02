@@ -49,7 +49,7 @@ public class SubscriberMQTT extends Thread{
 				{
 					Thread.currentThread().interrupt();
 				}
-				if(!this.connected && this.running)
+				if(!this.isConnected() && this.running)
 				{
 					this.connect();
 				}
@@ -105,7 +105,7 @@ public class SubscriberMQTT extends Thread{
 			
 			this.subscriber.connect(options);
 			this.subscriber.setCallback(this.callback);
-			this.connected = true;
+			this.setConnected(true);
 			this.subscriber.subscribe(ConfigSubscriberMQTT.getSubscriberMqttTopic(), 0);
 			this.updateConnectionStatus();
 		} 
@@ -116,7 +116,7 @@ public class SubscriberMQTT extends Thread{
 	}
 	private void flagConnected()
 	{
-		this.connected = true;
+		this.setConnected(true);
 		this.updateConnectionStatus();
 	}
 	private void flagDisconnected()
@@ -136,18 +136,18 @@ public class SubscriberMQTT extends Thread{
 			 * Do nothing
 			 */
 		}
-		this.connected = false;
+		this.setConnected(false);
 		this.subscriber = null;
 		this.updateConnectionStatus();
 	}
 	
 	private void updateConnectionStatus() {
-		ConfigSubscriberMQTT.setConnected(this.connected);
-		if(this.connected != this.lastConnected)
+		ConfigSubscriberMQTT.setConnected(this.isConnected());
+		if(this.isConnected() != this.lastConnected)
 		{
 			ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_MQTT);
 		}
-		this.lastConnected = this.connected;
+		this.lastConnected = this.isConnected();
 	}
 
 	private void delay(long sleep) {
@@ -230,6 +230,14 @@ public class SubscriberMQTT extends Thread{
 	public void stopService() {
 		this.running = false;	
 		this.flagDisconnected();
+	}
+
+	public boolean isConnected() {
+		return connected;
+	}
+
+	public void setConnected(boolean connected) {
+		this.connected = connected;
 	}
 	
 	

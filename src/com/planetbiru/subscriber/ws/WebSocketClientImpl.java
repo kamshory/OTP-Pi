@@ -142,22 +142,22 @@ public class WebSocketClientImpl extends Thread {
 	}
 	
 	private void flagConnected() {
-		this.connected = true;
+		this.setConnected(true);
 		this.updateConnectionStatus();
 	}
 
 	private void flagDisconnected() {
-		this.connected = false;
+		this.setConnected(false);
 		this.updateConnectionStatus();
 	}
 
 	private void updateConnectionStatus() {
-		ConfigSubscriberWS.setConnected(this.connected);
-		if(this.connected != this.lastConnected)
+		ConfigSubscriberWS.setConnected(this.isConnected());
+		if(this.isConnected() != this.lastConnected)
 		{
 			ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_WS);
 		}
-		this.lastConnected = this.connected;
+		this.lastConnected = this.isConnected();
 	}
 	
 	public void evtOnMessage(byte[] payload, String topic) {
@@ -325,8 +325,16 @@ public class WebSocketClientImpl extends Thread {
 
 	public void stopService() {
 		this.stopend = true;	
-		this.connected = false;
+		this.setConnected(false);
 		this.updateConnectionStatus();
+	}
+
+	public boolean isConnected() {
+		return connected;
+	}
+
+	public void setConnected(boolean connected) {
+		this.connected = connected;
 	}
 }
 

@@ -48,9 +48,9 @@ public class App {
 	private static ServerRESTAPI rest = new ServerRESTAPI();
 	private static ServerEmail smtp;
 	private static Scheduller scheduller;	
-	private static SubscriberWebSocket webSocketSubscriber;	
-	private static SubscriberMQTT mqttSubscriber;
-	private static SubscriberRedis redisSubscriber;
+	private static SubscriberWebSocket webSocketSubscriber = new SubscriberWebSocket();	
+	private static SubscriberMQTT mqttSubscriber = new SubscriberMQTT();
+	private static SubscriberRedis redisSubscriber = new SubscriberRedis();
 	private static SubscriberStomp stompSubscriber;
 	private static SubscriberAMQP amqpSubscriber;	
 	private static SubscriberActiveMQ activeMQSubscriber;	
@@ -420,10 +420,10 @@ public class App {
 	 * Start MQTT subscription
 	 */
 	public static void subscriberMQTTStart() {
-		if(ConfigSubscriberMQTT.isSubscriberMqttEnable() && (App.mqttSubscriber == null || !App.mqttSubscriber.isRunning()))
+		if(ConfigSubscriberMQTT.isSubscriberMqttEnable() && (App.getMqttSubscriber() == null || !App.getMqttSubscriber().isRunning()))
 		{
-			App.mqttSubscriber = new SubscriberMQTT();
-			App.mqttSubscriber.start();
+			App.setMqttSubscriber(new SubscriberMQTT());
+			App.getMqttSubscriber().start();
 		}		
 	}
 
@@ -432,9 +432,9 @@ public class App {
 	 * @param force Set true for force stop
 	 */
 	public static void subscriberMQTTStop(boolean force) {
-		if(App.mqttSubscriber != null && (force || App.mqttSubscriber.isRunning()))
+		if(App.getMqttSubscriber() != null && (force || App.getMqttSubscriber().isRunning()))
 		{
-			App.mqttSubscriber.stopService();
+			App.getMqttSubscriber().stopService();
 		}		
 	}
 
@@ -499,18 +499,18 @@ public class App {
 	}
 
 	public static void subscriberWSStart() {
-		if(ConfigSubscriberWS.isSubscriberWsEnable() && (App.webSocketSubscriber == null || !App.webSocketSubscriber.isRunning()))
+		if(ConfigSubscriberWS.isSubscriberWsEnable() && (App.getWebSocketSubscriber() == null || !App.getWebSocketSubscriber().isRunning()))
 		{
-			App.webSocketSubscriber = new SubscriberWebSocket(Config.getReconnectDelay(), Config.getWaitLoopParent(), Config.getWaitLoopChild());
-			App.webSocketSubscriber.start();	
+			App.setWebSocketSubscriber(new SubscriberWebSocket(Config.getReconnectDelay(), Config.getWaitLoopParent(), Config.getWaitLoopChild()));
+			App.getWebSocketSubscriber().start();	
 		}
 	}
 
 	public static void subscriberWSStop(boolean force) {
 		
-		if(App.webSocketSubscriber != null && (force || App.webSocketSubscriber.isRunning()))
+		if(App.getWebSocketSubscriber() != null && (force || App.getWebSocketSubscriber().isRunning()))
 		{
-			App.webSocketSubscriber.stopService();	
+			App.getWebSocketSubscriber().stopService();	
 		}
 	}
 
@@ -554,9 +554,9 @@ public class App {
 			Thread.currentThread().interrupt();
 		}
 		App.scheduller.stopService();
-		App.webSocketSubscriber.stopService();
+		App.getWebSocketSubscriber().stopService();
 		App.amqpSubscriber.stopService();
-		App.mqttSubscriber.stopService();
+		App.getMqttSubscriber().stopService();
 	}	
 	
 	/**
@@ -582,6 +582,22 @@ public class App {
 
 	public static void setRedisSubscriber(SubscriberRedis redisSubscriber) {
 		App.redisSubscriber = redisSubscriber;
+	}
+
+	public static SubscriberWebSocket getWebSocketSubscriber() {
+		return webSocketSubscriber;
+	}
+
+	public static void setWebSocketSubscriber(SubscriberWebSocket webSocketSubscriber) {
+		App.webSocketSubscriber = webSocketSubscriber;
+	}
+
+	public static SubscriberMQTT getMqttSubscriber() {
+		return mqttSubscriber;
+	}
+
+	public static void setMqttSubscriber(SubscriberMQTT mqttSubscriber) {
+		App.mqttSubscriber = mqttSubscriber;
 	}
 }
 

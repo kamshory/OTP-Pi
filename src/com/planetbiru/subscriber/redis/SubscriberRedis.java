@@ -21,7 +21,7 @@ public class SubscriberRedis extends Thread {
 	private boolean running = true;
 
 	private boolean pong = false;
-	private RedisClientThread clientThread;
+	private RedisClientThread clientThread = new RedisClientThread();
 
 	@Override
 	public void run()
@@ -212,7 +212,14 @@ public class SubscriberRedis extends Thread {
 	}
 
 	public boolean isConnected() {
-		return this.clientThread.isConnected();
+		if(this.clientThread == null)
+		{
+			return false;
+		}
+		else
+		{
+			return this.clientThread.isConnected();
+		}
 	}
 
 	

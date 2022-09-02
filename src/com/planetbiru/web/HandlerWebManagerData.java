@@ -11,6 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.fazecast.jSerialComm.SerialPort;
+import com.planetbiru.App;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigAPIUser;
@@ -47,6 +48,7 @@ import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.gsm.InvalidSIMPinException;
 import com.planetbiru.gsm.SMS;
 import com.planetbiru.gsm.SerialPortConnectionException;
+import com.planetbiru.subscriber.ws.SubscriberWebSocket;
 import com.planetbiru.user.NoUserRegisteredException;
 import com.planetbiru.user.WebUserAccount;
 import com.planetbiru.util.FileConfigUtil;
@@ -245,11 +247,71 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			this.handleListPort(httpExchange);
 		}
+		else if(path.startsWith("/data/interface/list"))
+		{
+			this.handleListInterface(httpExchange);
+		}
 		else
 		{
 			httpExchange.sendResponseHeaders(HttpStatus.NOT_FOUND, 0);
 			httpExchange.close();
 		}
+	}
+	private void handleListInterface(HttpExchange httpExchange) throws IOException {
+		Headers requestHeaders = httpExchange.getRequestHeaders();
+		Headers responseHeaders = httpExchange.getResponseHeaders();
+		CookieServer cookie = new CookieServer(requestHeaders, Config.getSessionName(), Config.getSessionLifetime());
+		byte[] responseBody = "".getBytes();
+		int statusCode = HttpStatus.OK;
+		try
+		{
+			if(WebUserAccount.checkUserAuth(requestHeaders))
+			{
+				ConfigModem.load(Config.getModemSettingPath());
+				
+				ConfigEmail.load(Config.getEmailSettingPath());		
+				
+				JSONArray modemList = ConfigModem.getMonitorInfo();
+				
+				JSONArray emailList = ConfigEmail.getMonitorInfo();
+				
+				JSONArray subscriberList = new JSONArray();
+				
+				subscriberList.put(new JSONObject().put("name", "WebSocket").put("id", "ws").put("active", App.getWebSocketSubscriber().isConnected()));
+				subscriberList.put(new JSONObject().put("name", "Redis").put("id", "redis").put("active", App.getRedisSubscriber().isConnected()));
+				subscriberList.put(new JSONObject().put("name", "MQTT").put("id", "mqtt").put("active", App.getMqttSubscriber().isConnected()));
+						
+				
+				
+				
+				JSONObject list = new JSONObject()
+						.put("modem", modemList)
+						.put("email", emailList)
+						.put("subscriber", subscriberList)
+						;
+				responseBody = list.toString(4).getBytes();
+			}
+			else
+			{
+				statusCode = HttpStatus.UNAUTHORIZED;			
+			}
+		}
+		catch(NoUserRegisteredException e)
+		{
+			/**
+			 * Do nothing
+			 */
+			statusCode = HttpStatus.UNAUTHORIZED;
+		}		
+		cookie.saveSessionData();
+		cookie.putToHeaders(responseHeaders);
+		responseHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
+		responseHeaders.add(ConstantString.CACHE_CONTROL, ConstantString.NO_CACHE);
+
+		httpExchange.sendResponseHeaders(statusCode, responseBody.length);	 
+		httpExchange.getResponseBody().write(responseBody);
+		httpExchange.close();
+		
 	}
 	public void handleListPort(HttpExchange httpExchange) throws IOException
 	{

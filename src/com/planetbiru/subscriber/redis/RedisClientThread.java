@@ -33,6 +33,12 @@ public class RedisClientThread extends Thread {
 		this.setSubscriberRedis(subscriberRedis);
 	}
 
+	public RedisClientThread() {
+		/**
+		 * Just a default constructor
+		 */
+	}
+
 	@Override
 	public void run()
 	{

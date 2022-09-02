@@ -314,5 +314,20 @@ public class ConfigModem {
 	public static void setLastRequestSignalStrength(long lastRequestSignalStrength) {
 		ConfigModem.lastRequestSignalStrength = lastRequestSignalStrength;
 	}
+
+	public static JSONArray getMonitorInfo() {
+		JSONArray arr = new JSONArray();
+		for (Map.Entry<String, DataModem> entry : ConfigModem.modemData.entrySet())
+		{
+			String id = entry.getKey();
+			DataModem value = entry.getValue();				
+			boolean connected = GSMUtil.isConnected(id);
+			if(value.isActive())
+			{
+				arr.put(new JSONObject().put("id", value.getId()).put("name", value.getName()).put("active",  connected));
+			}
+		}
+		return arr;
+	}
 	
 }
