@@ -464,7 +464,7 @@ public class App {
 	 * Start Redis subscription
 	 */
 	public static void subscriberRedisStart() {
-		if(ConfigSubscriberRedis.isSubscriberRedisEnable() && (App.getRedisSubscriber() == null || !App.getRedisSubscriber().isRunning()))
+		if(ConfigSubscriberRedis.isSubscriberRedisEnable() && (App.getRedisSubscriber() == null || !App.getRedisSubscriber().isRunning() || !App.getRedisSubscriber().isConnected()))
 		{
 			App.setRedisSubscriber(new SubscriberRedis());
 			App.getRedisSubscriber().setRunning(true);
@@ -499,7 +499,7 @@ public class App {
 	}
 
 	public static void subscriberWSStart() {
-		if(ConfigSubscriberWS.isSubscriberWsEnable() && (App.getWebSocketSubscriber() == null || !App.getWebSocketSubscriber().isRunning()))
+		if(ConfigSubscriberWS.isSubscriberWsEnable() && (App.getWebSocketSubscriber() == null || !App.getWebSocketSubscriber().isRunning() || !App.getWebSocketSubscriber().isConnected()))
 		{
 			App.setWebSocketSubscriber(new SubscriberWebSocket(Config.getReconnectDelay(), Config.getWaitLoopParent(), Config.getWaitLoopChild()));
 			App.getWebSocketSubscriber().start();	

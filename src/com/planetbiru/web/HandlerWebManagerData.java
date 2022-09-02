@@ -279,7 +279,7 @@ public class HandlerWebManagerData implements HttpHandler {
 				
 				subscriberList.put(new JSONObject().put("name", "WebSocket").put("id", "ws").put("active", App.getWebSocketSubscriber().isConnected()));
 				subscriberList.put(new JSONObject().put("name", "Redis").put("id", "redis").put("active", App.getRedisSubscriber().isConnected()));
-				subscriberList.put(new JSONObject().put("name", "MQTT").put("id", "mqtt").put("active", App.getMqttSubscriber().isConnected()));
+				//subscriberList.put(new JSONObject().put("name", "MQTT").put("id", "mqtt").put("active", App.getMqttSubscriber().isConnected()));
 						
 				
 				

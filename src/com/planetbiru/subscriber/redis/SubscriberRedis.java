@@ -27,11 +27,11 @@ public class SubscriberRedis extends Thread {
 	public void run()
 	{
 		if(ConfigSubscriberRedis.isSubscriberRedisEnable())
-		{
-			
+		{		
 			this.connect();
 			do 
 			{
+				System.out.println("Redis connect");
 				long sleep = ConfigSubscriberRedis.getSubscriberRedisReconnectDelay();
 				boolean ret = true;
 				if(this.isConnected())
