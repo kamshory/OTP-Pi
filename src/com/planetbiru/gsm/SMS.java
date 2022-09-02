@@ -17,6 +17,10 @@ public class SMS {
     private Date date = new Date();
     private String content = "";
     
+    public SMS() {
+		
+	}
+    
     public SMS(String storage, String id, String status, String phoneNumber, String phoneName, String date)
     {
     	this.id = Utility.atoi(id);
@@ -37,17 +41,12 @@ public class SMS {
 		} 
 		catch (ParseException e) 
 		{
-			e.printStackTrace();
 			dateTime = new Date();
 		}	
 		final Calendar cal = Calendar.getInstance();
 		cal.setTime(dateTime);
 	    cal.add(Calendar.MINUTE, tz * -15);
 	    return cal.getTime();	
-	}
-
-	public SMS() {
-		
 	}
 
 	public JSONObject toJSONObject(String modemID, String name, String port)

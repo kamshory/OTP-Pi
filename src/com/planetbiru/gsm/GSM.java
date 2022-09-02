@@ -455,7 +455,9 @@ public class GSM {
     	String msg5 = this.executeAT(message, 1, true);
     	logger.info("msg5 = "+msg5);
     	
-    	//String msg6 = this.executeAT(Character.toString((char) 26), 1, true);
+    	/**
+    	 * String msg6 = this.executeAT(Character.toString((char) 26), 1, true);
+    	 */
     	String msg6 = this.executeAT(Character.toString((char) 0x1a), 1, true);
     	logger.info("msg6 = "+msg6);
     	this.setReady(true);
@@ -770,16 +772,17 @@ public class GSM {
 	}
 
 	public JSONObject getSignalStrength() throws GSMException {
-		String atResult = this.executeATCommand("AT+CSQ");
+		String atResult = this.executeATCommand(ATCommand.SIGNAL_STRENGTH_REQUEST);
 		JSONObject result = new JSONObject();
 		if(atResult.contains(ConstantString.RESPONSE_GSM_OK))
 		{
 			String raw = atResult;
-			raw = raw.replace("\t\nOK", "").replace("AT+CSQ", "").replace("+CSQ:", "").trim();
+			raw = raw.replace("\t\nOK", "").replace(ATCommand.SIGNAL_STRENGTH_REQUEST, "").replace("+CSQ:", "").trim();
 			List<String> csvRecord = this.parseCSVResponse(raw);
 			if(csvRecord.size() > 1)
 			{
 				int value = Utility.atoi(csvRecord.get(0));
+				int ber = Utility.atoi(csvRecord.get(1));
 				int dbm = (value*2) - 113;
 				String condition = this.getSignalCondition(value);
 				JSONObject data = new JSONObject();
@@ -787,6 +790,7 @@ public class GSM {
 				data.put("rssi", dbm);
 				data.put("condition", condition);
 				data.put("class", condition.toLowerCase());
+				data.put("ber", ber);
 				result.put(JsonKey.STATUS, "OK");
 				result.put(JsonKey.RESULT, atResult);
 				result.put(JsonKey.DATA, data);

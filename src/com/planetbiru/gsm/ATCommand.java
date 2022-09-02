@@ -14,10 +14,17 @@ public class ATCommand {
 	public static final String DATA_MODE_TEXT   = "1";
 	public static final String DATA_MODE_PDU    = "0";
 
-	public static final String CREATE_DELETE_SMS_READ             = "AT+CMGD=0,1";
-	public static final String CREATE_DELETE_SMS_READ_SENT        = "AT+CMGD=0,2";
-	public static final String CREATE_DELETE_SMS_READ_SENT_UNSENT = "AT+CMGD=0,3";
-	public static final String CREATE_DELETE_SMS_ALL              = "AT+CMGD=0,4";
+	public static final String CREATE_DELETE_SMS_READ               = "AT+CMGD=0,1";
+	public static final String CREATE_DELETE_SMS_READ_SENT          = "AT+CMGD=0,2";
+	public static final String CREATE_DELETE_SMS_READ_SENT_UNSENT   = "AT+CMGD=0,3";
+	public static final String CREATE_DELETE_SMS_ALL                = "AT+CMGD=0,4";
+	public static final String SIGNAL_STRENGTH_REQUEST              = "AT+CSQ";
+	public static final String SIGNAL_STRENGTH_RESPONSE             = "+CSQ:";
+	public static final String NETWORK_REGISTRATION_REQUEST         = "AT+CREG?";
+	public static final String NETWORK_REGISTRATION_RESPONSE_PREFIX = "+CREG:";
+	public static final String TELCO_OPERATOR_REQUEST               = "AT+COPS?";
+	public static final String TELCO_OPERATOR_RESPONSE              = "+COPS";
+	public static final String NETWORK_REGISTRATION_RESPONSE        = "+CREG";
 
 	private ATCommand()
 	{

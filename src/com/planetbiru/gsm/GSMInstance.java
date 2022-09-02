@@ -35,7 +35,7 @@ public class GSMInstance {
 		this.gsm = new GSM();
 	}
 	
-	private void processPIN(String pin)
+	public void processPIN(String pin)
 	{
 		if(pin != null && !pin.trim().isEmpty())
 		{
@@ -122,7 +122,7 @@ public class GSMInstance {
 		return this.sendSMS(receiver, message, modemData.isDeleteSentSMS());
 	}
 	
-	private void logSendSMS(String sender, String receiver, Date date, int length) {
+	public void logSendSMS(String sender, String receiver, Date date, int length) {
 		if(ConfigSMS.isLogSMS())
 		{
 			SMSLogger.add(date, this.modemID, sender, Utility.maskMSISDN(receiver), length);	
@@ -277,7 +277,7 @@ public class GSMInstance {
 		this.modem = modem;
 	}
 
-	private void sleep(long sleep) 
+	public void sleep(long sleep) 
 	{
 		try 
 		{
