@@ -39,22 +39,37 @@
                 .active rect, .active path{
                     stroke: #007700;
                 }
+                .inactive text{
+                    fill: #770000;
+                }
+                .inactive rect, .inactive path{
+                    stroke: #770000;
+                }
                 #arrowheaddefault polygon{
                     fill: #333333;
                 }
                 #arrowheadactive polygon{
                     fill: #007700;
                 }
+                #arrowheadinactive polygon{
+                    fill: #770000;
+                }
                 #modem > g{
+                    display: none;
+                }
+                #email > g{
                     display: none;
                 }
             </style>
             <defs>
                 <marker id="arrowheaddefault" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-                    <polygon points="0 0, 10 3.5, 0 7" fill="#000" />
+                    <polygon points="0 0, 10 3.5, 0 7" fill="#00000" />
                 </marker>
                 <marker id="arrowheadactive" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-                    <polygon points="0 0, 10 3.5, 0 7" fill="#080" />
+                    <polygon points="0 0, 10 3.5, 0 7" fill="#007700" />
+                </marker>
+                <marker id="arrowheadinactive" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill="#770080" />
                 </marker>
             </defs>
             <g id="svg_doc">
@@ -206,14 +221,79 @@
 
     <script>
 
+        var mon = new monitor();
         $(document).ready(function(e1){
-           // $("#testText").get(0).firstChild.textContent = "Several lines 2";
-
-           $("#modem_2 > text").get(0).firstChild.textContent = "XL 1";
-           $("#modem_1").get(0).style.display = 'block';
-           $("#modem_5").get(0).style.display = 'block';
+            $.ajax({
+                type: 'GET',
+                url: '/data/interface/list',
+                dataType:'json',
+                success: function(data) {
+                    renderData(data);
+                }
+            });    
+ 
         });
+        
+        function renderData(data)
+        {
+            
+            mon.resetEmail();
+            for(var i in data.email)
+            {
+                mon.addEmail(data.email[i]);
+            }
 
+            mon.resetModem;
+            for(var i in data.modem)
+            {
+                mon.addModem(data.modem[i]);
+            }
+        }
+
+        function monitor()
+        {
+            this.modems = [];
+
+            this.resetModem = function()
+            {
+                this.modems = [];
+                $('#modem > *').each(function(e){
+                    $(this)[0].style.display = 'none';
+                });
+            }
+            this.addModem = function(data)
+            {
+                this.modems.push(data);
+                var id = '#modem_'+this.modems.length;
+                if($(id).length)
+                {
+                    $(id).get(0).style.display = 'block';
+                    $(id).get(0).setAttribute('data-id', data.id);
+                    $(id+" > text").get(0).firstChild.textContent = data.name;
+                }
+            }
+
+            this.emails = [];
+
+            this.resetEmail = function()
+            {
+                this.emails = [];
+                $('#email > *').each(function(e){
+                    $(this)[0].style.display = 'none';
+                });
+            }
+            this.addEmail = function(data)
+            {
+                this.emails.push(data);
+                var id = '#email_'+this.emails.length;
+                if($(id).length > 0)
+                {
+                    $(id).get(0).style.display = 'block';
+                    $(id).get(0).setAttribute('data-id', data.id);
+                    $(id+" > text").get(0).firstChild.textContent = data.name;
+                }
+            }
+        }
 
         function domToJSON(dom)
         {

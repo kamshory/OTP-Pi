@@ -42,7 +42,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 	{
 		try 
 		{
-			this.connected = this.connect();
+			this.setConnected(this.connect());
 			this.updateConnectionStatus();
 		} 
 		catch (JMSException e) 
@@ -120,7 +120,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		}
 		catch(Exception e)
 		{
-			this.connected = false;
+			this.setConnected(false);
 		}
 		return false;
  	}
@@ -139,7 +139,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
         {
 			this.connection.close();
         }
-		this.connected = false;
+		this.setConnected(false);
 	}
 	
 	public void evtOnMessage(byte[] payload, String topic) //NOSONAR
@@ -200,7 +200,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		            } 
 		            else 
 		            {
-		            	this.connected = true;
+		            	this.setConnected(true);
 		            }
 	            }	            
 	        } 
@@ -214,10 +214,10 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 	@Override
 	public void run() {
 		do {
-			while(!this.connected && this.running)
+			while(!this.isConnected() && this.running)
 			{
 				this.reconnect();
-				if(!this.connected)
+				if(!this.isConnected())
 				{
 					this.delay(this.interval);
 				}
@@ -242,7 +242,7 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 		try 
 		{
 			this.disconnect();
-			this.connected = this.connect();
+			this.setConnected(this.connect());
 			this.updateConnectionStatus();
 		} 
 		catch (JMSException e) 
@@ -253,18 +253,18 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 
 	private void flagDisconnected() {
 		Buzzer.toneDisconnectActiveMQ();
-		this.connected = false;
+		this.setConnected(false);
 		this.updateConnectionStatus();
 		
 	}
 
 	private void updateConnectionStatus() {
-		ConfigSubscriberActiveMQ.setConnected(this.connected);
-		if(this.connected != this.lastConnected)
+		ConfigSubscriberActiveMQ.setConnected(this.isConnected());
+		if(this.isConnected() != this.lastConnected)
 		{
 			ServerWebSocketAdmin.broadcastServerInfo(ConstantString.SERVICE_ACTIVEMQ);	
 		}
-		this.lastConnected = this.connected;
+		this.lastConnected = this.isConnected();
 	}
 
 	@Override
@@ -288,5 +288,13 @@ public class ActiveMQInstance extends Thread implements ExceptionListener {
 
 	public boolean isRunning() {
 		return running;
+	}
+
+	public boolean isConnected() {
+		return connected;
+	}
+
+	public void setConnected(boolean connected) {
+		this.connected = connected;
 	}	
 }

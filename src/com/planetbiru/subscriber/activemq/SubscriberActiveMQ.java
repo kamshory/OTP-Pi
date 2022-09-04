@@ -29,4 +29,12 @@ public class SubscriberActiveMQ extends Thread{
 	public boolean isRunning() {
 		return this.activeMQIstance != null && this.activeMQIstance.isRunning();
 	}
+	public boolean isConnected()
+	{
+		if(this.activeMQIstance == null)
+		{
+			return false;
+		}
+		return this.activeMQIstance.isConnected();
+	}
 }

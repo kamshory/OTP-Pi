@@ -1006,6 +1006,7 @@ public class HandlerWebManager implements HttpHandler {
 			ConfigEmail.load(Config.getEmailSettingPath());
 			
 			String id = queryPairs.getOrDefault("id", "").trim();
+			String name = queryPairs.getOrDefault("name", "").trim();
 			
 			DataEmail dataEmail = ConfigEmail.getAccount(id);
 			if(dataEmail == null)
@@ -1029,6 +1030,7 @@ public class HandlerWebManager implements HttpHandler {
 			boolean active = queryPairs.getOrDefault(JsonKey.ACTIVE, "").trim().equals("1");
 			
 			dataEmail.setId(id);
+			dataEmail.setName(name);
 			dataEmail.setAuth(auth);
 			dataEmail.setHost(host);
 			dataEmail.setPort(port);

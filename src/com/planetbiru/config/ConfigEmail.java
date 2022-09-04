@@ -61,6 +61,7 @@ public class ConfigEmail {
 					{
 						JSONObject json = jsonArray.optJSONObject(i);
 						String id = json.optString("id", "");
+						String name = json.optString("name", "");
 						String senderName = json.optString("senderName", "");
 						String senderAddress = json.optString("senderAddress", "");
 						String senderPassword = json.optString("senderPassword", "");
@@ -73,6 +74,7 @@ public class ConfigEmail {
 						DataEmail dataEmail = new DataEmail();
 						
 						dataEmail.setId(id);
+						dataEmail.setName(name);
 						dataEmail.setSenderAddress(senderAddress);
 						dataEmail.setSenderPassword(senderPassword);
 						dataEmail.setSenderName(senderName);
@@ -257,7 +259,7 @@ public class ConfigEmail {
 			
 			if(value.isActive())
 			{
-				arr.put(new JSONObject().put("id", value.getId()).put("name", value.getSenderAddress()).put("active",  value.isActive()));
+				arr.put(new JSONObject().put("id", value.getId()).put("name", value.getName()).put("active",  value.isActive()));
 			}
 			
 		}

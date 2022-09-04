@@ -85,6 +85,7 @@
 							<td width="16">
 								<input type="checkbox" class="check-all">
 							</td>
+							<td>Name</td>
 							<td>Account</td>
 							<td>Host</td>
 							<td>Port</td>
@@ -109,7 +110,14 @@
 						for(var i in data) {
 							var item = data[i];
 							var active = !item.active ? 'icon-cross' : 'icon-check';
-							$('.row-table tbody').append('<tr data-pk-id="' + item.id + '">\r\n' + '	<td><input type="checkbox" class="check-all" name="id[]" value="' + item.id + '"></td>\r\n' + '	<td><a href="email-account-update.html?id=' + encodeURIComponent(item.id) + '">' + item.senderAddress + '</a></td>\r\n' + '	<td><a href="email-account-update.html?id=' + encodeURIComponent(item.id) + '">' + item.host + '</a></td>\r\n' + '	<td><a href="email-account-update.html?id=' + encodeURIComponent(item.id) + '">' + item.port + '</a></td>\r\n' + '	<td align="center"><span class="icon ' + active + '"></span></td>\r\n' + '</tr>\r\n');
+							$('.row-table tbody').append('<tr data-pk-id="' + item.id + '">\r\n' 
+								+ '	<td><input type="checkbox" class="check-all" name="id[]" value="' + item.id + '"></td>\r\n' 
+								+ '	<td><a href="email-account-update.html?id=' + encodeURIComponent(item.id) + '">' + item.name + '</a></td>\r\n' 
+								+ '	<td><a href="email-account-update.html?id=' + encodeURIComponent(item.id) + '">' + item.senderAddress + '</a></td>\r\n' 
+								+ '	<td><a href="email-account-update.html?id=' + encodeURIComponent(item.id) + '">' + item.host + '</a></td>\r\n' 
+								+ '	<td><a href="email-account-update.html?id=' + encodeURIComponent(item.id) + '">' + item.port + '</a></td>\r\n' 
+								+ '	<td align="center"><span class="icon ' + active + '"></span></td>\r\n' 
+								+ '</tr>\r\n');
 						}
 					}
 				});

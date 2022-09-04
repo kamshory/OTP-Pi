@@ -32,12 +32,14 @@ public class DataEmail {
 	private boolean active = true;
 	private Session session = null;
 	private boolean debug = false;
+	private String name = "";
 	
 	
 	
 	
 	public void set(DataEmail newData) {
 		this.id = newData.id;
+		this.name = newData.name;
 		this.senderAddress = newData.senderAddress;
 		this.senderPassword = newData.senderPassword;
 		this.senderName = newData.senderName;
@@ -61,6 +63,7 @@ public class DataEmail {
 	public JSONObject toJSONObject() {
 		JSONObject config = new JSONObject();
 		config.put("id", this.id);
+		config.put("name", this.name);
 		config.put("auth", this.auth);
 		config.put("host", this.host);
 		config.put("port", this.port);
@@ -212,6 +215,15 @@ public class DataEmail {
 		return sent;
 	}
 
+	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public String getId() {
 		return id;

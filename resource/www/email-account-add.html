@@ -74,14 +74,19 @@
 				<table class="config-table config-table-connection">
 					<tbody>
 						<tr>
+							<td>Name</td>
+							<td>
+								<input type="text" name="name" id="name" value="" required> </td>
+						</tr>
+						<tr>
 							<td>SMTP Host</td>
 							<td>
-								<input type="text" name="smtp_host" id="smtp_host" value=""> </td>
+								<input type="text" name="smtp_host" id="smtp_host" value="" required> </td>
 						</tr>
 						<tr>
 							<td>SMTP Port</td>
 							<td>
-								<input type="number" name="smtp_port" id="smtp_port" value=""> </td>
+								<input type="number" name="smtp_port" id="smtp_port" value="" required> </td>
 						</tr>
 						<tr>
 							<td>SSL Enable</td>
@@ -107,7 +112,7 @@
 						<tr>
 							<td>Sender Account</td>
 							<td>
-								<input type="email" name="sender_address" id="sender_address" value=""> </td>
+								<input type="email" name="sender_address" id="sender_address" value="" required> </td>
 						</tr>
 						<tr>
 							<td>Sender Password</td>

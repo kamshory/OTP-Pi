@@ -54,5 +54,13 @@ public class SubscriberAMQP {
 	public boolean isRunning() {
 		return running;
 	}
+	public boolean isConnected()
+	{
+		if(amqp == null)
+		{
+			return false;
+		}
+		return this.amqp.connected;
+	}
 }
 

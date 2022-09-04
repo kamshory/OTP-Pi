@@ -48,7 +48,6 @@ import com.planetbiru.gsm.GSMUtil;
 import com.planetbiru.gsm.InvalidSIMPinException;
 import com.planetbiru.gsm.SMS;
 import com.planetbiru.gsm.SerialPortConnectionException;
-import com.planetbiru.subscriber.ws.SubscriberWebSocket;
 import com.planetbiru.user.NoUserRegisteredException;
 import com.planetbiru.user.WebUserAccount;
 import com.planetbiru.util.FileConfigUtil;
@@ -276,18 +275,23 @@ public class HandlerWebManagerData implements HttpHandler {
 				JSONArray emailList = ConfigEmail.getMonitorInfo();
 				
 				JSONArray subscriberList = new JSONArray();
+				JSONArray restList = new JSONArray();
 				
-				subscriberList.put(new JSONObject().put("name", "WebSocket").put("id", "ws").put("active", App.getWebSocketSubscriber().isConnected()));
-				subscriberList.put(new JSONObject().put("name", "Redis").put("id", "redis").put("active", App.getRedisSubscriber().isConnected()));
-				//subscriberList.put(new JSONObject().put("name", "MQTT").put("id", "mqtt").put("active", App.getMqttSubscriber().isConnected()));
-						
-				
-				
-				
+				subscriberList.put(new JSONObject().put(JsonKey.NAME, "WebSocket").put(JsonKey.ID, "ws").put(JsonKey.ACTIVE, App.getWebSocketSubscriber().isConnected()));
+				subscriberList.put(new JSONObject().put(JsonKey.NAME, "Redis").put(JsonKey.ID, "redis").put(JsonKey.ACTIVE, App.getRedisSubscriber().isConnected()));
+				subscriberList.put(new JSONObject().put(JsonKey.NAME, "AMQP").put(JsonKey.ID, "amqp").put(JsonKey.ACTIVE, App.getAmqpSubscriber().isConnected()));
+				subscriberList.put(new JSONObject().put(JsonKey.NAME, "MQTT").put(JsonKey.ID, "mqtt").put(JsonKey.ACTIVE, App.getMqttSubscriber().isConnected()));
+				subscriberList.put(new JSONObject().put(JsonKey.NAME, "ActiveMQ").put(JsonKey.ID, "activemq").put(JsonKey.ACTIVE, App.getActiveMQSubscriber().isConnected()));
+				subscriberList.put(new JSONObject().put(JsonKey.NAME, "Stomp").put(JsonKey.ID, "stomp").put(JsonKey.ACTIVE, App.getStompSubscriber().isConnected()));
+
+				restList.put(new JSONObject().put(JsonKey.NAME, "HTTP").put(JsonKey.ID, "http").put(JsonKey.ACTIVE, ConfigAPI.isHttpEnable()));
+				restList.put(new JSONObject().put(JsonKey.NAME, "HTTPS").put(JsonKey.ID, "https").put(JsonKey.ACTIVE, ConfigAPI.isHttpsEnable()));
+
 				JSONObject list = new JSONObject()
 						.put("modem", modemList)
 						.put("email", emailList)
 						.put("subscriber", subscriberList)
+						.put("rest", restList)
 						;
 				responseBody = list.toString(4).getBytes();
 			}

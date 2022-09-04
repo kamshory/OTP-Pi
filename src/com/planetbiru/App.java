@@ -51,9 +51,9 @@ public class App {
 	private static SubscriberWebSocket webSocketSubscriber = new SubscriberWebSocket();	
 	private static SubscriberMQTT mqttSubscriber = new SubscriberMQTT();
 	private static SubscriberRedis redisSubscriber = new SubscriberRedis();
-	private static SubscriberStomp stompSubscriber;
-	private static SubscriberAMQP amqpSubscriber;	
-	private static SubscriberActiveMQ activeMQSubscriber;	
+	private static SubscriberStomp stompSubscriber = new SubscriberStomp();
+	private static SubscriberAMQP amqpSubscriber = new SubscriberAMQP();	
+	private static SubscriberActiveMQ activeMQSubscriber = new SubscriberActiveMQ();	
 	private static ModemInspector modemInspector = null;
 	
 	private static Logger logger = Logger.getLogger(App.class);
@@ -398,10 +398,10 @@ public class App {
 	 * Start ActiveMQ subscription
 	 */
 	public static void subscriberActiveMQStart() {
-		if(ConfigSubscriberActiveMQ.isSubscriberActiveMQEnable() && (App.activeMQSubscriber == null || !App.activeMQSubscriber.isRunning()))
+		if(ConfigSubscriberActiveMQ.isSubscriberActiveMQEnable() && (App.getActiveMQSubscriber() == null || !App.getActiveMQSubscriber().isRunning() || !App.getActiveMQSubscriber().isConnected()))
 		{
-			App.activeMQSubscriber = new SubscriberActiveMQ();
-			App.activeMQSubscriber.start();
+			App.setActiveMQSubscriber(new SubscriberActiveMQ());
+			App.getActiveMQSubscriber().start();
 		}
 	}
 
@@ -410,9 +410,9 @@ public class App {
 	 * @param force Set true for force stop
 	 */
 	public static void subscriberActiveMQStop(boolean force) {
-		if(App.activeMQSubscriber != null && (force || App.activeMQSubscriber.isRunning()))
+		if(App.getActiveMQSubscriber() != null && (force || App.getActiveMQSubscriber().isRunning()))
 		{
-			App.activeMQSubscriber.stopService();
+			App.getActiveMQSubscriber().stopService();
 		}		
 	}
 
@@ -442,10 +442,10 @@ public class App {
 	 * Start AMQP subscription
 	 */
 	public static void subscriberAMQPStart() {
-		if(ConfigSubscriberAMQP.isSubscriberAmqpEnable() && (App.amqpSubscriber == null || !App.amqpSubscriber.isRunning()))
+		if(ConfigSubscriberAMQP.isSubscriberAmqpEnable() && (App.getAmqpSubscriber() == null || !App.getAmqpSubscriber().isRunning() || !App.getAmqpSubscriber().isConnected()))
 		{
-			App.amqpSubscriber = new SubscriberAMQP();
-			App.amqpSubscriber.start();
+			App.setAmqpSubscriber(new SubscriberAMQP());
+			App.getAmqpSubscriber().start();
 		}		
 	}
 	
@@ -454,9 +454,9 @@ public class App {
 	 * @param force Set true for force stop
 	 */
 	public static void subscriberAMQPStop(boolean force) {
-		if(App.amqpSubscriber != null && (force || App.amqpSubscriber.isRunning()))
+		if(App.getAmqpSubscriber() != null && (force || App.getAmqpSubscriber().isRunning()))
 		{
-			App.amqpSubscriber.stopService();
+			App.getAmqpSubscriber().stopService();
 		}		
 	}
 	
@@ -484,17 +484,17 @@ public class App {
 	}
 	
 	public static void subscriberStompStart() {
-		if(ConfigSubscriberStomp.isSubscriberStompEnable() && (App.stompSubscriber == null || !App.stompSubscriber.isRunning()))
+		if(ConfigSubscriberStomp.isSubscriberStompEnable() && (App.getStompSubscriber() == null || !App.getStompSubscriber().isRunning()) || !App.getStompSubscriber().isConnected())
 		{
-			App.stompSubscriber = new SubscriberStomp();
-			App.stompSubscriber.setRunning(true);
-			App.stompSubscriber.start();
+			App.setStompSubscriber(new SubscriberStomp());
+			App.getStompSubscriber().setRunning(true);
+			App.getStompSubscriber().start();
 		}		
 	}
 	public static void subscriberStompStop(boolean force) {
-		if(App.stompSubscriber != null && (force || App.stompSubscriber.isRunning()))
+		if(App.getStompSubscriber() != null && (force || App.getStompSubscriber().isRunning()))
 		{
-			App.stompSubscriber.stopService();
+			App.getStompSubscriber().stopService();
 		}		
 	}
 
@@ -555,7 +555,7 @@ public class App {
 		}
 		App.scheduller.stopService();
 		App.getWebSocketSubscriber().stopService();
-		App.amqpSubscriber.stopService();
+		App.getAmqpSubscriber().stopService();
 		App.getMqttSubscriber().stopService();
 	}	
 	
@@ -598,6 +598,30 @@ public class App {
 
 	public static void setMqttSubscriber(SubscriberMQTT mqttSubscriber) {
 		App.mqttSubscriber = mqttSubscriber;
+	}
+
+	public static SubscriberAMQP getAmqpSubscriber() {
+		return amqpSubscriber;
+	}
+
+	public static void setAmqpSubscriber(SubscriberAMQP amqpSubscriber) {
+		App.amqpSubscriber = amqpSubscriber;
+	}
+
+	public static SubscriberActiveMQ getActiveMQSubscriber() {
+		return activeMQSubscriber;
+	}
+
+	public static void setActiveMQSubscriber(SubscriberActiveMQ activeMQSubscriber) {
+		App.activeMQSubscriber = activeMQSubscriber;
+	}
+
+	public static SubscriberStomp getStompSubscriber() {
+		return stompSubscriber;
+	}
+
+	public static void setStompSubscriber(SubscriberStomp stompSubscriber) {
+		App.stompSubscriber = stompSubscriber;
 	}
 }
 
