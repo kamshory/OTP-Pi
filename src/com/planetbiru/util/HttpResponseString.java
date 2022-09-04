@@ -1,17 +1,17 @@
 package com.planetbiru.util;
 
-import java.net.http.HttpHeaders;
+import com.sun.net.httpserver.Headers;
 
 public class HttpResponseString {
 
 	private String responseBody = "";
 	private int status = 0;
-	private HttpHeaders responseHeaders = null;
+	private Headers responseHeaders = null;
 
-	public HttpResponseString(String responseBody, int status, HttpHeaders responseHeaders) {
+	public HttpResponseString(String responseBody, int status, Headers headers) {
 		this.responseBody = responseBody;
 		this.status = status;
-		this.responseHeaders = responseHeaders;
+		this.responseHeaders = headers;
 	}
 
 	public String body() {
@@ -22,7 +22,7 @@ public class HttpResponseString {
 		return status;
 	}
 
-	public HttpHeaders headers() {
+	public Headers headers() {
 		return responseHeaders;
 	}
 	

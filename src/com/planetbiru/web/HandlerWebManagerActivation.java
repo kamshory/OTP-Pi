@@ -120,6 +120,8 @@ public class HandlerWebManagerActivation implements HttpHandler {
 		try 
 		{
 			HttpResponseString response = CustomHttpClient.httpExchange(method, url, parameters, requestHeaders, requestBodyToSent, timeout);
+			System.out.println("responseBody = "+response.body());
+
 			responseJSON = new JSONObject(response.body());
 			JSONObject data = responseJSON.optJSONObject(JsonKey.DATA);
 			String activationCode = data.optString("activation_code", "");			
