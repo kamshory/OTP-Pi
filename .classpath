@@ -49,5 +49,6 @@
 	<classpathentry exported="true" kind="lib" path="jar/hawtdispatch-transport-1.20.jar" sourcepath="jar/src/hawtdispatch-transport-1.20-sources.jar"/>
 	<classpathentry kind="lib" path="jar/httpclient-4.5.13.jar"/>
 	<classpathentry kind="lib" path="jar/javax.activation-1.2.0.jar" sourcepath="jar/src/javax.activation-1.2.0-sources.jar"/>
+	<classpathentry kind="lib" path="jar/httpclient-4.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

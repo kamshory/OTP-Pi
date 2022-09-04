@@ -1,23 +1,28 @@
 package com.planetbiru.util;
 
+
+
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.ConnectException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpClient.Redirect;
-import java.net.http.HttpClient.Version;
-import java.net.http.HttpRequest;
-import java.net.http.HttpRequest.BodyPublishers;
-import java.net.http.HttpRequest.Builder;
-import java.net.http.HttpResponse;
-import java.net.http.HttpResponse.BodyHandlers;
-import java.time.Duration;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.cert.CertificateException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.X509TrustManager;
+import javax.security.cert.X509Certificate;
 
 import com.planetbiru.web.HttpMethod;
 import com.sun.net.httpserver.Headers; //NOSONAR
@@ -31,7 +36,7 @@ public class CustomHttpClient {
 		
 	}
 	
-	public static HttpResponseString httpExchange(String method, String url, Map<String, String> parameters, Headers requestHeaders, String body, int timeout) throws HttpRequestException
+	public static HttpResponseString httpExchange(String method, String url, Map<String, String> parameters, Headers requestHeaders, String body, int timeout) throws HttpRequestException, IOException
 	{
 		Map<String, List<String>> params = new HashMap<>();
 		if(parameters != null)
@@ -75,11 +80,12 @@ public class CustomHttpClient {
         }
 	}
 	
-	public static HttpResponseString sendRequest(String method, String url, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws HttpRequestException 
+	public static HttpResponseString sendRequest(String method, String url, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws HttpRequestException, IOException 
 	{      
-       return CustomHttpClient.sendRequestHttp(method, url, parameters, requestHeaders, body, timeout);
+       return CustomHttpClient.sendRequestHttps(method, url, parameters, requestHeaders, body, timeout);
 	}
 	
+	/**
 	private static HttpResponseString sendRequestHttp(String method, String url, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws HttpRequestException {
 		
 		Builder builder = HttpRequest.newBuilder();
@@ -144,11 +150,11 @@ public class CustomHttpClient {
 		}
 	}
 
-	/**
-	public static ResponseEntityCustom sendRequestHttps(String method, String url, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws IOException  //NOSONAR
+	*/
+	public static HttpResponseString sendRequestHttps(String method, String url, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws IOException  //NOSONAR
 	{
         HttpsURLConnection con = null;
-		ResponseEntityCustom result = new ResponseEntityCustom();
+        HttpResponseString result = new HttpResponseString();
         byte[] postData = null;
         StringBuilder content = new StringBuilder();
              
@@ -170,8 +176,19 @@ public class CustomHttpClient {
 			context.init(null, new X509TrustManager[]{new X509TrustManager(){
 			public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {} //NOSONAR
 			public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {} //NOSONAR
-			public X509Certificate[] getAcceptedIssuers() {
-				return new X509Certificate[0];
+			@Override
+			public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType)
+					throws CertificateException {
+				
+			}
+			@Override
+			public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType)
+					throws CertificateException {
+				
+			}
+			@Override
+			public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+				return null;
 			}}}, new SecureRandom());
 			HttpsURLConnection.setDefaultSSLSocketFactory(
 			context.getSocketFactory());
@@ -235,9 +252,11 @@ public class CustomHttpClient {
         		con.disconnect();
             }
         }
-		result = new ResponseEntityCustom(content.toString(), statusCode, responseHeader);
+		result = new HttpResponseString(content.toString(), statusCode, responseHeader);
 		return result;
 	}
+
+	/**
 
 	public static ResponseEntityCustom sendRequestHttpX(String method, String endpoint, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws IOException //NOSONAR
 	{
