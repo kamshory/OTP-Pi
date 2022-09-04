@@ -52,7 +52,7 @@
 2022-08-27 13:26:14 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-27 13:26:14 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-27 13:26:14 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-27 13:26:14 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-27 13:26:14 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-27 13:26:14 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-27 13:26:14 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-27 13:26:14 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -191,7 +191,7 @@ List of Unused Config:
 2022-08-27 13:29:33 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-27 13:29:33 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-27 13:29:33 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-27 13:29:33 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-27 13:29:33 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-27 13:29:33 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-27 13:29:33 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-27 13:29:33 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -330,7 +330,7 @@ List of Unused Config:
 2022-08-27 13:50:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-27 13:50:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-27 13:50:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-27 13:50:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-27 13:50:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-27 13:50:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-27 13:50:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-27 13:50:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -469,7 +469,7 @@ List of Unused Config:
 2022-08-27 13:51:16 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-27 13:51:16 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-27 13:51:16 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-27 13:51:16 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-27 13:51:16 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-27 13:51:16 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-27 13:51:16 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-27 13:51:16 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -609,7 +609,7 @@ List of Unused Config:
 2022-08-27 14:07:43 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-27 14:07:43 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-27 14:07:43 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-27 14:07:43 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-27 14:07:43 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-27 14:07:43 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-27 14:07:43 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-27 14:07:43 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -748,7 +748,7 @@ List of Unused Config:
 2022-08-27 14:11:01 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-27 14:11:01 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-27 14:11:01 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-27 14:11:01 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-27 14:11:01 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-27 14:11:01 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-27 14:11:01 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-27 14:11:01 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -887,7 +887,7 @@ List of Unused Config:
 2022-08-27 14:14:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-27 14:14:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-27 14:14:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-27 14:14:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-27 14:14:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-27 14:14:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-27 14:14:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-27 14:14:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -1026,7 +1026,7 @@ List of Unused Config:
 2022-08-27 14:28:01 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-27 14:28:01 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-27 14:28:01 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-27 14:28:01 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-27 14:28:01 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-27 14:28:01 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-27 14:28:01 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-27 14:28:01 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -1165,7 +1165,7 @@ List of Unused Config:
 2022-08-27 14:28:21 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-27 14:28:21 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-27 14:28:21 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-27 14:28:21 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-27 14:28:21 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-27 14:28:21 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-27 14:28:21 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-27 14:28:21 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -1304,7 +1304,7 @@ List of Unused Config:
 2022-08-27 14:28:41 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-27 14:28:41 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-27 14:28:41 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-27 14:28:41 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-27 14:28:41 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-27 14:28:41 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-27 14:28:41 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-27 14:28:41 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -1444,7 +1444,7 @@ List of Unused Config:
 2022-08-27 15:36:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-27 15:36:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-27 15:36:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-27 15:36:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-27 15:36:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-27 15:36:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-27 15:36:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-27 15:36:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -1583,7 +1583,7 @@ List of Unused Config:
 2022-08-27 15:40:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-27 15:40:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-27 15:40:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-27 15:40:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-27 15:40:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-27 15:40:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-27 15:40:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-27 15:40:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -1722,7 +1722,7 @@ List of Unused Config:
 2022-08-27 16:16:26 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-27 16:16:26 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-27 16:16:26 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-27 16:16:26 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-27 16:16:26 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-27 16:16:26 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-27 16:16:26 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-27 16:16:26 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -1866,7 +1866,7 @@ List of Unused Config:
 2022-08-27 16:17:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-27 16:17:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-27 16:17:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-27 16:17:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-27 16:17:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-27 16:17:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-27 16:17:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-27 16:17:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -2074,7 +2074,7 @@ List of Unused Config:
 2022-08-27 16:23:08 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-27 16:23:08 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-27 16:23:08 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-27 16:23:08 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-27 16:23:08 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-27 16:23:08 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-27 16:23:08 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-27 16:23:08 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -2219,7 +2219,7 @@ List of Unused Config:
 2022-08-28 16:19:54 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-28 16:19:54 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-28 16:19:54 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-28 16:19:54 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-28 16:19:54 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-28 16:19:54 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-28 16:19:54 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-28 16:19:54 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -2364,7 +2364,7 @@ List of Unused Config:
 2022-08-28 16:27:15 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-28 16:27:15 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-28 16:27:15 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-28 16:27:15 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-28 16:27:15 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-28 16:27:15 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-28 16:27:15 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-28 16:27:15 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -2506,7 +2506,7 @@ List of Unused Config:
 2022-08-28 16:30:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-28 16:30:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-28 16:30:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-28 16:30:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-28 16:30:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-28 16:30:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-28 16:30:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-28 16:30:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -2660,7 +2660,7 @@ List of Unused Config:
 2022-08-28 16:31:40 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-28 16:31:40 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-28 16:31:40 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-28 16:31:40 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-28 16:31:40 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-28 16:31:40 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-28 16:31:40 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-28 16:31:40 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -2806,7 +2806,7 @@ List of Unused Config:
 2022-08-28 16:32:29 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-28 16:32:29 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-28 16:32:29 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-28 16:32:29 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-28 16:32:29 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-28 16:32:29 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-28 16:32:29 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-28 16:32:29 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -2950,7 +2950,7 @@ List of Unused Config:
 2022-08-28 16:32:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-28 16:32:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-28 16:32:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-28 16:32:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-28 16:32:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-28 16:32:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-28 16:32:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-28 16:32:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -3094,7 +3094,7 @@ List of Unused Config:
 2022-08-28 16:33:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-28 16:33:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-28 16:33:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-28 16:33:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-28 16:33:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-28 16:33:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-28 16:33:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-28 16:33:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -3240,7 +3240,7 @@ List of Unused Config:
 2022-08-28 16:34:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-28 16:34:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-28 16:34:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-28 16:34:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-28 16:34:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-28 16:34:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-28 16:34:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-28 16:34:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -3386,7 +3386,7 @@ List of Unused Config:
 2022-08-28 16:34:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-28 16:34:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-28 16:34:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-28 16:34:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-28 16:34:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-28 16:34:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-28 16:34:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-28 16:34:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -3546,7 +3546,7 @@ List of Unused Config:
 2022-08-28 16:37:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-28 16:37:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-28 16:37:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-28 16:37:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-28 16:37:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-28 16:37:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-28 16:37:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-28 16:37:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -3689,7 +3689,7 @@ List of Unused Config:
 2022-08-28 16:50:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-28 16:50:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-28 16:50:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-28 16:50:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-28 16:50:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-28 16:50:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-28 16:50:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-28 16:50:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -3828,7 +3828,7 @@ List of Unused Config:
 2022-08-28 16:51:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-28 16:51:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-28 16:51:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-28 16:51:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-28 16:51:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-28 16:51:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-28 16:51:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-28 16:51:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -3967,7 +3967,7 @@ List of Unused Config:
 2022-08-28 16:52:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-28 16:52:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-28 16:52:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-28 16:52:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-28 16:52:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-28 16:52:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-28 16:52:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-28 16:52:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -4107,7 +4107,7 @@ List of Unused Config:
 2022-08-28 16:53:02 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-28 16:53:02 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-28 16:53:02 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-28 16:53:02 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-28 16:53:02 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-28 16:53:02 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-28 16:53:02 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-28 16:53:02 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -4247,7 +4247,7 @@ List of Unused Config:
 2022-08-28 16:55:20 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-28 16:55:20 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-28 16:55:20 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-28 16:55:20 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-28 16:55:20 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-28 16:55:20 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-28 16:55:20 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-28 16:55:20 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -4386,7 +4386,7 @@ List of Unused Config:
 2022-08-28 16:55:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-28 16:55:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-28 16:55:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-28 16:55:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-28 16:55:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-28 16:55:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-28 16:55:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-28 16:55:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -4525,7 +4525,7 @@ List of Unused Config:
 2022-08-28 16:56:27 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-28 16:56:27 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-28 16:56:27 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-28 16:56:27 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-28 16:56:27 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-28 16:56:27 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-28 16:56:27 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-28 16:56:27 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -4664,7 +4664,7 @@ List of Unused Config:
 2022-08-29 05:51:32 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 05:51:32 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 05:51:32 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 05:51:32 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 05:51:32 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 05:51:32 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 05:51:32 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 05:51:32 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -4803,7 +4803,7 @@ List of Unused Config:
 2022-08-29 05:52:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 05:52:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 05:52:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 05:52:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 05:52:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 05:52:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 05:52:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 05:52:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -4943,7 +4943,7 @@ List of Unused Config:
 2022-08-29 05:53:15 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 05:53:15 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 05:53:15 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 05:53:15 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 05:53:15 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 05:53:15 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 05:53:15 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 05:53:15 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -5084,7 +5084,7 @@ List of Unused Config:
 2022-08-29 05:56:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 05:56:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 05:56:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 05:56:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 05:56:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 05:56:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 05:56:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 05:56:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -5225,7 +5225,7 @@ List of Unused Config:
 2022-08-29 05:56:26 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 05:56:26 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 05:56:26 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 05:56:26 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 05:56:26 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 05:56:26 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 05:56:26 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 05:56:26 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -5364,7 +5364,7 @@ List of Unused Config:
 2022-08-29 06:01:23 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:01:23 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:01:23 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:01:23 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:01:23 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:01:23 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:01:23 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:01:23 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -5503,7 +5503,7 @@ List of Unused Config:
 2022-08-29 06:01:45 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:01:45 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:01:45 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:01:45 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:01:45 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:01:45 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:01:45 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:01:45 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -5642,7 +5642,7 @@ List of Unused Config:
 2022-08-29 06:06:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:06:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:06:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:06:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:06:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:06:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:06:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:06:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -5781,7 +5781,7 @@ List of Unused Config:
 2022-08-29 06:06:18 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:06:18 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:06:18 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:06:18 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:06:18 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:06:18 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:06:18 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:06:18 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -5920,7 +5920,7 @@ List of Unused Config:
 2022-08-29 06:06:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:06:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:06:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:06:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:06:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:06:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:06:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:06:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -6059,7 +6059,7 @@ List of Unused Config:
 2022-08-29 06:06:48 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:06:48 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:06:48 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:06:48 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:06:48 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:06:48 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:06:48 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:06:48 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -6198,7 +6198,7 @@ List of Unused Config:
 2022-08-29 06:07:04 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:07:04 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:07:04 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:07:04 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:07:04 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:07:04 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:07:04 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:07:04 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -6337,7 +6337,7 @@ List of Unused Config:
 2022-08-29 06:08:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:08:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:08:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:08:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:08:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:08:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:08:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:08:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -6476,7 +6476,7 @@ List of Unused Config:
 2022-08-29 06:08:39 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:08:39 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:08:39 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:08:39 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:08:39 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:08:39 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:08:39 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:08:39 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -6615,7 +6615,7 @@ List of Unused Config:
 2022-08-29 06:21:27 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:21:27 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:21:27 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:21:27 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:21:27 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:21:27 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:21:27 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:21:27 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -6754,7 +6754,7 @@ List of Unused Config:
 2022-08-29 06:22:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:22:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:22:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:22:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:22:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:22:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:22:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:22:06 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -6893,7 +6893,7 @@ List of Unused Config:
 2022-08-29 06:23:00 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:23:00 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:23:00 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:23:00 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:23:00 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:23:00 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:23:00 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:23:00 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -7032,7 +7032,7 @@ List of Unused Config:
 2022-08-29 06:23:50 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:23:50 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:23:50 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:23:50 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:23:50 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:23:50 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:23:50 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:23:50 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -7171,7 +7171,7 @@ List of Unused Config:
 2022-08-29 06:24:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:24:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:24:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:24:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:24:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:24:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:24:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:24:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -7310,7 +7310,7 @@ List of Unused Config:
 2022-08-29 06:26:25 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:26:25 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:26:25 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:26:25 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:26:25 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:26:25 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:26:25 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:26:25 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -7449,7 +7449,7 @@ List of Unused Config:
 2022-08-29 06:29:08 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:29:08 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:29:08 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:29:08 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:29:08 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:29:08 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:29:08 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:29:08 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -7588,7 +7588,7 @@ List of Unused Config:
 2022-08-29 06:39:32 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:39:32 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:39:32 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:39:32 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:39:32 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:39:32 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:39:32 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:39:32 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -7727,7 +7727,7 @@ List of Unused Config:
 2022-08-29 06:40:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:40:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:40:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:40:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:40:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:40:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:40:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:40:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -7866,7 +7866,7 @@ List of Unused Config:
 2022-08-29 06:51:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:51:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:51:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:51:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:51:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:51:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:51:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:51:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -8005,7 +8005,7 @@ List of Unused Config:
 2022-08-29 06:55:40 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:55:40 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:55:40 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:55:40 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:55:40 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:55:40 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:55:40 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:55:40 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -8145,7 +8145,7 @@ List of Unused Config:
 2022-08-29 06:56:22 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:56:22 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:56:22 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:56:22 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:56:22 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:56:22 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:56:22 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:56:22 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -8284,7 +8284,7 @@ List of Unused Config:
 2022-08-29 06:58:04 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:58:04 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:58:04 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:58:04 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:58:04 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:58:04 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:58:04 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:58:04 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -8423,7 +8423,7 @@ List of Unused Config:
 2022-08-29 06:59:13 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 06:59:13 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 06:59:13 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 06:59:13 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 06:59:13 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 06:59:13 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 06:59:13 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 06:59:13 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -8562,7 +8562,7 @@ List of Unused Config:
 2022-08-29 07:02:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 07:02:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 07:02:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 07:02:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 07:02:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 07:02:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 07:02:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 07:02:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -8701,7 +8701,7 @@ List of Unused Config:
 2022-08-29 07:02:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 07:02:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 07:02:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 07:02:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 07:02:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 07:02:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 07:02:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 07:02:56 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -8840,7 +8840,7 @@ List of Unused Config:
 2022-08-29 07:03:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 07:03:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 07:03:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 07:03:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 07:03:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 07:03:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 07:03:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 07:03:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -8979,7 +8979,7 @@ List of Unused Config:
 2022-08-29 07:04:24 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 07:04:24 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 07:04:24 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 07:04:24 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 07:04:24 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 07:04:24 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 07:04:24 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 07:04:24 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -9118,7 +9118,7 @@ List of Unused Config:
 2022-08-29 07:05:29 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 07:05:29 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 07:05:29 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 07:05:29 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 07:05:29 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 07:05:29 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 07:05:29 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 07:05:29 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -9258,7 +9258,7 @@ List of Unused Config:
 2022-08-29 07:06:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 07:06:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 07:06:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 07:06:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 07:06:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 07:06:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 07:06:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 07:06:17 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -9399,7 +9399,7 @@ List of Unused Config:
 2022-08-29 07:07:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 07:07:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 07:07:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 07:07:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 07:07:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 07:07:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 07:07:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 07:07:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -9539,7 +9539,7 @@ List of Unused Config:
 2022-08-29 07:08:16 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 07:08:16 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 07:08:16 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 07:08:16 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 07:08:16 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 07:08:16 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 07:08:16 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 07:08:16 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -9678,7 +9678,7 @@ List of Unused Config:
 2022-08-29 07:09:19 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 07:09:19 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 07:09:19 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 07:09:19 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 07:09:19 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 07:09:19 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 07:09:19 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 07:09:19 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -9817,7 +9817,7 @@ List of Unused Config:
 2022-08-29 07:10:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 07:10:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 07:10:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 07:10:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 07:10:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 07:10:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 07:10:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 07:10:44 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -9959,7 +9959,7 @@ List of Unused Config:
 2022-08-29 07:21:05 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 07:21:05 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 07:21:05 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 07:21:05 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 07:21:05 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 07:21:05 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 07:21:05 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 07:21:05 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -10101,7 +10101,7 @@ List of Unused Config:
 2022-08-29 07:32:22 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 07:32:22 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 07:32:22 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 07:32:22 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 07:32:22 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 07:32:22 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 07:32:22 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 07:32:22 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -10242,7 +10242,7 @@ List of Unused Config:
 2022-08-29 13:58:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 13:58:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 13:58:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 13:58:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 13:58:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 13:58:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 13:58:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 13:58:10 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -10381,7 +10381,7 @@ List of Unused Config:
 2022-08-29 14:07:39 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 14:07:39 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 14:07:39 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 14:07:39 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 14:07:39 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 14:07:39 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 14:07:39 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 14:07:39 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -10520,7 +10520,7 @@ List of Unused Config:
 2022-08-29 14:07:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 14:07:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 14:07:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 14:07:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 14:07:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 14:07:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 14:07:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 14:07:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -10659,7 +10659,7 @@ List of Unused Config:
 2022-08-29 14:08:41 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 14:08:41 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 14:08:41 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 14:08:41 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 14:08:41 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 14:08:41 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 14:08:41 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 14:08:41 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -10798,7 +10798,7 @@ List of Unused Config:
 2022-08-29 14:11:14 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 14:11:14 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 14:11:14 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 14:11:14 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 14:11:14 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 14:11:14 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 14:11:14 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 14:11:14 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -10937,7 +10937,7 @@ List of Unused Config:
 2022-08-29 14:13:11 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 14:13:11 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 14:13:11 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 14:13:11 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 14:13:11 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 14:13:11 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 14:13:11 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 14:13:11 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -11076,7 +11076,7 @@ List of Unused Config:
 2022-08-29 14:13:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 14:13:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 14:13:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 14:13:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 14:13:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 14:13:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 14:13:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 14:13:52 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -11215,7 +11215,7 @@ List of Unused Config:
 2022-08-29 14:14:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-29 14:14:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-29 14:14:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-29 14:14:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-29 14:14:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-29 14:14:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-29 14:14:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-29 14:14:28 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -11354,7 +11354,7 @@ List of Unused Config:
 2022-08-30 06:22:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-30 06:22:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-30 06:22:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-30 06:22:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-30 06:22:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-30 06:22:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-30 06:22:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-30 06:22:37 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -11493,7 +11493,7 @@ List of Unused Config:
 2022-08-30 06:23:11 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-30 06:23:11 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-30 06:23:11 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-30 06:23:11 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-30 06:23:11 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-30 06:23:11 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-30 06:23:11 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-30 06:23:11 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -11632,7 +11632,7 @@ List of Unused Config:
 2022-08-30 06:24:24 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-30 06:24:24 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-30 06:24:24 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-30 06:24:24 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-30 06:24:24 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-30 06:24:24 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-30 06:24:24 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-30 06:24:24 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -11771,7 +11771,7 @@ List of Unused Config:
 2022-08-30 08:33:30 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-30 08:33:30 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-30 08:33:30 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-30 08:33:30 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-30 08:33:30 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-30 08:33:30 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-30 08:33:30 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-30 08:33:30 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -11910,7 +11910,7 @@ List of Unused Config:
 2022-08-30 23:14:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-08-30 23:14:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-08-30 23:14:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-08-30 23:14:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-08-30 23:14:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-08-30 23:14:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-08-30 23:14:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-08-30 23:14:34 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -12049,7 +12049,7 @@ List of Unused Config:
 2022-09-02 21:09:35 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-09-02 21:09:35 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-09-02 21:09:35 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-09-02 21:09:35 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-09-02 21:09:35 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-09-02 21:09:35 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-09-02 21:09:35 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-09-02 21:09:35 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -12187,7 +12187,7 @@ List of Unused Config:
 2022-09-02 21:11:31 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-09-02 21:11:31 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-09-02 21:11:31 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-09-02 21:11:31 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-09-02 21:11:31 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-09-02 21:11:31 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-09-02 21:11:31 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-09-02 21:11:31 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -12325,7 +12325,7 @@ List of Unused Config:
 2022-09-02 21:11:55 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-09-02 21:11:55 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-09-02 21:11:55 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-09-02 21:11:55 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-09-02 21:11:55 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-09-02 21:11:55 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-09-02 21:11:55 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-09-02 21:11:55 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -12463,7 +12463,7 @@ List of Unused Config:
 2022-09-02 21:14:50 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-09-02 21:14:50 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-09-02 21:14:50 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-09-02 21:14:50 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-09-02 21:14:50 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-09-02 21:14:50 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-09-02 21:14:50 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-09-02 21:14:50 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -12601,7 +12601,7 @@ List of Unused Config:
 2022-09-02 21:16:25 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-09-02 21:16:25 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-09-02 21:16:25 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-09-02 21:16:25 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-09-02 21:16:25 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-09-02 21:16:25 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-09-02 21:16:25 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-09-02 21:16:25 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -12739,7 +12739,7 @@ List of Unused Config:
 2022-09-02 21:16:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-09-02 21:16:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-09-02 21:16:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-09-02 21:16:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-09-02 21:16:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-09-02 21:16:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-09-02 21:16:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-09-02 21:16:53 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -12877,7 +12877,7 @@ List of Unused Config:
 2022-09-02 21:19:02 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
 2022-09-02 21:19:02 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
 2022-09-02 21:19:02 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
-2022-09-02 21:19:02 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.iniW"' >> $HOME/.bashrc
+2022-09-02 21:19:02 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
 2022-09-02 21:19:02 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
 2022-09-02 21:19:02 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
 2022-09-02 21:19:02 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
@@ -12975,3 +12975,610 @@ List of Unused Config:
 2022-09-02 21:20:18 [INFO  ] Buzzer                          :68   - toneDisconnectWs
 2022-09-02 21:20:22 [INFO  ] Buzzer                          :68   - toneDisconnectWs
 2022-09-02 21:20:32 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 18:35:09 [ERROR ] ConfigSubscriberActiveMQ        :105  - java.io.FileNotFoundException: C:\bitbucket\OTP-Pi\bin (Access is denied)
+com.planetbiru.util.FileNotFoundException: java.io.FileNotFoundException: C:\bitbucket\OTP-Pi\bin (Access is denied)
+	at com.planetbiru.util.FileConfigUtil.read(FileConfigUtil.java:44)
+	at com.planetbiru.config.ConfigSubscriberActiveMQ.load(ConfigSubscriberActiveMQ.java:97)
+	at com.planetbiru.subscriber.activemq.SubscriberActiveMQ.<init>(SubscriberActiveMQ.java:12)
+	at com.planetbiru.App.<clinit>(App.java:56)
+Caused by: java.io.FileNotFoundException: C:\bitbucket\OTP-Pi\bin (Access is denied)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:153)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:108)
+	at com.planetbiru.util.FileConfigUtil.read(FileConfigUtil.java:30)
+	... 3 more
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_ACTIVATION_AUTHORIZATION="Basic"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_ACTIVATION_CONTENT_TYPE="application/json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_ACTIVATION_METHOD="POST"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_ACTIVATION_PASSWORD="password"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_ACTIVATION_REQUEST_TIMEOUT="30000"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_ACTIVATION_URL="http://localhost/activation/"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_ACTIVATION_USERNAME="username"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_AMQP="true"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_DDNS="true"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_DEVICE="true"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_MQTT="true"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_NTP="true"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_REDIS="true"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_SERVER_STATUS="true"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_WS="true"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_EXPRESSION_AMQP="0 * * * * ?"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_EXPRESSION_DEVICE="0 * * * * ?"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_EXPRESSION_GENERAL="*/10 * * * * ?"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_EXPRESSION_MQTT="0 * * * * ?"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_EXPRESSION_REDIS="0 * * * * ?"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_EXPRESSION_SERVER_STATUS="0 */5 * * * ?"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_EXPRESSION_WS="0 * * * * ?"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_TIME_RESOLUTION="minute"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_API_PATH_BLOCKING="/api/blocking"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_API_PATH_EMAIL="/api/email"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_API_PATH_MESSAGE="/api/message"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_API_PATH_OTP="/api/otp"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_API_PATH_SMS="/api/message"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_API_PATH_UNBLOCKING="/api/unblocking"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_HTTPS_ENABLE="false"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_HTTPS_PORT="443"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_HTTP_ENABLE="true"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_HTTP_PORT="80"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_HMAC="4194cbdf197b1a281612e14b5d0b68a692fd7f81d6a817d4abcf7977407fa76b196a39519281c68eea98f96dae255753b1f5a9bf69d851ac505ec8e44daedbb7"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_IMAGE_NAME="otp.jar"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_NAME="OTP-Pi"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_PRINT_CONFIG="true"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_RESET_CONFIG_NAME="reset-config.ini"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_RESET_CONFIG_PATH="/otp-pi/reset-config.ini"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_RESET_TYPE="RPi"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_SECRET_KEY="itI*t7t7ur^%E65eE54ew43wYu9j9J(7r67R"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_VERSION="Version 1.0.0"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_HWCLOCK="hwclock"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_MODEM_DEBUG="true"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_MODEM_INSPECT_INTERVAL="1000"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_OTP_CACHE_FILE="/resource/data/otp/otp.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_OTP_GC_INGTERVAL="60000"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_OTP_LENGTH="6"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_OTP_LIFETIME="30000"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_OTP_SALT="gfiushciyw89erywe98r23r23rj2"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_DHCP="/etc/dhcp/dhcpd.conf"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BELL="/resource/data/bell/bell-config.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BLOCKING="/resource/data/api/blocking.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_DDNS="/resource/data/ddns/ddns.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_DDNS_AFRAID="/resource/data/ddns/vendor/afraid.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_DDNS_CLOUDFLARE="/resource/data/ddns/vendor/cloudflare.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_DDNS_DYNU="/resource/data/ddns/vendor/dynu.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_DDNS_NOIP="/resource/data/ddns/vendor/noip.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_DHCP="/resource/data/network/dhcpd.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_DHCP_DEFAULT="/resource/config/network/dhcpd.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_EMAIL="/resource/data/email/sender-account.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ETHERNET="/resource/data/network/ethernet.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ETHERNET_DEFAULT="/resource/config/network/ethernet.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_FIREWALL="/resource/data/network/firewall.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_GENERAL="/resource/data/general/general-config.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_KEYSTORE="/resource/data/keystore/keystores.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_KEYSTORE_DATA="/resource/data/keystore/data"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_MODEM="/resource/data/gsm/devices.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SERVER_STATUS="/resource/data/server/server-status.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SMS="/resource/data/gsm/sms.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SMTP="/resource/data/email/smtp.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_ACTIVEMQ="/resource/data/subscriber/subscriber-activemq.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_AMQP="/resource/data/subscriber/subscriber-amqp.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_MQTT="/resource/data/subscriber/subscriber-mqtt.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_REDIS="/resource/data/subscriber/subscriber-redis.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_STOMP="/resource/data/subscriber/subscriber-stomp.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_WS="/resource/data/subscriber/subscriber-ws.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_USER="/resource/data/user/urses.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_WLAN="/resource/data/network/wlan.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_WLAN_DEFAULT="/resource/config/network/wlan.json"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SERVER_DIR_LOG="C:\bitbucket\OTP-Pi\log"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SERVER_DIR_STORAGE="C:\bitbucket\OTP-Pi\log"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SERVER_LOG_CONFIG_NOT_FOUND="false"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SERVER_PORT="8888"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SERVER_STATUS_MAX_RECORD="1000"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SMS_DEBUG_READ="true"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SMS_INBOX_STATUS="REC READ"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SMS_INBOX_STORAGE="SM"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SMS_PATH_LOG="C:/bitbucket/OTP-Pi/resource/data/report/outbox"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SMS_SHOW_TRAFIC="true"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_ALERT_OCTAVE="3"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_ALERT_TEMPO="80"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_ALERT_TONE="8c2 4c2 16- 8c2 4c2"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_DISCONNECT_OCTAVE="3"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_DISCONNECT_TEMPO="80"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_DISCONNECT_TONE="8c2 4c2 16- 8c2 4c2"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_ENABLE="true"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_ERROR_OCTAVE="3"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_ERROR_TEMPO="80"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_ERROR_TONE="8c2 4c2 16- 8c2 4c2"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_PIN="26"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_TEST_OCTAVE="3"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_TEST_TEMPO="80"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_TEST_TONE="16c2 16d2 6e2 8d2 8c2 4d2 4g2 32- 6c2 8c2 8b1 16a1 4b1 4e2 32- 6a1 6b1 6c2 6g1 6b1 8c2 6d2 6e2 8c2 4d2"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_CLEANUP_COMMAND="/bin/bash /var/otp-pi/cleanup.sh"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_ENABLE="false"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_HOST="localhost"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_PASSWORD="centos"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_PING_COMMAND="/bin/curl -X GET http://localhost:8888/ping/"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_PORT="22"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_REBOOT_COMMAND="reboot"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_RESTART_COMMAND="/bin/bash /var/otp-pi/restart.sh"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_SLEEP="10"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_USERNAME="root"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WEB_CACHE_FILE_HTML="true"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WEB_DOCUMENT_ROOT="C:/bitbucket/OTP-Pi/resource/www"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WEB_SESSION_FILE_PATH="/resource/session"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WEB_SESSION_LIFETIME="144000000000"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WEB_SESSION_NAME="SMSSESSID"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WVDIAL_COMMAND_CONNECT="/bin/wvdial &"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WVDIAL_COMMAND_DISCONNECT="/bin/pkill wvdial"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WVDIAL_PATH_CONFIG="/etc/wvdial.conf"' >> $HOME/.bashrc
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :427  - 
+List of Unused Config:
+
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :432  - otppi.device.hmac
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :432  - otppi.device.print.config
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :432  - otppi.device.secret.key
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :432  - otppi.sms.debug.read
+2022-09-04 18:35:09 [INFO  ] ConfigLoader                    :432  - otppi.ssh.ping.command
+2022-09-04 18:35:09 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 18:35:09 [INFO  ] App                             :232  - Service started
+2022-09-04 18:35:19 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 18:35:19 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 18:35:29 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 18:35:29 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 18:35:39 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 18:35:39 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 18:35:49 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 18:35:49 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 18:35:59 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 18:35:59 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 18:36:09 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 18:36:09 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 18:59:57 [ERROR ] ConfigSubscriberActiveMQ        :105  - java.io.FileNotFoundException: C:\bitbucket\OTP-Pi\bin (Access is denied)
+com.planetbiru.util.FileNotFoundException: java.io.FileNotFoundException: C:\bitbucket\OTP-Pi\bin (Access is denied)
+	at com.planetbiru.util.FileConfigUtil.read(FileConfigUtil.java:44)
+	at com.planetbiru.config.ConfigSubscriberActiveMQ.load(ConfigSubscriberActiveMQ.java:97)
+	at com.planetbiru.subscriber.activemq.SubscriberActiveMQ.<init>(SubscriberActiveMQ.java:12)
+	at com.planetbiru.App.<clinit>(App.java:56)
+Caused by: java.io.FileNotFoundException: C:\bitbucket\OTP-Pi\bin (Access is denied)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:153)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:108)
+	at com.planetbiru.util.FileConfigUtil.read(FileConfigUtil.java:30)
+	... 3 more
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_ACTIVATION_AUTHORIZATION="Basic"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_ACTIVATION_CONTENT_TYPE="application/json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_ACTIVATION_METHOD="POST"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_ACTIVATION_PASSWORD="password"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_ACTIVATION_REQUEST_TIMEOUT="30000"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_ACTIVATION_URL="http://localhost/activation/"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_ACTIVATION_USERNAME="username"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_AMQP="true"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_DDNS="true"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_DEVICE="true"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_MQTT="true"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_NTP="true"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_REDIS="true"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_SERVER_STATUS="true"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_WS="true"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_EXPRESSION_AMQP="0 * * * * ?"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_EXPRESSION_DEVICE="0 * * * * ?"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_EXPRESSION_GENERAL="*/10 * * * * ?"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_EXPRESSION_MQTT="0 * * * * ?"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_EXPRESSION_REDIS="0 * * * * ?"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_EXPRESSION_SERVER_STATUS="0 */5 * * * ?"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_EXPRESSION_WS="0 * * * * ?"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_TIME_RESOLUTION="minute"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_API_PATH_BLOCKING="/api/blocking"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_API_PATH_EMAIL="/api/email"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_API_PATH_MESSAGE="/api/message"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_API_PATH_OTP="/api/otp"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_API_PATH_SMS="/api/message"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_API_PATH_UNBLOCKING="/api/unblocking"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_HTTPS_ENABLE="false"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_HTTPS_PORT="443"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_HTTP_ENABLE="true"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_HTTP_PORT="80"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_HMAC="4194cbdf197b1a281612e14b5d0b68a692fd7f81d6a817d4abcf7977407fa76b196a39519281c68eea98f96dae255753b1f5a9bf69d851ac505ec8e44daedbb7"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_IMAGE_NAME="otp.jar"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_NAME="OTP-Pi"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_PRINT_CONFIG="true"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_RESET_CONFIG_NAME="reset-config.ini"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_RESET_CONFIG_PATH="/otp-pi/reset-config.ini"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_RESET_TYPE="RPi"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_SECRET_KEY="itI*t7t7ur^%E65eE54ew43wYu9j9J(7r67R"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_VERSION="Version 1.0.0"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_HWCLOCK="hwclock"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_MODEM_DEBUG="true"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_MODEM_INSPECT_INTERVAL="1000"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_OTP_CACHE_FILE="/resource/data/otp/otp.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_OTP_GC_INGTERVAL="60000"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_OTP_LENGTH="6"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_OTP_LIFETIME="30000"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_OTP_SALT="gfiushciyw89erywe98r23r23rj2"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_DHCP="/etc/dhcp/dhcpd.conf"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BELL="/resource/data/bell/bell-config.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BLOCKING="/resource/data/api/blocking.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_DDNS="/resource/data/ddns/ddns.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_DDNS_AFRAID="/resource/data/ddns/vendor/afraid.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_DDNS_CLOUDFLARE="/resource/data/ddns/vendor/cloudflare.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_DDNS_DYNU="/resource/data/ddns/vendor/dynu.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_DDNS_NOIP="/resource/data/ddns/vendor/noip.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_DHCP="/resource/data/network/dhcpd.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_DHCP_DEFAULT="/resource/config/network/dhcpd.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_EMAIL="/resource/data/email/sender-account.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ETHERNET="/resource/data/network/ethernet.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ETHERNET_DEFAULT="/resource/config/network/ethernet.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_FIREWALL="/resource/data/network/firewall.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_GENERAL="/resource/data/general/general-config.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_KEYSTORE="/resource/data/keystore/keystores.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_KEYSTORE_DATA="/resource/data/keystore/data"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_MODEM="/resource/data/gsm/devices.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SERVER_STATUS="/resource/data/server/server-status.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SMS="/resource/data/gsm/sms.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SMTP="/resource/data/email/smtp.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_ACTIVEMQ="/resource/data/subscriber/subscriber-activemq.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_AMQP="/resource/data/subscriber/subscriber-amqp.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_MQTT="/resource/data/subscriber/subscriber-mqtt.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_REDIS="/resource/data/subscriber/subscriber-redis.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_STOMP="/resource/data/subscriber/subscriber-stomp.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_WS="/resource/data/subscriber/subscriber-ws.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_USER="/resource/data/user/urses.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_WLAN="/resource/data/network/wlan.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_WLAN_DEFAULT="/resource/config/network/wlan.json"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SERVER_DIR_LOG="C:\bitbucket\OTP-Pi\log"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SERVER_DIR_STORAGE="C:\bitbucket\OTP-Pi\log"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SERVER_LOG_CONFIG_NOT_FOUND="false"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SERVER_PORT="8888"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SERVER_STATUS_MAX_RECORD="1000"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SMS_DEBUG_READ="true"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SMS_INBOX_STATUS="REC READ"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SMS_INBOX_STORAGE="SM"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SMS_PATH_LOG="C:/bitbucket/OTP-Pi/resource/data/report/outbox"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SMS_SHOW_TRAFIC="true"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_ALERT_OCTAVE="3"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_ALERT_TEMPO="80"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_ALERT_TONE="8c2 4c2 16- 8c2 4c2"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_DISCONNECT_OCTAVE="3"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_DISCONNECT_TEMPO="80"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_DISCONNECT_TONE="8c2 4c2 16- 8c2 4c2"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_ENABLE="true"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_ERROR_OCTAVE="3"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_ERROR_TEMPO="80"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_ERROR_TONE="8c2 4c2 16- 8c2 4c2"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_PIN="26"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_TEST_OCTAVE="3"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_TEST_TEMPO="80"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_TEST_TONE="16c2 16d2 6e2 8d2 8c2 4d2 4g2 32- 6c2 8c2 8b1 16a1 4b1 4e2 32- 6a1 6b1 6c2 6g1 6b1 8c2 6d2 6e2 8c2 4d2"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_CLEANUP_COMMAND="/bin/bash /var/otp-pi/cleanup.sh"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_ENABLE="false"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_HOST="localhost"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_PASSWORD="centos"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_PING_COMMAND="/bin/curl -X GET http://localhost:8888/ping/"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_PORT="22"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_REBOOT_COMMAND="reboot"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_RESTART_COMMAND="/bin/bash /var/otp-pi/restart.sh"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_SLEEP="10"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_USERNAME="root"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WEB_CACHE_FILE_HTML="true"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WEB_DOCUMENT_ROOT="C:/bitbucket/OTP-Pi/resource/www"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WEB_SESSION_FILE_PATH="/resource/session"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WEB_SESSION_LIFETIME="144000000000"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WEB_SESSION_NAME="SMSSESSID"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WVDIAL_COMMAND_CONNECT="/bin/wvdial &"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WVDIAL_COMMAND_DISCONNECT="/bin/pkill wvdial"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WVDIAL_PATH_CONFIG="/etc/wvdial.conf"' >> $HOME/.bashrc
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :427  - 
+List of Unused Config:
+
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :432  - otppi.device.hmac
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :432  - otppi.device.print.config
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :432  - otppi.device.secret.key
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :432  - otppi.sms.debug.read
+2022-09-04 18:59:57 [INFO  ] ConfigLoader                    :432  - otppi.ssh.ping.command
+2022-09-04 18:59:58 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 18:59:58 [INFO  ] App                             :232  - Service started
+2022-09-04 19:00:08 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:00:08 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:00:18 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:00:18 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:00:28 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:00:28 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:00:38 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:00:38 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:00:48 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:00:48 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:00:58 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:00:58 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:01:08 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:01:08 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:01:18 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:01:18 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:01:28 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:01:28 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:01:38 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:01:38 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:01:48 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:01:48 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:01:58 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:01:58 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:02:08 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:02:08 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:02:18 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:02:18 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:02:28 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:02:28 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:02:38 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:02:38 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:02:48 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:02:48 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:02:58 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:02:58 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:03:08 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:03:08 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:03:18 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:03:18 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:03:28 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:03:28 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:03:38 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:03:38 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :127  - Prepare Dir \C:\bitbucket\OTP-Pi\bin\
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :133  - Create folder \
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :134  - Create folder \C:\
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :135  - Create folder \C:\bitbucket\
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :136  - Create folder \C:\bitbucket\OTP-Pi\
+2022-09-04 19:23:38 [ERROR ] ConfigSubscriberActiveMQ        :105  - C:\bitbucket\OTP-Pi\bin (Access is denied)
+com.planetbiru.util.FileNotFoundException: C:\bitbucket\OTP-Pi\bin (Access is denied)
+	at com.planetbiru.util.FileConfigUtil.read(FileConfigUtil.java:47)
+	at com.planetbiru.config.ConfigSubscriberActiveMQ.load(ConfigSubscriberActiveMQ.java:97)
+	at com.planetbiru.subscriber.activemq.SubscriberActiveMQ.<init>(SubscriberActiveMQ.java:12)
+	at com.planetbiru.App.<clinit>(App.java:56)
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_ACTIVATION_AUTHORIZATION="Basic"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_ACTIVATION_CONTENT_TYPE="application/json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_ACTIVATION_METHOD="POST"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_ACTIVATION_PASSWORD="password"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_ACTIVATION_REQUEST_TIMEOUT="30000"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_ACTIVATION_URL="http://localhost/activation/"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_ACTIVATION_USERNAME="username"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_AMQP="true"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_DDNS="true"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_DEVICE="true"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_MQTT="true"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_NTP="true"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_REDIS="true"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_SERVER_STATUS="true"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_ENABLE_WS="true"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_EXPRESSION_AMQP="0 * * * * ?"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_EXPRESSION_DEVICE="0 * * * * ?"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_EXPRESSION_GENERAL="*/10 * * * * ?"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_EXPRESSION_MQTT="0 * * * * ?"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_EXPRESSION_REDIS="0 * * * * ?"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_EXPRESSION_SERVER_STATUS="0 */5 * * * ?"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_EXPRESSION_WS="0 * * * * ?"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_CRON_TIME_RESOLUTION="minute"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_API_PATH_BLOCKING="/api/blocking"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_API_PATH_EMAIL="/api/email"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_API_PATH_MESSAGE="/api/message"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_API_PATH_OTP="/api/otp"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_API_PATH_SMS="/api/message"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_API_PATH_UNBLOCKING="/api/unblocking"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_HTTPS_ENABLE="false"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_HTTPS_PORT="443"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_HTTP_ENABLE="true"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEFAULT_HTTP_PORT="80"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_HMAC="4194cbdf197b1a281612e14b5d0b68a692fd7f81d6a817d4abcf7977407fa76b196a39519281c68eea98f96dae255753b1f5a9bf69d851ac505ec8e44daedbb7"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_IMAGE_NAME="otp.jar"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_NAME="OTP-Pi"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_PRINT_CONFIG="true"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_RESET_CONFIG_NAME="reset-config.ini"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_RESET_CONFIG_PATH="/otp-pi/reset-config.ini"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_RESET_TYPE="RPi"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_SECRET_KEY="itI*t7t7ur^%E65eE54ew43wYu9j9J(7r67R"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_DEVICE_VERSION="Version 1.0.0"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_HWCLOCK="hwclock"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_MODEM_DEBUG="true"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_MODEM_INSPECT_INTERVAL="1000"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_OTP_CACHE_FILE="/resource/data/otp/otp.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_OTP_GC_INGTERVAL="60000"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_OTP_LENGTH="6"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_OTP_LIFETIME="30000"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_OTP_SALT="gfiushciyw89erywe98r23r23rj2"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_DHCP="/etc/dhcp/dhcpd.conf"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_ETHERNET="/etc/sysconfig/ifcfg-eth0"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_SSID_KEY="/etc/sysconfig/network-scripts/keys-wlan0"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_OS_WLAN="/etc/sysconfig/network-scripts/ifcfg-wlan0"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ALL="/resource/config/config.ini"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_SERVICE="/resource/data/api/services.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_API_USER="/resource/data/api/urses.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BASE="C:/bitbucket/OTP-Pi"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BELL="/resource/data/bell/bell-config.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_BLOCKING="/resource/data/api/blocking.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_DDNS="/resource/data/ddns/ddns.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_DDNS_AFRAID="/resource/data/ddns/vendor/afraid.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_DDNS_CLOUDFLARE="/resource/data/ddns/vendor/cloudflare.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_DDNS_DYNU="/resource/data/ddns/vendor/dynu.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_DDNS_NOIP="/resource/data/ddns/vendor/noip.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_DHCP="/resource/data/network/dhcpd.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_DHCP_DEFAULT="/resource/config/network/dhcpd.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_EMAIL="/resource/data/email/sender-account.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ETHERNET="/resource/data/network/ethernet.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_ETHERNET_DEFAULT="/resource/config/network/ethernet.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_FIREWALL="/resource/data/network/firewall.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_GENERAL="/resource/data/general/general-config.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_KEYSTORE="/resource/data/keystore/keystores.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_KEYSTORE_DATA="/resource/data/keystore/data"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_MODEM="/resource/data/gsm/devices.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SERVER_STATUS="/resource/data/server/server-status.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SMS="/resource/data/gsm/sms.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SMTP="/resource/data/email/smtp.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_ACTIVEMQ="/resource/data/subscriber/subscriber-activemq.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_AMQP="/resource/data/subscriber/subscriber-amqp.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_MQTT="/resource/data/subscriber/subscriber-mqtt.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_REDIS="/resource/data/subscriber/subscriber-redis.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_STOMP="/resource/data/subscriber/subscriber-stomp.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_SUBSCRIBER_WS="/resource/data/subscriber/subscriber-ws.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_USER="/resource/data/user/urses.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_WLAN="/resource/data/network/wlan.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_PATH_SETTING_WLAN_DEFAULT="/resource/config/network/wlan.json"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SERVER_DIR_LOG="C:\bitbucket\OTP-Pi\log"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SERVER_DIR_STORAGE="C:\bitbucket\OTP-Pi\log"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SERVER_LOG_CONFIG_NOT_FOUND="false"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SERVER_PORT="8888"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SERVER_STATUS_MAX_RECORD="1000"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SMS_DEBUG_READ="true"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SMS_INBOX_STATUS="REC READ"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SMS_INBOX_STORAGE="SM"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SMS_PATH_LOG="C:/bitbucket/OTP-Pi/resource/data/report/outbox"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SMS_SHOW_TRAFIC="true"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_ALERT_OCTAVE="3"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_ALERT_TEMPO="80"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_ALERT_TONE="8c2 4c2 16- 8c2 4c2"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_DISCONNECT_OCTAVE="3"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_DISCONNECT_TEMPO="80"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_DISCONNECT_TONE="8c2 4c2 16- 8c2 4c2"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_ENABLE="true"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_ERROR_OCTAVE="3"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_ERROR_TEMPO="80"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_ERROR_TONE="8c2 4c2 16- 8c2 4c2"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_PIN="26"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_TEST_OCTAVE="3"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_TEST_TEMPO="80"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SOUND_TEST_TONE="16c2 16d2 6e2 8d2 8c2 4d2 4g2 32- 6c2 8c2 8b1 16a1 4b1 4e2 32- 6a1 6b1 6c2 6g1 6b1 8c2 6d2 6e2 8c2 4d2"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_CLEANUP_COMMAND="/bin/bash /var/otp-pi/cleanup.sh"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_ENABLE="false"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_HOST="localhost"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_PASSWORD="centos"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_PING_COMMAND="/bin/curl -X GET http://localhost:8888/ping/"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_PORT="22"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_REBOOT_COMMAND="reboot"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_RESTART_COMMAND="/bin/bash /var/otp-pi/restart.sh"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_SLEEP="10"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_SSH_USERNAME="root"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WEB_CACHE_FILE_HTML="true"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WEB_DOCUMENT_ROOT="C:/bitbucket/OTP-Pi/resource/www"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WEB_SESSION_FILE_PATH="/resource/session"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WEB_SESSION_LIFETIME="144000000000"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WEB_SESSION_NAME="SMSSESSID"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WVDIAL_COMMAND_CONNECT="/bin/wvdial &"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WVDIAL_COMMAND_DISCONNECT="/bin/pkill wvdial"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :466  - echo 'export OTPPI_WVDIAL_PATH_CONFIG="/etc/wvdial.conf"' >> $HOME/.bashrc
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :127  - Prepare Dir C:\bitbucket\OTP-Pi\resource\data\api\urses.json
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :133  - Create folder C:\bitbucket\OTP-Pi
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :134  - Create folder C:\bitbucket\OTP-Pi\resource
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :135  - Create folder C:\bitbucket\OTP-Pi\resource\data
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :136  - Create folder C:\bitbucket\OTP-Pi\resource\data\api
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :127  - Prepare Dir C:\bitbucket\OTP-Pi\resource\data\ddns\ddns.json
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :133  - Create folder C:\bitbucket\OTP-Pi
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :134  - Create folder C:\bitbucket\OTP-Pi\resource
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :135  - Create folder C:\bitbucket\OTP-Pi\resource\data
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :136  - Create folder C:\bitbucket\OTP-Pi\resource\data\ddns
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :127  - Prepare Dir C:\bitbucket\OTP-Pi\resource\data\subscriber\subscriber-ws.json
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :133  - Create folder C:\bitbucket\OTP-Pi
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :134  - Create folder C:\bitbucket\OTP-Pi\resource
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :135  - Create folder C:\bitbucket\OTP-Pi\resource\data
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :136  - Create folder C:\bitbucket\OTP-Pi\resource\data\subscriber
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :127  - Prepare Dir C:\bitbucket\OTP-Pi\resource\data\subscriber\subscriber-amqp.json
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :133  - Create folder C:\bitbucket\OTP-Pi
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :134  - Create folder C:\bitbucket\OTP-Pi\resource
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :135  - Create folder C:\bitbucket\OTP-Pi\resource\data
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :136  - Create folder C:\bitbucket\OTP-Pi\resource\data\subscriber
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :127  - Prepare Dir C:\bitbucket\OTP-Pi\resource\data\subscriber\subscriber-redis.json
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :133  - Create folder C:\bitbucket\OTP-Pi
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :134  - Create folder C:\bitbucket\OTP-Pi\resource
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :135  - Create folder C:\bitbucket\OTP-Pi\resource\data
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :136  - Create folder C:\bitbucket\OTP-Pi\resource\data\subscriber
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :127  - Prepare Dir C:\bitbucket\OTP-Pi\resource\data\subscriber\subscriber-stomp.json
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :133  - Create folder C:\bitbucket\OTP-Pi
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :134  - Create folder C:\bitbucket\OTP-Pi\resource
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :135  - Create folder C:\bitbucket\OTP-Pi\resource\data
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :136  - Create folder C:\bitbucket\OTP-Pi\resource\data\subscriber
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :127  - Prepare Dir C:\bitbucket\OTP-Pi\resource\data\subscriber\subscriber-activemq.json
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :133  - Create folder C:\bitbucket\OTP-Pi
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :134  - Create folder C:\bitbucket\OTP-Pi\resource
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :135  - Create folder C:\bitbucket\OTP-Pi\resource\data
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :136  - Create folder C:\bitbucket\OTP-Pi\resource\data\subscriber
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :127  - Prepare Dir C:\bitbucket\OTP-Pi\resource\data\subscriber\subscriber-mqtt.json
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :133  - Create folder C:\bitbucket\OTP-Pi
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :134  - Create folder C:\bitbucket\OTP-Pi\resource
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :135  - Create folder C:\bitbucket\OTP-Pi\resource\data
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :136  - Create folder C:\bitbucket\OTP-Pi\resource\data\subscriber
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :127  - Prepare Dir C:\bitbucket\OTP-Pi\resource\data\gsm\sms.json
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :133  - Create folder C:\bitbucket\OTP-Pi
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :134  - Create folder C:\bitbucket\OTP-Pi\resource
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :135  - Create folder C:\bitbucket\OTP-Pi\resource\data
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :136  - Create folder C:\bitbucket\OTP-Pi\resource\data\gsm
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :127  - Prepare Dir C:\bitbucket\OTP-Pi\resource\data\gsm\devices.json
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :133  - Create folder C:\bitbucket\OTP-Pi
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :134  - Create folder C:\bitbucket\OTP-Pi\resource
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :135  - Create folder C:\bitbucket\OTP-Pi\resource\data
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :136  - Create folder C:\bitbucket\OTP-Pi\resource\data\gsm
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :427  - 
+List of Unused Config:
+
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :432  - otppi.device.hmac
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :432  - otppi.device.print.config
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :432  - otppi.device.secret.key
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :432  - otppi.sms.debug.read
+2022-09-04 19:23:38 [INFO  ] ConfigLoader                    :432  - otppi.ssh.ping.command
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :127  - Prepare Dir C:\bitbucket\OTP-Pi\resource\session\ses
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :133  - Create folder C:\bitbucket
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :134  - Create folder C:\bitbucket\OTP-Pi
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :135  - Create folder C:\bitbucket\OTP-Pi\resource
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :136  - Create folder C:\bitbucket\OTP-Pi\resource\session
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :127  - Prepare Dir C:\bitbucket\OTP-Pi\resource\data\subscriber\subscriber-activemq.json
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :133  - Create folder C:\bitbucket\OTP-Pi
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :134  - Create folder C:\bitbucket\OTP-Pi\resource
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :135  - Create folder C:\bitbucket\OTP-Pi\resource\data
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :136  - Create folder C:\bitbucket\OTP-Pi\resource\data\subscriber
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :127  - Prepare Dir C:\bitbucket\OTP-Pi\resource\data\gsm\devices.json
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :133  - Create folder C:\bitbucket\OTP-Pi
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :134  - Create folder C:\bitbucket\OTP-Pi\resource
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :135  - Create folder C:\bitbucket\OTP-Pi\resource\data
+2022-09-04 19:23:38 [INFO  ] FileConfigUtil                  :136  - Create folder C:\bitbucket\OTP-Pi\resource\data\gsm
+2022-09-04 19:23:38 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:23:39 [INFO  ] App                             :232  - Service started
+2022-09-04 19:23:44 [INFO  ] FileConfigUtil                  :127  - Prepare Dir C:\bitbucket\OTP-Pi\resource\data\server\server-status.json
+2022-09-04 19:23:44 [INFO  ] FileConfigUtil                  :133  - Create folder C:\bitbucket\OTP-Pi
+2022-09-04 19:23:44 [INFO  ] FileConfigUtil                  :134  - Create folder C:\bitbucket\OTP-Pi\resource
+2022-09-04 19:23:44 [INFO  ] FileConfigUtil                  :135  - Create folder C:\bitbucket\OTP-Pi\resource\data
+2022-09-04 19:23:44 [INFO  ] FileConfigUtil                  :136  - Create folder C:\bitbucket\OTP-Pi\resource\data\server
+2022-09-04 19:23:48 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:23:48 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:23:58 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:23:58 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:24:08 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:24:09 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:24:19 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:24:19 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:24:29 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:24:29 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:24:39 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:24:39 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:24:49 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:24:49 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:24:59 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:24:59 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:25:08 [INFO  ] FileConfigUtil                  :127  - Prepare Dir C:\bitbucket\OTP-Pi\resource\data\server\server-status.json
+2022-09-04 19:25:08 [INFO  ] FileConfigUtil                  :133  - Create folder C:\bitbucket\OTP-Pi
+2022-09-04 19:25:08 [INFO  ] FileConfigUtil                  :134  - Create folder C:\bitbucket\OTP-Pi\resource
+2022-09-04 19:25:08 [INFO  ] FileConfigUtil                  :135  - Create folder C:\bitbucket\OTP-Pi\resource\data
+2022-09-04 19:25:08 [INFO  ] FileConfigUtil                  :136  - Create folder C:\bitbucket\OTP-Pi\resource\data\server
+2022-09-04 19:25:09 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:25:09 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:25:19 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:25:19 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:25:29 [INFO  ] Buzzer                          :68   - toneDisconnectWs
+2022-09-04 19:25:29 [INFO  ] Buzzer                          :68   - toneDisconnectWs

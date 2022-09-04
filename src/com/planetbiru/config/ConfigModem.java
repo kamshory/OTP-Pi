@@ -104,11 +104,16 @@ public class ConfigModem {
 				}
 			}
 		} 
-		catch (FileNotFoundException | JSONException e) 
+		catch (JSONException e) 
 		{
-			/**
-			 * Do nothing
-			 */
+			logger.error(e.getMessage(), e);
+		}
+		catch (FileNotFoundException e) 
+		{
+			if(Config.isLogConfigNotFound())
+			{
+				logger.error(e.getMessage(), e);
+			}
 		}
 	}
 	

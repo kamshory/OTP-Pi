@@ -7,9 +7,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.planetbiru.config.Config;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.cookie.CookieServer;
 import com.planetbiru.util.FileConfigUtil;
@@ -20,6 +22,8 @@ import com.sun.net.httpserver.Headers; //NOSONAR
 public class WebUserAccount {
 	private static Map<String, User> users = new HashMap<>();
 	private static String configPath = "";
+	
+	private static Logger logger = Logger.getLogger(WebUserAccount.class);
 
 	private WebUserAccount()
 	{
@@ -182,11 +186,16 @@ public class WebUserAccount {
 				}
 			}
 		} 
-		catch (FileNotFoundException | JSONException e) 
+		catch (JSONException e) 
 		{
-			/**
-			 * Do nothing
-			 */
+			logger.error(e.getMessage(), e);
+		}
+		catch (FileNotFoundException e) 
+		{
+			if(Config.isLogConfigNotFound())
+			{
+				logger.error(e.getMessage(), e);
+			}
 		}
 	}
 	
