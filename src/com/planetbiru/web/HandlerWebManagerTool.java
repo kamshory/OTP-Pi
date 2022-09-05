@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.json.JSONObject;
 
+import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.device.DeviceAPI;
 import com.planetbiru.gsm.GSMUtil;
@@ -108,18 +109,18 @@ public class HandlerWebManagerTool implements HttpHandler {
 		if(action.equals("update"))
 		{
 			JSONObject response = GSMUtil.changeIMEI(port, currentIMEI, newIMEI);
-			if(response != null && response.has(JsonKey.RESPONSE) && response.optString(JsonKey.RESPONSE, "").contains("\r\nOK"))
+			if(response != null && response.has(JsonKey.RESPONSE) && response.optString(JsonKey.RESPONSE, "").contains(ConstantString.SUBOK))
 			{
 				result.put("last_imei", currentIMEI);
 				result.put("imei", newIMEI);
-				result.put(JsonKey.RESPONSE, "OK");
+				result.put(JsonKey.RESPONSE, ConstantString.OK);
 				
 			}
 			else
 			{
 				result.put("last_imei", currentIMEI);
 				result.put("imei", currentIMEI);
-				result.put(JsonKey.RESPONSE, "ERROR");
+				result.put(JsonKey.RESPONSE, ConstantString.ERROR);
 			}
 		}
 		
@@ -137,14 +138,27 @@ public class HandlerWebManagerTool implements HttpHandler {
 		if(action.equals("add-pin") && pin1 != null && pin2 != null && !pin1.isEmpty() && pin1.equals(pin2))
 		{
 			JSONObject response = GSMUtil.addPIN(port, currentPIN, pin1);
-			if(response != null && response.has(JsonKey.RESPONSE) && response.optString(JsonKey.RESPONSE, "").contains("\r\nOK"))
+			if(response != null && response.has(JsonKey.RESPONSE) && response.optString(JsonKey.RESPONSE, "").contains(ConstantString.SUBOK))
 			{
-				result.put(JsonKey.RESPONSE, "OK");
+				result.put(JsonKey.RESPONSE, ConstantString.OK);
 				
 			}
 			else
 			{
-				result.put(JsonKey.RESPONSE, "ERROR");
+				result.put(JsonKey.RESPONSE, ConstantString.ERROR);
+			}
+		}
+		else if(action.equals("remove-pin"))
+		{
+			JSONObject response = GSMUtil.removePIN(port, currentPIN);
+			if(response != null && response.has(JsonKey.RESPONSE) && response.optString(JsonKey.RESPONSE, "").contains(ConstantString.SUBOK))
+			{
+				result.put(JsonKey.RESPONSE, ConstantString.OK);
+				
+			}
+			else
+			{
+				result.put(JsonKey.RESPONSE, ConstantString.ERROR);
 			}
 		}
 		

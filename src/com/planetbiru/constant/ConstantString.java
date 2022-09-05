@@ -76,6 +76,9 @@ public class ConstantString {
 	public static final String BASIC                           = "Basic ";
 	public static final String CONTENT_LENGTH                  = "Content-length";
 	public static final String EMAIL_SENT_SUCCESSFULLY         = "The message was sent successfuly";
+	public static final String ERROR = "ERROR";
+	public static final String OK = "OK";
+	public static final String SUBOK = "\r\nOK";
 	
 	private ConstantString()
 	{

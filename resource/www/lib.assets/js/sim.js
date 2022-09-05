@@ -90,7 +90,7 @@ $(document).ready(function (e1) {
                 type: "POST",
                 url: "tool/sim",
                 dataType: "json",
-                data: {action:'update', port:port},
+                data: {action:'remove-pin', port:port},
                 success: function(data) {
                 }
             });
