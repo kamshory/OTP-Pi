@@ -107,6 +107,13 @@ public class GSMUtil {
 		}
 	}
 
+	/**
+	 * Get or create data
+	 * @param dataModem Data modem
+	 * @param eventListener Event listener
+	 * @param exists
+	 * @return
+	 */
 	private static GSMInstance getOrCreate(DataModem dataModem, boolean eventListener, boolean exists) {
 		GSMInstance instance;
 		if(exists)
