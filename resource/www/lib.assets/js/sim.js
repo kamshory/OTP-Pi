@@ -84,17 +84,16 @@ $(document).ready(function (e1) {
         var id = $(this).closest('#sim-tool').attr('data-modem-id');
         var modem = modemList[id];       
         var port = modem.port;
-        if(pin1 != newIMEI && newIMEI != '')
-        {
-            $.ajax({
-                type: "POST",
-                url: "tool/sim",
-                dataType: "json",
-                data: {action:'remove-pin', port:port},
-                success: function(data) {
-                }
-            });
-        }
+        var current_pin = $('#sim-tool').find('input#current_pin').val();
+        $.ajax({
+            type: "POST",
+            url: "tool/sim",
+            dataType: "json",
+            data: {action:'remove-pin', port:port, current_pin:current_pin},
+            success: function(data) {
+                console.log(data)
+            }
+        });
     });
 
 });

@@ -920,7 +920,7 @@ public class GSMUtil {
 				}
 				instance.connect(currentPIN);
 			}
-			String command = "AT+CLCK=\"SC\",0";
+			String command = "AT+CLCK=\"SC\",0,\""+currentPIN+"\"";
 			String response = instance.executeATCommand(command);
 			info.put(JsonKey.RESPONSE, response);
 			info.put(JsonKey.COMMAND, command);

@@ -8,6 +8,9 @@ import java.util.Map;
 
 import org.json.JSONObject;
 
+import com.planetbiru.config.Config;
+import com.planetbiru.config.ConfigModem;
+import com.planetbiru.config.DataModem;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.device.DeviceAPI;
@@ -150,6 +153,12 @@ public class HandlerWebManagerTool implements HttpHandler {
 		}
 		else if(action.equals("remove-pin"))
 		{
+			if(currentPIN.isEmpty())
+			{
+				ConfigModem.load(Config.getModemSettingPath());
+				DataModem detail = ConfigModem.getModemDataByPort(port);
+				currentPIN = detail.getSimCardPIN();
+			}
 			JSONObject response = GSMUtil.removePIN(port, currentPIN);
 			if(response != null && response.has(JsonKey.RESPONSE) && response.optString(JsonKey.RESPONSE, "").contains(ConstantString.SUBOK))
 			{
