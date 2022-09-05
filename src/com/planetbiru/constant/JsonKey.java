@@ -101,6 +101,7 @@ public class JsonKey {
 	public static final String MODEM_LIST                 = "modem_list";
 	public static final String TOPIC                      = "topic";
 	public static final String CALLBACK_DELAY             = "callback_delay";
+	public static final String CPUSN                      = "cpusn";
 	
 	private JsonKey()
 	{

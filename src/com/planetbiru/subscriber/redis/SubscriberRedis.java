@@ -31,7 +31,6 @@ public class SubscriberRedis extends Thread {
 			this.connect();
 			do 
 			{
-				System.out.println("Redis connect");
 				long sleep = ConfigSubscriberRedis.getSubscriberRedisReconnectDelay();
 				boolean ret = true;
 				if(this.isConnected())
@@ -221,7 +220,4 @@ public class SubscriberRedis extends Thread {
 			return this.clientThread.isConnected();
 		}
 	}
-
-	
-	
 }
