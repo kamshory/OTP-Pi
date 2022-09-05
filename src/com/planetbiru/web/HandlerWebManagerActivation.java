@@ -100,7 +100,7 @@ public class HandlerWebManagerActivation implements HttpHandler {
 			if(contentType.toLowerCase().contains("json"))
 			{
 				JSONObject requestJSON = new JSONObject(queryPairs);
-				requestJSON.put("cpusn", cpusn);
+				requestJSON.put(JsonKey.CPUSN, cpusn);
 				requestBodyToSent = requestJSON.toString(0);
 				requestHeaders.add(ConstantString.CONTENT_TYPE, ConstantString.APPLICATION_JSON);
 			}
@@ -113,24 +113,26 @@ public class HandlerWebManagerActivation implements HttpHandler {
 		{
 			requestBodyToSent = null;			
 			parameters = queryPairs;
-			parameters.put("cpusn", cpusn);
+			parameters.put(JsonKey.CPUSN, cpusn);
 		}
 		
 		JSONObject responseJSON = new JSONObject();
 		try 
 		{
 			HttpResponseString response = CustomHttpClient.httpExchange(method, url, parameters, requestHeaders, requestBodyToSent, timeout);
-			System.out.println("responseBody = "+response.body());
-
 			responseJSON = new JSONObject(response.body());
-			JSONObject data = responseJSON.optJSONObject(JsonKey.DATA);
-			String activationCode = data.optString("activation_code", "");			
-			DeviceActivation.verify(activationCode, cpusn);
-			if(DeviceActivation.isActivated())
+			if(responseJSON.has(JsonKey.DATA) && responseJSON.getJSONObject(JsonKey.DATA) != null)
 			{
-				DeviceActivation.storeToEnv(activationCode);
-				DeviceActivation.activate(activationCode);
+				JSONObject data = responseJSON.optJSONObject(JsonKey.DATA);
+				String activationCode = data.optString("activation_code", "");			
+				DeviceActivation.verify(activationCode, cpusn);
+				if(DeviceActivation.isActivated())
+				{
+					DeviceActivation.storeToEnv(activationCode);
+					DeviceActivation.activate(activationCode);
+				}
 			}
+			
 		} 
 		catch (JSONException | HttpRequestException | IllegalArgumentException | InvalidKeyException | NoSuchAlgorithmException | InvalidKeySpecException | NoSuchPaddingException | InvalidAlgorithmParameterException | BadPaddingException | IllegalBlockSizeException e) 
 		{

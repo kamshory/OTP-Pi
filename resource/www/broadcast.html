@@ -81,11 +81,26 @@
 			</form>
 			<script>
 			function processForm(obj) {
-				var message = $('#message').val();
+				var message = $('textarea.text-message').val();
 				broadcast(message);
-                $('#message').val('');
+                $('textarea.text-message').val('');
 				return false;
 			}
+			$(document).ready(function(e2){
+				$('textarea.text-message').keydown(function (e) {
+					if (e.keyCode === 13 && e.ctrlKey) {
+						$(this).val(function(i, val){
+							return val + "\n";
+						});
+					}
+				}).keypress(function(e){
+					var obj = $(this).closest('form');
+					if (e.keyCode === 13 && !e.ctrlKey) {
+						processForm(obj);
+						return false;  
+					} 
+				});
+			})
 			</script>
 		</div>
 		<!-- /container -->

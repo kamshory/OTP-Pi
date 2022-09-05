@@ -1,1 +1,1 @@
-{"mqttDisconnected":2,"amqpDisconnected":2,"redisDisconnected":1,"smsFailure":0,"activeMQDisconnected":0,"stompDisconnected":1,"wsDisconnected":1}
+{"mqttDisconnected":0,"amqpDisconnected":0,"redisDisconnected":0,"smsFailure":0,"activeMQDisconnected":0,"stompDisconnected":0,"wsDisconnected":0}

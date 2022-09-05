@@ -4,27 +4,14 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.ConnectException;
-import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
-import java.net.http.HttpClient;
-import java.net.http.HttpClient.Redirect;
-import java.net.http.HttpClient.Version;
-import java.net.http.HttpHeaders;
-import java.net.http.HttpRequest;
-import java.net.http.HttpRequest.BodyPublishers;
-import java.net.http.HttpRequest.Builder;
-import java.net.http.HttpResponse;
-import java.net.http.HttpResponse.BodyHandlers;
 import java.nio.charset.StandardCharsets;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.security.Security;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -71,37 +58,6 @@ public class CustomHttpClient {
 		}
 	}
 	
-	private static void setParametersHttps(HttpsURLConnection con, Map<String, List<String>> parameters) {
-		if(parameters != null)
-		{
-			for (Map.Entry<String, List<String>> entry : parameters.entrySet())
-	        {
-	        	String key = entry.getKey();
-	        	List<String> list = entry.getValue();
-	        	for(int i = 0; i<list.size(); i++)
-	        	{
-	        		con.setRequestProperty(key, list.get(i));
-	        	}
-	        }
-        }
-		
-	}
-	
-	private static void setParametersHttp(URLConnection con, Map<String, List<String>> parameters) {
-		if(parameters != null)
-		{
-			for (Map.Entry<String, List<String>> entry : parameters.entrySet())
-	        {
-	        	String key = entry.getKey();
-	        	List<String> list = entry.getValue();
-	        	for(int i = 0; i<list.size(); i++)
-	        	{
-	        		con.setRequestProperty(key, list.get(i));
-	        	}
-	        }
-        }
-		
-	}
 	public static void setParameters(HttpURLConnection con, Map<String, List<String>> parameters)
 	{
 		if(parameters != null)
@@ -130,100 +86,8 @@ public class CustomHttpClient {
         }
 	}
 	
-	/*
-	public static HttpResponseString sendRequest(String method, String url, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws HttpRequestException 
-	{      
-       return CustomHttpClient.sendRequestHttp(method, url, parameters, requestHeaders, body, timeout);
-	}
-	
-	private static HttpResponseString sendRequestHttp(String method, String url, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws HttpRequestException {
-		
-		Builder builder = HttpRequest.newBuilder();
-		builder.uri(URI.create(url));
-		builder.timeout(Duration.ofMillis(timeout));
-		
-		if(method.equalsIgnoreCase(HttpMethod.POST) ||
-				method.equalsIgnoreCase(HttpMethod.PUT) ||
-				method.equalsIgnoreCase(HttpMethod.PATCH)
-				)
-        {
-           	if(body == null && parameters != null)
-        	{
-           		body = Utility.buildQuery(parameters);
-        	}   	 
-           	if(body != null)
-           	{
-        		builder.method(method, BodyPublishers.ofByteArray(body.getBytes()));         		
-           	}
-        }
-		else if(method.equalsIgnoreCase(HttpMethod.DELETE))
-		{
-			builder.DELETE();
-		}
-		else if(method.equalsIgnoreCase(HttpMethod.GET))
-		{
-			builder.GET();
-		}
-		
-		for(Map.Entry<String, List<String>> entry : requestHeaders.entrySet()) {
-			String key = entry.getKey();
-			for (String value : entry.getValue()) 
-			{
-				builder.header(key, value);
-			}
-		}			
-		
-		HttpRequest request = builder.build();			
-		
-		HttpClient client = HttpClient.newBuilder()
-		        .version(Version.HTTP_1_1)
-		        .followRedirects(Redirect.NORMAL)
-		        .connectTimeout(Duration.ofMillis(timeout))
-		        .build();
-		
-		try 
-		{
-			HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-			return new HttpResponseString(response.body(), response.statusCode(), response.headers());
-		} 
-		catch (InterruptedException | ConnectException e) //NOSONAR
-		{
-			throw new HttpRequestException(e.getMessage());
-		}
-		catch(IOException e) //NOSONAR
-		{
-			throw new HttpRequestException(e.getMessage());
-		}
-		catch(Exception e) // NOSONAR
-		{
-			throw new HttpRequestException(e.getMessage());
-		}
-	}
-	
-
-	
-	public static ResponseEntityCustom sendRequestHttpsx(String method, String endpoint, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws Exception {
-		System.setProperty("java.protocol.handler.pkgs",
-		"com.sun.net.ssl.internal.www.protocol");
-		Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
-
-		URL url = new URL(endpoint);
-		URLConnection con = url.openConnection();
-
-		if(con instanceof HttpsURLConnection) 
-		{
-			System.out.println("https");
-		} 
-		else if(con instanceof HttpURLConnection) 
-		{
-			System.out.println("http");
-		}
-
-		} 
-		
-		*/
-	
 	public static ResponseEntityCustom sendRequestHttps(String method, String url, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws IOException  //NOSONAR
+, HttpRequestException
 	{
 		
 		ResponseEntityCustom result = new ResponseEntityCustom();
@@ -366,94 +230,21 @@ public class CustomHttpClient {
 			}
         	
         } 
-		catch (NoSuchAlgorithmException | KeyManagementException e) {
-			e.printStackTrace();
-		}
-		catch(IOException e)
+		catch (NoSuchAlgorithmException | KeyManagementException e) //NOSONAR
 		{
-			e.printStackTrace();
+			throw new HttpRequestException(e.getMessage());
 		}
-		catch(Exception e)
+		catch(IOException e) //NOSONAR
 		{
-			e.printStackTrace();
+			throw new HttpRequestException(e.getMessage());
+		}
+		catch(Exception e) //NOSONAR
+		{
+			throw new HttpRequestException(e.getMessage());
 		}
 		result = new ResponseEntityCustom(content.toString(), statusCode, responseHeader);
 		return result;
 	}
-
-	
-
-	
-
-	public static ResponseEntityCustom sendRequestHttpX(String method, String endpoint, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws IOException //NOSONAR
-	{
-		ResponseEntityCustom result = new ResponseEntityCustom();
-        byte[] postData = null;
-        StringBuilder content = new StringBuilder();
-             
-		int statusCode = 200;
-		Map<String, List<String>> responseHeader = new HashMap<>();
-		HttpURLConnection con = null;
- 		try 
-		{
-        	  	
- 	    	URL url = new URL(endpoint);
- 	    	con = (HttpURLConnection) url.openConnection();
-            con.setDoOutput(true);
-            con.setRequestMethod(method);
-            con.setConnectTimeout(timeout);
-            if(parameters != null)
-            {
-            	setParameters(con, parameters);	            
-            }
-            
-            if(method.equalsIgnoreCase(HttpMethod.POST) || method.equalsIgnoreCase(HttpMethod.PUT))
-            {
-               	if(body == null && parameters != null)
-            	{
-               		body = Utility.buildQuery(parameters);
-            	}
-         	 
-               	if(body != null)
-               	{
-             		postData = body.getBytes(StandardCharsets.UTF_8);
-	     	        try (DataOutputStream wr = new DataOutputStream(con.getOutputStream())) {		
-		                wr.write(postData);
-		            }
-               	}
-            }
-            
-            statusCode = con.getResponseCode();
-            responseHeader = con.getHeaderFields();
- 
-            try (
-            		BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()))) 
-            {
-
-                String line;
-                int count = 0;
-                while ((line = br.readLine()) != null) {
-                	if(count > 0)
-                    {
-                		content.append(System.lineSeparator());
-                    }
-                    content.append(line);
-                    count++;
-                }
-            }
-
-        } 
-		finally 
-		{
-        	if(con != null)
-            {
-        		con.disconnect();
-            }
-        }
-		result = new ResponseEntityCustom(content.toString(), statusCode, responseHeader);
-		return result;
-	}
-	
 
 	public static String buildQuery(Map<String, List<String>> params) 
 	{

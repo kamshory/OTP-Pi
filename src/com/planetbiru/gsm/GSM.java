@@ -162,6 +162,7 @@ public class GSM {
     	{
     		throw new GSMException("GSM is not initilized yet");
     	}
+        logger.info("Execute AT Command : "+command);
         command = command + "\r\n";
         String result = "";
         int i = 0;
