@@ -86,7 +86,7 @@ public class ConfigVendorAfraid {
 			dir = dir.substring(0, dir.length() - 1);
 		}
 		String fileName = FileConfigUtil.fixFileName(dir + path);
-		FileConfigUtil.prepareDir(fileName);
+		FileConfigUtil.prepareDirectory(fileName);
 		
 		try 
 		{

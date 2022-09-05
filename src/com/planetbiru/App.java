@@ -565,7 +565,7 @@ public class App {
 	public static void prepareSessionDir()
 	{
 		String fileName = FileConfigUtil.fixFileName(Utility.getBaseDir()+FileSystems.getDefault().getSeparator()+Config.getSessionFilePath()+"/ses");
-		FileConfigUtil.prepareDir(fileName);
+		FileConfigUtil.prepareDirectory(fileName);
 	}
 
 	/**

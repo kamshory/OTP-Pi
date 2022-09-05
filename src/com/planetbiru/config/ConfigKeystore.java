@@ -102,7 +102,7 @@ public class ConfigKeystore {
 		}
 		String fileName = FileConfigUtil.fixFileName(dir + path);
 		fileName = FileConfigUtil.fixFileName(fileName);
-		FileConfigUtil.prepareDir(fileName);
+		FileConfigUtil.prepareDirectory(fileName);
 		
 		try 
 		{
@@ -161,7 +161,7 @@ public class ConfigKeystore {
 		}
 		String fileName = FileConfigUtil.fixFileName(dir + path);
 		fileName = FileConfigUtil.fixFileName(fileName);
-		FileConfigUtil.prepareDir(fileName);
+		FileConfigUtil.prepareDirectory(fileName);
 		try 
 		{
 			FileConfigUtil.write(fileName, binaryData);

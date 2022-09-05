@@ -120,7 +120,8 @@ public class FileConfigUtil {
 	 * Prepare directory before save a file
 	 * @param fileName File path to be save after directory created
 	 */
-	public static void prepareDir2(String fileName)
+	@Deprecated
+	public static void prepareDir(String fileName)
 	{
 		String parent1 = getParentName(fileName);
 		String parent2 = getParentName(parent1);
@@ -160,7 +161,7 @@ public class FileConfigUtil {
 		
 	}
 	
-	public static void prepareDir(String fileName)
+	public static void prepareDirectory(String fileName)
 	{
 		String separatorDir = FileConfigUtil.getDirSeparator();
 
@@ -179,9 +180,7 @@ public class FileConfigUtil {
 			bld.append(arr[i]);
 			String dir = bld.toString();
 			bld.append(separatorDir);
-			
 			File d = new File(dir);
-			System.out.println(dir);
 			if(!d.exists())
 			{
 				d.mkdirs();

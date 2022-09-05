@@ -115,7 +115,7 @@ public class ConfigBlocking {
 		}
 		String fileName = FileConfigUtil.fixFileName(dir + path);
 		fileName = FileConfigUtil.fixFileName(fileName);
-		FileConfigUtil.prepareDir(fileName);	
+		FileConfigUtil.prepareDirectory(fileName);	
 		try 
 		{
 			FileConfigUtil.write(fileName, config.toString().getBytes());

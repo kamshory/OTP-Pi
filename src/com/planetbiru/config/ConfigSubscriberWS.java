@@ -58,7 +58,7 @@ public class ConfigSubscriberWS {
 			dir = dir.substring(0, dir.length() - 1);
 		}
 		String fileName = FileConfigUtil.fixFileName(dir + path);
-		FileConfigUtil.prepareDir(fileName);	
+		FileConfigUtil.prepareDirectory(fileName);	
 		try 
 		{
 			FileConfigUtil.write(fileName, ConfigSubscriberWS.toJSONObject().toString().getBytes());
@@ -81,7 +81,7 @@ public class ConfigSubscriberWS {
 			dir = dir.substring(0, dir.length() - 1);
 		}
 		String fileName = FileConfigUtil.fixFileName(dir + path);
-		FileConfigUtil.prepareDir(fileName);
+		FileConfigUtil.prepareDirectory(fileName);
 		byte[] data = null;
 		try 
 		{
