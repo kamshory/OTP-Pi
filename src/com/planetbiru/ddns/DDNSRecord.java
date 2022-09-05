@@ -25,8 +25,6 @@ public class DDNSRecord {
 		date.setTime(time);
 		return date;
 	}
-	
-	
 
 	public DDNSRecord() {
 		/**

@@ -202,20 +202,24 @@ public class OTP {
 			if(data != null)
 			{
 				String text = new String(data);
-				if(text.length() > 7)
+				if(text != null && text.length() > 7)
 				{
 					JSONObject json = new JSONObject(text);
 					OTP.data = json;
 				}
 			}
 		} 
-		catch (FileNotFoundException | JSONException e) 
+		catch (JSONException e) 
+		{
+			logger.error(e.getMessage(), e);
+		}
+		catch (FileNotFoundException e) 
 		{
 			if(Config.isLogConfigNotFound())
 			{
 				logger.error(e.getMessage(), e);
 			}
-		}	
+		}		
 	}
 	
 	/**

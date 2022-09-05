@@ -41,7 +41,7 @@ public class FileConfigUtil {
 		 } 
 		 catch (IOException ex) 
 		 {
-			 throw new FileNotFoundException(ex);
+			 throw new FileNotFoundException(ex.getMessage());
 		 }
 		 return allBytes;
 	}
@@ -121,22 +121,42 @@ public class FileConfigUtil {
 	 */
 	public static void prepareDir(String fileName)
 	{
-		File file = new File(fileName);
-		String directory1 = file.getParent();
-		File file2 = new File(directory1);
-		String directory2 = file2.getParent();
+		String parent1 = getParentName(fileName);
+		String parent2 = getParentName(parent1);
+		String parent3 = getParentName(parent2);
+		String parent4 = getParentName(parent3);
+		String parent5 = getParentName(parent4);
 		
-		File d1 = new File(directory1);
-		File d2 = new File(directory2);		
-
-		if(!d2.exists())
-		{
-			d2.mkdir();
-		}
+		File d1 = new File(parent4);
 		if(!d1.exists())
 		{
-			d1.mkdir();
+			d1.mkdirs();
 		}
+
+		File d0 = new File(parent5);
+		if(!d0.exists())
+		{
+			d0.mkdirs();
+		}
+
+		File d2 = new File(parent3);
+		if(!d2.exists())
+		{
+			d2.mkdirs();
+		}		
+
+		File d3 = new File(parent2);
+		if(!d3.exists())
+		{
+			d3.mkdirs();
+		}
+		
+		File d4 = new File(parent1);
+		if(!d4.exists())
+		{
+			d4.mkdirs();
+		}
+		
 	}
 	
 	public static String getFolderName(String fullPath)
@@ -179,7 +199,10 @@ public class FileConfigUtil {
 		if(fullPath.contains("/"))
 		{			
 			String[] arr = fullPath.split("/");
-			name = arr[arr.length - 1];
+			if(arr.length > 0)
+			{
+				name = arr[arr.length - 1];
+			}
 		}
 		return name;
 	}

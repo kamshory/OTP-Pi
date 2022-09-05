@@ -1,23 +1,40 @@
 package com.planetbiru.util;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.ConnectException;
 import java.net.URI;
+import java.net.URL;
+import java.net.URLConnection;
 import java.net.http.HttpClient;
 import java.net.http.HttpClient.Redirect;
 import java.net.http.HttpClient.Version;
+import java.net.http.HttpHeaders;
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpRequest.Builder;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.nio.charset.StandardCharsets;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.Security;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.X509TrustManager;
 
 import com.planetbiru.web.HttpMethod;
 import com.sun.net.httpserver.Headers; //NOSONAR
@@ -45,7 +62,45 @@ public class CustomHttpClient {
 				params.put(key, list);
 	        }
 		}
-		return CustomHttpClient.sendRequest(method, url, params, requestHeaders, body, timeout);
+		try {
+			ResponseEntityCustom response = CustomHttpClient.sendRequestHttps(method, url, params, requestHeaders, body, timeout);
+			return new HttpResponseString(response.getBody(), response.getStatusCode(), response.getResponseHeaders());
+			
+		} catch (IOException e) {
+			throw new HttpRequestException(e.getMessage());
+		}
+	}
+	
+	private static void setParametersHttps(HttpsURLConnection con, Map<String, List<String>> parameters) {
+		if(parameters != null)
+		{
+			for (Map.Entry<String, List<String>> entry : parameters.entrySet())
+	        {
+	        	String key = entry.getKey();
+	        	List<String> list = entry.getValue();
+	        	for(int i = 0; i<list.size(); i++)
+	        	{
+	        		con.setRequestProperty(key, list.get(i));
+	        	}
+	        }
+        }
+		
+	}
+	
+	private static void setParametersHttp(URLConnection con, Map<String, List<String>> parameters) {
+		if(parameters != null)
+		{
+			for (Map.Entry<String, List<String>> entry : parameters.entrySet())
+	        {
+	        	String key = entry.getKey();
+	        	List<String> list = entry.getValue();
+	        	for(int i = 0; i<list.size(); i++)
+	        	{
+	        		con.setRequestProperty(key, list.get(i));
+	        	}
+	        }
+        }
+		
 	}
 	public static void setParameters(HttpURLConnection con, Map<String, List<String>> parameters)
 	{
@@ -75,6 +130,7 @@ public class CustomHttpClient {
         }
 	}
 	
+	/*
 	public static HttpResponseString sendRequest(String method, String url, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws HttpRequestException 
 	{      
        return CustomHttpClient.sendRequestHttp(method, url, parameters, requestHeaders, body, timeout);
@@ -143,22 +199,44 @@ public class CustomHttpClient {
 			throw new HttpRequestException(e.getMessage());
 		}
 	}
+	
 
-	/**
+	
+	public static ResponseEntityCustom sendRequestHttpsx(String method, String endpoint, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws Exception {
+		System.setProperty("java.protocol.handler.pkgs",
+		"com.sun.net.ssl.internal.www.protocol");
+		Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
+
+		URL url = new URL(endpoint);
+		URLConnection con = url.openConnection();
+
+		if(con instanceof HttpsURLConnection) 
+		{
+			System.out.println("https");
+		} 
+		else if(con instanceof HttpURLConnection) 
+		{
+			System.out.println("http");
+		}
+
+		} 
+		
+		*/
+	
 	public static ResponseEntityCustom sendRequestHttps(String method, String url, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws IOException  //NOSONAR
 	{
-        HttpsURLConnection con = null;
+		
 		ResponseEntityCustom result = new ResponseEntityCustom();
         byte[] postData = null;
         StringBuilder content = new StringBuilder();
              
 		int statusCode = 200;
 		Map<String, List<String>> responseHeader = new HashMap<>();
+		URLConnection con = null;
 		try 
 		{
+			
         	URL myurl = new URL(url);
-        	
-        	
 			HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() //NOSONAR
 			{
 				public boolean verify(String hostname, SSLSession session) 
@@ -166,6 +244,7 @@ public class CustomHttpClient {
 					return true; //NOSONAR
 				}
 			});
+			
 			SSLContext context = SSLContext.getInstance("TLS");
 			context.init(null, new X509TrustManager[]{new X509TrustManager(){
 			public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {} //NOSONAR
@@ -175,69 +254,136 @@ public class CustomHttpClient {
 			}}}, new SecureRandom());
 			HttpsURLConnection.setDefaultSSLSocketFactory(
 			context.getSocketFactory());
+			
+ 			con = myurl.openConnection();
+			if(con.getClass().toString().contains("HttpsURLConnection")) 
+			{
+	            con.setDoOutput(true);
+	            ((java.net.HttpURLConnection) con).setRequestMethod(method);
+	            con.setConnectTimeout(timeout);
+	        	if(parameters != null)
+	            {
+	        		for (Map.Entry<String, List<String>> entry : parameters.entrySet())
+	    	        {
+	    	        	String key = entry.getKey();
+	    	        	List<String> list = entry.getValue();
+	    	        	for(int i = 0; i<list.size(); i++)
+	    	        	{
+	    	        		con.setRequestProperty(key, list.get(i));
+	    	        	}
+	    	        }  	            
+	            }	            
+	            if(method.equalsIgnoreCase(HttpMethod.POST) || method.equalsIgnoreCase(HttpMethod.PUT))
+	            {
+	               	if(body == null && parameters != null)
+	            	{
+	               		body = Utility.buildQuery(parameters);
+	            	}
+	         	 
+	               	if(body != null)
+	               	{
+	             		postData = body.getBytes(StandardCharsets.UTF_8);
+		     	        try (DataOutputStream wr = new DataOutputStream(con.getOutputStream())) {		
+			                wr.write(postData);
+			            }
+	               	}
+	            }
+	            
+	            statusCode = ((java.net.HttpURLConnection) con).getResponseCode();
+	            responseHeader = con.getHeaderFields();
+	 
+	            try (
+	            		BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()))) 
+	            {
+
+	                String line;
+	                int count = 0;
+	                while ((line = br.readLine()) != null) {
+	                	if(count > 0)
+	                    {
+	                		content.append(System.lineSeparator());
+	                    }
+	                    content.append(line);
+	                    count++;
+	                }
+	            }
+	            
+	            ((java.net.HttpURLConnection) con).disconnect();
+	  
+			} 
+			else if(con.getClass().toString().contains("HttpURLConnection")) 
+			{
+	            con.setDoOutput(true);
+	            ((java.net.HttpURLConnection) con).setRequestMethod(method);
+	            con.setConnectTimeout(timeout);
+	            
+	            if(parameters != null)
+	            {
+	            	for (Map.Entry<String, List<String>> entry : parameters.entrySet())
+	    	        {
+	    	        	String key = entry.getKey();
+	    	        	List<String> list = entry.getValue();
+	    	        	for(int i = 0; i<list.size(); i++)
+	    	        	{
+	    	        		con.setRequestProperty(key, list.get(i));
+	    	        	}
+	    	        }           
+	            }
+	            
+	            if(method.equalsIgnoreCase(HttpMethod.POST) || method.equalsIgnoreCase(HttpMethod.PUT))
+	            {
+	               	if(body == null && parameters != null)
+	            	{
+	               		body = Utility.buildQuery(parameters);
+	            	}
+	               	if(body != null)
+	               	{
+	             		postData = body.getBytes(StandardCharsets.UTF_8);
+		     	        try (DataOutputStream wr = new DataOutputStream(con.getOutputStream())) {		
+			                wr.write(postData);
+			            }
+	               	}
+	            }
+	            statusCode = ((java.net.HttpURLConnection) con).getResponseCode();
+	            responseHeader = con.getHeaderFields();
+	            
+	            try (
+	            		BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()))) 
+	            {
+
+	                String line;
+	                int count = 0;
+	                while ((line = br.readLine()) != null) {
+	                	if(count > 0)
+	                    {
+	                		content.append(System.lineSeparator());
+	                    }
+	                    content.append(line);
+	                    count++;
+	                }
+	            }
+				
+			}
         	
-        	con = (HttpsURLConnection) myurl.openConnection();
-     	 
-            con.setDoOutput(true);
-            con.setRequestMethod(method);
-            con.setConnectTimeout(timeout);
-
-
-           
-
-        	if(parameters != null)
-            {
-            	setParameters(con, parameters);	            
-            }
-            
-            if(method.equalsIgnoreCase(HttpMethod.POST) || method.equalsIgnoreCase(HttpMethod.PUT))
-            {
-               	if(body == null && parameters != null)
-            	{
-               		body = Utility.buildQuery(parameters);
-            	}
-         	 
-               	if(body != null)
-               	{
-             		postData = body.getBytes(StandardCharsets.UTF_8);
-	     	        try (DataOutputStream wr = new DataOutputStream(con.getOutputStream())) {		
-		                wr.write(postData);
-		            }
-               	}
-            }
-            
-            statusCode = con.getResponseCode();
-            responseHeader = con.getHeaderFields();
- 
-            try (
-            		BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()))) 
-            {
-
-                String line;
-                int count = 0;
-                while ((line = br.readLine()) != null) {
-                	if(count > 0)
-                    {
-                		content.append(System.lineSeparator());
-                    }
-                    content.append(line);
-                    count++;
-                }
-            }
-
-        } catch (NoSuchAlgorithmException | KeyManagementException e) {
+        } 
+		catch (NoSuchAlgorithmException | KeyManagementException e) {
 			e.printStackTrace();
-		} 
-		finally 
+		}
+		catch(IOException e)
 		{
-        	if(con != null)
-            {
-        		con.disconnect();
-            }
-        }
+			e.printStackTrace();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 		result = new ResponseEntityCustom(content.toString(), statusCode, responseHeader);
 		return result;
 	}
+
+	
+
+	
 
 	public static ResponseEntityCustom sendRequestHttpX(String method, String endpoint, Map<String, List<String>> parameters, Headers requestHeaders, String body, int timeout) throws IOException //NOSONAR
 	{
@@ -307,7 +453,7 @@ public class CustomHttpClient {
 		result = new ResponseEntityCustom(content.toString(), statusCode, responseHeader);
 		return result;
 	}
-	*/
+	
 
 	public static String buildQuery(Map<String, List<String>> params) 
 	{

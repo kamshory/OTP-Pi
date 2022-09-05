@@ -9,12 +9,15 @@ public class SubscriberActiveMQ extends Thread{
 	
 	public SubscriberActiveMQ()
 	{
-		ConfigSubscriberActiveMQ.load(Config.getSubscriberActiveMQSettingPath());
+		/**
+		 * Just default constructor
+		 */
 	}
 
 	@Override
 	public void run()
 	{
+		ConfigSubscriberActiveMQ.load(Config.getSubscriberActiveMQSettingPath());
 		this.activeMQIstance = new ActiveMQInstance();
 		this.activeMQIstance.start();
 	}
