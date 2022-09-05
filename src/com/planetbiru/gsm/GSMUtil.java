@@ -16,6 +16,7 @@ import com.planetbiru.config.ConfigSMS;
 import com.planetbiru.config.DataModem;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.util.Utility;
+import com.planetbiru.web.HttpUtil;
 
 public class GSMUtil {
 	
@@ -811,9 +812,11 @@ public class GSMUtil {
 		GSMInstance instance;
 		boolean addHock = false;
 		JSONObject info = new JSONObject();
+		boolean connected = false;
 		try 
 		{
 			instance = GSMUtil.getGSMInstanceByPort(port);	
+			connected = instance.isConnected();
 		} 
 		catch (ModemNotFoundException e) 
 		{
@@ -822,11 +825,12 @@ public class GSMUtil {
 		}		
 		try 
 		{
-			if(!instance.isConnected())
+			if(!connected)
 			{
 				instance.connect(null);
+				connected = instance.isConnected();
 			}
-			if(currentValue != null && newValue != null && !currentValue.equals(newValue))
+			if(connected && currentValue != null && newValue != null && !currentValue.equals(newValue))
 			{
 				newValue = newValue.trim();
 				String command = "AT+EGMR=1,7,\""+newValue+"\"";
@@ -835,7 +839,7 @@ public class GSMUtil {
 				info.put(JsonKey.COMMAND, command);
 			}
 		    
-			if(addHock)
+			if(connected && addHock)
 			{
 				instance.disconnect();
 			}
@@ -854,9 +858,11 @@ public class GSMUtil {
 		GSMInstance instance;
 		boolean addHock = false;
 		JSONObject info = new JSONObject();
+		boolean connected = false;
 		try 
 		{
 			instance = GSMUtil.getGSMInstanceByPort(port);	
+			connected = instance.isConnected();
 		} 
 		catch (ModemNotFoundException e) 
 		{
@@ -865,24 +871,24 @@ public class GSMUtil {
 		}		
 		try 
 		{
-			if(!instance.isConnected())
+			if(!connected)
 			{
 				if(currentPIN.isEmpty())
 				{
 					currentPIN = null;
 				}
-				instance.connect(currentPIN);
+				connected = instance.connect(currentPIN);
 			}
-			if(pin1 != null && !pin1.isEmpty())
+			if(connected && pin1 != null && !pin1.isEmpty())
 			{
 				pin1 = pin1.trim();
-				String command = "AT+CLCK=\"SC\",1,\""+pin1+"\"";
+				String command = "AT+CLCK=\"SC\",1,\"" + pin1 + "\"";
 				String response = instance.executeATCommand(command);
 				info.put(JsonKey.RESPONSE, response);
 				info.put(JsonKey.COMMAND, command);
 			}
 		    
-			if(addHock)
+			if(connected && addHock)
 			{
 				instance.disconnect();
 			}
@@ -893,6 +899,7 @@ public class GSMUtil {
 			/**
 			 * Do nothing
 			 */
+			HttpUtil.broardcastWebSocket(e.getMessage());
 		}
 		return info;
 	}
@@ -901,9 +908,11 @@ public class GSMUtil {
 		GSMInstance instance;
 		boolean addHock = false;
 		JSONObject info = new JSONObject();
+		boolean connected = false;
 		try 
 		{
 			instance = GSMUtil.getGSMInstanceByPort(port);	
+			connected = instance.isConnected();
 		} 
 		catch (ModemNotFoundException e) 
 		{
@@ -912,30 +921,37 @@ public class GSMUtil {
 		}		
 		try 
 		{
-			if(!instance.isConnected())
+			if(!connected)
 			{
 				if(currentPIN.isEmpty())
 				{
 					currentPIN = null;
 				}
-				instance.connect(currentPIN);
+				connected = instance.connect(currentPIN);
 			}
-			String command = "AT+CLCK=\"SC\",0,\""+currentPIN+"\"";
-			String response = instance.executeATCommand(command);
-			info.put(JsonKey.RESPONSE, response);
-			info.put(JsonKey.COMMAND, command);
-		    
-			if(addHock)
+			if(connected)
 			{
-				instance.disconnect();
+				String command = "AT+CLCK=\"SC\",0,\""+currentPIN+"\"";
+				String response = instance.executeATCommand(command);
+				info.put(JsonKey.RESPONSE, response);
+				info.put(JsonKey.COMMAND, command);
+			    
+				if(addHock)
+				{
+					instance.disconnect();
+				}
 			}
-			
+			else
+			{
+				HttpUtil.broardcastWebSocket("The selected device is not connected");
+			}
 		} 
 		catch (GSMException | InvalidPortException e) 
 		{
 			/**
 			 * Do nothing
 			 */
+			HttpUtil.broardcastWebSocket(e.getMessage());
 		}
 		return info;
 	}
@@ -990,12 +1006,6 @@ public class GSMUtil {
 		}
 		return result;
 	}
-
-	
-	
-	
-
-	
 
 }
 
