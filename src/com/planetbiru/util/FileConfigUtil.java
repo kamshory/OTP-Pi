@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.regex.Pattern;
 
 import com.planetbiru.util.OSUtil.OS;
 
@@ -73,11 +74,11 @@ public class FileConfigUtil {
 	public static String getDirSeparator() {
 		if(OSUtil.getOS().equals(OS.WINDOWS))
 		{
-			return "/";
+			return "\\";
 		}
 		else
 		{
-			return "\\";
+			return "/";
 		}
 	}
 
@@ -119,7 +120,7 @@ public class FileConfigUtil {
 	 * Prepare directory before save a file
 	 * @param fileName File path to be save after directory created
 	 */
-	public static void prepareDir(String fileName)
+	public static void prepareDir2(String fileName)
 	{
 		String parent1 = getParentName(fileName);
 		String parent2 = getParentName(parent1);
@@ -157,6 +158,36 @@ public class FileConfigUtil {
 			d4.mkdirs();
 		}
 		
+	}
+	
+	public static void prepareDir(String fileName)
+	{
+		String separatorDir = FileConfigUtil.getDirSeparator();
+
+		String[] arr;
+		if(OSUtil.getOS().equals(OS.WINDOWS))
+		{
+			arr = fileName.split(Pattern.quote("\\"));
+		}
+		else
+		{
+			arr = fileName.split("/");
+		}
+		StringBuilder bld = new StringBuilder();
+		for(int i = 0; i<arr.length - 1; i++)
+		{
+			bld.append(arr[i]);
+			String dir = bld.toString();
+			bld.append(separatorDir);
+			
+			File d = new File(dir);
+			System.out.println(dir);
+			if(!d.exists())
+			{
+				d.mkdirs();
+			}
+			
+		}
 	}
 	
 	public static String getFolderName(String fullPath)

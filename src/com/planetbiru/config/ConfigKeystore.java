@@ -102,7 +102,7 @@ public class ConfigKeystore {
 		}
 		String fileName = FileConfigUtil.fixFileName(dir + path);
 		fileName = FileConfigUtil.fixFileName(fileName);
-		prepareDir(fileName);
+		FileConfigUtil.prepareDir(fileName);
 		
 		try 
 		{
@@ -112,31 +112,6 @@ public class ConfigKeystore {
 		{
 			logger.error(e.getMessage(), e);
 		}
-	}
-	
-	/**
-	 * Prepare directory before save a file
-	 * @param fileName File path to be save after directory created
-	 */
-	private static void prepareDir(String fileName) {
-		File file = new File(fileName);
-		String directory1 = file.getParent();
-		File file2 = new File(directory1);
-		String directory2 = file2.getParent();
-		
-		File d1 = new File(directory1);
-		File d2 = new File(directory2);		
-
-		if(!d2.exists())
-		{
-			d2.mkdir();
-		}
-		if(!d1.exists())
-		{
-			d1.mkdir();
-		}
-		File file3 = new File(fileName);
-		file3.getParentFile().mkdirs();
 	}
 	
 	public static JSONObject getJSONObject() {
@@ -186,7 +161,7 @@ public class ConfigKeystore {
 		}
 		String fileName = FileConfigUtil.fixFileName(dir + path);
 		fileName = FileConfigUtil.fixFileName(fileName);
-		prepareDir(fileName);
+		FileConfigUtil.prepareDir(fileName);
 		try 
 		{
 			FileConfigUtil.write(fileName, binaryData);
