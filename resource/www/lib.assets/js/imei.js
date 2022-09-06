@@ -9,22 +9,7 @@ $('.row-table tbody').append(
 }
 var modemList = {};
 $(document).ready(function (e1) {
-    $.ajax({
-        type: "GET",
-        url: "data/modem/list",
-        dataType: "json",
-        success: function (data) 
-        {
-            modemList = data;
-            for (const key in data) 
-            {
-                if (data.hasOwnProperty(key)) 
-                {
-                    addItem(data[key])
-                }
-            }
-        }
-    });
+    initTableContent();
     $(document).on('click', '.imei-table tbody tr td a', function(e2){
         e2.preventDefault();
         var id = $(this).closest('tr').attr('data-pk-id');
@@ -67,10 +52,33 @@ $(document).ready(function (e1) {
                 success: function(data) {
                     $('#imei-changer').find('input#current').val(data.imei);
                     $('#imei-changer').find('input#new').val(data.imei);
+                    initTableContent();
+                    $('#imei-changer').modal('hide');
                 }
             });
         }
     });
 
 });
+
+function initTableContent()
+{
+    $.ajax({
+        type: "GET",
+        url: "data/modem/list",
+        dataType: "json",
+        success: function (data) 
+        {
+            modemList = data;
+            $('.row-table tbody').empty();
+            for (const key in data) 
+            {
+                if (data.hasOwnProperty(key)) 
+                {
+                    addItem(data[key])
+                }
+            }
+        }
+    });
+}
 

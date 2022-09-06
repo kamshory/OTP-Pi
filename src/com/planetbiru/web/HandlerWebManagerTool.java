@@ -118,6 +118,12 @@ public class HandlerWebManagerTool implements HttpHandler {
 				result.put("imei", newIMEI);
 				result.put(JsonKey.RESPONSE, ConstantString.OK);
 				
+				
+				ConfigModem.load(Config.getModemSettingPath());		
+				DataModem modemData = ConfigModem.getModemDataByPort(port);
+				modemData.setImei(newIMEI);
+				ConfigModem.update(modemData.getId(), modemData);
+				ConfigModem.save();
 			}
 			else
 			{
