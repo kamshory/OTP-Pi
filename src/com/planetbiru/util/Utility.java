@@ -27,7 +27,6 @@ import java.util.TimeZone;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.apache.commons.codec.digest.Md5Crypt;
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.planetbiru.config.Config;
