@@ -11,7 +11,6 @@ mkdir /media/usb/b
 mkdir /media/usb/c
 mkdir /media/usb/d
 
-
 yum install -y nano
 yum install -y telnet
 yum install -y lm_sensors
@@ -21,7 +20,8 @@ yum install -y zip
 yum install -y unzip
 yum install -y bridge-utils
 yum install -y dnsmasq
-
+yum install -y wvdial
+yum install -y java-1.8.0-openjdk
 
 echo -e "dtparam=i2c_arm=on" >> /boot/config.txt
 echo -e "dtoverlay=i2c-rtc,ds3231" >> /boot/config.txt
@@ -38,7 +38,6 @@ echo -e '[Install]' >> /usr/lib/systemd/system/rtc.service
 echo -e 'WantedBy=multi-user.target' >> /usr/lib/systemd/system/rtc.service
 systemctl enable rtc.service
 systemctl start rtc.service
-
 
 yum install -y dhcp
 echo -e 'ESSID=OTP-Pi' > /etc/sysconfig/network-scripts/ifcfg-wlan0
@@ -91,7 +90,6 @@ echo -e 'WantedBy=multi-user.target' >> /usr/lib/systemd/system/dhcp.service
 systemctl enable dhcpd.service
 systemctl start dhcpd.service
 
-
 echo -e 'TYPE="Ethernet"' > /etc/sysconfig/ifcfg-eth0
 echo -e 'BOOTPROTO=none' >> /etc/sysconfig/ifcfg-eth0
 echo -e 'NM_CONTROLLED="yes"' >> /etc/sysconfig/ifcfg-eth0
@@ -108,19 +106,11 @@ echo -e 'GATEWAY=192.168.0.1' >> /etc/sysconfig/ifcfg-eth0
 echo -e 'NETMASK=255.255.255.0' >> /etc/sysconfig/ifcfg-eth0
 echo -e 'DNS2=8.8.4.4' >> /etc/sysconfig/ifcfg-eth0
 
-
-yum install -y wvdial
-
-
-yum install -y java-1.8.0-openjdk
-
-
 firewall-cmd --permanent --add-port=8888/tcp 
 firewall-cmd --permanent --add-port=8889/tcp 
 firewall-cmd --permanent --add-port=80/tcp 
 firewall-cmd --permanent --add-port=443/tcp 
 firewall-cmd --reload
-
 
 echo -e '#!/bin/sh' > /var/otp-pi/mountusb.sh
 echo -e '' >> /var/otp-pi/mountusb.sh
@@ -129,14 +119,12 @@ echo -e '/bin/mount /dev/sdb /media/usb/b' >> /var/otp-pi/mountusb.sh
 echo -e '/bin/mount /dev/sdc /media/usb/c' >> /var/otp-pi/mountusb.sh
 echo -e '/bin/mount /dev/sdd /media/usb/d' >> /var/otp-pi/mountusb.sh
 
-
 echo -e '#!/bin/sh' > /var/otp-pi/umountusb.sh
 echo -e '' >> /var/otp-pi/mountusb.sh
 echo -e '/bin/umount /dev/sda' >> /var/otp-pi/umountusb.sh
 echo -e '/bin/umount /dev/sdb' >> /var/otp-pi/umountusb.sh
 echo -e '/bin/umount /dev/sdc' >> /var/otp-pi/umountusb.sh
 echo -e '/bin/umount /dev/sdd' >> /var/otp-pi/umountusb.sh
-
 
 echo -e '[Unit]' > /usr/lib/systemd/system/mountusb.service
 echo -e 'Description=otp-pi' >> /usr/lib/systemd/system/mountusb.service
@@ -153,8 +141,6 @@ echo -e 'WantedBy=multi-user.target' >> /usr/lib/systemd/system/mountusb.service
 systemctl daemon-reload
 systemctl enable mountusb.service
 systemctl start mountusb.service
-
-
 
 echo -e '#!/bin/sh' > /var/otp-pi/start.sh
 echo -e '' >> /var/otp-pi/start.sh
@@ -188,7 +174,6 @@ echo -e 'WantedBy=multi-user.target' >> /usr/lib/systemd/system/otp-pi.service
 systemctl daemon-reload
 systemctl enable otp-pi.service
 systemctl start otp-pi.service
-
 
 ```
 

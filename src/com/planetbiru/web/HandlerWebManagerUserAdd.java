@@ -38,7 +38,7 @@ public class HandlerWebManagerUserAdd implements HttpHandler {
 				}
 				Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);		
 			    String username = queryPairs.getOrDefault(JsonKey.USERNAME, "");
-			    String password = queryPairs.getOrDefault(JsonKey.PASSWORD, "");
+			    String password = Utility.hashPasswordGenerator(queryPairs.getOrDefault(JsonKey.PASSWORD, ""));
 			    String email = queryPairs.getOrDefault(JsonKey.EMAIL, "");
 			    String name = queryPairs.getOrDefault(JsonKey.NAME, "");
 			    String phone = queryPairs.getOrDefault(JsonKey.PHONE, "");

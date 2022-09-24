@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import com.fazecast.jSerialComm.SerialPort;
 import com.planetbiru.App;
+import com.planetbiru.ServerWebSocketAdmin;
 import com.planetbiru.config.Config;
 import com.planetbiru.config.ConfigAPI;
 import com.planetbiru.config.ConfigAPIUser;
@@ -49,6 +50,7 @@ import com.planetbiru.gsm.InvalidSIMPinException;
 import com.planetbiru.gsm.SMS;
 import com.planetbiru.gsm.SerialPortConnectionException;
 import com.planetbiru.user.NoUserRegisteredException;
+import com.planetbiru.user.User;
 import com.planetbiru.user.WebUserAccount;
 import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.FileNotFoundException;
@@ -266,6 +268,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
+				Map<String, User> users = WebUserAccount.getUsers();
 				ConfigModem.load(Config.getModemSettingPath());
 				
 				ConfigEmail.load(Config.getEmailSettingPath());		
@@ -276,6 +279,7 @@ public class HandlerWebManagerData implements HttpHandler {
 				
 				JSONArray subscriberList = new JSONArray();
 				JSONArray restList = new JSONArray();
+				JSONArray onlineUserList = new JSONArray();
 				
 				subscriberList.put(new JSONObject().put(JsonKey.NAME, "WebSocket").put(JsonKey.ID, "ws").put(JsonKey.ACTIVE, App.getWebSocketSubscriber().isConnected()));
 				subscriberList.put(new JSONObject().put(JsonKey.NAME, "Redis").put(JsonKey.ID, "redis").put(JsonKey.ACTIVE, App.getRedisSubscriber().isConnected()));
@@ -287,11 +291,21 @@ public class HandlerWebManagerData implements HttpHandler {
 				restList.put(new JSONObject().put(JsonKey.NAME, "HTTP").put(JsonKey.ID, "http").put(JsonKey.ACTIVE, ConfigAPI.isHttpEnable()));
 				restList.put(new JSONObject().put(JsonKey.NAME, "HTTPS").put(JsonKey.ID, "https").put(JsonKey.ACTIVE, ConfigAPI.isHttpsEnable()));
 
+				Map<String, Integer> onlineUser = ServerWebSocketAdmin.getOnlineUser();
+				for (Map.Entry<String, Integer> ou : onlineUser.entrySet()) 
+				{
+					String id = ou.getKey();
+					User user = users.getOrDefault(id, new User());
+					String name = user.getName();
+					onlineUserList.put(new JSONObject().put(JsonKey.ID, id).put(JsonKey.NAME, name).put(JsonKey.ACTIVATE, true));
+				}
+				
 				JSONObject list = new JSONObject()
 						.put("modem", modemList)
 						.put("email", emailList)
 						.put("subscriber", subscriberList)
 						.put("rest", restList)
+						.put("admin", onlineUserList)
 						;
 				responseBody = list.toString(4).getBytes();
 			}

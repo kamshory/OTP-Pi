@@ -261,7 +261,7 @@ public class ConfigAPIUser {
 		String name = queryPairs.getOrDefault(JsonKey.NAME, "").trim();
 		String phone = queryPairs.getOrDefault(JsonKey.PHONE, "").trim();
 		String email = queryPairs.getOrDefault(JsonKey.EMAIL, "").trim();
-		String password = queryPairs.getOrDefault(JsonKey.PASSWORD, "").trim();
+		String password = Utility.hashPasswordGenerator(queryPairs.getOrDefault(JsonKey.PASSWORD, ""));
 		boolean blocked = queryPairs.getOrDefault(JsonKey.BLOCKED, "").equals("1");
 		boolean active = queryPairs.getOrDefault(JsonKey.ACTIVE, "").equals("1");
 
@@ -291,7 +291,7 @@ public class ConfigAPIUser {
 
 	public static void add(Map<String, String> queryPairs) {
 		String username = queryPairs.getOrDefault(JsonKey.USERNAME, "");
-	    String password = queryPairs.getOrDefault(JsonKey.PASSWORD, "");
+	    String password = Utility.hashPasswordGenerator(queryPairs.getOrDefault(JsonKey.PASSWORD, ""));
 	    String email = queryPairs.getOrDefault(JsonKey.EMAIL, "");
 	    String name = queryPairs.getOrDefault(JsonKey.NAME, "");
 	    String phone = queryPairs.getOrDefault(JsonKey.PHONE, "");

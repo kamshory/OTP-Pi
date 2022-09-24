@@ -102,6 +102,9 @@
                         #email > g{
                             display: none;
                         }
+                        #admin > g{
+                            display: none;
+                        }
                         #svg_rect{
                             display: none;
                         }
@@ -142,10 +145,29 @@
 
                         <g id="admin">
                             <g id="admin_1">
-                                <rect y="20" x="300" height="30" width="120" stroke="#000" fill="#fff"/>
-                                <text y="35" x="360" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Admin 1</text>  
-                                <path d="M 360 50 360 140 270 140 270 240" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" />  
+                                <rect y="50" x="330" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="65" x="390" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Admin 1</text>  
+                                <path d="M 330 65 270 65 270 240" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" />  
                             </g>
+
+                            <g id="admin_2">
+                                <rect y="90" x="330" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="105" x="390" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Admin 2</text>  
+                                <path d="M 330 105 285 105 285 240" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" />  
+                            </g>
+
+                            <g id="admin_3">
+                                <rect y="130" x="330" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="145" x="390" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Admin 3</text>  
+                                <path d="M 330 145 300 145 300 240" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" />  
+                            </g>
+
+                            <g id="admin_4">
+                                <rect y="170" x="330" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="185" x="390" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Admin 4</text>  
+                                <path d="M 330 185 315 185 315 240" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" />  
+                            </g>
+                            
                         </g>
 
                         <g id="subscriber">              
@@ -264,118 +286,7 @@
                 </svg>
             </div>
 
-            <script>
-                var mon = new monitor();
-                $(document).ready(function(e1){
-                    $.ajax({
-                        type: 'GET',
-                        url: '/data/interface/list',
-                        dataType:'json',
-                        success: function(data) {
-                            renderData(data);
-                        }
-                    });    
-        
-                });
-                
-                function renderData(data)
-                {
-                    
-                    mon.resetEmail();
-                    for(var i in data.email)
-                    {
-                        mon.addEmail(data.email[i]);
-                    }
-
-                    mon.resetModem;
-                    for(var i in data.modem)
-                    {
-                        mon.addModem(data.modem[i]);
-                    }
-                }
-
-                function monitor()
-                {
-                    this.modems = [];
-
-                    this.resetModem = function()
-                    {
-                        this.modems = [];
-                        $('#modem > *').each(function(e){
-                            $(this)[0].style.display = 'none';
-                        });
-                    }
-                    this.addModem = function(data)
-                    {
-                        this.modems.push(data);
-                        var id = '#modem_'+this.modems.length;
-                        if($(id).length)
-                        {
-                            $(id).get(0).style.display = 'block';
-                            $(id).get(0).setAttribute('data-id', data.id);
-                            $(id+" > text").get(0).firstChild.textContent = data.name;
-                        }
-                    }
-
-                    this.emails = [];
-
-                    this.resetEmail = function()
-                    {
-                        this.emails = [];
-                        $('#email > *').each(function(e){
-                            $(this)[0].style.display = 'none';
-                        });
-                    }
-                    this.addEmail = function(data)
-                    {
-                        this.emails.push(data);
-                        var id = '#email_'+this.emails.length;
-                        if($(id).length > 0)
-                        {
-                            $(id).get(0).style.display = 'block';
-                            $(id).get(0).setAttribute('data-id', data.id);
-                            $(id+" > text").get(0).firstChild.textContent = data.name;
-                        }
-                    }
-                }
-
-                function domToJSON(dom)
-                {
-                    var arr = [];
-                    $(dom).find(' > *').each(function(e){
-                        var obj = $(this)[0];
-                        var json = toJSON(obj);
-                        arr.push(json);
-                    });
-                    return arr;
-                }
-
-                function toJSON(obj)
-                {
-                    var dom = {};
-                    var attr = obj.getAttributeNames();
-                    dom.nodeName = obj.nodeName;
-                    if(attr.length > 0)
-                    {
-                        dom.attributes = {};
-                        for(var i in attr)
-                        {
-                            console.log(attr[i])
-                            dom.attributes[attr[i]] = obj.getAttribute(attr[i]);
-                        }
-                    }
-                    if($(obj).children().length > 0)
-                    {
-                        dom.children = domToJSON(obj);
-                    }
-                    else
-                    {
-                        dom.textNode = $(obj).text()
-                    }
-                    return dom;
-                }
-
-            </script>
+            <script src="lib.assets/js/monitor.min.js"></script>
         </div>
     </div>
     <div class="waiting-server-up">

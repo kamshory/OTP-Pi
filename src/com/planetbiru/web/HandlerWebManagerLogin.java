@@ -33,7 +33,7 @@ public class HandlerWebManagerLogin implements HttpHandler {
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
 	    
 	    String username = queryPairs.getOrDefault(JsonKey.USERNAME, "");
-	    String password = queryPairs.getOrDefault(JsonKey.PASSWORD, "");
+	    String password = Utility.hashPasswordGenerator(queryPairs.getOrDefault(JsonKey.PASSWORD, ""));
 	    String next = queryPairs.getOrDefault(JsonKey.NEXT, "");
 	    
 	    if(next.isEmpty())

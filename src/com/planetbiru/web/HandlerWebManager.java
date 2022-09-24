@@ -910,7 +910,7 @@ public class HandlerWebManager implements HttpHandler {
 		String endpoint = queryPairs.getOrDefault(JsonKey.ENDPOINT, "").trim();
 		String username = queryPairs.getOrDefault(JsonKey.USERNAME, "").trim();
 		String email = queryPairs.getOrDefault(JsonKey.EMAIL, "").trim();
-		String password = queryPairs.getOrDefault(JsonKey.PASSWORD, "").trim();
+		String password = Utility.hashPasswordGenerator(queryPairs.getOrDefault(JsonKey.PASSWORD, ""));
 		String company = queryPairs.getOrDefault(JsonKey.COMPANY, "").trim();
 		boolean active = queryPairs.getOrDefault(JsonKey.ACTIVE, "").trim().equals("1");
 		
@@ -935,7 +935,7 @@ public class HandlerWebManager implements HttpHandler {
 		String endpoint = queryPairs.getOrDefault(JsonKey.ENDPOINT, "").trim();
 		String username = queryPairs.getOrDefault(JsonKey.USERNAME, "").trim();
 		String email = queryPairs.getOrDefault(JsonKey.EMAIL, "").trim();
-		String password = queryPairs.getOrDefault(JsonKey.PASSWORD, "").trim();
+		String password = Utility.hashPasswordGenerator(queryPairs.getOrDefault(JsonKey.PASSWORD, ""));
 		String company = queryPairs.getOrDefault(JsonKey.COMPANY, "").trim();
 		boolean active = queryPairs.getOrDefault(JsonKey.ACTIVE, "").trim().equals("1");
 		
@@ -962,7 +962,7 @@ public class HandlerWebManager implements HttpHandler {
 		String endpoint = queryPairs.getOrDefault(JsonKey.ENDPOINT, "").trim();
 		String username = queryPairs.getOrDefault(JsonKey.USERNAME, "").trim();
 		String email = queryPairs.getOrDefault(JsonKey.EMAIL, "").trim();
-		String password = queryPairs.getOrDefault(JsonKey.PASSWORD, "").trim();
+		String password = Utility.hashPasswordGenerator(queryPairs.getOrDefault(JsonKey.PASSWORD, ""));
 		String company = queryPairs.getOrDefault(JsonKey.COMPANY, "").trim();
 		boolean active = queryPairs.getOrDefault(JsonKey.ACTIVE, "").trim().equals("1");
 		
@@ -1569,7 +1569,7 @@ public class HandlerWebManager implements HttpHandler {
 		Map<String, String> queryPairs = Utility.parseQueryPairs(requestBody);
 		String loggedUsername = cookie.getSessionValue(JsonKey.USERNAME, "");
 		String phone = queryPairs.getOrDefault(JsonKey.PHONE, "");
-		String password = queryPairs.getOrDefault(JsonKey.PASSWORD, "");
+		String password = Utility.hashPasswordGenerator(queryPairs.getOrDefault(JsonKey.PASSWORD, ""));
 		String email = queryPairs.getOrDefault(JsonKey.EMAIL, "");
 		String name = queryPairs.getOrDefault(JsonKey.NAME, "");
 		if(queryPairs.containsKey(JsonKey.UPDATE))

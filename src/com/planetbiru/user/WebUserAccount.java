@@ -32,27 +32,27 @@ public class WebUserAccount {
 	
 	public static void addUser(User user)
 	{
-		WebUserAccount.users.put(user.getUsername(), user);
+		WebUserAccount.getUsers().put(user.getUsername(), user);
 	}
 	
 	public static void addUser(String username, JSONObject jsonObject) 
 	{
 		User user = new User(jsonObject);
-		WebUserAccount.users.put(username, user);
+		WebUserAccount.getUsers().put(username, user);
 	}
 	
 	public static void addUser(JSONObject jsonObject) {
 		User user = new User(jsonObject);
-		WebUserAccount.users.put(jsonObject.optString(JsonKey.USERNAME, ""), user);
+		WebUserAccount.getUsers().put(jsonObject.optString(JsonKey.USERNAME, ""), user);
 	}	
 	
 	public static User getUser(String username) throws NoUserRegisteredException
 	{
-		if(WebUserAccount.users.isEmpty())
+		if(WebUserAccount.getUsers().isEmpty())
 		{
 			throw new NoUserRegisteredException("No user registered");
 		}
-		return WebUserAccount.users.getOrDefault(username, new User());
+		return WebUserAccount.getUsers().getOrDefault(username, new User());
 	}
 	
 	public static void activate(String username) throws NoUserRegisteredException 
@@ -92,17 +92,17 @@ public class WebUserAccount {
 	
 	public static void updateUser(User user)
 	{
-		WebUserAccount.users.put(user.getUsername(), user);
+		WebUserAccount.getUsers().put(user.getUsername(), user);
 	}
 	
 	public static void deleteUser(User user)
 	{
-		WebUserAccount.users.remove(user.getUsername());
+		WebUserAccount.getUsers().remove(user.getUsername());
 	}
 	
 	public static void deleteUser(String username) 
 	{
-		WebUserAccount.users.remove(username);
+		WebUserAccount.getUsers().remove(username);
 	}
 	
 	public static boolean checkUserAuth(Map<String, List<String>> headers) throws NoUserRegisteredException 
@@ -236,7 +236,7 @@ public class WebUserAccount {
 	public static JSONObject toJSONObject()
 	{
 		JSONObject json = new JSONObject();
-		for (Map.Entry<String, User> entry : WebUserAccount.users.entrySet())
+		for (Map.Entry<String, User> entry : WebUserAccount.getUsers().entrySet())
 		{
 			String username = entry.getKey();
 			JSONObject user = entry.getValue().toJSONObject();
@@ -246,7 +246,7 @@ public class WebUserAccount {
 	}
 	
 	public static User getUserByPhone(String userID) {
-		for (Map.Entry<String, User> entry : WebUserAccount.users.entrySet())
+		for (Map.Entry<String, User> entry : WebUserAccount.getUsers().entrySet())
 		{
 			if(!userID.isEmpty() && entry.getValue().getPhone().equals(userID))
 			{
@@ -257,7 +257,7 @@ public class WebUserAccount {
 	}
 	
 	public static User getUserByEmail(String userID) {
-		for (Map.Entry<String, User> entry : WebUserAccount.users.entrySet())
+		for (Map.Entry<String, User> entry : WebUserAccount.getUsers().entrySet())
 		{
 			if(!userID.isEmpty() && entry.getValue().getEmail().equals(userID))
 			{
@@ -268,10 +268,10 @@ public class WebUserAccount {
 	}
 	public static void reset()
 	{
-		WebUserAccount.users = new HashMap<>();
+		WebUserAccount.setUsers(new HashMap<>());
 	}
 	public static boolean isEmpty() {
-		return WebUserAccount.users.isEmpty();
+		return WebUserAccount.getUsers().isEmpty();
 	}
 
 	public static void delete(Map<String, String> queryPairs, String loggedUsername) {
@@ -406,7 +406,7 @@ public class WebUserAccount {
 		String name = queryPairs.getOrDefault(JsonKey.NAME, "").trim();
 		String phone = queryPairs.getOrDefault(JsonKey.PHONE, "").trim();
 		String email = queryPairs.getOrDefault(JsonKey.EMAIL, "").trim();
-		String password = queryPairs.getOrDefault(JsonKey.PASSWORD, "").trim();
+		String password = Utility.hashPasswordGenerator(queryPairs.getOrDefault(JsonKey.PASSWORD, ""));
 		boolean blocked = queryPairs.getOrDefault(JsonKey.BLOCKED, "").equals("1");
 		boolean active = queryPairs.getOrDefault(JsonKey.ACTIVE, "").equals("1");
 
@@ -451,7 +451,7 @@ public class WebUserAccount {
 
 	public static void add(Map<String, String> queryPairs) {
 		String username = queryPairs.getOrDefault(JsonKey.USERNAME, "");
-	    String password = queryPairs.getOrDefault(JsonKey.PASSWORD, "");
+	    String password = Utility.hashPasswordGenerator(queryPairs.getOrDefault(JsonKey.PASSWORD, ""));
 	    String email = queryPairs.getOrDefault(JsonKey.EMAIL, "");
 	    String name = queryPairs.getOrDefault(JsonKey.NAME, "");
 	    String phone = queryPairs.getOrDefault(JsonKey.PHONE, "");
@@ -469,5 +469,13 @@ public class WebUserAccount {
 		{
 			WebUserAccount.addUser(new User(jsonObject));		
 		}			
+	}
+
+	public static Map<String, User> getUsers() {
+		return users;
+	}
+
+	public static void setUsers(Map<String, User> users) {
+		WebUserAccount.users = users;
 	}
 }

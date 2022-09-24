@@ -30,7 +30,7 @@ import com.planetbiru.util.Utility;
 public class ServerWebSocketAdmin extends WebSocketServer{
 
 	private static Collection<WebSocketConnection> clients = new ArrayList<>();
-	private User user = new User();
+	private static Map<String, Integer> onlineUser = new HashMap<>();
 	
 	public ServerWebSocketAdmin(InetSocketAddress address) {
 		super(address);
@@ -48,16 +48,23 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 
 	@Override
 	public void onMessage(WebSocket conn, String message) {
-		/**
-		 * Do nothing
-		 */
+		User sender = new User();
+		for(WebSocketConnection client : ServerWebSocketAdmin.clients)
+		{
+			if(client.getConn().equals(conn))
+			{
+				sender = client.getUser();
+				break;
+			}
+		}
+		
 		try
 		{
 			JSONObject obj = new JSONObject(message);
 			String command = obj.optString(JsonKey.COMMAND, "");
 			if(command.equals("broadcast-message"))
 			{
-				ServerWebSocketAdmin.addSenderInfo(obj, this.user);
+				ServerWebSocketAdmin.addSenderInfo(obj, sender);
 				this.broadcastMessage(obj.toString(), conn, true);
 			}
 		}
@@ -69,7 +76,7 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 		}
 	}
 
-	private static void addSenderInfo(JSONObject obj, User user) {
+	private static void addSenderInfo(JSONObject obj, User sender) {
 		if(obj != null && obj.has(JsonKey.DATA) && obj.get(JsonKey.DATA) instanceof JSONArray)
 		{
 			JSONArray data = obj.getJSONArray(JsonKey.DATA);
@@ -80,7 +87,7 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 					JSONObject item = data.getJSONObject(i);
 					if(item != null)
 					{
-						item.put("sender_info", new JSONObject().put("username", user.getUsername()).put("name", user.getName()));
+						item.put("sender_info", new JSONObject().put("username", sender.getUsername()).put("name", sender.getName()));
 					}
 				}
 			}
@@ -122,11 +129,10 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 		
 		try 
 		{
-			User lUser = WebUserAccount.getUser(username);
-			if(WebUserAccount.checkUserAuth(lUser, password))
+			User user = WebUserAccount.getUser(username);
+			if(WebUserAccount.checkUserAuth(user, password))
 			{
-				this.user = lUser;
-				ServerWebSocketAdmin.clients.add(new WebSocketConnection(conn, lUser, request, path));
+				ServerWebSocketAdmin.clients.add(new WebSocketConnection(conn, user, request, path));
 				this.sendServerStatus(ConstantString.SERVICE_ALL, conn);
 			}
 			else
@@ -138,8 +144,19 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 		{
 			conn.close();
 		}
+		ServerWebSocketAdmin.updateConnectedClient();
 	}
 	
+	private static void updateConnectedClient() {
+		ServerWebSocketAdmin.onlineUser = new HashMap<>();
+		for(WebSocketConnection client : ServerWebSocketAdmin.clients)
+		{
+			String username = client.getUser().getUsername();
+			Integer online = ServerWebSocketAdmin.onlineUser.getOrDefault(username, Integer.valueOf(0));
+			ServerWebSocketAdmin.onlineUser.put(username, Integer.valueOf(online.intValue() + 1));
+		}
+	}
+
 	@Override
 	public void onStart() {
 		/**
@@ -158,7 +175,8 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 				ServerWebSocketAdmin.clients.remove(client);
 				break;
 			}
-		}		
+		}
+		ServerWebSocketAdmin.updateConnectedClient();
 	}
 	
 	public static void broadcastMessage(String message)
@@ -233,7 +251,15 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 	public static void broadcastServerInfo(String services)
 	{
 		JSONObject info = ServerInfo.buildServerInfo(services);
-		broadcastMessage(info.toString());
+		ServerWebSocketAdmin.broadcastMessage(info.toString());
+	}
+
+	public static Map<String, Integer> getOnlineUser() {
+		return ServerWebSocketAdmin.onlineUser;
+	}
+
+	public static void setOnlineUser(Map<String, Integer> onlineUser) {
+		ServerWebSocketAdmin.onlineUser = onlineUser;
 	}
 
 }

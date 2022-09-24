@@ -27,6 +27,7 @@ import java.util.TimeZone;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
+import org.apache.commons.codec.digest.Md5Crypt;
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.planetbiru.config.Config;
@@ -1457,6 +1458,9 @@ public class Utility {
 		str = str.replace("\r", "\r\n");
 		str = str.replace("\r\n\n", "\r\n");
 		return str;
+	}
+	public static String hashPasswordGenerator(String input) {
+		return Utility.sha256(input);
 	}
 	
 }
