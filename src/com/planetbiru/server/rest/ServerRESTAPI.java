@@ -47,9 +47,9 @@ public class ServerRESTAPI {
 				String keystorePassword = keystore.getFilePassword();
 				this.createHTTPSServer(keystoreFile, keystorePassword);		
 			}
-			catch (NoKeystoreException e2) 
+			catch (NoKeystoreException e) 
 			{
-				logger.error(e2.getMessage());
+				logger.error(e.getMessage());
 				HTTPService.setHttpsServer(null);
 				this.httpsStarted = false;
 			}
