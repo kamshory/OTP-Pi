@@ -44,7 +44,7 @@
 	<classpathentry exported="true" kind="lib" path="jar/netty-transport-native-epoll-4.1.32.Final-linux-x86_64.jar" sourcepath="jar/src/netty-transport-native-epoll-4.1.32.Final-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="jar/netty-transport-native-unix-common-4.1.32.Final.jar" sourcepath="jar/src/netty-transport-native-unix-common-4.1.32.Final-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="jar/proton-j-0.31.0.jar" sourcepath="jar/src/proton-j-0.31.0-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="jar/stompjms-client-1.19.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/stompjms-client-1.19.jar" sourcepath="jar/src/stompjms-client-1.19-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="jar/hawtdispatch-1.20.jar" sourcepath="jar/src/hawtdispatch-1.20-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="jar/hawtdispatch-transport-1.20.jar" sourcepath="jar/src/hawtdispatch-transport-1.20-sources.jar"/>
 	<classpathentry kind="lib" path="jar/javax.activation-1.2.0.jar" sourcepath="jar/src/javax.activation-1.2.0-sources.jar"/>

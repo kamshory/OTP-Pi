@@ -230,7 +230,7 @@ public class DeviceActivation {
 			cipherText = b.toByteArray();
 		} catch (IOException e) 
         {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}	    
 	    return Base64.getEncoder().encodeToString(cipherText);
 	}
