@@ -1,6 +1,6 @@
 package com.planetbiru.server.rest;
 
-public class NoKeyStoreException extends Exception {
+public class NoKeystoreException extends Exception {
 	/**
 	 * 
 	 */
@@ -8,7 +8,7 @@ public class NoKeyStoreException extends Exception {
 	/**
 	 * Default constructor
 	 */
-	public NoKeyStoreException() 
+	public NoKeystoreException() 
 	{ 
 		super(); 
 	}
@@ -16,7 +16,7 @@ public class NoKeyStoreException extends Exception {
 	 * Constructor with the message
 	 * @param message Message
 	 */
-	public NoKeyStoreException(String message) 
+	public NoKeystoreException(String message) 
 	{ 
 		super(message); 
 	}
@@ -25,7 +25,7 @@ public class NoKeyStoreException extends Exception {
 	 * @param message Message
 	 * @param cause Cause
 	 */
-	public NoKeyStoreException(String message, Throwable cause) 
+	public NoKeystoreException(String message, Throwable cause) 
 	{ 
 		super(message, cause); 
 	}
@@ -33,7 +33,7 @@ public class NoKeyStoreException extends Exception {
 	 * Constructor with cause
 	 * @param cause Cause
 	 */
-	public NoKeyStoreException(Throwable cause) 
+	public NoKeystoreException(Throwable cause) 
 	{ 
 		super(cause); 
 	}

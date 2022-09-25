@@ -13,7 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.planetbiru.server.rest.NoKeyStoreException;
+import com.planetbiru.server.rest.NoKeystoreException;
 import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.FileNotFoundException;
 import com.planetbiru.util.Utility;
@@ -172,14 +172,14 @@ public class ConfigKeystore {
 		}		
 	}
 
-	public static DataKeystore getActiveKeystore() throws NoKeyStoreException {
+	public static DataKeystore getActiveKeystore() throws NoKeystoreException {
 		for (Entry<String, DataKeystore> entry : ConfigKeystore.keystores.entrySet()) {
 			if(entry.getValue().isActive())
 			{
 				return entry.getValue();
 			}
 	    }
-		throw new NoKeyStoreException("No active keystore found");
+		throw new NoKeystoreException("No active keystore found");
 	}
 
 	public static void reset() {
