@@ -1,6 +1,7 @@
 package com.planetbiru.config;
 
 import java.io.IOException;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.json.JSONException;
@@ -30,7 +31,37 @@ public class ConfigNetEthernet {
 		
 	}
 
-	public static void load(String path) {
+	public static void load(String path, String osConfigPath)
+	{
+		ConfigNetEthernet.load(path, osConfigPath, false);
+	}
+	public static void load(String path, String osConfigPath, boolean system) {
+		if(system)
+		{
+			ConfigNetEthernet.loadOSConfig(osConfigPath);
+		}
+		else
+		{
+			ConfigNetEthernet.load(path);
+		}
+	}	
+
+	private static void loadOSConfig(String osConfigPath) {
+		Map<String, String> config;
+		try {
+			config = FileConfigUtil.loadConfig(osConfigPath);
+			ConfigNetEthernet.ipAddress = config.getOrDefault("IPADDR", "");
+			ConfigNetEthernet.prefix = config.getOrDefault("PREFIX", "");
+			ConfigNetEthernet.netmask = config.getOrDefault("NETMASK", "");
+			ConfigNetEthernet.gateway = config.getOrDefault("GATEWAY", "");
+			ConfigNetEthernet.dns1 = config.getOrDefault("DNS1", "");
+			ConfigNetEthernet.dns2 = config.getOrDefault("DNS2", "");
+		} catch (FileNotFoundException e) {
+			logger.error(e.getMessage(), e);
+		}	
+	}
+
+	private static void load(String path) {
 		ConfigNetEthernet.configPath = path;
 		String dir = Utility.getBaseDir();
 		if(dir.endsWith("/") && path.startsWith("/"))
@@ -77,7 +108,7 @@ public class ConfigNetEthernet {
 			}
 		}
 		
-	}	
+	}
 
 	public static void save()
 	{

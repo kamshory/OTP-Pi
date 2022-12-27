@@ -55,7 +55,7 @@ public class ResetDevice {
 		{
 			String defaultConfigDHCP = Config.getDhcpSettingPathDefault();
 			String configDHCP = Config.getDhcpSettingPath();
-			ConfigNetDHCP.load(defaultConfigDHCP);
+			ConfigNetDHCP.load(defaultConfigDHCP, Config.getOsDHCPConfigPath());
 			ConfigNetDHCP.save(configDHCP);
 			ConfigNetDHCP.apply(Config.getOsDHCPConfigPath());
 		}
@@ -63,7 +63,7 @@ public class ResetDevice {
 		{
 			String defaultConfigWLAN = Config.getWlanSettingPathDefault();
 			String configWLAN = Config.getWlanSettingPath();
-			ConfigNetWLAN.load(defaultConfigWLAN);
+			ConfigNetWLAN.load(defaultConfigWLAN, Config.getOsWLANConfigPath(), Config.getOsWLANConfigPath());
 			ConfigNetWLAN.save(configWLAN);
 			ConfigNetWLAN.apply(Config.getOsWLANConfigPath(), Config.getOsWLANConfigPath());
 			
@@ -72,7 +72,7 @@ public class ResetDevice {
 		{
 			String defaultConfigEthernet = Config.getEthernetSettingPathDefault();	
 			String configEthernet = Config.getEthernetSettingPath();
-			ConfigNetEthernet.load(defaultConfigEthernet);
+			ConfigNetEthernet.load(defaultConfigEthernet, Config.getOsEthernetConfigPath());
 			ConfigNetEthernet.save(configEthernet);
 			ConfigNetEthernet.apply(Config.getOsEthernetConfigPath());
 		}

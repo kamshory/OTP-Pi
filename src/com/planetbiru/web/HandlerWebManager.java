@@ -817,7 +817,7 @@ public class HandlerWebManager implements HttpHandler {
 			}
 			JSONArray rangeList = this.createRange(ranges);			
 			
-			ConfigNetDHCP.load(Config.getDhcpSettingPath());
+			ConfigNetDHCP.load(Config.getDhcpSettingPath(), Config.getOsDHCPConfigPath());
 			ConfigNetDHCP.setDomainName(domainName);
 			ConfigNetDHCP.setIpRouter(ipRouter);
 			ConfigNetDHCP.setNetmask(netmask);
@@ -833,7 +833,7 @@ public class HandlerWebManager implements HttpHandler {
 		
 		if(queryPairs.containsKey("save_wlan"))
 		{
-			ConfigNetWLAN.load(Config.getWlanSettingPath());
+			ConfigNetWLAN.load(Config.getWlanSettingPath(), Config.getOsWLANConfigPath(), Config.getOsSSIDKey());
 			ConfigNetWLAN.setEssid(queryPairs.getOrDefault("essid", "").trim());
 			ConfigNetWLAN.setKey(queryPairs.getOrDefault("key", "").trim());
 			ConfigNetWLAN.setKeyMgmt(queryPairs.getOrDefault("keyMgmt", "").trim());
@@ -848,7 +848,7 @@ public class HandlerWebManager implements HttpHandler {
 
 		if(queryPairs.containsKey("save_ethernet"))
 		{
-			ConfigNetEthernet.load(Config.getEthernetSettingPath());
+			ConfigNetEthernet.load(Config.getEthernetSettingPath(), Config.getOsEthernetConfigPath());
 			ConfigNetEthernet.setIpAddress(queryPairs.getOrDefault("ipAddress", "").trim());
 			ConfigNetEthernet.setPrefix(queryPairs.getOrDefault("prefix", "").trim());
 			ConfigNetEthernet.setNetmask(queryPairs.getOrDefault(JsonKey.NETMASK, "").trim());

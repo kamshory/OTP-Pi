@@ -1,6 +1,7 @@
 package com.planetbiru.config;
 
 import java.io.IOException;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.json.JSONException;
@@ -30,7 +31,53 @@ public class ConfigNetWLAN {
 	
 	private static Logger logger = Logger.getLogger(ConfigNetWLAN.class);
 	
-	public static void load(String path) {
+	public static void load(String path, String osConfigPath, String wpaPSKConfigPath)
+	{
+		ConfigNetWLAN.load(path, osConfigPath, wpaPSKConfigPath, false);
+	}
+	public static void load(String path, String osConfigPath, String wpaPSKConfigPath, boolean system) {
+		if(system)
+		{
+			ConfigNetWLAN.loadOSConfig(osConfigPath, wpaPSKConfigPath);
+		}
+		else
+		{
+			ConfigNetWLAN.load(path);
+		}
+		
+	}	
+	
+	private static void loadOSConfig(String osConfigPath, String wpaPSKConfigPath) {
+
+		ConfigNetWLAN.loadWLAN(osConfigPath);
+		ConfigNetWLAN.loadWPAPSK(wpaPSKConfigPath);
+	}
+	private static void loadWPAPSK(String wpaPSKConfigPath) {
+		Map<String, String> config;
+		try {
+			config = FileConfigUtil.loadConfig(wpaPSKConfigPath);
+			ConfigNetWLAN.key = config.getOrDefault("WPA_PSK", "");;
+		} catch (FileNotFoundException e) {
+			logger.error(e.getMessage(), e);
+		}	
+	}
+	
+	private static void loadWLAN(String osConfigPath) {
+		Map<String, String> config;
+		try {
+			config = FileConfigUtil.loadConfig(osConfigPath);
+			ConfigNetWLAN.ipAddress = config.getOrDefault("IPADDR", "");
+			ConfigNetWLAN.prefix = config.getOrDefault("PREFIX", "");		
+			ConfigNetWLAN.netmask = config.getOrDefault("NETMASK", "");
+			ConfigNetWLAN.gateway = config.getOrDefault("GATEWAY", "");
+			ConfigNetWLAN.dns1 = config.getOrDefault("DNS1", "");
+			ConfigNetWLAN.essid = config.getOrDefault("ESSID", "");
+			ConfigNetWLAN.keyMgmt = config.getOrDefault("KEY_MGMT", "");
+		} catch (FileNotFoundException e) {
+			logger.error(e.getMessage(), e);
+		}	
+	}
+	private static void load(String path) {
 		ConfigNetWLAN.configPath = path;
 		String dir = Utility.getBaseDir();
 		if(dir.endsWith("/") && path.startsWith("/"))
@@ -77,7 +124,7 @@ public class ConfigNetWLAN {
 			}
 		}
 		
-	}	
+	}
 	public static void save()
 	{
 		ConfigNetWLAN.save(ConfigNetWLAN.configPath);
@@ -138,6 +185,7 @@ public class ConfigNetWLAN {
 				+ "IPADDR=%s\r\n"
 				+ "PREFIX=%s\r\n"
 				+ "GATEWAY=%s\r\n"
+				+ "NETMASK=%s\r\n"
 				+ "DNS1=%s\r\n"
 				+ "DEFROUTE=yes\r\n"
 				+ "IPV4_FAILURE_FATAL=no\r\n"
@@ -156,6 +204,7 @@ public class ConfigNetWLAN {
 				ConfigNetWLAN.ipAddress,
 				ConfigNetWLAN.prefix,
 				ConfigNetWLAN.gateway,
+				ConfigNetWLAN.netmask,
 				ConfigNetWLAN.dns1,
 				uuid
 				);

@@ -152,13 +152,25 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			this.handleDHCPSetting(httpExchange);
 		}
+		else if(path.startsWith("/data/network-dhcp-sys-setting/get"))
+		{
+			this.handleDHCPSetting(httpExchange, true);
+		}
 		else if(path.startsWith("/data/network-wlan-setting/get"))
 		{
 			this.handleWLANSetting(httpExchange);
 		}
+		else if(path.startsWith("/data/network-wlan-sys-setting/get"))
+		{
+			this.handleWLANSetting(httpExchange, true);
+		}
 		else if(path.startsWith("/data/network-ethernet-setting/get"))
 		{
 			this.handleEthernetSetting(httpExchange);
+		}
+		else if(path.startsWith("/data/network-ethernet-sys-setting/get"))
+		{
+			this.handleEthernetSetting(httpExchange, true);
 		}
 		else if(path.startsWith("/data/server-info/get"))
 		{
@@ -1720,6 +1732,10 @@ public class HandlerWebManagerData implements HttpHandler {
 	//@GetMapping(path="/data/network-dhcp-setting/get")
 	public void handleDHCPSetting(HttpExchange httpExchange) throws IOException
 	{
+		this.handleDHCPSetting(httpExchange, false);
+	}
+	public void handleDHCPSetting(HttpExchange httpExchange, boolean system) throws IOException
+	{
 		Headers requestHeaders = httpExchange.getRequestHeaders();
 		Headers responseHeaders = httpExchange.getResponseHeaders();
 		CookieServer cookie = new CookieServer(requestHeaders, Config.getSessionName(), Config.getSessionLifetime());
@@ -1729,9 +1745,8 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				ConfigNetDHCP.load(Config.getDhcpSettingPath());		
-				responseBody = ConfigNetDHCP.toJSONObject().toString().getBytes();
-				
+				ConfigNetDHCP.load(Config.getDhcpSettingPath(), Config.getOsDHCPConfigPath(), system);		
+				responseBody = ConfigNetDHCP.toJSONObject().toString().getBytes();			
 			}
 			else
 			{
@@ -1758,6 +1773,10 @@ public class HandlerWebManagerData implements HttpHandler {
 	//@GetMapping(path="/data/network-wlan-setting/get")
 	public void handleWLANSetting(HttpExchange httpExchange) throws IOException
 	{
+		this.handleWLANSetting(httpExchange, true);
+	}
+	public void handleWLANSetting(HttpExchange httpExchange, boolean system) throws IOException
+	{
 		Headers requestHeaders = httpExchange.getRequestHeaders();
 		Headers responseHeaders = httpExchange.getResponseHeaders();
 		CookieServer cookie = new CookieServer(requestHeaders, Config.getSessionName(), Config.getSessionLifetime());
@@ -1767,9 +1786,8 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				ConfigNetWLAN.load(Config.getWlanSettingPath());		
+				ConfigNetWLAN.load(Config.getWlanSettingPath(), Config.getOsWLANConfigPath(), Config.getOsSSIDKey());		
 				responseBody = ConfigNetWLAN.toJSONObject().toString().getBytes();
-				
 			}
 			else
 			{
@@ -1796,6 +1814,10 @@ public class HandlerWebManagerData implements HttpHandler {
 	//@GetMapping(path="/data/network-ethernet-setting/get")
 	public void handleEthernetSetting(HttpExchange httpExchange) throws IOException
 	{
+		this.handleEthernetSetting(httpExchange, true);
+	}
+	public void handleEthernetSetting(HttpExchange httpExchange, boolean system) throws IOException
+	{
 		Headers requestHeaders = httpExchange.getRequestHeaders();
 		Headers responseHeaders = httpExchange.getResponseHeaders();
 		CookieServer cookie = new CookieServer(requestHeaders, Config.getSessionName(), Config.getSessionLifetime());
@@ -1805,7 +1827,7 @@ public class HandlerWebManagerData implements HttpHandler {
 		{
 			if(WebUserAccount.checkUserAuth(requestHeaders))
 			{
-				ConfigNetEthernet.load(Config.getEthernetSettingPath());
+				ConfigNetEthernet.load(Config.getEthernetSettingPath(), Config.getOsEthernetConfigPath(), system);
 				responseBody = ConfigNetEthernet.toJSONObject().toString().getBytes();				
 			}
 			else

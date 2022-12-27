@@ -13,6 +13,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import com.planetbiru.util.OSUtil.OS;
@@ -262,6 +266,29 @@ public class FileConfigUtil {
 			}
 		};
 		Files.walkFileTree(path, visitor);
+	}
+
+	public static Map<String, String> loadConfig(String wpaPSKConfigPath) throws FileNotFoundException {
+		byte[] data = FileConfigUtil.read(wpaPSKConfigPath);
+		String configStr = new String(data);
+		List<String> lines = Arrays.asList(configStr.split("\r\n"));
+		Map<String, String> map = new HashMap<>();
+		for(int i = 0; i<lines.size(); i++)
+		{
+			String line = lines.get(i);
+			if(line != null && line.contains("="))
+			{
+				String[] arr = line.split("=", 2);
+				String key = arr[0].trim();
+				String value = arr[1].trim();
+				if(value.startsWith("\"") && value.endsWith("\""))
+				{
+					value = value.substring(1, value.length()-1);
+				}
+				map.put(key, value);
+			}
+		}
+		return map;
 	}
 
 }

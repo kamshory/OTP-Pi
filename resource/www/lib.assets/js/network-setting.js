@@ -6,9 +6,29 @@ $(document).ready(function (e) {
             greedy: false //The initial mask shown will be "" instead of "-____".
         });
     });
+    loadDHCPSetting("data/network-dhcp-setting/get");
+    loadWLANSetting("data/network-wlan-setting/get");
+    loadEthernetSetting("data/network-ethernet-setting/get");
+
+    $(document).on('click', '#load_dhcp_setting', function(e){
+        e.preventDefault();
+        loadDHCPSetting("data/network-dhcp-sys-setting/get");
+    });
+    $(document).on('click', '#load_wlan_setting', function(e){
+        e.preventDefault();
+        loadWLANSetting("data/network-wlan-sys-setting/get");
+    });
+    $(document).on('click', '#load_eth_setting', function(e){
+        e.preventDefault();
+        loadEthernetSetting("data/network-ethernet-sys-setting/get");
+    });
+});
+
+function loadDHCPSetting(url)
+{
     $.ajax({
         type: "GET",
-        url: "data/network-dhcp-setting/get",
+        url: url,
         dataType: "json",
         success: function (data) {
             $('.dhcp [name="domainName"]').val(data.domainName);
@@ -31,9 +51,13 @@ $(document).ready(function (e) {
             $('.dhcp input[name="ranges"]').val(obj1.join(", "));
         }
     });
+}
+
+function loadWLANSetting(url)
+{
     $.ajax({
         type: "GET",
-        url: "data/network-wlan-setting/get",
+        url: url,
         dataType: "json",
         success: function (data) {
             $('.wlan [name="essid"]').val(data.essid);
@@ -46,9 +70,13 @@ $(document).ready(function (e) {
             $('.wlan [name="dns1"]').val(data.dns1);
         }
     });
+}
+
+function loadEthernetSetting(url)
+{
     $.ajax({
         type: "GET",
-        url: "data/network-ethernet-setting/get",
+        url: url,
         dataType: "json",
         success: function (data) {
             $('.ethernet [name="ipAddress"]').val(data.ipAddress);
@@ -59,4 +87,4 @@ $(document).ready(function (e) {
             $('.ethernet [name="dns2"]').val(data.dns2);
         }
     });
-});
+}
