@@ -1,7 +1,7 @@
 # Installation
 
 1. Download Centos 7 Minimal image from http://isoredirect.centos.org/altarch/7/isos/armhfp/
-2. Write image into Micro SD card using disk image writer. For Windows users, use **Win32 Disk Imager** (https://sourceforge.net/projects/win32diskimager/) or Rufus (https://rufus.ie/en/)
+2. Write image into Micro SD card using disk image writer. For Windows users, use **Win32 Disk Imager** (https://sourceforge.net/projects/win32diskimager/) or **Rufus** (https://rufus.ie/en/)
 3. Attach Micro SD card to Raspberry Pi
 4. Attach RTC DS3231 module to Raspberry Pi
 5. Login to Raspberry Pi using console (username = `root`, password = `centos`)
