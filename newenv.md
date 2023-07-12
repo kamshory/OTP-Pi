@@ -1,3 +1,4 @@
+```bash
 echo 'export OTPPI_CRON_ENABLE_AMQP="true"' >> $HOME/.bashrc
 echo 'export OTPPI_CRON_ENABLE_DDNS="true"' >> $HOME/.bashrc
 echo 'export OTPPI_CRON_ENABLE_DEVICE="true"' >> $HOME/.bashrc
@@ -100,3 +101,4 @@ echo 'export OTPPI_WEB_SESSION_NAME="SMSSESSID"' >> $HOME/.bashrc
 echo 'export OTPPI_WVDIAL_COMMAND_CONNECT="/bin/wvdial &"' >> $HOME/.bashrc
 echo 'export OTPPI_WVDIAL_COMMAND_DISCONNECT="/bin/pkill wvdial"' >> $HOME/.bashrc
 echo 'export OTPPI_WVDIAL_PATH_CONFIG="/etc/wvdial.conf"' >> $HOME/.bashrc
+```
