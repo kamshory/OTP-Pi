@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta name="require-login" content="true" data-file="/login-form.html">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1; user-scalable=no">
+	<link rel="icon" href="favicon.ico">
+	<title>OTP-Pi</title>
+	<link href="lib.assets/css/bootstrap.css" rel="stylesheet">
+	<link href="lib.assets/css/style.min.css" rel="stylesheet">
+	<script src="lib.assets/js/jquery.min.js"></script>
+	<script src="lib.assets/js/bootstrap.js"></script>
+	<script src="lib.assets/js/ws.min.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<!-- Static navbar -->
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header"> <span class="usb-device-symbol"></span>
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="./">OTP-Pi</a> </div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="./">Home</a></li>
+						<li><a href="ussd.html">USSD</a></li>
+						<li><a href="sms.html">SMS</a></li>
+						<li><a href="broadcast.html">Broadcast</a></li>
+						<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="general-setting.html">General Setting</a></li>
+								<li><a href="admin.html">Administrator Setting</a></li>
+								<li><a href="api-setting.html">API Setting</a></li>
+								<li><a href="api-user.html">API User</a></li>
+								<li><a href="subscriber-setting.html">Subscriber Setting</a></li>
+								<li><a href="sms-setting.html">SMS Setting</a></li>
+								<li><a href="block-list.html">Block List</a></li>
+								<li><a href="modem.html">Modem</a></li>
+								<li><a href="email-account.html">Email Account</a></li>
+								<li><a href="network-setting.html">Network Setting</a></li>
+								<li><a href="firewall.html">Firewall</a></li>
+								<li><a href="open-port.html">Open Port</a></li>
+								<li><a href="keystore.html">Keystore</a></li>
+								<li><a href="bell-setting.html">Bell Setting</a></li>
+								<li role="separator" class="divider"></li>
+								<li class="dropdown-header">DDNS Setting</li>
+								<li><a href="ddns-record.html">DDNS Record</a></li>
+								<li><a href="cloudflare.html">Cloudflare Account</a></li>
+								<li><a href="noip.html">No IP Account</a></li>
+								<li><a href="dynu.html">Dynu Account</a></li>
+								<li><a href="afraid.html">Afraid Account</a></li>
+							</ul>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="account.html">Account</a></li>
+						<li><a href="logout.html">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+			<!--/.container-fluid -->
+		</nav>
+		<div class="phone-page">
+			<div id="monitor">
+                <svg width="600" height="686" xmlns="http://www.w3.org/1200/svg">
+                    <style>
+                        text{
+                            font-family: Verdana, Geneva, Tahoma, sans-serif;
+                            font-size: 11px;
+                            fill: #333333;
+                        }
+                        rect, path{
+                            stroke: #333333;
+                        }
+                        .active text{
+                            fill: #007700;
+                        }
+                        .active rect, .active path{
+                            stroke: #007700;
+                        }
+                        .inactive text{
+                            fill: #770000;
+                        }
+                        .inactive rect, .inactive path{
+                            stroke: #770000;
+                        }
+                        #arrowheaddefault polygon{
+                            fill: #333333;
+                        }
+                        #arrowheadactive polygon{
+                            fill: #007700;
+                        }
+                        #arrowheadinactive polygon{
+                            fill: #770000;
+                        }
+                        #modem > g{
+                            display: none;
+                        }
+                        #email > g{
+                            display: none;
+                        }
+                        #admin > g{
+                            display: none;
+                        }
+                        #svg_rect{
+                            display: none;
+                        }
+                    </style>
+                    <defs>
+                        <marker id="arrowheaddefault" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#00000" />
+                        </marker>
+                        <marker id="arrowheadactive" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#007700" />
+                        </marker>
+                        <marker id="arrowheadinactive" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#770080" />
+                        </marker>
+                    </defs>
+                    <g id="svg_doc">
+                        <rect id="svg_rect" height="686" width="600" y="0" x="0" height="30" width="120" stroke="#000" fill="#fff"/>
+                        
+                        <g id="switch">
+                            <g>
+                                <rect id="otppi" y="260" x="230" height="140" width="140" stroke="#000" fill="#112211"/>
+                                <text y="185" x="80" height="30" width="120" dominant-baseline="middle" text-anchor="middle">WebSocket</text>
+                            </g>
+                        </g>
+
+                        <g id="rest">              
+                            <g id="http">
+                                <rect y="20" x="20" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="35" x="80" height="30" width="120" dominant-baseline="middle" text-anchor="middle">REST HTTP</text>  
+                                <path d="M 80 50 80 140 240 140 240 240" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" />  
+                            </g>
+                            <g id="https">
+                                <rect y="20" x="160" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="35" x="220" height="30" width="120" dominant-baseline="middle" text-anchor="middle">REST HTTPS</text>  
+                                <path d="M 220 50 220 125 255 125 255 240" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" /> 
+                            </g>
+                        </g>
+
+                        <g id="admin">
+                            <g id="admin_1">
+                                <rect y="50" x="330" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="65" x="390" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Admin 1</text>  
+                                <path d="M 330 65 270 65 270 240" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" />  
+                            </g>
+
+                            <g id="admin_2">
+                                <rect y="90" x="330" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="105" x="390" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Admin 2</text>  
+                                <path d="M 330 105 285 105 285 240" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" />  
+                            </g>
+
+                            <g id="admin_3">
+                                <rect y="130" x="330" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="145" x="390" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Admin 3</text>  
+                                <path d="M 330 145 300 145 300 240" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" />  
+                            </g>
+
+                            <g id="admin_4">
+                                <rect y="170" x="330" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="185" x="390" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Admin 4</text>  
+                                <path d="M 330 185 315 185 315 240" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" />  
+                            </g>
+                            
+                        </g>
+
+                        <g id="subscriber">              
+                            <g id="subscriber_1">
+                                <rect y="170" x="20" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="185" x="80" height="30" width="120" dominant-baseline="middle" text-anchor="middle">WebSocket</text>  
+                                <path d="M 140 185 190 185 190 270 210 270" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" />  
+                            </g>
+                            <g id="subscriber_2">
+                                <rect y="220" x="20" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="235" x="80" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Redis</text>
+                                <path d="M 140 235 180 235 180 285 210 285" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" /> 
+                            </g>
+                            <g id="subscriber_3">
+                                <rect y="270" x="20" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="285" x="80" height="30" width="120" dominant-baseline="middle" text-anchor="middle">RabbitMQ</text> 
+                                <path d="M 140 285 170 285 170 300 210 300" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" />
+                            </g>
+                            <g id="subscriber_4">
+                                <rect y="320" x="20" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="335" x="80" height="30" width="120" dominant-baseline="middle" text-anchor="middle">MQTT</text> 
+                                <path d="M 140 335 170 335 170 315 210 315" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" /> 
+                            </g>
+                            <g>
+                                <rect id="subscriber_5" y="370" x="20" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="385" x="80" height="30" width="120" dominant-baseline="middle" text-anchor="middle">ActiveMQ</text> 
+                                <path d="M 140 385 180 385 180 330 210 330" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" /> 
+                            </g>
+                            <g>
+                                <rect id="subscriber_6" y="420" x="20" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="435" x="80" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Stomp</text> 
+                                <path d="M 140 435 190 435 190 345 210 345" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" /> 
+                            </g>
+                        </g>
+
+                        <g id="modem">              
+                            <g id="modem_1">
+                                <rect y="170" x="460" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="185" x="520" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Modem 1</text>  
+                                <path d="M 370 270 400 270 400 185 440 185" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" /> 
+                            </g>
+                            <g id="modem_2">
+                                <rect y="220" x="460" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="235" x="520" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Modem 2</text> 
+                                <path d="M 370 285 410 285 410 235 440 235" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" /> 
+                            </g>
+                            <g id="modem_3">
+                                <rect y="270" x="460" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="285" x="520" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Modem 3</text> 
+                                <path d="M 370 300 420 300 420 285 440 285" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" /> 
+                            </g>
+                            <g id="modem_4">
+                                <rect y="320" x="460" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="335" x="520" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Modem 4</text> 
+                                <path d="M 370 315 420 315 420 335 440 335" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" /> 
+                            </g>
+                            <g id="modem_5">
+                                <rect y="370" x="460" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="385" x="520" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Modem 5</text>
+                                <path d="M 370 330 410 330 410 385 440 385" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" />
+                            </g>
+                            <g id="modem_6">
+                                <rect y="420" x="460" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="435" x="520" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Modem 6</text> 
+                                <path d="M 370 345 400 345 400 435 440 435" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" />
+                            </g>
+                        </g>
+
+                        <g id="email">
+                            <g id="email_1">
+                                <rect y="485" x="20" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="500" x="80" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Email 1</text>  
+                                <path d="M 240 400 240 500 160 500" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" />  
+                            </g>
+                            <g id="email_2">
+                                <rect y="535" x="20" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="550" x="80" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Email 2</text>  
+                                <path d="M 255 400 255 550 160 550" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" />  
+                            </g>
+                            <g id="email_3">
+                                <rect y="585" x="20" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="600" x="80" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Email 3</text>  
+                                <path d="M 270 400 270 600 160 600" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" />  
+                            </g>
+
+                            <g id="email_4">
+                                <rect y="635" x="20" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="650" x="80" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Email 4</text>  
+                                <path d="M 285 400 285 650 160 650" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" />  
+                            </g>
+
+                            <g id="email_5">
+                                <rect y="485" x="460" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="500" x="520" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Email 5</text>  
+                                <path d="M 360 400 360 500 440 500" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" />  
+                            </g>
+                            <g id="email_6">
+                                <rect y="535" x="460" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="550" x="520" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Email 6</text>  
+                                <path d="M 345 400 345 550 440 550" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" />  
+                            </g>
+                            <g id="email_7">
+                                <rect y="585" x="460" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="600" x="520" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Email 7</text>  
+                                <path d="M 330 400 330 600 440 600" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" />  
+                            </g>
+
+                            <g id="email_8">
+                                <rect y="635" x="460" height="30" width="120" stroke="#000" fill="#fff"/>
+                                <text y="650" x="520" height="30" width="120" dominant-baseline="middle" text-anchor="middle">Email 8</text>  
+                                <path d="M 315 400 315 650 440 650" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrowheaddefault)" />  
+                            </g>
+                        </g>
+
+                    </g>
+                </svg>
+            </div>
+
+            <script src="lib.assets/js/monitor.min.js"></script>
+        </div>
+    </div>
+    <div class="waiting-server-up">
+        <div class="loading-icon"><span class="animation-pressure"><span></span></span>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,395 @@
+package com.planetbiru.util;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.nio.file.FileVisitResult;
+import java.nio.file.FileVisitor;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Pattern;
+
+import com.planetbiru.util.OSUtil.OS;
+
+public class FileConfigUtil {
+	private FileConfigUtil()
+	{
+		
+	}
+	
+	public static byte[] read(String fileName) throws FileNotFoundException
+	{
+		String storageKey = SQLiteDataStore.getStorageKey(fileName);
+		if(storageKey != null)
+		{
+			try
+			{
+				if(SQLiteDataStore.contains(storageKey))
+				{
+					byte[] data = SQLiteDataStore.read(storageKey);
+					if(data == null)
+					{
+						throw new FileNotFoundException("File not found: " + fileName);
+					}
+					return data.length == 0 ? null : data;
+				}
+				byte[] legacyData = FileConfigUtil.readFromDisk(fileName);
+				if(legacyData != null)
+				{
+					SQLiteDataStore.write(storageKey, legacyData);
+				}
+				return legacyData;
+			}
+			catch(SQLException e)
+			{
+				throw new FileNotFoundException("Unable to read SQLite data: " + fileName, e);
+			}
+		}
+		return FileConfigUtil.readFromDisk(fileName);
+	}
+
+	private static byte[] readFromDisk(String fileName) throws FileNotFoundException
+	{
+		byte[] allBytes = null;
+		try 
+		(
+				InputStream inputStream = new FileInputStream(fileName);
+		) 
+		{
+			File resource = new File(fileName);		
+			long fileSize = resource.length();
+			allBytes = new byte[(int) fileSize];
+			int length = inputStream.read(allBytes);
+			if(length == 0)
+			{
+				allBytes = null;
+			}
+		 } 
+		 catch (IOException ex) 
+		 {
+			 throw new FileNotFoundException(ex.getMessage());
+		 }
+		 return allBytes;
+	}
+	
+	public static void write(String fileName, byte[] data) throws IOException
+	{
+		String storageKey = SQLiteDataStore.getStorageKey(fileName);
+		if(storageKey != null)
+		{
+			try
+			{
+				SQLiteDataStore.write(storageKey, data);
+				return;
+			}
+			catch(SQLException e)
+			{
+				throw new IOException("Unable to write SQLite data: " + fileName, e);
+			}
+		}
+		String dirName = FileConfigUtil.getParentName(fileName);
+		dirName = FileConfigUtil.fixFileName(dirName);
+		File file = new File(dirName);
+		if(!file.exists())
+		{
+			file.mkdirs();
+		}
+		try 
+		(
+			OutputStream os = new FileOutputStream(fileName);
+		)
+		{
+		    final PrintStream printStream = new PrintStream(os);
+		    printStream.write(data);
+		    printStream.close();
+		}
+		catch (IOException ex) 
+		{
+			throw new IOException(ex);
+		}
+	}
+
+	public static void append(String fileName, byte[] data) throws IOException
+	{
+		String storageKey = SQLiteDataStore.getStorageKey(fileName);
+		if(storageKey != null)
+		{
+			try
+			{
+				SQLiteDataStore.append(storageKey, data);
+				return;
+			}
+			catch(SQLException e)
+			{
+				throw new IOException("Unable to append SQLite data: " + fileName, e);
+			}
+		}
+		try(OutputStream outputStream = new FileOutputStream(fileName, true))
+		{
+			outputStream.write(data);
+		}
+	}
+
+	public static void delete(String fileName) throws IOException
+	{
+		String storageKey = SQLiteDataStore.getStorageKey(fileName);
+		if(storageKey != null)
+		{
+			try
+			{
+				SQLiteDataStore.delete(storageKey);
+				return;
+			}
+			catch(SQLException e)
+			{
+				throw new IOException("Unable to delete SQLite data: " + fileName, e);
+			}
+		}
+		Files.delete(new File(fileName).toPath());
+	}
+
+	public static boolean isDatabaseManaged(String fileName)
+	{
+		return SQLiteDataStore.getStorageKey(fileName) != null;
+	}
+
+	public static org.json.JSONArray listFiles(String directory) throws IOException
+	{
+		try
+		{
+			return SQLiteDataStore.listFiles(directory);
+		}
+		catch(SQLException e)
+		{
+			throw new IOException("Unable to list SQLite data: " + directory, e);
+		}
+	}
+	
+	public static String getDirSeparator() {
+		if(OSUtil.getOS().equals(OS.WINDOWS))
+		{
+			return "\\";
+		}
+		else
+		{
+			return "/";
+		}
+	}
+
+	public static String removeParentWithDot(String path) {
+		path = path.replace("/../", "/");
+		path = path.replace("\\..\\", "\\");
+		return path;
+	}
+	
+	public static String fixFileName(String fileName) {
+		if(OSUtil.getOS().equals(OS.WINDOWS))
+		{
+			fileName = fileName.replace("/", "\\");
+			fileName = fileName.replace("\\\\", "\\");
+			fileName = fileName.replace("..\\", "");
+			fileName = fileName.replace("\\..", "");
+		}
+		else
+		{
+			fileName = fileName.replace("\\", "/");		
+			fileName = fileName.replace("//", "/");
+			fileName = fileName.replace("../", "");
+			fileName = fileName.replace("/..", "");
+		}
+		return fileName;
+	}
+	
+	public static String getFileExtension(String fileName) 
+	{
+		String extension = fileName;
+		int index = fileName.lastIndexOf('.');
+		if (index > 0) {
+		      extension = fileName.substring(index + 1);
+		}
+		return extension;
+	}
+	
+	/**
+	 * Prepare directory before save a file
+	 * @param fileName File path to be save after directory created
+	 */
+	@Deprecated
+	public static void prepareDir(String fileName)
+	{
+		String parent1 = getParentName(fileName);
+		String parent2 = getParentName(parent1);
+		String parent3 = getParentName(parent2);
+		String parent4 = getParentName(parent3);
+		String parent5 = getParentName(parent4);
+		
+		File d1 = new File(parent4);
+		if(!d1.exists())
+		{
+			d1.mkdirs();
+		}
+
+		File d0 = new File(parent5);
+		if(!d0.exists())
+		{
+			d0.mkdirs();
+		}
+
+		File d2 = new File(parent3);
+		if(!d2.exists())
+		{
+			d2.mkdirs();
+		}		
+
+		File d3 = new File(parent2);
+		if(!d3.exists())
+		{
+			d3.mkdirs();
+		}
+		
+		File d4 = new File(parent1);
+		if(!d4.exists())
+		{
+			d4.mkdirs();
+		}
+		
+	}
+	
+	public static void prepareDirectory(String fileName)
+	{
+		String separatorDir = FileConfigUtil.getDirSeparator();
+
+		String[] arr;
+		if(OSUtil.getOS().equals(OS.WINDOWS))
+		{
+			arr = fileName.split(Pattern.quote("\\"));
+		}
+		else
+		{
+			arr = fileName.split("/");
+		}
+		StringBuilder bld = new StringBuilder();
+		for(int i = 0; i<arr.length - 1; i++)
+		{
+			bld.append(arr[i]);
+			String dir = bld.toString();
+			bld.append(separatorDir);
+			File d = new File(dir);
+			if(!d.exists())
+			{
+				d.mkdirs();
+			}
+			
+		}
+	}
+	
+	public static String getFolderName(String fullPath)
+	{
+		String folder = "";
+		if(fullPath.contains("\\"))
+		{
+			fullPath = fullPath.replace("\\", "/");
+		}
+		if(fullPath.contains("/"))
+		{			
+			String[] arr = fullPath.split("/");
+			folder = arr[arr.length - 2];
+		}
+		folder = folder.replace("/", "");
+		folder = folder.replace("\\", "");
+		return folder;
+	}
+	
+	public static String getParentName(String fullPath)
+	{
+		if(fullPath.contains("/") || fullPath.contains("\\"))
+		{
+			String baseName = FileConfigUtil.getBaseName(fullPath);
+			return fullPath.substring(0, fullPath.length() - baseName.length() - 1);
+		}
+		else
+		{
+			return FileConfigUtil.getDirSeparator();
+		}
+	}
+	
+	public static String getBaseName(String fullPath)
+	{
+		String name = fullPath;
+		if(fullPath.contains("\\"))
+		{
+			fullPath = fullPath.replace("\\", "/");
+		}
+		if(fullPath.contains("/"))
+		{			
+			String[] arr = fullPath.split("/");
+			if(arr.length > 0)
+			{
+				name = arr[arr.length - 1];
+			}
+		}
+		return name;
+	}
+	
+	public static void deleteDirectoryWalkTree(Path path) throws IOException {
+		FileVisitor<Path> visitor = new SimpleFileVisitor<Path>() {	             
+			@Override
+				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+				Files.delete(file);
+				return FileVisitResult.CONTINUE;
+			}
+	
+			@Override
+			public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException {
+				Files.delete(file);
+				return FileVisitResult.CONTINUE;
+			}
+	
+			@Override
+			public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+				if (exc != null) 
+				{
+					throw exc;
+				}
+				Files.delete(dir);
+				return FileVisitResult.CONTINUE;
+			}
+		};
+		Files.walkFileTree(path, visitor);
+	}
+
+	public static Map<String, String> loadConfig(String wpaPSKConfigPath) throws FileNotFoundException {
+		byte[] data = FileConfigUtil.read(wpaPSKConfigPath);
+		String configStr = new String(data);
+		List<String> lines = Arrays.asList(configStr.split("\r\n"));
+		Map<String, String> map = new HashMap<>();
+		for(int i = 0; i<lines.size(); i++)
+		{
+			String line = lines.get(i);
+			if(line != null && line.contains("="))
+			{
+				String[] arr = line.split("=", 2);
+				String key = arr[0].trim();
+				String value = arr[1].trim();
+				if(value.startsWith("\"") && value.endsWith("\""))
+				{
+					value = value.substring(1, value.length()-1);
+				}
+				map.put(key, value);
+			}
+		}
+		return map;
+	}
+
+}

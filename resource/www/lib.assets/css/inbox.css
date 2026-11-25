@@ -1,0 +1,66 @@
+.message-item{
+    box-sizing: border-box;
+    padding-bottom: 10px;
+}
+.message-item .message-item-wrapper{
+    border: 1px solid #f0e18e;
+    padding: 12px 16px;
+    background: #fffadb;
+    position: relative;
+    border-radius: 7px;
+}
+.message-sender{
+    font-weight:bold;
+}
+.message-date-time{
+    float: right;
+}
+.message-sim-card{
+    font-weight: bold;
+    position: relative;
+    margin-right: 60px;
+}
+.message-reply{
+    float: right;
+    z-index: 10;
+}
+.message-sender::after, .message-sim-card::after{
+    content: "";
+    clear: both;
+    display: block;
+}
+.message-reply .btn-sm{
+    padding: 1px 7px;
+}
+.message-reply .btn{
+    cursor: pointer;
+}
+
+.message-item .message-sim-card::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    bottom: -6px;
+    left: 0;
+    border-top: 1px solid #f9f4d5;
+    border-bottom: 1px solid #fffced;
+}
+.message-item.message-item-selected .message-sim-card::after {
+    content: "";
+    border-top: 1px solid #f6e892;
+    border-bottom: 1px solid #fff7c9;
+}
+.message-date-time{
+    text-align:right;
+}
+.message-message{
+    padding-top:8px;
+}
+.message-item-selected .message-item-wrapper{
+    background: #fdf0a6;
+    border: 1px solid #e5d683;
+    box-shadow:inset 0px 0px 2px #e5d683;
+}
+.button-area{
+    padding-bottom:10px;
+}
