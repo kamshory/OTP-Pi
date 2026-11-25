@@ -27,24 +27,6 @@
       margin-right: 6px;
   }
   */
-@-webkit-keyframes anim {
-  0% {
-    top: 4px;
-    height: 4px;
-  }
-  22% {
-    top: 0px;
-    height: 12px;
-  }
-  44% {
-    top: 4px;
-    height: 4px;
-  }
-  100% {
-    top: 4px;
-    height: 4px;
-  }
-}
 @keyframes anim {
   0% {
     top: 4px;
@@ -62,9 +44,6 @@
     top: 4px;
     height: 4px;
   }
-}
-@-ms-viewport {
-  width: device-width;
 }
 @-o-viewport {
   width: device-width;
@@ -273,14 +252,14 @@ button span.number {
   font-size: 24px;
 }
 
-.dialed-number {
-  border: 1px solid #DDDDDD;
-  margin-bottom: 10px;
-}
 .dialed-number::after {
   content: "";
   display: block;
   clear: both;
+}
+.dialed-number {
+  border: 1px solid #DDDDDD;
+  margin-bottom: 10px;
 }
 
 .dialed-number-delete {
@@ -1098,17 +1077,12 @@ weak/medium/strong classes */
   height: 4px;
   position: absolute;
   top: 4px;
-  -webkit-animation-name: anim;
-          animation-name: anim;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
-          animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  animation-name: anim;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
   left: 0;
-  -webkit-animation-delay: 0.12s;
-          animation-delay: 0.12s;
+  animation-delay: 0.12s;
   background-color: green;
 }
 .animation-pressure > span::after {
@@ -1117,17 +1091,12 @@ weak/medium/strong classes */
   height: 4px;
   position: absolute;
   top: 4px;
-  -webkit-animation-name: anim;
-          animation-name: anim;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
-          animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  animation-name: anim;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
   right: 0;
-  -webkit-animation-delay: 0.24s;
-          animation-delay: 0.24s;
+  animation-delay: 0.24s;
   background-color: green;
 }
 .animation-pressure::before {
@@ -1136,17 +1105,12 @@ weak/medium/strong classes */
   height: 4px;
   position: absolute;
   top: 4px;
-  -webkit-animation-name: anim;
-          animation-name: anim;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
-          animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  animation-name: anim;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
   left: 0;
-  -webkit-animation-delay: 0;
-          animation-delay: 0;
+  animation-delay: 0;
   background-color: green;
 }
 .animation-pressure::after {
@@ -1155,17 +1119,12 @@ weak/medium/strong classes */
   height: 4px;
   position: absolute;
   top: 4px;
-  -webkit-animation-name: anim;
-          animation-name: anim;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
-          animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  animation-name: anim;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
   right: 0;
-  -webkit-animation-delay: 0.36s;
-          animation-delay: 0.36s;
+  animation-delay: 0.36s;
   background-color: green;
 }
 
@@ -1380,4 +1339,250 @@ h5.modal-title {
 }
 textarea {
   resize: vertical;
+}
+
+:root {
+  --otp-ink: #1d2b3a;
+  --otp-muted: #68798a;
+  --otp-accent: #146c94;
+  --otp-border: #dce5ed;
+  --otp-canvas: #f3f6fa;
+}
+
+body {
+  background: var(--otp-canvas);
+  color: var(--otp-ink);
+}
+
+.navbar-default {
+  background: #fff;
+  border-color: var(--otp-border);
+  border-radius: 0 0 14px 14px;
+  box-shadow: 0 5px 18px rgba(27, 44, 62, 0.07);
+}
+
+.navbar-default .navbar-brand {
+  color: var(--otp-ink);
+  font-weight: 700;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: var(--otp-muted);
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  background: #edf5f8;
+  color: var(--otp-accent);
+}
+
+.dropdown-menu {
+  border: 1px solid var(--otp-border);
+  border-radius: 9px;
+  box-shadow: 0 10px 24px rgba(27, 44, 62, 0.12);
+}
+
+.dropdown-menu > li > a {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: var(--otp-ink);
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  background: #edf5f8;
+  color: var(--otp-accent);
+}
+
+.phone-page {
+  margin-bottom: 22px;
+  padding: 20px 22px;
+  border: 1px solid var(--otp-border);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(27, 44, 62, 0.06);
+}
+
+.phone-page h1,
+.phone-page h2,
+.phone-page h3,
+.phone-page h4 {
+  color: var(--otp-ink);
+  font-weight: 600;
+}
+
+fieldset {
+  border-color: var(--otp-border);
+  border-radius: 9px;
+}
+
+legend {
+  color: var(--otp-ink);
+  font-weight: 600;
+}
+
+.form-control,
+.config-table input:not([type=checkbox]):not([type=radio]):not([type=submit]),
+.config-table select,
+.config-table textarea {
+  border: 1px solid var(--otp-border);
+  border-radius: 7px;
+  background-color: #fff;
+  box-shadow: none;
+}
+
+.form-control:focus,
+.config-table input:not([type=checkbox]):not([type=radio]):not([type=submit]):focus,
+.config-table select:focus,
+.config-table textarea:focus {
+  border-color: #73a9c0;
+  box-shadow: 0 0 0 3px rgba(20, 108, 148, 0.12);
+  outline: 0;
+}
+
+input[type=checkbox],
+input[type=radio] {
+  accent-color: var(--otp-accent);
+}
+
+.btn {
+  border-radius: 7px;
+  font-weight: 600;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary {
+  border-color: var(--otp-accent);
+  background-color: var(--otp-accent);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  border-color: #0e5676;
+  background-color: #0e5676;
+}
+
+.row-table {
+  overflow: hidden;
+  border: 1px solid var(--otp-border);
+  border-collapse: separate;
+  border-radius: 10px;
+  border-spacing: 0;
+  background: #fff;
+}
+
+.row-table > thead > tr > td {
+  background: #edf3f7;
+  color: var(--otp-ink);
+  font-weight: 600;
+}
+
+.row-table > thead > tr > td,
+.row-table > tbody > tr > td {
+  border-color: var(--otp-border);
+}
+
+.row-table > tbody > tr:hover {
+  background: #f6f9fb;
+}
+
+.tile-wrapper {
+  border-color: var(--otp-border);
+  border-radius: 9px;
+  box-shadow: 0 3px 10px rgba(27, 44, 62, 0.04);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.tile-wrapper:hover {
+  transform: translateY(-2px);
+  border-color: #b7cbd7;
+  box-shadow: 0 8px 18px rgba(27, 44, 62, 0.1);
+}
+
+.tile-title {
+  color: var(--otp-ink);
+  font-weight: 600;
+}
+
+.service-wrapper .service-item {
+  border-color: var(--otp-border);
+  border-radius: 9px;
+}
+
+@media screen and (max-width: 767px) {
+  .phone-page {
+    padding: 16px;
+  }
+  .navbar-default {
+    border-radius: 0 0 10px 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .navbar-default .navbar-nav > li > a,
+  .tile-wrapper {
+    transition: none;
+  }
+}
+.waiting-server-up {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  z-index: 2000;
+  background: rgba(19, 35, 51, 0.28);
+  backdrop-filter: blur(3px);
+  animation: waiting-overlay-in 0.22s ease-out both;
+}
+
+.waiting-server-up .loading-icon {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 76px;
+  height: 76px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 14px 36px rgba(12, 31, 47, 0.2);
+  transform: translate(-50%, -50%);
+}
+
+.waiting-server-up .animation-pressure::before,
+.waiting-server-up .animation-pressure::after,
+.waiting-server-up .animation-pressure > span::before,
+.waiting-server-up .animation-pressure > span::after {
+  border-radius: 999px;
+  background-color: #146c94;
+  animation-duration: 0.9s;
+}
+
+@keyframes waiting-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .waiting-server-up,
+  .waiting-server-up .loading-icon,
+  .waiting-server-up .animation-pressure::before,
+  .waiting-server-up .animation-pressure::after,
+  .waiting-server-up .animation-pressure > span::before,
+  .waiting-server-up .animation-pressure > span::after {
+    animation: none;
+  }
 }/*# sourceMappingURL=style.css.map */

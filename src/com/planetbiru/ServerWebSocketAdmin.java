@@ -10,6 +10,7 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
@@ -29,6 +30,7 @@ import com.planetbiru.util.Utility;
 
 public class ServerWebSocketAdmin extends WebSocketServer{
 
+	private static Logger logger = Logger.getLogger(ServerWebSocketAdmin.class);
 	private static Collection<WebSocketConnection> clients = new ArrayList<>();
 	private static Map<String, Integer> onlineUser = new HashMap<>();
 	
@@ -159,9 +161,7 @@ public class ServerWebSocketAdmin extends WebSocketServer{
 
 	@Override
 	public void onStart() {
-		/**
-		 * Do nothing
-		 */
+		logger.info("Admin WebSocket listener opened at " + this.getAddress());
 	}
 	public void stopService() throws IOException, InterruptedException
 	{

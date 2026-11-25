@@ -384,3 +384,124 @@ input::-ms-reveal {
     margin: 0 16px;
   }
 }
+
+.body {
+  background-color: #15283a;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.bg {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 6vh 20px 32px;
+  background: linear-gradient(135deg, rgba(13, 31, 48, 0.88), rgba(17, 91, 112, 0.78));
+}
+
+.content,
+.content-footer {
+  width: 100%;
+  max-width: 440px;
+}
+
+.content {
+  margin: 0 auto;
+}
+
+.header-icon {
+  margin-bottom: 22px;
+}
+
+.header-icon a,
+.header-icon i {
+  color: #fff;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.22);
+}
+
+.from-content {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 18px 48px rgba(4, 22, 36, 0.28);
+}
+
+.from-content input[type="text"],
+.from-content input[type="password"],
+.from-content input[type="email"],
+.from-content input[type="tel"] {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #dce5ed;
+  border-radius: 8px;
+  background: #fff;
+  color: #1d2b3a;
+  box-shadow: none !important;
+}
+
+.from-content input[type="text"]:focus,
+.from-content input[type="password"]:focus,
+.from-content input[type="email"]:focus,
+.from-content input[type="tel"]:focus {
+  border-color: #73a9c0;
+  box-shadow: 0 0 0 3px rgba(20, 108, 148, 0.12) !important;
+}
+
+.from-content .btn,
+.from-content .submit-btn button,
+.from-content .submit-btn input[type="submit"] {
+  min-height: 42px;
+  border: 0;
+  border-radius: 8px;
+  background: #146c94;
+  color: #fff;
+  font-weight: 600;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.from-content .btn:hover,
+.from-content .btn:focus,
+.from-content .submit-btn button:hover,
+.from-content .submit-btn button:focus,
+.from-content .submit-btn input[type="submit"]:hover,
+.from-content .submit-btn input[type="submit"]:focus {
+  background: #0e5676;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(20, 108, 148, 0.22);
+}
+
+.content-footer {
+  margin: 18px auto 0;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.content-footer a {
+  color: #fff;
+}
+
+@media screen and (max-width: 480px) {
+  .bg {
+    padding: 28px 14px;
+  }
+
+  .from-content {
+    padding: 22px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .from-content .btn,
+  .from-content .submit-btn button,
+  .from-content .submit-btn input[type="submit"] {
+    transition: none;
+  }
+}

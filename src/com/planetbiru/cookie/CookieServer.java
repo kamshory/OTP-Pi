@@ -2,9 +2,6 @@ package com.planetbiru.cookie;
 
 import java.io.*;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +9,7 @@ import java.util.Map;
 
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.net.URLCodec;
+import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,6 +20,7 @@ import com.planetbiru.util.Utility;
 import com.sun.net.httpserver.Headers; //NOSONAR
 
 public class CookieServer {
+	private static Logger logger = Logger.getLogger(CookieServer.class);
 	
 	private String sessionName = "SMSSESSID";
 	private String sessionID = "";
@@ -81,18 +80,13 @@ public class CookieServer {
 	public void destroySession()
 	{
 		this.sessionData = new JSONObject();
-		String sessionFile = this.getSessionFile();
-		File file = new File(sessionFile);
-		Path path = Paths.get(file.getPath());
-		try 
+		try
 		{
-			Files.delete(path);
-		} 
-		catch (IOException e) 
+			FileConfigUtil.delete(this.getSessionFile());
+		}
+		catch(IOException e)
 		{
-			/**
-			 * Do nothing
-			 */
+                logger.error(e.getMessage(), e);
 		}
 	}
 	
@@ -275,21 +269,18 @@ public class CookieServer {
 	
 	public void deleteFile(File file)
 	{
-		long lasModifued = file.lastModified();
-    	if(lasModifued < (System.currentTimeMillis() - this.sessionLifetime))
-    	{
-    		Path path = Paths.get(file.getPath());
-    		try 
-    		{
-				Files.delete(path);
-			} 
-    		catch (IOException e) 
-    		{
-    			/**
-    			 * Do nothing
-    			 */
+		long lastModified = file.lastModified();
+		if(lastModified < (System.currentTimeMillis() - this.sessionLifetime))
+		{
+			try
+			{
+				FileConfigUtil.delete(file.getPath());
 			}
-    	}
+			catch(IOException e)
+			{
+                logger.error(e.getMessage(), e);
+			}
+		}
 	}
 	public void saveSessionData() {
 		String fileName = FileConfigUtil.fixFileName(this.getSessionFile());

@@ -7,7 +7,6 @@ import org.json.JSONObject;
 
 import com.fazecast.jSerialComm.SerialPortInvalidPortException;
 import com.planetbiru.config.Config;
-import com.planetbiru.config.ConfigSMS;
 import com.planetbiru.config.DataModem;
 import com.planetbiru.constant.ConstantString;
 import com.planetbiru.util.Utility;
@@ -118,15 +117,25 @@ public class GSMInstance {
 	public String sendSMS(String receiver, String message, DataModem modemData) throws GSMException, InvalidSIMPinException, SerialPortConnectionException {
 		Date date = new Date();
 		String sender = modemData.getMsisdn();
-		this.logSendSMS(sender, Utility.maskMSISDN(receiver), date, message.length());
-		return this.sendSMS(receiver, message, modemData.isDeleteSentSMS());
+		try
+		{
+			String result = this.sendSMS(receiver, message, modemData.isDeleteSentSMS());
+			this.logSendSMS(sender, receiver, date, message.length(), "sent", "");
+			return result;
+		}
+		catch(GSMException | InvalidSIMPinException | SerialPortConnectionException e)
+		{
+			this.logSendSMS(sender, receiver, date, message.length(), "failed", e.getClass().getSimpleName());
+			throw e;
+		}
 	}
 	
 	public void logSendSMS(String sender, String receiver, Date date, int length) {
-		if(ConfigSMS.isLogSMS())
-		{
-			SMSLogger.add(date, this.modemID, sender, Utility.maskMSISDN(receiver), length);	
-		}
+		this.logSendSMS(sender, receiver, date, length, "sent", "");
+	}
+
+	private void logSendSMS(String sender, String receiver, Date date, int length, String status, String errorCode) {
+		SMSLogger.add(date, this.modemID, sender, Utility.maskMSISDN(receiver), length, status, errorCode);
 	}
 	
 	public List<SMS> readSMS() throws GSMException, InvalidSIMPinException, SerialPortConnectionException

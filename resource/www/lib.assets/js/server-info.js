@@ -1,4 +1,25 @@
 
+function confirmUiAction(event, message, action) {
+    event.preventDefault();
+    var $trigger = $(event.currentTarget);
+    if ($trigger.data('modalConfirmPending')) {
+        return;
+    }
+
+    if (typeof window.showAppConfirm !== 'function') {
+        console.error('Modal dialog helper is not loaded.');
+        return;
+    }
+
+    $trigger.data('modalConfirmPending', true);
+    window.showAppConfirm(message, function (confirmed) {
+        $trigger.removeData('modalConfirmPending');
+        if (confirmed) {
+            action();
+        }
+    });
+}
+
 $(document).ready(function (e3) {
     loadData();
     setInterval(function (e2) {
@@ -45,8 +66,7 @@ $(document).ready(function (e3) {
         else {
             url = 'api/modem';
         }
-        if (confirm('Area you sure you want to disconnect all modems?')) {
-
+        confirmUiAction(e, 'Area you sure you want to disconnect all modems?', function () {
             $.ajax({
                 url: url,
                 type: 'POST',
@@ -64,8 +84,7 @@ $(document).ready(function (e3) {
                 error: function (err) {
                 }
             });
-        }
-        e.preventDefault();
+        });
     });
     $(document).on('click', '.service-item.service-ws .button-connect', function (e) {
         $.ajax({
@@ -84,7 +103,7 @@ $(document).ready(function (e3) {
     });
 
     $(document).on('click', '.service-item.service-ws .button-disconnect', function (e) {
-        if (confirm('Are you sure you want to stop WebSocket client?')) {
+        confirmUiAction(e, 'Are you sure you want to stop WebSocket client?', function () {
             $.ajax({
                 url: 'api/subscriber-ws',
                 type: 'POST',
@@ -97,8 +116,7 @@ $(document).ready(function (e3) {
                 error: function (err) {
                 }
             });
-        }
-        e.preventDefault();
+        });
     });
 
     $(document).on('click', '.service-item.service-amqp .button-connect', function (e) {
@@ -119,7 +137,7 @@ $(document).ready(function (e3) {
     });
 
     $(document).on('click', '.service-item.service-amqp .button-disconnect', function (e) {
-        if (confirm('Are you sure you want to stop RabbitMQ client?')) {
+        confirmUiAction(e, 'Are you sure you want to stop RabbitMQ client?', function () {
             $.ajax({
                 url: 'api/subscriber-amqp',
                 type: 'POST',
@@ -132,8 +150,7 @@ $(document).ready(function (e3) {
                 error: function (err) {
                 }
             });
-        }
-        e.preventDefault();
+        });
     });
 
     $(document).on('click', '.service-item.service-redis .button-connect', function (e) {
@@ -153,7 +170,7 @@ $(document).ready(function (e3) {
     });
 
     $(document).on('click', '.service-item.service-redis .button-disconnect', function (e) {
-        if (confirm('Are you sure you want to stop Redis client?')) {
+        confirmUiAction(e, 'Are you sure you want to stop Redis client?', function () {
             $.ajax({
                 url: 'api/subscriber-redis',
                 type: 'POST',
@@ -166,8 +183,7 @@ $(document).ready(function (e3) {
                 error: function (err) {
                 }
             });
-        }
-        e.preventDefault();
+        });
     });
 
     $(document).on('click', '.service-item.service-mqtt .button-connect', function (e) {
@@ -187,7 +203,7 @@ $(document).ready(function (e3) {
     });
 
     $(document).on('click', '.service-item.service-mqtt .button-disconnect', function (e) {
-        if (confirm('Are you sure you want to stop Mosquitto client?')) {
+        confirmUiAction(e, 'Are you sure you want to stop Mosquitto client?', function () {
             $.ajax({
                 url: 'api/subscriber-mqtt',
                 type: 'POST',
@@ -200,8 +216,7 @@ $(document).ready(function (e3) {
                 error: function (err) {
                 }
             });
-        }
-        e.preventDefault();
+        });
     });
 
 
@@ -222,7 +237,7 @@ $(document).ready(function (e3) {
     });
 
     $(document).on('click', '.service-item.service-activemq .button-disconnect', function (e) {
-        if (confirm('Are you sure you want to stop ActiveMQ client?')) {
+        confirmUiAction(e, 'Are you sure you want to stop ActiveMQ client?', function () {
             $.ajax({
                 url: 'api/subscriber-activemq',
                 type: 'POST',
@@ -235,8 +250,7 @@ $(document).ready(function (e3) {
                 error: function (err) {
                 }
             });
-        }
-        e.preventDefault();
+        });
     });
 
     $(document).on('click', '.service-item.service-stomp .button-connect', function (e) {
@@ -256,7 +270,7 @@ $(document).ready(function (e3) {
     });
 
     $(document).on('click', '.service-item.service-stomp .button-disconnect', function (e) {
-        if (confirm('Are you sure you want to stop Stomp client?')) {
+        confirmUiAction(e, 'Are you sure you want to stop Stomp client?', function () {
             $.ajax({
                 url: 'api/subscriber-stomp',
                 type: 'POST',
@@ -269,8 +283,7 @@ $(document).ready(function (e3) {
                 error: function (err) {
                 }
             });
-        }
-        e.preventDefault();
+        });
     });
 
     $(document).on('click', '.service-item.service-http .button-connect', function (e) {
@@ -290,7 +303,7 @@ $(document).ready(function (e3) {
     });
 
     $(document).on('click', '.service-item.service-http .button-disconnect', function (e) {
-        if (confirm('Are you sure you want to stop HTTP server?')) {
+        confirmUiAction(e, 'Are you sure you want to stop HTTP server?', function () {
             $.ajax({
                 url: 'api/subscriber-http',
                 type: 'POST',
@@ -303,8 +316,7 @@ $(document).ready(function (e3) {
                 error: function (err) {
                 }
             });
-        }
-        e.preventDefault();
+        });
     });
 
     $(document).on('click', '.service-item.service-https .button-connect', function (e) {
@@ -324,7 +336,7 @@ $(document).ready(function (e3) {
     });
 
     $(document).on('click', '.service-item.service-https .button-disconnect', function (e) {
-        if (confirm('Are you sure you want to stop HTTPS server?')) {
+        confirmUiAction(e, 'Are you sure you want to stop HTTPS server?', function () {
             $.ajax({
                 url: 'api/subscriber-https',
                 type: 'POST',
@@ -337,12 +349,11 @@ $(document).ready(function (e3) {
                 error: function (err) {
                 }
             });
-        }
-        e.preventDefault();
+        });
     });
 
     $(document).on('click', '.tile.reboot a', function (e) {
-        if (confirm('Are you sure you want to reboot the OS?')) {
+        confirmUiAction(e, 'Are you sure you want to reboot the OS?', function () {
             waitingForServerUp();
             $.ajax({
                 url: 'api/reboot',
@@ -356,10 +367,10 @@ $(document).ready(function (e3) {
                 error: function (err) {
                 }
             });
-        }
+        });
     })
     $(document).on('click', '.tile.restart a', function (e) {
-        if (confirm('Are you sure you want to restart the service?')) {
+        confirmUiAction(e, 'Are you sure you want to restart the service?', function () {
             waitingForServerUp();
             $.ajax({
                 url: 'api/restart',
@@ -373,10 +384,10 @@ $(document).ready(function (e3) {
                 error: function (err) {
                 }
             });
-        }
+        });
     });
     $(document).on('click', '.tile.expand a', function (e) {
-        if (confirm('Are you sure you want expand the storage?')) {
+        confirmUiAction(e, 'Are you sure you want expand the storage?', function () {
             $.ajax({
                 url: 'api/expand',
                 type: 'POST',
@@ -394,11 +405,11 @@ $(document).ready(function (e3) {
                 error: function (err) {
                 }
             });
-        }
+        });
     });
 
     $(document).on('click', '.tile.cleaner a', function (e) {
-        if (confirm('Are you sure you want to clean up the service?')) {
+        confirmUiAction(e, 'Are you sure you want to clean up the service?', function () {
             $.ajax({
                 url: 'api/cleanup',
                 type: 'POST',
@@ -410,7 +421,7 @@ $(document).ready(function (e3) {
                     console.log('DATA : ' + JSON.stringify(data));
                 }
             });
-        }
+        });
     });
 });
 

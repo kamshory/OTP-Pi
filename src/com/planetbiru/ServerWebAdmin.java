@@ -44,6 +44,7 @@ public class ServerWebAdmin {
 	        HTTPService.getHttpServer().createContext("/ping/", new HandlerWebManagerPing());
 	        HTTPService.getHttpServer().createContext("/tool/", new HandlerWebManagerTool());
 	        HTTPService.getHttpServer().start();
+			logger.info("Admin HTTP listener opened at " + HTTPService.getHttpServer().getAddress());
 		} 
 		catch (IOException e) 
 		{

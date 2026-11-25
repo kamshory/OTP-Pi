@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.file.FileSystems;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import org.json.JSONObject;
@@ -37,6 +38,7 @@ import com.planetbiru.util.ConfigLoader;
 import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.FileNotFoundException;
 import com.planetbiru.util.ProcessKiller;
+import com.planetbiru.util.SQLiteDataStore;
 import com.planetbiru.util.Utility;
 
 import org.apache.log4j.Logger;
@@ -154,6 +156,10 @@ public class App {
 		}	
 		if(needToStart)
 		{
+			if(!App.initializeStorage())
+			{
+				return;
+			}
 			ConfigLoader.init();
 						
 			if(needToReset)
@@ -235,6 +241,30 @@ public class App {
 		{
 			logger.info("Service already started");
 		}	
+	}
+
+	private static boolean initializeStorage() {
+		String currentRootDirectoryPath = App.getConfigRoot();
+		String storageRoot = ConfigLoader.getConfig("otppi.path.setting.base").trim();
+		if(storageRoot.isEmpty())
+		{
+			storageRoot = currentRootDirectoryPath;
+		}
+		File storageDirectory = new File(storageRoot);
+		if(!storageDirectory.isAbsolute())
+		{
+			storageDirectory = new File(currentRootDirectoryPath, storageRoot);
+		}
+		try
+		{
+			SQLiteDataStore.initialize(storageDirectory);
+			return true;
+		}
+		catch(IOException | SQLException e)
+		{
+			logger.error("Service not started because SQLite storage could not be initialized", e);
+			return false;
+		}
 	}
 
 	/**
@@ -483,12 +513,17 @@ public class App {
 		}		
 	}
 	
-	public static void subscriberStompStart() {
-		if(ConfigSubscriberStomp.isSubscriberStompEnable() && (App.getStompSubscriber() == null || !App.getStompSubscriber().isRunning()) || !App.getStompSubscriber().isConnected())
+	public static synchronized void subscriberStompStart() {
+		if(ConfigSubscriberStomp.isSubscriberStompEnable())
 		{
-			App.setStompSubscriber(new SubscriberStomp());
-			App.getStompSubscriber().setRunning(true);
-			App.getStompSubscriber().start();
+			SubscriberStomp subscriber = App.getStompSubscriber();
+			if(subscriber == null || !subscriber.isRunning())
+			{
+				subscriber = new SubscriberStomp();
+				subscriber.setRunning(true);
+				App.setStompSubscriber(subscriber);
+				subscriber.start();
+			}
 		}		
 	}
 	public static void subscriberStompStop(boolean force) {

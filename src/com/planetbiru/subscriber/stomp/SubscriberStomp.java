@@ -13,6 +13,7 @@ import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 
+import org.apache.log4j.Logger;
 import org.fusesource.stomp.jms.StompJmsConnectionFactory;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,7 +27,8 @@ import com.planetbiru.constant.JsonKey;
 
 public class SubscriberStomp extends Thread {
 	
-	private boolean running = false;
+	private static Logger logger = Logger.getLogger(SubscriberStomp.class);
+	private volatile boolean running = false;
 	private boolean connected = false;
 	private boolean lastConnected = false;
 
@@ -46,7 +48,14 @@ public class SubscriberStomp extends Thread {
         String password = ConfigSubscriberStomp.getSubscriberStompPassword();
         String host = ConfigSubscriberStomp.getSubscriberStompAddress();
         int port = ConfigSubscriberStomp.getSubscriberStompPort();
-        String connectionURI = "tcp://" + host + ":" + port;
+        if(!this.isBrokerConfigurationValid(host, port))
+        {
+            this.running = false;
+            this.connected = false;
+            this.updateConnectionStatus();
+            return;
+        }
+        String connectionURI = "tcp://" + host.trim() + ":" + port;
         String topic = ConfigSubscriberStomp.getSubscriberStompTopic();
         StompJmsConnectionFactory factory = new StompJmsConnectionFactory();
         factory.setBrokerURI(connectionURI);
@@ -143,7 +152,11 @@ public class SubscriberStomp extends Thread {
         String password = ConfigSubscriberStomp.getSubscriberStompPassword();
         String host = ConfigSubscriberStomp.getSubscriberStompAddress();
         int port = ConfigSubscriberStomp.getSubscriberStompPort();
-        String connectionURI = "tcp://" + host + ":" + port;
+        if(!this.isBrokerConfigurationValid(host, port))
+        {
+            return;
+        }
+        String connectionURI = "tcp://" + host.trim() + ":" + port;
         String topic = callbackTopic;
         StompJmsConnectionFactory factory = new StompJmsConnectionFactory();
         factory.setBrokerURI(connectionURI);
@@ -164,6 +177,20 @@ public class SubscriberStomp extends Thread {
         	 * Do nothing
         	 */
         }
+	}
+
+	private boolean isBrokerConfigurationValid(String host, int port) {
+		if(host == null || host.trim().isEmpty())
+		{
+			logger.error("STOMP broker address is empty; configure the broker address before enabling STOMP");
+			return false;
+		}
+		if(port < 1 || port > 65535)
+		{
+			logger.error("STOMP broker port is invalid; configure a port between 1 and 65535");
+			return false;
+		}
+		return true;
 	}
 	
 	public void delay(long sleep)

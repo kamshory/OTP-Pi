@@ -48,9 +48,16 @@ public class MessageAPI {
 			JSONObject data = requestJSON.optJSONObject(JsonKey.DATA);
 			if(data != null)
 			{
+				JSONObject logRequest = new JSONObject(requestJSON.toString());
+				JSONObject logData = logRequest.optJSONObject(JsonKey.DATA);
+				if(logData != null)
+				{
+					logData.remove(JsonKey.MESSAGE);
+					logData.remove("otp");
+				}
 				logger.info("\r\n");
 				logger.info("Topic     : " + topic);
-				logger.info("Message   : " + requestJSON.toString(0));
+				logger.info("Message   : " + logRequest.toString(0));
 				logger.info("Command   : " + command);
 				logger.info("Date Time : " + data.optLong(JsonKey.DATE_TIME, 0));
 				if(command.equals(ConstantString.SEND_SMS))

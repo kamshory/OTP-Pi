@@ -65,6 +65,7 @@ public class ServerEmail {
         {
             this.server.start();
             this.running = true;
+			logger.info("SMTP listener opened on port " + this.server.getPort());
         }
         catch (Exception e)
         {

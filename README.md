@@ -39,9 +39,15 @@ OTP-Pi is a server for sending SMS via HTTP, WebSocket and Message Broker protoc
 
 To publish message using PHP to RabbitMQ, Mosquitto and Redis, see example on https://github.com/kamshory/OTP-Publisher 
 
-# No RDBMS Required
+# SQLite Storage
 
-OTP-Pi does not require an RDBMS. All data is stored in RAM and file system. The OTP-Pi also does not store the sent OTP. This will increase the security and confidentiality of the OTP.
+OTP-Pi stores persistent application data, including settings, OTP cache, web sessions, server status, and SMS reports, in the `otp-pi.sqlite` SQLite database in the configured application data directory. Existing data files under `resource/data`, `resource/session`, and `resource/config` are imported automatically the first time the database is initialized; the original files are kept as a backup and are not changed. New application data is written to SQLite.
+
+The root `config.ini` remains a bootstrap file used to locate the application data directory. Operating-system configuration files, static web assets, and diagnostic log files remain regular files. OTP-Pi does not store the sent OTP in clear text.
+
+OTP creation and validation events, SMS delivery results, and email delivery results are recorded in the `otp_log`, `sms_log`, and `email_log` tables. OTP logs contain only the OTP hash; SMS and email logs contain delivery metadata and message lengths, not message content. SMS log entries are recorded regardless of whether the optional legacy CSV report is enabled.
+
+On Windows, run `build.bat` from the project directory to compile the application and create `OTP-Pi.jar`. The generated JAR manifest references dependencies, including `sqlite-jdbc`, in the adjacent `jar` directory, so keep that directory alongside the application JAR when deploying.
 
 # System Requirement
 

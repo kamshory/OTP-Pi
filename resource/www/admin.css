@@ -1,6 +1,6 @@
 @keyframes scene1 {
     0%{
-        background-color: red;
+        background-color: #146c94;
     }
     25%{
         background-color: transparent;
@@ -17,7 +17,7 @@
         background-color: transparent;
     }
     25%{
-        background-color: red;
+        background-color: #146c94;
     }
     50%{
         background-color: transparent;
@@ -34,7 +34,7 @@
         background-color: transparent;
     }
     50%{
-        background-color: red;
+        background-color: #146c94;
     }
     75%{
         background-color: transparent;
@@ -51,7 +51,7 @@
         background-color: transparent;
     }
     75%{
-        background-color: red;
+        background-color: #146c94;
     }
 }
 .loading-dot{
@@ -83,7 +83,7 @@
     position: absolute;
     width: 10px;
     height: 10px;
-    background-color: red;
+    background-color: #146c94;
     left: 0;
     top: 0;
 }
@@ -92,7 +92,7 @@
     position: absolute;
     width: 10px;
     height: 10px;
-    background-color: red;
+    background-color: #146c94;
     right: 0;
     top: 0;
 }
@@ -107,7 +107,7 @@
     position: absolute;
     width: 10px;
     height: 10px;
-    background-color: red;
+    background-color: #146c94;
     left: 0;
     top: 0;
 }
@@ -116,7 +116,7 @@
     position: absolute;
     width: 10px;
     height: 10px;
-    background-color: red;
+    background-color: #146c94;
     right: 0;
     top: 0;
 }

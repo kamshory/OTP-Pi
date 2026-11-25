@@ -1,17 +1,22 @@
 package com.planetbiru.gsm;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Date;
 
+import org.apache.log4j.Logger;
+
+import com.planetbiru.config.ConfigSMS;
 import com.planetbiru.util.FileConfigUtil;
+import com.planetbiru.util.SQLiteDataStore;
 import com.planetbiru.util.Utility;
 
 public class SMSLogger {
 	private static String fileName = "";
 	private static String baseName = "";
 	private static String path = "";
+	private static Logger logger = Logger.getLogger(SMSLogger.class);
 
 	private SMSLogger()
 	{
@@ -57,23 +62,33 @@ public class SMSLogger {
 		}		
 	}
 	
-	public static void add(Date date, String id, String sender, String receiver, int length) {
-		if(!dirCreated(date))
+	public static void add(Date date, String id, String sender, String receiver, int length,
+			String status, String errorCode) {
+		try
 		{
-			prepareFile(date);
+			SQLiteDataStore.logSms(date.getTime(), id, sender, receiver, length, status, errorCode);
 		}
-		if(!SMSLogger.fileName.isEmpty())
+		catch(SQLException e)
 		{
-			String data = date.getTime()+","+id+","+sender+","+receiver+","+length+"\r\n";
-			try(FileOutputStream fos = new FileOutputStream(SMSLogger.fileName, true))
+			logger.error("Unable to record SMS event in SQLite", e);
+		}
+		if(ConfigSMS.isLogSMS())
+		{
+			if(!dirCreated(date))
 			{
-				fos.write(data.getBytes());
+				prepareFile(date);
 			}
-			catch(IOException e)
+			if(!SMSLogger.fileName.isEmpty())
 			{
-				/**
-				 * DO nothing
-				 */
+				String data = date.getTime()+","+id+","+sender+","+receiver+","+length+"\r\n";
+				try
+				{
+					FileConfigUtil.append(SMSLogger.fileName, data.getBytes());
+				}
+				catch(IOException e)
+				{
+					logger.error(e.getMessage(), e);
+				}
 			}
 		}
 	}	

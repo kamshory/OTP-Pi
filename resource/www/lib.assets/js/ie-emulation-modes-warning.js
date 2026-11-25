@@ -46,6 +46,11 @@
   var nonEmulated = actualNonEmulatedIEMajorVersion()
 
   if (emulated !== nonEmulated) {
-    window.alert('WARNING: You appear to be using IE' + nonEmulated + ' in IE' + emulated + ' emulation mode.\nIE emulation modes can behave significantly differently from ACTUAL older versions of IE.\nPLEASE DON\'T FILE BOOTSTRAP BUGS based on testing in IE emulation modes!')
+    var message = 'WARNING: You appear to be using IE' + nonEmulated + ' in IE' + emulated + ' emulation mode.\nIE emulation modes can behave significantly differently from ACTUAL older versions of IE.\nPLEASE DON\'T FILE BOOTSTRAP BUGS based on testing in IE emulation modes!'
+    if (typeof window.showAppAlert === 'function') {
+      window.showAppAlert(message)
+    } else if (window.console && typeof window.console.warn === 'function') {
+      window.console.warn(message)
+    }
   }
 })();

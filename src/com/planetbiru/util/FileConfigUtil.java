@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +29,37 @@ public class FileConfigUtil {
 	}
 	
 	public static byte[] read(String fileName) throws FileNotFoundException
+	{
+		String storageKey = SQLiteDataStore.getStorageKey(fileName);
+		if(storageKey != null)
+		{
+			try
+			{
+				if(SQLiteDataStore.contains(storageKey))
+				{
+					byte[] data = SQLiteDataStore.read(storageKey);
+					if(data == null)
+					{
+						throw new FileNotFoundException("File not found: " + fileName);
+					}
+					return data.length == 0 ? null : data;
+				}
+				byte[] legacyData = FileConfigUtil.readFromDisk(fileName);
+				if(legacyData != null)
+				{
+					SQLiteDataStore.write(storageKey, legacyData);
+				}
+				return legacyData;
+			}
+			catch(SQLException e)
+			{
+				throw new FileNotFoundException("Unable to read SQLite data: " + fileName, e);
+			}
+		}
+		return FileConfigUtil.readFromDisk(fileName);
+	}
+
+	private static byte[] readFromDisk(String fileName) throws FileNotFoundException
 	{
 		byte[] allBytes = null;
 		try 
@@ -53,6 +85,19 @@ public class FileConfigUtil {
 	
 	public static void write(String fileName, byte[] data) throws IOException
 	{
+		String storageKey = SQLiteDataStore.getStorageKey(fileName);
+		if(storageKey != null)
+		{
+			try
+			{
+				SQLiteDataStore.write(storageKey, data);
+				return;
+			}
+			catch(SQLException e)
+			{
+				throw new IOException("Unable to write SQLite data: " + fileName, e);
+			}
+		}
 		String dirName = FileConfigUtil.getParentName(fileName);
 		dirName = FileConfigUtil.fixFileName(dirName);
 		File file = new File(dirName);
@@ -72,6 +117,62 @@ public class FileConfigUtil {
 		catch (IOException ex) 
 		{
 			throw new IOException(ex);
+		}
+	}
+
+	public static void append(String fileName, byte[] data) throws IOException
+	{
+		String storageKey = SQLiteDataStore.getStorageKey(fileName);
+		if(storageKey != null)
+		{
+			try
+			{
+				SQLiteDataStore.append(storageKey, data);
+				return;
+			}
+			catch(SQLException e)
+			{
+				throw new IOException("Unable to append SQLite data: " + fileName, e);
+			}
+		}
+		try(OutputStream outputStream = new FileOutputStream(fileName, true))
+		{
+			outputStream.write(data);
+		}
+	}
+
+	public static void delete(String fileName) throws IOException
+	{
+		String storageKey = SQLiteDataStore.getStorageKey(fileName);
+		if(storageKey != null)
+		{
+			try
+			{
+				SQLiteDataStore.delete(storageKey);
+				return;
+			}
+			catch(SQLException e)
+			{
+				throw new IOException("Unable to delete SQLite data: " + fileName, e);
+			}
+		}
+		Files.delete(new File(fileName).toPath());
+	}
+
+	public static boolean isDatabaseManaged(String fileName)
+	{
+		return SQLiteDataStore.getStorageKey(fileName) != null;
+	}
+
+	public static org.json.JSONArray listFiles(String directory) throws IOException
+	{
+		try
+		{
+			return SQLiteDataStore.listFiles(directory);
+		}
+		catch(SQLException e)
+		{
+			throw new IOException("Unable to list SQLite data: " + directory, e);
 		}
 	}
 	

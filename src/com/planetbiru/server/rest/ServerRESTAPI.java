@@ -9,6 +9,8 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
+import java.util.HashSet;
+import java.util.Set;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManagerFactory;
@@ -83,15 +85,11 @@ public class ServerRESTAPI {
 			
 			httpsServer = HttpsServer.create(new InetSocketAddress(ConfigAPI.getHttpsPort()), 0);
 			httpsServer.setHttpsConfigurator(httpsConfigurator);
-	        httpsServer.createContext(ConfigAPI.getOtpPath(), new HandlerAPIMessage());
-	        httpsServer.createContext(ConfigAPI.getMessagePath(), new HandlerAPIMessage());
-	        httpsServer.createContext(ConfigAPI.getSmsPath(), new HandlerAPIMessage());
-	        httpsServer.createContext(ConfigAPI.getEmailPath(), new HandlerAPIMessage());
-	        httpsServer.createContext(ConfigAPI.getBlockingPath(), new HandlerAPIMessage());
-	        httpsServer.createContext(ConfigAPI.getUnblockingPath(), new HandlerAPIMessage());
+			this.registerContexts(httpsServer);
 	        httpsServer.start();
 			HTTPService.setHttpsServer(httpsServer);
 	        this.httpsStarted = true;
+			logger.info("REST API HTTPS listener opened at " + httpsServer.getAddress());
 		} 
 		catch (IOException | KeyStoreException | NoSuchAlgorithmException | CertificateException | KeyManagementException | UnrecoverableKeyException e) 
 		{
@@ -109,14 +107,10 @@ public class ServerRESTAPI {
 			try 
 			{
 				HTTPService.setHttpServer(HttpServer.create(new InetSocketAddress(ConfigAPI.getHttpPort()), 0));
-		        HTTPService.getHttpServer().createContext(ConfigAPI.getOtpPath(), new HandlerAPIMessage());
-		        HTTPService.getHttpServer().createContext(ConfigAPI.getMessagePath(), new HandlerAPIMessage());
-		        HTTPService.getHttpServer().createContext(ConfigAPI.getSmsPath(), new HandlerAPIMessage());
-		        HTTPService.getHttpServer().createContext(ConfigAPI.getEmailPath(), new HandlerAPIMessage());
-		        HTTPService.getHttpServer().createContext(ConfigAPI.getBlockingPath(), new HandlerAPIMessage());
-		        HTTPService.getHttpServer().createContext(ConfigAPI.getUnblockingPath(), new HandlerAPIMessage());
+				this.registerContexts(HTTPService.getHttpServer());
 		        HTTPService.getHttpServer().start();
 		        this.httpStarted = true;
+		        logger.info("REST API HTTP listener opened at " + HTTPService.getHttpServer().getAddress());
 			} 
 			catch (IOException e) 
 			{
@@ -125,6 +119,33 @@ public class ServerRESTAPI {
 			}
 		}		
 	}
+
+	private void registerContexts(HttpServer server) {
+		String[] paths = {
+				ConfigAPI.getOtpPath(),
+				ConfigAPI.getMessagePath(),
+				ConfigAPI.getSmsPath(),
+				ConfigAPI.getEmailPath(),
+				ConfigAPI.getBlockingPath(),
+				ConfigAPI.getUnblockingPath()
+		};
+		Set<String> registeredPaths = new HashSet<>();
+		for(String path : paths)
+		{
+			if(path == null || path.trim().isEmpty() || !path.startsWith("/"))
+			{
+				logger.error("Ignoring invalid REST API context path: " + path);
+				continue;
+			}
+			if(!registeredPaths.add(path))
+			{
+				logger.warn("Duplicate REST API context path configured; registering only once: " + path);
+				continue;
+			}
+			server.createContext(path, new HandlerAPIMessage());
+		}
+	}
+
 	public void stopHTTP()
 	{
 		if(HTTPService.getHttpServer() != null)

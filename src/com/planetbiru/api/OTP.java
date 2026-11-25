@@ -2,6 +2,7 @@ package com.planetbiru.api;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.Random;
@@ -14,6 +15,7 @@ import com.planetbiru.config.Config;
 import com.planetbiru.constant.JsonKey;
 import com.planetbiru.util.FileConfigUtil;
 import com.planetbiru.util.FileNotFoundException;
+import com.planetbiru.util.SQLiteDataStore;
 import com.planetbiru.util.Utility;
 
 public class OTP {
@@ -69,6 +71,8 @@ public class OTP {
 			        JSONObject obj = OTP.data.optJSONObject(key);
 			        if(obj.optLong(JsonKey.EXPIRATION, 0) < currentTime)
 			        {
+					OTP.recordEvent(key, "", obj.optString(JsonKey.HASH, ""), "expired", "expired",
+							currentTime, obj.optLong(JsonKey.EXPIRATION, 0));
 			        	OTP.data.remove(key);
 			        }
 			    }
@@ -112,16 +116,18 @@ public class OTP {
 			plainOTP = plainOTP.substring(0, length);
 		}
 		JSONObject otpRecord = new JSONObject();
-		long expiration = System.currentTimeMillis() + lifeTime;	
+		long createdAt = System.currentTimeMillis();
+		long expiration = createdAt + lifeTime;
 		if(expiration < 0)
 		{
-			expiration = System.currentTimeMillis() + Config.getOtpLifetime();
+			expiration = createdAt + Config.getOtpLifetime();
 		}
 		String hash = OTP.createHash(otpID, plainOTP, receiver, param1, param2, param3, param4);
 		otpRecord.put(JsonKey.HASH, hash);
 		otpRecord.put(JsonKey.EXPIRATION, expiration);
 		OTP.data.put(otpID, otpRecord);
 		OTP.save();
+		OTP.recordEvent(otpID, receiver, hash, "created", "issued", createdAt, expiration);
 		return plainOTP;
 	}
 
@@ -166,21 +172,46 @@ public class OTP {
 	public static boolean validateOTP(String otpID, String receiver, String param1, String param2,
 			String param3, String param4, String plainOTP) throws OTPExpireException {
 		String hash = OTP.createHash(otpID, plainOTP, receiver, param1, param2, param3, param4);
+		long validatedAt = System.currentTimeMillis();
 		if(OTP.isExists(otpID))
 		{
 			JSONObject otp = OTP.data.optJSONObject(otpID);
 			if(otp == null || otp.optLong(JsonKey.EXPIRATION, 0) < System.currentTimeMillis())
 			{
+				String storedHash = otp == null ? "" : otp.optString(JsonKey.HASH, "");
+				long expiration = otp == null ? 0 : otp.optLong(JsonKey.EXPIRATION, 0);
+				OTP.recordEvent(otpID, receiver, storedHash, "validation", "expired", validatedAt, expiration);
 				throw new OTPExpireException("OTP has been expire");
 			}
-			if(otp.optString(JsonKey.HASH, "").equals(hash))
+			String storedHash = otp.optString(JsonKey.HASH, "");
+			if(storedHash.equals(hash))
 			{
 				OTP.data.remove(otpID);
 				OTP.save();
+				OTP.recordEvent(otpID, receiver, storedHash, "validation", "valid", validatedAt,
+						otp.optLong(JsonKey.EXPIRATION, 0));
 				return true;
 			}
+			OTP.recordEvent(otpID, receiver, storedHash, "validation", "invalid", validatedAt,
+					otp.optLong(JsonKey.EXPIRATION, 0));
+		}
+		else
+		{
+			OTP.recordEvent(otpID, receiver, "", "validation", "not_found", validatedAt, 0);
 		}
 		return false;
+	}
+
+	private static void recordEvent(String otpID, String receiver, String hash, String event,
+			String outcome, long createdAt, long expiresAt) {
+		try
+		{
+			SQLiteDataStore.logOtp(otpID, receiver, hash, event, outcome, createdAt, expiresAt);
+		}
+		catch(SQLException e)
+		{
+			logger.error("Unable to record OTP event in SQLite", e);
+		}
 	}
 	
 	/**

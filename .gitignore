@@ -3,6 +3,7 @@ target/
 #resource/
 bin/
 logs/
+otp-pi.sqlite*
 .settings/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/

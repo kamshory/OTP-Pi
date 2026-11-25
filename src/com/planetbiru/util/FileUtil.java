@@ -38,6 +38,15 @@ public class FileUtil {
 		{
 			return contentCache.get(fileName).getBytes();
 		}
+		if(FileConfigUtil.isDatabaseManaged(fileName))
+		{
+			byte[] data = FileConfigUtil.read(fileName);
+			if(cache && data != null)
+			{
+				contentCache.put(fileName, new String(data));
+			}
+			return data;
+		}
 		byte[] allBytes = null;
 		try 
 		(
@@ -81,8 +90,12 @@ public class FileUtil {
 		}
 	}
 	
-	public static JSONArray listFile(File directory)
+	public static JSONArray listFile(File directory) throws IOException
     {
+		if(FileConfigUtil.isDatabaseManaged(directory.getPath()))
+		{
+			return FileConfigUtil.listFiles(directory.getPath());
+		}
 		JSONArray files = new JSONArray();
 	    File[] list = directory.listFiles();
         if(list != null)
